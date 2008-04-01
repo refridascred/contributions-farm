@@ -98,11 +98,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double gain, double floor)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            double bias = (floor + gain) - (double)302;
+            if (bias < (double)1)
+            {
+                bias = bias + (floor * 11.0);
+            }
+            return bias + floor;
         }
     }
 }
