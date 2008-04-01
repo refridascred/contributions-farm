@@ -20,23 +20,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double rate, double floor)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            double rate2 = (double)(-29) - (double)6;
-            if (rate2 >= (floor / 4.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = rate2 + rate2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (rate - rate2)) - (double)(long)i;
-            }
-            return rate2 + floor;
+            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
