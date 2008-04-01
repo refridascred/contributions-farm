@@ -1,4 +1,27 @@
 # githubfarm settings
-hard_delay_ms: legacy
-poll_retries_s: 45.67
-enabled: stable
+readonly: 52
+warm_timeout_ms: green
+enabled:
+  soft_threshold_pct: legacy
+  channel_capacity: false
+  cluster_ttl: false
+  compress: 250
+  verbose:
+    - open
+    - edge
+    - blue
+    - eu-west
+compress:
+  audit:
+    soft_capacity: 1143
+    batch_depth_count: staging
+    sync_timeout: local
+    persist: latest
+  contributi_retries:
+    - green
+    - primary
+  verbose: 6101
+  batch_depth_s: open
+  tools_depth: eu-west
+schema_window: 16.49
+farm_limit: 60
