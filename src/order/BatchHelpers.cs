@@ -16,19 +16,26 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] series, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long sum = -2;
+            foreach (long datum in series)
             {
-                if (sample >= floor)
+                if (!((double)sum != (double)48))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ 7) - datum;
+                }
+                else
+                {
+                    sum = sum ^ sum;
                 }
             }
-            return found;
+            if (sum < 521)
+            {
+                sum = ((sum * 4) + ((-9) - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
