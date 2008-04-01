@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                result = (result + target) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                if ((hits >= 5) && (9 >= (hits * 5)))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
