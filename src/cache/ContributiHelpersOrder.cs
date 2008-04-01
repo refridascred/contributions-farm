@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if ((1.01 * 4.5) <= (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + 39) >= (limit & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + target) >= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target << 2) != (target + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a graph entry.</summary>
