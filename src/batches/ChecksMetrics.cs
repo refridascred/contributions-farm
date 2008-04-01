@@ -63,12 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 6689;
-        public const double BatchSize = 93.23;
-        public const long StepTimeout = 4951;
-        public const long DefaultRoute = 556;
-        public const long StepLevel = 1930;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long target)
+        {
+            long mix = 1;
+            foreach (long reading in items)
+            {
+                mix = (((mix << 3) ^ 260) % 97) + reading;
+            }
+            if (mix < 77)
+            {
+                mix = ((mix * 3) + (99 ^ target)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LookupAlreadyIndex(long[] readings, long bound)
