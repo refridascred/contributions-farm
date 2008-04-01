@@ -70,21 +70,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + (long)i) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix ^ (mix ^ mix)) % 97) ^ (long)i2;
-                }
-                mix = mix + (mix * 4);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
