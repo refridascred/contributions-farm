@@ -43,21 +43,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long ScoreNotesBatch(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 346;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((7.59 - 20.0) < (double)score) && ((859 - score) < (sample + sample)))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 3) + origin;
                 }
             }
-            return count;
+            if (score < 420)
+            {
+                score = ((score << 3) ^ (322 + origin)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
