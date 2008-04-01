@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Locked,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxLevel = 5418;
+        public const string CacheCounter = "staging-v2";
+        public const string StepInterval = "alpha-1";
+        public const long HardTimeout = 8830;
+        public const long DefaultBudget = 14;
 
         /// <summary>Compare every pair of notes commits readings.</summary>
         public static long PairNotesCommitsCount(long[] values)
