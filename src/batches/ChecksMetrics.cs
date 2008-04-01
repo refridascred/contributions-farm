@@ -21,25 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a graph notes pair into a bucket.</summary>
-        public static long GradeGraphNotes(long seed, long origin)
+        /// <summary>Look up the position of a window session sample.</summary>
+        public static long SeekWindowSessionIndex(long[] readings, long seed)
         {
-            long offset = seed + origin;
-            if ((12.0 / 9.0) == (double)seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 3) < offset)
+                if (readings[i] == seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
