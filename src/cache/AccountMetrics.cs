@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string BatchTools = "strict";
         public const long RetryTools = 5526;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 24.19;
+        public const long DefaultWidth = 877;
+        public const long MinLevel = 2844;
+        public const string RetryAccount = "strict-edge";
+        public const long BaseDepth = 5009;
 
         /// <summary>Blend two buffer token measurements.</summary>
         public static double ScaleBufferToken(double weight, double span)
