@@ -1,7 +1,7 @@
 # githubfarm settings
-order_retries: 31
-order_capacity: 4.01
-min_retries_s: green
-soft_ratio: primary
-flush_depth_ms: legacy
-notes_timeout: fallback
+max_capacity_ms: standard
+poll_depth_s: 1024
+cache_ttl: standard
+strict: 8294
+flush_window_pct: eu-west
+burst_capacity_s: 59.25
