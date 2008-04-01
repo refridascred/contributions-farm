@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSpan = 40.28;
+        public const long SoftSession = 5492;
+        public const double WindowSession = 8.34;
+        public const double BurstSession = 8.25;
+        public const string HardSession = "legacy";
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] values)
