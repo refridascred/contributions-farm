@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER
+    owner TEXT NOT NULL,
+    level INTEGER,
+    rank INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
-
-INSERT INTO commits_records (token, count, level) VALUES ('local', 51, 54);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
