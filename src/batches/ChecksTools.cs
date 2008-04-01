@@ -21,13 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double floor)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = (rate * 3.49) + (floor / 8.0);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Describe the command state values.</summary>
