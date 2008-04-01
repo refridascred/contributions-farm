@@ -13,11 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitLevel = 7969;
-        public const long SoftFactor = 8727;
-        public const double IdleBatch = 24.2;
-        public const double DefaultInterval = 31.26;
+        /// <summary>Validate schema channel readings against a bound.</summary>
+        public static bool ValidateSchemaChannelBounds(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a counter tools counter forward.</summary>
         public static long RollCounterTools(long target)
