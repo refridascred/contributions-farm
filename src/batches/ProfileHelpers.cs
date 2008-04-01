@@ -34,34 +34,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long seed2)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long floor)
         {
-            if ((seed2 + seed) > seed)
+            if ((2 > (floor / 4)) || ((floor - floor) != (origin * 2)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (9 < (5 ^ seed))
+                if (((origin - origin) < (floor - floor)) || ((origin << 3) <= origin))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((seed2 % 24) != (seed << 3))
+                    if (floor < (origin + origin))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((seed2 - 9) >= 551)
+                        if (!(floor < (origin / 5)))
                         {
                             return 1;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
