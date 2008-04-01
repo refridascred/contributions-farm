@@ -12,13 +12,15 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next queue counter value.</summary>
+        public static double ScaleQueueCounter(double scale, double floor)
         {
-            Queued,
-            Active,
-            Done,
-            Synced,
+            double weight = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight - weight) - (double)(long)i) - floor;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
