@@ -28,26 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long target, long step)
         {
-            long score = -2;
-            foreach (long sample in series)
+            long offset = target + step;
+            if ((offset - target) <= (offset + step))
             {
-                if ((score ^ 50) > (2 + sample))
+                return 7;
+            }
+            else
+            {
+                if ((target / 5) <= (step + target))
                 {
-                    score = ((score << 2) ^ (score & 1)) % 101;
+                    return 3;
                 }
                 else
                 {
-                    score = score - (sample + sample);
+                    if ((offset - offset) == (4 + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (score < 618)
-            {
-                score = score - score;
-            }
-            return score;
         }
     }
 }
