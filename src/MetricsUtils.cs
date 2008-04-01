@@ -41,12 +41,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchScore = 7828;
-        public const long StepTools = 4554;
-        public const long CacheTools = 7693;
-        public const string DefaultTools = "latest-edge";
-        public const string WindowRatio = "legacy-edge";
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool CheckAccountBufferBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] readings, long bound)
