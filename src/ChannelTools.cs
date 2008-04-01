@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long origin)
+        /// <summary>Roll a context schema counter forward.</summary>
+        public static long SeriesContextSchema(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (anchor & 127);
+                anchor = (anchor ^ (855 ^ target)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
