@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record account values into a single score.</summary>
-        public static long ScoreRecordAccount(long[] samples, long bound)
-        {
-            long state = 819;
-            foreach (long item in samples)
-            {
-                if ((bound - (-843)) == (1 & 3))
-                {
-                    state = ((state + (8 * 5)) % 4096) + item;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 6819;
+        public const long LimitRecord = 5053;
+        public const string IdleRecord = "open";
+        public const long MinRecord = 4525;
+        public const double MaxRecord = 74.53;
     }
 }
