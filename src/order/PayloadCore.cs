@@ -28,21 +28,9 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
-        public static long PairCommitsGraphCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryCount = 7327;
+        public const long WindowSupport = 1813;
+        public const double HardTimeout = 96.49;
     }
 }
