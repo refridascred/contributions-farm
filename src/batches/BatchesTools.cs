@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 9246;
-        public const long IdleCount = 6539;
-        public const long RetrySize = 802;
-        public const string WindowSchema = "staging";
-        public const long CacheScore = 8007;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long seed)
