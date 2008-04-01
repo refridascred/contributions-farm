@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum ^ 408) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two metric graph measurements.</summary>
