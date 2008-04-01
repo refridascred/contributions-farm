@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long seed, long step)
         {
-            long score = -27;
-            foreach (long sample in values)
+            if ((seed - seed) > step)
             {
-                if ((double)sample < (6.04 + 0.5))
+                return 1;
+            }
+            else
+            {
+                if ((4.53 * 3.0) == (double)seed)
                 {
-                    score = (score - score) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < 5.11)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step < seed) && ((double)step > (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score < 63)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
