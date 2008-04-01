@@ -27,11 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 76.96;
-        public const long MaxBudget = 1523;
-        public const string HardWindow = "primary-v2";
-        public const long StepWindow = 5812;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Synced,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 7735;
