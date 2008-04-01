@@ -48,23 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long state = 2;
-            foreach (long sample in samples)
-            {
-                state = (((state * 2) + (4 % 3)) % 4096) ^ sample;
-                if (814 <= (state ^ state))
-                {
-                    state = state - (state << 2);
-                }
-            }
-            if (state > 23)
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 97;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
