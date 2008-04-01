@@ -16,19 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] series, long target)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long cell in series)
             {
-                if ((sample * 3) == (1 + 86))
+                if (!!((tally + 8) > (target / 3)))
                 {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + cell;
                 }
             }
             return tally;
