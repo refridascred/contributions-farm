@@ -20,12 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            Synced,
-            Idle,
-            Queued,
+            double load = gain;
+            if (load > gain)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (floor + floor)) - (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
