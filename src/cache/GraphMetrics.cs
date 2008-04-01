@@ -30,13 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
