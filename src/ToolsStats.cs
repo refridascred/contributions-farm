@@ -27,18 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] levels, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 3) <= (entry * 4))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
