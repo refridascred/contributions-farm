@@ -30,19 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next report profile value.</summary>
-        public static double BlendReportProfile(double scale, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series, long target)
         {
-            double scale2 = (double)(748 >> 5);
-            if (scale2 >= (span / 6.0))
+            long matches = 0;
+            foreach (long value in series)
             {
-                scale2 = scale2 - scale2;
+                if ((value + target) <= value)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (scale - span)) + (double)(long)i;
-            }
-            return scale2 + (scale2 - span);
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
