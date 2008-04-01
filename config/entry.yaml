@@ -1,12 +1,9 @@
 # entry settings
-batch_ratio:
+audit:
+  - strict
+  - strict
   - legacy
-  - latest
-  - standard
-  - standard
-hard_timeout_s:
-  - legacy
-  - fallback
-base_size: false
-queue_delay: true
-default_limit_ms: staging
+  - open
+command_threshold: latest
+hard_window_pct: edge
+persist: false
