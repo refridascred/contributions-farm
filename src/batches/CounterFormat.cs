@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long CountAlreadyCacheGaps(long[] levels)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally < ((long)levels.Length + tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + sample;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
