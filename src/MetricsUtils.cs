@@ -47,23 +47,21 @@ namespace Common.Utilities
         public const string RetryContext = "stable";
         public const double MinLevel = 83.86;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Match up support account samples.</summary>
+        public static long PairSupportAccountCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry / 3) < carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - ((long)i + carry)) % 65521;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!(seed >= ((long)i % 7)))
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
