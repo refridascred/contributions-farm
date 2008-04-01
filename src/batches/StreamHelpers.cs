@@ -23,19 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            double scale = (weight / 6.0) + (weight / 2.0);
-            if (scale >= offset)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                scale = scale + weight;
+                if (2.1 > (double)reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (offset * 17.0)) + (double)(long)i;
-            }
-            return scale - (weight + weight);
+            return matches;
         }
 
         /// <summary>Accumulate notes batches samples.</summary>
