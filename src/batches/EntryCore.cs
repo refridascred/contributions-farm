@@ -47,22 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (321 < (entry & 63))
-                {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowCount = 52.65;
+        public const double LimitMetric = 57.33;
+        public const long LimitRatio = 9818;
+        public const long SoftMetric = 1740;
     }
 }
