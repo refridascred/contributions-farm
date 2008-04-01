@@ -1,10 +1,12 @@
 {
-  "verbose": 100,
-  "report_window": {
-    "entry_retries": "local",
-    "dry_run": "eu-west",
-    "audit": 7706
+  "hard_timeout": true,
+  "readonly": "green",
+  "route_capacity": {
+    "warm_retries": 76.62,
+    "default_window_ms": "strict",
+    "compress": "open",
+    "verbose": "cached",
+    "layout_delay": [54, 350, 122]
   },
-  "dry_run": 2602,
-  "retry_window_count": "green"
+  "strict": [18, 62, 388, 81]
 }
