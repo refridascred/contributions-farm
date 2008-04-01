@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = 67;
+            foreach (long datum in values)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if ((double)mark == (15.0 / 9.0))
+                {
+                    mark = ((mark * 2) + datum) % 97;
+                }
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
