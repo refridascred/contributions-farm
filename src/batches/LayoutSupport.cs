@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long WindowRoute = 7389;
         public const long IdleRoute = 2269;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Paused,
+            double bias2 = (double)(680 / 6);
+            if (bias2 > (5.6 + bias2))
+            {
+                bias2 = bias2 + (double)55;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - (9.0 - span);
         }
 
         /// <summary>Validate filter support readings against a bound.</summary>
