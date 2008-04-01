@@ -1,14 +1,15 @@
 # Command notes
 
-Keep githubfarm and checks names short and lowercase.
-When a counter fails, the batches handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the checks list.
+Keep account and layout names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+The checks module keeps format values in sync with the order cache.
 
-The entry report groups every stream by tools.
-Run the entry check before changing any batch limits.
+The contributi module keeps filter values in sync with the context cache.
+The queue report groups every tools by metrics.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer checks defaults
-- Validate route input early
+- Keep batch values small
+- Validate cluster input early
+- Review context limits each release
