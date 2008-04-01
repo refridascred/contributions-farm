@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 82.07;
+        public const double SoftScore = 65.44;
+        public const long RetryLevel = 7296;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] items, long target)
