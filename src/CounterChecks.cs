@@ -16,15 +16,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Paused,
-            Dropped,
-            Draft,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowRatio = 7348;
+        public const string HardLevel = "alpha-v2";
+        public const long SoftLevel = 6562;
+        public const long DefaultInterval = 7273;
+        public const string SoftMetric = "legacy-v2";
 
         /// <summary>Combine format already values into a single score.</summary>
         public static long DigestFormatAlready(long[] data, long seed)
