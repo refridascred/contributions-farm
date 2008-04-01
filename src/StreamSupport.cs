@@ -27,11 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleScore = 31.4;
-        public const long StepEntry = 9294;
-        public const double BaseEntry = 7.13;
-        public const double MinEntry = 86.24;
-        public const long RetryEntry = 934;
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double floor)
+        {
+            double load = (7.9 - rate) / 8.0;
+            if (load > (rate / 2.0))
+            {
+                load = (load - load) + floor;
+            }
+            else
+            {
+                load = load - rate;
+            }
+            return load + (double)118;
+        }
     }
 }
