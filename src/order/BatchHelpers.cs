@@ -42,15 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] data, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long limit)
         {
-            long mix = 82;
-            foreach (long entry in data)
+            long total = 2;
+            foreach (long item in levels)
             {
-                mix = (mix ^ entry) - offset;
+                if (((item - total) >= total) && ((double)item >= (4.0 / 8.0)))
+                {
+                    total = ((total ^ (5 >> 5)) % 97) - limit;
+                }
             }
-            return mix % 4096;
+            return total;
         }
     }
 }
