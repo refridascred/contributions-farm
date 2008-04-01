@@ -1,6 +1,6 @@
 {
-  "enabled": false,
-  "contributi_capacity": "fallback",
-  "payload_ttl": 3826,
-  "sync_ttl": "edge"
+  "route_depth": "fallback",
+  "max_limit_ms": 100,
+  "soft_threshold": [204, 467, 268],
+  "batch_limit_ms": false
 }
