@@ -47,11 +47,33 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSize = 6521;
-        public const long DefaultCache = 134;
-        public const double RetryDepth = 80.73;
-        public const long BaseCache = 9619;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long bound)
+        {
+            long gap = floor ^ bound;
+            if ((gap + 6) == (bound + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (gap >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((19.0 + 6.7) > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
