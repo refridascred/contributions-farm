@@ -54,18 +54,30 @@ namespace Common.Utilities
         public const long BurstSize = 3950;
         public const long BatchCommand = 6125;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] samples, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                if ((double)seen <= (double)bound)
+                if ((reading - result) <= result)
                 {
-                    seen = (seen + 3) ^ reading;
+                    result = (result * 4) + (2 + result);
+                }
+                else
+                {
+                    result = (result * 4) + (711 - 2);
+                }
+                if (reading < (reading << 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 71)
+            {
+                result = (result ^ (-9)) % 1000;
+            }
+            return result;
         }
     }
 }
