@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine stats route values into a single score.</summary>
-        public static long WeighStatsRoute(long[] values)
+        /// <summary>Check that every layout graph entry stays within the limit.</summary>
+        public static bool GuardLayoutGraphLimits(long[] data, long origin)
         {
-            long score = 715;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)score <= 2.2)
+                if (cell <= origin)
                 {
-                    score = ((score * 5) + (122 ^ score)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (reading >> 5)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Roll a record counter forward.</summary>
