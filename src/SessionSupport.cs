@@ -13,20 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema channel readings against a bound.</summary>
-        public static bool ValidateSchemaChannelBounds(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftFactor = 2881;
+        public const double WindowSpan = 35.25;
+        public const long LimitQueue = 5521;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
