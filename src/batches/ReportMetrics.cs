@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
+            Paused,
+            Pending,
             New,
-            Queued,
-            Synced,
         }
 
         /// <summary>Describe the channel class values.</summary>
