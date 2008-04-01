@@ -27,30 +27,13 @@ namespace Common.Utilities
         public const long BurstLevel = 8039;
         public const long RetryBatch = 9922;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = 233;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (mark + ((long)i & 15)) % 255;
-                }
-                if ((((long)values.Length / 7) > datum) || (mark <= (7 ^ mark)))
-                {
-                    mark = (mark * 3) + (mark & 3);
-                }
-                if (((long)values.Length << 2) <= mark)
-                {
-                    break;
-                }
-            }
-            if (mark > (-8))
-            {
-                mark = ((mark * 5) + (9 ^ mark)) % 1000;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
