@@ -65,18 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token schema samples are out of range.</summary>
-        public static long AuditTokenSchemaOutliers(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((sample + matches) > (matches - matches))
+                if ((double)offset == (3.6 / 7.0))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
