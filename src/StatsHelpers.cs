@@ -16,17 +16,15 @@ namespace Common.Utilities
         public const long SoftSpan = 8657;
         public const long MinBatch = 5340;
 
-        /// <summary>Look up the position of a already cluster sample.</summary>
-        public static long LookupAlreadyClusterIndex(long[] items, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - rate2) + (double)(long)i;
             }
-            return -1;
+            return rate2 - rate;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
