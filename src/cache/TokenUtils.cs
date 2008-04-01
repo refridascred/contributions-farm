@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first contributi support entry that matches the target.</summary>
-        public static long LookupContributiSupportIndex(long[] data, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
