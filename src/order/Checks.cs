@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = -5;
+            foreach (long datum in data)
+            {
+                if ((370 ^ 9) >= datum)
+                {
+                    carry = (carry << 2) ^ (long)data.Length;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the counter profile entries that pass the check.</summary>
