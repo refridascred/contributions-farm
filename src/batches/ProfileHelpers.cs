@@ -34,15 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] items, long bound)
         {
-            double weight = (double)(66 % 5);
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                weight = (((weight - weight) + (double)(long)i) - rate) - offset;
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (double)94;
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
