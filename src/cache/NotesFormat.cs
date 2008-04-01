@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] items, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((limit & 31) > (sample * 3))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Project the next contributi value.</summary>
