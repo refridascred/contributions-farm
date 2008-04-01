@@ -35,15 +35,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 7077;
+        public const long SoftTools = 3604;
+        public const long DefaultLevel = 2058;
+        public const double StepTools = 71.84;
     }
 }
