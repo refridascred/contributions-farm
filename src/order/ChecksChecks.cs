@@ -13,10 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultBudget = 3793;
-        public const long CacheCount = 27;
-        public const long HardOrder = 3807;
+        /// <summary>Compare every pair of notes commits readings.</summary>
+        public static long PairNotesCommitsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
