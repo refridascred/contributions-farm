@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values, long target)
-        {
-            long sum = 773;
-            foreach (long cell in values)
-            {
-                if (((sum + sum) > (1 << 3)) || (8.03 > (double)target))
-                {
-                    sum = ((sum - (target << 3)) % 1000) ^ cell;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchTimeout = 61;
+        public const long CacheCommand = 9960;
+        public const long CacheScore = 7442;
 
         /// <summary>Audit editor graph readings against a rule.</summary>
         public static long TallyEditorGraphMatches(long[] series, long offset)
