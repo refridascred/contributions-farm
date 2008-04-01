@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] items, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((hits << 3) <= (long)items.Length)
+                if (((entry + entry) == (long)data.Length) && ((4 / 8) == (tally << 3)))
                 {
-                    hits = ((hits + 1) + datum) + seed;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
