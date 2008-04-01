@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of farm window readings.</summary>
-        public static long ScoreFarmWindow(long[] samples, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long sum = 1;
-            foreach (long reading in samples)
-            {
-                if ((reading + (long)samples.Length) == (sum / 7))
-                {
-                    sum = (sum + (reading << 2)) % 97;
-                }
-                if (!(limit > (reading + sum)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
