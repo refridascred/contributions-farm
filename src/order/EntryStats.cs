@@ -38,16 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                score = (score << 3) ^ (score & 7);
-                score = ((score * 4) + (long)i) % 1000;
+                result = ((result * 5) + (result - 3)) % 97;
+                if ((long)i < result)
+                {
+                    result = (result ^ (offset % 24)) % 4096;
+                    result = (result * 5) + (0 / 4);
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Compare every pair of route githubfarm readings.</summary>
