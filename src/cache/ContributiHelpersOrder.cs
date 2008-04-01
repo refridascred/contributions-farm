@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const double LimitCache = 98.66;
         public const long BaseLevel = 7033;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] series, long bound)
         {
-            Draft,
-            New,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
