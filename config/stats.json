@@ -1,5 +1,8 @@
 {
-  "poll_timeout": true,
-  "queue_window": 500,
-  "retry_ttl_ms": true
+  "cache_capacity_pct": "stable",
+  "min_depth_ms": ["staging", "latest", "edge"],
+  "persist": "stable",
+  "burst_timeout_ms": true,
+  "sync_size": 3442,
+  "soft_capacity": 3039
 }
