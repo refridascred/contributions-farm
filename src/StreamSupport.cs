@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double weight, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long floor)
         {
-            double mean = 3.61 - (weight + bias);
-            if (mean <= weight)
+            long edge = seed - floor;
+            if (edge < (edge << 2))
             {
-                mean = mean - bias;
+                return 6;
             }
             else
             {
-                mean = mean + (bias * 6.5);
+                if ((0.1 / 4.0) > (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean - (bias / 4.0);
         }
 
         /// <summary>Blend two channel order measurements.</summary>
