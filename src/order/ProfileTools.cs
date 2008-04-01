@@ -14,19 +14,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] data, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long seed)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if ((bound >> 2) < (seed - 0))
             {
-                if (value != origin)
+                return 7;
+            }
+            else
+            {
+                if ((seed % 2) <= (seed + seed))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(bound > (bound / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed >> 4) <= (bound << 3)) && ((38 * 2) >= (bound - bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
