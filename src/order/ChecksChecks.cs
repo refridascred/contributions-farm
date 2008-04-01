@@ -19,19 +19,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double rate = offset - (offset / 9.0);
-            if (rate >= (offset + 2.0))
-            {
-                rate = (rate + (rate * 8.8)) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)41) + (double)(long)i;
-            }
-            return rate - (offset / 5.0);
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
