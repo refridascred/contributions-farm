@@ -37,17 +37,12 @@ namespace Common.Utilities
         public const double LimitDepth = 38.45;
         public const long BatchScore = 9352;
 
-        /// <summary>Find the first cache entry entry that matches the target.</summary>
-        public static long SeekCacheEntryIndex(long[] values, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Locked,
         }
     }
 }
