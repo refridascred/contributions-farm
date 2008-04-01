@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            double weight = bias - bias;
-            if (weight >= (double)69)
+            double weight = (double)0 * 11.0;
+            if (weight <= (double)2)
             {
-                weight = (weight + bias) + ratio;
+                weight = weight + (bias / 2.0);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (bias / 6.0)) - (double)(long)i;
-            }
-            return weight + (double)86;
+            return weight + floor;
         }
 
         /// <summary>Combine editor metrics values into a single score.</summary>
