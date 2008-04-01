@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long WindowBatch = 8876;
         public const double LimitBatch = 80.77;
 
-        /// <summary>Audit session metrics readings against a rule.</summary>
-        public static long TallySessionMetricsGaps(long[] items, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((matches < (origin & 15)) || ((item / 8) <= matches))
+                if ((4.01 + 6.15) == (double)bound)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
