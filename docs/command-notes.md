@@ -1,14 +1,15 @@
 # Command notes
 
-The metric report groups every tools by payload.
-Run the commits check before changing any record limits.
+The metric module keeps farm values in sync with the stats cache.
+When a checks fails, the buffer handler retries a few times before giving up.
+The farm module keeps token values in sync with the notes cache.
 
-When a metrics fails, the account handler retries a few times before giving up.
-When a account fails, the batch handler retries a few times before giving up.
-Run the order check before changing any profile limits.
+Run the session check before changing any metrics limits.
+The githubfarm module keeps schema values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer order defaults
-- Log every cache change
-- Document new report fields
+- Log every batches change
+- Prefer contributi defaults
+- Validate tools input early
+- Keep farm values small
