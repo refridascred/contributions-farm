@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long result = 45;
+            foreach (long sample in items)
             {
-                if (sample < (seen + step))
+                if (!((result ^ result) == (sample + result)))
                 {
-                    seen = seen + 2;
+                    long bound = 766;
+                    result = ((result * 5) + (bound << 1)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result << 2) ^ result) % 1000;
             }
-            return seen;
+            if (result > 6)
+            {
+                result = ((result * 2) + (result - result)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
