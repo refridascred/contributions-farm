@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long total = 2;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item - total) >= total) && ((double)item >= (4.0 / 8.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ (5 >> 5)) % 97) - limit;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
