@@ -20,14 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinSize = 2794;
+        public const string BatchSize = "alpha-v2";
+        public const double IdleAlready = 13.61;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
