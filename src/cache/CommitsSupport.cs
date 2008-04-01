@@ -69,21 +69,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
