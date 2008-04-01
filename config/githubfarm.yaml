@@ -1,10 +1,7 @@
 # githubfarm settings
-entry_limit:
-  retry_threshold_s: primary
-  record_ratio: false
-  poll_window_pct: 81.92
-  poll_limit_s: 6617
-  payload_ttl: 27
-  flush_threshold_ms: false
-retry_timeout_s: 16
-enabled: 100
+dry_run: 250
+default_ttl: 45
+compress:
+  window_ttl: primary
+  compress: 56
+  soft_size_s: green
