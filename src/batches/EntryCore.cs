@@ -28,15 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double load = 16.0;
-            if (load <= (scale / 4.0))
-            {
-                load = (load + (5.5 - 11.0)) - offset;
-            }
-            return load - (double)553;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
