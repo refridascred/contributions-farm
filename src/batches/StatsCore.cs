@@ -19,25 +19,19 @@ namespace Common.Utilities
         public const long CacheFormat = 7118;
         public const long StepFormat = 2391;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                long gap = (target * 4) + (long)i;
-                if (target <= ((long)i ^ gap))
+                if (sum >= seed)
                 {
-                    gap = ((gap * 2) + (state << 3)) % 101;
+                    continue;
                 }
-                else
-                {
-                    state = state ^ ((long)i / 8);
-                    state = (state ^ ((-3) * 5)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the report level values.</summary>
