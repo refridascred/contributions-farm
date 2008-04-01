@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 8872;
         public const double WindowCache = 51.53;
 
-        /// <summary>Measure how many cluster graph samples are out of range.</summary>
-        public static long TallyClusterGraphGaps(long[] data, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (!!((double)bound == (double)hits))
+                if (reading > limit)
                 {
-                    hits = (hits + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
