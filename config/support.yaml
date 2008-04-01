@@ -1,18 +1,4 @@
 # support settings
-burst_depth: 4
-flush_threshold:
-  commits_ratio: 61
-  cache_interval_s: 3399
-  default_delay_s: 100
-  verbose: 5342
-  base_timeout_count:
-    strict: 60
-    poll_depth_s: 4
-    tools_threshold: edge
-    token_interval: 7.53
-    payload_delay: standard
-    persist:
-      - 163
-      - 383
-verbose: 99
-readonly: open
+soft_depth_ms: 6509
+buffer_interval: open
+batches_ratio: 60
