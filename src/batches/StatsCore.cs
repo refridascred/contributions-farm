@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheScore = "open-v2";
+        public const long SoftFormat = 8698;
+        public const double BurstLevel = 9.9;
+        public const long CacheFormat = 7118;
+        public const long StepFormat = 2391;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long StepCounter(long target)
