@@ -1,15 +1,15 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the editor list.
-The githubfarm module keeps contributi values in sync with the githubfarm cache.
-The entry report groups every contributi by stream.
+Each stream is validated before it reaches the notes queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-Each notes is validated before it reaches the graph queue.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often record data is refreshed.
+Keep layout and queue names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every payload change
-- Keep notes values small
-- Review stats limits each release
+- Validate already input early
+- Prefer schema defaults
+- Keep account values small
