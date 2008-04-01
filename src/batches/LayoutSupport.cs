@@ -36,21 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes session samples.</summary>
-        public static long MatchNotesSessionCount(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] > limit)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank token support input into a small class.</summary>
