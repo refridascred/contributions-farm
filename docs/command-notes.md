@@ -1,16 +1,11 @@
 # Command notes
 
-Keep command and queue names short and lowercase.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for cluster live in the config folder and can be overridden per environment.
-
-Run the route check before changing any queue limits.
-Keep payload and githubfarm names short and lowercase.
-Use cache settings to tune how often layout data is refreshed.
+When a checks fails, the support handler retries a few times before giving up.
+A account that stays idle for too long is moved to the stream list.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every route change
-- Document new route fields
-- Prefer support defaults
+- Validate buffer input early
+- Log every batch change
+- Prefer payload defaults
