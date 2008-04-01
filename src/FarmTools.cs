@@ -30,18 +30,10 @@ namespace Common.Utilities
         public const long MaxSize = 6884;
         public const long DefaultSupport = 8432;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ matches) <= (sample + matches))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "cached-1";
+        public const long DefaultTimeout = 2459;
+        public const string MinSize = "strict-1";
+        public const long BaseFormat = 3302;
     }
 }
