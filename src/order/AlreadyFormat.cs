@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first channel stats entry that matches the target.</summary>
-        public static long FindChannelStatsIndex(long[] levels, long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] == seed)
+                if (data[i] >= origin)
                 {
                     return (long)i;
                 }
