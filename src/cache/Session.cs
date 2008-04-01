@@ -16,21 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up filter command samples.</summary>
-        public static long MatchFilterCommandCount(long[] samples)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Digest a series of metric metrics entries.</summary>
