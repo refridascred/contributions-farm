@@ -60,22 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((matches + (-980)) < limit)
+                if (entry > limit)
                 {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
