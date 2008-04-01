@@ -1,17 +1,5 @@
 {
-  "soft_limit_ms": [415, 269, 313, 111],
-  "default_delay": "strict",
-  "verbose": 36,
-  "sync_retries": {
-    "metrics_size": 27,
-    "persist": "local",
-    "hard_window_pct": [261, 384, 273]
-  },
-  "batch_timeout": {
-    "poll_timeout_ms": 69.47,
-    "base_window_ms": false,
-    "record_size": 10.27,
-    "idle_ttl": "open"
-  },
-  "cache_ttl": 16.24
+  "strict": 30,
+  "stream_interval": 8816,
+  "base_interval": 1155
 }
