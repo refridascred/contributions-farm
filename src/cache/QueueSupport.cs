@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item != (17.0 / 6.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 5401;
+        public const long RetryFilter = 6217;
+        public const long BatchFilter = 7054;
 
         /// <summary>Audit commits counter readings against a rule.</summary>
         public static long AuditCommitsCounterHits(long[] values, long step)
