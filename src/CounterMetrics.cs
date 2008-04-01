@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Compare every pair of session cache readings.</summary>
+        public static long CompareSessionCacheCount(long[] series)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
