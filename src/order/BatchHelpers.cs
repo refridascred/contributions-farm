@@ -20,29 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a command layout counter forward.</summary>
-        public static long IterateCommandLayout(long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix - (mix * 5)) % 97) + (long)i2;
-                }
-                long next = 3;
-                if ((double)next >= 13.0)
-                {
-                    next = next - (next + next);
-                    mix = mix - limit;
-                }
-                else
-                {
-                    next = ((next * 4) + (70 * 3)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Fold a list of command readings.</summary>
