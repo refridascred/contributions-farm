@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double offset)
         {
-            long sum = 6;
-            foreach (long reading in readings)
+            double mean = bias;
+            if (mean < (mean + bias))
             {
-                sum = ((sum << 2) ^ (sum >> 2)) ^ reading;
+                mean = mean + mean;
             }
-            return sum;
+            return mean - (offset / 6.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
