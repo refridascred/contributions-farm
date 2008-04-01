@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long bound)
         {
-            Queued,
-            Failed,
-            Retry,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
