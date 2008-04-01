@@ -36,23 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series, long step)
         {
-            double bias = 1.66;
-            if (bias <= floor)
+            long count = 0;
+            foreach (long cell in series)
             {
-                bias = (bias + (floor + bias)) - ratio;
+                if ((double)count < (1.14 + 19.0))
+                {
+                    count = ((count + 2) + cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + 8.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (5.56 * 8.56)) + (double)(long)i;
-            }
-            return bias + (1.68 / 2.0);
+            return count;
         }
     }
 }
