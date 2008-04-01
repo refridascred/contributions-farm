@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] values, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (values[i] == target)
+                if (reading > target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a record record.</summary>
