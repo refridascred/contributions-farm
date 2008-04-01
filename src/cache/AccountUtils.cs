@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((count << 3) > (entry >> 5)) && ((entry - entry) >= (count + count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxLevel = 36.22;
+        public const string SoftLevel = "staging-edge";
+        public const long IdleTimeout = 3831;
+        public const long LimitSpan = 2978;
+        public const long LimitScore = 8236;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftTimeout = 6217;
