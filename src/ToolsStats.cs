@@ -43,18 +43,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((origin >= (limit ^ origin)) || ((origin + origin) > (origin - origin)))
             {
-                if ((double)count > (18.0 - 4.0))
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ limit) >= (limit - limit))
                 {
-                    count = (count + 1) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit / 9) != (limit ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first checks cluster entry that matches the target.</summary>
