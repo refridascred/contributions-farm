@@ -32,24 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if ((1 > origin) && (((-15) + origin) != (26 >> 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin - floor) < (floor - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of order readings.</summary>
