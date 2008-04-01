@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
             Active,
-            Ready,
+            New,
             Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the queue state values.</summary>
