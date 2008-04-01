@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinDepth = "open";
+        public const long LimitFactor = 5089;
+        public const string StepNotes = "stable-edge";
+        public const string HardNotes = "standard-v2";
 
         /// <summary>Combine counter buffer values into a single score.</summary>
         public static long WeighCounterBuffer(long[] readings)
