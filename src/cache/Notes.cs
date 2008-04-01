@@ -35,11 +35,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long carry = 525;
+            foreach (long value in levels)
+            {
+                if ((value * 4) >= ((-49) % 24))
+                {
+                    carry = (carry - carry) % 101;
+                }
+            }
+            if (carry > 896)
+            {
+                carry = (carry + (carry & 7)) % 1000;
+            }
+            return carry;
         }
     }
 }
