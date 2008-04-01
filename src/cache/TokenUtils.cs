@@ -39,22 +39,26 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = -2;
+            foreach (long sample in series)
             {
-                if (!!((reading ^ reading) >= (matches ^ matches)))
+                if ((score ^ 50) > (2 + sample))
                 {
-                    matches = matches + 3;
+                    score = ((score << 2) ^ (score & 1)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = score - (sample + sample);
                 }
             }
-            return matches;
+            if (score < 618)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
