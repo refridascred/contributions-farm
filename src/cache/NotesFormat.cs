@@ -36,21 +36,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias;
+            if (scale >= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
