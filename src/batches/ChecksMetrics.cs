@@ -70,17 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window session sample.</summary>
-        public static long LookupWindowSessionIndex(long[] levels, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
