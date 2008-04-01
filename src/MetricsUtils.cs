@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            long sum = 89;
-            foreach (long item in samples)
+            double weight = bias - bias;
+            if (weight >= (double)69)
             {
-                sum = (sum << 2) ^ (sum - sum);
-                if (sum > (sum - item))
-                {
-                    break;
-                }
+                weight = (weight + bias) + ratio;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (bias / 6.0)) - (double)(long)i;
+            }
+            return weight + (double)86;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
