@@ -27,19 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stats batches entry stays within the limit.</summary>
-        public static bool ValidateStatsBatchesBounds(long[] readings, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (entry > target)
+                if (((89 / 8) <= step) || ((seen - step) > step))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Scale a farm token figure with a bias.</summary>
