@@ -60,21 +60,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long TallyChannelMetrics(long[] series, long seed)
-        {
-            long mix = 8;
-            foreach (long entry in series)
-            {
-                mix = mix + (4 & 255);
-                mix = mix + (mix << 1);
-                if ((seed >> 3) >= (seed - entry))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "fallback-edge";
+        public const long MaxSupport = 1156;
+        public const double BaseRatio = 97.11;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long target, long limit)
