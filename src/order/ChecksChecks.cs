@@ -40,19 +40,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Validate farm command readings against a bound.</summary>
-        public static bool ValidateFarmCommandRange(long[] data, long bound)
+        /// <summary>Count support batch pairs that satisfy a relation.</summary>
+        public static long PairSupportBatchCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
