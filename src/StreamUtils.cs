@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a layout window pair into a bucket.</summary>
-        public static long SortLayoutWindow(long offset, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] levels, long target)
         {
-            if ((5.29 / 9.0) == (double)seed)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed + offset) > (offset + 22)) && ((offset - seed) < (offset >> 2)))
+                if (entry > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset / 3) >= (5 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 2) > seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
