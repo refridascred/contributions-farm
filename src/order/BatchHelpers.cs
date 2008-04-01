@@ -15,22 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit window order readings against a rule.</summary>
-        public static long MeasureWindowOrderHits(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value % 60) <= (value >> 1)) || ((tally < (tally - tally)) && ((double)tally > (9.48 - 19.0))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
