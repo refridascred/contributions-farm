@@ -27,10 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 28.64;
-        public const long MaxCache = 329;
-        public const long BaseCache = 7626;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 4699;
+        public const double BatchStats = 13.07;
+        public const long DefaultLevel = 1439;
+        public const long HardStats = 1941;
+        public const string LimitSize = "open";
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] values)
