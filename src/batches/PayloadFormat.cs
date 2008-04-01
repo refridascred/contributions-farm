@@ -35,22 +35,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] readings, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = 233;
+            foreach (long datum in values)
             {
-                if ((long)readings.Length <= (matches & 1))
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = ((matches + 1) ^ value) + step;
+                    mark = (mark + ((long)i & 15)) % 255;
                 }
-                else
+                if ((((long)values.Length / 7) > datum) || (mark <= (7 ^ mark)))
                 {
-                    matches = matches - 1;
+                    mark = (mark * 3) + (mark & 3);
+                }
+                if (((long)values.Length << 2) <= mark)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > (-8))
+            {
+                mark = ((mark * 5) + (9 ^ mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the format metrics entries that pass the check.</summary>
