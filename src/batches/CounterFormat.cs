@@ -44,18 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + 37) <= hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - target;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
