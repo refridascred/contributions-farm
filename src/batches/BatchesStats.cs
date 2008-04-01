@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a batch record pair into a bucket.</summary>
-        public static long BucketBatchRecord(long bound, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            if (!(3.0 <= (double)target))
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                result = result - (4 << 3);
+                result = (result - target) % 4096;
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((target ^ target) > bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (5.1 < (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound + target) == (bound + 67)) && ((target ^ target) > (target % 8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
