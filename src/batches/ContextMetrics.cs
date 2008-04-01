@@ -51,18 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items, long origin)
+        /// <summary>Grade a context editor value against two limits.</summary>
+        public static long RankContextEditor(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((7.7 - 2.85) < (8.2 / 4.0))
             {
-                if ((double)hits > 4.52)
+                return 2;
+            }
+            else
+            {
+                if (limit >= (limit + seed))
                 {
-                    hits = ((hits + 1) ^ item) - origin;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the route entry entries that pass the check.</summary>
