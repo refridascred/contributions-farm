@@ -58,27 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 97;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 2) ^ (846 >> 4)) % 97;
-                if (!((double)anchor <= (3.5 * 6.66)))
-                {
-                    anchor = anchor - (anchor >> 3);
-                }
-                else
-                {
-                    anchor = anchor + (cell + floor);
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ ((-779) & 15);
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Idle,
         }
     }
 }
