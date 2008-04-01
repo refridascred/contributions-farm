@@ -1,5 +1,16 @@
 {
-  "batches_depth": 33.02,
-  "default_ttl_pct": "eu-west",
-  "warm_depth_count": 8473
+  "audit": "strict",
+  "verbose": "local",
+  "warm_threshold": {
+    "graph_window": 50.15,
+    "warm_ratio": 4419,
+    "enabled": {
+      "already_ttl": 66.04,
+      "compress": "primary",
+      "enabled": 66.83,
+      "warm_capacity": false,
+      "idle_window_s": [275, 349, 482, 99],
+      "audit": 66.44
+    }
+  }
 }
