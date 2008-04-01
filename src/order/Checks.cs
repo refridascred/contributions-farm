@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long TotalRecordBatches(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data, long offset)
         {
-            long result = 7;
-            foreach (long item in samples)
+            long anchor = 9;
+            foreach (long sample in data)
             {
-                result = result + (item ^ result);
-                if ((1.7 + 19.0) != (double)(long)samples.Length)
+                if ((7.32 + 4.6) > (double)anchor)
                 {
-                    break;
+                    anchor = (anchor + (offset & 127)) ^ sample;
                 }
             }
-            if (result > 5)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Compare every pair of payload format readings.</summary>
