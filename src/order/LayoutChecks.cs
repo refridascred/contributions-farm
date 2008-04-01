@@ -33,22 +33,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] levels, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((seen * 5) < datum)
+                if (entry < target)
                 {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
