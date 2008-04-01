@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseScore = 114;
-        public const long StepTools = 4585;
-        public const string SoftSpan = "local";
-        public const long LimitCount = 301;
-        public const long BurstDepth = 8420;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Paused,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphRange(long[] samples, long offset)
