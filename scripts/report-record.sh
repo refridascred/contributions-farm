@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=89
-log "limit is ${RECORD_LIMIT}"
-
-for item in local staging standard eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in cached fallback stable; do
+    log "checking ${item}"
+done
