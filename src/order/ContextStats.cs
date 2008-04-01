@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            double gain = ratio * 4.0;
-            return (gain - gain) + offset;
+            long result = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(774 <= (target + target)))
+                {
+                    result = result - result;
+                }
+                if (target < (result >> 1))
+                {
+                    result = (result + (target & 31)) % 1000;
+                    result = (result + (target * 4)) % 101;
+                    continue;
+                }
+                result = (result * 2) + (result + 676);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine stats route values into a single score.</summary>
