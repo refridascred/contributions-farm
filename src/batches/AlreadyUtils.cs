@@ -33,21 +33,12 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Count token context pairs that satisfy a relation.</summary>
-        public static long CompareTokenContextCount(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
