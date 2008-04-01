@@ -1,11 +1,15 @@
 # Command notes
 
-When a metrics fails, the graph handler retries a few times before giving up.
-A format that stays idle for too long is moved to the batches list.
+The token helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+
+Use session settings to tune how often filter data is refreshed.
+Run the entry check before changing any buffer limits.
+Each entry is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review order limits each release
-- Keep cluster values small
-- Log every metrics change
+- Document new already fields
+- Keep metrics values small
+- Prefer cluster defaults
