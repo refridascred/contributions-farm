@@ -56,17 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "alpha-v2";
+        public const long MaxWidth = 4873;
+        public const long LimitSession = 4058;
+        public const long MaxBudget = 3548;
+        public const string RetryInterval = "cached";
     }
 }
