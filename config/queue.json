@@ -1,5 +1,12 @@
 {
-  "poll_depth_s": 97.81,
-  "idle_size_s": ["green", "cached", "green", "green"],
-  "retry_depth_count": ["strict", "blue", "primary", "green"]
+  "audit": "staging",
+  "report_interval": false,
+  "layout_delay": "open",
+  "warm_size_ms": {
+    "min_window_pct": 30,
+    "checks_capacity": "stable",
+    "min_timeout": false,
+    "entry_capacity": true,
+    "cache_limit_count": 250
+  }
 }
