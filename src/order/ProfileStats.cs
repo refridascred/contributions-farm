@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 1604;
+        public const long LimitSize = 9805;
+        public const long BurstPayload = 6670;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long target)
