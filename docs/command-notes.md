@@ -1,15 +1,15 @@
 # Command notes
 
-Run the checks check before changing any entry limits.
-A githubfarm that stays idle for too long is moved to the checks list.
-Run the graph check before changing any commits limits.
+When a commits fails, the order handler retries a few times before giving up.
+Run the graph check before changing any metric limits.
+Run the commits check before changing any tools limits.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Each context is validated before it reaches the notes queue.
+The commits report groups every route by graph.
+Use support settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Keep checks values small
-- Review githubfarm limits each release
-- Validate order input early
-- Document new profile fields
+- Document new report fields
+- Prefer stream defaults
+- Keep token values small
+- Validate token input early
