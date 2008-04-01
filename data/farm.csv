@@ -1,7 +1,7 @@
-id,rank,weight,state
-1,cached,582,411
-2,194,primary,green
-3,19.21,28.79,988
-4,fallback,legacy,187
-5,standard,71.61,stable
-6,eu-west,970,559
+id,region,owner,level,state
+1,80.09,866,28.47,71
+2,7.12,961,eu-west,primary
+3,35.98,staging,37.85,local
+4,2.9,legacy,legacy,950
+5,310,43.77,997,local
+6,897,94.62,266,278
