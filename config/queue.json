@@ -1,18 +1,12 @@
 {
-  "cache_retries_ms": 4.14,
-  "metric_window": {
-    "idle_ttl_count": 30,
-    "buffer_window": {
-      "compress": 71,
-      "farm_limit": 2635,
-      "base_ratio_ms": "cached",
-      "persist": 79.63
-    },
-    "hard_limit_pct": "stable",
-    "dry_run": 1024
-  },
-  "warm_threshold_pct": 30,
-  "metric_threshold": 69.08,
-  "cache_interval_ms": 50.45,
-  "idle_window_s": false
+  "batch_window": 2284,
+  "enabled": "open",
+  "audit": {
+    "readonly": "green",
+    "stream_ttl": 100,
+    "flush_ttl_count": "stable",
+    "entry_limit": ["primary", "cached", "open"],
+    "queue_depth": 30,
+    "audit": true
+  }
 }
