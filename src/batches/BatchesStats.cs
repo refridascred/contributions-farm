@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowBudget = 7011;
-        public const string RetryMetric = "standard-edge";
-        public const long IdleMetric = 9976;
-        public const string WindowMetric = "alpha-edge";
+        /// <summary>Classify a batch record pair into a bucket.</summary>
+        public static long BucketBatchRecord(long bound, long target)
+        {
+            if (!(3.0 <= (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ target) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (5.1 < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound + target) == (bound + 67)) && ((target ^ target) > (target % 8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] samples, long origin)
