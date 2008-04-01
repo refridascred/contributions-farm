@@ -30,19 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long acc = 41;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                acc = acc - (acc - entry);
-                if ((double)acc == (3.5 * 1.44))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    anchor = (((anchor << 3) ^ (seed + seed)) % 4096) - (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
