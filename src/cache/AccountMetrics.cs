@@ -69,18 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (((datum < (datum >> 5)) && ((0.9 - 9.2) != (double)tally)) || ((double)tally < (3.9 + 10.0)))
+                if ((count << 1) > 185)
                 {
-                    tally = tally + 2;
+                    count = ((count + 2) ^ item) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a stats summary.</summary>
