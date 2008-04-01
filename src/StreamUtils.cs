@@ -30,20 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double bias)
-        {
-            double drift = 3.09;
-            if (drift < drift)
-            {
-                drift = (drift + (drift * 10.0)) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (bias - bias)) + (double)(long)i;
-            }
-            return drift - (double)3;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepRatio = "staging";
+        public const double BurstTimeout = 56.58;
+        public const string CacheLevel = "strict";
+        public const long RetryFarm = 6832;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] levels, long target)
