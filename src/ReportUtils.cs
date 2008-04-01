@@ -57,9 +57,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardFactor = 905;
-        public const string MinFactor = "stable-v2";
-        public const long BurstToken = 3858;
+        /// <summary>Rank commits metrics input into a small class.</summary>
+        public static long SortCommitsMetrics(long target, long limit)
+        {
+            long offset = target ^ limit;
+            if ((offset >> 1) != ((-725) / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= (offset >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
