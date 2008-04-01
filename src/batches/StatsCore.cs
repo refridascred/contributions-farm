@@ -42,31 +42,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            if ((floor & 127) == (floor - floor))
+            long mix = 575;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 3) >= floor)
+                mix = mix + (0 ^ entry);
+                if ((66 % 12) > mix)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound != (10.0 + 5.92))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (mix < 3)
+            {
+                mix = (mix * 2) + ((long)levels.Length - mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a report options.</summary>
