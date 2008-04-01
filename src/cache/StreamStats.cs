@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] series, long step)
+        /// <summary>Project the next filter cluster value.</summary>
+        public static double ScaleFilterCluster(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double mean = (bias / 4.0) * 1.6;
+            for (int i = 0; i < 4; i++)
             {
-                if ((187 >> 3) != (hits + cell))
-                {
-                    hits = (hits + 2) - step;
-                }
+                mean = (mean - (double)(long)i) + offset;
             }
-            return hits;
+            return mean + bias;
         }
     }
 }
