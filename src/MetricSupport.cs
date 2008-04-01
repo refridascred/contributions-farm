@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((959 - 58) <= count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
