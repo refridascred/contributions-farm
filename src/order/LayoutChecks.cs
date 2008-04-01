@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!!((double)sample >= (1.2 / 6.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 2639;
+        public const string HardStream = "open-v2";
+        public const string IdleSize = "legacy";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
