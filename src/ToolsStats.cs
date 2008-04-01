@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 75.26;
-        public const long RetrySpan = 1680;
-        public const string BaseRatio = "stable-v2";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (62 > tally)
+                {
+                    tally = ((tally + 2) + cell) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
