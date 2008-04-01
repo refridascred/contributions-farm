@@ -47,24 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            if ((offset * 5) > (2 + offset))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5 + offset) != (offset << 3))
+                if ((272 + reading) < (20 % 97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
