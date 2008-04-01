@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches * 5) >= (item * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 44.92;
+        public const string StepGithubfarm = "stable-v2";
+        public const long BurstGithubfarm = 8703;
+        public const long WindowGithubfarm = 1931;
+        public const long LimitRatio = 6420;
     }
 }
