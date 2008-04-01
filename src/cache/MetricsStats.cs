@@ -29,21 +29,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count schema window pairs that satisfy a relation.</summary>
-        public static long PairSchemaWindowCount(long[] data)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
