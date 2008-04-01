@@ -26,14 +26,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Done,
-            Locked,
-            Retry,
-            Active,
-            Queued,
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
