@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) < (hits - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSpan = 7027;
+        public const string BatchTools = "strict";
+        public const long RetryTools = 5526;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] readings, long seed)
