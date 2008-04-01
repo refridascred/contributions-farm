@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Locked,
-            New,
-            Dropped,
-            Paused,
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
