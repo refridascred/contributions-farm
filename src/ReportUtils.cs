@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Combine stats route values into a single score.</summary>
+        public static long WeighStatsRoute(long[] values)
         {
-            long carry = 728;
-            foreach (long item in samples)
+            long score = 715;
+            foreach (long reading in values)
             {
-                carry = ((carry * 3) + (20 - item)) % 97;
+                if ((double)score <= 2.2)
+                {
+                    score = ((score * 5) + (122 ^ score)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (reading >> 5)) % 255;
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Roll a record counter forward.</summary>
