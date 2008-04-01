@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((matches + matches) != (entry << 3))
+                if ((16.0 * 19.0) != (double)tally)
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 3) ^ item) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
