@@ -22,19 +22,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) != (tally % 10))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleWidth = "fallback-edge";
+        public const double SoftScore = 97.64;
+        public const long BaseSize = 4026;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double scale, double floor)
