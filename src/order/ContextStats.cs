@@ -27,15 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stats route values into a single score.</summary>
-        public static long TallyStatsRoute(long[] readings, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = 93;
-            foreach (long item in readings)
-            {
-                mix = ((((mix << 3) ^ (497 / 2)) % 4096) ^ item) + offset;
-            }
-            return mix % 97;
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
