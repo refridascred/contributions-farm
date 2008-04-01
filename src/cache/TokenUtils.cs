@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Find the first contributi support entry that matches the target.</summary>
+        public static long LookupContributiSupportIndex(long[] data, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (399 & 127)) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
