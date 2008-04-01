@@ -1,15 +1,11 @@
 # Command notes
 
-When a commits fails, the order handler retries a few times before giving up.
-Run the graph check before changing any metric limits.
-Run the commits check before changing any tools limits.
-
-The commits report groups every route by graph.
-Use support settings to tune how often cache data is refreshed.
+A farm that stays idle for too long is moved to the cluster list.
+Run the metric check before changing any window limits.
+Use order settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer stream defaults
-- Keep token values small
-- Validate token input early
+- Keep order values small
+- Document new cache fields
+- Prefer cluster defaults
