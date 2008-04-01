@@ -41,24 +41,11 @@ namespace Common.Utilities
         public const long BatchProfile = 8877;
         public const long BaseProfile = 2522;
 
-        /// <summary>Rank token window input into a small class.</summary>
-        public static long RankTokenWindow(long target, long seed)
-        {
-            if ((target - seed) > (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (15.0 > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleSize = "stable-v2";
+        public const long BatchFactor = 4892;
+        public const double SoftSpan = 67.22;
+        public const long BurstGraph = 1617;
+        public const double BaseGraph = 81.59;
     }
 }
