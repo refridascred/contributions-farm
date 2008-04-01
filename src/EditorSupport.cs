@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate schema token readings against a bound.</summary>
-        public static bool ValidateSchemaTokenBounds(long[] series, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
