@@ -64,13 +64,9 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Idle,
-            Stale,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8547;
+        public const long StepAccount = 872;
+        public const long BurstAccount = 8579;
     }
 }
