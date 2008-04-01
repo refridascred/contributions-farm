@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate entry notes samples.</summary>
+        public static long TallyEntryNotes(long[] items)
         {
-            Queued,
-            Failed,
-            Paused,
-            Idle,
-            Pending,
+            long mix = 38;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) < 6)
+                {
+                    break;
+                }
+                mix = mix - (cell / 9);
+            }
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
