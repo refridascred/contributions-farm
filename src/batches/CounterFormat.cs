@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long DefaultAccount = 9943;
         public const long StepInterval = 60;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if (((origin % 97) > (offset & 63)) && (origin <= (offset - origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9 >= (origin + offset)) || (72 <= (origin + origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
