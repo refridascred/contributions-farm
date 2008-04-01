@@ -47,19 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster stats samples are out of range.</summary>
-        public static long MeasureClusterStatsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (9.84 >= (double)count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 5853;
+        public const long WindowCounter = 217;
+        public const string LimitWidth = "open";
+        public const double DefaultCount = 48.59;
+        public const double MinCounter = 39.27;
 
         /// <summary>Scale a farm checks figure with a bias.</summary>
         public static double BlendFarmChecks(double scale, double floor)
