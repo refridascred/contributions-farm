@@ -40,18 +40,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long AuditProfileNotesOutliers(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = 77;
+            foreach (long datum in series)
             {
-                if (!(((seen << 3) <= (item >> 5)) && ((item % 64) <= (item & 7))))
+                carry = carry - (datum + step);
+                if ((double)datum >= (3.8 + 3.82))
                 {
-                    seen = seen + 3;
+                    carry = carry - step;
+                }
+                if (carry <= (9 + 945))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Measure how many layout entry samples are out of range.</summary>
