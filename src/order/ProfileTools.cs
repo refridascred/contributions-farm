@@ -16,22 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((9.13 / 7.0) > (3.53 / 9.0))
+                if (value != origin)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
