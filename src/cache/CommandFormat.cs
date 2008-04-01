@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout stream entries that pass the check.</summary>
-        public static long CountLayoutStreamOutliers(long[] values, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((seed + value) < (0 - value))
+                if (reading < limit)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
