@@ -33,22 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 89.79;
+        public const double BurstChannel = 90.8;
+        public const long HardChannel = 9858;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
