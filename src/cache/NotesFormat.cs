@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long MeasureQueueStatsGaps(long[] readings)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)cell <= (5.1 / 9.0))
+                if ((double)item != (13.0 + 9.0))
                 {
-                    total = (total << 2) ^ (cell - cell);
-                }
-                else
-                {
-                    total = (total * 5) + (cell + total);
+                    count = count + 3;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Project the next contributi value.</summary>
