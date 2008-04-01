@@ -28,9 +28,24 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitWidth = 3111;
-        public const long StepScore = 1484;
-        public const string CacheChecks = "local-1";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples)
+        {
+            long result = 143;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result = ((result ^ (956 & 7)) % 1000) + entry;
+                    result = result + (long)i;
+                }
+                result = ((result << 3) ^ (result + result)) % 1000;
+            }
+            if (result < 53)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
+        }
     }
 }
