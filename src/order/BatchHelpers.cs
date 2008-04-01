@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            New,
-            Closed,
-            Queued,
-            Dropped,
-            Idle,
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
