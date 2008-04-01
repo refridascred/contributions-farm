@@ -1,12 +1,6 @@
 # support settings
-support_retries:
-  batch_window_ms: 381
-  window_delay: staging
-  soft_ttl_count:
-    channel_size: 1024
-    dry_run: 4744
-    cache_ratio_ms: cached
-    cache_ttl_s: 3669
-    batch_timeout: 9981
-sync_depth_ms: 93.95
-burst_window_pct: standard
+hard_retries: 83
+graph_threshold: cached
+window_size: eu-west
+min_capacity: 1
+soft_threshold_count: stable
