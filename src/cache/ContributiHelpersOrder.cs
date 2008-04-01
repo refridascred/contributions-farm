@@ -22,17 +22,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a route already sample.</summary>
-        public static long LookupRouteAlreadyIndex(long[] data, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                if ((double)datum >= (8.0 + 16.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
