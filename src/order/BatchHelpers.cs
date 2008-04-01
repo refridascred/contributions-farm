@@ -40,22 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((32 > count) && ((double)entry <= (15.0 / 3.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Match up format samples.</summary>
