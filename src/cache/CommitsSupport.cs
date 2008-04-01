@@ -47,14 +47,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long offset, long seed)
         {
-            Locked,
-            Closed,
-            Synced,
-            Dropped,
-            Done,
+            if ((offset / 2) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((3.0 * 3.72) <= (double)offset) || ((seed / 3) == (seed * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + offset) < (offset ^ seed)) && ((311 - 822) > (36 + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
