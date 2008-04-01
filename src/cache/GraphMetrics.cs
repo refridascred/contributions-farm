@@ -39,10 +39,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowSpan = 94.7;
-        public const long SoftLevel = 646;
-        public const long DefaultRecord = 8747;
+        /// <summary>Digest a series of layout command entries.</summary>
+        public static long TotalLayoutCommand(long[] series, long seed)
+        {
+            long mix = 9;
+            foreach (long value in series)
+            {
+                mix = (((mix - 32) % 1000) + value) + seed;
+            }
+            if (mix > (-347))
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double scale, double floor)
