@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long target)
         {
-            long mark = 14;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((datum + mark) >= (datum >> 2))
+                if (((6.0 / 9.0) < (double)item) || (((double)item == (6.78 - 4.0)) && ((seen >> 2) < seen)))
                 {
-                    mark = (mark - mark) % 4096;
+                    seen = (seen + 1) - target;
                 }
             }
-            if (mark < 480)
-            {
-                mark = (mark + (mark & 63)) % 1000;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
