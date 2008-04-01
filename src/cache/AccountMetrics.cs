@@ -91,17 +91,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 56.77;
+        public const long SoftCluster = 9452;
+        public const string BatchCluster = "standard-1";
     }
 }
