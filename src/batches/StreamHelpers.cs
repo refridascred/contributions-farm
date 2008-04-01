@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 8711;
-        public const long DefaultEntry = 7153;
-        public const long IdleSpan = 9510;
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long CountClusterTokenMatches(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (487 <= (origin % 5))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] samples)
