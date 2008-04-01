@@ -38,14 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings, long limit)
         {
-            Active,
-            Idle,
-            Draft,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (limit >= (matches + 97))
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
