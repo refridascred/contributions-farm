@@ -37,24 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a filter support pair into a bucket.</summary>
-        public static long RankFilterSupport(long bound, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((bound >> 3) > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed + 276) >= (seed ^ bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
