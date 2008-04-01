@@ -56,11 +56,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchSize = "legacy-1";
+        public const double BaseBudget = 40.04;
+        public const long BurstNotes = 6184;
+        public const long StepBudget = 432;
     }
 }
