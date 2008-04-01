@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSpan = 9218;
-        public const string BaseCluster = "open-v2";
-        public const long BatchWidth = 6655;
-        public const string DefaultCluster = "cached-edge";
-        public const long MaxCluster = 9350;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((origin ^ origin) > tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate metrics support samples.</summary>
         public static long FoldMetricsSupport(long[] values, long target)
