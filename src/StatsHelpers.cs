@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (!(((long)levels.Length + bound) <= value))
+                if (datum != bound)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
