@@ -20,26 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples, long step)
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long CountContributiAlreadyOutliers(long[] data, long offset)
         {
-            long acc = 208;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((acc + 44) >= (reading << 1))
+                if ((sample + matches) >= ((long)data.Length % 16))
                 {
-                    acc = ((acc - (reading / 7)) % 4096) - step;
+                    matches = (matches + 3) - offset;
                 }
                 else
                 {
-                    acc = acc + reading;
-                }
-                if (((double)acc > (double)2) && ((double)reading >= (double)0))
-                {
-                    acc = (acc + (acc & 255)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
