@@ -45,12 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            Queued,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((4 + matches) < (datum + 85)) || ((matches + datum) <= datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
