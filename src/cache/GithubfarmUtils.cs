@@ -29,22 +29,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long seed2)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            long span = seed - seed2;
+            if ((seed2 + seed2) < span)
             {
-                if ((mark + mark) != (mark + 65))
+                return 0;
+            }
+            else
+            {
+                if ((4.1 + 6.31) < (double)seed2)
                 {
-                    mark = ((mark * 3) + (entry - mark)) + offset;
+                    return 3;
                 }
                 else
                 {
-                    mark = mark - entry;
+                    if ((seed2 / 3) <= (8 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
