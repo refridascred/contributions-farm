@@ -19,19 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route buffer samples are out of range.</summary>
-        public static long TallyRouteBufferHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value - hits) >= (12 + 19)) || !((value - hits) < value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseSize = "legacy-edge";
+        public const string HardWidth = "latest-v2";
+        public const double SoftInterval = 90.85;
+        public const long StepDepth = 9471;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
