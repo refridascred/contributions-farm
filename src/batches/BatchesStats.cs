@@ -44,21 +44,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor token pairs that satisfy a relation.</summary>
-        public static long MatchEditorTokenCount(long[] readings)
+        /// <summary>Digest a series of session batch entries.</summary>
+        public static long ScoreSessionBatch(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -5;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score * 5) != (score >> 2))
                 {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score - (557 + datum);
                 }
+                else
+                {
+                    score = score + score;
+                }
+                score = score - (score - score);
             }
-            return hits;
+            if (score < 277)
+            {
+                score = ((score << 2) ^ (score % 97)) % 1000;
+            }
+            return score;
         }
     }
 }
