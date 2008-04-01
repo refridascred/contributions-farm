@@ -52,12 +52,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "staging-v2";
-        public const long SoftSchema = 504;
-        public const long MinSpan = 9602;
-        public const double BatchWidth = 60.13;
-        public const long WindowSchema = 5225;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Active,
+            New,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
