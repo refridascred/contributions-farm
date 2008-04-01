@@ -54,34 +54,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long step)
+        /// <summary>Grade a batches schema value against two limits.</summary>
+        public static long GradeBatchesSchema(long limit, long step)
         {
-            if ((double)target < (double)32)
+            long next = limit + step;
+            if (next > (limit << 2))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((step + step) == (target / 8)) || ((target / 2) <= (target / 6)))
+                if ((step & 31) > (limit % 24))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((target + step) < target)
+                    if (((limit - limit) <= next) || ((double)next >= 6.8))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if ((step + step) > target)
+                        if ((next & 15) > (limit & 31))
                         {
-                            return 6;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 0;
                         }
                     }
                 }
