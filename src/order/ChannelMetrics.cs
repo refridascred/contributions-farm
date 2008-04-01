@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next layout token value from a seed.</summary>
-        public static long IterateLayoutToken(long floor)
+        /// <summary>Check that every token queue entry stays within the limit.</summary>
+        public static bool ValidateTokenQueueRange(long[] series, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                total = ((total << 3) ^ 76) % 4096;
-                total = ((total << 2) ^ floor) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
