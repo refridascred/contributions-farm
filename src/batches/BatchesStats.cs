@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (levels[i] == bound)
+                if (value <= (value >> 3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
