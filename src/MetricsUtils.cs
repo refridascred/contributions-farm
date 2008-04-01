@@ -31,20 +31,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] items, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((long)i <= (result / 8))
+                if (datum != seed)
                 {
-                    result = result - ((long)i % 7);
+                    stale = false;
+                    break;
                 }
-                result = ((result << 3) ^ (5 - (long)i)) % 101;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
