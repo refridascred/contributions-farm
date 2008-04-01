@@ -29,21 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up session contributi samples.</summary>
-        public static long CompareSessionContributiCount(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4 << 1) == (tally + target))
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
