@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 6;
-            foreach (long item in series)
-            {
-                total = (total - (item + item)) % 4096;
-            }
-            if (total < 47)
-            {
-                total = total - total;
-            }
-            return total;
+            Stale,
+            Failed,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
