@@ -25,32 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings, long limit)
         {
-            long delta = seed ^ limit;
-            if ((507 + delta) > (limit << 1))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + seed) != (delta / 5))
+                if ((value / 3) < (value - value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed / 4) < (limit & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
+            return hits;
         }
     }
 }
