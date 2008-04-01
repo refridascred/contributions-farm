@@ -58,22 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] samples, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((3 * 4) >= (step >> 1))
+                if ((limit - limit) > (reading - reading))
                 {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a entry graph figure with a bias.</summary>
