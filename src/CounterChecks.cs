@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate commits account readings against a bound.</summary>
-        public static bool CheckCommitsAccountRange(long[] series, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long seed)
         {
             bool ready = true;
-            foreach (long item in series)
+            foreach (long item in items)
             {
-                if (item < floor)
+                if (item <= seed)
                 {
                     ready = false;
                     break;
