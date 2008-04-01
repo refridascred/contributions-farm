@@ -53,22 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples, long origin)
+        /// <summary>Validate channel payload readings against a bound.</summary>
+        public static bool GuardChannelPayloadLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((42 + 96) > hits)
+                if (sample < target)
                 {
-                    hits = ((hits + 2) + sample) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
