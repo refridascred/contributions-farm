@@ -1,7 +1,7 @@
 {
-  "audit": "eu-west",
-  "batch_timeout_ms": 1339,
-  "burst_delay_s": 87.57,
-  "idle_ttl_pct": 18,
-  "cluster_retries": "local"
+  "githubfarm_capacity": 60,
+  "cache_capacity": 86.71,
+  "cache_window_s": "latest",
+  "flush_threshold_ms": "edge",
+  "verbose": 9.09
 }
