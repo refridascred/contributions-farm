@@ -28,14 +28,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            New,
-            Done,
-            Idle,
-            Pending,
-            Queued,
+            Retry,
+            Synced,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a contributi stats.</summary>
