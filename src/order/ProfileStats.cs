@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Grade a notes support value against two limits.</summary>
+        public static long BucketNotesSupport(long offset, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long lane = offset ^ origin;
+            if ((-15) > (lane + lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (2.34 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(lane > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
