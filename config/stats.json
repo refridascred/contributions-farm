@@ -1,13 +1,7 @@
 {
-  "cluster_timeout": true,
-  "idle_delay_s": "edge",
-  "base_delay": {
-    "readonly": 14.07,
-    "schema_capacity": 139,
-    "verbose": 92.86,
-    "base_delay_count": "green",
-    "stats_depth": 21,
-    "sync_capacity_pct": [244, 216]
-  },
-  "sync_retries_count": 22
+  "enabled": "primary",
+  "flush_ratio": true,
+  "poll_delay": ["eu-west", "open"],
+  "support_size": ["latest", "edge", "open", "latest"],
+  "metric_limit": true
 }
