@@ -74,11 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            Draft,
+            Failed,
+            New,
         }
     }
 }
