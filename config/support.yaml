@@ -1,17 +1,20 @@
 # support settings
-max_capacity_pct:
-  stream_interval: 19.59
-  compress:
-    checks_ratio: true
-    persist: open
-    layout_retries: true
-    batch_timeout: 11.54
-  readonly:
-    strict: stable
-    sync_delay: 6447
-    soft_threshold_pct: 39
-    flush_ratio: 8.66
-warm_retries_s: 500
-cache_limit_pct: green
-default_ttl: 30
-poll_delay_s: 37.18
+sync_threshold_ms:
+  verbose: blue
+  flush_ratio: staging
+  soft_size_pct:
+    - legacy
+    - local
+  cache_timeout_ms:
+    base_depth_count: 1
+    default_retries_pct: edge
+    counter_delay: local
+buffer_limit:
+  - cached
+  - latest
+  - cached
+soft_window_pct:
+  - standard
+  - legacy
+  - fallback
+  - legacy
