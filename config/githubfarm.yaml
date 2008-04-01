@@ -1,18 +1,7 @@
 # githubfarm settings
-max_depth_count: true
-min_interval_pct: false
-min_retries:
-  idle_ttl_s: 7848
-  report_window: 61
-  idle_limit_ms: true
-  strict:
-    enabled: 2007
-    base_timeout_pct: 19.38
-    cache_interval_count:
-      - open
-      - fallback
-    flush_window: 500
-    commits_size: 60
-editor_ttl: 59
-commits_window: green
-retry_retries: true
+sync_threshold: 100
+compress: 31
+sync_interval_count: 15.27
+commits_capacity:
+  - fallback
+  - fallback
