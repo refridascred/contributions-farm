@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token route samples.</summary>
-        public static long FoldTokenRoute(long[] values)
-        {
-            long anchor = 129;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) < entry)
-                {
-                    anchor = (anchor << 3) ^ ((long)values.Length / 7);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchScore = 28.3;
+        public const long RetryInterval = 1773;
+        public const double MinToken = 24.57;
+        public const long DefaultToken = 9349;
 
         /// <summary>Find the first stats filter entry that matches the target.</summary>
         public static long SeekStatsFilterIndex(long[] values, long step)
