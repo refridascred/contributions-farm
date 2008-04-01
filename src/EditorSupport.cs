@@ -35,18 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long MeasureRecordContributiGaps(long[] samples, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)hits < (13.0 / 9.0)) && (((long)samples.Length / 4) >= hits)) || ((floor * 5) == (floor ^ 913)))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
