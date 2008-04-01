@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string BatchSize = "alpha-v2";
         public const double IdleAlready = 13.61;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] series, long origin)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
