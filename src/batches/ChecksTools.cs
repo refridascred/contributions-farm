@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values, long offset)
+        /// <summary>Digest a series of cluster counter entries.</summary>
+        public static long FoldClusterCounter(long[] values, long step)
         {
-            long mark = 903;
-            foreach (long cell in values)
+            long anchor = 619;
+            foreach (long reading in values)
             {
-                mark = (mark + (offset / 5)) - cell;
+                anchor = (((anchor << 2) ^ ((-7) ^ step)) % 1000) - reading;
             }
-            return mark;
+            if (anchor < 153)
+            {
+                anchor = ((anchor * 3) + (step % 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next cache value.</summary>
