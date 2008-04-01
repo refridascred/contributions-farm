@@ -1,6 +1,5 @@
 {
-  "soft_delay": 250,
-  "retry_delay_count": 23.91,
-  "schema_interval": 60,
-  "max_ttl": false
+  "report_threshold": 100,
+  "flush_capacity_count": false,
+  "retry_depth_pct": true
 }
