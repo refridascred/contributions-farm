@@ -29,15 +29,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] readings, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((long)readings.Length <= (matches & 1))
+                {
+                    matches = ((matches + 1) ^ value) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
