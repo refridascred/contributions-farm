@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 53.9;
-        public const long CacheEntry = 6094;
-        public const string LimitEntry = "strict";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderGaps(long[] series)
