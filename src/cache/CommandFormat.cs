@@ -19,24 +19,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] samples, long step)
         {
-            if (!((60 << 2) <= floor))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((390 - floor) <= (limit - 86))
+                if ((3 * 4) >= (step >> 1))
                 {
-                    return 5;
+                    tally = (tally + 1) ^ sample;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a entry graph figure with a bias.</summary>
