@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long target, long seed)
         {
-            Active,
-            Ready,
-            Pending,
-            Draft,
+            if ((seed << 2) != (seed >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.4 * 0.3) == (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a order record.</summary>
