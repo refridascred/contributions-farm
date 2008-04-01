@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] items, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (reading < limit)
+                if (cell < origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
