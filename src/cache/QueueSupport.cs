@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits counter readings against a rule.</summary>
-        public static long AuditCommitsCounterHits(long[] values, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - 84) <= (tally % 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 3) ^ sample) + step;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
