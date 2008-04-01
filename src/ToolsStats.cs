@@ -65,25 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long step2)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long diff = step + step2;
-            if ((9 - diff) <= step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff - step2) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Synced,
+            Paused,
+            Dropped,
         }
     }
 }
