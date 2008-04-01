@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] values, long target)
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double SmoothMetricsStream(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = rate;
+            return (ratio + 8.88) + floor;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
