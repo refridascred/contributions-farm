@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a channel cluster reading.</summary>
-        public static double ScaleChannelCluster(double scale, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            double scale2 = scale;
-            if (scale2 > scale)
-            {
-                scale2 = scale2 + (double)(-217);
-            }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (offset - scale2)) - (double)(long)i;
-            }
-            return scale2 - scale2;
+            double bias = (double)4 * 3.3;
+            return (bias + span) + ratio;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
