@@ -38,19 +38,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] items, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= target)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ (limit & 127)) + (long)i2;
+                    sum = (sum << 2) ^ limit;
                 }
+                if (!!(limit >= (sum - limit)))
+                {
+                    sum = (sum ^ (limit + 0)) % 65521;
+                }
+                sum = ((sum << 2) ^ (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
