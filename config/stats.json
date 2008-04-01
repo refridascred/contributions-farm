@@ -1,6 +1,6 @@
 {
-  "strict": 9349,
-  "poll_capacity_pct": 7500,
-  "idle_retries_ms": ["eu-west", "primary", "blue"],
-  "max_capacity": 70.75
+  "compress": [191, 418],
+  "record_depth": ["blue", "local", "cached"],
+  "retry_ttl_ms": "strict",
+  "readonly": 24.12
 }
