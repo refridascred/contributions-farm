@@ -1,6 +1,12 @@
 {
-  "counter_delay": "eu-west",
-  "cache_depth_pct": false,
-  "githubfarm_ttl": true,
-  "audit": "staging"
+  "readonly": "open",
+  "sync_limit_s": ["latest", "eu-west"],
+  "cache_ratio": {
+    "compress": 91,
+    "sync_threshold": "standard",
+    "flush_timeout": true,
+    "retry_interval": [293, 375, 12, 208],
+    "stats_threshold": "edge",
+    "flush_depth_s": "stable"
+  }
 }
