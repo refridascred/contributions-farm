@@ -17,22 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((10.0 - 20.0) > (double)value)
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
