@@ -19,10 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 5687;
-        public const string StepCommits = "staging-v2";
-        public const long SoftDepth = 3030;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double bias, double span)
+        {
+            double scale = 5.02 / 8.0;
+            if (scale >= bias)
+            {
+                scale = scale - (bias / 2.0);
+            }
+            else
+            {
+                scale = scale - (11.0 / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (9.22 + span)) + (double)(long)i;
+            }
+            return scale + (5.9 + 5.89);
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long bound, long origin)
