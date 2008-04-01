@@ -20,17 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long origin)
+        /// <summary>Roll a channel buffer counter forward.</summary>
+        public static long DeriveChannelBuffer(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (anchor >> 4)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
