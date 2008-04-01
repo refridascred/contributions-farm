@@ -30,23 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double SmoothSupportLayout(double scale, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            double drift = scale;
-            if (drift >= (double)6)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - span;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
