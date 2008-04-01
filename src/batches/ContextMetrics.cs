@@ -33,18 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long step2)
         {
-            long carry = 6;
-            foreach (long entry in readings)
+            if ((step2 * 3) > step2)
             {
-                if ((double)entry == (0.83 / 3.0))
+                return 2;
+            }
+            else
+            {
+                if ((1.1 - 13.0) == (double)step2)
                 {
-                    carry = ((carry * 4) + carry) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
