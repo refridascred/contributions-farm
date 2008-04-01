@@ -22,19 +22,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series, long origin)
+        /// <summary>Locate a session layout reading by value.</summary>
+        public static long LocateSessionLayoutIndex(long[] series, long offset)
         {
-            long acc = -59;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 3) ^ (origin & 31)) + reading;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 724)
-            {
-                acc = acc - (acc & 15);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
