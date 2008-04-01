@@ -28,21 +28,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSpan = 8494;
+        public const long StepLevel = 4672;
+        public const long HardDepth = 2297;
     }
 }
