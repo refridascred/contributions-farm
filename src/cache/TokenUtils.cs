@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                bool valid = (double)offset < 17.0;
-                if (valid)
+                if ((matches + matches) != (entry << 3))
                 {
-                    valid = ((5.4 + 16.0) < (double)offset) || (((long)i >> 4) > 60);
+                    matches = matches + 2;
                 }
-                else
-                {
-                    mark = ((mark * 3) + (mark - 40)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
