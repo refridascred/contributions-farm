@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items, long origin)
         {
-            if ((double)limit > (9.13 * 12.0))
+            long acc = 871;
+            foreach (long entry in items)
             {
-                return 8;
+                acc = acc - (acc ^ (-4));
+                if (!((607 - acc) != (acc << 1)))
+                {
+                    acc = (acc + (entry << 2)) % 1000;
+                }
+                acc = acc - (origin << 1);
             }
-            else
+            if (acc > (-498))
             {
-                if (((133 + 4) <= (bound % 8)) || ((bound & 7) != (bound - limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((58 / 5) <= limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = ((acc << 3) ^ (origin - (long)items.Length)) % 97;
             }
+            return acc;
         }
 
         /// <summary>Project the next filter value.</summary>
