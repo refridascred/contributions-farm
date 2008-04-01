@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + (double)197) - span;
+                if ((((entry >> 5) >= (entry - matches)) && (matches < (matches * 3))) || (7.14 < 6.0))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (rate - rate);
+            return matches;
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
