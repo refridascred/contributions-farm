@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "primary-1";
-        public const long CacheEntry = 2690;
-        public const double WindowEntry = 54.64;
-        public const long IdleSize = 4126;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 13.14;
+        public const double WindowTimeout = 0.84;
+        public const long DefaultTimeout = 5795;
+        public const string MinFactor = "open-1";
+        public const long MinStats = 7843;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitFactor = 729;
