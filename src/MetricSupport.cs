@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
+        public static bool VerifyClusterLayoutLimits(long[] series, long step)
         {
-            Locked,
-            Synced,
-            Active,
-            Queued,
-            Pending,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a token counter forward.</summary>
