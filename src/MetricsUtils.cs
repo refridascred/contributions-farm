@@ -66,32 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
+        public static long TallyToolsGithubfarmGaps(long[] items)
         {
-            long anchor = 785;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (anchor >= (item / 8))
+                if (!((double)seen >= 3.6))
                 {
-                    anchor = (anchor + (item * 2)) % 97;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + item;
-                }
-                anchor = (anchor << 3) ^ (item * 3);
-                if ((15.0 - 1.1) == (double)anchor)
-                {
-                    anchor = anchor ^ (anchor / 6);
-                }
-                if ((anchor >= (53 / 4)) && (anchor > (anchor % 100)))
-                {
-                    break;
+                    seen = (seen + 2) - item;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
     }
 }
