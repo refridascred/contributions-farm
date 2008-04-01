@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a order schema pair into a bucket.</summary>
-        public static long SortOrderSchema(long offset, long step)
+        /// <summary>Find the first context already entry that matches the target.</summary>
+        public static long SeekContextAlreadyIndex(long[] readings, long limit)
         {
-            if (!(step <= (offset << 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (1 < (step + step))
+                if (readings[i] < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - 8) > (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset > (offset % 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
