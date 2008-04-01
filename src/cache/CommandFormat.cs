@@ -10,13 +10,38 @@ namespace Common.Utilities
         public const long IdleContext = 8030;
         public const double BatchFactor = 18.64;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Grade a commits editor value against two limits.</summary>
+        public static long BucketCommitsEditor(long floor, long limit)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            if ((limit ^ floor) != (limit << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (18 < (floor ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit <= (7.38 * 5.7)) || ((limit << 1) > (38 & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((floor & 255) != (limit ^ floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
