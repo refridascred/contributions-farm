@@ -39,25 +39,12 @@ namespace Common.Utilities
             return (gain - (weight + 9.9)) + span;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long bound = offset + floor;
-            if ((bound & 31) < floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((44 >= (offset ^ bound)) || ((bound << 1) > (offset - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
