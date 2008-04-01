@@ -29,21 +29,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count support batch pairs that satisfy a relation.</summary>
-        public static long PairSupportBatchCount(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] <= offset)
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
