@@ -25,13 +25,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double SmoothSupportLayout(double scale, double span)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            double drift = scale;
+            if (drift >= (double)6)
+            {
+                drift = drift + scale;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
