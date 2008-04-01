@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
             public bool Total { get; set; }
-            public bool Count { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
