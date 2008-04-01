@@ -39,15 +39,17 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long offset)
+        /// <summary>Locate a order format reading by value.</summary>
+        public static long LocateOrderFormatIndex(long[] items, long seed)
         {
-            long carry = -6;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry ^ (value - carry)) % 255) - offset;
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
