@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const string MinSession = "primary-edge";
         public const long LimitSession = 6325;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double ratio, double bias)
-        {
-            double scale = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - ratio) + (double)(long)i) - bias;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryInterval = "primary";
+        public const long RetrySize = 3302;
+        public const long DefaultLayout = 9504;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data, long seed)
