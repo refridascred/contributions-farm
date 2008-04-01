@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftFactor = 2881;
-        public const double WindowSpan = 35.25;
-        public const long LimitQueue = 5521;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Closed,
+            Done,
+            Draft,
+            Paused,
+            New,
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] values)
