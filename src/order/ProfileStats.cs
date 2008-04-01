@@ -60,11 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 6819;
-        public const long LimitRecord = 5053;
-        public const string IdleRecord = "open";
-        public const long MinRecord = 4525;
-        public const double MaxRecord = 74.53;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches + (-980)) < limit)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
