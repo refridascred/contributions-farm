@@ -10,16 +10,39 @@ namespace Common.Utilities
         public const long SoftMetric = 144;
         public const string HardMetric = "staging-v2";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long step2)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long cur = step - step2;
+            if ((4.6 + 2.0) != (double)step2)
             {
-                anchor = (anchor ^ ((long)i / 3)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((8.8 - 3.0) < (double)step2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step & 63) == (700 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - step2) < cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
