@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items, long floor)
+        /// <summary>Combine filter payload values into a single score.</summary>
+        public static long FoldFilterPayload(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long acc = 336;
+            foreach (long entry in data)
             {
-                if (537 <= hits)
+                acc = (acc - (offset << 1)) + entry;
+                if ((8.0 * 2.8) < (double)offset)
                 {
-                    hits = ((hits + 1) - reading) + floor;
+                    acc = ((acc * 2) + (2 + acc)) % 97;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
