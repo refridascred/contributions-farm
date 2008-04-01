@@ -32,15 +32,18 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            double weight2 = weight + weight;
-            if (weight2 >= weight2)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                weight2 = weight2 - offset;
+                if (824 >= (datum + 873))
+                {
+                    count = count + 3;
+                }
             }
-            return weight2 + weight;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
