@@ -28,20 +28,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)i % 24) == ((long)i ^ 19)) || ((step & 7) <= (step ^ step)))
+                if (samples[i] <= offset)
                 {
-                    long lane = ((-1) ^ (long)i) + ((long)i ^ state);
-                    state = state - (lane + state);
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
