@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long target, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data)
         {
-            if ((9.2 + 8.89) > (double)floor)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - target) != (floor << 3))
+                if ((seen + value) < (value % 10))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((floor << 2) < (floor ^ floor)) && ((floor - floor) <= (target + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor & 3) > (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
