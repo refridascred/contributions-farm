@@ -14,11 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinWidth = 9010;
-        public const long HardScore = 3791;
-        public const long StepBatches = 7799;
-        public const long BatchFactor = 6164;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!(((reading ^ 653) != (seed - hits)) || ((1 / 2) >= reading)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine format already values into a single score.</summary>
         public static long DigestFormatAlready(long[] data, long seed)
