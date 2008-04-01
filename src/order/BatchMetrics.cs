@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine commits checks values into a single score.</summary>
-        public static long TotalCommitsChecks(long[] samples)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long anchor = -33;
-            foreach (long value in samples)
-            {
-                if (!(value > anchor))
-                {
-                    anchor = (anchor - (value - value)) % 65521;
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a contributi batch reading by value.</summary>
