@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long bound2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            if ((double)bound == (6.6 + 8.4))
             {
-                anchor = ((anchor * 4) + (bound % 64)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (((bound2 / 6) >= bound2) || ((bound - bound2) < bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound2 < bound) && ((bound2 ^ bound2) < (bound % 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (bound2 >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
