@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen + offset) > ((-9) % 12))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the tools schema entries that pass the check.</summary>
