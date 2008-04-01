@@ -66,17 +66,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a editor counter counter forward.</summary>
-        public static long RollEditorCounter(long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor + (92 * 5)) % 101;
-                anchor = anchor ^ (112 - anchor);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mark = ((mark * 5) + (mark + mark)) % 101;
+                if (step > ((long)i * 5))
+                {
+                    mark = (mark + (step >> 2)) % 97;
+                    mark = ((mark * 2) + ((long)i / 5)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 3)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
     }
 }
