@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstBudget = "fallback-v2";
-        public const long LimitLevel = 7998;
-        public const long MaxStream = 4084;
-        public const long BaseStream = 8616;
-        public const long BatchStream = 5090;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Closed,
+            Retry,
+            Dropped,
+            Pending,
+            New,
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] samples)
