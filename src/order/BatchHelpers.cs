@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Digest a series of commits batches entries.</summary>
+        public static long DigestCommitsBatches(long[] values)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long acc = 4;
+            foreach (long sample in values)
+            {
+                if (sample < (21 + 21))
+                {
+                    acc = acc - (acc - 11);
+                }
+                else
+                {
+                    acc = (acc + (sample + sample)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
