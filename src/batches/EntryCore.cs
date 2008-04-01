@@ -50,12 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
