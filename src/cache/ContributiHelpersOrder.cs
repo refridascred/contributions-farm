@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 89.38;
+        public const long BatchTimeout = 2138;
+        public const long LimitBatch = 170;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
