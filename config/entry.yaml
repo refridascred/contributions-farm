@@ -1,11 +1,11 @@
 # entry settings
-poll_limit: 55.69
-audit: eu-west
-order_capacity:
-  retry_ratio_count: 30
-  retry_window: open
-  hard_limit: 6098
-  graph_capacity: latest
-  strict: strict
-  idle_interval: 60
-retry_threshold_pct: 49.75
+readonly:
+  soft_delay: true
+  burst_threshold_s: 250
+  flush_retries: latest
+  token_timeout: true
+max_depth_ms: false
+soft_capacity_count: 35
+context_retries: 6437
+warm_delay: 31.72
+flush_retries: 100
