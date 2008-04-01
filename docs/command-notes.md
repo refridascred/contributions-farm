@@ -1,12 +1,10 @@
 # Command notes
 
-Run the account check before changing any tools limits.
-Each cache is validated before it reaches the channel queue.
-Run the schema check before changing any queue limits.
+Run the githubfarm check before changing any layout limits.
+Run the counter check before changing any commits limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Prefer notes defaults
-- Log every token change
-- Document new graph fields
+- Review report limits each release
+- Log every githubfarm change
+- Prefer editor defaults
