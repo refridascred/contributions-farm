@@ -67,21 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Compare every pair of buffer entry readings.</summary>
+        public static long PairBufferEntryCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 2)
+                    if ((series[i] - series[j]) != 7)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
