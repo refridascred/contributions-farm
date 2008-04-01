@@ -23,16 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 3) + (acc ^ 88)) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxTimeout = 9550;
+        public const long StepBuffer = 3289;
+        public const long BurstBudget = 1611;
+        public const double MaxBuffer = 83.89;
+        public const string SoftRatio = "staging-edge";
     }
 }
