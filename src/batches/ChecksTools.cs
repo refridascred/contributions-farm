@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = 903;
+            foreach (long cell in values)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                mark = (mark + (offset / 5)) - cell;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the checks level values.</summary>
