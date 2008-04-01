@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Combine editor metrics values into a single score.</summary>
-        public static long CombineEditorMetrics(long[] levels, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long acc = 70;
-            foreach (long datum in levels)
+            long result = -139;
+            foreach (long entry in readings)
             {
-                if ((7.0 / 5.0) >= 9.51)
+                if ((entry * 5) <= ((-241) >> 1))
                 {
-                    acc = (acc + (acc + datum)) + bound;
+                    break;
                 }
+                result = (result << 2) ^ (result + (long)readings.Length);
             }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
