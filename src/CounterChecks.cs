@@ -14,18 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(((reading ^ 653) != (seed - hits)) || ((1 / 2) >= reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Combine format already values into a single score.</summary>
