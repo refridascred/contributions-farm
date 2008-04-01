@@ -62,18 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout entry samples are out of range.</summary>
-        public static long AuditLayoutEntryOutliers(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((double)(long)values.Length < (double)item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
