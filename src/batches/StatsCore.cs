@@ -38,18 +38,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples, long limit)
+        /// <summary>Accumulate window session samples.</summary>
+        public static long DigestWindowSession(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = -116;
+            foreach (long cell in items)
             {
-                if ((item + hits) >= 627)
+                mark = ((mark << 3) ^ (bound >> 5)) % 255;
+                if (((double)cell >= (double)519) || ((mark & 127) == (bound & 31)))
                 {
-                    hits = (hits + 3) + limit;
+                    mark = (mark << 2) ^ (cell & 31);
+                }
+                else
+                {
+                    mark = (mark ^ (cell + mark)) % 4096;
+                }
+                if (bound > (cell >> 4))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
