@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "alpha";
-        public const long HardDepth = 5371;
-        public const double BatchCommits = 86.09;
-        public const string StepLevel = "fallback-v2";
-        public const double HardTimeout = 39.58;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Ready,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxDepth = 76.06;
