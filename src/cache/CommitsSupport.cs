@@ -37,8 +37,8 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
             Ready,
             New,
