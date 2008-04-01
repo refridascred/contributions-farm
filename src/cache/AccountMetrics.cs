@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long score = 6;
-            foreach (long datum in readings)
-            {
-                if ((12.0 - 6.39) < (double)score)
-                {
-                    score = (score + (datum + score)) - seed;
-                }
-            }
-            return score;
+            Draft,
+            Done,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
