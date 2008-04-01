@@ -1,11 +1,7 @@
 {
-  "batch_ttl": "cached",
-  "min_depth_pct": {
-    "enabled": [393, 326, 31, 336],
-    "dry_run": 82,
-    "flush_interval_pct": "strict"
-  },
-  "audit": true,
-  "retry_timeout_ms": 75.2,
-  "sync_interval_ms": 32.86
+  "tools_retries": 61,
+  "batch_ratio": 9.23,
+  "notes_size": "open",
+  "batch_limit_s": 5.98,
+  "poll_interval_count": 98.81
 }
