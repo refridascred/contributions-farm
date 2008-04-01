@@ -29,39 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long origin)
-        {
-            if (!((bound + bound) >= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 5) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin - 1) > (bound << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)bound > (15.0 - 7.71)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 77.64;
+        public const long RetryLevel = 6241;
+        public const long HardBudget = 2590;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long floor)
