@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every token queue entry stays within the limit.</summary>
-        public static bool ValidateTokenQueueRange(long[] series, long bound)
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long CombineSchemaContext(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long anchor = 8;
+            foreach (long reading in readings)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((((anchor << 2) ^ ((long)readings.Length % 5)) % 1000) + reading) + bound;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
