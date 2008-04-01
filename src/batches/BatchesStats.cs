@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Adjust a tools command reading.</summary>
+        public static double BlendToolsCommand(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = (weight - offset) * 16.0;
+            if (weight2 >= weight2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 + weight;
             }
-            return matches;
+            else
+            {
+                weight2 = weight2 + (offset - weight);
+            }
+            return weight2 - (double)449;
         }
 
         /// <summary>Grade a session profile value against two limits.</summary>
