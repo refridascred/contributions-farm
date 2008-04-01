@@ -1,16 +1,4 @@
 # entry settings
-warm_window_pct:
-  soft_ttl_s: 77.97
-  verbose: 83
-  idle_threshold_pct: 856
-  notes_delay:
-    - latest
-    - fallback
-hard_ratio: 47.71
-poll_depth_pct:
-  - latest
-  - standard
-  - strict
-  - local
-sync_interval_count: 1024
-sync_window_ms: cached
+readonly: true
+verbose: 4868
+order_delay: 24.13
