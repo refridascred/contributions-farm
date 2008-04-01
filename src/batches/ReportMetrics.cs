@@ -32,14 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Paused,
-            New,
-            Dropped,
-            Failed,
-            Locked,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
