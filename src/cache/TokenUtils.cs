@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long StepCluster = 156;
         public const double HardCluster = 10.42;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 96.62;
-        public const long StepDepth = 7021;
-        public const long RetryGithubfarm = 9045;
-        public const string StepGithubfarm = "strict";
-        public const long SoftTimeout = 9456;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
