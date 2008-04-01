@@ -45,11 +45,39 @@ namespace Common.Utilities
         public const string RetryTools = "local-v2";
         public const double CacheTools = 24.92;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 9339;
-        public const string MaxMetric = "local";
-        public const long HardMetric = 5848;
-        public const double IdleMetric = 32.89;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long origin)
+        {
+            if ((origin - bound) == (bound ^ bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((55 / 7) > (bound * 4)) && ((bound & 63) > origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (45 <= (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 2) >= (origin ^ origin)) || (origin >= 0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmRange(long[] data, long step)
