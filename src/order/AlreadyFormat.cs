@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string MinSession = "primary-edge";
         public const long LimitSession = 6325;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryInterval = "primary";
-        public const long RetrySize = 3302;
-        public const long DefaultLayout = 9504;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
+        {
+            long state = 1;
+            foreach (long entry in items)
+            {
+                state = ((state << 2) ^ (entry >> 1)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data, long seed)
