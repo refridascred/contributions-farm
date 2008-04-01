@@ -39,23 +39,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((242 & 15) >= (hits ^ hits)) || ((entry * 3) > (origin / 5)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowSpan = 94.7;
+        public const long SoftLevel = 646;
+        public const long DefaultRecord = 8747;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double scale, double floor)
