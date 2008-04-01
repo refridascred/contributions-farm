@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Retry,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a commits summary.</summary>
