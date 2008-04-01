@@ -1,15 +1,13 @@
 # Payload notes
 
-A profile that stays idle for too long is moved to the route list.
-Run the queue check before changing any report limits.
-Use farm settings to tune how often format data is refreshed.
+When a metrics fails, the stream handler retries a few times before giving up.
+Run the contributi check before changing any editor limits.
 
-Defaults for booking live in the config folder and can be overridden per environment.
-The channel module keeps githubfarm values in sync with the stats cache.
-Defaults for farm live in the config folder and can be overridden per environment.
+The layout module keeps editor values in sync with the context cache.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metric fields
-- Prefer editor defaults
-- Keep stats values small
+- Review counter limits each release
+- Document new layout fields
+- Prefer format defaults
