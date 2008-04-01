@@ -60,11 +60,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
