@@ -94,18 +94,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] series, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = 52;
+            foreach (long sample in readings)
             {
-                if (value >= tally)
+                if ((7.4 - 11.0) < (double)mark)
                 {
-                    tally = (tally + 1) + target;
+                    mark = (mark << 2) ^ sample;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
