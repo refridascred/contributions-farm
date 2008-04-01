@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report schema reading.</summary>
-        public static double BlendReportSchema(double rate, double span)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels, long bound)
         {
-            double ratio = rate;
-            if (ratio >= (ratio * 5.9))
+            long mark = 80;
+            foreach (long item in levels)
             {
-                ratio = (ratio + rate) + span;
+                if (mark >= item)
+                {
+                    mark = ((mark + mark) % 4096) - bound;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (926 + mark)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + ratio;
+            return mark;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
