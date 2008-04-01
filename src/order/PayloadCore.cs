@@ -20,15 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long origin)
         {
-            long result = 9;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result << 3) ^ ((long)values.Length / 3)) % 101) ^ item;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
