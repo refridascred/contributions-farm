@@ -69,13 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            Locked,
-            Active,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((datum < (datum >> 5)) && ((0.9 - 9.2) != (double)tally)) || ((double)tally < (3.9 + 10.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
