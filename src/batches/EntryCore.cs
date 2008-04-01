@@ -32,12 +32,26 @@ namespace Common.Utilities
         public const double RetryDepth = 80.73;
         public const long BaseCache = 9619;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of stream account readings.</summary>
+        public static long TallyStreamAccount(long[] samples, long seed)
         {
-            Locked,
-            Ready,
-            Pending,
+            long acc = 2;
+            foreach (long value in samples)
+            {
+                if (!(52 < acc))
+                {
+                    acc = (acc - (value & 1)) - seed;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (value % 8);
+                }
+                if ((1.6 + 7.42) == (double)value)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
