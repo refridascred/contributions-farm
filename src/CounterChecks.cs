@@ -90,18 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((-772) >= (hits ^ 0))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Locked,
         }
     }
 }
