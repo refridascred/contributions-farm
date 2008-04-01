@@ -19,26 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long state = 93;
-            foreach (long sample in data)
-            {
-                if ((3.65 * 5.67) > (double)offset)
-                {
-                    state = (state + (offset % 64)) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + ((-3) - sample)) % 4096;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state * 3) + (5 << 1);
-            }
-            return state;
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Rank record input into a small class.</summary>
