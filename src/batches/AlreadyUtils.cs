@@ -65,11 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double ratio, double span)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            double scale = (ratio / 7.0) - ratio;
-            return (scale - scale) + span;
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the already status values.</summary>
