@@ -1,12 +1,7 @@
 {
-  "hard_window_s": 1024,
-  "default_retries_pct": 98,
-  "queue_capacity": {
-    "soft_depth_count": "eu-west",
-    "warm_threshold_ms": false,
-    "record_ttl": "staging",
-    "verbose": false,
-    "already_depth": 6087
-  },
-  "max_interval_pct": "open"
+  "notes_delay": [78, 27, 21, 117],
+  "burst_window_pct": 2163,
+  "idle_capacity": ["blue", "blue", "cached", "green"],
+  "poll_retries_ms": true,
+  "readonly": 27.48
 }
