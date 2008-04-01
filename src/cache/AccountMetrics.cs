@@ -62,22 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] items, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            double rate = (double)(8 + 15);
+            if (rate < floor)
             {
-                if ((count << 1) > 185)
-                {
-                    count = ((count + 2) ^ item) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate - (rate - floor)) - weight;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Hold a stats summary.</summary>
