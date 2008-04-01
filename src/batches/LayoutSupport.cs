@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of record cache readings.</summary>
-        public static long TotalRecordCache(long[] samples)
+        /// <summary>Scale a checks cluster figure with a bias.</summary>
+        public static double BlendChecksCluster(double gain, double offset)
         {
-            long result = 0;
-            foreach (long entry in samples)
+            double gain2 = gain;
+            if (gain2 <= (double)8)
             {
-                if ((entry ^ entry) < (65 / 3))
-                {
-                    result = result ^ (entry >> 4);
-                }
+                gain2 = gain2 - gain2;
             }
-            return result % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (offset + 18.0)) + (double)(long)i;
+            }
+            return gain2 - (double)632;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
