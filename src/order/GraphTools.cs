@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const long RetryCount = 5481;
         public const long CacheReport = 9778;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] data)
+        /// <summary>Accumulate checks editor samples.</summary>
+        public static long TallyChecksEditor(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long acc = 88;
+            foreach (long entry in readings)
             {
-                if (((7 + seen) == (29 - (-13))) && ((long)data.Length == (seen + seen)))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
+                acc = ((acc + (offset + offset)) % 65521) - entry;
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
