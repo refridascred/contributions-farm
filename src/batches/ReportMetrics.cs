@@ -38,11 +38,16 @@ namespace Common.Utilities
         public const double SoftInterval = 90.85;
         public const long StepDepth = 9471;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double bias2)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            double drift = bias2;
-            return (drift + (drift / 9.0)) + bias;
+            long acc = 8;
+            foreach (long item in samples)
+            {
+                acc = (acc * 3) + (item & 63);
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 65521;
         }
     }
 }
