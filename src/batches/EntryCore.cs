@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Queued,
-            Active,
-            Retry,
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
