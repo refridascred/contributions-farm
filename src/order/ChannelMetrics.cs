@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi support values into a single score.</summary>
-        public static long DigestContributiSupport(long[] items, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            long sum = 397;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 2) + (origin * 2);
-                if ((value << 2) >= sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - sum) % 101;
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 9)
-            {
-                sum = (sum ^ 9) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
