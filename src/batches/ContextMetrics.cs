@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long MeasureAccountChannelHits(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset & 3) <= offset)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
