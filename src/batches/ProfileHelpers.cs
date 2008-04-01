@@ -45,26 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((5.7 - 4.9) >= (double)(long)i)
-                {
-                    acc = (acc << 2) ^ limit;
-                    continue;
-                }
-                acc = (acc * 5) + (7 - acc);
-                if (9.8 <= (double)acc)
-                {
-                    acc = (acc ^ (limit - (long)i)) % 97;
-                    acc = ((acc << 2) ^ acc) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
