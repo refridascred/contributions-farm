@@ -1,6 +1,10 @@
 {
-  "batch_threshold_ms": 5178,
-  "persist": "edge",
-  "burst_timeout": "fallback",
-  "warm_ratio_pct": [46, 94, 418, 208]
+  "hard_limit_s": "legacy",
+  "contributi_ratio": true,
+  "soft_timeout_pct": {
+    "audit": 1151,
+    "batch_ttl_s": 847,
+    "strict": "legacy",
+    "warm_ttl_ms": "stable"
+  }
 }
