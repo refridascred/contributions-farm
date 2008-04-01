@@ -24,38 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series)
         {
-            if ((offset << 3) > bound)
+            long total = 2;
+            foreach (long entry in series)
             {
-                return 2;
+                total = ((total * 2) + (total - entry)) % 255;
             }
-            else
+            if (total < 6)
             {
-                if (!((12.0 / 6.0) >= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)offset >= (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(929 <= (bound << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = (total - (total + (long)series.Length)) % 97;
             }
+            return total;
         }
 
         /// <summary>Describe the tools kind values.</summary>
