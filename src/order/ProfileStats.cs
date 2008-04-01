@@ -30,12 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            Closed,
+            Paused,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
