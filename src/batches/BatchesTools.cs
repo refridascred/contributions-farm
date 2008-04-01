@@ -34,19 +34,11 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultSize = "fallback-edge";
+        public const long WindowWidth = 3989;
+        public const long LimitBudget = 6975;
+        public const string StepCount = "legacy-v2";
+        public const string BaseSize = "staging-1";
     }
 }
