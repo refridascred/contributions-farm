@@ -1,6 +1,5 @@
 {
-  "warm_timeout_ms": "standard",
-  "farm_ratio": [438, 115],
-  "cache_ttl": ["open", "primary", "legacy"],
-  "profile_threshold": 9.9
+  "warm_size_ms": ["stable", "latest"],
+  "hard_threshold_count": 12,
+  "base_capacity": 250
 }
