@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items, long target)
         {
-            Idle,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - 4) < (target >> 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order level values.</summary>
