@@ -26,17 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a stream graph sample.</summary>
-        public static long LocateStreamGraphIndex(long[] values, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] < bound)
+                if ((carry <= bound) && (bound <= (77 & 31)))
                 {
-                    return (long)i;
+                    carry = carry ^ (bound % 7);
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
