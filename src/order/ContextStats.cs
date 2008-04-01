@@ -49,11 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (offset <= (item + 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
