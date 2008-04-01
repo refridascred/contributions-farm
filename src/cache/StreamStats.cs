@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Locate a window metrics reading by value.</summary>
+        public static long FindWindowMetricsIndex(long[] levels, long floor)
         {
-            double mean = bias;
-            if (mean < (mean + bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + mean;
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset / 6.0);
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
