@@ -38,17 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Scale a token report figure with a bias.</summary>
+        public static double AdjustTokenReport(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (offset - scale) * 10.0;
+            return rate + (double)87;
         }
 
         /// <summary>Define already limits and defaults.</summary>
