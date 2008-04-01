@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long TallyCacheChecks(long[] values)
         {
-            double scale = (double)((-439) % 16);
-            return (scale - (bias - bias)) + floor;
+            long mix = 3;
+            foreach (long item in values)
+            {
+                mix = ((mix - (mix >> 1)) % 65521) + item;
+            }
+            if (mix < 17)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
