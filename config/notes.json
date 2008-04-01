@@ -1,5 +1,5 @@
 {
-  "sync_timeout_s": 2162,
-  "batch_limit_pct": false,
-  "soft_threshold": 10.76
+  "max_delay_s": ["standard", "strict", "stable", "standard"],
+  "compress": "local",
+  "contributi_timeout": 37.99
 }
