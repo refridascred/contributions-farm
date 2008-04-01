@@ -52,11 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 851;
-        public const double BaseInterval = 86.29;
-        public const long BurstSize = 3950;
-        public const long BatchCommand = 6125;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long seed)
