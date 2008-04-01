@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const long RetryCount = 5481;
         public const long CacheReport = 9778;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] readings, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!!((cell - seen) < (seen - (-8))))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
