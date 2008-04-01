@@ -44,19 +44,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long limit)
         {
-            double gain = floor;
-            if (gain > 3.1)
+            long state = 19;
+            foreach (long cell in data)
             {
-                gain = gain - gain;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (state - 40) ^ (long)i;
+                }
+                if ((limit % 12) == (0 >> 3))
+                {
+                    state = (state << 3) ^ 4;
+                }
+                state = (state ^ (cell + limit)) % 4096;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - floor;
+            return state % 4096;
         }
     }
 }
