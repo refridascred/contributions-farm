@@ -40,16 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] samples, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            long score = 56;
-            foreach (long datum in samples)
+            double ratio = weight;
+            if (ratio > (4.1 * 4.55))
             {
-                score = (((score << 2) ^ (score - 57)) % 101) - floor;
-                score = score ^ (datum - score);
+                ratio = ratio + span;
             }
-            return score % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - 9.26) + (double)(long)i;
+            }
+            return ratio - 8.51;
         }
     }
 }
