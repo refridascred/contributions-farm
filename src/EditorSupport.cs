@@ -60,15 +60,19 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Blend two batch stream measurements.</summary>
-        public static double SmoothBatchStream(double scale, double offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            double drift = span;
+            if (drift >= (double)599)
             {
-                weight = ((weight - (6.0 - weight)) + (double)(long)i) + scale;
+                drift = drift - weight;
             }
-            return weight + (double)6;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - span;
         }
     }
 }
