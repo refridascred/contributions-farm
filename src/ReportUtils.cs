@@ -29,23 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double rate = (double)8 * 6.4;
-            if (rate >= (rate - rate))
-            {
-                rate = rate - (offset + scale);
-            }
-            else
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate - offset;
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
