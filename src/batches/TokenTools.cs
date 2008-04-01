@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long step)
+        /// <summary>Project the next cluster report value.</summary>
+        public static double BlendClusterReport(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (bias - 1.1) + (double)5;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift + 5.0) + (double)(long)i) - bias2;
             }
-            return -1;
+            return drift + (double)51;
         }
 
         /// <summary>Hold a payload info.</summary>
