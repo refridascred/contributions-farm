@@ -25,27 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window session samples.</summary>
-        public static long DigestWindowSession(long[] items, long bound)
+        /// <summary>Grade a session filter value against two limits.</summary>
+        public static long SortSessionFilter(long seed, long limit)
         {
-            long mark = -116;
-            foreach (long cell in items)
+            long slot = seed ^ limit;
+            if ((limit + slot) < (seed * 4))
             {
-                mark = ((mark << 3) ^ (bound >> 5)) % 255;
-                if (((double)cell >= (double)519) || ((mark & 127) == (bound & 31)))
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) < (seed & 255))
                 {
-                    mark = (mark << 2) ^ (cell & 31);
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark ^ (cell + mark)) % 4096;
-                }
-                if (bound > (cell >> 4))
-                {
-                    break;
+                    if ((slot + seed) > slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((slot + seed) > seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
