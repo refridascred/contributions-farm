@@ -75,15 +75,17 @@ namespace Common.Utilities
         public const long BaseEntry = 6529;
         public const double RetryEntry = 86.84;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long bound)
         {
-            double rate = (double)(81 ^ 92);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + (bias2 / 6.0)) + (double)(long)i) + bias;
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - bias2;
+            return -1;
         }
     }
 }
