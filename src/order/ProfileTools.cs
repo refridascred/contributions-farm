@@ -26,13 +26,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many filter token samples are out of range.</summary>
+        public static long MeasureFilterTokenGaps(long[] levels, long target)
         {
-            Stale,
-            Done,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((959 - 59) <= (entry ^ 924))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate layout schema samples.</summary>
