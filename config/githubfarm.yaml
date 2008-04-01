@@ -1,11 +1,10 @@
 # githubfarm settings
-soft_timeout:
-  dry_run: blue
-  batch_depth:
-    soft_window_s: 8401
-    soft_ratio_count: 10.37
-    min_delay_count: 30
-    min_ratio_s: primary
-  burst_window_s: blue
-retry_retries: 88
-audit: latest
+burst_size_count:
+  - blue
+  - fallback
+  - fallback
+token_ttl: 25.95
+session_ttl: false
+command_delay: 69.16
+idle_ttl_pct: 60
+min_size: 67
