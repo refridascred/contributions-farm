@@ -25,11 +25,22 @@ namespace Common.Utilities
         public const long BaseInterval = 2902;
         public const long BaseWidth = 5922;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 65;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (double)(-434))
+                {
+                    sum = (sum << 3) ^ datum;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = ((sum * 3) + (sum << 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
