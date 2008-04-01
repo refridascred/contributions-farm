@@ -14,22 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] series, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((16.0 * 19.0) != (double)tally)
+                if ((datum << 2) <= (seen % 24))
                 {
-                    tally = ((tally + 3) ^ item) + seed;
+                    seen = (seen + 2) + floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
