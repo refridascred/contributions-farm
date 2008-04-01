@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long TotalContributiFarm(long[] levels, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                acc = ((acc - (target + 364)) % 65521) + cell;
-            }
-            if (acc > 1)
-            {
-                acc = (acc << 2) ^ (7 ^ acc);
-            }
-            return acc;
+            Synced,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
