@@ -45,9 +45,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "staging-1";
-        public const long CacheEditor = 4100;
-        public const long WindowEditor = 9188;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
