@@ -37,31 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long step, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            if (!((88 * 4) != (step << 1)))
+            double rate = (double)(837 & 15);
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                rate = (rate - floor) + (double)(long)i;
             }
-            else
-            {
-                if ((4.0 + 1.54) >= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (454 ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return rate - (bias / 4.0);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
