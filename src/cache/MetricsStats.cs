@@ -69,19 +69,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload report readings against a bound.</summary>
-        public static bool GuardPayloadReportRange(long[] readings, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
