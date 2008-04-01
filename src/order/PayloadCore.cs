@@ -15,19 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] readings, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            double load = offset;
+            if (load < (0.67 / 4.0))
             {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + (weight / 9.0);
             }
-            return valid;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
