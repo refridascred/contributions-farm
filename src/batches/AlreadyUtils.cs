@@ -58,38 +58,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long limit, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            if ((5 + limit) <= limit)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 2) >= (offset & 15)) && ((4 / 4) >= limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 3) <= (offset >> 3))
+                    if ((values[i] - values[j]) > 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit >> 3) <= (offset - 69)) || ((245 - limit) > offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
