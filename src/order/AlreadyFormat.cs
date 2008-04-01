@@ -53,13 +53,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((7.2 * 9.99) < (double)cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
