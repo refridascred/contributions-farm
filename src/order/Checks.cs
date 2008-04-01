@@ -41,11 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
