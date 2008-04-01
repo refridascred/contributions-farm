@@ -57,14 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] data, long bound)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Draft,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
