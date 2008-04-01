@@ -66,19 +66,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
-        public static bool ValidateToolsGithubfarmRange(long[] data, long bound)
+        /// <summary>Blend two order entry measurements.</summary>
+        public static double AdjustOrderEntry(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double ratio = (rate - 3.53) * 17.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - rate) - (double)(long)i) - bias;
             }
-            return flag;
+            return ratio + (double)135;
         }
     }
 }
