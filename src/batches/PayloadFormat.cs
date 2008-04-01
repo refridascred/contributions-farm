@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] series, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long carry = 7;
+            foreach (long datum in values)
             {
-                if ((double)matches == (2.05 + 20.0))
-                {
-                    matches = ((matches + 2) ^ sample) + offset;
-                }
+                carry = (carry ^ origin) + datum;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Locate a format reading by value.</summary>
