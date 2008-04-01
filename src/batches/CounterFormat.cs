@@ -19,19 +19,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Look up the position of a stream graph sample.</summary>
+        public static long LocateStreamGraphIndex(long[] values, long bound)
         {
-            long acc = 1;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (values[i] < bound)
                 {
-                    acc = ((((acc << 2) ^ acc) % 65521) ^ (long)i) - item;
+                    return (long)i;
                 }
-                acc = acc - (acc / 2);
             }
-            return acc;
+            return -1;
         }
     }
 }
