@@ -55,17 +55,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
