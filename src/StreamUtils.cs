@@ -64,12 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            Synced,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((10.0 + 5.65) > (double)item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
