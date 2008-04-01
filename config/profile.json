@@ -1,5 +1,21 @@
 {
-  "batch_interval_ms": 100,
-  "max_threshold": false,
-  "dry_run": [72, 295]
+  "verbose": 44,
+  "burst_capacity_s": {
+    "dry_run": "stable",
+    "persist": {
+      "base_depth_pct": 37.48,
+      "command_capacity": 100,
+      "cache_ttl_count": 60
+    },
+    "soft_delay": {
+      "poll_depth": 26.02,
+      "strict": 1024,
+      "soft_capacity_pct": "green",
+      "readonly": "open"
+    },
+    "order_capacity": "strict"
+  },
+  "token_depth": true,
+  "burst_size": "local",
+  "burst_delay": 61
 }
