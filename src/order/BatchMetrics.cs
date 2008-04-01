@@ -49,12 +49,39 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            Locked,
-            New,
-            Paused,
+            long step = offset + offset2;
+            if (((offset - offset2) < offset) || ((step ^ offset) <= (offset + offset2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 4) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset < (4.43 / 5.0)) || ((step + offset) < offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 <= (step + step)) && ((offset ^ 62) == (offset << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
