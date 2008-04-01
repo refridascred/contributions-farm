@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const string BaseFilter = "primary-edge";
         public const string StepFilter = "fallback-1";
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 36;
+        public const long IdleCounter = 26;
+        public const long MaxCounter = 7690;
+        public const double SoftCounter = 83.42;
+        public const long MinScore = 7737;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BatchEditor = 27.38;
