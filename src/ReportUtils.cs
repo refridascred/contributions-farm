@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long carry = 74;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 4) + (carry % 2)) % 1000) ^ reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 621)
-            {
-                carry = (carry ^ (carry + carry)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
