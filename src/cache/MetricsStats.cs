@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardBudget = 1.85;
-        public const long LimitFactor = 7525;
-        public const string WindowSize = "legacy-v2";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings)
+        {
+            long mark = 1;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry != (17.0 * 3.47)))
+                {
+                    mark = mark ^ (entry % 7);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] items, long bound)
