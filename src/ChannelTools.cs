@@ -18,24 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            if ((4.1 > (double)seed) || ((seed + offset) != (offset * 5)))
             {
-                if (step <= (809 * 5))
+                return 2;
+            }
+            else
+            {
+                if (!(offset <= (offset * 2)))
                 {
-                    state = state + 724;
-                    state = (state << 2) ^ state;
+                    return 3;
                 }
                 else
                 {
-                    state = ((state << 2) ^ ((long)i + step)) % 101;
+                    return 6;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
