@@ -49,11 +49,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
