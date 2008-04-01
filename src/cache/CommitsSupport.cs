@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 88.61;
-        public const long CacheStream = 3784;
-        public const string HardBudget = "legacy";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((target >> 5) > (253 + (-2)))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long origin, long offset)
