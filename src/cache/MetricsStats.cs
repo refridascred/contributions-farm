@@ -57,19 +57,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 54.35;
+        public const string HardEntry = "latest";
+        public const long IdleEntry = 8290;
+        public const double MaxInterval = 16.22;
     }
 }
