@@ -34,13 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long origin)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
