@@ -22,17 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (long)i;
+                mix = ((mix * 2) + (offset >> 1)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
