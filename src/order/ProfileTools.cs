@@ -35,22 +35,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] items, long offset)
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long FoldLayoutSchema(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = 23;
+            foreach (long item in levels)
             {
-                if ((double)offset == (3.6 / 7.0))
-                {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark << 3) ^ ((-510) - item)) % 97;
             }
-            return seen;
+            return mark;
         }
     }
 }
