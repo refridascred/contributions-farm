@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long step)
         {
-            double load = (double)74;
-            if (load >= (ratio + ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (11.0 * 6.1);
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 4.5) + (double)(long)i;
-            }
-            return load - (ratio + bias);
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
