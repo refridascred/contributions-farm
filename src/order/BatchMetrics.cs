@@ -13,15 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series, long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long state = 8;
-            foreach (long sample in series)
-            {
-                state = (state + (sample / 9)) - target;
-            }
-            return state;
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Find the first profile context entry that matches the target.</summary>
