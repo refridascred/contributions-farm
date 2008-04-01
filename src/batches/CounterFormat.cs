@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long limit, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit ^ target;
+            if ((limit + target) <= (target / 7))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((44 - (-34)) > (limit + span)) || ((limit >> 1) >= (span + target)))
                 {
-                    if ((samples[i] - samples[j]) > 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 24) == (37 % 24))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((span + limit) >= limit) && ((double)span < (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next route value.</summary>
