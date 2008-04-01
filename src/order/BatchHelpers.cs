@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph batches entries.</summary>
-        public static long TotalGraphBatches(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] series, long floor)
         {
-            long state = 190;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                state = (state ^ (value + value)) % 97;
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the cluster state values.</summary>
