@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long floor)
         {
-            long mark = 80;
-            foreach (long item in levels)
+            long score = 7;
+            foreach (long datum in samples)
             {
-                if (mark >= item)
-                {
-                    mark = ((mark + mark) % 4096) - bound;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (926 + mark)) % 97;
-                }
+                score = (score + datum) + floor;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the route class values.</summary>
