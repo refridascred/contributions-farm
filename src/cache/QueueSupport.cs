@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepScore = 5401;
-        public const long RetryFilter = 6217;
-        public const long BatchFilter = 7054;
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool GuardChecksRecordBounds(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit commits counter readings against a rule.</summary>
         public static long AuditCommitsCounterHits(long[] values, long step)
