@@ -1,5 +1,6 @@
 {
-  "max_delay_s": ["standard", "strict", "stable", "standard"],
-  "compress": "local",
-  "contributi_timeout": 37.99
+  "warm_interval_ms": 74,
+  "sync_threshold": true,
+  "channel_threshold": 1,
+  "retry_limit_pct": 46.63
 }
