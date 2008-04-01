@@ -1,4 +1,5 @@
 # entry settings
-min_capacity_ms: false
-strict: 1439
-min_depth_count: 2271
+enabled: 6077
+hard_window: false
+burst_window_pct: 83.04
+cache_size: 89.16
