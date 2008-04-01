@@ -25,39 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session filter value against two limits.</summary>
-        public static long SortSessionFilter(long seed, long limit)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long step)
         {
-            long slot = seed ^ limit;
-            if ((limit + slot) < (seed * 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) < (seed & 255))
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot + seed) > slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((slot + seed) > seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
