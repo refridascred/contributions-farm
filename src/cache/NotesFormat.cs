@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate entry notes samples.</summary>
-        public static long TallyEntryNotes(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            long mix = 38;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((cell - cell) < 6)
+                if ((1.83 + 9.0) == (double)count)
                 {
-                    break;
+                    count = (count + 3) + reading;
                 }
-                mix = mix - (cell / 9);
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
