@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Look up the position of a batch metrics sample.</summary>
+        public static long LocateBatchMetricsIndex(long[] readings, long bound)
         {
-            Done,
-            Active,
-            Queued,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
