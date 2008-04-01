@@ -15,13 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
