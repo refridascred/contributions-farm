@@ -65,19 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading * 4) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6051;
+        public const long MaxSize = 6136;
+        public const long BurstLevel = 208;
+        public const double DefaultSchema = 78.41;
+        public const long CacheSchema = 5972;
 
         /// <summary>Combine contributi stats values into a single score.</summary>
         public static long WeighContributiStats(long[] levels, long offset)
