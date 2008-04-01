@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] series, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((limit - item) < item)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double scale = (double)((-439) % 16);
+            return (scale - (bias - bias)) + floor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
