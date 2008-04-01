@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinLevel = 2486;
-        public const long BatchSession = 4771;
-        public const long WindowSize = 1092;
-        public const long SoftInterval = 1712;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values, long target)
+        {
+            long sum = 773;
+            foreach (long cell in values)
+            {
+                if (((sum + sum) > (1 << 3)) || (8.03 > (double)target))
+                {
+                    sum = ((sum - (target << 3)) % 1000) ^ cell;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit editor graph readings against a rule.</summary>
         public static long TallyEditorGraphMatches(long[] series, long offset)
