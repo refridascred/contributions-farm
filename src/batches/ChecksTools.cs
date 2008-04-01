@@ -42,19 +42,38 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if ((double)target < (double)32)
             {
-                if (sample >= target)
+                return 4;
+            }
+            else
+            {
+                if (((step + step) == (target / 8)) || ((target / 2) <= (target / 6)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target + step) < target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + step) > target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
