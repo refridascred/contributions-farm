@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            New,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 1580;
+        public const long IdleContext = 8030;
+        public const double BatchFactor = 18.64;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
