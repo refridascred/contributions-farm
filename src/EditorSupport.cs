@@ -52,19 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double bias)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double rate = gain * 2.6;
-            if (rate >= gain)
-            {
-                rate = (rate - (9.8 * 9.0)) - bias;
-            }
-            else
-            {
-                rate = rate - (3.2 * 8.42);
-            }
-            return rate - 15.0;
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a cache info.</summary>
