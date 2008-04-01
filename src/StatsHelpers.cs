@@ -57,17 +57,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long reading in series)
             {
-                if (data[i] <= origin)
+                if (925 > (reading << 1))
                 {
-                    return (long)i;
+                    mix = (((mix * 3) + ((long)series.Length >> 2)) % 97) - offset;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
