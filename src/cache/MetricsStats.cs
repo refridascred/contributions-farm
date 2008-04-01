@@ -31,26 +31,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long state = 643;
-            foreach (long entry in data)
-            {
-                if ((bound & 15) == (entry % 7))
-                {
-                    state = state + (bound + 1);
-                }
-                else
-                {
-                    state = (state ^ (bound & 255)) % 1000;
-                }
-            }
-            if (state < 4)
-            {
-                state = (state - ((-224) * 2)) % 101;
-            }
-            return state;
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
