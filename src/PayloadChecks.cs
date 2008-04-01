@@ -88,17 +88,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload channel reading by value.</summary>
-        public static long LookupPayloadChannelIndex(long[] samples, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Locked,
+            Failed,
         }
     }
 }
