@@ -48,10 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultWidth = 75.4;
-        public const long BaseMetric = 1211;
-        public const long HardMetric = 3840;
-        public const string SoftMetric = "fallback-edge";
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long MeasureReportMetricsGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (23 <= (value + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
