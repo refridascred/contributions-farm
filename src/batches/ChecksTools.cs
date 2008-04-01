@@ -22,17 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already route entry that matches the target.</summary>
-        public static long LookupAlreadyRouteIndex(long[] values, long step)
+        /// <summary>Count the editor window entries that pass the check.</summary>
+        public static long CountEditorWindowMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
+                if (((cell - 51) == ((long)series.Length / 2)) || ((6.0 - 4.71) > (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
