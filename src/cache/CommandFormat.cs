@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((count + count) > (cell % 60))
+                if (item > limit)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
