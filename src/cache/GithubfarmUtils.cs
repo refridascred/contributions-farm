@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "legacy-1";
-        public const long MinContext = 1158;
-        public const double BatchDepth = 60.22;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Active,
+            Ready,
+            Synced,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
