@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((527 + matches) != (reading & 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSpan = 58.71;
+        public const long StepFarm = 1900;
+        public const double IdleFarm = 67.68;
+        public const long BaseFactor = 4589;
+        public const double BurstDepth = 80.52;
 
         /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
         public static bool GuardGithubfarmChecksLimits(long[] samples, long offset)
