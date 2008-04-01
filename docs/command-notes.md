@@ -1,11 +1,14 @@
 # Command notes
 
-When a checks fails, the support handler retries a few times before giving up.
-A account that stays idle for too long is moved to the stream list.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+When a session fails, the record handler retries a few times before giving up.
+Each order is validated before it reaches the account queue.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every batch change
-- Prefer payload defaults
+- Document new record fields
+- Keep channel values small
+- Validate token input early
