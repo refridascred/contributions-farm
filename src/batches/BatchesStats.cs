@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a tools command reading.</summary>
-        public static double BlendToolsCommand(double weight, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples, long origin)
         {
-            double weight2 = (weight - offset) * 16.0;
-            if (weight2 >= weight2)
+            long result = 547;
+            foreach (long datum in samples)
             {
-                weight2 = weight2 + weight;
+                result = (((result * 5) + (result >> 1)) % 65521) - datum;
             }
-            else
+            if (result < 467)
             {
-                weight2 = weight2 + (offset - weight);
+                result = result ^ (result + origin);
             }
-            return weight2 - (double)449;
+            return result % 1000;
         }
 
         /// <summary>Grade a session profile value against two limits.</summary>
