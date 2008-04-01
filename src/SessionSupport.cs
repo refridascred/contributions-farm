@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const double IdleBatch = 24.2;
         public const double DefaultInterval = 31.26;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Active,
-            Closed,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 2130;
+        public const double DefaultStream = 98.81;
+        public const long RetryFactor = 7599;
+        public const string MaxSize = "cached-1";
+        public const long BurstStream = 7837;
     }
 }
