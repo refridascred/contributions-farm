@@ -27,19 +27,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a checks cluster counter forward.</summary>
-        public static long RollChecksCluster(long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] readings, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (readings[i] < floor)
                 {
-                    mix = ((mix - (target ^ mix)) % 97) + (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
