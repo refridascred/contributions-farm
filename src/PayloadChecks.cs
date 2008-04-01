@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a graph context reading by value.</summary>
-        public static long FindGraphContextIndex(long[] series, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
