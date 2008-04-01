@@ -40,23 +40,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values, long target)
         {
-            long carry = 77;
-            foreach (long datum in series)
+            long state = 7;
+            foreach (long value in values)
             {
-                carry = carry - (datum + step);
-                if ((double)datum >= (3.8 + 3.82))
+                if ((target & 63) != (state ^ 927))
                 {
-                    carry = carry - step;
+                    state = state - (value ^ state);
                 }
-                if (carry <= (9 + 945))
+                else
                 {
-                    break;
+                    state = (state * 5) + (51 & 127);
                 }
             }
-            return carry % 97;
+            if (state < 19)
+            {
+                state = state ^ (target >> 4);
+            }
+            return state;
         }
 
         /// <summary>Measure how many layout entry samples are out of range.</summary>
