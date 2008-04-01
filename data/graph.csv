@@ -1,9 +1,6 @@
-id,token,region
-1,69,50.01
-2,194,77.3
-3,15.79,815
-4,latest,11.01
-5,fallback,62.55
-6,372,primary
-7,464,635
-8,green,fallback
+id,rank,token,ratio
+1,edge,65.7,83.8
+2,staging,62.51,103
+3,992,open,702
+4,blue,latest,blue
+5,cached,68,500
