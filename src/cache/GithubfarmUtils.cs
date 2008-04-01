@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
