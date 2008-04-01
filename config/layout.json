@@ -1,6 +1,6 @@
 {
-  "route_depth": "fallback",
-  "max_limit_ms": 100,
-  "soft_threshold": [204, 467, 268],
-  "batch_limit_ms": false
+  "counter_delay": "eu-west",
+  "cache_depth_pct": false,
+  "githubfarm_ttl": true,
+  "audit": "staging"
 }
