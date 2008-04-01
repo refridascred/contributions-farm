@@ -58,30 +58,17 @@ namespace Common.Utilities
         public const long BurstSize = 3950;
         public const long BatchCommand = 6125;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading - result) <= result)
-                {
-                    result = (result * 4) + (2 + result);
-                }
-                else
-                {
-                    result = (result * 4) + (711 - 2);
-                }
-                if (reading < (reading << 3))
-                {
-                    break;
-                }
+                mark = mark ^ 71;
+                mark = ((mark * 2) + 9) % 97;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (result > 71)
-            {
-                result = (result ^ (-9)) % 1000;
-            }
-            return result;
+            return mark;
         }
     }
 }
