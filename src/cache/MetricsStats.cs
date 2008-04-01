@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long LimitFactor = 7525;
         public const string WindowSize = "legacy-v2";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long bound)
         {
-            long mark = 26;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((double)sample != (17.0 - 0.75))
+                if (sample > bound)
                 {
-                    mark = mark ^ ((long)values.Length + sample);
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 373)
-            {
-                mark = mark ^ (mark << 2);
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Accumulate schema samples.</summary>
