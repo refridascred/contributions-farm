@@ -23,20 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
-        {
-            long mark = -9;
-            foreach (long cell in readings)
-            {
-                mark = ((mark << 2) ^ (cell / 9)) % 65521;
-            }
-            if (mark < 7)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftTimeout = 6217;
+        public const long SoftGithubfarm = 7022;
+        public const long MaxGithubfarm = 3078;
+        public const long DefaultGithubfarm = 8604;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
