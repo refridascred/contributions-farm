@@ -19,19 +19,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry - (long)i) <= bound)
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
                 {
-                    carry = (carry - (carry ^ 68)) % 255;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
