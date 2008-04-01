@@ -1,8 +1,6 @@
-id,weight,active
-1,592,588
-2,239,525
-3,34.04,fallback
-4,17.63,7.6
-5,156,46
-6,local,97.07
-7,496,26.43
+id,weight,label,level,owner
+1,81.12,24.18,47.81,standard
+2,38.69,strict,236,938
+3,701,standard,31.23,96.8
+4,569,17.16,green,979
+5,91.12,standard,65.63,edge
