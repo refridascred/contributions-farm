@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long seed2)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            if (((double)6 <= (double)seed) || ((seed / 8) >= seed))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.3 - 7.4) != (double)seed2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed2 ^ seed) >= (seed * 2))
+                    if ((items[i] ^ items[j]) == 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
