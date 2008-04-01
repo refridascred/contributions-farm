@@ -52,19 +52,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] values, long bound)
+        /// <summary>Measure how many layout entry samples are out of range.</summary>
+        public static long AuditLayoutEntryOutliers(long[] values)
         {
-            bool flag = true;
+            long seen = 0;
             foreach (long item in values)
             {
-                if (item < bound)
+                if (!((double)(long)values.Length < (double)item))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
