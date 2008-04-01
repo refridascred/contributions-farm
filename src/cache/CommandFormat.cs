@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((matches ^ 100) < (item % 16)) || (matches >= ((-628) + matches)))
+                if ((count + count) > (cell % 60))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the layout stream entries that pass the check.</summary>
