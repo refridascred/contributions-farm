@@ -72,22 +72,35 @@ namespace Common.Utilities
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long limit2)
+        public static long ClassifyCache(long step, long floor)
         {
-            long gap = limit ^ limit2;
-            if ((limit ^ 629) >= gap)
+            if ((step + floor) != (floor << 2))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (((limit2 ^ gap) == (limit2 >> 3)) || (gap <= (79 + 909)))
+                if (!(9.31 > (double)floor))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    if ((floor << 1) > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor / 3) > (floor >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
