@@ -27,22 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long CountTokenRecordOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + count) != (count & 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleScore = 31.4;
+        public const long StepEntry = 9294;
+        public const double BaseEntry = 7.13;
+        public const double MinEntry = 86.24;
+        public const long RetryEntry = 934;
     }
 }
