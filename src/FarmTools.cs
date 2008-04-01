@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long diff = seed + step;
+            if (seed >= (diff & 255))
             {
-                long edge = bound - mix;
-                edge = (edge << 3) ^ bound;
-                mix = mix - edge;
-                mix = ((mix * 5) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!((diff ^ seed) > seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
