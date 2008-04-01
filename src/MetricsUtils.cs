@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const string StepNotes = "stable-edge";
         public const string HardNotes = "standard-v2";
 
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long WeighCounterBuffer(long[] readings)
-        {
-            long total = 26;
-            foreach (long item in readings)
-            {
-                if (((total << 3) < (item - item)) || ((item - total) == (total % 10)))
-                {
-                    total = (total << 2) ^ (item - 44);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSize = 7.38;
+        public const double WindowDepth = 19.98;
+        public const long DefaultWidth = 2065;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
