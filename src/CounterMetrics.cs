@@ -45,21 +45,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
