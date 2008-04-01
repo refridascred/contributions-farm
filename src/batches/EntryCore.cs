@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            Done,
+            Pending,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
