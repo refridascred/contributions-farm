@@ -57,10 +57,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchSize = "legacy-1";
-        public const double BaseBudget = 40.04;
-        public const long BurstNotes = 6184;
-        public const long StepBudget = 432;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Active,
+            Queued,
+            Closed,
+            Synced,
+            Done,
+        }
     }
 }
