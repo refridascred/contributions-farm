@@ -1,8 +1,5 @@
 {
-  "strict": "stable",
-  "metric_ratio": 100,
-  "batch_ttl": 1197,
-  "batches_timeout": 34,
-  "stats_delay": "latest",
-  "audit": 4451
+  "dry_run": true,
+  "audit": 500,
+  "flush_timeout_pct": "eu-west"
 }
