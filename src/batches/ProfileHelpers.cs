@@ -34,11 +34,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long seed2)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            if ((seed2 + seed) > seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (9 < (5 ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed2 % 24) != (seed << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed2 - 9) >= 551)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
