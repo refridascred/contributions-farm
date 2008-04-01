@@ -54,11 +54,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinDepth = 7.18;
-        public const long CacheGraph = 2435;
-        public const long RetryDepth = 6631;
-        public const long WindowFactor = 6412;
-        public const long StepLevel = 7026;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Done,
+            Dropped,
+            Retry,
+        }
     }
 }
