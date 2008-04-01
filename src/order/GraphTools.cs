@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Project the next command context value.</summary>
+        public static double ScaleCommandContext(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)matches < (5.29 * 6.8))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            double drift = floor;
+            return (drift + drift) + ratio;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
