@@ -1,10 +1,11 @@
 # Batch notes
 
-Run the contributi check before changing any commits limits.
-The batches helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every counter by metric.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new account fields
-- Review entry limits each release
-- Log every command change
+- Keep stats values small
+- Validate layout input early
+- Document new filter fields
+- Log every metrics change
