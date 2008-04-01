@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double gain, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double load = span;
-            if (load <= (double)902)
-            {
-                load = load + (double)(-9);
-            }
-            else
-            {
-                load = load + (7.91 - gain);
-            }
-            return load + gain;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a cluster summary.</summary>
