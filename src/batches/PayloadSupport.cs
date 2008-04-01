@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstLevel = 3722;
+        public const double BaseCount = 46.16;
+        public const double BatchLevel = 2.53;
+        public const double RetryBuffer = 62.52;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] samples)
