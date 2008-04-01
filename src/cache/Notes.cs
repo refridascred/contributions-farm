@@ -67,12 +67,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
