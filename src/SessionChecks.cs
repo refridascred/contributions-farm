@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
