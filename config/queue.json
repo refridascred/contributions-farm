@@ -1,6 +1,10 @@
 {
-  "enabled": "eu-west",
-  "idle_depth_s": [169, 77, 240],
-  "flush_delay_pct": true,
-  "stats_ratio": true
+  "notes_window": {
+    "batch_delay_s": "eu-west",
+    "sync_delay": false,
+    "schema_limit": "legacy",
+    "queue_size": 60
+  },
+  "idle_ttl_count": "stable",
+  "warm_limit_s": "strict"
 }
