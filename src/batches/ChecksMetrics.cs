@@ -20,24 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] series, long origin)
         {
-            if (!((3.1 - 4.33) > (double)limit))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.71 - 0.8) > (double)origin)
+                if ((1.52 * 7.9) > (18.0 / 4.0))
                 {
-                    return 7;
+                    matches = ((matches + 2) + datum) + origin;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
