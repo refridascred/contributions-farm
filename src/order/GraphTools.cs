@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command context value.</summary>
-        public static double ScaleCommandContext(double ratio, double floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            double drift = floor;
-            return (drift + drift) + ratio;
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
