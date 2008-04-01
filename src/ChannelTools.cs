@@ -47,22 +47,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Iterate the order graph series from a seed.</summary>
+        public static long SeriesOrderGraph(long limit)
         {
-            long result = -521;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value * 4) > result)
-                {
-                    result = (result - (value << 3)) % 255;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (result > 613)
-            {
-                result = (result ^ (result % 100)) % 255;
-            }
-            return result % 97;
+            return acc;
         }
     }
 }
