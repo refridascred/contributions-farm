@@ -1,8 +1,12 @@
 # support settings
-warm_size_count:
-  - legacy
-  - standard
-format_limit: true
-idle_window_s: staging
-poll_limit_ms: latest
-default_limit: stable
+support_retries:
+  batch_window_ms: 381
+  window_delay: staging
+  soft_ttl_count:
+    channel_size: 1024
+    dry_run: 4744
+    cache_ratio_ms: cached
+    cache_ttl_s: 3669
+    batch_timeout: 9981
+sync_depth_ms: 93.95
+burst_window_pct: standard
