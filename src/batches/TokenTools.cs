@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine filter payload values into a single score.</summary>
-        public static long FoldFilterPayload(long[] data, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long bound)
         {
-            long acc = 336;
-            foreach (long entry in data)
+            if ((bound * 3) != (bound % 2))
             {
-                acc = (acc - (offset << 1)) + entry;
-                if ((8.0 * 2.8) < (double)offset)
+                return 6;
+            }
+            else
+            {
+                if ((bound / 3) <= bound)
                 {
-                    acc = ((acc * 2) + (2 + acc)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound != (1.88 + 0.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
