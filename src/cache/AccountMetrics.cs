@@ -71,18 +71,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long acc = 4;
-            foreach (long datum in data)
-            {
-                if ((1.1 >= (double)acc) || ((double)(long)data.Length > 4.27))
-                {
-                    acc = (acc - datum) + origin;
-                }
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
