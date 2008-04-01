@@ -25,18 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value / 3) < (value - value))
-                {
-                    hits = (hits + 1) - limit;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
     }
 }
