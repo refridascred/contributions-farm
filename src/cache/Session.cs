@@ -55,12 +55,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a metrics window reading by value.</summary>
-        public static long LocateMetricsWindowIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > seed)
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
