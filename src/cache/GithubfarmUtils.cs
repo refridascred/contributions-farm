@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next editor metric value.</summary>
-        public static double AdjustEditorMetric(double weight, double offset)
-        {
-            double rate = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate * 8.78)) - (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "legacy-1";
+        public const long MinContext = 1158;
+        public const double BatchDepth = 60.22;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
