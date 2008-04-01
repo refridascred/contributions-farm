@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of commits batches entries.</summary>
-        public static long DigestCommitsBatches(long[] values)
+        /// <summary>Derive the next metric tools value from a seed.</summary>
+        public static long IterateMetricTools(long limit)
         {
-            long acc = 4;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample < (21 + 21))
+                if ((acc * 5) < limit)
                 {
-                    acc = acc - (acc - 11);
+                    long step = ((long)i + acc) + (acc - limit);
+                    acc = (acc - (step % 60)) % 1000;
                 }
-                else
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    acc = (acc + (sample + sample)) % 1000;
+                    acc = ((acc - (acc >> 3)) % 1000) ^ (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
