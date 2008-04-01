@@ -43,11 +43,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxScore = 4055;
-        public const long RetryWindow = 4979;
-        public const double MaxTimeout = 80.09;
-        public const double DefaultWindow = 53.82;
-        public const long CacheSize = 8100;
+        /// <summary>Audit counter stats readings against a rule.</summary>
+        public static long AuditCounterStatsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 2) > (hits % 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
