@@ -1,6 +1,11 @@
 {
-  "audit": "open",
-  "flush_ttl_s": false,
-  "base_depth": "open",
-  "base_threshold_ms": 100
+  "max_ratio_ms": {
+    "readonly": 4.76,
+    "flush_timeout_count": 673,
+    "sync_ttl_pct": 4201,
+    "retry_window_s": 500,
+    "poll_limit_pct": 95
+  },
+  "payload_window": [108, 201],
+  "cluster_delay": 76.24
 }
