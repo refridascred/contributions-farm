@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window channel entries that pass the check.</summary>
-        public static long MeasureWindowChannelOutliers(long[] series, long bound)
+        /// <summary>Accumulate buffer notes samples.</summary>
+        public static long TallyBufferNotes(long[] items)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long result = -5;
+            foreach (long entry in items)
             {
-                if (51 < (count / 7))
+                if ((36 / 3) < (entry + result))
                 {
-                    count = ((count + 3) - datum) + bound;
+                    result = (result + (result + result)) % 65521;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Count the report metrics entries that pass the check.</summary>
