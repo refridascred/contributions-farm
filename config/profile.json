@@ -1,6 +1,8 @@
 {
-  "githubfarm_capacity": "blue",
-  "stream_window": "open",
-  "base_retries_s": 100,
-  "retry_timeout": [42, 142, 75]
+  "batch_interval": 71.55,
+  "cache_ratio_ms": "local",
+  "report_ttl": true,
+  "cache_limit_pct": 71,
+  "min_timeout": 0.5,
+  "cache_retries_count": 79
 }
