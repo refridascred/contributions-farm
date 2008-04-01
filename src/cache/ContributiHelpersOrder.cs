@@ -47,12 +47,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] series, long bound)
+        /// <summary>Look up the position of a route already sample.</summary>
+        public static long LookupRouteAlreadyIndex(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= bound)
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
