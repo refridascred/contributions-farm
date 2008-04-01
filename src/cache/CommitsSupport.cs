@@ -50,18 +50,11 @@ namespace Common.Utilities
             return rate + (double)80;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (447 >= (matches / 8))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up cluster report samples.</summary>
