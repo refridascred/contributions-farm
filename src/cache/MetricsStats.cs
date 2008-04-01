@@ -57,25 +57,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = 1;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < (8.3 * 8.59))
-                {
-                    acc = (acc - (acc >> 4)) % 4096;
-                    acc = (acc - cell) % 4096;
-                }
-                acc = ((acc * 3) + (acc % 16)) % 65521;
-                acc = (acc + (cell >> 1)) % 97;
-            }
-            if (acc > 91)
-            {
-                acc = (acc - (acc ^ acc)) % 101;
-            }
-            return acc;
+            Closed,
+            Idle,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the context phase values.</summary>
