@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long bound)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)bound < (5.0 * 4.06))
+                {
+                    state = ((state * 3) + (-1)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
