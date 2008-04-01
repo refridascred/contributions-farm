@@ -52,12 +52,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6051;
-        public const long MaxSize = 6136;
-        public const long BurstLevel = 208;
-        public const double DefaultSchema = 78.41;
-        public const long CacheSchema = 5972;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
         public static long WeighContributiStats(long[] levels, long offset)
