@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 38.07;
-        public const long StepRatio = 8806;
-        public const long RetrySpan = 1976;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Synced,
+            Stale,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
