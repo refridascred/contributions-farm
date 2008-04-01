@@ -11,26 +11,22 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long DigestReportBuffer(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples, long target)
         {
-            long sum = 8;
-            foreach (long datum in readings)
+            long state = 9;
+            foreach (long item in samples)
             {
-                if (((sum + 268) >= datum) && ((double)datum <= 1.0))
+                if ((89 + state) >= (target + item))
                 {
-                    sum = sum ^ (datum ^ sum);
-                }
-                if (5.58 < 5.27)
-                {
-                    sum = (sum << 3) ^ (175 + datum);
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum >> 4)) % 97;
+                    state = state ^ target;
                 }
             }
-            return sum;
+            if (state < (-53))
+            {
+                state = state ^ (target % 64);
+            }
+            return state;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
