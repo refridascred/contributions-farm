@@ -20,25 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] data)
         {
-            long edge = seed - floor;
-            if (edge < (edge << 2))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.1 / 4.0) > (double)floor)
+                if (!((cell < (cell ^ hits)) && ((double)hits <= (double)21)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
