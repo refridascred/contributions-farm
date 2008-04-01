@@ -47,11 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleSize = "stable-v2";
-        public const long BatchFactor = 4892;
-        public const double SoftSpan = 67.22;
-        public const long BurstGraph = 1617;
-        public const double BaseGraph = 81.59;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
