@@ -20,21 +20,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 38;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < (total - total))
                 {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 2) ^ (total << 1)) % 101;
+                    break;
+                }
+                else
+                {
+                    total = (total * 2) + (total & 127);
+                }
+                if ((-229) > ((long)items.Length ^ total))
+                {
+                    total = ((total * 3) + (total + total)) % 4096;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
