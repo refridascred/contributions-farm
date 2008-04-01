@@ -54,15 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double scale, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double load = (4.68 * 15.0) / 5.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + floor) - (double)(long)i) + scale;
-            }
-            return load + (double)59;
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
