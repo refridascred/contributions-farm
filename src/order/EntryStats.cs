@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long step)
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long DigestBatchesSupport(long[] series)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            long score = 63;
+            foreach (long value in series)
             {
-                acc = acc - (datum + acc);
-                if ((acc * 2) == (datum >> 2))
+                for (int i = 0; i < 9; i++)
                 {
-                    acc = ((acc * 2) + datum) % 4096;
+                    score = ((score + score) - (long)i) ^ value;
                 }
-                else
+                score = ((score * 3) + (7 + score)) % 65521;
+                if (!((18.0 - 2.7) <= (double)score))
                 {
-                    acc = (acc << 2) ^ (datum ^ step);
+                    break;
                 }
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
