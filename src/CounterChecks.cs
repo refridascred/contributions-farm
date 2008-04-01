@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate commits account readings against a bound.</summary>
+        public static bool CheckCommitsAccountRange(long[] series, long floor)
         {
-            Done,
-            Retry,
-            Queued,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stats level values.</summary>
