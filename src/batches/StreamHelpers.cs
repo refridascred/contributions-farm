@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long result = 999;
+            foreach (long entry in values)
             {
-                state = state - state;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)result > (1.0 - 5.65))
+                {
+                    result = (((result * 2) + (-628)) % 255) - entry;
+                }
             }
-            return state;
+            if (result > 10)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Project the next format value.</summary>
