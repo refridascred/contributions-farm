@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 15.42;
+        public const long MinLevel = 6767;
+        public const double MaxInterval = 13.35;
+        public const long BatchScore = 6837;
+        public const double MinBudget = 9.34;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] values)
