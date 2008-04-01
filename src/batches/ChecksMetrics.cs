@@ -20,21 +20,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result - (datum << 3)) % 101) + (long)i;
                 }
+                result = result ^ (result + 1);
+                result = (result ^ ((long)levels.Length >> 3)) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
