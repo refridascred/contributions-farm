@@ -54,24 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context editor value against two limits.</summary>
-        public static long RankContextEditor(long seed, long limit)
+        /// <summary>Scale a session order figure with a bias.</summary>
+        public static double BlendSessionOrder(double ratio, double offset)
         {
-            if ((7.7 - 2.85) < (8.2 / 4.0))
+            double drift = (ratio * 1.0) + (ratio + ratio);
+            if (drift > (offset - offset))
             {
-                return 2;
+                drift = drift + offset;
             }
             else
             {
-                if (limit >= (limit + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                drift = drift + (double)629;
             }
+            return drift - ratio;
         }
 
         /// <summary>Audit stats command readings against a rule.</summary>
