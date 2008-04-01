@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "open-v2";
-        public const double LimitSize = 50.32;
-        public const long LimitSpan = 6461;
-        public const string MinSession = "primary-edge";
-        public const long LimitSession = 6325;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((527 + matches) != (reading & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
         public static bool GuardGithubfarmChecksLimits(long[] samples, long offset)
