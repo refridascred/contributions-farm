@@ -47,16 +47,14 @@ namespace Common.Utilities
         public const long DefaultCount = 6376;
         public const long StepFilter = 8988;
 
-        /// <summary>Iterate the layout account series from a seed.</summary>
-        public static long RollLayoutAccount(long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry - (long)i;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Pending,
+            Ready,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
