@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 6042;
-        public const long StepBudget = 4627;
-        public const long WindowBatch = 8876;
-        public const double LimitBatch = 80.77;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
