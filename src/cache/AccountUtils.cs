@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (36 >= anchor)
+                {
+                    anchor = anchor - ((long)i % 7);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                    anchor = (anchor + (anchor ^ limit)) % 255;
+                }
+                if (!!((limit >> 3) < (limit << 1)))
+                {
+                    anchor = ((anchor << 3) ^ (long)i) % 4096;
+                    anchor = (anchor * 3) + (494 + limit);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
