@@ -40,11 +40,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseDepth = 35.67;
-        public const double MaxScore = 29.86;
-        public const long StepMetric = 3739;
-        public const long SoftInterval = 2285;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 37.76;
+        public const string StepRatio = "strict-v2";
+        public const long HardRecord = 9191;
 
         /// <summary>Validate cache batch readings against a bound.</summary>
         public static bool GuardCacheBatchLimits(long[] samples, long offset)
