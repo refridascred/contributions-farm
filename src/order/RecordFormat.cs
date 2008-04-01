@@ -44,18 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of layout batches readings.</summary>
-        public static long MatchLayoutBatchesCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] series, long seed)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((count % 7) > count))
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) ^ item) + seed;
                 }
             }
             return count;
