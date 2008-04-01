@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long limit2)
         {
-            Draft,
-            Retry,
-            Stale,
+            if ((limit - limit) >= (limit2 % 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 << 1) > 302) || (limit2 >= (limit2 * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
