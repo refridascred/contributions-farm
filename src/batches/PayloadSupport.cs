@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double BatchLevel = 2.53;
         public const double RetryBuffer = 62.52;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 28;
+            foreach (long reading in readings)
             {
-                if ((seen >> 1) >= cell)
+                if (((origin * 4) == (581 + origin)) || (carry <= (carry >> 1)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry + carry) % 101) - reading;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Find the first cache entry entry that matches the target.</summary>
