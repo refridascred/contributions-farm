@@ -18,19 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] items, long origin)
         {
-            long sum = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 4) + (sample & 63)) % 4096;
+                if (count >= (origin / 9))
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ origin) % 4096;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
