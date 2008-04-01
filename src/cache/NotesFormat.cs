@@ -30,12 +30,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Idle,
-            Failed,
-            Retry,
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
