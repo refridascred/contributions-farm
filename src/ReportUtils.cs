@@ -59,10 +59,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftLevel = 9123;
-        public const long CacheRecord = 9585;
-        public const string DefaultRecord = "alpha-v2";
-        public const long WindowRecord = 3027;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardFactor = 905;
+        public const string MinFactor = "stable-v2";
+        public const long BurstToken = 3858;
     }
 }
