@@ -34,18 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long CountToolsSchemaOutliers(long[] samples)
+        /// <summary>Match up command order samples.</summary>
+        public static long PairCommandOrderCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-1) & 7) > matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - value;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
