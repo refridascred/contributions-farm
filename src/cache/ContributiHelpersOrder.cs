@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples, long floor)
-        {
-            long sum = 432;
-            foreach (long value in samples)
-            {
-                sum = (((sum * 5) + ((-9) ^ sum)) % 4096) + value;
-            }
-            if (sum > 5)
-            {
-                sum = (sum - (floor + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7591;
+        public const string HardFormat = "strict-1";
+        public const long DefaultWidth = 385;
+        public const long DefaultSpan = 6769;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
