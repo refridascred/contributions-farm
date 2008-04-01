@@ -71,9 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheTimeout = "fallback-1";
-        public const long SoftCommand = 8886;
-        public const long BatchCommand = 7711;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
