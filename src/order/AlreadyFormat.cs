@@ -55,13 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long target)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
