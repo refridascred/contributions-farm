@@ -28,13 +28,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long state = origin;
+            long state = floor;
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (!((state - floor) == (46 - floor)))
+                {
+                    state = state - (85 & 3);
+                }
+                else
+                {
+                    state = (state - state) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
             return state;
         }
