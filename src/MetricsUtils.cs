@@ -40,18 +40,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] samples, long floor)
         {
-            long carry = -743;
-            foreach (long item in readings)
+            long score = 56;
+            foreach (long datum in samples)
             {
-                if (item < (carry - item))
-                {
-                    carry = (carry * 2) + bound;
-                }
+                score = (((score << 2) ^ (score - 57)) % 101) - floor;
+                score = score ^ (datum - score);
             }
-            return carry % 65521;
+            return score % 1000;
         }
     }
 }
