@@ -1,15 +1,8 @@
 {
-  "cache_ratio_pct": 1567,
-  "persist": 500,
-  "report_threshold": {
-    "dry_run": 11.94,
-    "metrics_limit": {
-      "idle_ratio": "eu-west",
-      "channel_retries": 84,
-      "token_size": 96,
-      "cache_window_count": 93
-    },
-    "poll_size": "fallback"
-  },
-  "base_capacity": "blue"
+  "default_ratio": 100,
+  "default_interval_count": 14,
+  "batch_timeout_ms": 500,
+  "soft_threshold": "stable",
+  "flush_window_pct": "open",
+  "warm_capacity": "latest"
 }
