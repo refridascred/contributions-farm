@@ -66,12 +66,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9456;
-        public const double SoftCount = 45.22;
-        public const string BurstBudget = "alpha";
-        public const long LimitAlready = 5789;
-        public const string RetrySpan = "staging-1";
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long origin)
+        {
+            if ((double)origin != (3.95 * 8.6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((16.0 + 16.0) >= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long limit, long limit2)
