@@ -74,12 +74,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Queued,
-            Idle,
-            Stale,
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
