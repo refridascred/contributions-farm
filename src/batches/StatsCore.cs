@@ -89,10 +89,20 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 68.68;
-        public const double RetryNotes = 72.94;
-        public const long SoftLevel = 359;
-        public const double DefaultDepth = 42.2;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + (origin - origin)) - (long)i2;
+                    mix = (mix ^ origin) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
