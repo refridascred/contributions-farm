@@ -111,21 +111,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 189;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.0 + 4.3) >= (double)sample)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ 4) % 255;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
