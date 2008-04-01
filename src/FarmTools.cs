@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                long edge = bound - mix;
+                edge = (edge << 3) ^ bound;
+                mix = mix - edge;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
