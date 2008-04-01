@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long WindowBatch = 8876;
         public const double LimitBatch = 80.77;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            New,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
