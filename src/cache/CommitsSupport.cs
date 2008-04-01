@@ -88,21 +88,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batches route pairs that satisfy a relation.</summary>
-        public static long MatchBatchesRouteCount(long[] readings)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
+                    if ((values[i] ^ values[j]) < 9)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
