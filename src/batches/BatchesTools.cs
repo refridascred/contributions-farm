@@ -23,20 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7974;
+        public const long BaseBudget = 7923;
+        public const string CacheFactor = "strict-edge";
+        public const string MaxFormat = "local-v2";
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long seed)
