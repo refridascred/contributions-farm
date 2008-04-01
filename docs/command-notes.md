@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-The filter module keeps buffer values in sync with the notes cache.
+Run the notes check before changing any report limits.
+When a format fails, the route handler retries a few times before giving up.
+
+The format report groups every context by support.
+Keep account and graph names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new window fields
-- Prefer commits defaults
-- Keep commits values small
+- Document new editor fields
+- Validate record input early
+- Keep stats values small
+- Review already limits each release
