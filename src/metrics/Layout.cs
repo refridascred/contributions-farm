@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftRatio = 9639;
-        public const long WindowBatch = 9441;
-        public const long BurstInterval = 603;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long bound)
