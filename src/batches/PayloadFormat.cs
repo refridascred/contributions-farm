@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long step)
+        /// <summary>Project the next metrics stats value.</summary>
+        public static double ScaleMetricsStats(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = gain;
+            if (gain2 < (double)(-988))
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (gain2 * 3.4)) - bias;
             }
-            return -1;
+            return gain2 + (gain / 8.0);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
