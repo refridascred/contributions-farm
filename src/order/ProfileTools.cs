@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] levels, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 87;
+            foreach (long item in samples)
             {
-                if ((target >> 1) < (target + tally))
+                if ((item << 2) < (anchor - anchor))
                 {
-                    tally = (tally + 2) - item;
+                    anchor = ((anchor << 3) ^ anchor) % 101;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit editor graph readings against a rule.</summary>
