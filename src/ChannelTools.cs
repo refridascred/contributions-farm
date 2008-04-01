@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long seed)
-        {
-            if ((4.1 > (double)seed) || ((seed + offset) != (offset * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(offset <= (offset * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6722;
+        public const double MaxDepth = 69.04;
+        public const double BaseNotes = 46.82;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string SoftInterval = "standard-v2";
