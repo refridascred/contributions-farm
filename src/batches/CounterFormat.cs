@@ -43,21 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)step < (14.0 - 8.73)))
                 {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
