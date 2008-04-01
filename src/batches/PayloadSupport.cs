@@ -20,10 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2019;
-        public const double LimitDepth = 38.45;
-        public const long BatchScore = 9352;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Dropped,
+            New,
+            Done,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
