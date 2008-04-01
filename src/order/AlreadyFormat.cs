@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits >= 5) && (9 >= (hits * 5)))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next contributi value.</summary>
