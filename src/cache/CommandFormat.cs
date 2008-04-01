@@ -34,14 +34,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long limit)
         {
-            Dropped,
-            Active,
-            Idle,
-            Stale,
-            New,
+            if (!((60 << 2) <= floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((390 - floor) <= (limit - 86))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
