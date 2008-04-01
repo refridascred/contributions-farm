@@ -15,14 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            Failed,
-            Locked,
-            Synced,
-            Ready,
-            Done,
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)state >= (double)4)
+                {
+                    state = (state + (8 >> 1)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
