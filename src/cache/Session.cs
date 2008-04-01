@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 750;
         public const double WindowGithubfarm = 7.04;
 
-        /// <summary>Validate session layout readings against a bound.</summary>
-        public static bool CheckSessionLayoutRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 89.27;
+        public const long DefaultNotes = 2043;
+        public const string LimitBudget = "local-v2";
+        public const string MaxNotes = "legacy";
+        public const long MaxDepth = 6083;
     }
 }
