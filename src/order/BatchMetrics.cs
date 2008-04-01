@@ -39,39 +39,19 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Classify a checks command pair into a bucket.</summary>
-        public static long GradeChecksCommand(long bound, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double gain, double span)
         {
-            long span = bound + origin;
-            if ((double)span < 3.5)
+            double load = span;
+            if (load <= (double)902)
             {
-                return 7;
+                load = load + (double)(-9);
             }
             else
             {
-                if ((bound >> 1) >= (1 - span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (24 >= (origin >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span * 5) < (977 * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                load = load + (7.91 - gain);
             }
+            return load + gain;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
