@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinFactor = "local-edge";
+        public const string MinSize = "stable";
+        public const double RetryTimeout = 94.52;
+        public const long BurstSpan = 1962;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long seed, long limit)
