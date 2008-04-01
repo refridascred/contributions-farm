@@ -29,11 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long sum = 77;
+            foreach (long value in data)
+            {
+                sum = ((sum + (long)data.Length) % 4096) + value;
+            }
+            return sum;
         }
 
         /// <summary>Rank format input into a small class.</summary>
