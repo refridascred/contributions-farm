@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] values, long step)
+        /// <summary>Rank account format input into a small class.</summary>
+        public static long BucketAccountFormat(long offset, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            long edge = offset ^ floor;
+            if ((edge + 9) != (edge + edge))
             {
-                if (value >= step)
+                return 5;
+            }
+            else
+            {
+                if ((double)edge != (1.6 - 9.0))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the layout status values.</summary>
