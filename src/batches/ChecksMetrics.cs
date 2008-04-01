@@ -34,11 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
