@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            double bias = 9.3;
+            if (bias <= ratio)
+            {
+                bias = (bias - ratio) - floor;
+            }
+            return bias - (double)(-66);
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
