@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long DigestAlreadyCounter(long[] series, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = 58;
-            foreach (long cell in series)
-            {
-                mix = ((mix + (mix - cell)) % 97) - bound;
-            }
-            return mix;
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
