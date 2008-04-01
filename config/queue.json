@@ -1,25 +1,8 @@
 {
-  "compress": [172, 81, 130, 48],
-  "cache_interval_ms": {
-    "readonly": 60,
-    "retry_timeout": {
-      "cache_limit": true,
-      "dry_run": "local",
-      "buffer_capacity": 9,
-      "poll_interval_pct": 55,
-      "hard_timeout": true,
-      "burst_ttl_ms": 87
-    },
-    "support_ratio": ["fallback", "legacy"],
-    "audit": 84.21,
-    "warm_timeout": [72, 375, 154]
-  },
-  "idle_interval": {
-    "filter_ttl": ["fallback", "primary"],
-    "burst_retries": [483, 346, 197],
-    "hard_limit": "fallback",
-    "max_retries_s": "staging"
-  },
-  "idle_retries_count": 31.96,
-  "soft_window_count": "primary"
+  "min_timeout_count": "staging",
+  "hard_timeout_s": "fallback",
+  "enabled": 9556,
+  "persist": 98.86,
+  "batch_threshold_ms": 6013,
+  "base_ratio_s": "standard"
 }
