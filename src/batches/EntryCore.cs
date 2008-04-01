@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = bound + bound2;
+            if (slot < (51 << 1))
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 - bound) >= (bound2 - bound2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((slot + 85) >= 132)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (slot >= (slot * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
