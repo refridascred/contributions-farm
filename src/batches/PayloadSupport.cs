@@ -40,12 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] readings, long floor)
         {
-            Active,
-            Stale,
-            Locked,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
