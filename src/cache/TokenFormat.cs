@@ -31,12 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 9234;
+        public const double SoftBudget = 83.66;
+        public const string BaseLevel = "latest-1";
     }
 }
