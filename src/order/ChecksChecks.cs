@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of already stream readings.</summary>
+        public static long DigestAlreadyStream(long[] series)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long total = 327;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total * 5) + ((long)i / 7);
+                }
+                total = total ^ total;
+                total = ((total << 2) ^ (item - total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
