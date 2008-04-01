@@ -34,11 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell < (2.0 - 13.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
