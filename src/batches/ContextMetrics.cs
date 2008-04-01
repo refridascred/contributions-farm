@@ -10,25 +10,11 @@ namespace Common.Utilities
         public const double StepBatches = 44.95;
         public const double HardBatches = 10.39;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long floor, long step)
-        {
-            if (!(floor > (63 / 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step >= 0.86) && ((double)floor > (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6735;
+        public const long DefaultAccount = 1640;
+        public const long WindowSpan = 6625;
+        public const long DefaultSpan = 4386;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
