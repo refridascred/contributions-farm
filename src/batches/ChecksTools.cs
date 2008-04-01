@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)score <= (15.0 - 7.0)) || (bound < (score * 5)))
-                {
-                    score = score + (bound % 7);
-                    score = ((score << 3) ^ (score % 12)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 32.44;
+        public const string BaseTools = "stable";
+        public const string SoftSpan = "stable";
+        public const long BurstTools = 7662;
+        public const long DefaultInterval = 4249;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double rate, double floor)
