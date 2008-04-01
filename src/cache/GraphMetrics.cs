@@ -13,17 +13,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] items, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 948;
+            foreach (long entry in samples)
             {
-                if (items[i] < origin)
+                if (entry <= mix)
                 {
-                    return (long)i;
+                    mix = (mix - mix) % 255;
+                }
+                else
+                {
+                    mix = (mix - (entry - mix)) % 101;
+                }
+                if (mix > ((long)samples.Length + (long)samples.Length))
+                {
+                    mix = (mix * 3) + entry;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
