@@ -65,13 +65,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long FoldOrderAccount(long[] readings, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long mix = 21;
+            foreach (long cell in readings)
+            {
+                if ((cell & 7) >= (cell % 60))
+                {
+                    mix = ((mix ^ (mix ^ cell)) % 65521) - origin;
+                }
+                else
+                {
+                    mix = (mix ^ (mix * 5)) % 65521;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
