@@ -48,9 +48,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8516;
-        public const long MaxFactor = 1766;
-        public const double BatchEntry = 98.94;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
