@@ -47,11 +47,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSpan = "standard-1";
-        public const long SoftCluster = 2741;
-        public const long MinCluster = 8568;
-        public const double HardCluster = 80.88;
-        public const long HardScore = 1128;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits + entry) < (entry + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
