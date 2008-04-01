@@ -51,19 +51,14 @@ namespace Common.Utilities
             return bias2 - (9.0 - span);
         }
 
-        /// <summary>Validate filter support readings against a bound.</summary>
-        public static bool GuardFilterSupportRange(long[] samples, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Pending,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a token stats.</summary>
