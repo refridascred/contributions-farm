@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 7827;
-        public const double CacheFactor = 25.09;
-        public const double StepTimeout = 87.66;
-        public const long WindowRecord = 7678;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 4645;
+        public const string DefaultFactor = "local-1";
+        public const long MaxCount = 4460;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandBounds(long[] data, long limit)
