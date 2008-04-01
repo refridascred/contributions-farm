@@ -22,39 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long seed)
         {
-            long cur = offset - floor;
-            if ((double)4 == (double)cur)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (5.0 - 9.65))
+                if (series[i] < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset * 5) > floor) && ((double)offset > (3.2 / 8.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((cur + cur) >= (cur + offset)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
