@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long WindowBatch = 8876;
         public const double LimitBatch = 80.77;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] data, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((4.01 + 6.15) == (double)bound)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
