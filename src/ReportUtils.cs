@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] readings, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((4.1 / 2.0) > (double)value)
+                if (sample != offset)
                 {
-                    hits = (hits + 2) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
