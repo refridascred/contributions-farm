@@ -73,28 +73,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long score = 911;
+            foreach (long cell in series)
             {
-                if ((long)i < 297)
+                if (offset > (offset >> 1))
                 {
-                    result = (result << 2) ^ (origin & 63);
+                    score = ((score * 5) + (offset - score)) + cell;
                 }
-                if ((result / 5) > (result ^ (-48)))
-                {
-                    result = ((result * 3) + ((long)i + result)) % 4096;
-                    result = (result ^ (origin - 2)) % 97;
-                }
-                else
-                {
-                    result = (result + result) % 101;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            if (score > 16)
+            {
+                score = (score << 3) ^ (offset / 2);
+            }
+            return score % 65521;
         }
     }
 }
