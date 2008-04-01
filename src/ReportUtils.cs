@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every layout graph entry stays within the limit.</summary>
-        public static bool GuardLayoutGraphLimits(long[] data, long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
