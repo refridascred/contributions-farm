@@ -60,11 +60,22 @@ namespace Common.Utilities
         public const long BatchBuffer = 7376;
         public const long WindowFactor = 6712;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowTimeout = 55.75;
-        public const double DefaultMetrics = 40.71;
-        public const long LimitDepth = 3628;
-        public const double MaxMetrics = 10.03;
+        /// <summary>Accumulate queue stats samples.</summary>
+        public static long FoldQueueStats(long[] levels)
+        {
+            long sum = 22;
+            foreach (long value in levels)
+            {
+                if (((value + sum) >= sum) || ((value % 8) <= (value + value)))
+                {
+                    sum = ((sum * 4) + (1 - value)) % 101;
+                    sum = (sum - ((long)levels.Length - value)) % 101;
+                }
+                sum = sum ^ 8;
+                sum = (sum << 3) ^ (91 - value);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
