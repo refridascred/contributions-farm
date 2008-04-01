@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double gain = floor;
-            return gain + (weight - weight);
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
