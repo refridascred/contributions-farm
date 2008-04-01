@@ -23,19 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes counter values into a single score.</summary>
-        public static long DigestNotesCounter(long[] readings, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long bound, long bound2)
         {
-            long acc = 165;
-            foreach (long item in readings)
+            if (((bound >> 4) <= 83) || ((bound2 / 8) <= bound2))
             {
-                acc = acc - (step + item);
+                return 3;
             }
-            if (acc > 43)
+            else
             {
-                acc = acc ^ (step + step);
+                if ((bound + bound2) <= (bound >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + bound) != ((-2) - bound2)) || ((bound + bound) >= (538 - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 6) <= bound2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Hold a report header.</summary>
