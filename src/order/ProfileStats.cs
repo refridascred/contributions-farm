@@ -29,18 +29,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (!((limit * 5) != (limit + limit)))
             {
-                if ((4 << 1) == (tally + target))
+                return 4;
+            }
+            else
+            {
+                if ((55 >= seed) && ((double)limit < (5.9 - 0.7)))
                 {
-                    tally = (tally + 2) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
