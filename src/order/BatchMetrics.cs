@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long seed)
+        /// <summary>Combine commits checks values into a single score.</summary>
+        public static long TotalCommitsChecks(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long anchor = -33;
+            foreach (long value in samples)
             {
-                if (item > seed)
+                if (!(value > anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (value - value)) % 65521;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
