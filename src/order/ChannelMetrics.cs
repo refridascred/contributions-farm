@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= seed)
+                if ((double)hits <= (9.9 * 7.81))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ cell) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
