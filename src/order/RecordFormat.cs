@@ -50,21 +50,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long DigestContributiGraph(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 2) + (mix ^ mix)) - cell;
             }
-            return hits;
+            if (mix > 1)
+            {
+                mix = (mix * 4) + ((long)samples.Length + mix);
+            }
+            return mix;
         }
     }
 }
