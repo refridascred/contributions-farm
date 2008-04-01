@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = ratio * 4.0;
+            return (gain - gain) + offset;
         }
 
         /// <summary>Combine stats route values into a single score.</summary>
