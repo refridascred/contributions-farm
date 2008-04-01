@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (!((24 >= (count >> 1)) && ((count % 97) < count)))
+                if (entry < step)
                 {
-                    count = (count + 1) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a report summary.</summary>
