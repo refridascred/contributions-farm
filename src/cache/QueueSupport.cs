@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Failed,
-            Retry,
-            Active,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSize = 2160;
+        public const long DefaultCommits = 1610;
+        public const double WindowCommits = 81.17;
+        public const double DefaultSpan = 51.34;
+        public const double BaseCommits = 74.95;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
