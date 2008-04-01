@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the editor stream series from a seed.</summary>
-        public static long SeriesEditorStream(long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix + (limit / 7)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a context record.</summary>
