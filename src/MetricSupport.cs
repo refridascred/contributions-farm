@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches + matches) != (192 * 2))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every account queue entry stays within the limit.</summary>
