@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftWidth = 4647;
-        public const long DefaultLayout = 2328;
-        public const string CacheLayout = "standard-v2";
-        public const long HardBudget = 6981;
+        /// <summary>Compare every pair of format editor readings.</summary>
+        public static long CompareFormatEditorCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
