@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a checks cluster figure with a bias.</summary>
-        public static double BlendChecksCluster(double gain, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
         {
-            double gain2 = gain;
-            if (gain2 <= (double)8)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 - gain2;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (offset + 18.0)) + (double)(long)i;
-            }
-            return gain2 - (double)632;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
