@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Run the stats check before changing any account limits.
-The session module keeps route values in sync with the stats cache.
-
-Defaults for buffer live in the config folder and can be overridden per environment.
-When a layout fails, the stream handler retries a few times before giving up.
+Use githubfarm settings to tune how often channel data is refreshed.
+Each checks is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Validate counter input early
-- Keep commits values small
-- Review stream limits each release
-- Log every format change
+- Prefer session defaults
+- Review command limits each release
+- Keep batches values small
+- Validate route input early
