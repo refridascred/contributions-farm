@@ -81,18 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = 52;
-            foreach (long sample in readings)
-            {
-                if ((7.4 - 11.0) < (double)mark)
-                {
-                    mark = (mark << 2) ^ sample;
-                }
-            }
-            return mark;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
