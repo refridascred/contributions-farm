@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const string WindowSchema = "staging";
         public const long CacheScore = 8007;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (333 >= (cell * 4))
+                if ((-4) <= ((long)data.Length % 7))
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
