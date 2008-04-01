@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Closed,
-            Done,
             Draft,
-            Paused,
-            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit queue channel readings against a rule.</summary>
