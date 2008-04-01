@@ -27,13 +27,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "legacy-edge";
+        public const long HardSupport = 4208;
+        public const double MaxSpan = 41.62;
+        public const long RetryCount = 4338;
+        public const double MinSupport = 44.65;
     }
 }
