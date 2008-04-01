@@ -51,31 +51,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
-            if ((seed % 16) != (8 + limit))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed * 5) == (seed + seed)))
+                if (((double)sample >= (5.8 / 9.0)) || ((double)sample < (17.0 * 0.55)))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (limit <= (seed & 15))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
