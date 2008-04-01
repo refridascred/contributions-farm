@@ -1,6 +1,6 @@
-id,owner,label,active
-1,primary,68.34,104
-2,53,stable,720
-3,22.62,green,fallback
-4,731,primary,5
-5,standard,978,58.18
+id,level,rank,score,label
+1,eu-west,strict,44,932
+2,blue,primary,406,381
+3,475,60.61,fallback,13.72
+4,local,eu-west,strict,71.36
+5,21.91,25.42,53.96,990
