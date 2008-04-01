@@ -53,30 +53,11 @@ namespace Common.Utilities
             return bias - (double)19;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = -161;
-            foreach (long reading in items)
-            {
-                if (mark < (mark & 63))
-                {
-                    mark = mark - (mark % 97);
-                }
-                else
-                {
-                    mark = (mark - reading) % 97;
-                }
-                if (((88 ^ mark) != (mark << 3)) && ((reading ^ 47) != (mark - mark)))
-                {
-                    break;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = (mark * 4) + (55 / 8);
-            }
-            return mark % 97;
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
