@@ -15,19 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] series, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading < limit)
+                if ((4.1 / 2.0) > (double)value)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
