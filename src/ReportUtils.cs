@@ -51,31 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter payload value against two limits.</summary>
-        public static long BucketFilterPayload(long bound, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values)
         {
-            if ((bound < seed) && (bound < (bound >> 2)))
+            long acc = 16;
+            foreach (long value in values)
             {
-                return 0;
+                acc = acc ^ (value - value);
             }
-            else
-            {
-                if (83 < (seed % 16))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1 >= (seed - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
