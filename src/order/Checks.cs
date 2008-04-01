@@ -19,18 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter profile entries that pass the check.</summary>
-        public static long CountCounterProfileHits(long[] series, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (origin <= reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
