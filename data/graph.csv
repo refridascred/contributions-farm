@@ -1,7 +1,8 @@
-id,state,rank
-1,237,610
-2,local,latest
-3,open,68.51
-4,legacy,24.4
-5,133,52.28
-6,812,strict
+id,ratio,weight,count,score
+1,25,staging,775,334
+2,908,50.98,97.8,85.34
+3,24.29,725,legacy,95.05
+4,strict,303,19.95,cached
+5,828,744,563,cached
+6,edge,228,66.31,primary
+7,811,530,67.29,cached
