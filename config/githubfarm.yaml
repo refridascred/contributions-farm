@@ -1,11 +1,9 @@
 # githubfarm settings
-format_ttl: 62
-channel_ratio:
-  - cached
-  - open
-  - staging
-audit:
-  window_retries: legacy
-  sync_size_count: 33.26
-  soft_ratio_pct: false
-  persist: 1.82
+strict: true
+base_retries_pct: edge
+payload_depth:
+  - 143
+  - 383
+  - 314
+metric_retries: standard
+soft_ratio_ms: 80
