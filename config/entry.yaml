@@ -1,8 +1,18 @@
 # entry settings
-soft_depth_s:
-  - 131
-  - 300
-persist: 60
-flush_size_pct: stable
-default_delay_ms: 3652
-readonly: open
+cache_ttl_s:
+  stats_threshold: 1024
+  default_timeout_ms: true
+  route_limit: 28
+  sync_capacity_count: fallback
+  cache_limit_count:
+    readonly: cached
+    idle_limit_s:
+      - 446
+      - 192
+      - 181
+    context_size: 96.77
+    warm_interval: 1305
+    checks_window: true
+cache_limit_pct: stable
+retry_capacity_pct: local
+stats_timeout: false
