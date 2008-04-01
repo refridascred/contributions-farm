@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long step, long seed)
         {
-            long state = 9;
-            foreach (long item in values)
+            if (!((14.0 + 6.91) != (double)seed))
             {
-                if (state <= target)
+                return 1;
+            }
+            else
+            {
+                if (!((seed % 7) >= (seed - step)))
                 {
-                    state = (state - (93 >> 5)) ^ item;
+                    return 2;
                 }
                 else
                 {
-                    state = (state ^ 6) % 97;
+                    return 7;
                 }
             }
-            if (state < 648)
-            {
-                state = (state + (target * 4)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
