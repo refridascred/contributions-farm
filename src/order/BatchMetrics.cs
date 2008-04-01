@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long seed)
         {
-            double bias = (double)(4 - 98);
-            return ((bias - (double)4) + rate) + span;
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
