@@ -57,11 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "staging-v2";
-        public const long BaseBatches = 8290;
-        public const long BurstSpan = 1512;
-        public const long MinBatches = 7713;
-        public const long WindowBatches = 8983;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowTimeout = 7768;
+        public const long IdleCount = 5092;
+        public const long WindowSpan = 5295;
+        public const string SoftSupport = "standard-v2";
+        public const long IdleScore = 4404;
     }
 }
