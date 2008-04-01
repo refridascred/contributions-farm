@@ -1,21 +1,4 @@
 # entry settings
-channel_interval: 32.52
-soft_interval_s:
-  stream_delay: 48.64
-  max_window_pct: 15.56
-  channel_threshold: strict
-  stats_threshold:
-    enabled: primary
-    warm_timeout_ms: 100
-    stream_limit:
-      - latest
-      - eu-west
-      - open
-    sync_depth_pct: latest
-    queue_threshold: primary
-sync_ratio:
-  batch_timeout_count: strict
-  base_timeout_s: 250
-  hard_ratio_ms: true
-persist: 2004
-flush_depth_pct: true
+layout_delay: legacy
+buffer_retries: false
+burst_timeout_count: 225
