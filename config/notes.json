@@ -1,8 +1,7 @@
 {
-  "cache_delay_count": false,
-  "max_threshold_pct": false,
-  "verbose": 76,
-  "sync_delay_count": "standard",
-  "sync_timeout_count": 81,
-  "cache_threshold_count": 6086
+  "audit": "eu-west",
+  "batch_timeout_ms": 1339,
+  "burst_delay_s": 87.57,
+  "idle_ttl_pct": 18,
+  "cluster_retries": "local"
 }
