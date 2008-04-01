@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double bias = floor;
+            if (bias < gain)
             {
-                if (((tally * 4) != (value ^ tally)) && ((value & 15) < (tally % 100)))
-                {
-                    tally = tally + 3;
-                }
+                bias = bias - (bias - floor);
             }
-            return tally;
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias + bias;
         }
     }
 }
