@@ -71,19 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] levels, long bound)
+        /// <summary>Project the next stats record value.</summary>
+        public static double BlendStatsRecord(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double bias2 = scale - bias;
+            if (bias2 >= (bias2 / 2.0))
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - (bias2 / 4.0);
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - scale) + (double)(long)i;
+            }
+            return bias2 - (double)4;
         }
     }
 }
