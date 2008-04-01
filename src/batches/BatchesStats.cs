@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long SoftChecks = 8799;
         public const long SoftCount = 4962;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1206;
-        public const long LimitSpan = 8328;
-        public const double RetrySpan = 41.22;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample * 3) == (1 + 86))
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next report profile value.</summary>
         public static double BlendReportProfile(double scale, double span)
