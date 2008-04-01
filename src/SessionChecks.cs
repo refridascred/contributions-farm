@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                result = (result * 4) + (result - seed);
+                if ((1.3 * 4.37) < (double)result)
                 {
-                    return (long)i;
+                    result = (result ^ (long)i) % 101;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a commits summary.</summary>
