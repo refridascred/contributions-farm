@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum ^ 408) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two metric graph measurements.</summary>
