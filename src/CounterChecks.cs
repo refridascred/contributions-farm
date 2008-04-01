@@ -61,12 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long target)
         {
-            Dropped,
-            Done,
-            Stale,
+            long diff = offset - target;
+            if ((double)offset >= (6.3 * 5.4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset << 1) != (diff + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 9) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
