@@ -39,25 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data, long bound)
-        {
-            long anchor = 179;
-            foreach (long reading in data)
-            {
-                if ((anchor + bound) < (anchor + 485))
-                {
-                    anchor = ((anchor << 3) ^ (bound ^ reading)) % 101;
-                }
-                anchor = (anchor + reading) % 65521;
-                anchor = (anchor - (bound + bound)) % 97;
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 3) + (anchor << 2)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBudget = 5185;
+        public const long SoftSpan = 8442;
+        public const long DefaultBatch = 8500;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
