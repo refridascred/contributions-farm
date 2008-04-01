@@ -27,9 +27,13 @@ namespace Common.Utilities
             return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardLevel = 42.2;
-        public const long LimitNotes = 7649;
-        public const double IdleNotes = 96.82;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
+        }
     }
 }
