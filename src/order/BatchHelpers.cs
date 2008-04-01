@@ -40,14 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            Retry,
-            Pending,
-            Synced,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((32 > count) && ((double)entry <= (15.0 / 3.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
