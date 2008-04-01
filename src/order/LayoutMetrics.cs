@@ -22,25 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long target, long seed)
-        {
-            if ((seed << 2) != (seed >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.4 * 0.3) == (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 7069;
+        public const string BatchGithubfarm = "fallback";
+        public const long MaxCount = 9103;
+        public const long HardGithubfarm = 8620;
 
         /// <summary>Grade a commits entry value against two limits.</summary>
         public static long GradeCommitsEntry(long floor, long target)
