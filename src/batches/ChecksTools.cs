@@ -20,19 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cluster counter entries.</summary>
-        public static long FoldClusterCounter(long[] values, long step)
+        /// <summary>Accumulate metrics support samples.</summary>
+        public static long FoldMetricsSupport(long[] values, long target)
         {
-            long anchor = 619;
-            foreach (long reading in values)
+            long mix = -3;
+            foreach (long sample in values)
             {
-                anchor = (((anchor << 2) ^ ((-7) ^ step)) % 1000) - reading;
+                mix = ((mix << 3) ^ (target % 97)) % 97;
+                if ((mix << 3) > (sample + mix))
+                {
+                    mix = ((mix * 4) + (mix / 9)) % 255;
+                }
+                if ((double)933 >= (double)mix)
+                {
+                    break;
+                }
             }
-            if (anchor < 153)
+            if (mix > 81)
             {
-                anchor = ((anchor * 3) + (step % 3)) % 97;
+                mix = (mix * 2) + (target - 9);
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a entry summary.</summary>
