@@ -29,10 +29,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 77.64;
-        public const long RetryLevel = 6241;
-        public const long HardBudget = 2590;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
+        {
+            long carry = 3;
+            foreach (long sample in items)
+            {
+                if (((carry << 3) <= carry) || ((double)carry >= (1.0 * 17.0)))
+                {
+                    carry = ((carry * 3) + sample) % 97;
+                    carry = ((carry * 5) + (43 % 10)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (sample ^ carry)) % 101;
+                    carry = carry - (carry + sample);
+                }
+                carry = ((carry * 5) + (carry ^ sample)) % 1000;
+            }
+            if (carry > (-516))
+            {
+                carry = (carry << 2) ^ (carry % 100);
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long floor)
