@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (537 <= hits)
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) - reading) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
