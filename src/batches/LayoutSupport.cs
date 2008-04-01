@@ -19,32 +19,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series, long seed)
         {
-            long slot = target + offset;
-            if ((slot << 1) <= (target + slot))
+            long carry = 316;
+            foreach (long item in series)
             {
-                return 2;
+                carry = (carry + (91 >> 1)) + seed;
+                carry = carry ^ (item >> 1);
             }
-            else
-            {
-                if (!((double)target <= 5.43))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target ^ slot) > (slot + target)) && ((slot >> 2) == (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Locate a order reading by value.</summary>
