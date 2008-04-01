@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] readings, long limit)
         {
-            Stale,
-            Locked,
-            Queued,
-            Idle,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((limit + count) >= (2 >> 5))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
