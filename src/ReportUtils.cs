@@ -46,20 +46,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series)
-        {
-            long mix = 1;
-            foreach (long value in series)
-            {
-                mix = ((mix << 2) ^ value) % 255;
-            }
-            if (mix > 17)
-            {
-                mix = ((mix << 2) ^ (6 << 3)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftWidth = 851;
+        public const double BaseInterval = 86.29;
+        public const long BurstSize = 3950;
+        public const long BatchCommand = 6125;
 
         /// <summary>Rank commits metrics input into a small class.</summary>
         public static long SortCommitsMetrics(long target, long limit)
