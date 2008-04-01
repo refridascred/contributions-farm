@@ -1,6 +1,21 @@
 {
-  "token_timeout": 79.06,
-  "audit": "latest",
-  "warm_interval_pct": 36,
-  "warm_capacity_count": [181, 375, 392]
+  "strict": "local",
+  "checks_capacity": 8456,
+  "retry_retries": ["primary", "edge", "fallback"],
+  "warm_ttl_s": 500,
+  "default_window": {
+    "cache_retries": {
+      "burst_depth": "green",
+      "burst_capacity_ms": 5935,
+      "sync_delay_pct": "standard"
+    },
+    "sync_depth_pct": {
+      "compress": 500,
+      "strict": "edge",
+      "audit": "stable",
+      "window_ratio": true
+    },
+    "session_threshold": "latest"
+  },
+  "idle_threshold_ms": 2293
 }
