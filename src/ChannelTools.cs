@@ -14,13 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Closed,
+            Dropped,
             Draft,
-            Failed,
-            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the entry state values.</summary>
