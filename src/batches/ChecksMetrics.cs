@@ -82,14 +82,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            New,
-            Ready,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 454;
+        public const string BatchStats = "local";
+        public const double IdleStats = 38.86;
+        public const long MinStats = 3482;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
