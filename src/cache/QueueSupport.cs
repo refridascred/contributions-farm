@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const double DefaultSpan = 51.34;
         public const double BaseCommits = 74.95;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Closed,
-            Retry,
-            Idle,
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
