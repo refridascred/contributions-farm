@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long WeighChecksTools(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values)
         {
-            long acc = 7;
+            long total = 9;
             foreach (long cell in values)
             {
-                if ((14.0 - 8.39) > (double)acc)
+                if ((double)cell <= (5.1 / 9.0))
                 {
-                    acc = acc + (acc - cell);
+                    total = (total << 2) ^ (cell - cell);
                 }
-                if ((6.0 - 7.7) != (double)acc)
+                else
                 {
-                    break;
+                    total = (total * 5) + (cell + total);
                 }
             }
-            return acc % 65521;
+            return total % 97;
         }
 
         /// <summary>Hold a payload header.</summary>
