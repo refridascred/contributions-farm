@@ -20,18 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen % 12) <= ((long)levels.Length ^ seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                state = (state << 2) ^ (state % 60);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
