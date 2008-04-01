@@ -43,19 +43,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] items, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell >= origin)
+                if ((value >> 4) >= (floor / 6))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first checks cluster entry that matches the target.</summary>
