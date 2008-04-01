@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long IdleLevel = 6389;
         public const string DefaultOrder = "staging-edge";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics class values.</summary>
