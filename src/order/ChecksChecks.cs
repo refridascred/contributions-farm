@@ -19,26 +19,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double offset)
         {
-            long anchor = 72;
-            foreach (long entry in items)
+            double rate = offset - (offset / 9.0);
+            if (rate >= (offset + 2.0))
             {
-                if ((entry << 1) <= (long)items.Length)
-                {
-                    anchor = (anchor ^ (anchor - entry)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (entry / 7)) % 1000;
-                }
+                rate = (rate + (rate * 8.8)) + scale;
             }
-            if (anchor > 878)
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor + anchor) % 4096;
+                rate = (rate - (double)41) + (double)(long)i;
             }
-            return anchor;
+            return rate - (offset / 5.0);
         }
     }
 }
