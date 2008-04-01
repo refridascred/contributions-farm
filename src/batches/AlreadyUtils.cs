@@ -50,19 +50,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 4;
-            foreach (long cell in levels)
-            {
-                carry = ((carry - (limit >> 2)) % 97) ^ cell;
-            }
-            if (carry < 70)
-            {
-                carry = carry - (long)levels.Length;
-            }
-            return carry;
+            Synced,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
