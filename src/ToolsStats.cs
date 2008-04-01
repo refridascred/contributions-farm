@@ -14,14 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            Synced,
-            Dropped,
-            Retry,
-            Active,
-            Pending,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)tally != (4.63 + 6.6))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
