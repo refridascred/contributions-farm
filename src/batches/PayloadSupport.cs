@@ -20,22 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Accumulate order stream samples.</summary>
+        public static long FoldOrderStream(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long carry = 694;
+            foreach (long cell in readings)
             {
-                if ((tally << 2) >= entry)
+                if ((carry >> 2) == (cell + carry))
                 {
-                    tally = tally + 3;
+                    carry = (carry << 2) ^ (carry - 16);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry * 2) + cell;
+                }
+                if ((79 - cell) >= (13 / 8))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the window phase values.</summary>
