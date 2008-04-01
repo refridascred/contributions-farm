@@ -36,39 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long step = limit ^ target;
-            if ((7.2 - 16.0) == (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step / 3) < (step << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (limit + 405))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Locked,
+            Failed,
+            Paused,
         }
     }
 }
