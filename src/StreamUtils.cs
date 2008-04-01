@@ -72,21 +72,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
