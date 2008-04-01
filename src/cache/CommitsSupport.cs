@@ -71,21 +71,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer entry readings.</summary>
-        public static long PairBufferEntryCount(long[] series)
+        /// <summary>Count batches route pairs that satisfy a relation.</summary>
+        public static long MatchBatchesRouteCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 7)
+                    if ((readings[i] ^ readings[j]) == 10)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
