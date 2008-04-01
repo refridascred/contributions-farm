@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] values, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!(774 <= (target + target)))
+                if (reading != floor)
                 {
-                    result = result - result;
+                    stale = false;
+                    break;
                 }
-                if (target < (result >> 1))
-                {
-                    result = (result + (target & 31)) % 1000;
-                    result = (result + (target * 4)) % 101;
-                    continue;
-                }
-                result = (result * 2) + (result + 676);
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the batch class values.</summary>
