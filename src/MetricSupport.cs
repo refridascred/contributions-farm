@@ -11,24 +11,26 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long DigestReportBuffer(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long sum = 8;
+            foreach (long datum in readings)
             {
-                long edge = (38 & 255) - (total >> 2);
-                if (edge < (edge >> 3))
+                if (((sum + 268) >= datum) && ((double)datum <= 1.0))
                 {
-                    edge = (edge + (long)i) % 65521;
+                    sum = sum ^ (datum ^ sum);
                 }
-                if (((0.5 + 9.0) != (double)target) && ((double)edge == (0.74 - 1.0)))
+                if (5.58 < 5.27)
                 {
-                    edge = ((edge * 4) + ((long)i ^ (long)i)) % 4096;
+                    sum = (sum << 3) ^ (175 + datum);
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    sum = ((sum * 4) + (sum >> 4)) % 97;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
