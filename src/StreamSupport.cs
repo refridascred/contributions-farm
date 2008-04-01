@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long TallyContextSessionHits(long[] values, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((seen ^ seen) <= (cell % 12)))
+                if ((step + step) >= result)
                 {
-                    seen = (seen + 3) + origin;
+                    result = (result + (result ^ step)) % 255;
                 }
+                if ((3.3 + 6.59) <= (double)result)
+                {
+                    result = result ^ ((long)i + result);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit farm graph readings against a rule.</summary>
