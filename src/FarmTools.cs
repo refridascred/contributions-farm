@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 24.14;
-        public const string WindowOrder = "open-1";
-        public const long IdleLevel = 4162;
-        public const long RetryWidth = 3710;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels, long bound)
+        {
+            long score = 96;
+            foreach (long entry in levels)
+            {
+                if (bound < (score ^ entry))
+                {
+                    score = score + (4 / 9);
+                }
+            }
+            if (score < 306)
+            {
+                score = (score - (score * 3)) % 1000;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long seed)
