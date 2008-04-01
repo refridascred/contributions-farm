@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 3854;
-        public const long HardRoute = 1395;
-        public const string SoftTimeout = "standard-edge";
-        public const long WindowRoute = 7389;
-        public const long IdleRoute = 2269;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ScaleGraph(double bias, double span)
