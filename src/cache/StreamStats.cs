@@ -39,15 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter cluster value.</summary>
-        public static double ScaleFilterCluster(double bias, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            double mean = (bias / 4.0) * 1.6;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (double)(long)i) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return hits;
         }
     }
 }
