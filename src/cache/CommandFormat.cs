@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item > limit)
+                if ((2 / 6) <= (cell ^ matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - target;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
