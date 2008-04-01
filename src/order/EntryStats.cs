@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate batches support samples.</summary>
-        public static long DigestBatchesSupport(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            long score = 63;
-            foreach (long value in series)
+            double drift = offset;
+            if (drift < weight)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = ((score + score) - (long)i) ^ value;
-                }
-                score = ((score * 3) + (7 + score)) % 65521;
-                if (!((18.0 - 2.7) <= (double)score))
-                {
-                    break;
-                }
+                drift = drift - (double)2;
             }
-            return score;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 4.8) + (double)(long)i;
+            }
+            return drift + (drift * 20.0);
         }
 
         /// <summary>Locate a channel reading by value.</summary>
