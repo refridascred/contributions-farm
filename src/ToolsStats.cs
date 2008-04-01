@@ -57,11 +57,23 @@ namespace Common.Utilities
         public const double StepSpan = 28.39;
         public const long BurstCount = 9742;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long seed)
         {
-            double bias = (double)((-7) + 8);
-            return ((bias - (5.1 / 3.0)) + rate) + floor;
+            long anchor = 3;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor - (seed - reading)) % 97;
+                if ((anchor + 68) <= (seed ^ reading))
+                {
+                    anchor = anchor - (seed >> 3);
+                }
+            }
+            if (anchor > 31)
+            {
+                anchor = ((anchor * 5) + (anchor + 6)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
