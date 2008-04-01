@@ -62,25 +62,21 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Grade a queue metric value against two limits.</summary>
-        public static long GradeQueueMetric(long origin, long bound)
+        /// <summary>Compare every pair of graph queue readings.</summary>
+        public static long PairGraphQueueCount(long[] readings)
         {
-            long step = origin ^ bound;
-            if (!((395 << 3) >= origin))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-27) << 2) < (step + 620))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
