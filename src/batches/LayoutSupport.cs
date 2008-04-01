@@ -36,19 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double span)
+        /// <summary>Match up notes session samples.</summary>
+        public static long MatchNotesSessionCount(long[] levels)
         {
-            double bias2 = (double)(680 / 6);
-            if (bias2 > (5.6 + bias2))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + (double)55;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 - (9.0 - span);
+            return seen;
         }
 
         /// <summary>Describe the batch level values.</summary>
