@@ -12,17 +12,26 @@ namespace Common.Utilities
             return weight + (scale * 0.6);
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] levels, long offset)
+        /// <summary>Digest a series of payload token entries.</summary>
+        public static long DigestPayloadToken(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 253;
+            foreach (long cell in values)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                if ((cell >> 2) < total)
                 {
-                    return (long)i;
+                    total = (total * 2) + 1;
+                }
+                else
+                {
+                    total = total ^ (4 + total);
+                }
+                if (((double)cell < (double)7) && (cell <= (total + total)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
