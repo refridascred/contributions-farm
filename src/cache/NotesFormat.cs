@@ -15,21 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
