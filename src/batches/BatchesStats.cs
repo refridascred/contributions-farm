@@ -46,15 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Paused,
+            New,
+            Locked,
+            Draft,
         }
     }
 }
