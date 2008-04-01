@@ -50,12 +50,18 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item % 100) > (hits >> 3))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry level values.</summary>
