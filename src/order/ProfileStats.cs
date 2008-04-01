@@ -38,12 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            Queued,
-            Stale,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
