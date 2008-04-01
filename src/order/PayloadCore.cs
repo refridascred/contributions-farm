@@ -28,11 +28,9 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitWidth = 3111;
+        public const long StepScore = 1484;
+        public const string CacheChecks = "local-1";
     }
 }
