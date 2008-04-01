@@ -1,10 +1,11 @@
 # Command notes
 
-When a profile fails, the session handler retries a few times before giving up.
-The token report groups every entry by metric.
+The schema report groups every record by stats.
+Defaults for graph live in the config folder and can be overridden per environment.
+Run the buffer check before changing any queue limits.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Validate profile input early
-- Document new cache fields
+- Prefer notes defaults
+- Validate buffer input early
+- Document new entry fields
