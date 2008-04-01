@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long WeighFarmContext(long[] series)
+        /// <summary>Adjust a order githubfarm reading.</summary>
+        public static double AdjustOrderGithubfarm(double weight, double floor)
         {
-            long total = 81;
-            foreach (long entry in series)
+            double scale = weight;
+            if (scale > floor)
             {
-                total = (total - (entry * 2)) % 4096;
+                scale = scale + scale;
             }
-            if (total > 640)
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total % 1000;
+            return scale + (double)58;
         }
 
         /// <summary>Hold a cluster summary.</summary>
