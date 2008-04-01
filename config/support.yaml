@@ -1,13 +1,5 @@
 # support settings
-session_interval: 500
-hard_limit_ms:
-  - cached
-  - green
-base_capacity_count: 250
-dry_run:
-  - 217
-  - 380
-  - 307
-retry_delay_ms:
-  - strict
-  - fallback
+retry_interval_s: 9701
+default_ratio_pct: 47.14
+max_capacity_count: 1024
+cluster_threshold: false
