@@ -39,20 +39,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (values[i] <= step)
                 {
-                    anchor = (anchor ^ (floor << 2)) - (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
