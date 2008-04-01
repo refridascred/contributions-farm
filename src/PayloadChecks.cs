@@ -49,19 +49,21 @@ namespace Common.Utilities
             return drift - 7.1;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            double drift = (double)(56 >> 3);
-            if (drift < scale)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (double)13) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)58) + (double)(long)i;
-            }
-            return drift + (double)4;
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
