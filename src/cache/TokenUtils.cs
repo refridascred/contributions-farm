@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
