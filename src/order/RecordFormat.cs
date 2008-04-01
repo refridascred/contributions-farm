@@ -33,21 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Find the first contributi cache entry that matches the target.</summary>
+        public static long FindContributiCacheIndex(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] >= step)
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
