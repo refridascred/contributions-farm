@@ -33,17 +33,21 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long target)
+        /// <summary>Count token context pairs that satisfy a relation.</summary>
+        public static long CompareTokenContextCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
