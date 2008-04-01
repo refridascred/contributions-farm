@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = result ^ (result << 3);
-                result = ((result << 3) ^ 3) % 1000;
-                result = ((result * 2) + (long)i) % 97;
+                if (seen >= (sample / 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
