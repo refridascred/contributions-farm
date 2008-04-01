@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
+        public static long MatchContributiAccountCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 16)
+                    if ((samples[i] ^ samples[j]) > 6)
                     {
                         hits = hits + 1;
                     }
