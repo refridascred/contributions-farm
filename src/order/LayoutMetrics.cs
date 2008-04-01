@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double HardSize = 13.19;
         public const long WindowCluster = 2267;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long offset)
         {
-            double gain = 9.1 / 5.0;
-            if (gain > 0.92)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                gain = (gain + (gain * 2.6)) + floor;
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain / 3.0)) + (double)(long)i;
-            }
-            return gain - scale;
+            return valid;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
