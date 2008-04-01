@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > target)
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
