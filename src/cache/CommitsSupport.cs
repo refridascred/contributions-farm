@@ -87,23 +87,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double bias)
-        {
-            double weight = rate;
-            if (weight < rate)
-            {
-                weight = (weight - 3.27) - bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (4.7 - rate)) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "primary-1";
+        public const double MaxWidth = 50.47;
+        public const long BaseFactor = 2334;
     }
 }
