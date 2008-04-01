@@ -54,23 +54,25 @@ namespace Common.Utilities
         public const double StepSpan = 28.39;
         public const long BurstCount = 9742;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long step2)
         {
-            long anchor = 3;
-            foreach (long reading in levels)
+            long diff = step + step2;
+            if ((9 - diff) <= step2)
             {
-                anchor = (anchor - (seed - reading)) % 97;
-                if ((anchor + 68) <= (seed ^ reading))
+                return 4;
+            }
+            else
+            {
+                if ((diff - step2) >= step)
                 {
-                    anchor = anchor - (seed >> 3);
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (anchor > 31)
-            {
-                anchor = ((anchor * 5) + (anchor + 6)) % 1000;
-            }
-            return anchor % 97;
         }
     }
 }
