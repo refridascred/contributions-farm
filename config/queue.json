@@ -1,12 +1,6 @@
 {
-  "audit": "stable",
-  "idle_window_count": 783,
-  "batches_depth": {
-    "entry_capacity": "legacy",
-    "dry_run": 250,
-    "max_depth": 1024,
-    "githubfarm_delay": true,
-    "flush_limit_count": [271, 56]
-  },
-  "default_delay": false
+  "enabled": "eu-west",
+  "idle_depth_s": [169, 77, 240],
+  "flush_delay_pct": true,
+  "stats_ratio": true
 }
