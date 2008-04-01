@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items)
         {
-            if ((bound * 3) != (bound % 2))
+            long acc = 692;
+            foreach (long value in items)
             {
-                return 6;
+                acc = (acc - (value << 3)) % 255;
             }
-            else
-            {
-                if ((bound / 3) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound != (1.88 + 0.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
