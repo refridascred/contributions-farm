@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseWidth = "latest";
+        public const string WindowFarm = "open-edge";
+        public const long LimitCount = 6556;
+        public const string HardFarm = "staging-v2";
+        public const double MaxSpan = 37.9;
 
         /// <summary>Project the next context value.</summary>
         public static double BlendContext(double scale, double offset)
