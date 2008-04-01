@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Active,
+            long carry = 55;
+            foreach (long reading in readings)
+            {
+                carry = carry ^ 31;
+                if ((double)carry > 6.0)
+                {
+                    carry = carry + (reading << 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
