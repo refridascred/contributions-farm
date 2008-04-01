@@ -39,27 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context tools values into a single score.</summary>
-        public static long TallyContextTools(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            long sum = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                sum = (sum + 82) % 4096;
-                if ((double)sum <= (1.0 + 5.0))
+                if ((15.0 - 3.6) <= (double)value)
                 {
-                    sum = ((sum * 3) + datum) % 4096;
-                }
-                else
-                {
-                    sum = sum - (sum % 12);
+                    hits = hits + 1;
                 }
             }
-            if (sum < 795)
-            {
-                sum = sum + (sum * 4);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
