@@ -62,15 +62,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Locate a metrics window reading by value.</summary>
+        public static long LocateMetricsWindowIndex(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
