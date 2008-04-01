@@ -73,13 +73,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 5341;
+        public const long SoftBuffer = 8522;
+        public const long MinTimeout = 2570;
+        public const long RetryBuffer = 8092;
     }
 }
