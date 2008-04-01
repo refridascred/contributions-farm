@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long acc = 692;
-            foreach (long value in items)
-            {
-                acc = (acc - (value << 3)) % 255;
-            }
-            return acc % 4096;
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
