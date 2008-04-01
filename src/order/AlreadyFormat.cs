@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BaseFactor = 4589;
         public const double BurstDepth = 80.52;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values, long origin)
+        /// <summary>Fold a list of batch farm readings.</summary>
+        public static long FoldBatchFarm(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long result = 99;
+            foreach (long reading in readings)
             {
-                if (((1.0 / 7.0) < (double)item) || !((origin - item) <= (item % 16)))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result ^ result) % 101) - reading;
             }
-            return tally;
+            if (result < 1)
+            {
+                result = (result - (step * 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate order samples.</summary>
