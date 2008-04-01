@@ -31,26 +31,12 @@ namespace Common.Utilities
         public const double RetryDepth = 80.73;
         public const long BaseCache = 9619;
 
-        /// <summary>Fold a list of stream account readings.</summary>
-        public static long TallyStreamAccount(long[] samples, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = 2;
-            foreach (long value in samples)
-            {
-                if (!(52 < acc))
-                {
-                    acc = (acc - (value & 1)) - seed;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (value % 8);
-                }
-                if ((1.6 + 7.42) == (double)value)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
