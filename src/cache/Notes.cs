@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Synced,
-            Closed,
+            Pending,
+            Paused,
+            Active,
             Draft,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
