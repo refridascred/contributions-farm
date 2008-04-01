@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a buffer contributi sample.</summary>
-        public static long FindBufferContributiIndex(long[] readings, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] > target)
+                if ((double)floor <= (double)(long)i)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + floor) % 97;
                 }
+                else
+                {
+                    long matches = -73;
+                    sum = (sum + (matches >> 1)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate profile samples.</summary>
