@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count << 1) > (item << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
