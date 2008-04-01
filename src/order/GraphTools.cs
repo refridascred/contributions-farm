@@ -78,18 +78,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (double)matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 4047;
+        public const long BatchGithubfarm = 8524;
+        public const long WindowGithubfarm = 788;
+        public const long DefaultGithubfarm = 1671;
+        public const double LimitGithubfarm = 74.16;
     }
 }
