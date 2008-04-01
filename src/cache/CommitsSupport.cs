@@ -47,17 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                if (!((double)matches <= (3.1 + 2.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer entry readings.</summary>
