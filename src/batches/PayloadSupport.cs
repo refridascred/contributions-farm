@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long offset2)
         {
-            long score = 84;
-            foreach (long sample in levels)
+            if ((622 - offset2) < (offset2 / 9))
             {
-                score = (((score << 2) ^ (sample % 7)) % 1000) - bound;
-                if (!((783 - 543) > sample))
+                return 0;
+            }
+            else
+            {
+                if ((4.0 - 1.0) != (double)offset)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset2 >= 8.38) && (81 >= offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
