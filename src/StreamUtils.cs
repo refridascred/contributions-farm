@@ -69,18 +69,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] items)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((10.0 + 5.65) > (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
