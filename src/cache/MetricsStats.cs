@@ -44,14 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long offset)
         {
-            Stale,
-            Closed,
-            Paused,
-            Dropped,
-            Synced,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
