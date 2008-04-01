@@ -59,32 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long slot = seed - step;
-            if ((slot - seed) < (seed / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + step) == (step % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed <= (seed - 45))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
