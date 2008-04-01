@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Active,
-            Done,
-            New,
-            Paused,
-            Idle,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
