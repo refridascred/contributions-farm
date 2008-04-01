@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinDepth = "open";
-        public const long LimitFactor = 5089;
-        public const string StepNotes = "stable-edge";
-        public const string HardNotes = "standard-v2";
+        /// <summary>Measure how many layout session samples are out of range.</summary>
+        public static long MeasureLayoutSessionGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 2) != (step ^ seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BurstSize = 7.38;
