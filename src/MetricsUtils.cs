@@ -20,17 +20,18 @@ namespace Common.Utilities
             return weight + (double)86;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long floor)
+        /// <summary>Combine editor metrics values into a single score.</summary>
+        public static long CombineEditorMetrics(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 70;
+            foreach (long datum in levels)
             {
-                if (readings[i] <= floor)
+                if ((7.0 / 5.0) >= 9.51)
                 {
-                    return (long)i;
+                    acc = (acc + (acc + datum)) + bound;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
