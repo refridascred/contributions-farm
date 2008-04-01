@@ -1,6 +1,11 @@
 {
-  "hard_ratio_s": 3155,
-  "default_interval_ms": 36,
-  "compress": ["fallback", "green"],
-  "entry_capacity": 250
+  "editor_retries": 8,
+  "retry_size_pct": {
+    "cache_threshold": "cached",
+    "hard_depth_ms": "strict",
+    "retry_window_s": [64, 185],
+    "max_limit": 97.17
+  },
+  "idle_timeout": "latest",
+  "cache_limit": 3965
 }
