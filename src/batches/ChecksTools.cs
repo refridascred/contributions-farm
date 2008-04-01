@@ -31,14 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            Stale,
-            New,
-            Ready,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches - entry) <= (matches * 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
