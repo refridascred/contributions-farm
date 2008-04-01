@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
