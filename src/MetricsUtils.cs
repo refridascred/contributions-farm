@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine counter buffer values into a single score.</summary>
