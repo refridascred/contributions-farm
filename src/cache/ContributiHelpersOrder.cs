@@ -39,10 +39,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinSize = 2794;
-        public const string BatchSize = "alpha-v2";
-        public const double IdleAlready = 13.61;
+        /// <summary>Grade a farm githubfarm value against two limits.</summary>
+        public static long BucketFarmGithubfarm(long origin, long floor)
+        {
+            long bound = origin + floor;
+            if ((bound & 63) <= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor >= (origin - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (37 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound % 8) > (floor - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenRange(long[] series, long origin)
