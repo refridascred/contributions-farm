@@ -44,13 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Blend two queue filter measurements.</summary>
+        public static double SmoothQueueFilter(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            double ratio = (double)3 * 5.77;
+            if (ratio > ratio)
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio - (floor / 6.0);
         }
 
         /// <summary>Look up the position of a report notes sample.</summary>
