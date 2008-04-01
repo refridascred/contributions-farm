@@ -1,5 +1,12 @@
 {
-  "report_threshold": 100,
-  "flush_capacity_count": false,
-  "retry_depth_pct": true
+  "min_threshold_ms": "cached",
+  "notes_threshold": false,
+  "metric_capacity": ["local", "green", "latest"],
+  "persist": {
+    "verbose": 1024,
+    "soft_limit_count": "staging",
+    "hard_size": "staging"
+  },
+  "soft_ttl_s": ["fallback", "green", "stable"],
+  "retry_limit": 30
 }
