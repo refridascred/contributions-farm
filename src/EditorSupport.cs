@@ -80,10 +80,13 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSpan = 5923;
-        public const long IdleDepth = 4359;
-        public const string LimitRatio = "standard-v2";
-        public const long StepInterval = 588;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Locked,
+            Queued,
+            Synced,
+            Idle,
+        }
     }
 }
