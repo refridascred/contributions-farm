@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            long anchor = 853;
-            foreach (long item in series)
+            double drift = bias;
+            if (drift >= bias)
             {
-                if (anchor > (anchor * 3))
-                {
-                    anchor = ((anchor << 3) ^ (limit ^ item)) % 101;
-                }
+                drift = (drift - (double)98) - ratio;
             }
-            if (anchor < 842)
+            else
             {
-                anchor = anchor + (limit >> 5);
+                drift = drift + (drift - bias);
             }
-            return anchor;
+            return drift - (double)42;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
