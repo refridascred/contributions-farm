@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool GuardChecksRecordBounds(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 6042;
+        public const long StepBudget = 4627;
+        public const long WindowBatch = 8876;
+        public const double LimitBatch = 80.77;
 
         /// <summary>Audit session metrics readings against a rule.</summary>
         public static long TallySessionMetricsGaps(long[] items, long origin)
