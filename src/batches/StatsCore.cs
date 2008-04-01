@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count >> 2) >= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
