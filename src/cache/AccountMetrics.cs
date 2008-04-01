@@ -15,12 +15,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepWidth = 8757;
-        public const string MaxCount = "primary-edge";
-        public const long BaseInterval = 4337;
-        public const long MaxWidth = 6035;
-        public const string WindowAccount = "staging-edge";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) != (seed + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] series)
