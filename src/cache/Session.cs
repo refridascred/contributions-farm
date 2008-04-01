@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
