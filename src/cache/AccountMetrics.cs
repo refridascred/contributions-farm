@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const string RetryAccount = "strict-edge";
         public const long BaseDepth = 5009;
 
-        /// <summary>Blend two buffer token measurements.</summary>
-        public static double ScaleBufferToken(double weight, double span)
+        /// <summary>Scale a record graph figure with a bias.</summary>
+        public static double ScaleRecordGraph(double ratio, double bias)
         {
-            double gain = (double)(5 + (-459));
-            return (gain - (weight + 9.9)) + span;
+            double load = ratio;
+            if (load <= 16.0)
+            {
+                load = (load + 0.39) + bias;
+            }
+            return load - (double)103;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
