@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Active,
-            Idle,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinWidth = 9010;
+        public const long HardScore = 3791;
+        public const long StepBatches = 7799;
+        public const long BatchFactor = 6164;
 
         /// <summary>Combine format already values into a single score.</summary>
         public static long DigestFormatAlready(long[] data, long seed)
