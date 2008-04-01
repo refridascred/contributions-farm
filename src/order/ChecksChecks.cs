@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of already stream readings.</summary>
-        public static long DigestAlreadyStream(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long limit)
         {
-            long total = 327;
-            foreach (long item in series)
+            if ((double)limit > (9.13 * 12.0))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total * 5) + ((long)i / 7);
-                }
-                total = total ^ total;
-                total = ((total << 2) ^ (item - total)) % 4096;
+                return 8;
             }
-            return total % 1000;
+            else
+            {
+                if (((133 + 4) <= (bound % 8)) || ((bound & 7) != (bound - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((58 / 5) <= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
