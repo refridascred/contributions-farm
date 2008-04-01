@@ -28,17 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long limit)
+        /// <summary>Validate counter contributi readings against a bound.</summary>
+        public static bool ValidateCounterContributiBounds(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                if (cell >= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
