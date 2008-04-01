@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((7.32 / 6.0) > (double)hits)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
