@@ -13,21 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count route order pairs that satisfy a relation.</summary>
-        public static long CompareRouteOrderCount(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 423;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum >> 4) >= (reading - reading))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - ((long)values.Length - reading);
+                }
+                if ((7 + (long)values.Length) != (reading * 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
