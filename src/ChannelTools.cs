@@ -14,12 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftLevel = 0.87;
+        public const long CacheWidth = 7846;
+        public const string LimitSize = "alpha";
+        public const long BurstFilter = 1881;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
