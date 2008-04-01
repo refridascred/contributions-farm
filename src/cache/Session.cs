@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Done,
-            Idle,
-            Dropped,
-            Synced,
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
