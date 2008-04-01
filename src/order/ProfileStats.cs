@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Blend two record metrics measurements.</summary>
+        public static double ScaleRecordMetrics(double weight, double offset)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            double gain = weight;
+            if (gain > 7.08)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (weight + gain)) + (double)(long)i;
+            }
+            return gain - (gain / 7.0);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
