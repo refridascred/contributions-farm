@@ -57,31 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (offset >= (offset << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor >> 1) > offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor < (offset / 9)) || ((double)floor >= (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
