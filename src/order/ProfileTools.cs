@@ -19,11 +19,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long sum = -5;
+            foreach (long entry in samples)
+            {
+                if ((((long)samples.Length + sum) < entry) && (sum < (sum ^ 8)))
+                {
+                    sum = (sum + sum) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many filter token samples are out of range.</summary>
