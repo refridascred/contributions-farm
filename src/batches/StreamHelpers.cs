@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 6597;
-        public const long HardGithubfarm = 7894;
-        public const long SoftLevel = 8846;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally + (long)samples.Length) < 63)
+                {
+                    tally = ((tally + 1) ^ reading) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] samples)
