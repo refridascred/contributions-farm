@@ -63,13 +63,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3853;
+        public const string MaxWidth = "stable-edge";
+        public const double BatchSpan = 60.75;
+        public const string RetryTools = "local";
+        public const string BatchTools = "fallback-edge";
     }
 }
