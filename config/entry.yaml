@@ -1,8 +1,6 @@
 # entry settings
-verbose: 1024
-flush_size_pct: 77.13
-audit:
-  - 127
-  - 142
-  - 390
-token_window: 28.39
+hard_ttl_count: true
+sync_ratio_count: true
+poll_size: local
+record_timeout: 250
+cache_ratio_s: fallback
