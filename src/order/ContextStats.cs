@@ -28,12 +28,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSpan = 40.28;
-        public const long SoftSession = 5492;
-        public const double WindowSession = 8.34;
-        public const double BurstSession = 8.25;
-        public const string HardSession = "legacy";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long offset)
+        {
+            long carry = -6;
+            foreach (long value in readings)
+            {
+                carry = ((carry ^ (value - carry)) % 255) - offset;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long bound)
