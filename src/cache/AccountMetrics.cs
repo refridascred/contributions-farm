@@ -15,17 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long seed)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - (mark << 1)) + origin;
-                mark = ((mark << 2) ^ sample) % 4096;
-                mark = mark ^ (855 & 255);
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
