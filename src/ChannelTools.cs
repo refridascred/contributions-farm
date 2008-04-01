@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double drift = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (gain + bias)) + (double)(long)i;
-            }
-            return drift + bias;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
