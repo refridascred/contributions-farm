@@ -1,30 +1,9 @@
 # entry settings
-queue_window:
-  counter_capacity: 13
-  readonly: 100
-  report_size: green
-  enabled: 3783
-soft_interval_pct:
-  - 1
-  - 156
-  - 446
-  - 113
-flush_delay: green
-default_threshold:
-  idle_ttl_count:
-    soft_delay_s:
-      - open
-      - cached
-    min_capacity_pct: edge
-    soft_ttl_ms: fallback
-    audit:
-      - staging
-      - strict
-    strict: 90
-    warm_interval_ms: green
-  flush_retries_ms: 60
-  retry_retries_ms:
-    strict: latest
-    profile_ratio: fallback
-    batches_size: 30
-audit: eu-west
+metric_capacity: staging
+hard_limit: false
+idle_capacity_ms: standard
+min_limit_s:
+  compress: 250
+  burst_ttl_pct: 60
+  default_timeout_pct: 66.4
+  audit: cached
