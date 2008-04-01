@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of already githubfarm readings.</summary>
-        public static long TotalAlreadyGithubfarm(long[] series, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = 26;
-            foreach (long cell in series)
-            {
-                result = result + (cell + seed);
-                result = result - (seed << 2);
-            }
-            return result % 65521;
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of window readings.</summary>
