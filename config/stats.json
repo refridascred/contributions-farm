@@ -1,5 +1,16 @@
 {
-  "strict": "staging",
-  "soft_delay_pct": 1024,
-  "max_ttl_s": false
+  "retry_depth_s": false,
+  "default_retries_s": 76.31,
+  "base_depth_count": [94, 455, 342, 402],
+  "graph_size": {
+    "retry_ratio_s": {
+      "max_retries_count": 73.65,
+      "channel_capacity": 27.37,
+      "poll_window_pct": 100
+    },
+    "max_timeout_ms": false,
+    "checks_retries": 89
+  },
+  "commits_capacity": 4272,
+  "profile_capacity": 27
 }
