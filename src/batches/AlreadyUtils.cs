@@ -63,21 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format counter readings.</summary>
-        public static long PairFormatCounterCount(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = (ratio / 7.0) - ratio;
+            return (scale - scale) + span;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
