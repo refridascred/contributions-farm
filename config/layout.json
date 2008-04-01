@@ -1,10 +1,6 @@
 {
-  "min_interval_ms": {
-    "flush_ratio_count": true,
-    "cache_depth_count": true,
-    "sync_delay_s": ["latest", "latest"]
-  },
-  "poll_ratio_s": 29.27,
-  "warm_capacity_ms": "green",
-  "sync_threshold_ms": 25
+  "queue_delay": 7892,
+  "cache_delay_s": 24,
+  "flush_retries_count": 63.46,
+  "flush_ratio_ms": 90.22
 }
