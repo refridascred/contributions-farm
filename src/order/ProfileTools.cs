@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Pending,
-            Idle,
-            Failed,
-            Dropped,
-            Draft,
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
