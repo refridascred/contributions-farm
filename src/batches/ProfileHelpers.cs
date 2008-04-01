@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
