@@ -77,21 +77,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
