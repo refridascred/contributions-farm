@@ -48,18 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Check that every already batches entry stays within the limit.</summary>
+        public static bool GuardAlreadyBatchesBounds(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((tally & 63) > (tally - tally))
+                if (datum <= target)
                 {
-                    tally = (tally + 3) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
