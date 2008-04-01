@@ -31,10 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 4484;
-        public const string StepCommits = "fallback";
-        public const string IdleCommits = "cached-edge";
-        public const long MaxWidth = 9699;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
