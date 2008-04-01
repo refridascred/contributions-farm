@@ -63,12 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate window samples.</summary>
