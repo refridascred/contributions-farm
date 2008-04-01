@@ -40,15 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter channel entries.</summary>
-        public static long CombineFilterChannel(long[] items, long step)
+        /// <summary>Find the first already checks entry that matches the target.</summary>
+        public static long LookupAlreadyChecksIndex(long[] series, long floor)
         {
-            long anchor = 85;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor - 77) + reading) + step;
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
