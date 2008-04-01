@@ -1,8 +1,8 @@
 # entry settings
-batch_interval:
-  - stable
-  - legacy
-  - blue
-  - local
-flush_ttl_s: 93.03
-persist: cached
+verbose: 0.24
+enabled:
+  - 315
+  - 471
+  - 95
+flush_timeout_count: 250
+already_delay: strict
