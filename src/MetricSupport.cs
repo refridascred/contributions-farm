@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] values, long target)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
