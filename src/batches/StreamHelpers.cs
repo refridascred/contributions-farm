@@ -35,18 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)samples.Length & 63) > 34)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) + reading;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
