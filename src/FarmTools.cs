@@ -23,26 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long seed)
-        {
-            long prev = limit ^ seed;
-            if ((prev - (-7)) < prev)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((prev << 1) <= (prev + prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "latest";
+        public const double IdleSupport = 4.91;
+        public const double BaseSupport = 61.89;
+        public const long MaxSize = 6884;
+        public const long DefaultSupport = 8432;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] data, long target)
