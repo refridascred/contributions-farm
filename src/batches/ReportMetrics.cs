@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two metric graph measurements.</summary>
