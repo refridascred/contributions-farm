@@ -19,14 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit layout stream readings against a rule.</summary>
+        public static long TallyLayoutStreamOutliers(long[] samples, long origin)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((0.2 + 5.2) == (double)origin)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
