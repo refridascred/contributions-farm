@@ -27,27 +27,11 @@ namespace Common.Utilities
         public const double HardFilter = 33.57;
         public const string RetryTimeout = "standard-edge";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data, long seed)
-        {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                if ((double)(-3) < (double)entry)
-                {
-                    sum = sum + entry;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum + seed)) % 255;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = ((sum * 2) + (sum % 64)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 7;
+        public const long LimitFilter = 4148;
+        public const double MinFilter = 15.8;
+        public const double BatchSize = 71.87;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] items, long origin)
