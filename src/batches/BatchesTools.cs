@@ -35,26 +35,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long anchor = -74;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((24 + cell) > (2 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + cell) - offset;
-                }
-                else
-                {
-                    anchor = anchor - (cell % 10);
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 843)
-            {
-                anchor = (anchor - (anchor + anchor)) % 255;
-            }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
