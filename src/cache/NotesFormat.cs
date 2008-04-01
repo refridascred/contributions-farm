@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            double rate = (weight - offset) + weight;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                rate = (rate - (double)4) + (double)(long)i;
             }
-            return anchor;
+            return rate + rate;
         }
 
         /// <summary>Project the next contributi value.</summary>
