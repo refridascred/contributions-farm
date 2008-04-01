@@ -32,17 +32,15 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Locate a farm stream reading by value.</summary>
-        public static long SeekFarmStreamIndex(long[] items, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = weight + weight;
+            if (weight2 >= weight2)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 - offset;
             }
-            return -1;
+            return weight2 + weight;
         }
 
         /// <summary>Roll a record counter forward.</summary>
