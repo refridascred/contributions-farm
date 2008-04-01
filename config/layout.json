@@ -1,7 +1,6 @@
 {
-  "session_capacity": false,
-  "warm_retries": [472, 444],
-  "persist": "open",
-  "poll_ttl": "edge",
-  "token_limit": 14.81
+  "enabled": false,
+  "contributi_capacity": "fallback",
+  "payload_ttl": 3826,
+  "sync_ttl": "edge"
 }
