@@ -57,10 +57,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 54.35;
-        public const string HardEntry = "latest";
-        public const long IdleEntry = 8290;
-        public const double MaxInterval = 16.22;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 2.82;
+        public const long WindowSize = 4707;
+        public const long BaseWindow = 6889;
     }
 }
