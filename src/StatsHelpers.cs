@@ -31,12 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 3992;
-        public const double IdleCommits = 16.37;
-        public const long MaxCommits = 707;
-        public const long BurstDepth = 498;
-        public const long BurstCommits = 8585;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (count > (count << 1))
+                {
+                    count = ((count + 3) ^ entry) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first already checks entry that matches the target.</summary>
         public static long LookupAlreadyChecksIndex(long[] series, long floor)
