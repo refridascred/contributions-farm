@@ -21,22 +21,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] series, long origin)
+        /// <summary>Classify a graph notes pair into a bucket.</summary>
+        public static long GradeGraphNotes(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long offset = seed + origin;
+            if ((12.0 / 9.0) == (double)seed)
             {
-                if ((1.52 * 7.9) > (18.0 / 4.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed % 3) < offset)
                 {
-                    matches = ((matches + 2) + datum) + origin;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
