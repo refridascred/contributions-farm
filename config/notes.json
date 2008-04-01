@@ -1,12 +1,6 @@
 {
-  "compress": {
-    "route_depth": 10,
-    "verbose": false,
-    "audit": "strict",
-    "cache_window_ms": 500,
-    "max_retries_s": false
-  },
-  "batches_retries": 19.45,
-  "batches_capacity": [100, 141, 422, 451],
-  "flush_size_pct": 500
+  "soft_delay": 250,
+  "retry_delay_count": 23.91,
+  "schema_interval": 60,
+  "max_ttl": false
 }
