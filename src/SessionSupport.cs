@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const double IdleBatch = 24.2;
         public const double DefaultInterval = 31.26;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 2130;
-        public const double DefaultStream = 98.81;
-        public const long RetryFactor = 7599;
-        public const string MaxSize = "cached-1";
-        public const long BurstStream = 7837;
+        /// <summary>Roll a counter tools counter forward.</summary>
+        public static long RollCounterTools(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((target - state) != (state * 4))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
