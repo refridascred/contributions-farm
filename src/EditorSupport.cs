@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long target)
+        /// <summary>Validate schema token readings against a bound.</summary>
+        public static bool ValidateSchemaTokenBounds(long[] series, long floor)
         {
             bool ready = true;
-            foreach (long datum in readings)
+            foreach (long sample in series)
             {
-                if (datum > target)
+                if (sample >= floor)
                 {
                     ready = false;
                     break;
