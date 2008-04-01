@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= floor)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
