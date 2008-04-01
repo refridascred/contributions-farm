@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            Closed,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
