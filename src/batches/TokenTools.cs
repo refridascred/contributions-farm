@@ -27,19 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mix = 216;
-            foreach (long datum in levels)
-            {
-                mix = ((mix + (mix & 15)) + datum) - bound;
-            }
-            if (mix < 58)
-            {
-                mix = ((mix * 3) + (5 % 7)) % 1000;
-            }
-            return mix;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
