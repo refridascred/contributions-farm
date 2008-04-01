@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long target)
+        /// <summary>Scale a contributi batches figure with a bias.</summary>
+        public static double ProjectContributiBatches(double bias, double span)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double bias2 = 20.0;
+            if (bias2 > (double)1)
             {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = ((bias2 - 8.6) + bias) - span;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 / 8.0)) + (double)(long)i;
+            }
+            return bias2 + (double)922;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
