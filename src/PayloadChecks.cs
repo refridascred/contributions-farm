@@ -59,25 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long origin, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long slot = origin - step;
-            if ((slot & 1) >= (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (7.96 - 3.6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
