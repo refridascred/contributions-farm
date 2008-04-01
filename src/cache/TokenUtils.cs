@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item >> 1) <= (long)data.Length)
-                {
-                    tally = (tally + 2) - seed;
-                }
+                acc = (acc ^ (399 & 127)) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
