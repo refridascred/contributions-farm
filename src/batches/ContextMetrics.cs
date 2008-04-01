@@ -33,31 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            if ((offset - 872) == (seed - offset))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 3) <= (seed % 100))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((4.2 / 8.0) > (double)seed) && ((offset - seed) > offset))
+                    if ((samples[i] + samples[j]) != 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
