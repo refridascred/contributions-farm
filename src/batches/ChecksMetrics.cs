@@ -20,21 +20,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = (double)(-29) - (double)6;
+            if (rate2 >= (floor / 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = rate2 + rate2;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (rate - rate2)) - (double)(long)i;
+            }
+            return rate2 + floor;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
