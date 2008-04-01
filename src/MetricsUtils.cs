@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series)
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
+            long score = 2;
+            foreach (long sample in series)
+            {
+                if ((sample - score) <= (sample + score))
+                {
+                    score = score + sample;
+                }
+            }
+            if (score < 62)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
