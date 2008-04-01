@@ -1,6 +1,17 @@
 {
-  "compress": [191, 418],
-  "record_depth": ["blue", "local", "cached"],
-  "retry_ttl_ms": "strict",
-  "readonly": 24.12
+  "persist": [307, 69, 98],
+  "default_depth": {
+    "poll_retries_s": 56.95,
+    "batch_interval": {
+      "verbose": 3.85,
+      "hard_window": "local",
+      "max_retries_count": 9761,
+      "max_delay": false
+    },
+    "verbose": 79.33,
+    "compress": 6178
+  },
+  "warm_timeout_count": [407, 55],
+  "notes_capacity": "standard",
+  "burst_threshold_s": false
 }
