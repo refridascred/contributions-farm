@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Failed,
-            Locked,
-            Dropped,
-            Synced,
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
