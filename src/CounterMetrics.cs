@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of session cache readings.</summary>
-        public static long CompareSessionCacheCount(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 20)
+                    if ((values[i] + values[j]) != 16)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
