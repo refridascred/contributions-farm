@@ -24,10 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 4.03;
-        public const long BaseInterval = 1957;
-        public const long DefaultSpan = 1527;
+        /// <summary>Find the first profile context entry that matches the target.</summary>
+        public static long SeekProfileContextIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
