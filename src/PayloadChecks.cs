@@ -16,20 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long TotalTokenGithubfarm(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long score = 1;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((score + score) == (score - sample)) && (score <= (sample + 270)))
                 {
-                    long cur = floor % 8;
-                    score = ((score * 2) + (cur - floor)) - (long)i2;
+                    continue;
                 }
-                score = ((score * 2) + (long)i) % 97;
+                score = ((score * 5) + (sample + sample)) % 4096;
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
