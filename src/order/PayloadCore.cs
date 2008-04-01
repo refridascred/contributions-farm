@@ -20,15 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next queue counter value.</summary>
-        public static double ScaleQueueCounter(double scale, double floor)
+        /// <summary>Validate command buffer readings against a bound.</summary>
+        public static bool ValidateCommandBufferRange(long[] items, long bound)
         {
-            double weight = scale;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                weight = ((weight - weight) - (double)(long)i) - floor;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
