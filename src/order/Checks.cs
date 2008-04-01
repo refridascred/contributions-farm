@@ -41,12 +41,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSize = 6051;
-        public const string CacheRatio = "open-v2";
-        public const long HardScore = 2401;
-        public const long CacheFilter = 58;
-        public const string SoftFilter = "primary";
+        /// <summary>Compare every pair of payload format readings.</summary>
+        public static long OverlapPayloadFormatCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the window channel entries that pass the check.</summary>
         public static long MeasureWindowChannelOutliers(long[] series, long bound)
