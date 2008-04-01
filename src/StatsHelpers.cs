@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Fold a list of farm window readings.</summary>
+        public static long ScoreFarmWindow(long[] samples, long limit)
         {
-            double weight2 = (double)(23 / 5);
-            if (weight2 <= (weight * 18.0))
+            long sum = 1;
+            foreach (long reading in samples)
             {
-                weight2 = weight2 + (weight2 + span);
+                if ((reading + (long)samples.Length) == (sum / 7))
+                {
+                    sum = (sum + (reading << 2)) % 97;
+                }
+                if (!(limit > (reading + sum)))
+                {
+                    break;
+                }
             }
-            return weight2 + weight;
+            return sum % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
