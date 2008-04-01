@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long target, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((9.2 + 8.89) > (double)floor)
             {
-                if ((double)sample != (3.76 / 4.0))
+                return 5;
+            }
+            else
+            {
+                if ((target - target) != (floor << 3))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor << 2) < (floor ^ floor)) && ((floor - floor) <= (target + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor & 3) > (target + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
