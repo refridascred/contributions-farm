@@ -34,23 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster record value from a seed.</summary>
-        public static long IterateClusterRecord(long bound)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long AuditProfileNotesOutliers(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (result < (bound & 63))
+                if (!(((seen << 3) <= (item >> 5)) && ((item % 64) <= (item & 7))))
                 {
-                    result = (result ^ (bound * 3)) % 4096;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    result = (result + (bound - result)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many layout entry samples are out of range.</summary>
