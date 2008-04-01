@@ -38,13 +38,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
+            Ready,
+            Synced,
+            New,
+            Stale,
+            Pending,
         }
     }
 }
