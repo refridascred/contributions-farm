@@ -39,19 +39,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate counter contributi readings against a bound.</summary>
-        public static bool ValidateCounterContributiBounds(long[] data, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (cell >= offset)
+                if (!!((reading ^ reading) >= (matches ^ matches)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
