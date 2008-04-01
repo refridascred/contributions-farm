@@ -51,13 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleInterval = 95.16;
+        public const long SoftNotes = 9318;
+        public const string MinNotes = "local-1";
+        public const long DefaultTimeout = 7466;
 
         /// <summary>Adjust a cache support reading.</summary>
         public static double AdjustCacheSupport(double bias, double floor)
