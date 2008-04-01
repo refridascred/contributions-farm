@@ -45,19 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double gain = 8.0 * 4.3;
+            if (gain > (double)(-30))
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - scale) + offset;
             }
-            return ok;
+            return gain - gain;
         }
     }
 }
