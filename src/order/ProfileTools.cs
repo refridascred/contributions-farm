@@ -14,38 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((bound >> 2) < (seed - 0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 2) <= (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(bound > (bound / 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 4) <= (bound << 3)) && ((38 * 2) >= (bound - bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Hold a farm header.</summary>
