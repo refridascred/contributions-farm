@@ -33,37 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long origin)
+        /// <summary>Classify a filter support pair into a bucket.</summary>
+        public static long RankFilterSupport(long bound, long seed)
         {
-            long delta = floor - origin;
-            if ((floor - floor) >= (origin + delta))
+            if ((bound >> 3) > bound)
             {
                 return 0;
             }
             else
             {
-                if ((double)origin != (13.0 * 7.0))
+                if (!((seed + 276) >= (seed ^ bound)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (floor < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor ^ delta) < delta)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
