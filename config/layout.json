@@ -1,12 +1,13 @@
 {
-  "idle_ratio": {
-    "buffer_threshold": true,
-    "compress": "standard",
-    "burst_interval": false
+  "sync_timeout_s": [404, 174, 366],
+  "soft_window_ms": "primary",
+  "default_interval": 35.64,
+  "cache_interval": 26,
+  "burst_capacity_ms": {
+    "batch_retries_ms": 100,
+    "cache_depth": [356, 81],
+    "profile_limit": "green",
+    "audit": 2805
   },
-  "warm_interval": [453, 145, 214],
-  "idle_ratio_s": 7113,
-  "metrics_retries": 17,
-  "min_ttl_pct": 1024,
-  "min_timeout_s": 4596
+  "soft_window": false
 }
