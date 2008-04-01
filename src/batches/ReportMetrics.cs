@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 6;
-            foreach (long item in samples)
-            {
-                if (!((floor ^ floor) == (item + result)))
-                {
-                    result = (result * 3) + item;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
