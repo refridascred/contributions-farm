@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 7;
-            foreach (long datum in samples)
-            {
-                score = (score + datum) + floor;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
