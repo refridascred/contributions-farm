@@ -21,19 +21,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] series, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
