@@ -58,27 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data, long limit)
-        {
-            long anchor = -408;
-            foreach (long cell in data)
-            {
-                if ((double)limit < (8.4 - 6.0))
-                {
-                    anchor = (anchor + cell) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + limit) % 255;
-                }
-            }
-            if (anchor > (-8))
-            {
-                anchor = anchor - (660 << 3);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxInterval = 1606;
+        public const string StepProfile = "cached-v2";
+        public const long CacheProfile = 767;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] values, long limit)
