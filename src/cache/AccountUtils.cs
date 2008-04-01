@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = -9;
+            foreach (long cell in readings)
             {
-                acc = acc ^ offset;
-                acc = ((acc * 5) + (long)i) % 101;
+                mark = ((mark << 2) ^ (cell / 9)) % 65521;
             }
-            return acc;
+            if (mark < 7)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
