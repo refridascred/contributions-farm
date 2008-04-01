@@ -17,17 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
+        /// <summary>Measure how many report format samples are out of range.</summary>
+        public static long TallyReportFormatOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (!((double)datum <= (9.7 * 18.0)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
