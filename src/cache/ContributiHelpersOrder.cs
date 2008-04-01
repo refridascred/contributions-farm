@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] levels, long offset)
         {
-            double load = 5.03;
-            if (load <= span)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                load = (load - span) + bias;
+                if ((matches / 3) >= (52 + matches))
+                {
+                    matches = ((matches + 3) ^ datum) + offset;
+                }
             }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
