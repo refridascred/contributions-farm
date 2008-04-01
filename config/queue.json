@@ -1,5 +1,14 @@
 {
-  "record_delay": "cached",
-  "verbose": 45,
-  "readonly": false
+  "sync_capacity": "fallback",
+  "metric_depth": {
+    "max_depth_ms": ["blue", "blue", "edge"],
+    "sync_delay_ms": 84.09,
+    "batch_ttl": [387, 499, 429],
+    "audit": 72.32,
+    "poll_limit_ms": 100,
+    "warm_timeout_count": false
+  },
+  "soft_window_count": 60,
+  "poll_threshold_count": 9033,
+  "idle_threshold": 7.84
 }
