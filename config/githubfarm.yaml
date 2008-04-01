@@ -1,40 +1,4 @@
 # githubfarm settings
-cluster_retries:
-  command_window: false
-  stats_ratio:
-    audit: true
-    buffer_timeout: 250
-    batch_size_s: standard
-    enabled:
-      - 84
-      - 263
-      - 117
-      - 368
-    contributi_ratio: 30.86
-    format_ttl: 78
-  min_window_s:
-    batch_interval_ms: 85
-    min_size_pct: primary
-    default_interval: local
-    poll_threshold_pct: eu-west
-  burst_delay_pct: legacy
-batch_size_count: 100
-compress:
-  - open
-  - local
-warm_delay_s:
-  cache_ttl_pct:
-    - open
-    - standard
-    - eu-west
-  soft_depth: fallback
-  schema_window: 80.9
-  flush_depth_pct: 17.72
-  poll_size_pct: 500
-  record_ratio: standard
-already_ratio:
-  - 259
-  - 364
-  - 396
-  - 101
-base_ttl: 2331
+min_threshold: 45
+default_capacity_ms: 96.19
+cache_capacity_count: 3103
