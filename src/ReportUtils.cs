@@ -50,25 +50,18 @@ namespace Common.Utilities
         public const long BurstSize = 3950;
         public const long BatchCommand = 6125;
 
-        /// <summary>Rank commits metrics input into a small class.</summary>
-        public static long SortCommitsMetrics(long target, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] samples, long bound)
         {
-            long offset = target ^ limit;
-            if ((offset >> 1) != ((-725) / 3))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= (offset >> 3))
+                if ((double)seen <= (double)bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
     }
 }
