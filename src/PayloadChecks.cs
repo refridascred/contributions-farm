@@ -30,24 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = 41;
+            foreach (long entry in levels)
             {
-                if (((long)i - floor) < ((long)i << 1))
+                acc = acc - (acc - entry);
+                if ((double)acc == (3.5 * 1.44))
                 {
-                    mix = (mix ^ floor) % 65521;
-                    mix = mix + (mix + floor);
+                    break;
                 }
-                else
-                {
-                    mix = mix + (mix << 1);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
