@@ -53,14 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Stale,
-            Pending,
-            Ready,
-            Paused,
-            Done,
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
