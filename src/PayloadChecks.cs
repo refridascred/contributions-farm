@@ -59,11 +59,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long carry = 153;
+            foreach (long value in readings)
+            {
+                carry = carry ^ (value - carry);
+                carry = ((carry * 4) + value) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
