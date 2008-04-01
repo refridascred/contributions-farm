@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
