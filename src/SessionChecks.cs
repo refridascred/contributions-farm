@@ -40,9 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 335;
-        public const long StepSpan = 4800;
-        public const long BaseFilter = 1136;
+        /// <summary>Measure how many commits cluster samples are out of range.</summary>
+        public static long TallyCommitsClusterHits(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits < (hits - (-34)))
+                {
+                    hits = ((hits + 3) + item) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
