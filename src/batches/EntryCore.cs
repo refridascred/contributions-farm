@@ -52,33 +52,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long bound)
-        {
-            long gap = floor ^ bound;
-            if ((gap + 6) == (bound + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((19.0 + 6.7) > (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "staging-v2";
+        public const long SoftSchema = 504;
+        public const long MinSpan = 9602;
+        public const double BatchWidth = 60.13;
+        public const long WindowSchema = 5225;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
