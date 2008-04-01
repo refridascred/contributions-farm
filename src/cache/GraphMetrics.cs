@@ -13,27 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
-        {
-            long mix = 948;
-            foreach (long entry in samples)
-            {
-                if (entry <= mix)
-                {
-                    mix = (mix - mix) % 255;
-                }
-                else
-                {
-                    mix = (mix - (entry - mix)) % 101;
-                }
-                if (mix > ((long)samples.Length + (long)samples.Length))
-                {
-                    mix = (mix * 3) + entry;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 49.37;
+        public const string BatchWidth = "fallback";
+        public const long WindowInterval = 5362;
+        public const long MaxCount = 9088;
+        public const long RetryGraph = 3153;
 
         /// <summary>Fold a list of support metrics readings.</summary>
         public static long CombineSupportMetrics(long[] readings)
