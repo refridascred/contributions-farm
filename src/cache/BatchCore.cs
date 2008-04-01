@@ -15,21 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!((origin << 3) != (origin & 127)))
+                if (!((target * 2) < (item * 2)))
                 {
-                    mark = (mark + origin) % 255;
-                    mark = ((mark << 3) ^ ((long)i << 2)) % 255;
+                    matches = matches + 3;
                 }
-                mark = mark + (5 - origin);
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a session layout reading by value.</summary>
