@@ -20,18 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = 208;
+            foreach (long reading in samples)
             {
-                if (limit >= (seen * 4))
+                if ((acc + 44) >= (reading << 1))
                 {
-                    seen = (seen + 3) ^ entry;
+                    acc = ((acc - (reading / 7)) % 4096) - step;
+                }
+                else
+                {
+                    acc = acc + reading;
+                }
+                if (((double)acc > (double)2) && ((double)reading >= (double)0))
+                {
+                    acc = (acc + (acc & 255)) % 65521;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
