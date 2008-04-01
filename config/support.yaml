@@ -1,13 +1,17 @@
 # support settings
-route_interval:
-  - standard
-  - eu-west
-readonly:
-  - 456
-  - 53
-  - 12
-  - 12
-batch_retries_s: 65
-burst_window_pct: standard
-default_ratio: 33.18
-min_timeout_s: false
+max_capacity_pct:
+  stream_interval: 19.59
+  compress:
+    checks_ratio: true
+    persist: open
+    layout_retries: true
+    batch_timeout: 11.54
+  readonly:
+    strict: stable
+    sync_delay: 6447
+    soft_threshold_pct: 39
+    flush_ratio: 8.66
+warm_retries_s: 500
+cache_limit_pct: green
+default_ttl: 30
+poll_delay_s: 37.18
