@@ -1,13 +1,10 @@
 {
-  "poll_limit_ms": [387, 123, 447, 447],
-  "enabled": "local",
-  "cache_capacity": {
-    "audit": "fallback",
-    "entry_threshold": 2004,
-    "max_window_pct": "edge",
-    "default_ratio_s": 22,
-    "cache_limit": 11,
-    "dry_run": [87, 26, 406, 137]
+  "min_interval_ms": {
+    "flush_ratio_count": true,
+    "cache_depth_count": true,
+    "sync_delay_s": ["latest", "latest"]
   },
-  "compress": "blue"
+  "poll_ratio_s": 29.27,
+  "warm_capacity_ms": "green",
+  "sync_threshold_ms": 25
 }
