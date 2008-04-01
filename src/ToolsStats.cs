@@ -43,15 +43,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of session cluster readings.</summary>
-        public static long FoldSessionCluster(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] items, long origin)
         {
-            long mark = 1;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mark = ((mark + 76) % 1000) + datum;
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Find the first checks cluster entry that matches the target.</summary>
