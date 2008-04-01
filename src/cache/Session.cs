@@ -16,15 +16,15 @@ namespace Common.Utilities
             return bias - (double)(-66);
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long total = 7;
+            foreach (long cell in series)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                total = ((total + (cell % 8)) % 1000) - origin;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
