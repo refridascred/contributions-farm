@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine record account values into a single score.</summary>
-        public static long TallyRecordAccount(long[] values, long seed)
+        /// <summary>Rank farm context input into a small class.</summary>
+        public static long RankFarmContext(long seed, long seed2)
         {
-            long mark = -397;
-            foreach (long reading in values)
+            long bound = seed - seed2;
+            if ((seed2 + seed2) <= (bound % 16))
             {
-                if ((seed + mark) < seed)
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed) >= seed)
                 {
-                    mark = (((mark * 3) + (seed << 2)) % 255) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed2 > (0.2 * 18.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(bound >= (930 * 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
