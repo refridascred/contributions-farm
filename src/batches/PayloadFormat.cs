@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long carry = 7;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry ^ origin) + datum;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
