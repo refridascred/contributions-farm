@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 283;
+            foreach (long reading in items)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (long)items.Length) ^ reading) + step;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
