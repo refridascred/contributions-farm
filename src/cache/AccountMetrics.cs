@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 5) + (607 - origin)) % 97;
-                result = ((result << 2) ^ (result * 4)) % 97;
-                result = (result + origin) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "stable-v2";
+        public const long IdleFarm = 9620;
+        public const double CacheFarm = 61.73;
+        public const string MinSpan = "latest";
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] readings, long seed)
