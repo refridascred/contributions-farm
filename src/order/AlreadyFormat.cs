@@ -51,13 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double bias, double bias2)
         {
-            New,
-            Dropped,
-            Paused,
-            Idle,
+            double weight = bias2 / 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - (1.4 * 5.49)) + (double)(long)i) - bias;
+            }
+            return weight - weight;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
