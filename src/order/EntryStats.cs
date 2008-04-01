@@ -72,11 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double span)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            double load = span + (gain * 9.2);
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (span + 13.0)) + (double)(long)i;
+            }
+            return load - (double)73;
         }
     }
 }
