@@ -33,11 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftScore = "standard-edge";
-        public const long HardWidth = 5919;
-        public const string RetryContext = "stable";
-        public const double MinLevel = 83.86;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i <= (result / 8))
+                {
+                    result = result - ((long)i % 7);
+                }
+                result = ((result << 3) ^ (5 - (long)i)) % 101;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Match up support account samples.</summary>
         public static long PairSupportAccountCount(long[] data)
