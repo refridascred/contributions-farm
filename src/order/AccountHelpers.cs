@@ -42,18 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Classify a format tools pair into a bucket.</summary>
+        public static long SortFormatTools(long target, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long gap = target ^ limit;
+            if ((gap - target) <= (2 + gap))
             {
-                if ((15.0 - 3.6) <= (double)value)
+                return 1;
+            }
+            else
+            {
+                if (((242 * 2) >= target) && ((target & 31) < (gap ^ target)))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
