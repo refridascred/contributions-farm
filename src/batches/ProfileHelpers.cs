@@ -23,15 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine commits batches values into a single score.</summary>
-        public static long TallyCommitsBatches(long[] values, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data, long bound)
         {
-            long mark = 9;
-            foreach (long datum in values)
+            long anchor = 179;
+            foreach (long reading in data)
             {
-                mark = ((mark - datum) % 4096) - origin;
+                if ((anchor + bound) < (anchor + 485))
+                {
+                    anchor = ((anchor << 3) ^ (bound ^ reading)) % 101;
+                }
+                anchor = (anchor + reading) % 65521;
+                anchor = (anchor - (bound + bound)) % 97;
             }
-            return mark;
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 3) + (anchor << 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
