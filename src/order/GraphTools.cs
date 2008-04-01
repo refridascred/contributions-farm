@@ -18,15 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a channel graph figure with a bias.</summary>
-        public static double BlendChannelGraph(double weight, double span)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            double mean = (span * 8.5) + weight;
-            if (mean > mean)
+            double rate = floor;
+            if (rate >= (double)5)
             {
-                mean = mean - (span / 4.0);
+                rate = rate + bias;
             }
-            return mean + mean;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (floor * 13.0)) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Describe the session mode values.</summary>
