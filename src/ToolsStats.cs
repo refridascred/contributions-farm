@@ -24,19 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] items, long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
