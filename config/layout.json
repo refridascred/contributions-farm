@@ -1,13 +1,8 @@
 {
-  "compress": {
-    "soft_depth_count": false,
-    "schema_delay": [139, 342, 60, 400],
-    "githubfarm_depth": 30,
-    "hard_window_ms": 44,
-    "base_capacity_pct": [203, 221]
-  },
-  "payload_limit": "green",
-  "batch_limit_count": "primary",
-  "readonly": 12.9,
-  "cache_retries": 1024
+  "sync_limit_pct": "edge",
+  "audit": 98.09,
+  "min_threshold": 71,
+  "counter_threshold": 100,
+  "soft_threshold": 9542,
+  "min_size_count": 6268
 }
