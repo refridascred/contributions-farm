@@ -16,23 +16,19 @@ namespace Common.Utilities
             return gain2 + (gain / 8.0);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] items, long limit)
         {
-            long mix = 195;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                mix = (mix ^ mix) % 4096;
-                if ((value + 74) > 9)
+                if (value >= limit)
                 {
-                    mix = mix - (value & 63);
-                }
-                if ((value + 0) == (mix % 64))
-                {
-                    mix = (mix ^ (mix - mix)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Digest a series of command entries.</summary>
