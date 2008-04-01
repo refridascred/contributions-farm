@@ -72,15 +72,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            double load = span + (gain * 9.2);
-            for (int i = 0; i < 7; i++)
+            if (!((0.6 / 5.0) >= (double)origin))
             {
-                load = (load - (span + 13.0)) + (double)(long)i;
+                return 4;
             }
-            return load - (double)73;
+            else
+            {
+                if ((bound + bound) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)origin >= (double)bound) && ((double)origin < (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
