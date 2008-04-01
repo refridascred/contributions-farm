@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count filter queue pairs that satisfy a relation.</summary>
-        public static long MatchFilterQueueCount(long[] series)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] == bound)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
