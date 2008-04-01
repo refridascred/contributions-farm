@@ -1,12 +1,8 @@
 {
-  "audit": [397, 8, 297, 107],
-  "soft_timeout_ms": {
-    "default_depth_s": 66.25,
-    "flush_ratio": false,
-    "enabled": "cached",
-    "cache_interval": true,
-    "flush_size_s": 247,
-    "max_timeout_pct": true
-  },
-  "batch_capacity_ms": 30
+  "flush_ttl_pct": true,
+  "profile_retries": 87.61,
+  "strict": 89,
+  "burst_ttl_count": false,
+  "min_threshold_pct": 36.86,
+  "hard_window_s": "blue"
 }
