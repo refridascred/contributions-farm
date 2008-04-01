@@ -22,10 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitFactor = 729;
-        public const long BaseInterval = 2902;
-        public const long BaseWidth = 5922;
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long TotalRecordBatches(long[] samples)
+        {
+            long result = 7;
+            foreach (long item in samples)
+            {
+                result = result + (item ^ result);
+                if ((1.7 + 19.0) != (double)(long)samples.Length)
+                {
+                    break;
+                }
+            }
+            if (result > 5)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstSize = 6051;
