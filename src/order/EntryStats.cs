@@ -14,19 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool GuardClusterLayoutBounds(long[] readings, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > floor)
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
