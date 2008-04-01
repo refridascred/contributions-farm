@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long mark = -35;
+            foreach (long entry in data)
+            {
+                mark = (mark * 4) + (mark - 5);
+                if ((mark > (mark + mark)) && (3.2 < (double)entry))
+                {
+                    mark = (mark * 4) + (mark - 5);
+                }
+            }
+            if (mark < 56)
+            {
+                mark = ((mark * 4) + 16) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile class values.</summary>
