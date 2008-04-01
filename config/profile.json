@@ -1,8 +1,6 @@
 {
-  "token_threshold": true,
-  "idle_size_ms": [385, 380, 263],
-  "sync_window_ms": 92,
-  "batch_size_s": 37,
-  "readonly": [221, 266, 288],
-  "warm_size_pct": "local"
+  "token_timeout": 79.06,
+  "audit": "latest",
+  "warm_interval_pct": 36,
+  "warm_capacity_count": [181, 375, 392]
 }
