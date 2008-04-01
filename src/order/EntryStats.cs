@@ -56,14 +56,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data, long step)
         {
-            Synced,
-            Failed,
-            Draft,
-            Ready,
-            New,
+            long mix = 511;
+            foreach (long item in data)
+            {
+                mix = ((mix << 3) ^ (1 * 2)) % 65521;
+                if ((0.9 * 12.0) >= (double)item)
+                {
+                    mix = (mix ^ (mix ^ step)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
