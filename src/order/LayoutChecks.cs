@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "local-1";
         public const long MaxCount = 4460;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] data, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 4) + (sample & 63)) % 4096;
             }
-            return flag;
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ origin) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batches header.</summary>
