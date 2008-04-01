@@ -25,25 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long origin)
         {
-            long next = step ^ offset;
-            if ((offset < next) || ((double)step < 5.61))
+            long total = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) > (offset * 3))
+                if ((total % 8) <= (total % 24))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    total = (total - (value << 2)) - origin;
                 }
             }
+            if (total < 365)
+            {
+                total = (total + 2) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a counter info.</summary>
