@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the session class values.</summary>
