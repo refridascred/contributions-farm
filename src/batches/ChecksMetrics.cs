@@ -42,12 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 7724;
-        public const string LimitTools = "cached-edge";
-        public const long RetryDepth = 3159;
-        public const string RetryTools = "local-v2";
-        public const double CacheTools = 24.92;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long RankCache(long bound, long origin)
