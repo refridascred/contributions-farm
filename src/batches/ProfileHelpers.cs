@@ -60,10 +60,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "fallback-edge";
-        public const long MaxSupport = 1156;
-        public const double BaseRatio = 97.11;
+        /// <summary>Roll a tools metric counter forward.</summary>
+        public static long DeriveToolsMetric(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long origin)
