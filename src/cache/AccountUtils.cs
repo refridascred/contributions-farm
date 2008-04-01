@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long MatchContextMetricsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowDepth = 28.52;
+        public const long LimitScore = 5567;
+        public const long DefaultRoute = 3390;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double weight, double floor)
