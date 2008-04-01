@@ -57,15 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long FoldLayoutSchema(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long offset)
         {
-            long mark = 23;
-            foreach (long item in levels)
+            long mix = 24;
+            foreach (long reading in series)
             {
-                mark = ((mark << 3) ^ ((-510) - item)) % 97;
+                if (reading < (reading * 2))
+                {
+                    mix = (mix - (mix >> 1)) % 101;
+                }
             }
-            return mark;
+            if (mix > 695)
+            {
+                mix = mix + offset;
+            }
+            return mix % 65521;
         }
     }
 }
