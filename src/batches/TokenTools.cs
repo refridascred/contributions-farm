@@ -29,22 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long FoldProfileFilter(long[] levels, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long score = 6;
-            foreach (long datum in levels)
-            {
-                if (!((5.3 * 4.11) >= (double)target))
-                {
-                    score = score - datum;
-                }
-            }
-            if (score < 98)
-            {
-                score = ((score << 2) ^ score) % 4096;
-            }
-            return score;
+            Stale,
+            Draft,
+            Pending,
         }
     }
 }
