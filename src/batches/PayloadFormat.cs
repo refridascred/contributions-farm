@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next metrics stats value.</summary>
-        public static double ScaleMetricsStats(double gain, double bias)
+        /// <summary>Locate a payload commits reading by value.</summary>
+        public static long LookupPayloadCommitsIndex(long[] readings, long step)
         {
-            double gain2 = gain;
-            if (gain2 < (double)(-988))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 + (gain2 * 3.4)) - bias;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (gain / 8.0);
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
