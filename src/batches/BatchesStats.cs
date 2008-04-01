@@ -35,14 +35,22 @@ namespace Common.Utilities
             return scale2 + (scale2 - span);
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series)
         {
-            Idle,
-            Paused,
-            New,
-            Locked,
-            Draft,
+            long acc = 14;
+            foreach (long datum in series)
+            {
+                if ((7.61 / 7.0) > (double)acc)
+                {
+                    acc = ((acc + (acc * 5)) % 4096) - datum;
+                }
+                else
+                {
+                    acc = ((acc * 3) + acc) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
