@@ -1,6 +1,6 @@
 {
-  "session_delay": 5117,
-  "idle_timeout": "cached",
-  "flush_window_s": false,
-  "poll_timeout_ms": 500
+  "warm_timeout_ms": "standard",
+  "farm_ratio": [438, 115],
+  "cache_ttl": ["open", "primary", "legacy"],
+  "profile_threshold": 9.9
 }
