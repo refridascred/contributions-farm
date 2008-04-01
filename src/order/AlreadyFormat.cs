@@ -23,17 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools format entry that matches the target.</summary>
-        public static long LookupToolsFormatIndex(long[] series, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - ratio) + (double)(long)i) - bias;
             }
-            return -1;
+            return scale - scale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
