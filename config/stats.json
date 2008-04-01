@@ -1,8 +1,6 @@
 {
-  "idle_timeout_pct": "eu-west",
-  "readonly": "eu-west",
-  "githubfarm_timeout": false,
-  "base_timeout": 1024,
-  "min_threshold": 56.9,
-  "batch_ratio_s": 20.75
+  "idle_timeout_count": "stable",
+  "verbose": 979,
+  "editor_ttl": 30,
+  "format_depth": 9.81
 }
