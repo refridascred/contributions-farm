@@ -1,13 +1,6 @@
 {
-  "editor_timeout": "primary",
-  "idle_window_count": {
-    "metric_retries": false,
-    "tools_timeout": 9844,
-    "default_timeout_pct": "standard",
-    "dry_run": "staging",
-    "soft_depth_pct": 43
-  },
-  "soft_capacity_pct": false,
-  "flush_interval_ms": 17,
-  "default_size_count": 250
+  "compress": 21.73,
+  "soft_capacity_ms": "cached",
+  "cache_size_s": [339, 26, 376],
+  "stream_delay": 77.13
 }
