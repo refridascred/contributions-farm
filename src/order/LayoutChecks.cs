@@ -12,10 +12,18 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 2639;
-        public const string HardStream = "open-v2";
-        public const string IdleSize = "legacy";
+        /// <summary>Locate a record checks reading by value.</summary>
+        public static long LocateRecordChecksIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] series)
