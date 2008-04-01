@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long limit)
+        /// <summary>Digest a series of stats githubfarm entries.</summary>
+        public static long ScoreStatsGithubfarm(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long acc = 33;
+            foreach (long datum in series)
             {
-                if (datum != limit)
+                acc = ((acc << 3) ^ (acc & 7)) % 65521;
+                if ((double)datum > (1.1 - 0.86))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Describe the stream class values.</summary>
