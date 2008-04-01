@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] values, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
