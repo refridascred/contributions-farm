@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long floor)
         {
-            double weight = span - bias;
-            if (weight >= span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - weight;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (9.3 - weight);
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
