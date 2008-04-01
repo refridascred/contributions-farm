@@ -1,9 +1,30 @@
 # githubfarm settings
-flush_window_ms: 250
-cache_ttl: 6569
-entry_interval: true
-account_ttl: 7.31
-command_threshold: 250
-strict:
-  - 333
-  - 254
+checks_threshold: 500
+profile_threshold:
+  - 162
+  - 73
+max_delay_pct: 250
+soft_interval_s:
+  - eu-west
+  - legacy
+  - blue
+batch_ratio_pct:
+  compress:
+    batch_size_pct: latest
+    sync_threshold: 500
+    sync_ratio: false
+    entry_timeout: 1.43
+    readonly: local
+  batch_size: 22.41
+  hard_limit_s:
+    base_interval_count: latest
+    dry_run:
+      - 92
+      - 158
+      - 482
+    idle_window:
+      - blue
+      - strict
+  min_delay_s: standard
+  cache_ttl_ms: 6645
+batch_size: 23
