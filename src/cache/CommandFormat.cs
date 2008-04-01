@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a metric options.</summary>
