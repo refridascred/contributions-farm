@@ -19,10 +19,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "primary-v2";
-        public const string StepToken = "legacy-1";
-        public const long RetryToken = 5477;
-        public const double MaxToken = 55.84;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
+        {
+            long anchor = 72;
+            foreach (long entry in items)
+            {
+                if ((entry << 1) <= (long)items.Length)
+                {
+                    anchor = (anchor ^ (anchor - entry)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (entry / 7)) % 1000;
+                }
+            }
+            if (anchor > 878)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
+        }
     }
 }
