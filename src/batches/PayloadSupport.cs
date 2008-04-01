@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            Dropped,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally << 2) >= entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
