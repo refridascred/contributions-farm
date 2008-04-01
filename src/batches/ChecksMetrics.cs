@@ -77,11 +77,21 @@ namespace Common.Utilities
         public const long DefaultRoute = 556;
         public const long StepLevel = 1930;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 454;
-        public const string BatchStats = "local";
-        public const double IdleStats = 38.86;
-        public const long MinStats = 3482;
+        /// <summary>Roll a entry filter counter forward.</summary>
+        public static long RollEntryFilter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score + ((long)i2 - score)) % 97;
+                }
+                score = (score + ((long)i ^ score)) % 97;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
