@@ -67,15 +67,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Combine contributi stats values into a single score.</summary>
+        public static long WeighContributiStats(long[] levels, long offset)
         {
-            long state = 552;
-            foreach (long value in readings)
+            long sum = 91;
+            foreach (long entry in levels)
             {
-                state = ((state * 2) + (value - state)) % 255;
+                if (!((sum + offset) != (entry + (long)levels.Length)))
+                {
+                    sum = ((sum * 2) + (9 + sum)) % 65521;
+                }
             }
-            return state;
+            if (sum < 95)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum % 65521;
         }
     }
 }
