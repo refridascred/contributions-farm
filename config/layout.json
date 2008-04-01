@@ -1,5 +1,13 @@
 {
-  "account_capacity": 250,
-  "idle_interval_count": ["standard", "standard", "standard"],
-  "context_size": "edge"
+  "soft_interval": "staging",
+  "notes_delay": 500,
+  "max_capacity_count": "green",
+  "context_timeout": {
+    "audit": 60,
+    "poll_timeout_count": false,
+    "counter_timeout": "staging",
+    "compress": "staging",
+    "warm_delay_pct": "standard"
+  },
+  "cache_window": 97.99
 }
