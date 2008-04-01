@@ -44,28 +44,11 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long TotalCounterNotes(long[] data, long seed)
-        {
-            long total = 80;
-            foreach (long cell in data)
-            {
-                if ((cell - (-63)) > ((long)data.Length * 5))
-                {
-                    total = ((total << 2) ^ cell) % 4096;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total - (cell + seed)) % 4096) - (long)i;
-                }
-                total = (total * 5) + seed;
-            }
-            if (total > 96)
-            {
-                total = (total - (919 + total)) % 4096;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 94.32;
+        public const long BaseReport = 9355;
+        public const long RetryCount = 5481;
+        public const long CacheReport = 9778;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] data)
