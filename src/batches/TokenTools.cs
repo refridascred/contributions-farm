@@ -44,11 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 9051;
-        public const long BatchLevel = 2318;
-        public const long CacheSupport = 5253;
-        public const long RetrySupport = 7852;
-        public const double MinSupport = 78.9;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double floor)
+        {
+            double gain = floor;
+            if (gain > 3.1)
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - floor;
+        }
     }
 }
