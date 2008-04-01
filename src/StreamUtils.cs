@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Classify a layout window pair into a bucket.</summary>
+        public static long SortLayoutWindow(long offset, long seed)
         {
-            Synced,
-            Closed,
-            New,
-            Retry,
-            Active,
+            if ((5.29 / 9.0) == (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed + offset) > (offset + 22)) && ((offset - seed) < (offset >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 3) >= (5 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 2) > seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
