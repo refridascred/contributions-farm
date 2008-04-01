@@ -31,18 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long TallyGraphToolsMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item > (8.2 - 3.4))
                 {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
