@@ -1,18 +1,7 @@
 {
-  "dry_run": "standard",
-  "compress": {
-    "counter_threshold": true,
-    "retry_threshold_s": "eu-west",
-    "batch_timeout_count": 22.06,
-    "warm_interval_pct": {
-      "entry_ttl": true,
-      "retry_limit": 250,
-      "dry_run": 100
-    },
-    "soft_size": 61
-  },
-  "sync_threshold_s": "green",
-  "channel_delay": 81,
-  "max_limit": [222, 151, 435],
-  "retry_threshold_pct": 60
+  "persist": "open",
+  "min_ttl": 87,
+  "retry_capacity": "green",
+  "cache_ttl_ms": false,
+  "flush_ratio_count": true
 }
