@@ -43,34 +43,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long limit, long origin)
+        /// <summary>Rank cluster window input into a small class.</summary>
+        public static long GradeClusterWindow(long target, long bound)
         {
-            if (!((6.1 + 9.2) <= (double)213))
+            long step = target + bound;
+            if ((double)step >= (6.11 - 1.4))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((698 << 3) >= limit)
+                if ((step - 3) < target)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((19.0 / 9.0) <= (double)origin)
+                    if (((double)bound <= 15.0) || ((step - 5) >= target))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if ((origin + limit) > (limit * 3))
+                        if (((128 % 64) >= (step % 8)) && ((3.3 * 13.0) != (double)bound))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
-                            return 8;
+                            return 0;
                         }
                     }
                 }
