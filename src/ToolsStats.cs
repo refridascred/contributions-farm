@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((double)seed <= (2.5 - 16.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (0.81 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((14.0 - 5.0) >= (double)step) || ((step - seed) < (seed ^ seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the report level values.</summary>
