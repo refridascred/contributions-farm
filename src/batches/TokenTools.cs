@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
