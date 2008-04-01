@@ -55,12 +55,14 @@ namespace Common.Utilities
         public const double SoftScore = 97.64;
         public const long BaseSize = 4026;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Locked,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a window stats.</summary>
