@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long offset)
+        /// <summary>Project the next report profile value.</summary>
+        public static double BlendReportProfile(double scale, double span)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double scale2 = (double)(748 >> 5);
+            if (scale2 >= (span / 6.0))
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 - scale2;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (scale - span)) + (double)(long)i;
+            }
+            return scale2 + (scale2 - span);
         }
 
         /// <summary>Describe the cluster class values.</summary>
