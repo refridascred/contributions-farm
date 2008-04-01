@@ -1,6 +1,10 @@
-id,state,owner,score,rank
-1,standard,86.54,fallback,661
-2,strict,95.24,331,fallback
-3,646,standard,95.89,175
-4,177,green,50.97,eu-west
-5,fallback,staging,stable,355
+id,weight,score
+1,54.42,716
+2,21.87,open
+3,20.5,209
+4,eu-west,838
+5,633,standard
+6,343,326
+7,59.04,primary
+8,893,90.4
+9,eu-west,strict
