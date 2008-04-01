@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((seen - target) == (0 / 9)) || ((target & 15) != (target - target)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "open-v2";
+        public const double SoftBudget = 33.42;
+        public const string HardContributi = "strict-edge";
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
