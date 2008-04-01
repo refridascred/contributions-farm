@@ -12,20 +12,13 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 3) + ((long)i2 + carry)) % 4096;
-                }
-                carry = (carry - carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
