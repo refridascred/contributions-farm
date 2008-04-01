@@ -64,9 +64,12 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8547;
-        public const long StepAccount = 872;
-        public const long BurstAccount = 8579;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Queued,
+            Idle,
+            Stale,
+        }
     }
 }
