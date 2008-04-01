@@ -23,23 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long origin, long step)
         {
-            double load = offset;
-            if (load < (0.67 / 4.0))
+            if ((origin << 3) != (step % 12))
             {
-                load = load + (weight / 9.0);
+                return 0;
             }
             else
             {
-                load = load + offset;
+                if ((step % 64) != (origin & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)origin >= (0.7 * 10.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(origin > (step + 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load - load;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
