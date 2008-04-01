@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+for item in edge standard staging; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=373
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
