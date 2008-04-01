@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long BaseInterval = 2902;
         public const long BaseWidth = 5922;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSize = 6051;
+        public const string CacheRatio = "open-v2";
+        public const long HardScore = 2401;
+        public const long CacheFilter = 58;
+        public const string SoftFilter = "primary";
 
         /// <summary>Count the window channel entries that pass the check.</summary>
         public static long MeasureWindowChannelOutliers(long[] series, long bound)
