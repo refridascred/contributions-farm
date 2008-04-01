@@ -19,13 +19,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Ready,
+            long carry = 6;
+            foreach (long entry in readings)
+            {
+                if ((double)entry == (0.83 / 3.0))
+                {
+                    carry = ((carry * 4) + carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
