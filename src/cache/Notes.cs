@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const double SoftScore = 97.64;
         public const long BaseSize = 4026;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Failed,
-            Stale,
-            Synced,
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
