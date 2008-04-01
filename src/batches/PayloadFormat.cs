@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Blend two account checks measurements.</summary>
+        public static double BlendAccountChecks(double weight, double offset)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            double gain = (double)(66 / 7);
+            if (gain >= offset)
+            {
+                gain = gain + (weight + 7.4);
+            }
+            return gain + 2.0;
         }
 
         /// <summary>Project the next checks record value.</summary>
