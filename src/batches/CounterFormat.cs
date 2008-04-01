@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] data, long target)
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long CombineCommitsNotes(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -6;
+            foreach (long value in readings)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mix = (((mix * 2) + (-751)) % 4096) - (long)i;
+                }
+                if ((0.2 + 4.7) >= (double)mix)
+                {
+                    mix = (mix ^ value) % 1000;
                 }
             }
-            return -1;
+            if (mix < 6)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
