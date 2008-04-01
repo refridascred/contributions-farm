@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-legacy}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=205
+RECORD_LIMIT=373
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
