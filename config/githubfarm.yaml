@@ -1,12 +1,11 @@
 # githubfarm settings
-window_depth:
-  - latest
-  - stable
-tools_limit:
-  - 211
-  - 52
-  - 127
-  - 441
-dry_run: 23.69
-readonly: 55.33
-poll_timeout_pct: 8053
+base_depth_ms: 19.89
+dry_run: 9311
+verbose: standard
+command_ratio:
+  sync_threshold_s: 24.57
+  retry_interval_pct:
+    verbose: strict
+    metric_timeout: 100
+    batch_depth_pct: staging
+  idle_ttl: false
