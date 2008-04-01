@@ -35,10 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSize = 2257;
-        public const long IdleLevel = 9317;
-        public const long MinCount = 2200;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphLimits(long[] items, long target)
