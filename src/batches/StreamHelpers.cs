@@ -46,24 +46,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if ((double)origin != (3.95 * 8.6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 + 16.0) >= (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Ready,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
