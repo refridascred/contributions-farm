@@ -31,15 +31,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the order graph series from a seed.</summary>
-        public static long SeriesOrderGraph(long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            if (((origin - seed) > (seed - seed)) && (8.68 < (double)seed))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((856 - seed) < (853 >> 4)) || ((17.0 + 4.0) != (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin / 8) <= origin) || ((origin & 7) > (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
