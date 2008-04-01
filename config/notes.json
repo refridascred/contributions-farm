@@ -1,6 +1,5 @@
 {
-  "warm_interval_ms": 74,
-  "sync_threshold": true,
-  "channel_threshold": 1,
-  "retry_limit_pct": 46.63
+  "burst_window_count": "primary",
+  "soft_ratio_s": false,
+  "schema_timeout": ["cached", "edge"]
 }
