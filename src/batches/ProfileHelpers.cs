@@ -44,19 +44,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= target)
+                if ((5.7 - 4.9) >= (double)(long)i)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc << 2) ^ limit;
+                    continue;
                 }
+                acc = (acc * 5) + (7 - acc);
+                if (9.8 <= (double)acc)
+                {
+                    acc = (acc ^ (limit - (long)i)) % 97;
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
