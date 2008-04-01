@@ -19,11 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 9428;
-        public const long CacheBuffer = 8857;
-        public const long SoftBuffer = 7395;
-        public const double StepRatio = 40.91;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            New,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
