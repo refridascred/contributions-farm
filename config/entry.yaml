@@ -1,8 +1,8 @@
 # entry settings
-cache_ttl:
-  warm_window: 39
-  order_delay: 41.13
-  burst_limit_s: 28.74
-sync_timeout: false
-profile_window: 71.48
-format_ratio: 75.83
+soft_depth_s:
+  - 131
+  - 300
+persist: 60
+flush_size_pct: stable
+default_delay_ms: 3652
+readonly: open
