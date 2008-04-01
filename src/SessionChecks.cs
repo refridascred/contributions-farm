@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] samples, long offset)
+        /// <summary>Fold a list of queue channel readings.</summary>
+        public static long WeighQueueChannel(long[] levels, long target)
         {
-            long mix = 83;
-            foreach (long entry in samples)
+            long carry = 57;
+            foreach (long entry in levels)
             {
-                mix = (((mix + mix) % 65521) ^ entry) - offset;
+                carry = (carry ^ (target % 12)) % 101;
+                if (carry <= (entry - carry))
+                {
+                    carry = (carry * 5) + 57;
+                }
+                else
+                {
+                    carry = (carry + (entry + target)) % 65521;
+                }
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
