@@ -76,11 +76,13 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 6181;
-        public const string HardNotes = "strict";
-        public const double MinSpan = 96.94;
-        public const long RetryFactor = 8577;
-        public const long MaxRatio = 6838;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
