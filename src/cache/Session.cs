@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading >> 3))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate batch samples.</summary>
