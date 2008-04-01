@@ -1,18 +1,8 @@
 {
-  "retry_depth": 250,
-  "persist": "legacy",
-  "min_delay_s": {
-    "filter_ratio": {
-      "dry_run": 60,
-      "hard_limit_ms": "local",
-      "warm_threshold_pct": 65.15,
-      "max_delay_count": true,
-      "strict": "eu-west",
-      "retry_ttl_pct": false
-    },
-    "compress": 27,
-    "hard_retries": 500,
-    "min_limit": 66.97,
-    "flush_size_s": true
-  }
+  "token_threshold": true,
+  "idle_size_ms": [385, 380, 263],
+  "sync_window_ms": 92,
+  "batch_size_s": 37,
+  "readonly": [221, 266, 288],
+  "warm_size_pct": "local"
 }
