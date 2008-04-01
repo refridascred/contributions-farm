@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((3.52 / 3.0) != (double)hits)
+                if ((1.69 / 5.0) < (double)entry)
                 {
-                    hits = (hits + 2) ^ datum;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many layout session samples are out of range.</summary>
