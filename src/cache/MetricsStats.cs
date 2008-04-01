@@ -46,19 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((step <= (step - 2)) || ((step + carry) == ((long)i * 5))))
-                {
-                    carry = (carry ^ (carry - step)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
