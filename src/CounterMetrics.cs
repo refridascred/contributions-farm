@@ -28,12 +28,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
