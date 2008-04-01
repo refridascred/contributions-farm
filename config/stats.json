@@ -1,6 +1,5 @@
 {
-  "cache_delay": 62.61,
-  "cache_size": "edge",
-  "payload_retries": [81, 496, 347],
-  "readonly": "local"
+  "poll_timeout": true,
+  "queue_window": 500,
+  "retry_ttl_ms": true
 }
