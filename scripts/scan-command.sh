@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge blue legacy; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=8
+COMMAND_LIMIT=477
 log "limit is ${COMMAND_LIMIT}"
