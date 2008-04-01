@@ -52,21 +52,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
+        public static bool GuardClusterPayloadBounds(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < offset)
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
