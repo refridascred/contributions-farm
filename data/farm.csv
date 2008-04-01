@@ -1,7 +1,9 @@
-id,region,owner,level,state
-1,80.09,866,28.47,71
-2,7.12,961,eu-west,primary
-3,35.98,staging,37.85,local
-4,2.9,legacy,legacy,950
-5,310,43.77,997,local
-6,897,94.62,266,278
+id,score,owner,state
+1,79.16,35.66,38.87
+2,fallback,30.3,154
+3,201,125,490
+4,337,94.81,358
+5,41.61,3.32,stable
+6,94.44,653,16.18
+7,primary,111,442
+8,legacy,54.73,284
