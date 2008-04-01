@@ -83,21 +83,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix + (long)i) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix ^ (mix ^ mix)) % 97) ^ (long)i2;
                 }
+                mix = mix + (mix * 4);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
