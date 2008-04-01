@@ -30,18 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit queue channel readings against a rule.</summary>
-        public static long MeasureQueueChannelGaps(long[] levels, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((7.02 + 16.0) >= (double)target)
+                if (datum != bound)
                 {
-                    seen = (seen + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
