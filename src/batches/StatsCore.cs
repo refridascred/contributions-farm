@@ -40,18 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((272 + reading) < (20 % 97))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
