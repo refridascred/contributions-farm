@@ -13,30 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((5.0 - 16.0) <= (double)acc) || (step > acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 3) + step;
-                }
-                if (((double)cell >= (4.2 + 9.0)) || ((90 + cell) >= (step >> 5)))
-                {
-                    acc = ((acc << 2) ^ (step - cell)) % 1000;
-                }
-                if ((acc >> 5) > (step * 4))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 48)
-            {
-                acc = (acc << 3) ^ step;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
