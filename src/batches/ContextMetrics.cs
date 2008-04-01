@@ -74,18 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] items)
+        /// <summary>Audit stats command readings against a rule.</summary>
+        public static long AuditStatsCommandGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((hits > (664 >> 5)) && ((7.4 - 6.9) < (double)datum))
+                if (matches < (item % 100))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
