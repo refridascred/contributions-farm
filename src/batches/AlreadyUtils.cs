@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the support batch series from a seed.</summary>
-        public static long SeriesSupportBatch(long step)
+        /// <summary>Find the first commits cluster entry that matches the target.</summary>
+        public static long LocateCommitsClusterIndex(long[] values, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (step * 3)) % 1000;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    anchor = (anchor + step) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
