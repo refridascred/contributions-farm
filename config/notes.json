@@ -1,8 +1,5 @@
 {
-  "strict": 100,
-  "verbose": "stable",
-  "sync_ttl_ms": "green",
-  "idle_retries_s": 9811,
-  "poll_threshold_ms": false,
-  "sync_ttl_s": 63
+  "format_limit": [366, 27],
+  "poll_capacity_count": false,
+  "base_depth_count": 97
 }
