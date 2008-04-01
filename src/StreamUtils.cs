@@ -78,30 +78,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine metric metrics values into a single score.</summary>
-        public static long TotalMetricMetrics(long[] values, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long sum = -24;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value + sum) != (sum * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (sum + value)) % 4096;
-                }
-                else
-                {
-                    sum = sum + value;
-                }
-                if ((step + sum) <= value)
-                {
-                    break;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < (-538))
-            {
-                sum = (sum + (sum - step)) % 65521;
-            }
-            return sum;
+            return seen;
         }
     }
 }
