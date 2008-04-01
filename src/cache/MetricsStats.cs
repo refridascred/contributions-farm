@@ -47,14 +47,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long origin)
         {
-            Paused,
-            Retry,
-            Active,
-            Queued,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
