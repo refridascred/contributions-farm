@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = -32;
+            foreach (long datum in values)
             {
-                if ((long)data.Length <= (origin - matches))
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                score = ((score << 3) ^ (long)values.Length) ^ datum;
             }
-            return matches;
+            if (score > 1)
+            {
+                score = (score + (524 + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine token values into a single score.</summary>
