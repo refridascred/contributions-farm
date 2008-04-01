@@ -1,5 +1,24 @@
 {
-  "idle_interval_count": 22.03,
-  "batch_capacity_pct": [119, 119],
-  "verbose": 7015
+  "base_depth_ms": {
+    "entry_ttl": false,
+    "dry_run": "standard",
+    "report_capacity": "standard",
+    "default_interval_pct": 70,
+    "retry_ratio_ms": false,
+    "audit": 4797
+  },
+  "max_interval_ms": 4897,
+  "tools_timeout": {
+    "contributi_limit": 98,
+    "poll_limit_s": 1595,
+    "farm_capacity": true,
+    "record_interval": {
+      "readonly": "legacy",
+      "strict": 68,
+      "base_delay_s": 58,
+      "audit": "standard",
+      "flush_delay_ms": 5806
+    }
+  },
+  "compress": 20
 }
