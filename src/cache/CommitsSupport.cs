@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 9627;
-        public const double IdleCommand = 1.8;
-        public const long LimitDepth = 8194;
-        public const long SoftScore = 4724;
-        public const string BurstCommand = "strict-1";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long offset)
+        {
+            long lane = origin ^ offset;
+            if ((809 + 2) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.6 + 14.0) >= (double)lane)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
