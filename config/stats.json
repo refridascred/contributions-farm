@@ -1,5 +1,5 @@
 {
-  "enabled": 1024,
-  "cache_capacity": false,
-  "burst_ratio_count": "eu-west"
+  "idle_interval_count": 22.03,
+  "batch_capacity_pct": [119, 119],
+  "verbose": 7015
 }
