@@ -20,13 +20,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Locked,
-            Done,
-            Retry,
-            Failed,
+            Draft,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of record entries.</summary>
