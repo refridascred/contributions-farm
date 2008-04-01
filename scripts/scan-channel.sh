@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in legacy eu-west staging edge; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=297
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
