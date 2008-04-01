@@ -60,16 +60,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc ^ (acc & 255)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (anchor ^ (floor << 2)) - (long)i2;
+                }
+                anchor = ((anchor * 2) + anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
     }
 }
