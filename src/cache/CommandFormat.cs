@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 1580;
-        public const long IdleContext = 8030;
-        public const double BatchFactor = 18.64;
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double rate, double floor)
+        {
+            double rate2 = (double)(-33) + (6.31 / 2.0);
+            if (rate2 > (rate2 - floor))
+            {
+                rate2 = rate2 + (rate2 + rate);
+            }
+            else
+            {
+                rate2 = rate2 - (floor / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - floor) + (double)(long)i;
+            }
+            return rate2 - 6.38;
+        }
 
         /// <summary>Grade a commits editor value against two limits.</summary>
         public static long BucketCommitsEditor(long floor, long limit)
