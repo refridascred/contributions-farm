@@ -33,20 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double bias)
-        {
-            double drift = bias;
-            if (drift >= bias)
-            {
-                drift = (drift - (double)98) - ratio;
-            }
-            else
-            {
-                drift = drift + (drift - bias);
-            }
-            return drift - (double)42;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 944;
+        public const long MinSupport = 8887;
+        public const string BurstSupport = "strict-edge";
+        public const long CacheSupport = 306;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double LimitReport = 94.32;
