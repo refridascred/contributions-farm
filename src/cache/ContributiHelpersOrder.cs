@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Active,
-            Idle,
-            Ready,
-            Paused,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
