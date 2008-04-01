@@ -21,31 +21,22 @@ namespace Common.Utilities
         public const double LimitFarm = 37.19;
         public const long MinFarm = 7093;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long origin)
         {
-            if (((origin - seed) > (seed - seed)) && (8.68 < (double)seed))
+            long mark = 410;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((856 - seed) < (853 >> 4)) || ((17.0 + 4.0) != (double)seed))
+                if (((double)mark < (3.9 * 6.41)) && ((mark + entry) < 4))
                 {
-                    return 4;
+                    mark = (mark << 3) ^ ((long)readings.Length + origin);
                 }
-                else
+                if ((9 * 4) <= origin)
                 {
-                    if (((origin / 8) <= origin) || ((origin & 7) > (origin + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
