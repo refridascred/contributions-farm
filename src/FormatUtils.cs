@@ -51,18 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowCount = 9089;
+        public const long WindowAlready = 1759;
+        public const long SoftAlready = 3733;
+        public const string SoftInterval = "primary-v2";
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
