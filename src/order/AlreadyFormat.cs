@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long BaseFactor = 4589;
         public const double BurstDepth = 80.52;
 
-        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
-        public static bool GuardGithubfarmChecksLimits(long[] samples, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long origin)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long span = offset - origin;
+            if (((span % 100) != (33 + span)) || ((offset ^ offset) <= (span + origin)))
             {
-                if (value <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < 7.0)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((span > (span + origin)) && ((double)span > (9.54 + 7.6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate order samples.</summary>
