@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mean - (offset / 6.0);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] series, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double weight = span - bias;
+            if (weight >= span)
             {
-                if ((double)449 != (double)limit)
-                {
-                    seen = (seen + 1) - cell;
-                }
+                weight = weight - weight;
             }
-            return seen;
+            return weight - (9.3 - weight);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
