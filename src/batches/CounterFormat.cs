@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((236 % 64) != (count / 3))
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
             return count;
