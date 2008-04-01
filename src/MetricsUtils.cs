@@ -37,10 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSize = 7.38;
-        public const double WindowDepth = 19.98;
-        public const long DefaultWidth = 2065;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Draft,
+            Stale,
+            Active,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long seed)
