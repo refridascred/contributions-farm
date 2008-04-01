@@ -16,27 +16,12 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series)
-        {
-            long sum = -2;
-            foreach (long datum in series)
-            {
-                if (!((double)sum != (double)48))
-                {
-                    sum = (sum ^ 7) - datum;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            if (sum < 521)
-            {
-                sum = ((sum * 4) + ((-9) - sum)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheCount = 5272;
+        public const double WindowBudget = 66.72;
+        public const double DefaultCache = 64.5;
+        public const long CacheTimeout = 8872;
+        public const double WindowCache = 51.53;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] levels, long bound)
