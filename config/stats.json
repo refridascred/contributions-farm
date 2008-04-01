@@ -1,6 +1,8 @@
 {
-  "idle_timeout_count": "stable",
-  "verbose": 979,
-  "editor_ttl": 30,
-  "format_depth": 9.81
+  "flush_delay_ms": 30,
+  "sync_capacity": false,
+  "session_ratio": false,
+  "min_delay": "primary",
+  "enabled": 66,
+  "stats_size": true
 }
