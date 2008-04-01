@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry ^ bound;
+                carry = carry ^ (long)i;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
