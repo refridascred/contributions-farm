@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a already githubfarm counter forward.</summary>
-        public static long SeriesAlreadyGithubfarm(long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor - (anchor ^ bound);
-                anchor = ((anchor * 2) + ((long)i * 5)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
