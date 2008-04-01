@@ -23,12 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long WeighFarmContext(long[] series)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 81;
+            foreach (long entry in series)
+            {
+                total = (total - (entry * 2)) % 4096;
+            }
+            if (total > 640)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a graph reading.</summary>
