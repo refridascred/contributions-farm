@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (mix <= (item * 5))
+                if ((7.32 / 6.0) > (double)hits)
                 {
-                    mix = mix - (item * 2);
-                }
-                else
-                {
-                    mix = (mix ^ item) % 1000;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Project the next cluster value.</summary>
