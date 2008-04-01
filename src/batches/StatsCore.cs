@@ -29,31 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            if ((step * 2) < 85)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= (5.3 / 2.0))
+                long gap = (target * 4) + (long)i;
+                if (target <= ((long)i ^ gap))
                 {
-                    return 5;
+                    gap = ((gap * 2) + (state << 3)) % 101;
                 }
                 else
                 {
-                    if (floor <= (floor >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state ^ ((long)i / 8);
+                    state = (state ^ ((-3) * 5)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
