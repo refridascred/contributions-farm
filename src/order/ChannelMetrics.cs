@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == target)
+                if (samples[i] >= seed)
                 {
                     return (long)i;
                 }
