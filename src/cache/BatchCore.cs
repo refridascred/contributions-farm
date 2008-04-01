@@ -39,11 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Retry,
+            Done,
         }
     }
 }
