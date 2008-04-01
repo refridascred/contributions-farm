@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxDepth = 61.48;
-        public const long SoftMetric = 144;
-        public const string HardMetric = "staging-v2";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Failed,
+            Dropped,
+            Active,
+            Done,
+            Draft,
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
