@@ -31,20 +31,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] data, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long prev = (state + 654) - (state ^ (long)i);
-                if (!!((seed << 2) < (prev + 1)))
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    prev = (prev ^ 92) % 255;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
