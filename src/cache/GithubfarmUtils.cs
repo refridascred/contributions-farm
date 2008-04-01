@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long IdleLevel = 6389;
         public const string DefaultOrder = "staging-edge";
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the metrics class values.</summary>
