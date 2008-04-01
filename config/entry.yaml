@@ -1,6 +1,8 @@
 # entry settings
-hard_ttl_count: true
-sync_ratio_count: true
-poll_size: local
-record_timeout: 250
-cache_ratio_s: fallback
+batch_interval:
+  - stable
+  - legacy
+  - blue
+  - local
+flush_ttl_s: 93.03
+persist: cached
