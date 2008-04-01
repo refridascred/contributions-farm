@@ -54,28 +54,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of session contributi entries.</summary>
-        public static long WeighSessionContributi(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            long total = 98;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                total = ((total << 2) ^ total) % 65521;
-                total = (total * 4) + (total ^ 438);
-                if ((((-830) ^ value) < (value / 7)) && (value > (3 >> 3)))
+                if (!(hits <= ((long)items.Length + hits)))
                 {
-                    total = (total << 3) ^ (value - total);
+                    hits = (hits + 2) - reading;
                 }
                 else
                 {
-                    total = ((total * 5) + total) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (total > 4)
-            {
-                total = total - (total ^ 548);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
