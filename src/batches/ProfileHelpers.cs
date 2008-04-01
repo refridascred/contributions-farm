@@ -71,38 +71,28 @@ namespace Common.Utilities
         public const long MaxSupport = 1156;
         public const double BaseRatio = 97.11;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            if ((4.3 / 8.0) <= (double)target)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit << 2) < (target + target)) && (limit <= (target + limit)))
+                if ((long)i < 297)
                 {
-                    return 4;
+                    result = (result << 2) ^ (origin & 63);
+                }
+                if ((result / 5) > (result ^ (-48)))
+                {
+                    result = ((result * 3) + ((long)i + result)) % 4096;
+                    result = (result ^ (origin - 2)) % 97;
                 }
                 else
                 {
-                    if (!((double)limit < 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((7.26 * 16.0) > (double)target) || ((limit >> 1) > (485 << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result + result) % 101;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
