@@ -59,21 +59,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long CountChannelProfileHits(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((seen ^ seen) > ((long)series.Length << 2)) || (((-349) * 5) == (value + value))))
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + offset;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
