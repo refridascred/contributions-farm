@@ -1,5 +1,7 @@
 {
-  "retry_limit": 9794,
-  "batch_limit_pct": "fallback",
-  "hard_capacity_count": "open"
+  "soft_retries_pct": "staging",
+  "batch_retries_ms": false,
+  "metrics_interval": "edge",
+  "audit": false,
+  "max_depth_count": 18
 }
