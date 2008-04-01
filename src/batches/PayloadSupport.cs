@@ -27,17 +27,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Roll a checks cluster counter forward.</summary>
+        public static long RollChecksCluster(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix - (target ^ mix)) % 97) + (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
