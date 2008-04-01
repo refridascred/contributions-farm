@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            New,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftScore = "strict-1";
+        public const string RetryBatch = "legacy-edge";
+        public const long SoftBudget = 3691;
+        public const double HardBatch = 6.52;
+        public const long CacheBatch = 4293;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long offset)
