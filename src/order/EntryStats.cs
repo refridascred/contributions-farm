@@ -60,31 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if (!((0.6 / 5.0) >= (double)origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) <= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)origin >= (double)bound) && ((double)origin < (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Retry,
+            Locked,
+            Dropped,
         }
     }
 }
