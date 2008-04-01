@@ -65,17 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark ^ 71;
-                mark = ((mark * 2) + 9) % 97;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
