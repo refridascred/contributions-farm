@@ -48,13 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 27.38;
+        public const double BurstRatio = 73.56;
+        public const string SoftRatio = "staging-edge";
+        public const long CacheEditor = 5234;
     }
 }
