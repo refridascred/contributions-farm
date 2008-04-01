@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long score = 96;
-            foreach (long entry in levels)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (bound < (score ^ entry))
-                {
-                    score = score + (4 / 9);
-                }
+                anchor = ((anchor * 4) + (bound % 64)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (score < 306)
-            {
-                score = (score - (score * 3)) % 1000;
-            }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
