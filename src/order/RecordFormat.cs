@@ -52,12 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report notes sample.</summary>
-        public static long SeekReportNotesIndex(long[] readings, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                if (series[i] > seed)
                 {
                     return (long)i;
                 }
