@@ -12,18 +12,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] levels, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((double)limit > (0.16 + 1.8))
             {
-                if ((matches / 3) >= (52 + matches))
+                return 1;
+            }
+            else
+            {
+                if (18 >= seed)
                 {
-                    matches = ((matches + 3) ^ datum) + offset;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed / 6) >= (seed >> 2)) || ((limit * 3) < (209 + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed >= (seed & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
