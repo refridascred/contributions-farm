@@ -1,16 +1,7 @@
 # githubfarm settings
-token_threshold: 250
-audit: 500
-max_delay:
-  - stable
-  - standard
-cache_ratio_ms:
-  - 178
-  - 460
-  - 104
-dry_run:
-  - blue
-  - fallback
-  - legacy
-  - stable
-base_interval_ms: 3189
+graph_delay: 24.84
+persist: 60
+soft_delay: local
+cache_capacity_s: true
+commits_interval: true
+burst_window_s: edge
