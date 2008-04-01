@@ -49,13 +49,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next cluster record value from a seed.</summary>
+        public static long IterateClusterRecord(long bound)
         {
-            Active,
-            Done,
-            New,
-            Idle,
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (result < (bound & 63))
+                {
+                    result = (result ^ (bound * 3)) % 4096;
+                }
+                else
+                {
+                    result = (result + (bound - result)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many layout entry samples are out of range.</summary>
