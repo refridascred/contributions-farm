@@ -1,4 +1,45 @@
 # support settings
-burst_delay_s: 500
-cache_size: primary
-retry_retries_pct: true
+min_timeout_count:
+  verbose:
+    idle_interval_ms:
+      - 466
+      - 325
+      - 118
+      - 117
+    burst_capacity_ms: 73
+    burst_limit: 1024
+    hard_window: 79
+  sync_delay_s: false
+  burst_timeout_count: cached
+  warm_ttl: eu-west
+  max_window_ms: 60
+soft_capacity_s:
+  - edge
+  - cached
+  - edge
+enabled:
+  audit: strict
+  soft_delay_ms:
+    - 233
+    - 172
+    - 378
+  flush_timeout_pct:
+    sync_size_count: 12.61
+    burst_retries:
+      - 3
+      - 383
+      - 188
+    warm_ratio_ms: true
+  dry_run: 49
+  persist:
+    - 341
+    - 398
+    - 212
+  layout_interval: 28.75
+flush_depth_ms:
+  - 446
+  - 334
+  - 51
+  - 19
+audit: 83
+stream_ttl: eu-west
