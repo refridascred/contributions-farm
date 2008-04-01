@@ -1,20 +1,11 @@
 # support settings
-sync_threshold_ms:
-  verbose: blue
-  flush_ratio: staging
-  soft_size_pct:
-    - legacy
-    - local
-  cache_timeout_ms:
-    base_depth_count: 1
-    default_retries_pct: edge
-    counter_delay: local
-buffer_limit:
-  - cached
-  - latest
-  - cached
-soft_window_pct:
-  - standard
-  - legacy
-  - fallback
+format_size:
+  poll_threshold: 9423
+  route_size: standard
+  window_depth: local
+already_threshold: open
+warm_ttl: true
+stats_ttl:
+  - staging
+  - local
   - legacy
