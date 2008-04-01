@@ -15,22 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate notes context samples.</summary>
-        public static long TotalNotesContext(long[] samples, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = 221;
-            foreach (long value in samples)
-            {
-                if ((total + total) >= (value - limit))
-                {
-                    total = (total ^ (value * 2)) % 4096;
-                }
-            }
-            if (total > 8)
-            {
-                total = (total * 4) + (limit >> 2);
-            }
-            return total % 65521;
+            Queued,
+            Idle,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a window entry.</summary>
