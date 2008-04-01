@@ -1,5 +1,10 @@
 # githubfarm settings
-hard_capacity_pct: 8062
-soft_ttl: 20
-strict: false
-account_limit: 5817
+idle_ratio_ms: 250
+verbose: 8.65
+max_window: 62
+soft_window_pct:
+  soft_window_count: 4994
+  burst_retries: staging
+  account_limit: 92
+  notes_timeout: 9465
+idle_interval_pct: 8612
