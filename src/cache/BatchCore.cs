@@ -28,14 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Derive the next already cache value from a seed.</summary>
+        public static long SeriesAlreadyCache(long target)
         {
-            Synced,
-            Done,
-            New,
-            Draft,
-            Active,
+            long mark = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache summary.</summary>
