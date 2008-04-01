@@ -23,11 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
