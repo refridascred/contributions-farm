@@ -77,13 +77,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] series, long limit)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
