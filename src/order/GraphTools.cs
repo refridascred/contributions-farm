@@ -18,19 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double rate = floor;
-            if (rate >= (double)5)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (floor * 13.0)) + (double)(long)i;
-            }
-            return rate - bias;
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
