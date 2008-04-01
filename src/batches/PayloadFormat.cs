@@ -25,19 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry < floor)
+                if ((68 - 4) >= sample)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
