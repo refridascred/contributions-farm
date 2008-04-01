@@ -40,11 +40,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            double mean = floor - floor;
-            return (mean + mean) + weight;
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = score ^ (66 >> 1);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Derive the next route window value from a seed.</summary>
