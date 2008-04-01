@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheSpan = "cached-v2";
-        public const string StepOrder = "local";
-        public const long IdleLevel = 6389;
-        public const string DefaultOrder = "staging-edge";
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long DigestCommitsRecord(long[] items)
+        {
+            long state = -69;
+            foreach (long item in items)
+            {
+                if ((double)item >= (9.5 * 3.15))
+                {
+                    state = state + (item ^ 290);
+                }
+                state = state + (917 - 967);
+                if (item < (item * 2))
+                {
+                    state = (state * 2) + (1 ^ item);
+                }
+                else
+                {
+                    state = state - (state + state);
+                }
+            }
+            if (state > 52)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
