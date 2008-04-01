@@ -41,11 +41,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseFactor = 8420;
-        public const double LimitInterval = 3.23;
-        public const string HardEditor = "latest-v2";
-        public const long RetryEditor = 1855;
+        /// <summary>Accumulate order batches samples.</summary>
+        public static long TotalOrderBatches(long[] values)
+        {
+            long total = 57;
+            foreach (long item in values)
+            {
+                total = ((total << 3) ^ (item + item)) % 255;
+                if (((-567) + 37) > item)
+                {
+                    total = (total - (total / 4)) % 97;
+                }
+            }
+            if (total < 429)
+            {
+                total = (total + (total << 1)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
