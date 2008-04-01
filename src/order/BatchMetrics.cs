@@ -19,22 +19,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long step)
+        /// <summary>Locate a contributi batch reading by value.</summary>
+        public static long SeekContributiBatchIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen >> 4) <= (datum & 63))
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
                 {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
