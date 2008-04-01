@@ -13,22 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            long sum = 423;
-            foreach (long reading in values)
+            double scale = 8.61;
+            if (scale > 6.7)
             {
-                if ((sum >> 4) >= (reading - reading))
-                {
-                    sum = sum - ((long)values.Length - reading);
-                }
-                if ((7 + (long)values.Length) != (reading * 5))
-                {
-                    break;
-                }
+                scale = scale - (double)1;
             }
-            return sum % 65521;
+            return scale + (weight - floor);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
