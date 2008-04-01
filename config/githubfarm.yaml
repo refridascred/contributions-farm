@@ -1,5 +1,16 @@
 # githubfarm settings
-warm_ttl_s: true
-sync_ttl: strict
-warm_window: green
-warm_capacity_ms: 27.69
+readonly: blue
+warm_ttl_s:
+  - open
+  - eu-west
+  - legacy
+  - cached
+hard_limit:
+  metrics_window: open
+  queue_window: legacy
+  window_capacity: strict
+  githubfarm_limit:
+    - 241
+    - 80
+  githubfarm_delay: true
+  warm_capacity_pct: legacy
