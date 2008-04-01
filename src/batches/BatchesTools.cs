@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool CheckToolsEntryLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "latest-edge";
+        public const double RetryChecks = 29.37;
+        public const string IdleChecks = "local-v2";
+        public const long HardBudget = 4127;
 
         /// <summary>Iterate the format cache series from a seed.</summary>
         public static long SeriesFormatCache(long bound)
