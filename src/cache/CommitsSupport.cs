@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] values)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((hits * 5) <= (cell - hits)) && (cell >= ((-8) + 85)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
