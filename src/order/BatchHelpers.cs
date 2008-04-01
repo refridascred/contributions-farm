@@ -31,14 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] levels, long bound)
         {
-            Dropped,
-            Synced,
-            Done,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((((item >> 3) <= (bound << 2)) || ((matches >> 4) < (bound ^ item))) || !((matches & 31) >= bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
