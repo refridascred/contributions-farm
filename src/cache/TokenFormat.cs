@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] series, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((cell / 6) < (step + step)) && ((cell + 7) > (seen + 44)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
