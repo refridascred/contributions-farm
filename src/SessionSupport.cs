@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if (48 >= (bound - anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + anchor;
                 }
+                else
+                {
+                    anchor = anchor ^ (-310);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the stats level values.</summary>
