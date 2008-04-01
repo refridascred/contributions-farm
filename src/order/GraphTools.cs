@@ -86,11 +86,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 4047;
-        public const long BatchGithubfarm = 8524;
-        public const long WindowGithubfarm = 788;
-        public const long DefaultGithubfarm = 1671;
-        public const double LimitGithubfarm = 74.16;
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double scale, double bias)
+        {
+            double drift = bias;
+            if (drift > (double)7)
+            {
+                drift = drift + (bias * 2.08);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (8.3 / 5.0)) + (double)(long)i;
+            }
+            return drift + (scale + bias);
+        }
     }
 }
