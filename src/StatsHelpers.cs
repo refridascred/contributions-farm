@@ -36,23 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (453 >= (count - count))
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5884;
+        public const long BurstMetric = 4810;
+        public const long MaxMetric = 4305;
 
         /// <summary>Digest a series of filter channel entries.</summary>
         public static long CombineFilterChannel(long[] items, long step)
