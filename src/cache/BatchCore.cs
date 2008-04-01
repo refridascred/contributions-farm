@@ -23,39 +23,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long bound, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long diff = bound + seed;
-            if ((bound / 2) > diff)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 100) > (seed + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff >> 5) != (bound % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((71 - seed) < (bound << 3)) && ((bound - seed) < (seed ^ (-429))))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Done,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a cache summary.</summary>
