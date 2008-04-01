@@ -1,9 +1,5 @@
 {
-  "max_ratio_ms": ["green", "stable"],
-  "soft_ratio": 404,
-  "enabled": {
-    "record_limit": false,
-    "idle_capacity_count": "stable",
-    "order_timeout": "green"
-  }
+  "session_delay": 32,
+  "verbose": 62.05,
+  "max_threshold_s": 250
 }
