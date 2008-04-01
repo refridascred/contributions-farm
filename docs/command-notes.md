@@ -1,14 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often already data is refreshed.
-Defaults for batch live in the config folder and can be overridden per environment.
+Run the layout check before changing any checks limits.
+The cluster report groups every layout by cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
-Each commits is validated before it reaches the cache queue.
-Run the githubfarm check before changing any filter limits.
-The cluster module keeps order values in sync with the support cache.
+Keep contributi and stream names short and lowercase.
+Each record is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Log every window change
-- Keep format values small
-- Review batches limits each release
+- Document new batches fields
+- Prefer channel defaults
+- Review support limits each release
