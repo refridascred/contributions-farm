@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const double SoftInterval = 90.85;
         public const long StepDepth = 9471;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double bias2)
         {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
-            Retry,
+            double drift = bias2;
+            return (drift + (drift / 9.0)) + bias;
         }
     }
 }
