@@ -35,15 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double drift = (bias / 4.0) + offset;
-            if (drift <= bias)
-            {
-                drift = drift + (drift - drift);
-            }
-            return drift - 5.2;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
