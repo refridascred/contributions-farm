@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long CountContributiAlreadyOutliers(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + matches) >= ((long)data.Length % 16))
-                {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepWidth = 8757;
+        public const string MaxCount = "primary-edge";
+        public const long BaseInterval = 4337;
+        public const long MaxWidth = 6035;
+        public const string WindowAccount = "staging-edge";
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] series)
