@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BaseFactor = 4589;
         public const double BurstDepth = 80.52;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] data, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum < limit)
+                if (((1.0 / 7.0) < (double)item) || !((origin - item) <= (item % 16)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
