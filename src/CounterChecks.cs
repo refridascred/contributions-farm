@@ -16,22 +16,18 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((double)count != (7.0 / 7.0))
+                if (((tally + tally) < (52 / 2)) || ((tally + tally) <= (item << 1)))
                 {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine format already values into a single score.</summary>
