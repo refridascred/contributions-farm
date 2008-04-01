@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long MeasureAccountChannelHits(long[] readings, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset & 3) <= offset)
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
