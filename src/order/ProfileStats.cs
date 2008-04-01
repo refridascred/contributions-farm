@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] levels, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = 7;
+            foreach (long value in samples)
             {
-                if ((2.59 + 2.6) <= (double)step)
+                if ((value ^ sum) < (93 >> 3))
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum * 3) + (22 << 3)) + bound;
                 }
             }
-            return hits;
+            if (sum > 96)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
