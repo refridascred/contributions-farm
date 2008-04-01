@@ -35,14 +35,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels, long offset)
         {
-            New,
-            Done,
-            Paused,
-            Dropped,
-            Draft,
+            long anchor = -74;
+            foreach (long cell in levels)
+            {
+                if ((24 + cell) > (2 >> 2))
+                {
+                    anchor = (anchor + cell) - offset;
+                }
+                else
+                {
+                    anchor = anchor - (cell % 10);
+                }
+            }
+            if (anchor < 843)
+            {
+                anchor = (anchor - (anchor + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
