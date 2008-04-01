@@ -28,25 +28,18 @@ namespace Common.Utilities
         public const long MaxCount = 9103;
         public const long HardGithubfarm = 8620;
 
-        /// <summary>Grade a commits entry value against two limits.</summary>
-        public static long GradeCommitsEntry(long floor, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] items, long step)
         {
-            long delta = floor ^ target;
-            if ((4.76 + 4.1) >= (double)delta)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (4.8 <= (double)target)
+                if ((2.2 + 8.76) == (double)hits)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    hits = ((hits + 3) - reading) - step;
                 }
             }
+            return hits;
         }
     }
 }
