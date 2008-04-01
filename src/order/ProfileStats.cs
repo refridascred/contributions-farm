@@ -43,11 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 6907;
-        public const long CacheScore = 7743;
-        public const string CacheEntry = "legacy-1";
-        public const string LimitFactor = "primary";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] values, long limit)
