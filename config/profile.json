@@ -1,19 +1,6 @@
 {
-  "cluster_depth": 100,
-  "compress": {
-    "base_delay_ms": true,
-    "max_threshold_ms": "standard",
-    "base_depth": {
-      "warm_size_count": 88.67,
-      "record_ttl": 92.58,
-      "idle_limit_pct": ["strict", "strict", "standard"],
-      "enabled": 51.68
-    },
-    "dry_run": [315, 239, 208, 140],
-    "warm_depth": 85.73
-  },
-  "idle_size_pct": 95,
-  "idle_interval": 100,
-  "soft_capacity_count": true,
-  "min_ttl_pct": "cached"
+  "record_size": [392, 42],
+  "retry_limit": ["stable", "stable"],
+  "burst_capacity": 72.3,
+  "flush_interval": 61.22
 }
