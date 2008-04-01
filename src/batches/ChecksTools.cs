@@ -39,25 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((bound + result) != (result / 2)) || ((result / 5) > bound))
-                {
-                    result = (result ^ (long)i) % 255;
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                    result = (result - (261 * 5)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Dropped,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
