@@ -24,11 +24,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
