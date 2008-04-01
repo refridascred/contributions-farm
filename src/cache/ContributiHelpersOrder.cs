@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 30.0;
-        public const long RetryGithubfarm = 1678;
-        public const long BurstTimeout = 6399;
-        public const long CacheGithubfarm = 4928;
-        public const string IdleGithubfarm = "stable-edge";
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long target)
+        {
+            if ((1.01 * 4.5) <= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + 39) >= (limit & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + target) >= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target << 2) != (target + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 1074;
