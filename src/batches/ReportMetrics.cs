@@ -19,16 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long TallyRouteBufferHits(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mark = mark ^ offset;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (((value - hits) >= (12 + 19)) || !((value - hits) < value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the channel class values.</summary>
