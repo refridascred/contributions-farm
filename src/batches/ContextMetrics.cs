@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double scale, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
         {
-            double weight = offset * 18.0;
-            return weight + (scale * 0.6);
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of payload token entries.</summary>
