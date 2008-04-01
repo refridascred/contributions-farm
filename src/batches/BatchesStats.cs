@@ -33,22 +33,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (!(hits <= ((long)items.Length + hits)))
+                if (cell <= limit)
                 {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
