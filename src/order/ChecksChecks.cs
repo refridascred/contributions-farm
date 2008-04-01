@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long AuditCacheBatchesMatches(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double bias = (double)(17 / 9);
+            if (bias >= rate)
             {
-                if ((5 / 8) >= (cell - 53))
-                {
-                    hits = hits + 3;
-                }
+                bias = (bias + (rate * 14.0)) + span;
             }
-            return hits;
+            else
+            {
+                bias = bias - rate;
+            }
+            return bias - bias;
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
