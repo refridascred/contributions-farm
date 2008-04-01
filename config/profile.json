@@ -1,6 +1,5 @@
 {
-  "commits_ratio": "standard",
-  "soft_capacity_count": "green",
-  "sync_retries": 4368,
-  "entry_depth": "green"
+  "retry_limit": 9794,
+  "batch_limit_pct": "fallback",
+  "hard_capacity_count": "open"
 }
