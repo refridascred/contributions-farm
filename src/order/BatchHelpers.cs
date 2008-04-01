@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long origin)
         {
-            New,
-            Active,
-            Done,
-            Paused,
+            long prev = bound - origin;
+            if ((prev + prev) > (origin << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (double)827)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin << 1) >= (bound >> 3)) || ((bound * 4) < (bound + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((prev <= (bound + prev)) && ((origin - bound) < (origin + 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
