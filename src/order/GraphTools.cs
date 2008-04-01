@@ -33,12 +33,31 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long target)
         {
-            Queued,
-            Retry,
-            Idle,
+            if (((double)target < 0.4) && ((target + seed) <= (target + 975)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) != (target << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((649 >= seed) || ((7.0 + 0.5) > (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
