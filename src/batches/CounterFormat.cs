@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next channel token value.</summary>
-        public static double ScaleChannelToken(double gain, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings, long step)
         {
-            double mean = gain * 9.82;
-            if (mean > (gain * 3.65))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mean = mean + offset;
+                if (sample < (seen + step))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                mean = mean + (gain * 4.4);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean + mean)) - (double)(long)i;
-            }
-            return mean + (gain - mean);
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
