@@ -70,10 +70,20 @@ namespace Common.Utilities
         public const long SoftAlready = 3733;
         public const string SoftInterval = "primary-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 2157;
-        public const long BaseEntry = 6529;
-        public const double RetryEntry = 86.84;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] series, long bound)
