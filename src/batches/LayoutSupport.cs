@@ -53,11 +53,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Rank token support input into a small class.</summary>
+        public static long ClassifyTokenSupport(long limit, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            long edge = limit ^ offset;
+            if (!((7.2 + 8.1) <= (double)edge))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((edge * 2) <= (62 * 5)) && ((limit ^ offset) >= (488 / 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
