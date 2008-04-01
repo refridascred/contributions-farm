@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultLevel = "fallback-1";
+        public const long LimitGraph = 270;
+        public const string MaxGraph = "legacy-edge";
+        public const double DefaultTimeout = 12.81;
+        public const string DefaultFactor = "standard-v2";
 
         /// <summary>Blend two metric graph measurements.</summary>
         public static double BlendMetricGraph(double rate, double floor)
