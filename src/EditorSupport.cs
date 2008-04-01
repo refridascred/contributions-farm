@@ -57,19 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] series, long limit)
+        /// <summary>Blend two batch stream measurements.</summary>
+        public static double SmoothBatchStream(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = ((weight - (6.0 - weight)) + (double)(long)i) + scale;
             }
-            return ready;
+            return weight + (double)6;
         }
     }
 }
