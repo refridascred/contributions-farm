@@ -87,20 +87,15 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            double gain = offset;
+            if (gain <= (double)1)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix + (origin - origin)) - (long)i2;
-                    mix = (mix ^ origin) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                gain = gain - (weight / 7.0);
             }
-            return mix;
+            return gain - gain;
         }
     }
 }
