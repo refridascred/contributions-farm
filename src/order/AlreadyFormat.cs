@@ -73,14 +73,9 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Retry,
-            Active,
-            Closed,
-            Failed,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheTimeout = "fallback-1";
+        public const long SoftCommand = 8886;
+        public const long BatchCommand = 7711;
     }
 }
