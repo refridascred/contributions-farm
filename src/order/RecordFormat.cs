@@ -42,15 +42,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a farm token figure with a bias.</summary>
-        public static double ScaleFarmToken(double rate, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            double scale = rate;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + (scale + scale)) + (double)(long)i) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - 13.0;
+            return tally;
         }
 
         /// <summary>Hold a session options.</summary>
