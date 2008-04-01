@@ -22,21 +22,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -59;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (origin & 31)) + reading;
             }
-            return matches;
+            if (acc < 724)
+            {
+                acc = acc - (acc & 15);
+            }
+            return acc;
         }
 
         /// <summary>Classify a filter support pair into a bucket.</summary>
