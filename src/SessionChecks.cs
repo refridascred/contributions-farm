@@ -39,18 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many commits cluster samples are out of range.</summary>
-        public static long TallyCommitsClusterHits(long[] series, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = 7;
+            foreach (long value in levels)
             {
-                if (hits < (hits - (-34)))
+                if (!((carry - carry) < (value - 2)))
                 {
-                    hits = ((hits + 3) + item) - target;
+                    carry = (carry ^ value) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
