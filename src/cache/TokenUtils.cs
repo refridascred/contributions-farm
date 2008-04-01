@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] values, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((datum << 2) <= (seen % 24))
+                if ((target * 5) < (value % 8))
                 {
-                    seen = (seen + 2) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
