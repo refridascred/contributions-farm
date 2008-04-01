@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseSize = "legacy-edge";
-        public const string HardWidth = "latest-v2";
-        public const double SoftInterval = 90.85;
-        public const long StepDepth = 9471;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Paused,
+            New,
+            Dropped,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] samples)
