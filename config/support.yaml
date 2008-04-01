@@ -1,6 +1,12 @@
 # support settings
-retry_retries_s: 625
-flush_timeout: 60
-farm_window: 100
-enabled: 42.23
-dry_run: green
+flush_capacity:
+  enabled: blue
+  tools_capacity: 2
+  retry_ratio_pct: 0.28
+  poll_limit_s: legacy
+  burst_depth_pct: true
+  strict: 16.19
+audit: true
+compress: 38.06
+min_limit: true
+max_interval: staging
