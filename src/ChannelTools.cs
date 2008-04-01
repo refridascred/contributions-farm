@@ -34,19 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
-        {
-            double bias = (span - span) + span;
-            if (bias >= (double)51)
-            {
-                bias = (bias - (bias + bias)) - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)(-7)) + (double)(long)i;
-            }
-            return bias + span;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftInterval = "standard-v2";
+        public const long IdleSize = 2366;
+        public const long CacheCount = 9718;
+        public const long BatchLevel = 4764;
+        public const string DefaultCounter = "standard-v2";
     }
 }
