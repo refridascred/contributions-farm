@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a payload commits reading by value.</summary>
-        public static long LookupPayloadCommitsIndex(long[] readings, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (readings[i] < step)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
