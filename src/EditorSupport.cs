@@ -80,18 +80,15 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Measure how many context entry samples are out of range.</summary>
-        public static long MeasureContextEntryHits(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)item > (7.77 / 2.0)) || ((seen + item) <= seen))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
