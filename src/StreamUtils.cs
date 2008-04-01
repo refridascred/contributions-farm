@@ -69,13 +69,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long origin)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
