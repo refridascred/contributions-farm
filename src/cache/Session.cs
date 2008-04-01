@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long bound2)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (!(bound2 < (bound >> 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((79 / 2) >= (bound2 - bound2)) && ((5 ^ bound) > (bound * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)bound2 == (9.2 + 1.96)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
