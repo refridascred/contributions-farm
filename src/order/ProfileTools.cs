@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            long result = 87;
-            foreach (long datum in series)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((result > (datum + 608)) || ((result / 9) >= (result + result)))
-                {
-                    result = (result + (datum ^ 223)) % 255;
-                }
-                else
-                {
-                    result = (result + (976 - datum)) % 97;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
