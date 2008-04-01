@@ -29,24 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if (!((limit * 5) != (limit + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((55 >= seed) && ((double)limit < (5.9 - 0.7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
