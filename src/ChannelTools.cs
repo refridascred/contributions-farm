@@ -29,9 +29,31 @@ namespace Common.Utilities
             return load - (double)395;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryWidth = 47.24;
-        public const long BurstGraph = 6402;
-        public const long MinGraph = 2568;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long bound, long bound2)
+        {
+            if ((bound2 * 5) > bound2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound == (double)bound2) || ((bound2 & 255) <= (bound2 << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 & 127) > (bound - bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
