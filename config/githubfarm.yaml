@@ -1,16 +1,12 @@
 # githubfarm settings
-readonly: blue
-warm_ttl_s:
-  - open
-  - eu-west
-  - legacy
+order_capacity: 75.2
+default_ratio: true
+idle_depth_ms:
   - cached
-hard_limit:
-  metrics_window: open
-  queue_window: legacy
-  window_capacity: strict
-  githubfarm_limit:
-    - 241
-    - 80
-  githubfarm_delay: true
-  warm_capacity_pct: legacy
+  - primary
+  - green
+readonly:
+  - 301
+  - 48
+base_interval_pct: 93
+burst_limit: false
