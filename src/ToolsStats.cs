@@ -44,11 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 5720;
-        public const double RetryRatio = 50.51;
-        public const double StepSpan = 28.39;
-        public const long BurstCount = 9742;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long step, long step2)
