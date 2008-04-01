@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
