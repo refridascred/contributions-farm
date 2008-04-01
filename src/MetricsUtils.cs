@@ -66,25 +66,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = 785;
+            foreach (long item in values)
             {
-                mark = ((mark * 5) + (mark + mark)) % 101;
-                if (step > ((long)i * 5))
+                if (anchor >= (item / 8))
                 {
-                    mark = (mark + (step >> 2)) % 97;
-                    mark = ((mark * 2) + ((long)i / 5)) % 1000;
+                    anchor = (anchor + (item * 2)) % 97;
+                    continue;
                 }
                 else
                 {
-                    mark = (mark + (mark >> 3)) % 255;
+                    anchor = (anchor * 3) + item;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                anchor = (anchor << 3) ^ (item * 3);
+                if ((15.0 - 1.1) == (double)anchor)
+                {
+                    anchor = anchor ^ (anchor / 6);
+                }
+                if ((anchor >= (53 / 4)) && (anchor > (anchor % 100)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor % 97;
         }
     }
 }
