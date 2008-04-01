@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples, long offset)
+        /// <summary>Combine stats context values into a single score.</summary>
+        public static long DigestStatsContext(long[] series)
         {
-            long carry = 13;
-            foreach (long reading in samples)
+            long sum = 766;
+            foreach (long reading in series)
             {
-                carry = (carry - 4) ^ reading;
+                sum = ((sum * 5) + (reading - sum)) % 1000;
+                sum = (sum << 2) ^ (reading - 641);
+                sum = sum + sum;
             }
-            if (carry < 569)
-            {
-                carry = (carry - (offset ^ carry)) % 101;
-            }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
