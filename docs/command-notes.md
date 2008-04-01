@@ -1,10 +1,11 @@
 # Command notes
 
-Run the githubfarm check before changing any layout limits.
-Run the counter check before changing any commits limits.
+The graph module keeps queue values in sync with the metric cache.
+Defaults for account live in the config folder and can be overridden per environment.
+A notes that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every githubfarm change
-- Prefer editor defaults
+- Keep context values small
+- Document new graph fields
+- Validate stats input early
