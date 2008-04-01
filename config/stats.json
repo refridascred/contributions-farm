@@ -1,18 +1,5 @@
 {
-  "default_depth": "eu-west",
-  "warm_size": 23.83,
-  "window_interval": true,
-  "already_limit": {
-    "metrics_window": "legacy",
-    "token_capacity": 22.32,
-    "strict": false,
-    "retry_timeout_count": {
-      "graph_window": "blue",
-      "warm_window": ["open", "blue", "legacy", "cached"],
-      "min_ttl": 33.17,
-      "support_ratio": false,
-      "max_interval_count": "cached",
-      "soft_size": 82.83
-    }
-  }
+  "batches_depth": 33.02,
+  "default_ttl_pct": "eu-west",
+  "warm_depth_count": 8473
 }
