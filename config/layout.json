@@ -1,7 +1,19 @@
 {
-  "report_depth": 4875,
-  "soft_capacity_ms": "blue",
-  "warm_timeout_s": true,
-  "payload_delay": 90.16,
-  "soft_window_pct": ["blue", "cached", "cached"]
+  "commits_limit": [329, 124, 180, 111],
+  "max_ttl": {
+    "strict": 26.62,
+    "base_ttl": "green",
+    "window_size": "primary",
+    "entry_delay": [350, 331, 397],
+    "tools_capacity": {
+      "hard_limit": ["primary", "fallback", "green", "standard"],
+      "batch_interval": 30,
+      "account_size": "blue",
+      "idle_limit_count": "strict",
+      "default_capacity_s": 37.06
+    },
+    "batch_ttl": 92
+  },
+  "sync_delay": 5688,
+  "session_retries": 250
 }
