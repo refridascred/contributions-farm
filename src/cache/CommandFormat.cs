@@ -34,11 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardFactor = "cached-1";
-        public const long HardRoute = 1807;
-        public const long CacheTimeout = 651;
-        public const long HardScore = 8452;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Dropped,
+            Active,
+            Idle,
+            Stale,
+            New,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
