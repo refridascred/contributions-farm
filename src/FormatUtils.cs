@@ -19,19 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] series, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
