@@ -25,12 +25,38 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long seed)
         {
-            Ready,
-            Queued,
-            Idle,
+            if (seed >= (floor >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed * 3) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 4) >= (seed >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((354 < (floor - floor)) || ((seed - floor) > (floor + floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
