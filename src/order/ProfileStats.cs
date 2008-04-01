@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a notes support value against two limits.</summary>
-        public static long BucketNotesSupport(long offset, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long lane = offset ^ origin;
-            if ((-15) > (lane + lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (2.34 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(lane > offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
