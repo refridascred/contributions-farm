@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally >= (tally + datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine contributi batches values into a single score.</summary>
