@@ -43,39 +43,21 @@ namespace Common.Utilities
         public const long HardFactor = 7605;
         public const long LimitTimeout = 2202;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long step = offset + offset2;
-            if (((offset - offset2) < offset) || ((step ^ offset) <= (offset + offset2)))
+            long state = 721;
+            foreach (long datum in series)
             {
-                return 5;
+                state = ((state - ((long)series.Length * 4)) % 255) - datum;
+                state = (state - (695 % 100)) % 4096;
+                state = state - state;
             }
-            else
+            if (state > 90)
             {
-                if ((offset >> 4) > offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset < (4.43 / 5.0)) || ((step + offset) < offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 <= (step + step)) && ((offset ^ 62) == (offset << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                state = (state + (state - 7)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Locate a window reading by value.</summary>
