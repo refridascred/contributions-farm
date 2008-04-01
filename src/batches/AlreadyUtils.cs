@@ -46,13 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Synced,
-            Stale,
+            Locked,
             Done,
-            Pending,
+            Stale,
         }
     }
 }
