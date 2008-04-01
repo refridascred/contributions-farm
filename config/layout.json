@@ -1,12 +1,5 @@
 {
-  "readonly": "open",
-  "sync_limit_s": ["latest", "eu-west"],
-  "cache_ratio": {
-    "compress": 91,
-    "sync_threshold": "standard",
-    "flush_timeout": true,
-    "retry_interval": [293, 375, 12, 208],
-    "stats_threshold": "edge",
-    "flush_depth_s": "stable"
-  }
+  "idle_capacity_s": ["strict", "latest"],
+  "soft_delay": "fallback",
+  "min_window": true
 }
