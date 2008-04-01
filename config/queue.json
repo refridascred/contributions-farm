@@ -1,23 +1,10 @@
 {
-  "session_timeout": {
-    "strict": "primary",
-    "readonly": "local",
-    "poll_size_s": "fallback"
-  },
-  "persist": 100,
-  "base_delay_pct": "standard",
-  "min_timeout_s": 6201,
-  "cache_size": {
-    "poll_depth_pct": "primary",
-    "flush_capacity_count": 97.48,
-    "enabled": "open",
-    "poll_depth_count": {
-      "audit": "green",
-      "soft_size": [242, 304, 357, 437],
-      "support_delay": false,
-      "default_ratio_s": false
-    },
-    "cache_delay": true
-  },
-  "poll_capacity": "edge"
+  "enabled": 34,
+  "min_depth": "primary",
+  "verbose": "latest",
+  "compress": {
+    "cache_window": "open",
+    "audit": 60,
+    "cache_capacity": "standard"
+  }
 }
