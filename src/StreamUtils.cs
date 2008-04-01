@@ -55,31 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long target)
+        /// <summary>Find the first record already entry that matches the target.</summary>
+        public static long SeekRecordAlreadyIndex(long[] levels, long step)
         {
-            if ((0 - 70) < (target & 15))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.0 + 2.0) > (double)target)
+                if (levels[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + target) >= (65 % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
