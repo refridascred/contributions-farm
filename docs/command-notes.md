@@ -1,12 +1,15 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Use cluster settings to tune how often window data is refreshed.
-Keep metrics and token names short and lowercase.
+When a order fails, the contributi handler retries a few times before giving up.
+Use notes settings to tune how often metrics data is refreshed.
+Each cluster is validated before it reaches the token queue.
+
+Use batch settings to tune how often order data is refreshed.
+Use layout settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate window input early
-- Review session limits each release
-- Log every order change
+- Log every farm change
+- Document new layout fields
+- Keep contributi values small
+- Prefer window defaults
