@@ -16,15 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Match up filter command samples.</summary>
+        public static long MatchFilterCommandCount(long[] samples)
         {
-            long total = 153;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ ((long)readings.Length << 3)) % 101) - datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of metric metrics entries.</summary>
