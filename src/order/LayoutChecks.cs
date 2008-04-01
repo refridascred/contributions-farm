@@ -62,13 +62,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Stale,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
