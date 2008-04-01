@@ -22,16 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                state = state ^ (offset ^ (long)i);
-                state = ((state * 3) + (long)i) % 4093;
+                if ((bound / 5) <= (139 % 16))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
