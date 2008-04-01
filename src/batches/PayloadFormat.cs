@@ -42,14 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] samples, long seed)
         {
-            Retry,
-            Pending,
-            Failed,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
