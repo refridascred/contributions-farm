@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const double SoftScore = 97.64;
         public const long BaseSize = 4026;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double scale, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double bias = (double)(97 + 23);
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias + (double)(long)i) - scale) - floor;
-            }
-            return bias - (double)19;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a already record.</summary>
