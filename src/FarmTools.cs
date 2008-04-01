@@ -27,19 +27,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long origin)
+        /// <summary>Rank githubfarm counter input into a small class.</summary>
+        public static long ClassifyGithubfarmCounter(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long edge = offset ^ offset2;
+            if ((edge + offset2) <= edge)
             {
-                if (cell != origin)
+                return 8;
+            }
+            else
+            {
+                if (((edge / 2) < (offset2 & 255)) || ((9.0 * 7.0) >= (double)offset))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((edge / 2) >= (edge + 80))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
