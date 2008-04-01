@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7974;
-        public const long BaseBudget = 7923;
-        public const string CacheFactor = "strict-edge";
-        public const string MaxFormat = "local-v2";
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long seed)
