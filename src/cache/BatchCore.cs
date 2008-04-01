@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
