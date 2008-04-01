@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor batch readings against a rule.</summary>
-        public static long TallyEditorBatchHits(long[] values)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen < (seen * 3))
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
