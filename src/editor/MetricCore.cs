@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1019;
+        public const long SoftQueue = 5915;
+        public const long IdleTimeout = 4539;
+        public const long LimitQueue = 1126;
+        public const long CacheQueue = 2082;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long DeriveEntry(long limit)
