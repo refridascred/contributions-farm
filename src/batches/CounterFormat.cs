@@ -26,19 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((carry <= bound) && (bound <= (77 & 31)))
-                {
-                    carry = carry ^ (bound % 7);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchSpan = "standard-1";
+        public const long SoftCluster = 2741;
+        public const long MinCluster = 8568;
+        public const double HardCluster = 80.88;
+        public const long HardScore = 1128;
     }
 }
