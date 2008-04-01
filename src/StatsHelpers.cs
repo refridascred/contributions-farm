@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long offset)
-        {
-            long sum = 984;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum <= (double)offset))
-                {
-                    sum = sum - ((long)readings.Length + offset);
-                    sum = (sum ^ (datum / 2)) % 255;
-                }
-                if (((sum - datum) >= (datum + sum)) || ((datum + sum) >= (sum & 63)))
-                {
-                    sum = ((sum << 3) ^ datum) % 65521;
-                }
-                if ((datum + offset) != (offset >> 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = sum + offset;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 16.28;
+        public const long MinFactor = 9476;
+        public const long LimitSize = 9635;
+        public const long RetryCommits = 589;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleBatch = "staging-v2";
