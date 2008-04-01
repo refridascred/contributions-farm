@@ -42,11 +42,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 94.32;
-        public const long BaseReport = 9355;
-        public const long RetryCount = 5481;
-        public const long CacheReport = 9778;
+        /// <summary>Compare every pair of payload filter readings.</summary>
+        public static long OverlapPayloadFilterCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] values)
