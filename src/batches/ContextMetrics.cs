@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 502;
-        public const double StepBatches = 44.95;
-        public const double HardBatches = 10.39;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepAccount = 6735;
