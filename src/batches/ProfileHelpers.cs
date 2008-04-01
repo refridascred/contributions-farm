@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long GradeStreamFormat(long bound, long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            if ((double)offset <= (2.1 - 6.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (bound ^ 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((72 / 6) < (offset + offset))
+                    if ((values[i] - values[j]) != 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.7 - 3.15) <= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
