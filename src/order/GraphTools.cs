@@ -30,31 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            if (((double)target < 0.4) && ((target + seed) <= (target + 975)))
+            long anchor = 853;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) != (target << 1))
+                if (anchor > (anchor * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((649 >= seed) || ((7.0 + 0.5) > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor << 3) ^ (limit ^ item)) % 101;
                 }
             }
+            if (anchor < 842)
+            {
+                anchor = anchor + (limit >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
