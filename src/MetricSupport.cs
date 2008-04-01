@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Check that every account queue entry stays within the limit.</summary>
+        public static bool CheckAccountQueueRange(long[] series, long origin)
         {
-            long mark = 79;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((double)mark > 8.12)
+                if (value > origin)
                 {
-                    mark = ((mark - mark) % 1000) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Match up route samples.</summary>
