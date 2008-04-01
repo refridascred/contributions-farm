@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 7929;
-        public const long StepSupport = 8518;
-        public const long MaxSupport = 35;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Queued,
+            Failed,
+            Paused,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double weight, double offset)
