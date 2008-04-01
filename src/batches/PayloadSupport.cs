@@ -31,19 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleWidth = 867;
+        public const double WindowCluster = 21.94;
+        public const long BurstTimeout = 6984;
     }
 }
