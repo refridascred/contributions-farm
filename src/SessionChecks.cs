@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
