@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Pending,
-            Stale,
-            Locked,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
