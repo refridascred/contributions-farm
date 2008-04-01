@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BurstTools = 7662;
         public const long DefaultInterval = 4249;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Derive the next batches context value from a seed.</summary>
+        public static long RollBatchesContext(long floor)
         {
-            double drift = (rate * 3.49) + (floor / 8.0);
-            for (int i = 0; i < 8; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (double)(long)i;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return drift - rate;
+            return mix;
         }
 
         /// <summary>Describe the command state values.</summary>
