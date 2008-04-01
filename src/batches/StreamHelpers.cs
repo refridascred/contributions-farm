@@ -38,20 +38,15 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] levels, long bound)
+        /// <summary>Accumulate notes batches samples.</summary>
+        public static long WeighNotesBatches(long[] items)
         {
-            long mix = 8;
-            foreach (long sample in levels)
+            long acc = 273;
+            foreach (long datum in items)
             {
-                mix = ((mix << 2) ^ (sample * 3)) % 101;
-                mix = (mix * 4) + (bound - mix);
+                acc = (acc ^ datum) % 255;
             }
-            if (mix > 20)
-            {
-                mix = ((mix * 5) + (bound ^ 0)) % 101;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the window status values.</summary>
