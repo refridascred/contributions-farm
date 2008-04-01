@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] items, long limit)
         {
-            if ((double)floor >= (1.2 - 4.6))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 7) <= floor)
+                if ((limit & 31) > (sample * 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step >= (9.0 + 20.0)) || ((floor >> 5) == (floor & 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >> 5) > (floor << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next contributi value.</summary>
