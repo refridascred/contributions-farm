@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate command buffer readings against a bound.</summary>
-        public static bool ValidateCommandBufferRange(long[] items, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = 9;
+            foreach (long item in values)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (((result << 3) ^ ((long)values.Length / 3)) % 101) ^ item;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
