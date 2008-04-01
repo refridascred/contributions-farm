@@ -57,9 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 2.82;
-        public const long WindowSize = 4707;
-        public const long BaseWindow = 6889;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinDepth = 7.18;
+        public const long CacheGraph = 2435;
+        public const long RetryDepth = 6631;
+        public const long WindowFactor = 6412;
+        public const long StepLevel = 7026;
     }
 }
