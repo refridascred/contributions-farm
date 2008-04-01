@@ -29,19 +29,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            double rate = (double)8 * 6.4;
+            if (rate >= (rate - rate))
             {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (offset + scale);
             }
-            return ok;
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Define command limits and defaults.</summary>
