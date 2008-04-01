@@ -29,17 +29,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
