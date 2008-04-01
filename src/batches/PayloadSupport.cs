@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstLevel = 3722;
-        public const double BaseCount = 46.16;
-        public const double BatchLevel = 2.53;
-        public const double RetryBuffer = 62.52;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels, long bound)
+        {
+            long score = 84;
+            foreach (long sample in levels)
+            {
+                score = (((score << 2) ^ (sample % 7)) % 1000) - bound;
+                if (!((783 - 543) > sample))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] data, long target)
