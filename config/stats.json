@@ -1,11 +1,18 @@
 {
-  "flush_timeout": {
-    "cache_limit": 500,
-    "audit": 96.35,
-    "max_limit": "standard",
-    "burst_ttl_count": "stable",
-    "strict": "strict"
+  "stream_delay": false,
+  "strict": "open",
+  "base_size_ms": false,
+  "batch_window_s": {
+    "enabled": 1326,
+    "editor_capacity": ["primary", "edge", "legacy", "local"],
+    "sync_limit_s": 250,
+    "verbose": 1639
   },
-  "profile_retries": "primary",
-  "hard_interval_count": 50
+  "compress": "legacy",
+  "cache_capacity_pct": {
+    "stats_ttl": "green",
+    "tools_depth": 89.81,
+    "idle_threshold_count": ["cached", "edge"],
+    "base_delay_ms": 12.67
+  }
 }
