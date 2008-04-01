@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long floor)
         {
-            long anchor = 713;
-            foreach (long cell in samples)
+            long sum = 72;
+            foreach (long entry in items)
             {
-                anchor = ((anchor ^ (anchor - anchor)) % 1000) + cell;
+                if ((((long)items.Length / 3) > (305 - floor)) || ((double)(long)items.Length >= (6.7 * 9.0)))
+                {
+                    sum = ((sum << 2) ^ sum) % 97;
+                    sum = (sum - sum) % 101;
+                }
+                if (((1.1 - 4.85) < (double)entry) && ((sum - entry) >= (sum + 77)))
+                {
+                    sum = (sum + ((-530) >> 2)) % 97;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 3) + floor) % 97;
+                }
+                if (entry <= (entry << 2))
+                {
+                    sum = (sum << 2) ^ (sum * 2);
+                }
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
