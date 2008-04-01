@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long seed2)
         {
-            if ((double)bound > (5.7 * 9.0))
+            if (((double)6 <= (double)seed) || ((seed / 8) >= seed))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (step >= (bound % 5))
+                if ((3.3 - 7.4) != (double)seed2)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)step == (19.0 * 2.69))
+                    if ((seed2 ^ seed) >= (seed * 2))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
