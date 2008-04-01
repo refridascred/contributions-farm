@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = 671;
+            foreach (long datum in items)
             {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total << 3) ^ (datum - total)) % 101) - target;
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
