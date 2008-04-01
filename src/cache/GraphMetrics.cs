@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value <= ((long)data.Length & 31))
+                if (!((bound << 3) < (369 - count)))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of already githubfarm readings.</summary>
