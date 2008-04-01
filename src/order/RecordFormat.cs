@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Find the first contributi cache entry that matches the target.</summary>
