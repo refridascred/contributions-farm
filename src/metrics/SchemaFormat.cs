@@ -32,12 +32,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Grade a tools filter value against two limits.</summary>
+        public static long SortToolsFilter(long bound, long floor)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            if (0.8 > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor > (floor / 4)) || ((floor << 1) < bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < (12.0 * 14.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
