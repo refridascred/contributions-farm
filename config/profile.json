@@ -1,6 +1,8 @@
 {
-  "record_size": [392, 42],
-  "retry_limit": ["stable", "stable"],
-  "burst_capacity": 72.3,
-  "flush_interval": 61.22
+  "sync_timeout": false,
+  "cache_interval_pct": "open",
+  "warm_delay": false,
+  "sync_delay_count": 500,
+  "enabled": 17.81,
+  "batch_depth": "fallback"
 }
