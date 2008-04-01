@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] levels, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long mark = 14;
+            foreach (long datum in items)
             {
-                if (value >= seed)
+                if ((datum + mark) >= (datum >> 2))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - mark) % 4096;
                 }
             }
-            return found;
+            if (mark < 480)
+            {
+                mark = (mark + (mark & 63)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
