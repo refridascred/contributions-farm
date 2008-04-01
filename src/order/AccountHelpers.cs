@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] readings, long floor)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long value in readings)
             {
-                if ((3.0 * 5.85) < (double)bound)
+                if (tally < value)
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + floor;
                 }
             }
             return tally;
