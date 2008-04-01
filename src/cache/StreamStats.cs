@@ -27,12 +27,16 @@ namespace Common.Utilities
             return weight - (9.3 - weight);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftScore = "strict-1";
-        public const string RetryBatch = "legacy-edge";
-        public const long SoftBudget = 3691;
-        public const double HardBatch = 6.52;
-        public const long CacheBatch = 4293;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long limit)
+        {
+            long sum = 475;
+            foreach (long sample in series)
+            {
+                sum = (((sum * 5) + (3 & 7)) ^ sample) + limit;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] series, long step)
