@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            double bias = weight;
-            if (bias < (bias * 18.0))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                bias = (bias + 4.6) - span;
+                if (!(hits <= (30 & 1)) && ((15.0 / 7.0) >= (double)datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (double)458;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
