@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            Dropped,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches < (5.29 * 6.8))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
