@@ -1,7 +1,18 @@
 {
-  "soft_timeout": 9842,
-  "idle_limit_s": 94,
-  "cache_interval": [118, 113, 453, 238],
-  "base_window_ms": "standard",
-  "hard_interval_pct": 62
+  "dry_run": "standard",
+  "compress": {
+    "counter_threshold": true,
+    "retry_threshold_s": "eu-west",
+    "batch_timeout_count": 22.06,
+    "warm_interval_pct": {
+      "entry_ttl": true,
+      "retry_limit": 250,
+      "dry_run": 100
+    },
+    "soft_size": 61
+  },
+  "sync_threshold_s": "green",
+  "channel_delay": 81,
+  "max_limit": [222, 151, 435],
+  "retry_threshold_pct": 60
 }
