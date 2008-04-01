@@ -1,7 +1,16 @@
 # githubfarm settings
-max_capacity_ms: standard
-poll_depth_s: 1024
-cache_ttl: standard
-strict: 8294
-flush_window_pct: eu-west
-burst_capacity_s: 59.25
+token_threshold: 250
+audit: 500
+max_delay:
+  - stable
+  - standard
+cache_ratio_ms:
+  - 178
+  - 460
+  - 104
+dry_run:
+  - blue
+  - fallback
+  - legacy
+  - stable
+base_interval_ms: 3189
