@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 8) != (738 - limit))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
