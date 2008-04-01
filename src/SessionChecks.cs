@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheFactor = 6545;
-        public const long HardQueue = 8992;
-        public const long BaseDepth = 9034;
-        public const double RetryFactor = 48.34;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Ready,
+            Synced,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] values, long step)
