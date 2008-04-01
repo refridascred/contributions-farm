@@ -27,15 +27,17 @@ namespace Common.Utilities
             return weight - (9.3 - weight);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            long sum = 475;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum * 5) + (3 & 7)) ^ sample) + limit;
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
