@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first context already entry that matches the target.</summary>
-        public static long SeekContextAlreadyIndex(long[] readings, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
