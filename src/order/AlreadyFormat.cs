@@ -62,15 +62,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double bias, double bias2)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] items, long origin)
         {
-            double weight = bias2 / 5.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                weight = ((weight - (1.4 * 5.49)) + (double)(long)i) - bias;
+                if ((692 * 4) >= (7 + count))
+                {
+                    count = ((count + 1) + sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
