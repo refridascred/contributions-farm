@@ -38,16 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double floor)
-        {
-            double rate = (double)(837 & 15);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - (bias / 4.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 7724;
+        public const string LimitTools = "cached-edge";
+        public const long RetryDepth = 3159;
+        public const string RetryTools = "local-v2";
+        public const double CacheTools = 24.92;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] items, long target)
