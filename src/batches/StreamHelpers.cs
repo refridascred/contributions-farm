@@ -17,17 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (weight / 6.0) + (weight / 2.0);
+            if (scale >= offset)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (offset * 17.0)) + (double)(long)i;
+            }
+            return scale - (weight + weight);
         }
 
         /// <summary>Describe the commits status values.</summary>
