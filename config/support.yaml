@@ -1,11 +1,11 @@
 # support settings
-format_size:
-  poll_threshold: 9423
-  route_size: standard
-  window_depth: local
-already_threshold: open
-warm_ttl: true
-stats_ttl:
-  - staging
-  - local
+metrics_timeout: local
+hard_timeout_pct:
+  - primary
+  - edge
   - legacy
+  - standard
+poll_timeout_count: 100
+warm_size_count: open
+farm_retries: 60
+min_size_ms: legacy
