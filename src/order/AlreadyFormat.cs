@@ -43,24 +43,18 @@ namespace Common.Utilities
             return drift - (14.0 - scale);
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples)
         {
-            long mix = 51;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix * 2) + (reading + (long)samples.Length)) % 97;
-                if (!((limit * 5) >= limit))
+                if ((seen - (long)samples.Length) > (seen ^ 73))
                 {
-                    mix = ((mix << 3) ^ (reading ^ reading)) % 97;
+                    seen = (seen + 2) + value;
                 }
-                else
-                {
-                    mix = mix - (limit + (-302));
-                }
-                mix = (mix + (mix - mix)) % 255;
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
