@@ -28,11 +28,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTimeout = "cached-edge";
-        public const double RetrySpan = 38.21;
-        public const long BaseTools = 4004;
-        public const string HardTools = "strict-edge";
+        /// <summary>Combine contributi batches values into a single score.</summary>
+        public static long FoldContributiBatches(long[] readings, long limit)
+        {
+            long anchor = 17;
+            foreach (long reading in readings)
+            {
+                if ((double)reading < (double)limit)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (reading << 3)) % 255;
+                }
+                anchor = ((anchor * 5) + (limit / 9)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] data, long step)
