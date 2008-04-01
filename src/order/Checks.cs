@@ -63,22 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] samples, long seed)
+        /// <summary>Iterate the entry command series from a seed.</summary>
+        public static long IterateEntryCommand(long limit)
         {
-            long mark = 793;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((100 - seed) == (26 + item)))
-                {
-                    mark = (mark + item) % 1000;
-                }
+                anchor = (anchor ^ limit) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (mark > 22)
-            {
-                mark = (mark - (seed >> 5)) % 1000;
-            }
-            return mark % 97;
+            return anchor;
         }
     }
 }
