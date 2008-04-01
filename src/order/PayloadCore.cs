@@ -20,16 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel buffer counter forward.</summary>
-        public static long DeriveChannelBuffer(long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                anchor = (anchor + (anchor >> 4)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
