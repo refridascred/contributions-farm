@@ -70,23 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double ratio = (double)(2 % 10);
-            if (ratio >= ratio)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (scale * 0.65)) + (double)(long)i;
-            }
-            return ratio + (offset - ratio);
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the entry mode values.</summary>
