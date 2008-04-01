@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double bias)
-        {
-            double weight = rate;
-            if (weight < (bias / 7.0))
-            {
-                weight = weight - 8.17;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardSpan = "legacy-1";
+        public const long StepCommand = 5795;
+        public const long StepCount = 875;
+        public const long SoftSize = 2192;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] values)
