@@ -1,4 +1,25 @@
 # support settings
-soft_depth_ms: 6509
-buffer_interval: open
-batches_ratio: 60
+command_depth: 23.87
+poll_capacity_count:
+  min_delay: staging
+  warm_limit: staging
+  strict: 31
+  queue_capacity:
+    - standard
+    - standard
+  poll_capacity_count: true
+  filter_capacity: 1024
+session_threshold:
+  - 44
+  - 87
+flush_timeout:
+  default_retries_count: 500
+  min_threshold_ms:
+    poll_window_pct: 46
+    sync_retries: true
+    sync_capacity_pct: latest
+    warm_capacity_pct: 30
+    min_threshold_pct: 3525
+    flush_limit: 30
+  warm_size: 4084
+  batches_interval: true
