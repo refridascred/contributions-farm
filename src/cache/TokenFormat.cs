@@ -24,32 +24,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long gap = floor + offset;
-            if ((offset ^ floor) <= (floor >> 5))
+            long sum = 380;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.33 / 6.0) != (double)floor) && ((offset << 3) <= (gap << 3)))
+                if (((double)sum <= 17.0) && ((0.6 + 7.15) == (double)cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((245 <= (gap - offset)) && ((offset + offset) == (floor / 9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (sum - (46 - sum)) % 97;
                 }
             }
+            return sum;
         }
     }
 }
