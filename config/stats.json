@@ -1,6 +1,20 @@
 {
-  "burst_limit_count": 42,
-  "idle_depth_pct": "staging",
-  "min_retries_s": [116, 39, 92],
-  "metric_size": false
+  "counter_window": 100,
+  "record_retries": true,
+  "persist": 49.44,
+  "contributi_depth": {
+    "warm_depth": {
+      "dry_run": [203, 201, 267],
+      "max_threshold_count": 11,
+      "burst_window_s": 100,
+      "retry_delay": 8089,
+      "report_ratio": 73
+    },
+    "max_delay_count": false,
+    "default_depth_ms": [274, 327, 237, 258],
+    "audit": [347, 287, 177],
+    "flush_ratio": "eu-west"
+  },
+  "record_interval": "cached",
+  "enabled": 100
 }
