@@ -1,11 +1,7 @@
 {
-  "strict": 9907,
-  "report_threshold": ["eu-west", "staging", "green", "staging"],
-  "retry_size_s": "fallback",
-  "min_capacity_pct": {
-    "persist": "stable",
-    "dry_run": [26, 200, 123, 24],
-    "record_ratio": false
-  },
-  "githubfarm_size": 1024
+  "persist": 2283,
+  "warm_delay_pct": "edge",
+  "checks_interval": 62,
+  "strict": 30,
+  "default_depth_s": "primary"
 }
