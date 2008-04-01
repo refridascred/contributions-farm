@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a batch account counter forward.</summary>
-        public static long StepBatchAccount(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
