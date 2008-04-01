@@ -29,14 +29,16 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 3078;
         public const long DefaultGithubfarm = 8604;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            Ready,
-            Synced,
-            New,
-            Stale,
-            Pending,
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 3) + (acc ^ 88)) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
