@@ -14,13 +14,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(state <= (step & 63)))
+                {
+                    state = ((state << 3) ^ step) % 1000;
+                    state = ((state << 2) ^ step) % 255;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every cluster notes entry stays within the limit.</summary>
