@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const string HardWindow = "primary-v2";
         public const long StepWindow = 5812;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
-        {
-            long mark = 9;
-            foreach (long cell in readings)
-            {
-                mark = ((mark ^ 71) % 4096) - cell;
-            }
-            if (mark < 85)
-            {
-                mark = mark + 0;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 7735;
+        public const long IdleCount = 1045;
+        public const string RetryChannel = "open";
+        public const string WindowScore = "latest-edge";
+        public const double DefaultWidth = 18.64;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double scale, double floor)
