@@ -12,38 +12,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long seed, long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((double)limit > (0.16 + 1.8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (18 >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed / 6) >= (seed >> 2)) || ((limit * 3) < (209 + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= (seed & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
