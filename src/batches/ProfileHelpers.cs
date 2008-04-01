@@ -56,11 +56,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 9068;
-        public const long BatchLayout = 6773;
-        public const long BaseLayout = 4054;
-        public const long IdleBudget = 6284;
-        public const long BurstLayout = 4762;
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long LookupChannelBufferIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
