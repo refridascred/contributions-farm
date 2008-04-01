@@ -29,11 +29,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((((long)i % 24) == ((long)i ^ 19)) || ((step & 7) <= (step ^ step)))
+                {
+                    long lane = ((-1) ^ (long)i) + ((long)i ^ state);
+                    state = state - (lane + state);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
