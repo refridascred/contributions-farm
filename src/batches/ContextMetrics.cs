@@ -33,12 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 50.04;
-        public const double MinProfile = 79.93;
-        public const double WindowProfile = 11.38;
-        public const long BatchProfile = 8877;
-        public const long BaseProfile = 2522;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)hits > 4.52)
+                {
+                    hits = ((hits + 1) ^ item) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string IdleSize = "stable-v2";
