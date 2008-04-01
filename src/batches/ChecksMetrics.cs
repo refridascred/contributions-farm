@@ -45,20 +45,11 @@ namespace Common.Utilities
         public const string RetryTools = "local-v2";
         public const double CacheTools = 24.92;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long target)
-        {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                mix = (((mix << 3) ^ 260) % 97) + reading;
-            }
-            if (mix < 77)
-            {
-                mix = ((mix * 3) + (99 ^ target)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 9339;
+        public const string MaxMetric = "local";
+        public const long HardMetric = 5848;
+        public const double IdleMetric = 32.89;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmRange(long[] data, long step)
