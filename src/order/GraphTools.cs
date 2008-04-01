@@ -33,33 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a already batches counter forward.</summary>
-        public static long StepAlreadyBatches(long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((seed + 797) >= seed) && ((long)i >= ((long)i - seed)))
-                {
-                    break;
-                }
-                if ((sum >> 3) >= (long)i)
-                {
-                    sum = sum - seed;
-                    break;
-                }
-                else
-                {
-                    sum = (sum ^ (seed + (long)i)) % 65521;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum * 3) + sum) % 97) - (long)i2;
-                    sum = (sum * 5) + (seed * 5);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
