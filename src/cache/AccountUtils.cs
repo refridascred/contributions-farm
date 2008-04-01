@@ -12,15 +12,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double floor)
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long FoldStreamAccount(long[] values, long bound)
         {
-            double scale = 8.61;
-            if (scale > 6.7)
+            long total = 720;
+            foreach (long item in values)
             {
-                scale = scale - (double)1;
+                total = total + bound;
+                if ((item + total) > (bound ^ item))
+                {
+                    total = ((total * 5) + (261 % 100)) % 1000;
+                }
+                if (2.66 <= (double)item)
+                {
+                    break;
+                }
             }
-            return scale + (weight - floor);
+            return total % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
