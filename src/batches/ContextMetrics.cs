@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                mark = (mark - (step ^ mark)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
