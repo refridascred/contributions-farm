@@ -54,11 +54,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardLevel = 39.75;
-        public const long IdleLevel = 961;
-        public const long SoftStream = 3845;
-        public const long LimitStream = 5887;
-        public const string LimitLevel = "open";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
