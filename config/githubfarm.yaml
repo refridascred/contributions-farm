@@ -1,7 +1,4 @@
 # githubfarm settings
-graph_delay: 24.84
-persist: 60
-soft_delay: local
-cache_capacity_s: true
-commits_interval: true
-burst_window_s: edge
+hard_delay_ms: legacy
+poll_retries_s: 45.67
+enabled: stable
