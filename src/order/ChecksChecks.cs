@@ -14,23 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a command profile reading.</summary>
-        public static double SmoothCommandProfile(double gain, double offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double load = gain;
-            if (load <= offset)
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load - 3.2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (offset * 12.0)) - (double)(long)i;
-            }
-            return load + load;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
