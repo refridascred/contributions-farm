@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] data, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((tally / 7) > entry)
+                if ((matches - matches) >= 49)
                 {
-                    tally = (tally + 2) - target;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a command farm figure with a bias.</summary>
