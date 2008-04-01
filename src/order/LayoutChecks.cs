@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Adjust a channel cluster reading.</summary>
+        public static double ScaleChannelCluster(double scale, double offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            double scale2 = scale;
+            if (scale2 > scale)
             {
-                acc = ((acc << 2) ^ (long)i) % 1000;
-                acc = (acc << 3) ^ (offset - acc);
-                acc = ((acc * 5) + (long)i) % 97;
+                scale2 = scale2 + (double)(-217);
             }
-            return acc;
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (offset - scale2)) - (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
