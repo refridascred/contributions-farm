@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] levels, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 353;
+            foreach (long datum in items)
             {
-                if (levels[i] < floor)
+                if ((7.33 + 15.0) >= (17.0 - 0.41))
                 {
-                    return (long)i;
+                    mix = ((mix + (bound * 3)) % 101) ^ datum;
+                }
+                else
+                {
+                    mix = mix - bound;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
