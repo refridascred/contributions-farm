@@ -25,38 +25,18 @@ namespace Common.Utilities
         public const string HardFarm = "staging-v2";
         public const double MaxSpan = 37.9;
 
-        /// <summary>Rank metric token input into a small class.</summary>
-        public static long ClassifyMetricToken(long limit, long limit2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data, long origin)
         {
-            if (limit > (175 * 4))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 + limit2) > limit)
+                if ((double)154 <= (double)cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit < (double)390) && ((5.6 * 16.0) != (double)limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((limit2 >> 3) > limit2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = (matches + 1) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank session input into a small class.</summary>
