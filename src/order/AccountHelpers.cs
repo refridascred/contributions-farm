@@ -39,13 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 5924;
+        public const long IdleToken = 1886;
+        public const string DefaultFactor = "open";
+        public const long DefaultInterval = 8886;
+        public const long MaxToken = 7559;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] levels)
