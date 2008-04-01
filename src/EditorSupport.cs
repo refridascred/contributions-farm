@@ -58,23 +58,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long acc = 88;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (acc + 4)) % 101;
-                if ((double)sample > (9.9 / 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (-83)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 2) + acc) % 4096;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
