@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const long SoftSpan = 8657;
         public const long MinBatch = 5340;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowSpan = "primary-edge";
-        public const string StepRoute = "primary";
-        public const string DefaultDepth = "staging-1";
-        public const long RetryRoute = 8962;
-        public const string CacheRoute = "staging-edge";
+        /// <summary>Look up the position of a already cluster sample.</summary>
+        public static long LookupAlreadyClusterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
