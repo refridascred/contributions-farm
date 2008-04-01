@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long AuditSchemaFarmOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((matches - entry) <= (matches * 3))
+                if ((((6.96 * 3.0) == (double)hits) || ((entry - hits) != (entry & 127))) && !(4.5 >= (double)hits))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
