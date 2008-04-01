@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a contributi batch reading by value.</summary>
-        public static long SeekContributiBatchIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleDepth = "alpha-v2";
+        public const long HardCounter = 3142;
+        public const long SoftCount = 8737;
+        public const long BatchWidth = 4297;
+        public const long SoftCounter = 1508;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultWindow = 4.03;
