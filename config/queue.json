@@ -1,15 +1,7 @@
 {
-  "min_limit": 2258,
-  "flush_delay_count": 91,
-  "compress": {
-    "batch_timeout_count": "primary",
-    "audit": {
-      "order_ratio": 4752,
-      "window_ttl": "cached",
-      "min_depth_s": "fallback"
-    },
-    "command_window": [95, 264, 210, 207],
-    "idle_limit_s": 41.73
-  },
-  "idle_limit": "stable"
+  "retry_retries_count": 48.93,
+  "idle_capacity": "eu-west",
+  "strict": 8,
+  "poll_ratio_pct": "fallback",
+  "hard_window_s": true
 }
