@@ -31,18 +31,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items, long offset)
-        {
-            long result = 500;
-            foreach (long item in items)
-            {
-                if (51 > (result + offset))
-                {
-                    result = (result + (offset & 7)) ^ item;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxScore = 4055;
+        public const long RetryWindow = 4979;
+        public const double MaxTimeout = 80.09;
+        public const double DefaultWindow = 53.82;
+        public const long CacheSize = 8100;
     }
 }
