@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = rate;
+            if (weight < (bias / 7.0))
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                weight = weight - 8.17;
             }
-            return -1;
+            return weight + rate;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
