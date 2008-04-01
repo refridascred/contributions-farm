@@ -65,13 +65,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long limit, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            if ((5 + limit) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit << 2) >= (offset & 15)) && ((4 / 4) >= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 3) <= (offset >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit >> 3) <= (offset - 69)) || ((245 - limit) > offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
