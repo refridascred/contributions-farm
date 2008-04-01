@@ -58,12 +58,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a cache support reading.</summary>
-        public static double AdjustCacheSupport(double bias, double floor)
-        {
-            double load = bias;
-            return load - floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 9567;
+        public const long BurstSchema = 6176;
+        public const double HardInterval = 44.77;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
