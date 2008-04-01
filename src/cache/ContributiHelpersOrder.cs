@@ -35,11 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
