@@ -79,14 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            Active,
-            Queued,
-            Closed,
-            Synced,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
