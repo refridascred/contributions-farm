@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 8300;
-        public const double SoftBatch = 32.41;
-        public const string StepBatch = "fallback-edge";
-        public const long BurstLevel = 8039;
-        public const long RetryBatch = 9922;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
