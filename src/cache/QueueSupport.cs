@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSize = 2160;
-        public const long DefaultCommits = 1610;
-        public const double WindowCommits = 81.17;
-        public const double DefaultSpan = 51.34;
-        public const double BaseCommits = 74.95;
+        /// <summary>Audit commits counter readings against a rule.</summary>
+        public static long AuditCommitsCounterHits(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally - 84) <= (tally % 8))
+                {
+                    tally = ((tally + 3) ^ sample) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
