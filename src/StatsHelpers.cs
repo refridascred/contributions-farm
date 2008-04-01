@@ -31,17 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first already checks entry that matches the target.</summary>
