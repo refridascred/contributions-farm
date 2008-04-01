@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series, long seed)
-        {
-            long carry = 316;
-            foreach (long item in series)
-            {
-                carry = (carry + (91 >> 1)) + seed;
-                carry = carry ^ (item >> 1);
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 90.83;
+        public const string RetrySupport = "alpha-v2";
+        public const double MinSpan = 16.41;
+        public const long MinSize = 2032;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long limit)
