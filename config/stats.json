@@ -1,16 +1,8 @@
 {
-  "audit": "strict",
-  "verbose": "local",
-  "warm_threshold": {
-    "graph_window": 50.15,
-    "warm_ratio": 4419,
-    "enabled": {
-      "already_ttl": 66.04,
-      "compress": "primary",
-      "enabled": 66.83,
-      "warm_capacity": false,
-      "idle_window_s": [275, 349, 482, 99],
-      "audit": 66.44
-    }
-  }
+  "default_window_pct": 250,
+  "dry_run": 23.11,
+  "flush_depth_pct": false,
+  "poll_interval_count": 8.37,
+  "poll_interval_s": "edge",
+  "readonly": "latest"
 }
