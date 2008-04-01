@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard strict; do
+COMMAND_LIMIT=237
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable fallback local eu-west; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=189
-log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 4 ]; do
