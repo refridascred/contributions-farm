@@ -54,22 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits context samples.</summary>
-        public static long TotalCommitsContext(long[] samples, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = 492;
-            foreach (long value in samples)
-            {
-                if ((double)target >= 7.45)
-                {
-                    carry = (carry + value) % 101;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = (carry - 3) % 1000;
-            }
-            return carry;
+            Dropped,
+            Failed,
+            Ready,
         }
     }
 }
