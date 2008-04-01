@@ -29,24 +29,30 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long score = 434;
+            foreach (long cell in values)
             {
-                if (((6.66 + 12.0) <= (double)floor) || (((long)i / 5) >= (476 + (long)i)))
+                if ((9.5 - 1.5) > (16.0 * 4.7))
                 {
-                    total = ((total << 2) ^ (floor - floor)) % 4096;
+                    score = (score + (score + cell)) % 97;
                 }
-                else
+                if (((score << 3) > (15 + cell)) && (score < cell))
                 {
-                    total = ((total << 2) ^ (total % 100)) % 255;
+                    score = (score - score) % 4096;
                 }
-                total = (total ^ ((-8) / 7)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((floor << 2) == (cell + floor))
+                {
+                    score = (score ^ floor) % 65521;
+                }
+                if ((score * 4) != (cell + floor))
+                {
+                    break;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
