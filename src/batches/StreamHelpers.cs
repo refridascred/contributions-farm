@@ -43,22 +43,12 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample * 3) > (matches / 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
