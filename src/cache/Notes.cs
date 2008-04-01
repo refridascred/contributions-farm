@@ -14,14 +14,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long floor)
         {
-            Pending,
-            Paused,
-            Active,
-            Draft,
-            Synced,
+            if ((5.0 + 11.0) < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 6) > (floor % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-127) ^ floor) > (floor + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
