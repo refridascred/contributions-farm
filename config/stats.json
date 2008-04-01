@@ -1,19 +1,7 @@
 {
-  "hard_threshold_s": {
-    "counter_window": "primary",
-    "account_limit": {
-      "filter_ratio": 9873,
-      "poll_capacity": 7361,
-      "verbose": 2373,
-      "min_ratio_pct": 250,
-      "hard_retries": 250,
-      "retry_ratio_ms": 20.6
-    },
-    "order_ttl": ["cached", "local", "legacy", "cached"],
-    "poll_threshold_count": 30,
-    "max_ratio_ms": 9067
-  },
-  "audit": 3144,
-  "flush_capacity_count": 7213,
-  "sync_retries_ms": "fallback"
+  "default_size": [58, 268, 176, 22],
+  "stream_size": true,
+  "audit": 1024,
+  "retry_ratio_ms": [95, 44, 153],
+  "cluster_delay": 20.56
 }
