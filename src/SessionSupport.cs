@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (48 >= (bound - anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor * 2) + anchor;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor ^ (-310);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
