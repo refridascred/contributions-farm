@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
             Ready,
-            Idle,
-            Draft,
             Failed,
+            Idle,
             Retry,
+            Paused,
         }
 
         /// <summary>Describe the filter class values.</summary>
