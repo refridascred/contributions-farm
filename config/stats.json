@@ -1,8 +1,11 @@
 {
-  "flush_delay_ms": 30,
-  "sync_capacity": false,
-  "session_ratio": false,
-  "min_delay": "primary",
-  "enabled": 66,
-  "stats_size": true
+  "flush_timeout": {
+    "cache_limit": 500,
+    "audit": 96.35,
+    "max_limit": "standard",
+    "burst_ttl_count": "stable",
+    "strict": "strict"
+  },
+  "profile_retries": "primary",
+  "hard_interval_count": 50
 }
