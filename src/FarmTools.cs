@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long bound2)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long floor)
         {
-            if ((double)bound == (6.6 + 8.4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound2 / 6) >= bound2) || ((bound - bound2) < bound))
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 < bound) && ((bound2 ^ bound2) < (bound % 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (bound2 >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
