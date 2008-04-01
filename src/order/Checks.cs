@@ -44,23 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools account value.</summary>
-        public static double SmoothToolsAccount(double scale, double bias)
-        {
-            double drift = (scale - scale) * 2.1;
-            if (drift > bias)
-            {
-                drift = drift + (double)6;
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift + (scale * 3.1);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultWidth = 75.4;
+        public const long BaseMetric = 1211;
+        public const long HardMetric = 3840;
+        public const string SoftMetric = "fallback-edge";
     }
 }
