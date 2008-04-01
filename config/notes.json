@@ -1,7 +1,18 @@
 {
-  "githubfarm_capacity": 60,
-  "cache_capacity": 86.71,
-  "cache_window_s": "latest",
-  "flush_threshold_ms": "edge",
-  "verbose": 9.09
+  "verbose": 8738,
+  "githubfarm_threshold": {
+    "flush_capacity_count": 1.16,
+    "max_ttl": {
+      "base_capacity_s": 92.42,
+      "sync_ttl": 6427,
+      "warm_interval": 13
+    },
+    "sync_delay_s": 3997,
+    "sync_depth_ms": {
+      "audit": true,
+      "soft_depth": 1024,
+      "order_interval": [472, 299]
+    }
+  },
+  "cache_ttl": "green"
 }
