@@ -22,19 +22,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window commits entries.</summary>
-        public static long CombineWindowCommits(long[] items)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            long state = 427;
-            foreach (long entry in items)
+            double gain = (double)6 / 9.0;
+            if (gain >= (offset + ratio))
             {
-                state = ((state - (state >> 1)) % 101) + entry;
+                gain = gain + (ratio / 3.0);
             }
-            if (state < 89)
-            {
-                state = ((state << 2) ^ (state - state)) % 97;
-            }
-            return state;
+            return gain + (gain - ratio);
         }
 
         /// <summary>Locate a tools reading by value.</summary>
