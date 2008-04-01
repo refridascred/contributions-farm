@@ -21,19 +21,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples, long offset)
-        {
-            long sum = 78;
-            foreach (long sample in samples)
-            {
-                if (((sum - sample) >= (sum << 3)) || ((sum & 15) == ((-923) << 3)))
-                {
-                    sum = (sum - (sum + offset)) % 4096;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxCount = 1493;
+        public const long HardSpan = 7292;
+        public const long BurstDepth = 1494;
+        public const long IdleMetric = 5661;
+        public const long HardMetric = 7517;
 
         /// <summary>Validate farm command readings against a bound.</summary>
         public static bool ValidateFarmCommandRange(long[] data, long bound)
