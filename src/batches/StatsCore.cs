@@ -38,25 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long origin, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long gap = origin - step;
-            if ((origin + step) < (gap << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Idle,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
