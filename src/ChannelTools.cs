@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleDepth = "cached-edge";
+        public const double LimitFarm = 37.19;
+        public const long MinFarm = 7093;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long seed, long origin)
