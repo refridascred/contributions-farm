@@ -1,7 +1,6 @@
 {
-  "enabled": "primary",
-  "flush_ratio": true,
-  "poll_delay": ["eu-west", "open"],
-  "support_size": ["latest", "edge", "open", "latest"],
-  "metric_limit": true
+  "cache_delay": 62.61,
+  "cache_size": "edge",
+  "payload_retries": [81, 496, 347],
+  "readonly": "local"
 }
