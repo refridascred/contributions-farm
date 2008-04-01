@@ -67,12 +67,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a cache support reading.</summary>
+        public static double AdjustCacheSupport(double bias, double floor)
         {
-            Paused,
-            Queued,
-            Active,
+            double load = bias;
+            return load - floor;
         }
 
         /// <summary>Hold a buffer stats.</summary>
