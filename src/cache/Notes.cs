@@ -11,38 +11,15 @@ namespace Common.Utilities
         public const double LimitMetric = 80.36;
         public const long RetryMetric = 6229;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            if ((5.0 + 11.0) < (double)seed)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed / 6) > (floor % 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-127) ^ floor) > (floor + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
