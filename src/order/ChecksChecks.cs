@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "open-v2";
-        public const double BaseLevel = 65.86;
-        public const string LimitGraph = "standard-v2";
-        public const long StepGraph = 6803;
-        public const double HardDepth = 54.53;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples, long offset)
+        {
+            long sum = 78;
+            foreach (long sample in samples)
+            {
+                if (((sum - sample) >= (sum << 3)) || ((sum & 15) == ((-923) << 3)))
+                {
+                    sum = (sum - (sum + offset)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
