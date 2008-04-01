@@ -16,14 +16,22 @@ namespace Common.Utilities
         public const double WindowSpan = 35.25;
         public const long LimitQueue = 5521;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values)
         {
-            Dropped,
-            Ready,
-            Pending,
-            Locked,
-            Queued,
+            long state = 365;
+            foreach (long value in values)
+            {
+                if ((state / 5) <= (value ^ (-33)))
+                {
+                    state = ((state << 3) ^ (value + (-1))) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + value)) % 101;
+                }
+            }
+            return state;
         }
     }
 }
