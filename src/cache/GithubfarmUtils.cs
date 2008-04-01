@@ -39,32 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long seed2)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values, long limit)
         {
-            long span = seed - seed2;
-            if ((seed2 + seed2) < span)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.1 + 6.31) < (double)seed2)
+                if ((entry < (hits + limit)) || !(((-4) & 7) <= (entry ^ entry)))
                 {
-                    return 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((seed2 / 3) <= (8 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
