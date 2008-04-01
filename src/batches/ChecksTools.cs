@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor window entries that pass the check.</summary>
-        public static long CountEditorWindowMatches(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((cell - 51) == ((long)series.Length / 2)) || ((6.0 - 4.71) > (double)seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the checks level values.</summary>
