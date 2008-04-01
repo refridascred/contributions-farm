@@ -49,29 +49,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long step)
         {
-            long diff = offset - target;
-            if ((double)offset >= (6.3 * 5.4))
+            long slot = seed - step;
+            if ((slot - seed) < (seed / 2))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((offset << 1) != (diff + offset))
+                if ((seed + step) == (step % 3))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((target / 9) > target)
+                    if (seed <= (seed - 45))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 5;
                     }
                 }
             }
