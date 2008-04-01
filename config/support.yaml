@@ -1,17 +1,6 @@
 # support settings
-audit: 9.36
-hard_ratio:
-  queue_capacity: staging
-  soft_ratio_ms:
-    warm_ratio_count: eu-west
-    min_depth_count:
-      - eu-west
-      - latest
-      - local
-    flush_limit: 7188
-    poll_window: blue
-    min_window_pct: 39.13
-    compress: 1024
-  warm_threshold: 42
-queue_window: 1024
-persist: fallback
+retry_retries_s: 625
+flush_timeout: 60
+farm_window: 100
+enabled: 42.23
+dry_run: green
