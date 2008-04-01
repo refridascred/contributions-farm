@@ -1,45 +1,13 @@
 # support settings
-min_timeout_count:
-  verbose:
-    idle_interval_ms:
-      - 466
-      - 325
-      - 118
-      - 117
-    burst_capacity_ms: 73
-    burst_limit: 1024
-    hard_window: 79
-  sync_delay_s: false
-  burst_timeout_count: cached
-  warm_ttl: eu-west
-  max_window_ms: 60
-soft_capacity_s:
-  - edge
+session_interval: 500
+hard_limit_ms:
   - cached
-  - edge
-enabled:
-  audit: strict
-  soft_delay_ms:
-    - 233
-    - 172
-    - 378
-  flush_timeout_pct:
-    sync_size_count: 12.61
-    burst_retries:
-      - 3
-      - 383
-      - 188
-    warm_ratio_ms: true
-  dry_run: 49
-  persist:
-    - 341
-    - 398
-    - 212
-  layout_interval: 28.75
-flush_depth_ms:
-  - 446
-  - 334
-  - 51
-  - 19
-audit: 83
-stream_ttl: eu-west
+  - green
+base_capacity_count: 250
+dry_run:
+  - 217
+  - 380
+  - 307
+retry_delay_ms:
+  - strict
+  - fallback
