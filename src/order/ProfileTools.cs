@@ -40,21 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally & 63) > (tally - tally))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) - sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
