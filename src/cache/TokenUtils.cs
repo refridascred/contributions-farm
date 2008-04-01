@@ -14,18 +14,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels, long target)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long DeriveCommandSchema(long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((target * 5) < (value % 8))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
