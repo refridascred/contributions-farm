@@ -42,11 +42,17 @@ namespace Common.Utilities
             return drift - 5.2;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
