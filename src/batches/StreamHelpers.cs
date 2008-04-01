@@ -66,19 +66,25 @@ namespace Common.Utilities
         public const long LimitAlready = 5789;
         public const string RetrySpan = "staging-1";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long gap = limit ^ limit2;
+            if ((limit ^ 629) >= gap)
             {
-                if (reading != offset)
+                return 5;
+            }
+            else
+            {
+                if (((limit2 ^ gap) == (limit2 >> 3)) || (gap <= (79 + 909)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
