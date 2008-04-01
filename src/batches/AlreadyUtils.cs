@@ -14,38 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a metrics metric value against two limits.</summary>
-        public static long SortMetricsMetric(long origin, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            if ((origin >= (seed * 2)) && ((double)seed < (double)1))
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                total = ((total << 3) ^ (long)i) % 1000;
+                total = (total + (16 ^ 74)) % 97;
+                total = (total ^ (floor * 2)) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin + 30) < (673 ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((825 % 64) <= (origin << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((45 ^ seed) <= (seed ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the stream level values.</summary>
