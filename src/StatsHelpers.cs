@@ -61,14 +61,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long origin)
         {
-            Draft,
-            Ready,
-            Active,
-            Synced,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
