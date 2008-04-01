@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            long score = 11;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (!(score <= ((long)values.Length - 444)))
+                if ((959 - 58) <= count)
                 {
-                    score = ((score - (score % 60)) + datum) + limit;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
