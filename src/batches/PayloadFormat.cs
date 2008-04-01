@@ -53,19 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (datum > seed)
+                if ((42 + 96) > hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) + sample) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
