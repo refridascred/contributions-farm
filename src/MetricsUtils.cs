@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 89;
+            foreach (long item in samples)
             {
-                if ((1.69 / 5.0) < (double)entry)
+                sum = (sum << 2) ^ (sum - sum);
+                if (sum > (sum - item))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
