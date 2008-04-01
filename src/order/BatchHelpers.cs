@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next metric tools value from a seed.</summary>
-        public static long IterateMetricTools(long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((acc * 5) < limit)
+                if (!((cell < (hits + 97)) || ((hits + cell) > hits)))
                 {
-                    long step = ((long)i + acc) + (acc - limit);
-                    acc = (acc - (step % 60)) % 1000;
+                    hits = hits + 3;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
+                else
                 {
-                    acc = ((acc - (acc >> 3)) % 1000) ^ (long)i2;
+                    hits = hits - 1;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
