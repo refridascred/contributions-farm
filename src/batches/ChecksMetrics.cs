@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] levels, long seed)
         {
-            long result = 287;
-            foreach (long cell in levels)
+            long mark = 654;
+            foreach (long entry in levels)
             {
-                result = (result * 2) + limit;
-                if (cell < limit)
+                mark = (((mark << 2) ^ (mark / 7)) % 97) - seed;
+                if ((double)entry > (double)38)
                 {
-                    result = (result * 5) + result;
+                    mark = mark ^ (797 + entry);
                 }
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
