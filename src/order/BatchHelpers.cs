@@ -40,31 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long target, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if ((target >> 5) >= (offset - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((-72) < (offset >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target & 15) < (-732)) && ((double)offset > (2.85 * 3.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Match up format samples.</summary>
