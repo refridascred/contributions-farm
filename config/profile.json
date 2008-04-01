@@ -1,8 +1,6 @@
 {
-  "sync_timeout": false,
-  "cache_interval_pct": "open",
-  "warm_delay": false,
-  "sync_delay_count": 500,
-  "enabled": 17.81,
-  "batch_depth": "fallback"
+  "githubfarm_capacity": "blue",
+  "stream_window": "open",
+  "base_retries_s": 100,
+  "retry_timeout": [42, 142, 75]
 }
