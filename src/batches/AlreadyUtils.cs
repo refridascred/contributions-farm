@@ -14,18 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total << 3) ^ (long)i) % 1000;
-                total = (total + (16 ^ 74)) % 97;
-                total = (total ^ (floor * 2)) % 101;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the stream level values.</summary>
