@@ -13,23 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long offset)
         {
-            double load = gain;
-            if (load > gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + load;
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (floor + floor)) - (double)(long)i;
-            }
-            return load + floor;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
