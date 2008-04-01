@@ -41,21 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count filter support pairs that satisfy a relation.</summary>
-        public static long OverlapFilterSupportCount(long[] samples)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
