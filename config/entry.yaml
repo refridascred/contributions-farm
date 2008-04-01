@@ -1,17 +1,6 @@
 # entry settings
-verbose: 60
-persist:
-  warm_window_s:
-    batch_ttl_ms: green
-    retry_timeout_pct: 1024
-    commits_window: strict
-    default_capacity_s: 15
-    idle_interval_count:
-      - open
-      - open
-      - primary
-  max_delay_pct: false
-  stream_retries: 30
-  base_limit: false
-graph_threshold: 2599
-idle_delay_ms: 61
+hard_ratio_pct: local
+burst_delay_s: 97.36
+hard_retries: false
+audit: 4028
+poll_depth: true
