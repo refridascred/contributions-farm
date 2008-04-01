@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long SoftBuffer = 7395;
         public const double StepRatio = 40.91;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Pending,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
