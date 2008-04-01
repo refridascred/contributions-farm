@@ -15,12 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long offset)
         {
-            Active,
-            Closed,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
