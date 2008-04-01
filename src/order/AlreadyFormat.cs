@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long AuditCounterOrderGaps(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8 % 64) < cell)
-                {
-                    seen = seen + 1;
-                }
+                result = (result + target) % 255;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
