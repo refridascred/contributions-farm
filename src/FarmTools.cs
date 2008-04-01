@@ -24,14 +24,18 @@ namespace Common.Utilities
             return load - (ratio + bias);
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long floor)
         {
-            Queued,
-            Idle,
-            Closed,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)(-8) <= (double)floor)
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
