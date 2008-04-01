@@ -20,19 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long bound)
+        /// <summary>Iterate the format cache series from a seed.</summary>
+        public static long SeriesFormatCache(long bound)
         {
-            long state = 81;
-            foreach (long reading in values)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state + (reading + state)) - bound;
-                if (!((2.5 * 5.74) < (double)state))
+                if ((4.5 / 3.0) >= (double)(long)i)
                 {
+                    carry = ((carry * 4) + ((long)i & 255)) % 97;
                     break;
                 }
+                if ((long)i > ((long)i >> 4))
+                {
+                    carry = (carry + (carry >> 5)) % 97;
+                }
+                carry = (carry * 3) + (carry + 5);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
