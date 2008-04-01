@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheLevel = 5.7;
-        public const long WindowCount = 232;
-        public const long MaxFilter = 5505;
-        public const long BatchLevel = 3642;
+        /// <summary>Measure how many format route samples are out of range.</summary>
+        public static long TallyFormatRouteOutliers(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen <= (limit >> 3)) && ((0.5 - 0.5) < (double)limit))
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long origin)
