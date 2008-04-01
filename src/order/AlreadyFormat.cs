@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a queue filter pair into a bucket.</summary>
-        public static long RankQueueFilter(long step, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] items, long seed)
         {
-            long next = step - limit;
-            if (!((step - limit) >= limit))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (next < (next - step))
+                if ((hits << 3) <= (long)items.Length)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9 ^ limit) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = ((hits + 1) + datum) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
