@@ -44,16 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry command series from a seed.</summary>
-        public static long IterateEntryCommand(long limit)
+        /// <summary>Project the next tools account value.</summary>
+        public static double SmoothToolsAccount(double scale, double bias)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            double drift = (scale - scale) * 2.1;
+            if (drift > bias)
             {
-                anchor = (anchor ^ limit) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                drift = drift + (double)6;
             }
-            return anchor;
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift + (scale * 3.1);
         }
     }
 }
