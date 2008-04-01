@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema report samples are out of range.</summary>
-        public static long MeasureSchemaReportGaps(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (cell > (35 % 60))
+                if ((double)seen <= (6.24 / 7.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 1) ^ datum) + step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a order githubfarm reading.</summary>
