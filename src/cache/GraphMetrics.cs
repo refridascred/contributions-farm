@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((bound << 3) < (369 - count)))
+                if (items[i] < origin)
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
