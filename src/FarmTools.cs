@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long step)
-        {
-            long diff = seed + step;
-            if (seed >= (diff & 255))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((diff ^ seed) > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 24.14;
+        public const string WindowOrder = "open-1";
+        public const long IdleLevel = 4162;
+        public const long RetryWidth = 3710;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long seed)
