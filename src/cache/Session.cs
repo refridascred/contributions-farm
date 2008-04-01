@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next already order value from a seed.</summary>
-        public static long DeriveAlreadyOrder(long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the batch kind values.</summary>
