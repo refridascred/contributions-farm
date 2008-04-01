@@ -1,7 +1,7 @@
-id,state
-1,718
-2,82
-3,850
-4,35.27
-5,stable
-6,469
+id,region,active,count
+1,51.97,fallback,97.56
+2,832,766,175
+3,352,54.84,green
+4,179,62.27,739
+5,40.49,green,16.99
+6,20.88,open,fallback
