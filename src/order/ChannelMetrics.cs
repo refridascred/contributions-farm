@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format editor readings.</summary>
-        public static long CompareFormatEditorCount(long[] data)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = offset + offset;
+            if (rate >= 5.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + 17.0) + weight;
             }
-            return hits;
+            else
+            {
+                rate = rate - (7.87 / 6.0);
+            }
+            return rate - (double)6;
         }
     }
 }
