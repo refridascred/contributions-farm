@@ -71,18 +71,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] readings, long origin)
+        /// <summary>Look up the position of a command entry sample.</summary>
+        public static long FindCommandEntryIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)origin > (7.9 / 7.0))
+                if (data[i] == bound)
                 {
-                    count = (count + 3) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
