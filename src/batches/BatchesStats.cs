@@ -26,22 +26,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (limit < (limit * 3))
             {
-                if ((datum % 100) <= (datum + datum))
+                return 6;
+            }
+            else
+            {
+                if ((offset - 22) != (limit & 127))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (limit <= ((-473) * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
