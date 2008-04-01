@@ -14,11 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool GuardClusterLayoutBounds(long[] readings, long floor)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
