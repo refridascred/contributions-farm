@@ -12,17 +12,20 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Find the first account metrics entry that matches the target.</summary>
-        public static long SeekAccountMetricsIndex(long[] samples, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + ((long)i2 + carry)) % 4096;
                 }
+                carry = (carry - carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
