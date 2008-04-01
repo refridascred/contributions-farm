@@ -53,22 +53,11 @@ namespace Common.Utilities
         public const double HardBatch = 6.52;
         public const long CacheBatch = 4293;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum * 4) + 4;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum ^ sum) % 1000) + (long)i2;
-                    sum = sum - (offset + sum);
-                }
-                sum = sum - (offset - sum);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
