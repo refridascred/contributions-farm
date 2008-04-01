@@ -42,14 +42,21 @@ namespace Common.Utilities
         public const double WindowDepth = 19.98;
         public const long DefaultWidth = 2065;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            New,
-            Locked,
-            Failed,
-            Pending,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a editor counter counter forward.</summary>
