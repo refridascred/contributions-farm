@@ -26,18 +26,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long sum = -5;
-            foreach (long entry in samples)
+            long anchor = 7;
+            foreach (long datum in readings)
             {
-                if ((((long)samples.Length + sum) < entry) && (sum < (sum ^ 8)))
-                {
-                    sum = (sum + sum) % 255;
-                }
+                anchor = (((anchor << 3) ^ (42 * 4)) % 1000) ^ datum;
             }
-            return sum;
+            if (anchor < (-9))
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
