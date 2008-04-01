@@ -76,13 +76,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 6181;
+        public const string HardNotes = "strict";
+        public const double MinSpan = 96.94;
+        public const long RetryFactor = 8577;
+        public const long MaxRatio = 6838;
     }
 }
