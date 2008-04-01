@@ -1,7 +1,5 @@
 {
-  "farm_delay": 8303,
-  "hard_timeout_pct": ["strict", "strict", "edge"],
-  "cache_delay": ["edge", "edge"],
-  "enabled": false,
-  "idle_delay_pct": "blue"
+  "sync_timeout_s": 2162,
+  "batch_limit_pct": false,
+  "soft_threshold": 10.76
 }
