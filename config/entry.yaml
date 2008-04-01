@@ -1,6 +1,25 @@
 # entry settings
-strict: 34.12
-support_threshold: 250
-queue_limit: green
-hard_interval_s: true
-base_interval: 33.05
+batches_limit: 100
+strict: primary
+compress: false
+sync_retries_s:
+  batches_capacity: standard
+  burst_ratio: blue
+  poll_ttl_count:
+    cache_ratio: 25.37
+    hard_limit_ms: 5215
+    warm_timeout: open
+    warm_ratio_count: 0.36
+    tools_size: 8012
+    order_timeout:
+      - 120
+      - 269
+      - 332
+      - 371
+  cache_ttl: 92
+  readonly: 4
+  metrics_size:
+    - 265
+    - 16
+    - 451
+    - 231
