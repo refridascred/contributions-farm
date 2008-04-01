@@ -70,17 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks cluster entry that matches the target.</summary>
-        public static long LookupChecksClusterIndex(long[] values, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(2 % 10);
+            if (ratio >= ratio)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + ratio;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (scale * 0.65)) + (double)(long)i;
+            }
+            return ratio + (offset - ratio);
         }
 
         /// <summary>Describe the entry mode values.</summary>
