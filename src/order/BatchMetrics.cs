@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long WeighMetricAlready(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series, long target)
         {
-            long score = 9;
-            foreach (long value in data)
+            long state = 8;
+            foreach (long sample in series)
             {
-                score = score - score;
-                if (!(value < (score * 4)))
-                {
-                    score = score - (91 + value);
-                    score = (score ^ score) % 65521;
-                }
-                score = ((score << 3) ^ score) % 4096;
+                state = (state + (sample / 9)) - target;
             }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
