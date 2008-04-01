@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count - reading) >= (597 - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
