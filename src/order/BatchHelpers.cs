@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] items)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(((hits % 16) != (reading >> 4)) && ((double)reading != (0.24 - 16.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit window order readings against a rule.</summary>
