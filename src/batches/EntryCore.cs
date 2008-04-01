@@ -28,22 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = 0;
-            foreach (long value in series)
-            {
-                if ((total % 8) <= (total % 24))
-                {
-                    total = (total - (value << 2)) - origin;
-                }
-            }
-            if (total < 365)
-            {
-                total = (total + 2) % 4096;
-            }
-            return total;
+            Active,
+            Paused,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a counter info.</summary>
