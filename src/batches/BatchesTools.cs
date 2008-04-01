@@ -27,16 +27,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a report entry counter forward.</summary>
-        public static long RollReportEntry(long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = anchor ^ (long)i;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Done,
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
