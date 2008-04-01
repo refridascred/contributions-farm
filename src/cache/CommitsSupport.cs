@@ -30,11 +30,11 @@ namespace Common.Utilities
             return rate + (double)80;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
