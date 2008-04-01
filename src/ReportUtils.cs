@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long offset, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if ((limit + offset) >= (offset & 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit != (5.97 / 5.0)) && ((limit / 5) > (51 - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((52 - limit) >= limit) || ((offset * 2) > (6 >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Done,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
