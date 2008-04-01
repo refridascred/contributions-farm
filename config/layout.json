@@ -1,7 +1,16 @@
 {
-  "persist": "open",
-  "min_ttl": 87,
-  "retry_capacity": "green",
-  "cache_ttl_ms": false,
-  "flush_ratio_count": true
+  "retry_retries_count": "blue",
+  "support_limit": 7609,
+  "audit": {
+    "counter_capacity": false,
+    "queue_delay": {
+      "sync_ttl": "standard",
+      "base_retries_s": "standard",
+      "warm_limit": false,
+      "cache_timeout_count": "primary"
+    },
+    "flush_size": [170, 46, 168],
+    "sync_depth": true,
+    "max_ttl_ms": ["green", "primary", "primary", "staging"]
+  }
 }
