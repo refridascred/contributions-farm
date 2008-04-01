@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=417
+log "limit is ${RECORD_LIMIT}"
+
+for item in latest open; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-blue}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
