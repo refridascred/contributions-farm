@@ -33,23 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long bound)
-        {
-            long state = 3;
-            foreach (long cell in readings)
-            {
-                if ((long)readings.Length == (bound / 3))
-                {
-                    state = (state ^ (851 + cell)) % 65521;
-                }
-                else
-                {
-                    state = (state + bound) % 97;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardFactor = "cached-1";
+        public const long HardRoute = 1807;
+        public const long CacheTimeout = 651;
+        public const long HardScore = 8452;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
