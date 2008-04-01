@@ -23,15 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            double mean = (double)((-39) * 3);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (weight - mean)) + (double)(long)i;
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (span - span);
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
