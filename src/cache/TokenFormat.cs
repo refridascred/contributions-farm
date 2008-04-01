@@ -24,17 +24,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] readings, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = floor + offset;
+            if ((offset ^ floor) <= (floor >> 5))
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((2.33 / 6.0) != (double)floor) && ((offset << 3) <= (gap << 3)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((245 <= (gap - offset)) && ((offset + offset) == (floor / 9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
