@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            New,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 8711;
+        public const long DefaultEntry = 7153;
+        public const long IdleSpan = 9510;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] samples)
