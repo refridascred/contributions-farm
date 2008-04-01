@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long TallyContextSessionHits(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((seen ^ seen) <= (cell % 12)))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
