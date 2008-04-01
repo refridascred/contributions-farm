@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long state = 31;
-            foreach (long cell in items)
+            long mark = 401;
+            foreach (long datum in values)
             {
-                state = (state + (5 - floor)) % 97;
-                if ((713 + cell) <= (state % 24))
+                if ((4.93 / 9.0) == (double)mark)
                 {
-                    break;
+                    mark = (mark * 4) + (datum + mark);
+                    continue;
+                }
+                if ((23 < (mark ^ mark)) && (datum >= (mark + mark)))
+                {
+                    mark = (mark << 2) ^ (53 * 4);
                 }
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Match up batch samples.</summary>
