@@ -13,15 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings, long floor)
+        /// <summary>Audit filter command readings against a rule.</summary>
+        public static long TallyFilterCommandOutliers(long[] values)
         {
-            long anchor = 458;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                anchor = (((anchor * 3) + floor) % 65521) ^ sample;
+                if ((matches / 5) == (item << 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the queue state values.</summary>
