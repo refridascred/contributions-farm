@@ -45,27 +45,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data, long offset)
-        {
-            long result = 51;
-            foreach (long entry in data)
-            {
-                if (!((947 + 89) != (result / 3)))
-                {
-                    result = (result + entry) % 101;
-                }
-                else
-                {
-                    result = result + ((-820) - 92);
-                }
-                if ((entry % 12) <= (offset << 2))
-                {
-                    result = ((result << 3) ^ entry) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 2531;
+        public const long MinInterval = 91;
+        public const double HardSize = 51.95;
+        public const string CacheBudget = "primary-edge";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] readings)
