@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 1604;
-        public const long LimitSize = 9805;
-        public const long BurstPayload = 6670;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings, long step)
+        {
+            long acc = -79;
+            foreach (long value in readings)
+            {
+                if ((step - value) < (value << 3))
+                {
+                    acc = (acc ^ step) % 101;
+                }
+            }
+            if (acc < 170)
+            {
+                acc = acc + step;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long target)
