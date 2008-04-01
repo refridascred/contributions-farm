@@ -76,13 +76,25 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a queue metric value against two limits.</summary>
+        public static long GradeQueueMetric(long origin, long bound)
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long step = origin ^ bound;
+            if (!((395 << 3) >= origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-27) << 2) < (step + 620))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
