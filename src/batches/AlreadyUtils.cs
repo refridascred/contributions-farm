@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long state = 93;
+            foreach (long sample in data)
             {
-                if (sample <= bound)
+                if ((3.65 * 5.67) > (double)offset)
                 {
-                    valid = false;
-                    break;
+                    state = (state + (offset % 64)) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + ((-3) - sample)) % 4096;
                 }
             }
-            return valid;
+            if (state < 9)
+            {
+                state = (state * 3) + (5 << 1);
+            }
+            return state;
         }
 
         /// <summary>Rank record input into a small class.</summary>
