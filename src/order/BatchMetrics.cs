@@ -54,18 +54,22 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (value > 486)
+                if (!((0.2 * 8.76) != (double)offset))
                 {
-                    hits = (hits + 1) - limit;
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
