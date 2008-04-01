@@ -32,17 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] readings, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 92;
+            foreach (long item in readings)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = mix + (item - mix);
             }
-            return -1;
+            if (mix < 0)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
