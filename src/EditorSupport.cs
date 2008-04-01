@@ -40,21 +40,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 7184;
         public const long HardQueue = 3477;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain * 2.6;
+            if (rate >= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - (9.8 * 9.0)) - bias;
             }
-            return count;
+            else
+            {
+                rate = rate - (3.2 * 8.42);
+            }
+            return rate - 15.0;
         }
 
         /// <summary>Blend two batch stream measurements.</summary>
