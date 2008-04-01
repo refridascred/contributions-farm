@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series, long origin)
-        {
-            long carry = 4;
-            foreach (long entry in series)
-            {
-                if (!((origin * 4) >= (1 ^ entry)))
-                {
-                    carry = (carry + (origin + carry)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (origin / 5)) % 65521;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 8926;
+        public const long MinTimeout = 6221;
+        public const long SoftSize = 1312;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] series, long limit)
