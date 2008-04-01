@@ -1,11 +1,23 @@
 # githubfarm settings
-base_depth_ms: 19.89
-dry_run: 9311
-verbose: standard
-command_ratio:
-  sync_threshold_s: 24.57
-  retry_interval_pct:
-    verbose: strict
-    metric_timeout: 100
-    batch_depth_pct: staging
-  idle_ttl: false
+sync_size_pct:
+  route_window: latest
+  min_timeout_count: false
+  flush_retries_s:
+    channel_delay: eu-west
+    graph_timeout: 100
+    retry_size: 87
+    context_window: 72
+    soft_capacity_count: 25.48
+  readonly: false
+  min_retries: 2285
+  burst_threshold_pct:
+    default_ratio_s: 4333
+    audit: standard
+    default_timeout_pct: blue
+    soft_ratio_count:
+      - 109
+      - 368
+    strict: true
+enabled: 88.93
+readonly: stable
+cache_window_s: open
