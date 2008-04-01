@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
-        {
-            long total = 9;
-            foreach (long value in samples)
-            {
-                if ((value >> 2) > (total << 2))
-                {
-                    total = (total << 3) ^ (value + 7);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 75.26;
+        public const long RetrySpan = 1680;
+        public const string BaseRatio = "stable-v2";
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
