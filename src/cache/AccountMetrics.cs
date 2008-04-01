@@ -37,22 +37,12 @@ namespace Common.Utilities
             return load - (double)103;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long mark = 7;
-            foreach (long sample in items)
-            {
-                if ((mark - mark) == (sample / 3))
-                {
-                    mark = mark - (mark - 530);
-                }
-            }
-            if (mark > 50)
-            {
-                mark = (mark ^ (mark - mark)) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
