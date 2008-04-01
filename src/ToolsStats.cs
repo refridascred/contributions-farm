@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + 66) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
