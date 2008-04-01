@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a stats cache counter forward.</summary>
-        public static long IterateStatsCache(long step)
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long GradeStreamFormat(long bound, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            if ((double)offset <= (2.1 - 6.0))
             {
-                double weight = (5.16 / 3.0) * 3.0;
-                sum = ((sum << 3) ^ (sum * 2)) % 65521;
-                if ((6.79 - weight) != (weight * 2.56))
-                {
-                    weight = weight - weight;
-                    weight = weight - weight;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (bound > (bound ^ 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((72 / 6) < (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((5.7 - 3.15) <= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
