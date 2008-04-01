@@ -13,18 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 458;
+            foreach (long sample in readings)
             {
-                if ((double)tally != (4.63 + 6.6))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                anchor = (((anchor * 3) + floor) % 65521) ^ sample;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
