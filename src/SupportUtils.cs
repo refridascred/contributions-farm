@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Queued,
-            Idle,
             Draft,
-            Synced,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
