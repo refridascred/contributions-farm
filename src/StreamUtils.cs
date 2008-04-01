@@ -50,18 +50,23 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Count the profile editor entries that pass the check.</summary>
-        public static long TallyProfileEditorHits(long[] values, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = 0;
+            foreach (long reading in levels)
             {
-                if (!((datum ^ hits) != (datum + 57)))
+                result = (result + target) % 4096;
+                if ((double)reading != (double)target)
                 {
-                    hits = (hits + 3) - origin;
+                    result = result + reading;
+                }
+                if (11.0 >= (double)reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
