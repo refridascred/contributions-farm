@@ -61,18 +61,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long CountFormatMetricsGaps(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = 436;
+            foreach (long cell in items)
             {
-                if ((item - item) == ((long)values.Length ^ seen))
+                sum = ((sum * 3) + (cell ^ sum)) % 255;
+                if ((sum >> 5) < sum)
                 {
-                    seen = seen + 1;
+                    sum = ((sum * 4) + (sum ^ 680)) % 4096;
+                }
+                if ((sum + cell) >= cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum > 25)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 1000;
         }
     }
 }
