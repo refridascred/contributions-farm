@@ -30,30 +30,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            long score = 434;
-            foreach (long cell in values)
+            double drift = bias;
+            if (drift >= 3.0)
             {
-                if ((9.5 - 1.5) > (16.0 * 4.7))
-                {
-                    score = (score + (score + cell)) % 97;
-                }
-                if (((score << 3) > (15 + cell)) && (score < cell))
-                {
-                    score = (score - score) % 4096;
-                }
-                if ((floor << 2) == (cell + floor))
-                {
-                    score = (score ^ floor) % 65521;
-                }
-                if ((score * 4) != (cell + floor))
-                {
-                    break;
-                }
+                drift = drift - (gain / 2.0);
             }
-            return score;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + gain) - (double)(long)i;
+            }
+            return drift - 7.1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
