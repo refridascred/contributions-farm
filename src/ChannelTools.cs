@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            long score = 22;
-            foreach (long sample in readings)
+            double drift = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((sample / 3) != (score % 5)))
-                {
-                    score = ((score ^ (score ^ 223)) % 255) - offset;
-                }
-                score = score ^ score;
-                if (!(((long)readings.Length >> 3) > score))
-                {
-                    score = (score << 3) ^ score;
-                }
-                else
-                {
-                    score = score + sample;
-                }
+                drift = (drift + (gain + bias)) + (double)(long)i;
             }
-            if (score > 66)
-            {
-                score = score - 48;
-            }
-            return score % 65521;
+            return drift + bias;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
