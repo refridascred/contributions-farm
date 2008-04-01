@@ -1,25 +1,4 @@
 # entry settings
-batches_limit: 100
-strict: primary
-compress: false
-sync_retries_s:
-  batches_capacity: standard
-  burst_ratio: blue
-  poll_ttl_count:
-    cache_ratio: 25.37
-    hard_limit_ms: 5215
-    warm_timeout: open
-    warm_ratio_count: 0.36
-    tools_size: 8012
-    order_timeout:
-      - 120
-      - 269
-      - 332
-      - 371
-  cache_ttl: 92
-  readonly: 4
-  metrics_size:
-    - 265
-    - 16
-    - 451
-    - 231
+min_capacity_ms: false
+strict: 1439
+min_depth_count: 2271
