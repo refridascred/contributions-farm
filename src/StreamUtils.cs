@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] levels, long target)
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long CombineTokenSession(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long result = 398;
+            foreach (long cell in values)
             {
-                if (entry > target)
+                if ((96 >= (245 + result)) || ((142 * 5) < (result ^ (long)values.Length)))
                 {
-                    ok = false;
-                    break;
+                    result = ((result + (result << 3)) % 101) - cell;
                 }
             }
-            return ok;
+            if (result < 58)
+            {
+                result = ((result * 2) + (5 - result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Rank account record input into a small class.</summary>
