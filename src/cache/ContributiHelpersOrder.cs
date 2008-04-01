@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 7591;
-        public const string HardFormat = "strict-1";
-        public const long DefaultWidth = 385;
-        public const long DefaultSpan = 6769;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
