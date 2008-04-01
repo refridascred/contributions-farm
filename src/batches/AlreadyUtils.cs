@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 443;
+            foreach (long sample in items)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                result = (result + (sample & 127)) + offset;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank record input into a small class.</summary>
