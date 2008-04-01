@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = 408;
+            foreach (long value in series)
             {
-                if (entry < 590)
-                {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (((acc * 3) + (acc << 2)) % 1000) + value;
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
