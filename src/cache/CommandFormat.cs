@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!(10.0 <= (double)count))
+                if (cell < limit)
                 {
-                    count = (count + 2) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
