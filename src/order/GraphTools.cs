@@ -83,19 +83,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double drift = bias;
-            if (drift > (double)7)
-            {
-                drift = drift + (bias * 2.08);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (8.3 / 5.0)) + (double)(long)i;
-            }
-            return drift + (scale + bias);
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
