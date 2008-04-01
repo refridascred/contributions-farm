@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBudget = 7817;
+        public const long CacheBatch = 7471;
+        public const long BurstDepth = 2926;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] samples, long offset)
