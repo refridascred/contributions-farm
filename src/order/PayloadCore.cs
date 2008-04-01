@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] data)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally & 3) > (reading >> 4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
