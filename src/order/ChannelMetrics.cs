@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long target)
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long WeighContributiLayout(long[] items, long target)
         {
-            long result = 87;
-            foreach (long entry in samples)
+            long state = 72;
+            foreach (long entry in items)
             {
-                if (((double)entry >= (15.0 - 7.0)) || ((entry % 16) > (entry * 5)))
+                state = ((state - (entry + state)) % 4096) + target;
+                if ((5.97 + 0.9) == (double)entry)
                 {
-                    result = (((result * 4) + (entry % 10)) % 255) + target;
+                    state = (state ^ (entry & 31)) % 4096;
                 }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
