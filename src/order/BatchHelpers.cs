@@ -16,11 +16,23 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 9100;
-        public const long BaseNotes = 8163;
-        public const string HardTimeout = "latest-v2";
-        public const long DefaultNotes = 4466;
+        /// <summary>Audit window order readings against a rule.</summary>
+        public static long MeasureWindowOrderHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value % 60) <= (value >> 1)) || ((tally < (tally - tally)) && ((double)tally > (9.48 - 19.0))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
