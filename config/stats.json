@@ -1,5 +1,8 @@
 {
-  "hard_delay": ["fallback", "staging", "eu-west", "local"],
-  "audit": "staging",
-  "hard_interval": ["edge", "local", "green"]
+  "githubfarm_window": 100,
+  "notes_window": 66.74,
+  "githubfarm_delay": false,
+  "batch_limit": 5782,
+  "audit": [414, 374, 141],
+  "min_interval": 1024
 }
