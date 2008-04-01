@@ -45,18 +45,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long result = 51;
+            foreach (long entry in data)
             {
-                if (!((19 + 74) < value))
+                if (!((947 + 89) != (result / 3)))
                 {
-                    matches = (matches + 1) + offset;
+                    result = (result + entry) % 101;
+                }
+                else
+                {
+                    result = result + ((-820) - 92);
+                }
+                if ((entry % 12) <= (offset << 2))
+                {
+                    result = ((result << 3) ^ entry) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
