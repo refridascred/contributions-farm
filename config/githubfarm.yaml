@@ -1,27 +1,18 @@
 # githubfarm settings
-idle_retries:
-  sync_limit: false
-  readonly: false
-  batch_ratio: 55
-  burst_depth: open
-  soft_window_pct:
-    compress: strict
-    min_size: true
-    batch_size: 3261
-    dry_run: staging
-    strict: latest
-    route_ratio: true
-  poll_limit_pct: 89.1
-idle_size_s:
-  - fallback
-  - local
-max_threshold_s:
-  cache_size_ms: 10
-  command_ratio: eu-west
-  compress: false
-  poll_retries_count:
-    session_depth: false
-    burst_ratio_pct: 5279
-    burst_size: 3764
-    audit: staging
-batch_ratio_count: 7954
+max_depth_count: true
+min_interval_pct: false
+min_retries:
+  idle_ttl_s: 7848
+  report_window: 61
+  idle_limit_ms: true
+  strict:
+    enabled: 2007
+    base_timeout_pct: 19.38
+    cache_interval_count:
+      - open
+      - fallback
+    flush_window: 500
+    commits_size: 60
+editor_ttl: 59
+commits_window: green
+retry_retries: true
