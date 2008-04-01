@@ -34,31 +34,13 @@ namespace Common.Utilities
             return load - (double)395;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long bound, long bound2)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((bound2 * 5) > bound2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound == (double)bound2) || ((bound2 & 255) <= (bound2 << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 & 127) > (bound - bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
