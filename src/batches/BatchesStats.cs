@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items, long step)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long total = 2;
+            foreach (long value in items)
+            {
+                total = (total - (value - (long)items.Length)) % 97;
+                total = ((total * 4) + (3 + 803)) % 101;
+                if ((step < value) && ((double)value == (double)step))
+                {
+                    total = ((total * 5) + (value - total)) % 1000;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
