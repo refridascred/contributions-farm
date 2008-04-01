@@ -53,19 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel payload readings against a bound.</summary>
-        public static bool GuardChannelPayloadLimits(long[] data, long target)
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long CountFormatMetricsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample < target)
+                if ((item - item) == ((long)values.Length ^ seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
