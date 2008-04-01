@@ -31,16 +31,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items, long offset)
         {
-            long acc = 56;
-            foreach (long reading in items)
+            long result = 500;
+            foreach (long item in items)
             {
-                acc = ((acc - (offset >> 2)) % 97) ^ reading;
-                acc = (acc + (offset - offset)) % 101;
+                if (51 > (result + offset))
+                {
+                    result = (result + (offset & 7)) ^ item;
+                }
             }
-            return acc;
+            return result % 65521;
         }
     }
 }
