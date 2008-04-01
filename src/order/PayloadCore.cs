@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double bias = floor;
-            if (bias < gain)
-            {
-                bias = bias - (bias - floor);
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + bias;
+            Idle,
+            Stale,
+            Ready,
+            Dropped,
         }
     }
 }
