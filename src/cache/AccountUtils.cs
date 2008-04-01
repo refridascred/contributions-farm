@@ -13,15 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
