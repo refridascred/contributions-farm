@@ -33,21 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command order samples.</summary>
-        public static long PairCommandOrderCount(long[] series)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 10)
+                    if ((values[i] - values[j]) == 3)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
