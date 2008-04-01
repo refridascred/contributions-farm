@@ -35,13 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Roll a stream context counter forward.</summary>
+        public static long IterateStreamContext(long origin)
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
