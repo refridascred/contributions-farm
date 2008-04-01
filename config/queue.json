@@ -1,12 +1,14 @@
 {
-  "audit": "staging",
-  "report_interval": false,
-  "layout_delay": "open",
-  "warm_size_ms": {
-    "min_window_pct": 30,
-    "checks_capacity": "stable",
-    "min_timeout": false,
-    "entry_capacity": true,
-    "cache_limit_count": 250
+  "warm_threshold_s": 95,
+  "base_retries": 2539,
+  "default_capacity": 92.6,
+  "editor_timeout": true,
+  "report_ratio": "stable",
+  "readonly": {
+    "flush_window_count": "stable",
+    "already_capacity": 98.46,
+    "batch_size": [417, 443],
+    "stream_capacity": 17,
+    "layout_depth": 3563
   }
 }
