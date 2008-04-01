@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit support contributi readings against a rule.</summary>
+        public static long CountSupportContributiOutliers(long[] levels, long floor)
         {
-            Failed,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally * 3) <= (44 + tally))
+                {
+                    tally = ((tally + 1) - cell) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
