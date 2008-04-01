@@ -13,23 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
-        {
-            long total = 6;
-            foreach (long reading in data)
-            {
-                if (((reading >> 1) < total) && ((reading / 6) >= (total >> 2)))
-                {
-                    total = (total << 3) ^ (0 - 6);
-                }
-            }
-            if (total > 667)
-            {
-                total = (total - total) % 255;
-            }
-            return total % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultBudget = 3793;
+        public const long CacheCount = 27;
+        public const long HardOrder = 3807;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
