@@ -18,14 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
         {
-            Idle,
-            New,
-            Pending,
-            Failed,
-            Ready,
+            long score = 5;
+            foreach (long reading in values)
+            {
+                if ((double)score > (double)reading)
+                {
+                    score = ((score * 4) + (score / 3)) % 101;
+                    continue;
+                }
+                score = score - reading;
+                score = (score - (9 - score)) % 97;
+            }
+            if (score < 965)
+            {
+                score = ((score * 3) + (score * 4)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate counter contributi readings against a bound.</summary>
