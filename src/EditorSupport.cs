@@ -58,19 +58,10 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double span)
-        {
-            double drift = span;
-            if (drift >= (double)599)
-            {
-                drift = drift - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSpan = 5923;
+        public const long IdleDepth = 4359;
+        public const string LimitRatio = "standard-v2";
+        public const long StepInterval = 588;
     }
 }
