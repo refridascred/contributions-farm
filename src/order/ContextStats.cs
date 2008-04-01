@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 2) ^ ((long)i - offset);
-                mix = (mix - mix) % 255;
-                mix = mix ^ 0;
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
