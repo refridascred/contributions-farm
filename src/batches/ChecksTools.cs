@@ -51,22 +51,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] items, long target)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long sample in items)
             {
-                if (((double)sample >= (5.8 / 9.0)) || ((double)sample < (17.0 * 0.55)))
+                if (sample >= target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
