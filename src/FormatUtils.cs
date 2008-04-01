@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout stream readings against a rule.</summary>
-        public static long TallyLayoutStreamOutliers(long[] samples, long origin)
+        /// <summary>Combine notes counter values into a single score.</summary>
+        public static long DigestNotesCounter(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = 165;
+            foreach (long item in readings)
             {
-                if ((0.2 + 5.2) == (double)origin)
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                acc = acc - (step + item);
             }
-            return tally;
+            if (acc > 43)
+            {
+                acc = acc ^ (step + step);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
