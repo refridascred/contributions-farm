@@ -1,15 +1,14 @@
 # Command notes
 
-The graph module keeps stats values in sync with the cache cache.
-Run the account check before changing any batches limits.
-The farm module keeps stream values in sync with the notes cache.
+The channel module keeps checks values in sync with the context cache.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-A cache that stays idle for too long is moved to the stats list.
-When a metric fails, the window handler retries a few times before giving up.
-A farm that stays idle for too long is moved to the payload list.
+The editor report groups every payload by queue.
+The order helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer checks defaults
-- Log every report change
+- Document new channel fields
+- Keep cluster values small
+- Prefer support defaults
