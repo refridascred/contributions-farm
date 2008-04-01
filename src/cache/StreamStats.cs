@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long SoftMetric = 2616;
         public const string IdleMetric = "strict-1";
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                if ((double)limit < (4.0 - 2.5))
                 {
-                    return (long)i;
+                    total = (total ^ (limit - limit)) % 255;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit graph tools readings against a rule.</summary>
