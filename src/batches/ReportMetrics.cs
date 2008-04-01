@@ -27,22 +27,18 @@ namespace Common.Utilities
             return weight + (double)669;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((384 - entry) > (carry / 7)) || ((double)carry < (7.0 / 7.0)))
+                if ((3.75 * 1.95) != (double)datum)
                 {
-                    carry = (carry - (carry & 63)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ entry) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
