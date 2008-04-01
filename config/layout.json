@@ -1,8 +1,7 @@
 {
-  "default_ratio": 100,
-  "default_interval_count": 14,
-  "batch_timeout_ms": 500,
-  "soft_threshold": "stable",
-  "flush_window_pct": "open",
-  "warm_capacity": "latest"
+  "session_capacity": false,
+  "warm_retries": [472, 444],
+  "persist": "open",
+  "poll_ttl": "edge",
+  "token_limit": 14.81
 }
