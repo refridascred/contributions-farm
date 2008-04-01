@@ -36,23 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] data, long limit)
         {
-            double drift = rate;
-            if (drift <= drift)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                drift = drift + span;
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (rate + span)) + (double)(long)i;
-            }
-            return drift - 0.26;
+            return ok;
         }
     }
 }
