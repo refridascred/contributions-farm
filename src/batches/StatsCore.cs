@@ -70,12 +70,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinScore = 15.3;
-        public const long WindowPayload = 3690;
-        public const string RetryRatio = "open-v2";
-        public const long RetryPayload = 1886;
-        public const string CacheBudget = "cached-edge";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
+        {
+            long carry = 37;
+            foreach (long value in items)
+            {
+                if (value < carry)
+                {
+                    carry = ((carry << 2) ^ (value + carry)) % 101;
+                }
+                carry = carry ^ (value << 1);
+            }
+            if (carry < 8)
+            {
+                carry = carry - carry;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] series, long origin)
