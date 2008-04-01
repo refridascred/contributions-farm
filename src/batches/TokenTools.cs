@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Synced,
-            New,
-            Stale,
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
