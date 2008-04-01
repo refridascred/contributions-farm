@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 4937;
-        public const long StepAlready = 3122;
-        public const long DefaultAlready = 533;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Idle,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
