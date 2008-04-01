@@ -37,22 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long carry = 525;
-            foreach (long value in levels)
-            {
-                if ((value * 4) >= ((-49) % 24))
-                {
-                    carry = (carry - carry) % 101;
-                }
-            }
-            if (carry > 896)
-            {
-                carry = (carry + (carry & 7)) % 1000;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
