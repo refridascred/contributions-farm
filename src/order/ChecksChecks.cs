@@ -13,15 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a format metric counter forward.</summary>
-        public static long StepFormatMetric(long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long total = 6;
+            foreach (long reading in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((reading >> 1) < total) && ((reading / 6) >= (total >> 2)))
+                {
+                    total = (total << 3) ^ (0 - 6);
+                }
             }
-            return total;
+            if (total > 667)
+            {
+                total = (total - total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
