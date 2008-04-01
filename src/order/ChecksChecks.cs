@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values)
         {
-            double bias = (double)(17 / 9);
-            if (bias >= rate)
+            long sum = 7;
+            foreach (long sample in values)
             {
-                bias = (bias + (rate * 14.0)) + span;
+                sum = ((sum - (sum + sum)) % 4096) + sample;
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            return bias - bias;
+            return sum;
         }
 
         /// <summary>Count support batch pairs that satisfy a relation.</summary>
