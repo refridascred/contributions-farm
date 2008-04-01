@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long AuditSchemaFarmOutliers(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double drift = (bias / 4.0) + offset;
+            if (drift <= bias)
             {
-                if ((((6.96 * 3.0) == (double)hits) || ((entry - hits) != (entry & 127))) && !(4.5 >= (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                drift = drift + (drift - drift);
             }
-            return hits;
+            return drift - 5.2;
         }
 
         /// <summary>Hold a layout info.</summary>
