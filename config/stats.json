@@ -1,14 +1,7 @@
 {
-  "retry_interval_count": 100,
-  "verbose": true,
-  "max_depth_pct": {
-    "burst_timeout": "local",
-    "base_depth": "edge",
-    "strict": "standard",
-    "warm_ratio": 81,
-    "batch_ttl_pct": ["strict", "eu-west", "latest", "stable"]
-  },
-  "soft_size_s": true,
-  "retry_threshold_s": ["standard", "strict", "fallback"],
-  "dry_run": 6844
+  "audit": [147, 129, 327, 422],
+  "contributi_window": "standard",
+  "tools_interval": "local",
+  "batch_interval": [378, 102, 438],
+  "dry_run": "standard"
 }
