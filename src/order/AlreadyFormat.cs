@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "open-v2";
+        public const double LimitSize = 50.32;
+        public const long LimitSpan = 6461;
+        public const string MinSession = "primary-edge";
+        public const long LimitSession = 6325;
 
         /// <summary>Project the next contributi value.</summary>
         public static double SmoothContributi(double ratio, double bias)
