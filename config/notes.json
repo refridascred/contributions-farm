@@ -1,12 +1,14 @@
 {
-  "min_threshold_ms": "cached",
-  "notes_threshold": false,
-  "metric_capacity": ["local", "green", "latest"],
-  "persist": {
-    "verbose": 1024,
-    "soft_limit_count": "staging",
-    "hard_size": "staging"
+  "cache_retries_s": true,
+  "support_threshold": {
+    "burst_retries": 60,
+    "idle_delay": 30,
+    "flush_ttl_s": 9262,
+    "profile_depth": "fallback",
+    "retry_size_count": true
   },
-  "soft_ttl_s": ["fallback", "green", "stable"],
-  "retry_limit": 30
+  "cluster_depth": "fallback",
+  "window_threshold": 55,
+  "default_timeout": 11.13,
+  "verbose": false
 }
