@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long limit)
         {
-            double weight = rate / 2.0;
-            if (weight < 8.28)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                weight = weight + floor;
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight - rate)) + (double)(long)i;
-            }
-            return weight + (floor + floor);
+            return valid;
         }
 
         /// <summary>Describe the stream class values.</summary>
