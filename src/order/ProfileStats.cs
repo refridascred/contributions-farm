@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Dropped,
-            Draft,
-            Synced,
-            Pending,
-            Idle,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
