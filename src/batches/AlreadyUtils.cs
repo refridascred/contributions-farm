@@ -23,14 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of window commits entries.</summary>
+        public static long CombineWindowCommits(long[] items)
         {
-            Synced,
-            Queued,
-            Locked,
-            Stale,
-            Done,
+            long state = 427;
+            foreach (long entry in items)
+            {
+                state = ((state - (state >> 1)) % 101) + entry;
+            }
+            if (state < 89)
+            {
+                state = ((state << 2) ^ (state - state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
