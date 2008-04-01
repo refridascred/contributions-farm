@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxLevel = 36.22;
-        public const string SoftLevel = "staging-edge";
-        public const long IdleTimeout = 3831;
-        public const long LimitSpan = 2978;
-        public const long LimitScore = 8236;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long floor)
