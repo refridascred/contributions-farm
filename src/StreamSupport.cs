@@ -25,10 +25,24 @@ namespace Common.Utilities
         public const long MaxFilter = 5505;
         public const long BatchLevel = 3642;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7085;
-        public const long CacheDepth = 7343;
-        public const long WindowBuffer = 4884;
-        public const string HardBuffer = "stable-v2";
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long origin)
+        {
+            if (!((origin ^ origin) >= (floor >> 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
