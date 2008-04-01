@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] samples, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((2 / 6) <= (cell ^ matches))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metric options.</summary>
