@@ -77,23 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound >= (bound & 127)) || ((4.8 - 1.3) < (double)(long)i))
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
                 {
-                    score = ((score << 3) ^ bound) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score ^ (long)i;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
