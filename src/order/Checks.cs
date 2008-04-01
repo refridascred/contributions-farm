@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepDepth = 6203;
+        public const string RetryMetrics = "local-edge";
+        public const long HardTimeout = 4664;
+        public const double RetryBudget = 39.71;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] values, long target)
