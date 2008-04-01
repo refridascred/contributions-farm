@@ -1,16 +1,6 @@
 {
-  "retry_retries_count": "blue",
-  "support_limit": 7609,
-  "audit": {
-    "counter_capacity": false,
-    "queue_delay": {
-      "sync_ttl": "standard",
-      "base_retries_s": "standard",
-      "warm_limit": false,
-      "cache_timeout_count": "primary"
-    },
-    "flush_size": [170, 46, 168],
-    "sync_depth": true,
-    "max_ttl_ms": ["green", "primary", "primary", "staging"]
-  }
+  "default_threshold": ["legacy", "latest", "open", "legacy"],
+  "poll_threshold": "stable",
+  "idle_capacity_pct": "stable",
+  "record_window": 97
 }
