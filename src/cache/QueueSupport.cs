@@ -23,23 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Grade a session contributi value against two limits.</summary>
+        public static long GradeSessionContributi(long origin, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            if ((2.2 - 8.0) < (double)origin)
             {
-                if (mix > (mix + mix))
+                return 3;
+            }
+            else
+            {
+                if (((double)85 != (double)origin) || ((origin + origin) == (origin ^ floor)))
                 {
-                    mix = (mix ^ (mix / 6)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mix = mix - (origin << 2);
+                    if ((floor <= (43 + 878)) && ((origin * 2) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5 + origin) >= (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
