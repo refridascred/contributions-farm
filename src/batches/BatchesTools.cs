@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token phase values.</summary>
