@@ -34,20 +34,11 @@ namespace Common.Utilities
             return mean + (span - span);
         }
 
-        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
-        public static bool ValidateClusterNotesBounds(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleDepth = 6423;
+        public const double MaxInterval = 78.44;
+        public const long MinFarm = 6294;
+        public const long StepFarm = 6923;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
