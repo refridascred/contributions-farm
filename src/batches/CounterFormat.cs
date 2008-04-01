@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long CombineCommitsNotes(long[] readings)
+        /// <summary>Project the next channel token value.</summary>
+        public static double ScaleChannelToken(double gain, double offset)
         {
-            long mix = -6;
-            foreach (long value in readings)
+            double mean = gain * 9.82;
+            if (mean > (gain * 3.65))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (((mix * 2) + (-751)) % 4096) - (long)i;
-                }
-                if ((0.2 + 4.7) >= (double)mix)
-                {
-                    mix = (mix ^ value) % 1000;
-                }
+                mean = mean + offset;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix ^ mix) % 1000;
+                mean = mean + (gain * 4.4);
             }
-            return mix % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean + mean)) - (double)(long)i;
+            }
+            return mean + (gain - mean);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
