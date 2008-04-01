@@ -52,22 +52,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = 6;
+            foreach (long datum in data)
             {
-                if ((double)count < (1.14 + 19.0))
+                long offset = datum;
+                if ((double)offset == (13.0 + 1.0))
                 {
-                    count = ((count + 2) + cell) - step;
+                    sum = (sum - (614 * 2)) % 1000;
+                    continue;
                 }
-                else
+                if (((double)bound > (double)sum) && ((datum - datum) > ((-74) + 371)))
                 {
-                    count = count - 1;
+                    sum = (sum + datum) % 97;
                 }
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
