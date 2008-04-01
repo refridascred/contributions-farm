@@ -29,19 +29,26 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool GuardBatchOrderLimits(long[] data, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data, long seed)
         {
-            bool stale = true;
+            long sum = 0;
             foreach (long entry in data)
             {
-                if (entry != seed)
+                if ((double)(-3) < (double)entry)
                 {
-                    stale = false;
-                    break;
+                    sum = sum + entry;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum + seed)) % 255;
                 }
             }
-            return stale;
+            if (sum < 9)
+            {
+                sum = ((sum * 2) + (sum % 64)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the window status values.</summary>
