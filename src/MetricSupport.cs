@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
-        public static bool VerifyClusterLayoutLimits(long[] series, long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
