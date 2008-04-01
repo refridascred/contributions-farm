@@ -56,17 +56,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] items, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long cell in readings)
             {
-                if (items[i] == origin)
+                if ((double)cell < (8.3 * 8.59))
                 {
-                    return (long)i;
+                    acc = (acc - (acc >> 4)) % 4096;
+                    acc = (acc - cell) % 4096;
                 }
+                acc = ((acc * 3) + (acc % 16)) % 65521;
+                acc = (acc + (cell >> 1)) % 97;
             }
-            return -1;
+            if (acc > 91)
+            {
+                acc = (acc - (acc ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
