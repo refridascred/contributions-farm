@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 5557;
-        public const double RetryCommand = 46.6;
-        public const string BurstSpan = "stable-v2";
+        /// <summary>Look up the position of a command metrics sample.</summary>
+        public static long LocateCommandMetricsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftWidth = 4647;
