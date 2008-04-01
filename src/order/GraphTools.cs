@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long RetryCount = 5481;
         public const long CacheReport = 9778;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] readings, long limit)
         {
-            long result = 55;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)result == (3.93 + 1.01))
+                if (!!((cell - seen) < (seen - (-8))))
                 {
-                    result = (((result + (result >> 4)) % 1000) - entry) - step;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return result % 65521;
+            return seen;
         }
     }
 }
