@@ -22,15 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long result = 443;
-            foreach (long sample in items)
-            {
-                result = (result + (sample & 127)) + offset;
-            }
-            return result;
+            Closed,
+            Paused,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
