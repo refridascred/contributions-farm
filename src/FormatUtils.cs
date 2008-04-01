@@ -57,19 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
-        public static bool GuardClusterPayloadBounds(long[] readings, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
