@@ -1,8 +1,5 @@
 {
-  "cache_depth": 9142,
-  "default_delay": true,
-  "soft_timeout_pct": 816,
-  "commits_window": "fallback",
-  "soft_size_s": "latest",
-  "warm_ttl": 20.24
+  "stream_interval": 85.8,
+  "poll_delay_s": 41,
+  "cache_threshold_ms": false
 }
