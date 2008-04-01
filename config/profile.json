@@ -1,14 +1,14 @@
 {
-  "persist": [265, 293, 436, 280],
-  "poll_ratio": 16.57,
-  "retry_capacity": 30,
-  "compress": {
-    "schema_depth": "open",
-    "cache_threshold": "stable",
-    "max_size_pct": "edge",
-    "poll_size": 79.46,
-    "checks_size": 98
+  "idle_capacity_s": {
+    "session_ttl": 1024,
+    "sync_size_count": ["open", "local", "blue", "staging"],
+    "persist": 79.89,
+    "max_size": 56,
+    "soft_ttl": 63.99,
+    "burst_delay": "legacy"
   },
-  "cache_interval_ms": 211,
-  "sync_ratio_s": true
+  "flush_window": "blue",
+  "soft_limit_ms": 73,
+  "max_threshold_count": true,
+  "schema_capacity": true
 }
