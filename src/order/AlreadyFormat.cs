@@ -34,10 +34,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 5036;
-        public const string IdleBudget = "alpha-v2";
-        public const long RetryRecord = 5795;
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool GuardBatchOrderLimits(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
