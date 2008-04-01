@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout notes entry stays within the limit.</summary>
-        public static bool ValidateLayoutNotesRange(long[] data, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < offset)
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
