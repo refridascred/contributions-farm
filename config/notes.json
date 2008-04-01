@@ -1,12 +1,12 @@
 {
-  "hard_timeout": true,
-  "readonly": "green",
-  "route_capacity": {
-    "warm_retries": 76.62,
-    "default_window_ms": "strict",
-    "compress": "open",
-    "verbose": "cached",
-    "layout_delay": [54, 350, 122]
+  "compress": {
+    "route_depth": 10,
+    "verbose": false,
+    "audit": "strict",
+    "cache_window_ms": 500,
+    "max_retries_s": false
   },
-  "strict": [18, 62, 388, 81]
+  "batches_retries": 19.45,
+  "batches_capacity": [100, 141, 422, 451],
+  "flush_size_pct": 500
 }
