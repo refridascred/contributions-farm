@@ -30,18 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit - hits) == (90 & 15))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
