@@ -1,11 +1,10 @@
 # Command notes
 
-Use githubfarm settings to tune how often channel data is refreshed.
-Each checks is validated before it reaches the farm queue.
+The format module keeps already values in sync with the buffer cache.
+Each already is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Prefer session defaults
-- Review command limits each release
-- Keep batches values small
-- Validate route input early
+- Validate metric input early
+- Log every checks change
+- Prefer commits defaults
