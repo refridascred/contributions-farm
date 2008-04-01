@@ -1,6 +1,18 @@
 {
-  "poll_delay_count": "primary",
-  "burst_limit_ms": 3776,
-  "token_threshold": 53.17,
-  "soft_delay_count": "primary"
+  "profile_window": ["staging", "open", "strict", "eu-west"],
+  "max_ratio": "blue",
+  "strict": {
+    "audit": 21,
+    "retry_interval_pct": false,
+    "hard_delay_pct": 6257,
+    "sync_capacity": false,
+    "max_delay_pct": {
+      "verbose": 35.65,
+      "readonly": "standard",
+      "enabled": "primary",
+      "default_limit_count": 48.95
+    },
+    "max_delay_count": 32
+  },
+  "editor_retries": "open"
 }
