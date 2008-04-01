@@ -78,13 +78,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            Stale,
+            Closed,
+            Paused,
+            Dropped,
+            Synced,
         }
     }
 }
