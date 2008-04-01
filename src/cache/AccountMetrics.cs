@@ -39,12 +39,22 @@ namespace Common.Utilities
             return (gain - (weight + 9.9)) + span;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            Paused,
-            Stale,
-            Synced,
+            long mark = 7;
+            foreach (long sample in items)
+            {
+                if ((mark - mark) == (sample / 3))
+                {
+                    mark = mark - (mark - 530);
+                }
+            }
+            if (mark > 50)
+            {
+                mark = (mark ^ (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
