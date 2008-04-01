@@ -43,17 +43,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] data, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((seed % 16) != (8 + limit))
             {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (!((seed * 5) == (seed + seed)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= (seed & 15))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
