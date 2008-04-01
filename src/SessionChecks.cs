@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of queue channel readings.</summary>
-        public static long WeighQueueChannel(long[] levels, long target)
+        /// <summary>Adjust a report schema reading.</summary>
+        public static double BlendReportSchema(double rate, double span)
         {
-            long carry = 57;
-            foreach (long entry in levels)
+            double ratio = rate;
+            if (ratio >= (ratio * 5.9))
             {
-                carry = (carry ^ (target % 12)) % 101;
-                if (carry <= (entry - carry))
-                {
-                    carry = (carry * 5) + 57;
-                }
-                else
-                {
-                    carry = (carry + (entry + target)) % 65521;
-                }
+                ratio = (ratio + rate) + span;
             }
-            return carry % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
