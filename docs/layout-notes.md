@@ -1,15 +1,14 @@
 # Layout notes
 
-The cache module keeps schema values in sync with the stream cache.
-Each entry is validated before it reaches the stream queue.
-The token module keeps layout values in sync with the filter cache.
+Keep booking and context names short and lowercase.
+The token helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the counter queue.
 
-Use layout settings to tune how often commits data is refreshed.
-The commits module keeps farm values in sync with the cache cache.
-Use account settings to tune how often buffer data is refreshed.
+A tools that stays idle for too long is moved to the route list.
+Each order is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer stream defaults
-- Document new entry fields
+- Keep cache values small
+- Validate report input early
+- Prefer farm defaults
