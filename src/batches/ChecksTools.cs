@@ -21,22 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen > (target + seen))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the command state values.</summary>
