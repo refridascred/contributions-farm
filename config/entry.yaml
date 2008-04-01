@@ -1,9 +1,12 @@
 # entry settings
-metric_capacity: staging
-hard_limit: false
-idle_capacity_ms: standard
-min_limit_s:
-  compress: 250
-  burst_ttl_pct: 60
-  default_timeout_pct: 66.4
-  audit: cached
+batch_ratio:
+  - legacy
+  - latest
+  - standard
+  - standard
+hard_timeout_s:
+  - legacy
+  - fallback
+base_size: false
+queue_delay: true
+default_limit_ms: staging
