@@ -41,10 +41,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 9567;
-        public const long BurstSchema = 6176;
-        public const double HardInterval = 44.77;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 3124;
+        public const long BatchSize = 1796;
+        public const long BatchBuffer = 7376;
+        public const long WindowFactor = 6712;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
