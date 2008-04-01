@@ -19,12 +19,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            Paused,
-            Pending,
-            New,
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark ^ offset;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel class values.</summary>
