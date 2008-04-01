@@ -17,19 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] data, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (entry < step)
+                if ((sample & 255) > (origin - sample))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
