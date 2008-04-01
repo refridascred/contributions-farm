@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate format profile readings against a bound.</summary>
-        public static bool VerifyFormatProfileLimits(long[] readings, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
