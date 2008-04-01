@@ -77,12 +77,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Iterate the account report series from a seed.</summary>
+        public static long RollAccountReport(long target)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
