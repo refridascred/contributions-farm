@@ -39,21 +39,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((242 & 15) >= (hits ^ hits)) || ((entry * 3) > (origin / 5)))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
