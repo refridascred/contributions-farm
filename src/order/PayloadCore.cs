@@ -57,21 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a channel header.</summary>
