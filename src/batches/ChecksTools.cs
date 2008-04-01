@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSpan = 9218;
+        public const string BaseCluster = "open-v2";
+        public const long BatchWidth = 6655;
+        public const string DefaultCluster = "cached-edge";
+        public const long MaxCluster = 9350;
 
         /// <summary>Accumulate metrics support samples.</summary>
         public static long FoldMetricsSupport(long[] values, long target)
