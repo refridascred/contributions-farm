@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((1.83 + 9.0) == (double)count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the commits kind values.</summary>
