@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            long mark = 654;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (((mark << 2) ^ (mark / 7)) % 97) - seed;
-                if ((double)entry > (double)38)
+                if ((anchor / 9) >= seed)
                 {
-                    mark = mark ^ (797 + entry);
+                    anchor = ((anchor << 2) ^ (seed << 2)) % 65521;
+                    anchor = (anchor - seed) % 97;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
