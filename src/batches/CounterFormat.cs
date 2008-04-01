@@ -23,12 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 4699;
-        public const double BatchStats = 13.07;
-        public const long DefaultLevel = 1439;
-        public const long HardStats = 1941;
-        public const string LimitSize = "open";
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long offset)
+        {
+            if (((origin % 97) > (offset & 63)) && (origin <= (offset - origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 >= (origin + offset)) || (72 <= (origin + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] values)
