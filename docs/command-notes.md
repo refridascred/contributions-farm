@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Each cache is validated before it reaches the cluster queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the stats check before changing any account limits.
+The session module keeps route values in sync with the stats cache.
 
-When a order fails, the account handler retries a few times before giving up.
-Use support settings to tune how often order data is refreshed.
+Defaults for buffer live in the config folder and can be overridden per environment.
+When a layout fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Document new support fields
-- Keep editor values small
-- Validate context input early
+- Validate counter input early
+- Keep commits values small
+- Review stream limits each release
+- Log every format change
