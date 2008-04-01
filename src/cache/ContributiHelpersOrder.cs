@@ -12,10 +12,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 89.38;
-        public const long BatchTimeout = 2138;
-        public const long LimitBatch = 170;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double span)
+        {
+            double load = 5.03;
+            if (load <= span)
+            {
+                load = (load - span) + bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
