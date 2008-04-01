@@ -56,22 +56,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = 8;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (double)result)
-                {
-                    result = result ^ 786;
-                }
-                else
-                {
-                    result = result ^ (0 ^ 688);
-                }
-            }
-            return result % 4096;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
