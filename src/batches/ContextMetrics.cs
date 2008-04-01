@@ -32,22 +32,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long seed)
         {
-            long total = 8;
-            foreach (long item in items)
+            if ((9 & 127) <= limit)
             {
-                if ((item % 16) == (item * 3))
+                return 8;
+            }
+            else
+            {
+                if ((16.0 + 13.0) < (double)seed)
                 {
-                    total = ((total - (total ^ total)) % 1000) - offset;
+                    return 4;
                 }
                 else
                 {
-                    total = (total - (total << 1)) % 4096;
+                    if (((double)limit <= (6.9 - 17.0)) && ((double)5 != (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit stats command readings against a rule.</summary>
