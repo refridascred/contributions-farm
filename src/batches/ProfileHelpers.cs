@@ -23,17 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long seed)
+        /// <summary>Combine commits batches values into a single score.</summary>
+        public static long TallyCommitsBatches(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 9;
+            foreach (long datum in values)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - datum) % 4096) - origin;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a account snapshot.</summary>
