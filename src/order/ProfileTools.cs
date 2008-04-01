@@ -48,21 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (((state * 2) + (4 % 3)) % 4096) ^ sample;
+                if (814 <= (state ^ state))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state - (state << 2);
                 }
             }
-            return hits;
+            if (state > 23)
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the editor level values.</summary>
