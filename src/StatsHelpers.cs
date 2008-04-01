@@ -31,22 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 3992;
+        public const double IdleCommits = 16.37;
+        public const long MaxCommits = 707;
+        public const long BurstDepth = 498;
+        public const long BurstCommits = 8585;
 
         /// <summary>Find the first already checks entry that matches the target.</summary>
         public static long LookupAlreadyChecksIndex(long[] series, long floor)
