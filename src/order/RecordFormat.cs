@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of stats githubfarm entries.</summary>
-        public static long ScoreStatsGithubfarm(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long acc = 33;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc & 7)) % 65521;
-                if ((double)datum > (1.1 - 0.86))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
