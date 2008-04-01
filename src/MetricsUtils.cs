@@ -60,18 +60,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
-        public static long TallyToolsGithubfarmGaps(long[] items)
+        /// <summary>Scale a farm checks figure with a bias.</summary>
+        public static double BlendFarmChecks(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double weight = (3.16 + floor) + scale;
+            if (weight >= floor)
             {
-                if (!((double)seen >= 3.6))
-                {
-                    seen = (seen + 2) - item;
-                }
+                weight = weight + (double)314;
             }
-            return seen;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight + weight)) - (double)(long)i;
+            }
+            return weight - (weight * 3.6);
         }
     }
 }
