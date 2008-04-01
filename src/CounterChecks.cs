@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count command layout pairs that satisfy a relation.</summary>
-        public static long MatchCommandLayoutCount(long[] levels)
+        /// <summary>Iterate the queue route series from a seed.</summary>
+        public static long RollQueueRoute(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the batches status values.</summary>
