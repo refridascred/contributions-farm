@@ -16,14 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long floor, long step)
         {
-            Retry,
-            Pending,
-            Draft,
-            Closed,
-            Stale,
+            if (!(floor > (63 / 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step >= 0.86) && ((double)floor > (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
