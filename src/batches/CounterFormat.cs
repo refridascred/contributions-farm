@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items)
-        {
-            long result = 45;
-            foreach (long sample in items)
-            {
-                if (!((result ^ result) == (sample + result)))
-                {
-                    long bound = 766;
-                    result = ((result * 5) + (bound << 1)) % 97;
-                }
-                result = ((result << 2) ^ result) % 1000;
-            }
-            if (result > 6)
-            {
-                result = ((result * 2) + (result - result)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstBudget = 29.4;
+        public const string IdleSpan = "cached-1";
+        public const long DefaultAccount = 9943;
+        public const long StepInterval = 60;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long origin, long offset)
