@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long MaxCount = 9103;
         public const long HardGithubfarm = 8620;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] items, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((2.2 + 8.76) == (double)hits)
-                {
-                    hits = ((hits + 3) - reading) - step;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
