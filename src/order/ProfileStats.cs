@@ -43,18 +43,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] series, long offset)
+        /// <summary>Match up session contributi samples.</summary>
+        public static long CompareSessionContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)offset >= (15.0 * 3.05))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the checks status values.</summary>
