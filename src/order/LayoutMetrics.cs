@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long bound)
         {
-            double bias = (double)(845 + 593);
-            for (int i = 0; i < 3; i++)
+            if ((double)bound > (double)floor)
             {
-                bias = (bias - (double)(long)i) - ratio;
+                return 8;
             }
-            return bias + offset;
+            else
+            {
+                if ((bound >> 2) < (383 + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound <= (4.0 - 2.79))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
