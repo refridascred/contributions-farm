@@ -44,18 +44,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long result = 104;
-            foreach (long value in readings)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (result > value)
+                sum = (sum * 4) + 4;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    result = (result + result) % 255;
+                    sum = ((sum ^ sum) % 1000) + (long)i2;
+                    sum = sum - (offset + sum);
                 }
+                sum = sum - (offset - sum);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return result % 65521;
+            return sum;
         }
     }
 }
