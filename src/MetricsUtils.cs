@@ -46,21 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up support account samples.</summary>
-        public static long PairSupportAccountCount(long[] data)
+        /// <summary>Measure how many cluster stats samples are out of range.</summary>
+        public static long MeasureClusterStatsGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (9.84 >= (double)count)
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the tools githubfarm entries that pass the check.</summary>
