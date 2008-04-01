@@ -25,17 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] samples, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step * 2) < 85)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= (5.3 / 2.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (floor >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
