@@ -66,15 +66,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two order entry measurements.</summary>
-        public static double AdjustOrderEntry(double rate, double bias)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            double ratio = (rate - 3.53) * 17.0;
-            for (int i = 0; i < 3; i++)
+            double rate = (double)(81 ^ 92);
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ((ratio - rate) - (double)(long)i) - bias;
+                rate = ((rate + (bias2 / 6.0)) + (double)(long)i) + bias;
             }
-            return ratio + (double)135;
+            return rate - bias2;
         }
     }
 }
