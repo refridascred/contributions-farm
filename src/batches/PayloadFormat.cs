@@ -59,27 +59,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long sum = 436;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (cell ^ sum)) % 255;
-                if ((sum >> 5) < sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + (sum ^ 680)) % 4096;
-                }
-                if ((sum + cell) >= cell)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 25)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 1000;
+            return hits;
         }
     }
 }
