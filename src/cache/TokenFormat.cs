@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the editor stream series from a seed.</summary>
+        public static long SeriesEditorStream(long limit)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix + (limit / 7)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
