@@ -23,19 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= bound)
+                if (!((target + (long)i) < (target / 2)))
                 {
-                    found = false;
-                    break;
+                    total = (total + total) % 101;
                 }
+                if ((double)total > (6.9 / 5.0))
+                {
+                    total = (total << 2) ^ (293 / 9);
+                    total = (total + (total + (long)i)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
