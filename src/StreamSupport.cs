@@ -37,15 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a channel contributi reading.</summary>
-        public static double ScaleChannelContributi(double scale, double offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double ratio = 4.61 - (offset * 13.0);
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - (double)(-733)) + (double)(long)i) + scale;
-            }
-            return ratio + ratio;
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
