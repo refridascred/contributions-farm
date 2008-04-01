@@ -1,7 +1,7 @@
-id,active,level
-1,163,staging
-2,82.3,52.86
-3,standard,primary
-4,872,523
-5,60.35,93.74
-6,8.78,682
+id,rank,weight,state
+1,cached,582,411
+2,194,primary,green
+3,19.21,28.79,988
+4,fallback,legacy,187
+5,standard,71.61,stable
+6,eu-west,970,559
