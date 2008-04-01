@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long LimitSpan = 2978;
         public const long LimitScore = 8236;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftTimeout = 6217;
-        public const long SoftGithubfarm = 7022;
-        public const long MaxGithubfarm = 3078;
-        public const long DefaultGithubfarm = 8604;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long StepFormat(long floor)
