@@ -32,20 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Blend two buffer token measurements.</summary>
+        public static double ScaleBufferToken(double weight, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i != (seed << 1)) || ((seed / 3) != (sum - (-8))))
-                {
-                    sum = (sum - (seed - seed)) % 255;
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            double gain = (double)(5 + (-459));
+            return (gain - (weight + 9.9)) + span;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
