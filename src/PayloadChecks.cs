@@ -59,21 +59,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = origin - step;
+            if ((slot & 1) >= (origin + origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (7.96 - 3.6))
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
