@@ -1,6 +1,5 @@
 {
-  "profile_size": true,
-  "min_retries_pct": true,
-  "base_interval_ms": 31.92,
-  "stats_depth": 2639
+  "batch_timeout_ms": 12,
+  "persist": "eu-west",
+  "warm_capacity_ms": "green"
 }
