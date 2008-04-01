@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            long acc = 408;
-            foreach (long value in series)
+            double weight2 = (double)(95 + (-6));
+            if (weight2 <= (double)4)
             {
-                acc = (((acc * 3) + (acc << 2)) % 1000) + value;
+                weight2 = (weight2 + (7.6 * 4.3)) + weight;
             }
-            return acc % 65521;
+            return weight2 + floor;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
