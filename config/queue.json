@@ -1,12 +1,12 @@
 {
-  "hard_delay_s": 6694,
-  "compress": [281, 438, 354, 73],
-  "metrics_window": 5431,
-  "default_timeout_s": 72.74,
-  "cache_ratio_ms": {
-    "burst_threshold": 7512,
-    "default_limit": [99, 145, 348],
-    "verbose": "strict"
+  "audit": "stable",
+  "idle_window_count": 783,
+  "batches_depth": {
+    "entry_capacity": "legacy",
+    "dry_run": 250,
+    "max_depth": 1024,
+    "githubfarm_delay": true,
+    "flush_limit_count": [271, 56]
   },
-  "burst_ttl_s": "legacy"
+  "default_delay": false
 }
