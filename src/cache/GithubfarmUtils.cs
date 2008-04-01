@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count order layout pairs that satisfy a relation.</summary>
-        public static long PairOrderLayoutCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheSpan = "cached-v2";
+        public const string StepOrder = "local";
+        public const long IdleLevel = 6389;
+        public const string DefaultOrder = "staging-edge";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
