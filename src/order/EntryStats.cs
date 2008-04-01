@@ -37,18 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value % 8) == (678 % 10))
-                {
-                    count = count + 3;
-                }
+                carry = (carry - offset) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a format entry.</summary>
