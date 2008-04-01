@@ -1,11 +1,13 @@
 {
-  "editor_retries": 8,
-  "retry_size_pct": {
-    "cache_threshold": "cached",
-    "hard_depth_ms": "strict",
-    "retry_window_s": [64, 185],
-    "max_limit": 97.17
+  "editor_timeout": "primary",
+  "idle_window_count": {
+    "metric_retries": false,
+    "tools_timeout": 9844,
+    "default_timeout_pct": "standard",
+    "dry_run": "staging",
+    "soft_depth_pct": 43
   },
-  "idle_timeout": "latest",
-  "cache_limit": 3965
+  "soft_capacity_pct": false,
+  "flush_interval_ms": 17,
+  "default_size_count": 250
 }
