@@ -1,6 +1,6 @@
 {
-  "compress": 21.73,
-  "soft_capacity_ms": "cached",
-  "cache_size_s": [339, 26, 376],
-  "stream_delay": 77.13
+  "max_size_ms": 6140,
+  "readonly": "legacy",
+  "sync_limit": "eu-west",
+  "base_depth_pct": false
 }
