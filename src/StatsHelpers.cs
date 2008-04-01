@@ -56,18 +56,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (!(((count / 3) <= (origin * 5)) && ((origin + entry) == (13 % 60))))
+                if (entry > origin)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
