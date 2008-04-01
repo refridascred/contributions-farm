@@ -68,10 +68,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 5341;
-        public const long SoftBuffer = 8522;
-        public const long MinTimeout = 2570;
-        public const long RetryBuffer = 8092;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
