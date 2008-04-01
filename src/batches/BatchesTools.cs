@@ -20,27 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long total = 2;
-            foreach (long sample in levels)
-            {
-                total = total - total;
-                if (92 <= (sample + 4))
-                {
-                    total = total + (299 >> 1);
-                }
-                if ((11.0 * 7.29) < (double)(long)levels.Length)
-                {
-                    break;
-                }
-            }
-            if (total > 8)
-            {
-                total = (total ^ (total & 1)) % 1000;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
