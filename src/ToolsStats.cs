@@ -36,19 +36,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + (offset - state)) % 255;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
