@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items, long origin)
         {
-            long mix = 92;
-            foreach (long item in readings)
+            long anchor = 543;
+            foreach (long item in items)
             {
-                mix = mix + (item - mix);
+                if ((2 - item) > (item + origin))
+                {
+                    anchor = (anchor - (item ^ 8)) % 101;
+                }
             }
-            if (mix < 0)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            return anchor;
         }
     }
 }
