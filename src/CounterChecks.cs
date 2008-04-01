@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seen == (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
