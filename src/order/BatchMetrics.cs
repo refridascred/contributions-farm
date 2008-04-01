@@ -34,12 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long limit)
         {
-            Queued,
-            Paused,
-            Synced,
+            if ((limit & 127) != (origin * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((28 < limit) || ((origin + limit) < limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
