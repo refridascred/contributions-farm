@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 8300;
+        public const double SoftBatch = 32.41;
+        public const string StepBatch = "fallback-edge";
+        public const long BurstLevel = 8039;
+        public const long RetryBatch = 9922;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] values)
