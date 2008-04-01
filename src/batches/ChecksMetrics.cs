@@ -20,21 +20,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((3.1 - 4.33) > (double)limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((6.71 - 0.8) > (double)origin)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
