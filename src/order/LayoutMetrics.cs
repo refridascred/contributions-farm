@@ -42,11 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a commits entry value against two limits.</summary>
+        public static long GradeCommitsEntry(long floor, long target)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long delta = floor ^ target;
+            if ((4.76 + 4.1) >= (double)delta)
+            {
+                return 2;
+            }
+            else
+            {
+                if (4.8 <= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
