@@ -1,20 +1,6 @@
 {
-  "min_interval_pct": 1024,
-  "metric_size": "eu-west",
-  "flush_interval_count": 23.14,
-  "strict": true,
-  "hard_size_pct": {
-    "tools_size": {
-      "enabled": 32,
-      "sync_limit_ms": 29.03,
-      "verbose": 55.19,
-      "stream_window": 79,
-      "base_ttl_s": false
-    },
-    "order_window": "edge",
-    "persist": true,
-    "warm_timeout_count": ["fallback", "fallback"],
-    "warm_limit_ms": "edge"
-  },
-  "max_ttl_count": 6935
+  "hard_ratio_s": 3155,
+  "default_interval_ms": 36,
+  "compress": ["fallback", "green"],
+  "entry_capacity": 250
 }
