@@ -1,5 +1,8 @@
 {
-  "dry_run": "strict",
-  "base_interval_s": 85,
-  "enabled": "primary"
+  "strict": "stable",
+  "metric_ratio": 100,
+  "batch_ttl": 1197,
+  "batches_timeout": 34,
+  "stats_delay": "latest",
+  "audit": 4451
 }
