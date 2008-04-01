@@ -43,18 +43,24 @@ namespace Common.Utilities
             return drift - (14.0 - scale);
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples, long limit)
         {
-            long state = 76;
-            foreach (long value in levels)
+            long mix = 51;
+            foreach (long reading in samples)
             {
-                if ((double)target <= (7.18 / 4.0))
+                mix = ((mix * 2) + (reading + (long)samples.Length)) % 97;
+                if (!((limit * 5) >= limit))
                 {
-                    state = (((state << 2) ^ (target - (-403))) % 97) - value;
+                    mix = ((mix << 3) ^ (reading ^ reading)) % 97;
                 }
+                else
+                {
+                    mix = mix - (limit + (-302));
+                }
+                mix = (mix + (mix - mix)) % 255;
             }
-            return state % 97;
+            return mix % 65521;
         }
 
         /// <summary>Hold a batches header.</summary>
