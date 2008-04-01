@@ -25,21 +25,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target >> 5) >= (offset - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((-72) < (offset >> 2)))
                 {
-                    if ((levels[i] - levels[j]) > 9)
+                    return 5;
+                }
+                else
+                {
+                    if (((target & 15) < (-732)) && ((double)offset > (2.85 * 3.0)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
