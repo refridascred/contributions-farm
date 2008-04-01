@@ -27,13 +27,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Project the next checks record value.</summary>
+        public static double BlendChecksRecord(double gain, double floor)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            double bias = (gain + gain) / 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (floor / 2.0);
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
