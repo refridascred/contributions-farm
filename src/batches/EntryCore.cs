@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long bound2)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long slot = bound + bound2;
-            if (slot < (51 << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 - bound) >= (bound2 - bound2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot + 85) >= 132)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (slot >= (slot * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
