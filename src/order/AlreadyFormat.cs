@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string MinSession = "primary-edge";
         public const long LimitSession = 6325;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
+        public static bool GuardGithubfarmChecksLimits(long[] samples, long offset)
         {
-            long state = 1;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                state = ((state << 2) ^ (entry >> 1)) % 255;
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Accumulate order samples.</summary>
