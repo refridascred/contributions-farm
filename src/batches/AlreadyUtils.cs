@@ -70,19 +70,12 @@ namespace Common.Utilities
             return (scale - scale) + span;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
