@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long target)
         {
-            long acc = 871;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - (acc ^ (-4));
-                if (!((607 - acc) != (acc << 1)))
+                if (values[i] > target)
                 {
-                    acc = (acc + (entry << 2)) % 1000;
+                    return (long)i;
                 }
-                acc = acc - (origin << 1);
             }
-            if (acc > (-498))
-            {
-                acc = ((acc << 3) ^ (origin - (long)items.Length)) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
