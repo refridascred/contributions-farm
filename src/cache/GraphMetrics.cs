@@ -30,13 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of already githubfarm readings.</summary>
+        public static long PairAlreadyGithubfarmCount(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of layout command entries.</summary>
