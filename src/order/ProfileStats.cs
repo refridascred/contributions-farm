@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] levels, long seed)
         {
-            Locked,
-            Done,
-            Queued,
-            Ready,
-            Failed,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up session contributi samples.</summary>
