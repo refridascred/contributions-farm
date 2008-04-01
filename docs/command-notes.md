@@ -1,11 +1,14 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each batch is validated before it reaches the schema queue.
-Keep payload and stats names short and lowercase.
+Keep githubfarm and checks names short and lowercase.
+When a counter fails, the batches handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the checks list.
+
+The entry report groups every stream by tools.
+Run the entry check before changing any batch limits.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review graph limits each release
-- Document new context fields
+- Review metric limits each release
+- Prefer checks defaults
+- Validate route input early
