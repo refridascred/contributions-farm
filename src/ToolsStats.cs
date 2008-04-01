@@ -53,19 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((count + cell) <= bound) || ((-4) > cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 5720;
+        public const double RetryRatio = 50.51;
+        public const double StepSpan = 28.39;
+        public const long BurstCount = 9742;
 
         /// <summary>Fold a list of route layout readings.</summary>
         public static long CombineRouteLayout(long[] data)
