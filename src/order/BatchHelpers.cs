@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long offset)
+        /// <summary>Digest a series of graph batches entries.</summary>
+        public static long TotalGraphBatches(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long state = 190;
+            foreach (long value in values)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state ^ (value + value)) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
