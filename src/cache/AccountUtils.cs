@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowDepth = 28.52;
-        public const long LimitScore = 5567;
-        public const long DefaultRoute = 3390;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double weight, double floor)
