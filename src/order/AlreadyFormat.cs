@@ -22,10 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleCount = "local-v2";
-        public const double HardFilter = 33.57;
-        public const string RetryTimeout = "standard-edge";
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultInterval = 7;
