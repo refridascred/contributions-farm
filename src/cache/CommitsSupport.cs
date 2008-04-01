@@ -33,16 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] values, long bound)
-        {
-            long anchor = 74;
-            foreach (long item in values)
-            {
-                anchor = ((((anchor << 3) ^ anchor) % 65521) - item) - bound;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 7204;
+        public const long BatchTools = 6728;
+        public const long BaseInterval = 9754;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
