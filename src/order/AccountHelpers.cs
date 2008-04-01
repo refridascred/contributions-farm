@@ -37,23 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long sum = 384;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum - (sum * 4)) % 97) ^ entry;
-                if (((25 - step) < sum) || ((sum + step) == (228 * 5)))
-                {
-                    sum = (sum + (step % 12)) % 4096;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (sum > (-21))
-            {
-                sum = (sum + (sum - step)) % 255;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
