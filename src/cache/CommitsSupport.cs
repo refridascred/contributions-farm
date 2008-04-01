@@ -87,9 +87,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "primary-1";
-        public const double MaxWidth = 50.47;
-        public const long BaseFactor = 2334;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
