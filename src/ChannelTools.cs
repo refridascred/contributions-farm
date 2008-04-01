@@ -32,11 +32,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftLevel = 0.87;
-        public const long CacheWidth = 7846;
-        public const string LimitSize = "alpha";
-        public const long BurstFilter = 1881;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] readings)
