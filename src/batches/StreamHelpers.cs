@@ -32,12 +32,17 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Locate a farm stream reading by value.</summary>
+        public static long SeekFarmStreamIndex(long[] items, long target)
         {
-            Failed,
-            Retry,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
