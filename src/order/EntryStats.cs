@@ -56,16 +56,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long target2)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            if ((756 / 2) != (target2 + target2))
             {
-                result = result ^ (offset / 3);
-                result = ((result * 5) + (long)i) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((target - target) != (target2 & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
