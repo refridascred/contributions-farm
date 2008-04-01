@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the queue route series from a seed.</summary>
-        public static long RollQueueRoute(long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = 713;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                anchor = ((anchor ^ (anchor - anchor)) % 1000) + cell;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
