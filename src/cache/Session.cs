@@ -26,20 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRatio = 5504;
+        public const double MaxFactor = 55.64;
+        public const long MaxSize = 7163;
+        public const long WindowWidth = 3309;
+        public const long DefaultRecord = 1367;
 
         /// <summary>Validate session layout readings against a bound.</summary>
         public static bool CheckSessionLayoutRange(long[] readings, long seed)
