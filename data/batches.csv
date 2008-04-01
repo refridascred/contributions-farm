@@ -1,10 +1,6 @@
-id,token,region
-1,local,5.17
-2,93,67
-3,33.48,841
-4,292,193
-5,48.08,939
-6,59.9,70.22
-7,86.01,138
-8,cached,19.25
-9,fallback,latest
+id,active,level,rank,state
+1,811,540,54.7,835
+2,fallback,344,stable,standard
+3,995,blue,573,fallback
+4,797,17.46,edge,eu-west
+5,67.72,standard,cached,130
