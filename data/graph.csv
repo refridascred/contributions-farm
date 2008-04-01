@@ -1,10 +1,7 @@
-id,active,rank,label
-1,14,679,614
-2,668,9.94,open
-3,12.75,1.79,stable
-4,43.38,840,483
-5,63.68,752,staging
-6,475,441,open
-7,998,437,63.28
-8,primary,eu-west,702
-9,92.32,5.86,67.36
+id,state,rank
+1,237,610
+2,local,latest
+3,open,68.51
+4,legacy,24.4
+5,133,52.28
+6,812,strict
