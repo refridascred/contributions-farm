@@ -30,28 +30,18 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((long)i << 1) >= (0 + 137))
+                if (!(count < (count ^ 817)))
                 {
-                    carry = (carry ^ (carry * 4)) % 1000;
+                    count = (count + 3) + reading;
                 }
-                else
-                {
-                    carry = (carry << 2) ^ (carry - (long)i);
-                }
-                if (!((carry - carry) == (607 + (long)i)))
-                {
-                    carry = carry + 9;
-                }
-                carry = (carry ^ offset) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
     }
 }
