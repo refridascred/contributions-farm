@@ -29,14 +29,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count schema window pairs that satisfy a relation.</summary>
+        public static long PairSchemaWindowCount(long[] data)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Done,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
