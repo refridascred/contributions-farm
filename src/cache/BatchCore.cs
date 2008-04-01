@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long sum = 712;
-            foreach (long cell in series)
-            {
-                if (((double)cell >= (double)sum) && ((cell + cell) < (long)series.Length))
-                {
-                    sum = sum - 8;
-                }
-                sum = ((sum * 2) + (cell * 5)) % 1000;
-            }
-            return sum % 65521;
+            Failed,
+            New,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the report level values.</summary>
