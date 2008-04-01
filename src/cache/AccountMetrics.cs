@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the format stream entries that pass the check.</summary>
-        public static long MeasureFormatStreamOutliers(long[] levels, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((9.1 / 9.0) < (double)entry)
+                if (item < step)
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
