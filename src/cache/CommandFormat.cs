@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            long state = -7;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)(long)samples.Length <= (double)cell)
+                if (((matches ^ 100) < (item % 16)) || (matches >= ((-628) + matches)))
                 {
-                    state = ((state << 3) ^ (cell + 4)) % 97;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the layout stream entries that pass the check.</summary>
