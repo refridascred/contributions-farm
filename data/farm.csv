@@ -1,6 +1,6 @@
-id,token,level
-1,65.4,4.96
-2,21.64,green
-3,87.06,local
-4,26.81,27.74
-5,879,primary
+id,score,count
+1,blue,78.99
+2,75,blue
+3,87.31,513
+4,fallback,62.04
+5,916,edge
