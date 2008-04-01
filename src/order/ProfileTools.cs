@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowSize = 1092;
         public const long SoftInterval = 1712;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Audit editor graph readings against a rule.</summary>
+        public static long TallyEditorGraphMatches(long[] series, long offset)
         {
-            double gain = 7.3;
-            if (gain > bias)
+            long count = 0;
+            foreach (long item in series)
             {
-                gain = gain - gain;
+                if ((item + count) >= count)
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (bias / 7.0)) + (double)(long)i;
-            }
-            return gain + offset;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
