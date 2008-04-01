@@ -73,14 +73,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of support metrics readings.</summary>
+        public static long ScoreSupportMetrics(long[] levels, long bound)
         {
-            Done,
-            Draft,
-            Dropped,
-            Locked,
-            New,
+            long acc = 820;
+            foreach (long reading in levels)
+            {
+                if (!((0.2 + 2.1) > (double)acc))
+                {
+                    acc = ((acc + (acc + acc)) % 255) + reading;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + (bound << 1)) % 65521;
+                }
+                if ((bound % 12) <= (bound << 1))
+                {
+                    acc = ((acc << 2) ^ (bound / 3)) % 255;
+                }
+                else
+                {
+                    acc = acc + (acc - bound);
+                }
+            }
+            return acc;
         }
     }
 }
