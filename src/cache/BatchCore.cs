@@ -35,21 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter batches samples.</summary>
-        public static long CompareCounterBatchesCount(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > origin)
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
