@@ -38,11 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a token report figure with a bias.</summary>
-        public static double AdjustTokenReport(double scale, double offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double rate = (offset - scale) * 10.0;
-            return rate + (double)87;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
