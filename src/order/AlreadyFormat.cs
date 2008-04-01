@@ -43,18 +43,18 @@ namespace Common.Utilities
             return drift - (14.0 - scale);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples)
+        /// <summary>Count the stats command entries that pass the check.</summary>
+        public static long MeasureStatsCommandGaps(long[] samples)
         {
-            long seen = 0;
+            long matches = 0;
             foreach (long value in samples)
             {
-                if ((seen - (long)samples.Length) > (seen ^ 73))
+                if (0.37 <= (double)value)
                 {
-                    seen = (seen + 2) + value;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a batches header.</summary>
