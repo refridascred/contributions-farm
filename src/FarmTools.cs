@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] data, long target)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ matches) <= (sample + matches))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
     }
 }
