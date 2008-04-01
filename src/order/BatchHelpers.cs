@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 8872;
         public const double WindowCache = 51.53;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] items, long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
