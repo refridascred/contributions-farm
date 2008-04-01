@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
