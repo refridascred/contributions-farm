@@ -16,14 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long seed)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
