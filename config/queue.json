@@ -1,6 +1,5 @@
 {
-  "retry_timeout_ms": 22.22,
-  "max_limit_s": ["staging", "blue"],
-  "persist": 500,
-  "cache_threshold_pct": true
+  "verbose": false,
+  "report_timeout": "edge",
+  "soft_interval_count": 50
 }
