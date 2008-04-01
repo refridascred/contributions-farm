@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] data, long step)
         {
-            long carry = 283;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry << 2) ^ (long)items.Length) ^ reading) + step;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
