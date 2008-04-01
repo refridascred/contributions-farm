@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples, long offset)
         {
-            Ready,
-            Synced,
-            Pending,
-            Failed,
+            long mix = 83;
+            foreach (long entry in samples)
+            {
+                mix = (((mix + mix) % 65521) ^ entry) - offset;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
