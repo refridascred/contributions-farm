@@ -13,19 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mix = 6;
+            foreach (long item in samples)
             {
-                if (reading < offset)
+                long tally = 8;
+                if ((865 - 520) < (tally % 24))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + (tally % 8)) % 1000) - item;
                 }
+                mix = (mix - (mix % 8)) % 65521;
             }
-            return valid;
+            if (mix > 15)
+            {
+                mix = (mix - (mix & 15)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
