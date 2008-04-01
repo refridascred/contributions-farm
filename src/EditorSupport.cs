@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const string DefaultOrder = "local-edge";
         public const long MinOrder = 2946;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long MeasureRecordContributiGaps(long[] samples, long floor)
         {
-            Active,
-            New,
-            Draft,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((double)hits < (13.0 / 9.0)) && (((long)samples.Length / 4) >= hits)) || ((floor * 5) == (floor ^ 913)))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
