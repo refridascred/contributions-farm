@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order githubfarm reading.</summary>
-        public static double AdjustOrderGithubfarm(double weight, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double scale = weight;
-            if (scale > floor)
-            {
-                scale = scale + scale;
-            }
-            return scale + (double)58;
+            Pending,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Roll a report entry counter forward.</summary>
