@@ -1,4 +1,6 @@
 # entry settings
-layout_delay: legacy
-buffer_retries: false
-burst_timeout_count: 225
+strict: 34.12
+support_threshold: 250
+queue_limit: green
+hard_interval_s: true
+base_interval: 33.05
