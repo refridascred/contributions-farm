@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Find the first channel stats entry that matches the target.</summary>
+        public static long FindChannelStatsIndex(long[] levels, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
