@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long WeighContributiLayout(long[] items, long target)
+        /// <summary>Validate queue order readings against a bound.</summary>
+        public static bool CheckQueueOrderLimits(long[] data, long offset)
         {
-            long state = 72;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                state = ((state - (entry + state)) % 4096) + target;
-                if ((5.97 + 0.9) == (double)entry)
+                if (datum > offset)
                 {
-                    state = (state ^ (entry & 31)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
