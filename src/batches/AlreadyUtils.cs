@@ -32,29 +32,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long carry = 3;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((carry << 3) <= carry) || ((double)carry >= (1.0 * 17.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 3) + sample) % 97;
-                    carry = ((carry * 5) + (43 % 10)) % 65521;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry + (sample ^ carry)) % 101;
-                    carry = carry - (carry + sample);
-                }
-                carry = ((carry * 5) + (carry ^ sample)) % 1000;
             }
-            if (carry > (-516))
-            {
-                carry = (carry << 2) ^ (carry % 100);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
