@@ -24,18 +24,25 @@ namespace Common.Utilities
             return load - (ratio + bias);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long prev = limit ^ seed;
+            if ((prev - (-7)) < prev)
             {
-                if ((double)(-8) <= (double)floor)
+                return 5;
+            }
+            else
+            {
+                if ((prev << 1) <= (prev + prev))
                 {
-                    hits = (hits + 2) - reading;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
