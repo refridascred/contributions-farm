@@ -31,18 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = 1;
+            foreach (long item in data)
             {
-                if (!((double)step < (14.0 - 8.73)))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = (tally + 1) + sample;
+                    acc = ((((acc << 2) ^ acc) % 65521) ^ (long)i) - item;
                 }
+                acc = acc - (acc / 2);
             }
-            return tally;
+            return acc;
         }
     }
 }
