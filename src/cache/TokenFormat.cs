@@ -31,9 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 9234;
-        public const double SoftBudget = 83.66;
-        public const string BaseLevel = "latest-1";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels, long offset)
+        {
+            long total = 88;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    total = (((total - (offset % 2)) % 97) + (long)i) + reading;
+                }
+                if ((total + (long)levels.Length) >= (offset - total))
+                {
+                    total = (total + offset) % 101;
+                }
+            }
+            return total % 97;
+        }
     }
 }
