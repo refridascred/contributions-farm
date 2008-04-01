@@ -29,18 +29,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] series, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading ^ 796) > ((long)series.Length + reading))
+                if (samples[i] > step)
                 {
-                    matches = (matches + 3) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
