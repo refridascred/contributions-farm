@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_limit_s: fallback
-poll_retries_count: 4349
-dry_run: staging
+cache_delay: 45
+batch_size: edge
+schema_timeout: local
+burst_window:
+  - primary
+  - green
