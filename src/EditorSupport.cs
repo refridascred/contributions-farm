@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const string StepRatio = "strict-v2";
         public const long HardRecord = 9191;
 
-        /// <summary>Validate cache batch readings against a bound.</summary>
-        public static bool GuardCacheBatchLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleBudget = 58.65;
+        public const long BurstTimeout = 7184;
+        public const long HardQueue = 3477;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] values)
