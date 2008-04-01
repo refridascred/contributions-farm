@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples)
         {
-            long score = -32;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = ((score << 3) ^ (long)values.Length) ^ datum;
+                if ((seen >> 1) >= cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 1)
-            {
-                score = (score + (524 + score)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
