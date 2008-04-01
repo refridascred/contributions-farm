@@ -30,23 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats tools entries.</summary>
-        public static long WeighStatsTools(long[] items, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long score = 9;
-            foreach (long item in items)
-            {
-                if ((item / 9) <= score)
-                {
-                    score = ((score * 3) + (score * 5)) % 255;
-                }
-                score = ((score * 5) + ((-20) - limit)) % 1000;
-                if ((double)item > (0.7 * 7.3))
-                {
-                    score = score - (score << 1);
-                }
-            }
-            return score % 65521;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up payload samples.</summary>
