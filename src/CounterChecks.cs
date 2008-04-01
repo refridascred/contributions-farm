@@ -43,12 +43,22 @@ namespace Common.Utilities
         public const long SoftScore = 5948;
         public const string IdleLevel = "strict-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxInterval = 5890;
-        public const long BurstWidth = 5655;
-        public const string LimitSize = "fallback-1";
-        public const string CacheBudget = "standard";
-        public const long BatchLevel = 2290;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] data, long floor)
