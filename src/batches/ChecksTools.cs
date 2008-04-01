@@ -38,13 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Dropped,
-            Closed,
-            Synced,
-            Failed,
+            Stale,
+            New,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
