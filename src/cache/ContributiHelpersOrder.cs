@@ -20,10 +20,12 @@ namespace Common.Utilities
         public const double LimitCache = 98.66;
         public const long BaseLevel = 7033;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinFactor = 7077;
-        public const long SoftTools = 3604;
-        public const long DefaultLevel = 2058;
-        public const double StepTools = 71.84;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Draft,
+            New,
+            Synced,
+        }
     }
 }
