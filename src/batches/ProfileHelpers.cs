@@ -74,14 +74,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 7376;
         public const long WindowFactor = 6712;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowTimeout = 55.75;
+        public const double DefaultMetrics = 40.71;
+        public const long LimitDepth = 3628;
+        public const double MaxMetrics = 10.03;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
