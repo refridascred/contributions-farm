@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 30.0;
+        public const long RetryGithubfarm = 1678;
+        public const long BurstTimeout = 6399;
+        public const long CacheGithubfarm = 4928;
+        public const string IdleGithubfarm = "stable-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 1074;
