@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] readings, long seed)
+        /// <summary>Iterate the support batch series from a seed.</summary>
+        public static long SeriesSupportBatch(long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((7.74 + 7.7) == (double)seed)
+                anchor = (anchor - (step * 3)) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 3) + value;
+                    anchor = (anchor + step) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
