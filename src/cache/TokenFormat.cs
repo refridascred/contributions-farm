@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 53.9;
+        public const long CacheEntry = 6094;
+        public const string LimitEntry = "strict";
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] readings, long seed)
