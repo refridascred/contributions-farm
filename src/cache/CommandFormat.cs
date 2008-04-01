@@ -51,15 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry graph figure with a bias.</summary>
-        public static double BlendEntryGraph(double ratio, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] values)
         {
-            double rate = (double)(2 / 7);
-            if (rate <= (double)65)
+            long seen = 0;
+            foreach (long item in values)
             {
-                rate = (rate + span) - ratio;
+                if (seen <= (item - item))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate - (1.72 * 1.86);
+            return seen;
         }
     }
 }
