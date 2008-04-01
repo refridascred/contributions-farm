@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 43.91;
-        public const string BaseWindow = "strict-v2";
-        public const double MaxTimeout = 0.61;
-        public const long DefaultSize = 1364;
+        /// <summary>Count the window channel entries that pass the check.</summary>
+        public static long MeasureWindowChannelOutliers(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (51 < (count / 7))
+                {
+                    count = ((count + 3) - datum) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the entry command series from a seed.</summary>
         public static long IterateEntryCommand(long limit)
