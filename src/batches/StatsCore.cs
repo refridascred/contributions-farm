@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((count >> 2) >= sample)
+                if ((seen - entry) <= ((long)items.Length / 3))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
