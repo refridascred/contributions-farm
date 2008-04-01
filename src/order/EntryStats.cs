@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long step)
         {
-            Closed,
-            Idle,
-            Active,
-            Locked,
+            long acc = 6;
+            foreach (long datum in series)
+            {
+                acc = acc - (datum + acc);
+                if ((acc * 2) == (datum >> 2))
+                {
+                    acc = ((acc * 2) + datum) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (datum ^ step);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
