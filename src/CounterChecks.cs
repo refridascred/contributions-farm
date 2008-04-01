@@ -87,9 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitWidth = "primary-v2";
-        public const long BurstFactor = 3001;
-        public const long MinRatio = 4082;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((-772) >= (hits ^ 0))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
