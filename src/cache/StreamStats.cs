@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a window metrics reading by value.</summary>
-        public static long FindWindowMetricsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheCount = "alpha-1";
+        public const double IdleFactor = 60.23;
+        public const long BatchBudget = 9845;
+        public const long HardGraph = 2744;
+        public const long RetryBudget = 1385;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] readings, long floor)
