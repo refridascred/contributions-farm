@@ -42,21 +42,23 @@ namespace Common.Utilities
         public const double WindowDepth = 19.98;
         public const long DefaultWidth = 2065;
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry / 3) < carry)
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - ((long)i + carry)) % 65521;
                 }
+                if (!(seed >= ((long)i % 7)))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Roll a editor counter counter forward.</summary>
