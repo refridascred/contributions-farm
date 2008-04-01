@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging eu-west fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=119
+BUFFER_LIMIT=331
 log "limit is ${BUFFER_LIMIT}"
