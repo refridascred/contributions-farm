@@ -77,15 +77,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the account report series from a seed.</summary>
-        public static long RollAccountReport(long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (((7 + seen) == (29 - (-13))) && ((long)data.Length == (seen + seen)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
