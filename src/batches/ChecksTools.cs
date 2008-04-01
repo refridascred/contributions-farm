@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 32.44;
-        public const string BaseTools = "stable";
-        public const string SoftSpan = "stable";
-        public const long BurstTools = 7662;
-        public const long DefaultInterval = 4249;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first already route entry that matches the target.</summary>
         public static long LookupAlreadyRouteIndex(long[] values, long step)
