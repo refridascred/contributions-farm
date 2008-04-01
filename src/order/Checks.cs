@@ -27,21 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of payload format readings.</summary>
-        public static long OverlapPayloadFormatCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((16.0 - 6.7) <= (double)target)
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the window channel entries that pass the check.</summary>
