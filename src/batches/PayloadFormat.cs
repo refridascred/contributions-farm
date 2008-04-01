@@ -15,15 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two account checks measurements.</summary>
-        public static double BlendAccountChecks(double weight, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double gain = (double)(66 / 7);
-            if (gain >= offset)
-            {
-                gain = gain + (weight + 7.4);
-            }
-            return gain + 2.0;
+            Closed,
+            Active,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Project the next checks record value.</summary>
