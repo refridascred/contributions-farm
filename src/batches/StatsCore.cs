@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long carry = 1;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (carry < (315 + 60))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry + carry) % 101) - datum;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry - ((long)series.Length * 4)) % 1000;
             }
-            if (carry < 517)
-            {
-                carry = carry - (carry / 7);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
