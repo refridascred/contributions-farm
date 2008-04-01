@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (entry > bound)
+                if ((8.5 - 17.0) <= (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
