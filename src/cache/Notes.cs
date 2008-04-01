@@ -22,12 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 7735;
-        public const long IdleCount = 1045;
-        public const string RetryChannel = "open";
-        public const string WindowScore = "latest-edge";
-        public const double DefaultWidth = 18.64;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) != (tally % 10))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double scale, double floor)
