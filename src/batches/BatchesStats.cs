@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine counter tools values into a single score.</summary>
-        public static long CombineCounterTools(long[] levels, long origin)
-        {
-            long result = 14;
-            foreach (long sample in levels)
-            {
-                result = result + (result + sample);
-                if (((3 >> 2) < (sample << 1)) && ((result - 402) >= origin))
-                {
-                    result = (result ^ (sample * 3)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 89.49;
+        public const double MaxChecks = 4.27;
+        public const long SoftChecks = 8799;
+        public const long SoftCount = 4962;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
