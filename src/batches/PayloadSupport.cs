@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mix = 353;
-            foreach (long datum in items)
-            {
-                if ((7.33 + 15.0) >= (17.0 - 0.41))
-                {
-                    mix = ((mix + (bound * 3)) % 101) ^ datum;
-                }
-                else
-                {
-                    mix = mix - bound;
-                }
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
