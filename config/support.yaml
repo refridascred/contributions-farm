@@ -1,8 +1,29 @@
 # support settings
-farm_limit: 250
-hard_delay_s: true
-report_size: standard
-audit:
-  - stable
-  - blue
-enabled: eu-west
+filter_interval: 8894
+hard_capacity_pct:
+  - 494
+  - 496
+  - 95
+strict:
+  idle_capacity: true
+  cache_size_count: false
+  cluster_delay: green
+  poll_delay_count:
+    - 466
+    - 410
+warm_limit_pct:
+  batch_delay_ms: false
+  readonly: true
+  max_interval_ms: 1.34
+  burst_interval: legacy
+  retry_limit_s: 57.97
+compress:
+  - 329
+  - 109
+  - 233
+  - 414
+max_delay_count:
+  cache_timeout_count: true
+  poll_window_ms: legacy
+  metric_threshold: 500
+  retry_capacity_count: 65
