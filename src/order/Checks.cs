@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long step)
         {
-            long carry = -5;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((370 ^ 9) >= datum)
+                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
                 {
-                    carry = (carry << 2) ^ (long)data.Length;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
