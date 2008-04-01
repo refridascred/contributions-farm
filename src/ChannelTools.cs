@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6722;
-        public const double MaxDepth = 69.04;
-        public const double BaseNotes = 46.82;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long target)
+        {
+            if ((target + 89) < (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + 46) <= (target + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string SoftInterval = "standard-v2";
