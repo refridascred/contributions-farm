@@ -31,22 +31,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally + tally) == (sample % 7))
+                if (((6.66 + 12.0) <= (double)floor) || (((long)i / 5) >= (476 + (long)i)))
                 {
-                    tally = (tally + 1) - floor;
+                    total = ((total << 2) ^ (floor - floor)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = ((total << 2) ^ (total % 100)) % 255;
                 }
+                total = (total ^ ((-8) / 7)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
