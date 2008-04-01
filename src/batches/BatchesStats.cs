@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long SoftChecks = 8799;
         public const long SoftCount = 4962;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1206;
+        public const long LimitSpan = 8328;
+        public const double RetrySpan = 41.22;
 
         /// <summary>Project the next report profile value.</summary>
         public static double BlendReportProfile(double scale, double span)
