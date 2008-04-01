@@ -46,25 +46,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long origin)
-        {
-            if ((origin * 4) >= (9 * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 2) > (961 >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchRatio = 7702;
+        public const long BaseSupport = 4575;
+        public const long SoftScore = 5948;
+        public const string IdleLevel = "strict-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxInterval = 5890;
