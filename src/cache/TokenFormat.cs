@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long CacheEntry = 6094;
         public const string LimitEntry = "strict";
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            double load = (gain * 4.74) + (gain + gain);
-            if (load > (load * 20.0))
+            long count = 0;
+            foreach (long sample in series)
             {
-                load = load - bias;
+                if (!((24 >= (count >> 1)) && ((count % 97) < count)))
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (bias - gain);
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
