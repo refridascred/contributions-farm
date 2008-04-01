@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in local edge cached blue; do
+for item in cached staging eu-west fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=119
+log "limit is ${BUFFER_LIMIT}"
