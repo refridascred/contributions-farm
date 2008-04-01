@@ -29,17 +29,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = seed ^ limit;
+            if ((507 + delta) > (limit << 1))
             {
-                if (values[i] >= step)
+                return 0;
+            }
+            else
+            {
+                if ((limit + seed) != (delta / 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed / 4) < (limit & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
