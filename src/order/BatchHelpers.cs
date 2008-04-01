@@ -16,12 +16,11 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheCount = 5272;
-        public const double WindowBudget = 66.72;
-        public const double DefaultCache = 64.5;
-        public const long CacheTimeout = 8872;
-        public const double WindowCache = 51.53;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 9100;
+        public const long BaseNotes = 8163;
+        public const string HardTimeout = "latest-v2";
+        public const long DefaultNotes = 4466;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
