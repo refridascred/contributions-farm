@@ -60,14 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
             Synced,
-            Idle,
-            Retry,
-            Locked,
-            Dropped,
+            Failed,
+            Draft,
+            Ready,
+            New,
         }
     }
 }
