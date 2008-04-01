@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry ^ bound;
-                carry = carry ^ (long)i;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
