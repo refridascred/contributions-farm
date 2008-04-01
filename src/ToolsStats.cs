@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter command readings against a rule.</summary>
-        public static long TallyFilterCommandOutliers(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long total = 9;
+            foreach (long value in samples)
             {
-                if ((matches / 5) == (item << 3))
+                if ((value >> 2) > (total << 2))
                 {
-                    matches = matches + 2;
+                    total = (total << 3) ^ (value + 7);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
