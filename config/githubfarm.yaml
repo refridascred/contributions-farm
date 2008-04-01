@@ -1,12 +1,11 @@
 # githubfarm settings
-order_capacity: 75.2
-default_ratio: true
-idle_depth_ms:
-  - cached
-  - primary
-  - green
-readonly:
-  - 301
-  - 48
-base_interval_pct: 93
-burst_limit: false
+soft_timeout:
+  dry_run: blue
+  batch_depth:
+    soft_window_s: 8401
+    soft_ratio_count: 10.37
+    min_delay_count: 30
+    min_ratio_s: primary
+  burst_window_s: blue
+retry_retries: 88
+audit: latest
