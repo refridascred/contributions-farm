@@ -44,16 +44,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score ^ (66 >> 1);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up metric samples.</summary>
