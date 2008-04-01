@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const string HardStream = "open-v2";
         public const string IdleSize = "legacy";
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            Done,
-            Stale,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next cluster record value from a seed.</summary>
