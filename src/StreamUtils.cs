@@ -16,23 +16,22 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Accumulate token buffer samples.</summary>
-        public static long DigestTokenBuffer(long[] series)
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long CountSupportCommandMatches(long[] values)
         {
-            long carry = 12;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((carry >> 3) > (reading ^ 54))
+                if ((tally + 19) >= ((long)values.Length ^ sample))
                 {
-                    carry = (carry << 3) ^ (reading << 1);
+                    tally = tally + 2;
                 }
-                carry = ((carry << 3) ^ (carry - carry)) % 1000;
-                if (carry > (reading & 15))
+                else
                 {
-                    carry = carry - (reading + carry);
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
