@@ -19,20 +19,10 @@ namespace Common.Utilities
         public const long CacheFormat = 7118;
         public const long StepFormat = 2391;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (sum >= seed)
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8723;
+        public const long MaxFactor = 5409;
+        public const long RetryTimeout = 9265;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
