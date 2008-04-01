@@ -48,19 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] series, long limit)
+        /// <summary>Scale a entry graph figure with a bias.</summary>
+        public static double BlendEntryGraph(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            double rate = (double)(2 / 7);
+            if (rate <= (double)65)
             {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + span) - ratio;
             }
-            return valid;
+            return rate - (1.72 * 1.86);
         }
     }
 }
