@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Queued,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 9747;
+        public const string BurstCluster = "strict-1";
+        public const double CacheCluster = 19.14;
+        public const long StepCluster = 871;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] values)
