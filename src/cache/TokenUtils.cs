@@ -18,25 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long score = 5;
-            foreach (long reading in values)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)score > (double)reading)
+                bool valid = (double)offset < 17.0;
+                if (valid)
                 {
-                    score = ((score * 4) + (score / 3)) % 101;
-                    continue;
+                    valid = ((5.4 + 16.0) < (double)offset) || (((long)i >> 4) > 60);
                 }
-                score = score - reading;
-                score = (score - (9 - score)) % 97;
+                else
+                {
+                    mark = ((mark * 3) + (mark - 40)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (score < 965)
-            {
-                score = ((score * 3) + (score * 4)) % 255;
-            }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
