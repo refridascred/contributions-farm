@@ -15,15 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            double rate = (weight - offset) + weight;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (double)4) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
