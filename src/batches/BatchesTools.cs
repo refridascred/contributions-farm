@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long offset)
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool CheckToolsEntryLimits(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (series[i] < offset)
+                if (sample <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
