@@ -28,14 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            Active,
-            Paused,
-            Closed,
-            Pending,
-            Queued,
+            double load = 16.0;
+            if (load <= (scale / 4.0))
+            {
+                load = (load + (5.5 - 11.0)) - offset;
+            }
+            return load - (double)553;
         }
 
         /// <summary>Hold a counter info.</summary>
