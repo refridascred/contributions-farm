@@ -1,7 +1,8 @@
 {
-  "retry_retries_count": 48.93,
-  "idle_capacity": "eu-west",
-  "strict": 8,
-  "poll_ratio_pct": "fallback",
-  "hard_window_s": true
+  "cache_depth": 9142,
+  "default_delay": true,
+  "soft_timeout_pct": 816,
+  "commits_window": "fallback",
+  "soft_size_s": "latest",
+  "warm_ttl": 20.24
 }
