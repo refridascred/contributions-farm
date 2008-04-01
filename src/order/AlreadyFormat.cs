@@ -30,16 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream context counter forward.</summary>
-        public static long IterateStreamContext(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 5036;
+        public const string IdleBudget = "alpha-v2";
+        public const long RetryRecord = 5795;
 
         /// <summary>Count the stats command entries that pass the check.</summary>
         public static long MeasureStatsCommandGaps(long[] samples)
