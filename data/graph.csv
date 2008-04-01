@@ -1,7 +1,10 @@
-id,token,rank
-1,966,staging
-2,119,strict
-3,661,402
-4,70.9,47.89
-5,37.05,standard
-6,903,607
+id,owner,region,rank
+1,green,stable,fallback
+2,96.67,538,87.14
+3,569,952,edge
+4,stable,standard,644
+5,61.72,local,stable
+6,822,94.69,fallback
+7,797,blue,cached
+8,20.7,latest,727
+9,green,361,26.34
