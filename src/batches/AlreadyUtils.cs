@@ -57,14 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Closed,
+            Active,
+            Stale,
+            Idle,
             Queued,
-            Pending,
             Dropped,
-            Ready,
         }
 
         /// <summary>Combine order values into a single score.</summary>
