@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen - entry) <= ((long)items.Length / 3))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
