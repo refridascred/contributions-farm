@@ -1,8 +1,8 @@
 {
-  "sync_limit_pct": "edge",
-  "audit": 98.09,
-  "min_threshold": 71,
-  "counter_threshold": 100,
-  "soft_threshold": 9542,
-  "min_size_count": 6268
+  "audit": "green",
+  "soft_size_count": 4.11,
+  "queue_interval": 56,
+  "farm_threshold": "stable",
+  "cache_delay_s": "latest",
+  "verbose": 3433
 }
