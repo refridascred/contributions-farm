@@ -1,11 +1,10 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the cluster list.
-Run the metric check before changing any window limits.
-Use order settings to tune how often schema data is refreshed.
+When a profile fails, the session handler retries a few times before giving up.
+The token report groups every entry by metric.
 
 ## Guidelines
 
-- Keep order values small
+- Prefer layout defaults
+- Validate profile input early
 - Document new cache fields
-- Prefer cluster defaults
