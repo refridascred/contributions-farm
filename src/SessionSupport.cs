@@ -13,39 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long target, long seed)
-        {
-            if (((-368) - seed) < (target >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target <= (target + seed)) && ((target ^ 398) <= (target - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target + seed) <= (seed + (-998))) || ((target + target) >= (seed * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed + seed) >= (258 & 31)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitLevel = 7969;
+        public const long SoftFactor = 8727;
+        public const double IdleBatch = 24.2;
+        public const double DefaultInterval = 31.26;
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] items)
