@@ -38,12 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
-            Idle,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length & 63) > 34)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
