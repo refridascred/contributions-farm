@@ -43,18 +43,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit counter stats readings against a rule.</summary>
-        public static long AuditCounterStatsGaps(long[] readings)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 2) > (hits % 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Pending,
+            Paused,
+            Done,
         }
     }
 }
