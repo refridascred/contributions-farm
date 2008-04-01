@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 91.97;
+        public const double BurstMetric = 29.39;
+        public const double LimitMetric = 80.36;
+        public const long RetryMetric = 6229;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long seed, long floor)
