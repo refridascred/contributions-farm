@@ -49,19 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((double)bound > (8.0 + 8.8)) || ((5.2 * 1.9) > (double)(long)i)))
-                {
-                    score = score - bound;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
