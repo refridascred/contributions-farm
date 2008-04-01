@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            Failed,
-            Idle,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstTimeout = 6039;
+        public const long SoftTimeout = 6513;
+        public const string DefaultOrder = "local-edge";
+        public const long MinOrder = 2946;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
