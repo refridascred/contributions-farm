@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
+            Retry,
             Synced,
-            Failed,
+            Done,
+            New,
             Paused,
-            Ready,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
