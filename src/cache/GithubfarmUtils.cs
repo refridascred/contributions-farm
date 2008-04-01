@@ -26,14 +26,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Draft,
-            Paused,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 19.71;
+        public const long IdleCommits = 101;
+        public const string MaxCommits = "stable-1";
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long seed, long seed2)
