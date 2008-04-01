@@ -16,12 +16,23 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowRatio = 7348;
-        public const string HardLevel = "alpha-v2";
-        public const long SoftLevel = 6562;
-        public const long DefaultInterval = 7273;
-        public const string SoftMetric = "legacy-v2";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count != (7.0 / 7.0))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine format already values into a single score.</summary>
         public static long DigestFormatAlready(long[] data, long seed)
