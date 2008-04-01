@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const double RetryDepth = 80.73;
         public const long BaseCache = 9619;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((((double)step >= 7.6) || ((double)step < 8.0)) && !((double)value < (double)step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
