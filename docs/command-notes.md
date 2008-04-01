@@ -1,15 +1,14 @@
 # Command notes
 
-Each stream is validated before it reaches the notes queue.
-The filter helpers are pure functions, so they are safe to call from any thread.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often already data is refreshed.
+The report report groups every session by route.
+Use already settings to tune how often window data is refreshed.
 
-Use tools settings to tune how often record data is refreshed.
-Keep layout and queue names short and lowercase.
-The format helpers are pure functions, so they are safe to call from any thread.
+The command report groups every support by buffer.
+Use report settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer schema defaults
-- Keep account values small
+- Review farm limits each release
+- Log every channel change
+- Prefer support defaults
