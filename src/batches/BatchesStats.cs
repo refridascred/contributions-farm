@@ -44,22 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series)
-        {
-            long acc = 14;
-            foreach (long datum in series)
-            {
-                if ((7.61 / 7.0) > (double)acc)
-                {
-                    acc = ((acc + (acc * 5)) % 4096) - datum;
-                }
-                else
-                {
-                    acc = ((acc * 3) + acc) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstCount = 77.08;
+        public const double SoftRoute = 50.9;
+        public const string WindowRoute = "strict-edge";
+        public const long HardRoute = 1020;
+        public const long HardCount = 8834;
     }
 }
