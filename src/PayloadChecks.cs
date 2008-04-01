@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Roll a batch account counter forward.</summary>
+        public static long StepBatchAccount(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
