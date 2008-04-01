@@ -28,9 +28,28 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryCount = 7327;
-        public const long WindowSupport = 1813;
-        public const double HardTimeout = 96.49;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i << 1) >= (0 + 137))
+                {
+                    carry = (carry ^ (carry * 4)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry - (long)i);
+                }
+                if (!((carry - carry) == (607 + (long)i)))
+                {
+                    carry = carry + 9;
+                }
+                carry = (carry ^ offset) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
