@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!(hits <= (30 & 1)) && ((15.0 / 7.0) >= (double)datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
