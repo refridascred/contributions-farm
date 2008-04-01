@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Find the first stream buffer entry that matches the target.</summary>
+        public static long FindStreamBufferIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches == (0.84 + 9.8))
+                if (data[i] <= seed)
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate window session samples.</summary>
