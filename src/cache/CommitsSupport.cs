@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] values)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((count << 1) > (item << 1))
+                if (((hits * 5) <= (cell - hits)) && (cell >= ((-8) + 85)))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
