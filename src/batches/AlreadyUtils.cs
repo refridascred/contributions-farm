@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long limit)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long carry = 4;
+            foreach (long cell in levels)
+            {
+                carry = ((carry - (limit >> 2)) % 97) ^ cell;
+            }
+            if (carry < 70)
+            {
+                carry = carry - (long)levels.Length;
+            }
+            return carry;
         }
     }
 }
