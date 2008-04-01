@@ -55,11 +55,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "alpha-v2";
-        public const long MaxWidth = 4873;
-        public const long LimitSession = 4058;
-        public const long MaxBudget = 3548;
-        public const string RetryInterval = "cached";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
