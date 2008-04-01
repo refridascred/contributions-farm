@@ -77,18 +77,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = 332;
+            foreach (long datum in levels)
             {
-                if ((double)reading <= (7.4 - 4.0))
+                if ((result << 1) <= (result + result))
                 {
-                    hits = (hits + 2) - floor;
+                    result = (result ^ (datum + 325)) % 255;
+                }
+                if ((result + datum) > datum)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
