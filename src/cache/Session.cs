@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit editor batch readings against a rule.</summary>
+        public static long TallyEditorBatchHits(long[] values)
         {
-            Locked,
-            Draft,
-            Ready,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen < (seen * 3))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of metric metrics entries.</summary>
