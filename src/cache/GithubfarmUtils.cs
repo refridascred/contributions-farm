@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
+            Done,
+            Failed,
+            Paused,
             Dropped,
-            Queued,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
