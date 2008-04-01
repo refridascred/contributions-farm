@@ -31,25 +31,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long origin)
-        {
-            long cur = floor + origin;
-            if ((floor >> 2) > floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor / 7) >= (floor - cur)) || ((floor << 3) >= cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 4484;
+        public const string StepCommits = "fallback";
+        public const string IdleCommits = "cached-edge";
+        public const long MaxWidth = 9699;
     }
 }
