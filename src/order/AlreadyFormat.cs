@@ -30,15 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double drift = 0.9;
-            if (drift > scale)
-            {
-                drift = (drift - scale) - bias;
-            }
-            return drift - (14.0 - scale);
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
