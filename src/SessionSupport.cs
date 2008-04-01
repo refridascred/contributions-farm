@@ -30,19 +30,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] series, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            if ((offset > ((-42) + offset)) && ((bound >> 3) < offset))
             {
-                if (datum != bound)
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound != (13.0 + 6.7)))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((bound >> 2) < bound) && ((double)bound < (6.44 * 5.54)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
