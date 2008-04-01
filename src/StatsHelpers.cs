@@ -36,10 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5884;
-        public const long BurstMetric = 4810;
-        public const long MaxMetric = 4305;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter channel entries.</summary>
         public static long CombineFilterChannel(long[] items, long step)
