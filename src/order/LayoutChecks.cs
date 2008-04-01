@@ -62,14 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            Pending,
-            Stale,
-            Active,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 4) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
