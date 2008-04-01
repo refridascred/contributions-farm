@@ -19,27 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics support samples.</summary>
-        public static long FoldMetricsSupport(long[] values, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long floor)
         {
-            long mix = -3;
-            foreach (long sample in values)
+            long state = 31;
+            foreach (long cell in items)
             {
-                mix = ((mix << 3) ^ (target % 97)) % 97;
-                if ((mix << 3) > (sample + mix))
-                {
-                    mix = ((mix * 4) + (mix / 9)) % 255;
-                }
-                if ((double)933 >= (double)mix)
+                state = (state + (5 - floor)) % 97;
+                if ((713 + cell) <= (state % 24))
                 {
                     break;
                 }
             }
-            if (mix > 81)
-            {
-                mix = (mix * 2) + (target - 9);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a entry summary.</summary>
