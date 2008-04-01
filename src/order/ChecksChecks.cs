@@ -21,12 +21,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxCount = 1493;
-        public const long HardSpan = 7292;
-        public const long BurstDepth = 1494;
-        public const long IdleMetric = 5661;
-        public const long HardMetric = 7517;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate farm command readings against a bound.</summary>
         public static bool ValidateFarmCommandRange(long[] data, long bound)
