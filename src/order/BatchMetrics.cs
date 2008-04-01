@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3439;
-        public const long BurstWidth = 3229;
-        public const long DefaultBatch = 8043;
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double rate, double span)
+        {
+            double bias = (double)(4 - 98);
+            return ((bias - (double)4) + rate) + span;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] levels)
