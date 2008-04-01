@@ -1,6 +1,13 @@
 {
-  "default_threshold": ["legacy", "latest", "open", "legacy"],
-  "poll_threshold": "stable",
-  "idle_capacity_pct": "stable",
-  "record_window": 97
+  "poll_limit_ms": [387, 123, 447, 447],
+  "enabled": "local",
+  "cache_capacity": {
+    "audit": "fallback",
+    "entry_threshold": 2004,
+    "max_window_pct": "edge",
+    "default_ratio_s": 22,
+    "cache_limit": 11,
+    "dry_run": [87, 26, 406, 137]
+  },
+  "compress": "blue"
 }
