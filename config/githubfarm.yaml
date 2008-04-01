@@ -1,6 +1,5 @@
 # githubfarm settings
-base_limit_s: 17.14
-cache_delay_s: 100
-base_timeout: 18.42
-batch_ttl: 72
-enabled: open
+warm_ttl_s: true
+sync_ttl: strict
+warm_window: green
+warm_capacity_ms: 27.69
