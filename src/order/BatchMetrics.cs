@@ -34,11 +34,39 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a checks command pair into a bucket.</summary>
+        public static long GradeChecksCommand(long bound, long origin)
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long span = bound + origin;
+            if ((double)span < 3.5)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 1) >= (1 - span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (24 >= (origin >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span * 5) < (977 * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
