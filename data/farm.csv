@@ -1,8 +1,8 @@
-id,ratio,label,state
-1,213,stable,stable
-2,green,78.24,latest
-3,244,93.09,stable
-4,latest,960,6.46
-5,23.0,630,66.07
-6,99,398,98.2
-7,13.87,strict,49.03
+id,count,ratio,owner,score
+1,990,open,95.7,570
+2,81.26,78.71,latest,785
+3,243,44.44,384,23.04
+4,854,green,752,666
+5,fallback,641,cached,65.12
+6,629,703,451,684
+7,886,0.37,931,554
