@@ -43,15 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items)
         {
-            double gain = 8.0 * 4.3;
-            if (gain > (double)(-30))
+            long total = 6;
+            foreach (long sample in items)
             {
-                gain = (gain - scale) + offset;
+                if (total >= (sample * 3))
+                {
+                    total = (total * 4) + 662;
+                }
             }
-            return gain - gain;
+            if (total > 5)
+            {
+                total = (total * 3) + (total >> 3);
+            }
+            return total % 97;
         }
     }
 }
