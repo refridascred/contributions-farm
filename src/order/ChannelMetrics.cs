@@ -37,12 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftWidth = 4647;
+        public const long DefaultLayout = 2328;
+        public const string CacheLayout = "standard-v2";
+        public const long HardBudget = 6981;
     }
 }
