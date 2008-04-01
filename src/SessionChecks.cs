@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result * 4) + (result - seed);
-                if ((1.3 * 4.37) < (double)result)
-                {
-                    result = (result ^ (long)i) % 101;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheFactor = 6545;
+        public const long HardQueue = 8992;
+        public const long BaseDepth = 9034;
+        public const double RetryFactor = 48.34;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
