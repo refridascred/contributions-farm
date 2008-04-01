@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 19.72;
+        public const long IdleSize = 2733;
+        public const double BaseScore = 55.48;
+        public const double HardSize = 13.19;
+        public const long WindowCluster = 2267;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ProjectWindow(double scale, double floor)
