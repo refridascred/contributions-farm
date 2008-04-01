@@ -37,13 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            Stale,
+            New,
+            Draft,
+            Queued,
+            Closed,
         }
     }
 }
