@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] data, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long cur = limit - seed;
+            if ((cur + cur) < cur)
             {
-                if ((target >> 5) > (253 + (-2)))
+                return 0;
+            }
+            else
+            {
+                if ((9.4 / 8.0) >= (double)seed)
                 {
-                    hits = (hits + 1) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((((-564) - seed) > (seed ^ cur)) && ((seed << 1) == (cur / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
