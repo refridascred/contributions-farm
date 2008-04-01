@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -27;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)sample < (6.04 + 0.5))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - score) % 1000;
                 }
             }
-            return tally;
+            if (score < 63)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
