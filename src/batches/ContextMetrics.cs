@@ -56,17 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long origin)
+        /// <summary>Count the route entry entries that pass the check.</summary>
+        public static long AuditRouteEntryHits(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] == origin)
+                if ((double)floor > (12.0 * 4.6))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
