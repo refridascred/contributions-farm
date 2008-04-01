@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout session samples are out of range.</summary>
-        public static long MeasureLayoutSessionGaps(long[] series, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading << 2) != (step ^ seen))
+                if (readings[i] <= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
