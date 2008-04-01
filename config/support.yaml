@@ -1,15 +1,12 @@
 # support settings
-counter_size: 3169
-base_interval_count: open
-filter_ratio: 90.2
-checks_limit:
-  - 90
-  - 313
-  - 210
-  - 462
-burst_depth_ms:
-  idle_depth_count: 60
-  session_limit: true
-  idle_timeout_ms: 7
-  stats_window: primary
-burst_timeout_ms: fallback
+metric_ttl: open
+audit:
+  - staging
+  - blue
+  - blue
+  - fallback
+batch_ttl: 1024
+metrics_threshold: edge
+flush_limit_s:
+  - legacy
+  - eu-west
