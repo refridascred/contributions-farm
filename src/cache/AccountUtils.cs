@@ -33,14 +33,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Active,
-            New,
-            Pending,
-            Paused,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardLevel = "strict";
+        public const string WindowSession = "primary-edge";
+        public const string BurstRatio = "cached-1";
+        public const long CacheSession = 1960;
     }
 }
