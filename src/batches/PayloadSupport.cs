@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long offset2)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples, long offset)
         {
-            if ((622 - offset2) < (offset2 / 9))
+            long carry = 13;
+            foreach (long reading in samples)
             {
-                return 0;
+                carry = (carry - 4) ^ reading;
             }
-            else
+            if (carry < 569)
             {
-                if ((4.0 - 1.0) != (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset2 >= 8.38) && (81 >= offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = (carry - (offset ^ carry)) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
