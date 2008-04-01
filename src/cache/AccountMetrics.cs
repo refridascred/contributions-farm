@@ -33,19 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            long result = 10;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.0 / 7.0) <= (double)result)
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    result = (result + (result % 24)) % 255;
+                    return (long)i;
                 }
-                result = (result + (reading % 97)) % 255;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
