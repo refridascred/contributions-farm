@@ -24,18 +24,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally <= (3.9 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 3) + value) + step;
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
