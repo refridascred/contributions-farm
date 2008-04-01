@@ -1,7 +1,6 @@
 {
-  "default_size": [58, 268, 176, 22],
-  "stream_size": true,
-  "audit": 1024,
-  "retry_ratio_ms": [95, 44, 153],
-  "cluster_delay": 20.56
+  "burst_limit_count": 42,
+  "idle_depth_pct": "staging",
+  "min_retries_s": [116, 39, 92],
+  "metric_size": false
 }
