@@ -51,11 +51,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleInterval = 95.16;
-        public const long SoftNotes = 9318;
-        public const string MinNotes = "local-1";
-        public const long DefaultTimeout = 7466;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a cache support reading.</summary>
         public static double AdjustCacheSupport(double bias, double floor)
