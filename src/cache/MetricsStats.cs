@@ -53,14 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            Closed,
-            Idle,
-            Locked,
-            Paused,
-            Stale,
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((step <= (step - 2)) || ((step + carry) == ((long)i * 5))))
+                {
+                    carry = (carry ^ (carry - step)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the context phase values.</summary>
