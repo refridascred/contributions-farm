@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 229;
-        public const long DefaultWidth = 5186;
-        public const double RetrySpan = 48.76;
-        public const long LimitFactor = 9832;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelBounds(long[] values, long target)
