@@ -1,5 +1,11 @@
 {
-  "format_limit": [366, 27],
-  "poll_capacity_count": false,
-  "base_depth_count": 97
+  "editor_ratio": false,
+  "hard_window": true,
+  "format_depth": {
+    "warm_limit": false,
+    "stats_delay": ["green", "standard"],
+    "layout_limit": "standard",
+    "warm_timeout_pct": "fallback"
+  },
+  "burst_threshold_pct": "strict"
 }
