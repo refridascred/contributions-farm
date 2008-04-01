@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in standard eu-west; do
+for item in edge primary eu-west; do
     log "checking ${item}"
 done
