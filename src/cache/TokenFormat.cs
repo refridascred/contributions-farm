@@ -23,22 +23,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = 88;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = (((total - (offset % 2)) % 97) + (long)i) + reading;
-                }
-                if ((total + (long)levels.Length) >= (offset - total))
-                {
-                    total = (total + offset) % 101;
-                }
-            }
-            return total % 97;
+            Draft,
+            Dropped,
+            New,
+            Paused,
         }
     }
 }
