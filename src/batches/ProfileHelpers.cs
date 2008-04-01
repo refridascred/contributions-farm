@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound / 5) <= (139 % 16))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
