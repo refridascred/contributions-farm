@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const string LimitSize = "alpha";
         public const long BurstFilter = 1881;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits / 8) >= (hits - 151))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 9330;
+        public const long HardToken = 226;
+        public const long MinRatio = 2159;
+        public const long IdleRatio = 4465;
+        public const double DefaultRatio = 9.03;
     }
 }
