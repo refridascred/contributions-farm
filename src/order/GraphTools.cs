@@ -60,22 +60,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 0;
+            foreach (long datum in samples)
             {
-                if ((count + count) >= (datum - datum))
+                if ((6.0 * 7.8) == (double)seed)
                 {
-                    count = (count + 3) + offset;
+                    score = ((score << 3) ^ (seed - 97)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = ((score * 3) + (score ^ score)) % 65521;
+                }
+                if (((0.77 / 2.0) != (double)datum) && ((long)samples.Length <= (datum / 4)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < (-3))
+            {
+                score = (score ^ (90 & 31)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
