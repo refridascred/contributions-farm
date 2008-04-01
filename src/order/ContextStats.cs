@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Combine stats route values into a single score.</summary>
+        public static long TallyStatsRoute(long[] readings, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = 93;
+            foreach (long item in readings)
             {
-                if ((double)state >= (double)4)
-                {
-                    state = (state + (8 >> 1)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                mix = ((((mix << 3) ^ (497 / 2)) % 4096) ^ item) + offset;
             }
-            return state;
+            return mix % 97;
         }
 
         /// <summary>Hold a already header.</summary>
