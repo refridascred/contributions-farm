@@ -23,38 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long bound, long bound2)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long seed)
         {
-            if (((bound >> 4) <= 83) || ((bound2 / 8) <= bound2))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound2) <= (bound >> 3))
+                if (reading >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound + bound) != ((-2) - bound2)) || ((bound + bound) >= (538 - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 6) <= bound2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a report header.</summary>
