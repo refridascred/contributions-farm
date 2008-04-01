@@ -27,13 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] items, long offset)
         {
-            Ready,
-            Draft,
-            Queued,
-            Stale,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
