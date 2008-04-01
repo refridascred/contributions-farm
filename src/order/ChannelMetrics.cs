@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate queue order readings against a bound.</summary>
-        public static bool CheckQueueOrderLimits(long[] data, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                if (samples[i] == target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
