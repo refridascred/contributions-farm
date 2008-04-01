@@ -1,14 +1,12 @@
 {
-  "idle_ratio": "staging",
-  "audit": {
-    "stream_retries": "primary",
-    "min_delay_ms": "strict",
-    "warm_threshold": "strict",
-    "channel_capacity": 88,
-    "readonly": 9009
-  },
-  "max_depth": [381, 315, 23, 138],
-  "max_delay_s": "cached",
-  "burst_size_count": 1024,
-  "max_threshold_pct": 8767
+  "retry_retries_count": 9.14,
+  "readonly": ["edge", "stable", "green"],
+  "default_interval_pct": {
+    "retry_window": true,
+    "base_ratio_s": 10.02,
+    "cache_ttl_pct": 2923,
+    "poll_timeout": 88.94,
+    "soft_depth_pct": "strict",
+    "default_interval_count": 91
+  }
 }
