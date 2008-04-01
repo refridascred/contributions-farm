@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((entry >> 5) >= (entry - matches)) && (matches < (matches * 3))) || (7.14 < 6.0))
+                if (value <= ((long)data.Length & 31))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
