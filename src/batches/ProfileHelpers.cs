@@ -23,20 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            double mean = (double)((-39) * 3);
+            for (int i = 0; i < 3; i++)
             {
-                if (!(state <= (step & 63)))
-                {
-                    state = ((state << 3) ^ step) % 1000;
-                    state = ((state << 2) ^ step) % 255;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                mean = (mean - (weight - mean)) + (double)(long)i;
             }
-            return state;
+            return mean + (span - span);
         }
 
         /// <summary>Check that every cluster notes entry stays within the limit.</summary>
