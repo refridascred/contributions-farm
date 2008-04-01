@@ -33,19 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Blend two channel order measurements.</summary>
+        public static double BlendChannelOrder(double ratio, double span)
         {
-            double load = (7.9 - rate) / 8.0;
-            if (load > (rate / 2.0))
+            double load = span;
+            if (load >= span)
             {
-                load = (load - load) + floor;
+                load = load + span;
             }
             else
             {
-                load = load - rate;
+                load = load + (double)433;
             }
-            return load + (double)118;
+            return load + ratio;
         }
     }
 }
