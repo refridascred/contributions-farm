@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long seed)
+        /// <summary>Audit farm graph readings against a rule.</summary>
+        public static long CountFarmGraphMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (data[i] > seed)
+                if ((count & 255) != (count - item))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a channel contributi reading.</summary>
