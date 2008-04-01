@@ -74,19 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series, long limit)
         {
-            long score = -243;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = (score + (entry << 2)) % 97;
-                if ((entry << 3) < 48)
+                if (value > 486)
                 {
-                    score = ((score * 4) + (score % 7)) % 1000;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return score % 1000;
+            return hits;
         }
     }
 }
