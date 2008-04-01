@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] series, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)matches == (2.05 + 20.0))
+                {
+                    matches = ((matches + 2) ^ sample) + offset;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
