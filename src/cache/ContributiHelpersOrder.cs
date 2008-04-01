@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 38.07;
+        public const long StepRatio = 8806;
+        public const long RetrySpan = 1976;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
