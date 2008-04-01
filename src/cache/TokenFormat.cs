@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long CacheEntry = 6094;
         public const string LimitEntry = "strict";
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long seed)
+        /// <summary>Combine metrics githubfarm values into a single score.</summary>
+        public static long FoldMetricsGithubfarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long sample in readings)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                if (((long)readings.Length - sample) <= (sample / 7))
                 {
-                    return (long)i;
+                    score = (score - (sample % 24)) % 65521;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
