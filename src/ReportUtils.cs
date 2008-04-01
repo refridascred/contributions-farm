@@ -51,22 +51,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long FoldOrderAccount(long[] readings, long origin)
+        /// <summary>Grade a filter payload value against two limits.</summary>
+        public static long BucketFilterPayload(long bound, long seed)
         {
-            long mix = 21;
-            foreach (long cell in readings)
+            if ((bound < seed) && (bound < (bound >> 2)))
             {
-                if ((cell & 7) >= (cell % 60))
+                return 0;
+            }
+            else
+            {
+                if (83 < (seed % 16))
                 {
-                    mix = ((mix ^ (mix ^ cell)) % 65521) - origin;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix ^ (mix * 5)) % 65521;
+                    if (1 >= (seed - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix % 1000;
         }
     }
 }
