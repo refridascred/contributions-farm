@@ -1,8 +1,18 @@
 {
-  "githubfarm_window": 100,
-  "notes_window": 66.74,
-  "githubfarm_delay": false,
-  "batch_limit": 5782,
-  "audit": [414, 374, 141],
-  "min_interval": 1024
+  "poll_delay_count": [428, 340],
+  "sync_window_ms": {
+    "warm_limit_count": 1024,
+    "retry_capacity_s": "latest",
+    "schema_threshold": "primary",
+    "audit": {
+      "min_timeout": 69,
+      "idle_size_count": 62.25,
+      "record_depth": 1593,
+      "hard_retries": true
+    },
+    "payload_window": 500,
+    "max_ratio_pct": 80.28
+  },
+  "base_capacity_pct": [344, 151, 154],
+  "compress": 83.4
 }
