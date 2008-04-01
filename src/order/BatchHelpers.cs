@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long origin)
-        {
-            long prev = bound - origin;
-            if ((prev + prev) > (origin << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (double)827)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin << 1) >= (bound >> 3)) || ((bound * 4) < (bound + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((prev <= (bound + prev)) && ((origin - bound) < (origin + 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 4937;
+        public const long StepAlready = 3122;
+        public const long DefaultAlready = 533;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
