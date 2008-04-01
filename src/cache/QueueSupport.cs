@@ -23,20 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(carry < 848))
-                {
-                    carry = carry - floor;
-                }
-                carry = ((carry << 2) ^ ((long)i / 2)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the batches level values.</summary>
