@@ -83,19 +83,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] data, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading >= step)
+                if ((bound >= (bound & 127)) || ((4.8 - 1.3) < (double)(long)i))
                 {
-                    flag = false;
-                    break;
+                    score = ((score << 3) ^ bound) % 1000;
                 }
+                else
+                {
+                    score = score ^ (long)i;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Blend two commits measurements.</summary>
