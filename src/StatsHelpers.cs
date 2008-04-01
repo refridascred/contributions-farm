@@ -45,17 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
