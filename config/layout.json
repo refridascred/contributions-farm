@@ -1,19 +1,17 @@
 {
-  "commits_limit": [329, 124, 180, 111],
-  "max_ttl": {
-    "strict": 26.62,
-    "base_ttl": "green",
-    "window_size": "primary",
-    "entry_delay": [350, 331, 397],
-    "tools_capacity": {
-      "hard_limit": ["primary", "fallback", "green", "standard"],
-      "batch_interval": 30,
-      "account_size": "blue",
-      "idle_limit_count": "strict",
-      "default_capacity_s": 37.06
-    },
-    "batch_ttl": 92
+  "soft_limit_ms": [415, 269, 313, 111],
+  "default_delay": "strict",
+  "verbose": 36,
+  "sync_retries": {
+    "metrics_size": 27,
+    "persist": "local",
+    "hard_window_pct": [261, 384, 273]
   },
-  "sync_delay": 5688,
-  "session_retries": 250
+  "batch_timeout": {
+    "poll_timeout_ms": 69.47,
+    "base_window_ms": false,
+    "record_size": 10.27,
+    "idle_ttl": "open"
+  },
+  "cache_ttl": 16.24
 }
