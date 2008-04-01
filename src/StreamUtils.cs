@@ -66,18 +66,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long MeasureWindowContextGaps(long[] data, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count / 6) > target)
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
