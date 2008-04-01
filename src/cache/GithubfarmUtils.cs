@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long DigestCommitsRecord(long[] items)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long state = -69;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item >= (9.5 * 3.15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + (item ^ 290);
-                }
-                state = state + (917 - 967);
-                if (item < (item * 2))
-                {
-                    state = (state * 2) + (1 ^ item);
-                }
-                else
-                {
-                    state = state - (state + state);
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 52)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
