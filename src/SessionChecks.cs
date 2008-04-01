@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstBudget = "fallback-v2";
+        public const long LimitLevel = 7998;
+        public const long MaxStream = 4084;
+        public const long BaseStream = 8616;
+        public const long BatchStream = 5090;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] samples)
