@@ -36,21 +36,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(56 >> 3);
+            if (drift < scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (double)13) + floor;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)58) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
