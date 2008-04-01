@@ -61,12 +61,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (7.4 - 4.0))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
