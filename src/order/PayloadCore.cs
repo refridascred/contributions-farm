@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long TotalContributiFarm(long[] levels, long target)
         {
-            double rate = bias;
-            return rate + gain;
+            long acc = 4;
+            foreach (long cell in levels)
+            {
+                acc = ((acc - (target + 364)) % 65521) + cell;
+            }
+            if (acc > 1)
+            {
+                acc = (acc << 2) ^ (7 ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Project the next queue counter value.</summary>
