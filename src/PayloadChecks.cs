@@ -31,13 +31,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples, long floor)
         {
-            Active,
-            Ready,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally + tally) == (sample % 7))
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
