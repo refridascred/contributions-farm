@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command metrics sample.</summary>
-        public static long LocateCommandMetricsIndex(long[] series, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Blend two report measurements.</summary>
