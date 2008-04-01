@@ -11,19 +11,26 @@ namespace Common.Utilities
         public const double BatchLevel = 2.53;
         public const double RetryBuffer = 62.52;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data, long target)
         {
-            long mark = 874;
-            foreach (long sample in levels)
+            long mark = 96;
+            foreach (long value in data)
             {
-                mark = (mark * 4) + 57;
-                if (!((sample - mark) != ((-502) & 3)))
+                if ((mark + 185) >= target)
                 {
-                    mark = (mark ^ mark) % 255;
+                    mark = (((mark << 2) ^ mark) % 65521) + value;
+                }
+                else
+                {
+                    mark = mark + (target / 3);
                 }
             }
-            return mark;
+            if (mark < 7)
+            {
+                mark = (mark - (target * 2)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first cache entry entry that matches the target.</summary>
