@@ -1,7 +1,14 @@
 {
-  "tools_retries": 61,
-  "batch_ratio": 9.23,
-  "notes_size": "open",
-  "batch_limit_s": 5.98,
-  "poll_interval_count": 98.81
+  "idle_ratio": "staging",
+  "audit": {
+    "stream_retries": "primary",
+    "min_delay_ms": "strict",
+    "warm_threshold": "strict",
+    "channel_capacity": 88,
+    "readonly": 9009
+  },
+  "max_depth": [381, 315, 23, 138],
+  "max_delay_s": "cached",
+  "burst_size_count": 1024,
+  "max_threshold_pct": 8767
 }
