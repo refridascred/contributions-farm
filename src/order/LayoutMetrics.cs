@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = 9.1 / 5.0;
+            if (gain > 0.92)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (gain * 2.6)) + floor;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (gain / 3.0)) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
