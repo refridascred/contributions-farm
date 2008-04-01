@@ -1,8 +1,18 @@
 {
-  "flush_ttl_pct": true,
-  "profile_retries": 87.61,
-  "strict": 89,
-  "burst_ttl_count": false,
-  "min_threshold_pct": 36.86,
-  "hard_window_s": "blue"
+  "default_depth": "eu-west",
+  "warm_size": 23.83,
+  "window_interval": true,
+  "already_limit": {
+    "metrics_window": "legacy",
+    "token_capacity": 22.32,
+    "strict": false,
+    "retry_timeout_count": {
+      "graph_window": "blue",
+      "warm_window": ["open", "blue", "legacy", "cached"],
+      "min_ttl": 33.17,
+      "support_ratio": false,
+      "max_interval_count": "cached",
+      "soft_size": 82.83
+    }
+  }
 }
