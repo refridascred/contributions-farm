@@ -1,10 +1,15 @@
 # support settings
-warm_retries_count: stable
-dry_run: primary
-entry_size:
-  - edge
-  - open
-  - primary
-  - stable
-max_ratio: local
-hard_size: local
+counter_size: 3169
+base_interval_count: open
+filter_ratio: 90.2
+checks_limit:
+  - 90
+  - 313
+  - 210
+  - 462
+burst_depth_ms:
+  idle_depth_count: 60
+  session_limit: true
+  idle_timeout_ms: 7
+  stats_window: primary
+burst_timeout_ms: fallback
