@@ -14,13 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Dropped,
-            Draft,
-            Synced,
-            Active,
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
