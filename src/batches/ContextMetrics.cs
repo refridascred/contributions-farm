@@ -33,22 +33,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long step2)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long seed)
         {
-            if ((step2 * 3) > step2)
+            if ((offset - 872) == (seed - offset))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((1.1 - 13.0) == (double)step2)
+                if ((seed / 3) <= (seed % 100))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if (((4.2 / 8.0) > (double)seed) && ((offset - seed) > offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
