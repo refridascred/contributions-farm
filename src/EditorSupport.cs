@@ -72,15 +72,11 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
