@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a contributi batches figure with a bias.</summary>
-        public static double ProjectContributiBatches(double bias, double span)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long target)
         {
-            double bias2 = 20.0;
-            if (bias2 > (double)1)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 - 8.6) + bias) - span;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 / 8.0)) + (double)(long)i;
-            }
-            return bias2 + (double)922;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
