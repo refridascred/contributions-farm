@@ -38,15 +38,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double weight = scale * 6.7;
-            if (weight > (bias - bias))
-            {
-                weight = weight - (scale / 7.0);
-            }
-            return weight - (double)3;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
