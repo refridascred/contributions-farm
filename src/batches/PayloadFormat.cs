@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] items, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Pending,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two account checks measurements.</summary>
