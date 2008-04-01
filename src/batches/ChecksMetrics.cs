@@ -64,18 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric buffer entries that pass the check.</summary>
-        public static long CountMetricBufferHits(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!((seen - item) < (item - 153)))
+                if ((8.6 + 9.7) <= (double)datum)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the context level values.</summary>
