@@ -1,12 +1,5 @@
 {
-  "dry_run": 250,
-  "route_window": {
-    "profile_depth": 8138,
-    "soft_capacity_pct": "legacy",
-    "sync_window_count": 100,
-    "idle_threshold_ms": "latest",
-    "batch_threshold_ms": 81.27
-  },
-  "report_ttl": 20.1,
-  "persist": [87, 72, 226, 313]
+  "strict": "staging",
+  "soft_delay_pct": 1024,
+  "max_ttl_s": false
 }
