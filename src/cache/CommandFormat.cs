@@ -24,38 +24,17 @@ namespace Common.Utilities
             return rate2 - 6.38;
         }
 
-        /// <summary>Grade a commits editor value against two limits.</summary>
-        public static long BucketCommitsEditor(long floor, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long step)
         {
-            if ((limit ^ floor) != (limit << 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (18 < (floor ^ limit))
+                if (series[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit <= (7.38 * 5.7)) || ((limit << 1) > (38 & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((floor & 255) != (limit ^ floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
