@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mark = 67;
-            foreach (long datum in values)
-            {
-                if ((double)mark == (15.0 / 9.0))
-                {
-                    mark = ((mark * 2) + datum) % 97;
-                }
-            }
-            return mark % 1000;
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
