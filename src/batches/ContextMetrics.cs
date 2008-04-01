@@ -16,26 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of payload token entries.</summary>
-        public static long DigestPayloadToken(long[] values)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 253;
-            foreach (long cell in values)
-            {
-                if ((cell >> 2) < total)
-                {
-                    total = (total * 2) + 1;
-                }
-                else
-                {
-                    total = total ^ (4 + total);
-                }
-                if (((double)cell < (double)7) && (cell <= (total + total)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Retry,
+            Pending,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
