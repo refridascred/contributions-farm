@@ -1,7 +1,6 @@
 {
-  "githubfarm_depth": 250,
-  "soft_ttl": ["open", "local", "legacy", "blue"],
-  "burst_capacity_pct": [123, 247, 41, 235],
-  "base_interval_s": true,
-  "format_threshold": ["latest", "latest"]
+  "strict": 9349,
+  "poll_capacity_pct": 7500,
+  "idle_retries_ms": ["eu-west", "primary", "blue"],
+  "max_capacity": 70.75
 }
