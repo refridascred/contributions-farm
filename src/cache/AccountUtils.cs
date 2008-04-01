@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support cluster value.</summary>
-        public static double AdjustSupportCluster(double bias, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            double ratio = (double)(3 << 1);
-            return ((ratio + (2.0 / 4.0)) + bias) + span;
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc ^ offset;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record header.</summary>
