@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (series[i] < seed)
+                if ((double)449 != (double)limit)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
