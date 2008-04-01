@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long BurstTools = 7662;
         public const long DefaultInterval = 4249;
 
-        /// <summary>Derive the next batches context value from a seed.</summary>
-        public static long RollBatchesContext(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleDepth = 5419;
+        public const long BaseFactor = 9094;
+        public const string RetryFactor = "strict";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
