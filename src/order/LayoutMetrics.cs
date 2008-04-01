@@ -28,17 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] values, long origin)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 7.3;
+            if (bias2 < bias2)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (scale / 9.0);
             }
-            return -1;
+            return bias2 - (bias / 7.0);
         }
     }
 }
