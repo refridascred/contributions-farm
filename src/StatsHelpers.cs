@@ -32,20 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "staging-v2";
+        public const long SoftSpan = 8657;
+        public const long MinBatch = 5340;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string WindowSpan = "primary-edge";
