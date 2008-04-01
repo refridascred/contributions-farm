@@ -1,7 +1,8 @@
 {
-  "soft_retries_pct": "staging",
-  "batch_retries_ms": false,
-  "metrics_interval": "edge",
-  "audit": false,
-  "max_depth_count": 18
+  "burst_delay": true,
+  "hard_ttl_s": 5533,
+  "max_retries": 25,
+  "warm_depth": ["local", "eu-west", "legacy"],
+  "sync_delay": 1024,
+  "audit": "latest"
 }
