@@ -28,23 +28,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long CountToolsSchemaOutliers(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!((state - floor) == (46 - floor)))
+                if (((-1) & 7) > matches)
                 {
-                    state = state - (85 & 3);
+                    matches = (matches + 1) - value;
                 }
-                else
-                {
-                    state = (state - state) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
