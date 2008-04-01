@@ -1,4 +1,8 @@
 # githubfarm settings
-min_threshold: 45
-default_capacity_ms: 96.19
-cache_capacity_count: 3103
+retry_delay_pct: green
+queue_delay:
+  - legacy
+  - local
+  - primary
+max_threshold: false
+warm_ttl_s: latest
