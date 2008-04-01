@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two record metrics measurements.</summary>
-        public static double ScaleRecordMetrics(double weight, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] levels, long step)
         {
-            double gain = weight;
-            if (gain > 7.08)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                gain = gain - gain;
+                if ((2.59 + 2.6) <= (double)step)
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (weight + gain)) + (double)(long)i;
-            }
-            return gain - (gain / 7.0);
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
