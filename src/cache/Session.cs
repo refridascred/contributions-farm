@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long bound2)
+        /// <summary>Derive the next already order value from a seed.</summary>
+        public static long DeriveAlreadyOrder(long floor)
         {
-            if (!(bound2 < (bound >> 5)))
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((79 / 2) >= (bound2 - bound2)) && ((5 ^ bound) > (bound * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)bound2 == (9.2 + 1.96)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Accumulate batch samples.</summary>
