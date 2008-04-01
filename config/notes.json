@@ -1,5 +1,10 @@
 {
-  "readonly": false,
-  "sync_threshold_pct": "edge",
-  "strict": "green"
+  "verbose": 100,
+  "report_window": {
+    "entry_retries": "local",
+    "dry_run": "eu-west",
+    "audit": 7706
+  },
+  "dry_run": 2602,
+  "retry_window_count": "green"
 }
