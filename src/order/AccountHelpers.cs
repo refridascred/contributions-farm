@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (scale - (bias - bias)) + floor;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((double)hits == (11.0 + 12.0)) && (cell >= (cell & 31))) && (hits < cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
