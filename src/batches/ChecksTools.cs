@@ -60,13 +60,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long floor)
         {
-            Locked,
-            Stale,
-            Queued,
-            Draft,
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc ^ (acc & 255)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
