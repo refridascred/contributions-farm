@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = 93;
+            foreach (long cell in levels)
             {
-                if ((1.0 * 4.66) >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ entry) - floor;
-                }
+                sum = (sum - (cell * 4)) % 1000;
             }
-            return hits;
+            if (sum < 5)
+            {
+                sum = (sum + (sum << 2)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
