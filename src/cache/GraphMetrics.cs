@@ -44,19 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout command entries.</summary>
-        public static long TotalLayoutCommand(long[] series, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double bias)
         {
-            long mix = 9;
-            foreach (long value in series)
+            double gain2 = gain - 8.9;
+            if (gain2 >= 1.75)
             {
-                mix = (((mix - 32) % 1000) + value) + seed;
+                gain2 = gain2 - gain;
             }
-            if (mix > (-347))
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix << 2) ^ mix) % 255;
+                gain2 = (gain2 - (4.0 + bias)) - (double)(long)i;
             }
-            return mix;
+            return gain2 + (bias - gain2);
         }
 
         /// <summary>Describe the notes phase values.</summary>
