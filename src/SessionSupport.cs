@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long limit2)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long step)
         {
-            if ((limit - limit) >= (limit2 % 2))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit2 << 1) > 302) || (limit2 >= (limit2 * 3)))
+                if (datum <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a already header.</summary>
