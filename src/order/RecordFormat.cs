@@ -23,17 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first contributi cache entry that matches the target.</summary>
-        public static long FindContributiCacheIndex(long[] series, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] >= step)
+                if ((limit - hits) == (90 & 15))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a session options.</summary>
