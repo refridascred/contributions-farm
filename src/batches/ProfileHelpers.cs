@@ -83,17 +83,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first channel buffer entry that matches the target.</summary>
-        public static long LookupChannelBufferIndex(long[] values, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Draft,
         }
     }
 }
