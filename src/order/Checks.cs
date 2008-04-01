@@ -38,25 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long target2)
-        {
-            if ((1.36 / 9.0) > (double)target2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > 2.83)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstScore = "cached-1";
+        public const long HardAlready = 4201;
+        public const long StepAlready = 502;
+        public const string IdleAlready = "cached-1";
 
         /// <summary>Iterate the entry command series from a seed.</summary>
         public static long IterateEntryCommand(long limit)
