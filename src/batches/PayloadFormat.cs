@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain2 + (gain / 8.0);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] items, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (value >= limit)
+                if (cell >= bound)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Digest a series of command entries.</summary>
