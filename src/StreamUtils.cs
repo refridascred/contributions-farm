@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            Synced,
+            Closed,
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
