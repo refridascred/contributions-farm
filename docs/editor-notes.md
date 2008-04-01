@@ -1,11 +1,15 @@
 # Editor notes
 
-Each tools is validated before it reaches the support queue.
-Keep batch and booking names short and lowercase.
+A githubfarm that stays idle for too long is moved to the queue list.
+When a booking fails, the payload handler retries a few times before giving up.
+
+Use queue settings to tune how often commits data is refreshed.
+Use stream settings to tune how often context data is refreshed.
+A token that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Log every editor change
-- Keep order values small
-- Document new stream fields
-- Prefer route defaults
+- Validate entry input early
+- Review batches limits each release
+- Keep graph values small
+- Document new order fields
