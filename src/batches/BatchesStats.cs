@@ -46,22 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long total = 454;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (1.3 < (double)total)
-                {
-                    total = total - entry;
-                }
-                else
-                {
-                    total = total - (entry / 2);
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
     }
 }
