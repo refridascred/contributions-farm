@@ -33,19 +33,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long diff = target + floor;
+            if ((801 + 731) < (target + floor))
             {
-                if (entry < target)
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (14.0 + 9.4))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (diff >= (floor - diff))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
