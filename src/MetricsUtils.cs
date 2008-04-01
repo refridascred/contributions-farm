@@ -52,19 +52,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Roll a editor counter counter forward.</summary>
+        public static long RollEditorCounter(long floor)
         {
-            double ratio = weight;
-            if (ratio > (4.1 * 4.55))
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + span;
+                anchor = (anchor + (92 * 5)) % 101;
+                anchor = anchor ^ (112 - anchor);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - 9.26) + (double)(long)i;
-            }
-            return ratio - 8.51;
+            return anchor;
         }
     }
 }
