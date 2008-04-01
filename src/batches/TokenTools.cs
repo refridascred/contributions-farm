@@ -13,19 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 444;
-            foreach (long sample in values)
-            {
-                result = result ^ (result + sample);
-            }
-            if (result > 26)
-            {
-                result = ((result << 2) ^ (result & 63)) % 97;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
