@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 91.97;
-        public const double BurstMetric = 29.39;
-        public const double LimitMetric = 80.36;
-        public const long RetryMetric = 6229;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long offset)
+        {
+            if (offset < (offset << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((offset + limit) < limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 3) <= 909)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > (limit << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long offset)
