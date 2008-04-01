@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long step, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if (!((14.0 + 6.91) != (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed % 7) >= (seed - step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
