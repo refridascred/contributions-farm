@@ -58,39 +58,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches schema value against two limits.</summary>
-        public static long GradeBatchesSchema(long limit, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long floor)
         {
-            long next = limit + step;
-            if (next > (limit << 2))
+            long anchor = 97;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 31) > (limit % 24))
+                anchor = ((anchor << 2) ^ (846 >> 4)) % 97;
+                if (!((double)anchor <= (3.5 * 6.66)))
                 {
-                    return 5;
+                    anchor = anchor - (anchor >> 3);
                 }
                 else
                 {
-                    if (((limit - limit) <= next) || ((double)next >= 6.8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next & 15) > (limit & 31))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = anchor + (cell + floor);
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = anchor ^ ((-779) & 15);
+            }
+            return anchor;
         }
     }
 }
