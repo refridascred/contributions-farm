@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] samples, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (count > (count << 1))
+                if ((entry % 8) == (entry >> 5))
                 {
-                    count = ((count + 3) ^ entry) + seed;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first already checks entry that matches the target.</summary>
