@@ -44,11 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstCount = 77.08;
-        public const double SoftRoute = 50.9;
-        public const string WindowRoute = "strict-edge";
-        public const long HardRoute = 1020;
-        public const long HardCount = 8834;
+        /// <summary>Count editor token pairs that satisfy a relation.</summary>
+        public static long MatchEditorTokenCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
