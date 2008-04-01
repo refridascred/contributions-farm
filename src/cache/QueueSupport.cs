@@ -23,38 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session contributi value against two limits.</summary>
-        public static long GradeSessionContributi(long origin, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long floor)
         {
-            if ((2.2 - 8.0) < (double)origin)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)85 != (double)origin) || ((origin + origin) == (origin ^ floor)))
+                if (!(carry < 848))
                 {
-                    return 0;
+                    carry = carry - floor;
                 }
-                else
-                {
-                    if ((floor <= (43 + 878)) && ((origin * 2) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5 + origin) >= (floor + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry << 2) ^ ((long)i / 2)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Describe the batches level values.</summary>
