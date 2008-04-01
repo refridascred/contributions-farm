@@ -34,12 +34,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
