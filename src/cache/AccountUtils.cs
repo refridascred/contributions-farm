@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            double scale = offset;
+            if (scale >= (double)5)
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale + (gain + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (3.41 / 5.0)) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Combine stream account values into a single score.</summary>
