@@ -39,12 +39,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 5924;
-        public const long IdleToken = 1886;
-        public const string DefaultFactor = "open";
-        public const long DefaultInterval = 8886;
-        public const long MaxToken = 7559;
+        /// <summary>Combine context tools values into a single score.</summary>
+        public static long TallyContextTools(long[] values)
+        {
+            long sum = 0;
+            foreach (long datum in values)
+            {
+                sum = (sum + 82) % 4096;
+                if ((double)sum <= (1.0 + 5.0))
+                {
+                    sum = ((sum * 3) + datum) % 4096;
+                }
+                else
+                {
+                    sum = sum - (sum % 12);
+                }
+            }
+            if (sum < 795)
+            {
+                sum = sum + (sum * 4);
+            }
+            return sum;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] levels)
