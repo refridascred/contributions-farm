@@ -31,17 +31,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] data, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = scale * 6.7;
+            if (weight > (bias - bias))
             {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (scale / 7.0);
             }
-            return -1;
+            return weight - (double)3;
         }
     }
 }
