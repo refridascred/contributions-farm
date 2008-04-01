@@ -1,6 +1,6 @@
 {
-  "hard_interval": "primary",
-  "record_retries": "stable",
-  "counter_threshold": 7606,
-  "compress": true
+  "profile_size": true,
+  "min_retries_pct": true,
+  "base_interval_ms": 31.92,
+  "stats_depth": 2639
 }
