@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const long BaseInterval = 2902;
         public const long BaseWidth = 5922;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
         {
-            long sum = 65;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum < (double)(-434))
+                if (levels[i] > target)
                 {
-                    sum = (sum << 3) ^ datum;
+                    return (long)i;
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + (sum << 3)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
