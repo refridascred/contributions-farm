@@ -33,18 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter token samples are out of range.</summary>
-        public static long MeasureFilterTokenGaps(long[] levels, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((959 - 59) <= (entry ^ 924))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - target;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate layout schema samples.</summary>
