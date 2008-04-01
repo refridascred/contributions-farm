@@ -40,26 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric metrics entries.</summary>
-        public static long WeighMetricMetrics(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] samples, long bound)
         {
-            long state = 5;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (6.0 >= (double)entry)
+                if (entry < bound)
                 {
-                    state = (state - 913) % 101;
-                }
-                else
-                {
-                    state = state + (1 ^ entry);
-                }
-                if ((double)entry > (6.68 / 4.0))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Locate a metrics window reading by value.</summary>
