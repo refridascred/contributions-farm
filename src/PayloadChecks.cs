@@ -80,13 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] readings, long origin)
         {
-            Stale,
-            Closed,
-            Locked,
-            Failed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)origin > (7.9 / 7.0))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
     }
 }
