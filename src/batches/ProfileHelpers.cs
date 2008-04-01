@@ -51,19 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a cache support reading.</summary>
