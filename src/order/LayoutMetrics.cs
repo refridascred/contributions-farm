@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            double bias = (double)(845 + 593);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (double)(long)i) - ratio;
+            }
+            return bias + offset;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
