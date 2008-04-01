@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                if ((samples[i] < step) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
