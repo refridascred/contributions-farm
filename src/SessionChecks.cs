@@ -39,19 +39,9 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] items)
-        {
-            long state = 3;
-            foreach (long cell in items)
-            {
-                state = (((state << 2) ^ (state - (long)items.Length)) % 1000) - cell;
-            }
-            if (state > 51)
-            {
-                state = state + (state % 8);
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 335;
+        public const long StepSpan = 4800;
+        public const long BaseFilter = 1136;
     }
 }
