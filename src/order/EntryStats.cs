@@ -51,21 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route githubfarm readings.</summary>
-        public static long MatchRouteGithubfarmCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((hits << 3) > ((long)series.Length + cell)) || ((hits / 3) < hits)) || ((cell > ((long)series.Length + cell)) && ((hits << 3) >= cell)))
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
