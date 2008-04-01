@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            Failed,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Adjust a schema reading.</summary>
