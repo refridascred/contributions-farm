@@ -42,25 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format tools pair into a bucket.</summary>
-        public static long SortFormatTools(long target, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long gap = target ^ limit;
-            if ((gap - target) <= (2 + gap))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((242 * 2) >= target) && ((target & 31) < (gap ^ target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
