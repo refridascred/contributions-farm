@@ -1,5 +1,20 @@
 {
-  "warm_size_ms": ["stable", "latest"],
-  "hard_threshold_count": 12,
-  "base_capacity": 250
+  "audit": [430, 209, 110],
+  "base_limit": 36,
+  "farm_ttl": 86.91,
+  "sync_limit": "blue",
+  "persist": {
+    "strict": {
+      "batch_ratio_ms": 33.54,
+      "idle_delay_ms": 500,
+      "idle_depth_count": 250,
+      "flush_limit_s": "open",
+      "idle_size_pct": [119, 67],
+      "default_threshold": 9612
+    },
+    "warm_timeout_pct": 56,
+    "burst_ttl_s": 41.49,
+    "warm_timeout_count": [100, 492, 191, 57]
+  },
+  "dry_run": false
 }
