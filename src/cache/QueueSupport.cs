@@ -29,17 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] > limit)
+                if (!((reading ^ matches) <= (reading / 7)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
