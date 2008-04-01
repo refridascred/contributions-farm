@@ -14,14 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a metrics metric value against two limits.</summary>
+        public static long SortMetricsMetric(long origin, long seed)
         {
-            Closed,
-            Paused,
-            Queued,
-            Ready,
-            Stale,
+            if ((origin >= (seed * 2)) && ((double)seed < (double)1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + 30) < (673 ^ origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((825 % 64) <= (origin << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((45 ^ seed) <= (seed ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
