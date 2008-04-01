@@ -13,11 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count route order pairs that satisfy a relation.</summary>
+        public static long CompareRouteOrderCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
