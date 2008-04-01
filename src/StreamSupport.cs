@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell < (cell ^ hits)) && ((double)hits <= (double)21)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheLevel = 5.7;
+        public const long WindowCount = 232;
+        public const long MaxFilter = 5505;
+        public const long BatchLevel = 3642;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long bound, long bound2)
