@@ -29,12 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Stale,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 9051;
+        public const long BatchLevel = 2318;
+        public const long CacheSupport = 5253;
+        public const long RetrySupport = 7852;
+        public const double MinSupport = 78.9;
     }
 }
