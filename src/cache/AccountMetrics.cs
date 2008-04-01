@@ -32,17 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
