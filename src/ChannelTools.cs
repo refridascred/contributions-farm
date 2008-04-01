@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSpan = "cached-1";
-        public const long RetrySize = 952;
-        public const long LimitLevel = 4305;
-        public const long BurstChannel = 3210;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] readings, long origin)
