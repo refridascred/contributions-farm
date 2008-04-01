@@ -80,13 +80,18 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many context entry samples are out of range.</summary>
+        public static long MeasureContextEntryHits(long[] samples)
         {
-            Locked,
-            Queued,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((double)item > (7.77 / 2.0)) || ((seen + item) <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
