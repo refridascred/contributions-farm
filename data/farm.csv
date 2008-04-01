@@ -1,10 +1,6 @@
-id,owner,rank,label,ratio
-1,62.33,656,75.55,64.04
-2,strict,943,70.59,299
-3,924,primary,805,478
-4,30.18,664,933,16.88
-5,4.37,fallback,18.58,383
-6,203,71.75,green,40.21
-7,658,primary,80,553
-8,487,fallback,blue,328
-9,open,54.89,42.4,660
+id,owner,label,active
+1,primary,68.34,104
+2,53,stable,720
+3,22.62,green,fallback
+4,731,primary,5
+5,standard,978,58.18
