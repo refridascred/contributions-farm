@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long limit)
         {
-            long sum = 885;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum % 12) < datum)
+                if (levels[i] > limit)
                 {
-                    sum = (sum ^ (3 & 255)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
