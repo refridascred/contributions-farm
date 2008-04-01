@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "latest-edge";
-        public const double RetryChecks = 29.37;
-        public const string IdleChecks = "local-v2";
-        public const long HardBudget = 4127;
+        /// <summary>Derive the next layout window value from a seed.</summary>
+        public static long DeriveLayoutWindow(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((anchor % 24) > (target % 64))
+                {
+                    anchor = (anchor - (target / 8)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the format cache series from a seed.</summary>
         public static long SeriesFormatCache(long bound)
