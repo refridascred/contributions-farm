@@ -16,19 +16,14 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Ready,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
