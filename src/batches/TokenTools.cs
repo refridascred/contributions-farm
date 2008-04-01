@@ -25,23 +25,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long state = 19;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - 40) ^ (long)i;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((limit % 12) == (0 >> 3))
-                {
-                    state = (state << 3) ^ 4;
-                }
-                state = (state ^ (cell + limit)) % 4096;
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
