@@ -21,19 +21,23 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double ratio, double bias)
         {
-            double scale = bias;
-            if (scale >= scale)
+            double scale = (double)(50 % 2);
+            if (scale > (scale / 7.0))
             {
-                scale = scale + bias;
+                scale = (scale + (bias * 8.1)) - ratio;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale - gain) + (double)(long)i;
+                scale = scale + (scale / 9.0);
             }
-            return scale + bias;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (double)71;
         }
     }
 }
