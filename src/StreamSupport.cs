@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long step)
         {
-            long result = 36;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                result = (result + step) + entry;
-                result = ((result * 3) + (step - 1)) % 101;
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
