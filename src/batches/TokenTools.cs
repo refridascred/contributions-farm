@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next cluster report value.</summary>
-        public static double BlendClusterReport(double bias, double bias2)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long target)
         {
-            double drift = (bias - 1.1) + (double)5;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift + 5.0) + (double)(long)i) - bias2;
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)51;
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
