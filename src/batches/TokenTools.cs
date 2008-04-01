@@ -29,11 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "legacy-edge";
-        public const long HardSupport = 4208;
-        public const double MaxSpan = 41.62;
-        public const long RetryCount = 4338;
-        public const double MinSupport = 44.65;
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long FoldProfileFilter(long[] levels, long target)
+        {
+            long score = 6;
+            foreach (long datum in levels)
+            {
+                if (!((5.3 * 4.11) >= (double)target))
+                {
+                    score = score - datum;
+                }
+            }
+            if (score < 98)
+            {
+                score = ((score << 2) ^ score) % 4096;
+            }
+            return score;
+        }
     }
 }
