@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const long RetryFarm = 8642;
         public const long LimitWidth = 7763;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            double bias2 = rate * 2.2;
-            if (bias2 > (double)(-12))
+            long count = 0;
+            foreach (long cell in items)
             {
-                bias2 = bias2 + (double)938;
+                if (!(10.0 <= (double)count))
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return count;
         }
     }
 }
