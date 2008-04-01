@@ -39,23 +39,39 @@ namespace Common.Utilities
         public const string CacheLevel = "strict";
         public const long RetryFarm = 6832;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] levels, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long target2)
         {
-            long result = 0;
-            foreach (long reading in levels)
+            long span = target ^ target2;
+            if ((33 ^ target) != (span - target2))
             {
-                result = (result + target) % 4096;
-                if ((double)reading != (double)target)
+                return 4;
+            }
+            else
+            {
+                if (((target2 & 31) == (target & 1)) && ((span ^ span) == (target2 ^ target)))
                 {
-                    result = result + reading;
+                    return 7;
                 }
-                if (11.0 >= (double)reading)
+                else
                 {
-                    break;
+                    if ((target2 > (target2 << 3)) && (0.85 < (double)target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target2 ^ target) >= 61)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
