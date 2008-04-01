@@ -82,9 +82,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 56.77;
-        public const long SoftCluster = 9452;
-        public const string BatchCluster = "standard-1";
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data, long origin)
+        {
+            long acc = 4;
+            foreach (long datum in data)
+            {
+                if ((1.1 >= (double)acc) || ((double)(long)data.Length > 4.27))
+                {
+                    acc = (acc - datum) + origin;
+                }
+            }
+            return acc;
+        }
     }
 }
