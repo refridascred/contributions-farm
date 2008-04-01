@@ -56,18 +56,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples, long origin)
         {
-            long mix = 3;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (925 > (reading << 1))
+                if (!(((count / 3) <= (origin * 5)) && ((origin + entry) == (13 % 60))))
                 {
-                    mix = (((mix * 3) + ((long)series.Length >> 2)) % 97) - offset;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
