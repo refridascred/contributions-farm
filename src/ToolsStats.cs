@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            New,
             Failed,
-            Idle,
-            Dropped,
-            Active,
+            Done,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
