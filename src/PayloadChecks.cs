@@ -83,14 +83,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Locate a payload channel reading by value.</summary>
+        public static long LookupPayloadChannelIndex(long[] samples, long origin)
         {
-            Ready,
-            Failed,
-            Draft,
-            Locked,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
