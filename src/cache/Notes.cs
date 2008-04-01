@@ -55,14 +55,13 @@ namespace Common.Utilities
         public const double SoftScore = 97.64;
         public const long BaseSize = 4026;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Active,
-            Locked,
-            Stale,
-            Queued,
-            Failed,
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
