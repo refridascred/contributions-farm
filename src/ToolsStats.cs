@@ -32,16 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Fold a list of session cluster readings.</summary>
+        public static long FoldSessionCluster(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                state = ((state * 5) + (offset - state)) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                mark = ((mark + 76) % 1000) + datum;
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
