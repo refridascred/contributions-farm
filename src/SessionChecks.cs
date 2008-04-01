@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BaseDepth = 9034;
         public const double RetryFactor = 48.34;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values, long step)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)tally <= (3.9 / 3.0))
+                {
+                    tally = ((tally + 3) + value) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
