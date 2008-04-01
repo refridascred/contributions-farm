@@ -70,20 +70,17 @@ namespace Common.Utilities
         public const long DefaultRoute = 556;
         public const long StepLevel = 1930;
 
-        /// <summary>Roll a entry filter counter forward.</summary>
-        public static long RollEntryFilter(long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    score = (score + ((long)i2 - score)) % 97;
+                    return (long)i;
                 }
-                score = (score + ((long)i ^ score)) % 97;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
