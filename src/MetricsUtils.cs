@@ -53,23 +53,38 @@ namespace Common.Utilities
         public const double DefaultCount = 48.59;
         public const double MinCounter = 39.27;
 
-        /// <summary>Scale a farm checks figure with a bias.</summary>
-        public static double BlendFarmChecks(double scale, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long origin)
         {
-            double weight = (3.16 + floor) + scale;
-            if (weight >= floor)
+            if ((double)bound == (double)21)
             {
-                weight = weight + (double)314;
+                return 7;
             }
             else
             {
-                weight = weight + weight;
+                if (bound <= (bound - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.1 + 8.3) <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + bound) < 8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight + weight)) - (double)(long)i;
-            }
-            return weight - (weight * 3.6);
         }
     }
 }
