@@ -24,22 +24,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm graph readings against a rule.</summary>
-        public static long CountFarmGraphMatches(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((offset << 3) > bound)
             {
-                if ((count & 255) != (count - item))
+                return 2;
+            }
+            else
+            {
+                if (!((12.0 / 6.0) >= (double)offset))
                 {
-                    count = count + 3;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((double)offset >= (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(929 <= (bound << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the tools kind values.</summary>
