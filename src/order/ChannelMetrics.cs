@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long CombineSchemaContext(long[] readings, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long target)
         {
-            long anchor = 8;
-            foreach (long reading in readings)
+            long result = 87;
+            foreach (long entry in samples)
             {
-                anchor = ((((anchor << 2) ^ ((long)readings.Length % 5)) % 1000) + reading) + bound;
+                if (((double)entry >= (15.0 - 7.0)) || ((entry % 16) > (entry * 5)))
+                {
+                    result = (((result * 4) + (entry % 10)) % 255) + target;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
