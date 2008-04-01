@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const string LimitSize = "alpha";
         public const long BurstFilter = 1881;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits / 8) >= (hits - 151))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
