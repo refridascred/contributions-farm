@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= target)
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
