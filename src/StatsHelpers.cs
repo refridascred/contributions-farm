@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already checks entry that matches the target.</summary>
-        public static long LookupAlreadyChecksIndex(long[] series, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
