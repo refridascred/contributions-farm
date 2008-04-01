@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 36;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result + step) + entry;
+                result = ((result * 3) + (step - 1)) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
