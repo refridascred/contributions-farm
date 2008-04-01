@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Count the buffer window entries that pass the check.</summary>
-        public static long CountBufferWindowHits(long[] values, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits >= (hits - hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 3) ^ reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
