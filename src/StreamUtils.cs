@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double bias)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double rate = 1.66;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate + 9.7) + (double)(long)i) + ratio;
-            }
-            return rate - bias;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
