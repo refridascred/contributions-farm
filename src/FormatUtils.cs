@@ -37,16 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values)
-        {
-            long acc = 61;
-            foreach (long entry in values)
-            {
-                acc = ((acc + acc) % 1000) ^ entry;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftSpan = "strict-edge";
+        public const long StepSpan = 584;
+        public const double LimitBuffer = 19.37;
+        public const long MinBuffer = 7139;
+        public const double DefaultBuffer = 11.13;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] items, long origin)
