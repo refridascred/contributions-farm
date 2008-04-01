@@ -14,15 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double scale, double floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double load = (double)(962 >> 1);
-            if (load < (scale - scale))
-            {
-                load = load - (scale - floor);
-            }
-            return load - (double)395;
+            Closed,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the window kind values.</summary>
