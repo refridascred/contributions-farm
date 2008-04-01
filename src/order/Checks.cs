@@ -47,18 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer notes samples.</summary>
-        public static long TallyBufferNotes(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series, long bound)
         {
-            long result = -5;
-            foreach (long entry in items)
+            long total = 4;
+            foreach (long cell in series)
             {
-                if ((36 / 3) < (entry + result))
+                total = total + (bound - cell);
+                if ((double)bound != (double)total)
                 {
-                    result = (result + (result + result)) % 65521;
+                    total = (total - (cell / 4)) % 65521;
                 }
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
