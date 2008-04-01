@@ -33,12 +33,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long origin)
         {
-            Paused,
-            Retry,
-            Done,
+            long delta = floor - origin;
+            if ((floor - floor) >= (origin + delta))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (13.0 * 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ delta) < delta)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
