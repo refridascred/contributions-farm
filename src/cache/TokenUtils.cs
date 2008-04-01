@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long sum = -63;
-            foreach (long reading in items)
-            {
-                if ((sum + reading) == (sum % 60))
-                {
-                    sum = ((sum << 2) ^ (sum / 7)) % 65521;
-                }
-            }
-            if (sum > 129)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 4096;
-            }
-            return sum % 4096;
+            Idle,
+            New,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
