@@ -1,7 +1,7 @@
 {
-  "hard_ttl_pct": [415, 250, 273, 112],
-  "already_delay": "latest",
-  "batch_delay": ["stable", "primary", "blue"],
-  "max_retries": "open",
-  "readonly": ["edge", "blue"]
+  "githubfarm_depth": 250,
+  "soft_ttl": ["open", "local", "legacy", "blue"],
+  "burst_capacity_pct": [123, 247, 41, 235],
+  "base_interval_s": true,
+  "format_threshold": ["latest", "latest"]
 }
