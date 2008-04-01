@@ -1,14 +1,15 @@
 {
-  "warm_threshold_s": 95,
-  "base_retries": 2539,
-  "default_capacity": 92.6,
-  "editor_timeout": true,
-  "report_ratio": "stable",
-  "readonly": {
-    "flush_window_count": "stable",
-    "already_capacity": 98.46,
-    "batch_size": [417, 443],
-    "stream_capacity": 17,
-    "layout_depth": 3563
-  }
+  "burst_ttl_s": {
+    "graph_window": 100,
+    "readonly": "staging",
+    "flush_window": 80.7,
+    "verbose": true,
+    "poll_threshold_s": 67,
+    "notes_window": "fallback"
+  },
+  "contributi_threshold": [210, 229, 304],
+  "order_threshold": [58, 124, 414, 456],
+  "stats_interval": false,
+  "batch_depth_s": 500,
+  "verbose": 30
 }
