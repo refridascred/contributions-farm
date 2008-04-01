@@ -56,19 +56,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long mix = 511;
-            foreach (long item in data)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix << 3) ^ (1 * 2)) % 65521;
-                if ((0.9 * 12.0) >= (double)item)
-                {
-                    mix = (mix ^ (mix ^ step)) % 255;
-                }
+                result = result ^ (offset / 3);
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
