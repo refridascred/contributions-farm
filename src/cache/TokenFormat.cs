@@ -17,18 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample & 255) > (origin - sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
