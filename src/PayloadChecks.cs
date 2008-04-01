@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Queued,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
