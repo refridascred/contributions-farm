@@ -30,10 +30,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 37.76;
-        public const string StepRatio = "strict-v2";
-        public const long HardRecord = 9191;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Active,
+            New,
+            Draft,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double IdleBudget = 58.65;
