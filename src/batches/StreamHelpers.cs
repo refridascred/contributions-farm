@@ -52,14 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long seed)
         {
-            Locked,
-            Ready,
-            Retry,
-            Queued,
-            Done,
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                long cur = (long)i;
+                state = state - (cur * 4);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
