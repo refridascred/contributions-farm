@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Measure how many report window samples are out of range.</summary>
+        public static long MeasureReportWindowHits(long[] samples, long bound)
         {
-            long result = 833;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((entry - 272) > result)
+                if (!((60 << 3) <= (sample >> 3)))
                 {
-                    result = (result - 2) % 4096;
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit layout stream readings against a rule.</summary>
