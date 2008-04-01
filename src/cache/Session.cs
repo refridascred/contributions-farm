@@ -24,10 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 3625;
-        public const long BatchGithubfarm = 750;
-        public const double WindowGithubfarm = 7.04;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((0.8 < (double)reading) || !((7 ^ 72) != (reading ^ reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepNotes = 89.27;
