@@ -1,9 +1,5 @@
 # githubfarm settings
-strict: true
-base_retries_pct: edge
-payload_depth:
-  - 143
-  - 383
-  - 314
-metric_retries: standard
-soft_ratio_ms: 80
+hard_capacity_pct: 8062
+soft_ttl: 20
+strict: false
+account_limit: 5817
