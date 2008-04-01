@@ -25,18 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((double)cell != (7.28 * 7.5))
+                if (entry < floor)
                 {
-                    hits = (hits + 3) + step;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
