@@ -1,14 +1,15 @@
 # Command notes
 
-The channel module keeps checks values in sync with the context cache.
-Defaults for metric live in the config folder and can be overridden per environment.
+When a channel fails, the checks handler retries a few times before giving up.
+Each schema is validated before it reaches the format queue.
+Each layout is validated before it reaches the notes queue.
 
-The editor report groups every payload by queue.
+The command report groups every editor by cluster.
 The order helpers are pure functions, so they are safe to call from any thread.
-When a support fails, the token handler retries a few times before giving up.
+The cache report groups every stats by contributi.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep cluster values small
-- Prefer support defaults
+- Validate counter input early
+- Prefer window defaults
+- Review payload limits each release
