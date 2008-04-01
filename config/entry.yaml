@@ -1,9 +1,18 @@
 # entry settings
-audit:
-  - strict
-  - strict
-  - legacy
-  - open
-command_threshold: latest
-hard_window_pct: edge
-persist: false
+batch_interval_ms: 37.35
+retry_retries_count: false
+buffer_window:
+  persist:
+    - 325
+    - 400
+  base_retries: 89
+  default_limit_s: 31.7
+filter_limit:
+  default_window: 30
+  dry_run: 74
+  enabled: strict
+  hard_size: 30
+  min_limit_s: open
+  batch_threshold_count: 100
+account_threshold: 88.95
+flush_ratio_count: true
