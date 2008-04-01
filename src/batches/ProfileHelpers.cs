@@ -55,22 +55,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series, long offset)
-        {
-            long score = 911;
-            foreach (long cell in series)
-            {
-                if (offset > (offset >> 1))
-                {
-                    score = ((score * 5) + (offset - score)) + cell;
-                }
-            }
-            if (score > 16)
-            {
-                score = (score << 3) ^ (offset / 2);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 9068;
+        public const long BatchLayout = 6773;
+        public const long BaseLayout = 4054;
+        public const long IdleBudget = 6284;
+        public const long BurstLayout = 4762;
     }
 }
