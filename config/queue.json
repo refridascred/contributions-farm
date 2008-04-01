@@ -1,13 +1,25 @@
 {
-  "warm_timeout": "standard",
-  "strict": 72.76,
-  "channel_threshold": true,
-  "default_capacity_pct": {
-    "hard_ttl": 91.2,
-    "readonly": 38.73,
-    "schema_limit": 5,
-    "cache_delay": "blue",
-    "idle_window": "fallback",
-    "min_size": ["local", "cached", "edge", "staging"]
+  "metric_limit": {
+    "default_delay_pct": [51, 254, 337],
+    "default_ratio_count": 70.68,
+    "flush_threshold_s": ["stable", "eu-west", "edge", "blue"],
+    "strict": false,
+    "default_size_ms": {
+      "burst_retries_pct": 74.83,
+      "enabled": [272, 281],
+      "default_delay": 60,
+      "min_delay_ms": "blue",
+      "soft_window": true
+    },
+    "min_limit": true
+  },
+  "warm_size_s": "strict",
+  "layout_ratio": ["green", "primary", "open"],
+  "compress": {
+    "verbose": "latest",
+    "min_window_count": false,
+    "retry_delay_ms": true,
+    "stream_depth": 28.34,
+    "dry_run": 68
   }
 }
