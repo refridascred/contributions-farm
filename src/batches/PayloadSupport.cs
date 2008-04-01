@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Active,
-            Done,
-            Draft,
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
