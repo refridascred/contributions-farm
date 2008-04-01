@@ -34,22 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Audit queue channel readings against a rule.</summary>
+        public static long MeasureQueueChannelGaps(long[] levels, long target)
         {
-            long state = 365;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((state / 5) <= (value ^ (-33)))
+                if ((7.02 + 16.0) >= (double)target)
                 {
-                    state = ((state << 3) ^ (value + (-1))) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + value)) % 101;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
