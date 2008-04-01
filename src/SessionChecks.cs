@@ -16,20 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 4953;
+        public const string BurstCount = "local-1";
+        public const string BaseFilter = "primary-edge";
+        public const string StepFilter = "fallback-1";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] samples)
