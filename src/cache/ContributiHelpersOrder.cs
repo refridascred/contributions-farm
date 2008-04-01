@@ -14,20 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 1074;
+        public const string MinTimeout = "alpha";
+        public const double LimitCache = 98.66;
+        public const long BaseLevel = 7033;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinFactor = 7077;
