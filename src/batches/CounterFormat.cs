@@ -27,22 +27,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 28.64;
+        public const long MaxCache = 329;
+        public const long BaseCache = 7626;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] values)
