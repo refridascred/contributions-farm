@@ -50,13 +50,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate session layout readings against a bound.</summary>
+        public static bool CheckSessionLayoutRange(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
