@@ -16,12 +16,14 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseWidth = 3181;
-        public const long RetryContext = 4165;
-        public const long LimitCount = 5958;
-        public const double StepContext = 65.98;
-        public const long CacheSpan = 1420;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] data)
