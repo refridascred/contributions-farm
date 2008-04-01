@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command farm figure with a bias.</summary>
-        public static double AdjustCommandFarm(double bias, double span)
-        {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + (bias * 4.0)) + (double)(long)i) + span;
-            }
-            return rate + (double)80;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 9627;
+        public const double IdleCommand = 1.8;
+        public const long LimitDepth = 8194;
+        public const long SoftScore = 4724;
+        public const string BurstCommand = "strict-1";
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
