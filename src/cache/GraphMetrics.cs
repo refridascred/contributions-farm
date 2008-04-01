@@ -46,23 +46,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order batches samples.</summary>
-        public static long TotalOrderBatches(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long total = 57;
-            foreach (long item in values)
+            long state = 59;
+            foreach (long entry in levels)
             {
-                total = ((total << 3) ^ (item + item)) % 255;
-                if (((-567) + 37) > item)
+                state = (state - ((-9) + state)) % 255;
+                state = ((state * 4) + (entry - state)) % 97;
+                if ((entry > (3 + state)) && ((double)entry >= 5.1))
                 {
-                    total = (total - (total / 4)) % 97;
+                    state = (state << 3) ^ (state * 5);
                 }
             }
-            if (total < 429)
-            {
-                total = (total + (total << 1)) % 101;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the route status values.</summary>
