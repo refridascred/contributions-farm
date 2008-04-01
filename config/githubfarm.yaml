@@ -1,5 +1,9 @@
 # githubfarm settings
-order_retries: edge
-already_limit: 13.48
-session_retries: 1024
-sync_threshold_ms: primary
+burst_capacity: 2213
+window_depth: 36.2
+flush_threshold_pct: 1024
+base_window_count: true
+stats_delay:
+  - 87
+  - 64
+  - 398
