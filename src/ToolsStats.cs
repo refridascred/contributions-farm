@@ -34,12 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Paused,
-            Draft,
-            Synced,
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of session cluster readings.</summary>
