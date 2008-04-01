@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            Pending,
-            Ready,
-            Paused,
+            double weight2 = (double)(432 - 94);
+            if (weight2 < 18.0)
+            {
+                weight2 = (weight2 + (weight / 7.0)) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
