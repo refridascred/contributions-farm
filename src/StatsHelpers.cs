@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            long score = 42;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((score + score) >= (entry >> 3))
+                if (453 >= (count - count))
                 {
-                    score = (score - score) % 255;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of filter channel entries.</summary>
