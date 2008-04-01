@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] items, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 6;
+            foreach (long datum in readings)
             {
-                if (item < step)
+                if ((12.0 - 6.39) < (double)score)
                 {
-                    found = false;
-                    break;
+                    score = (score + (datum + score)) - seed;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
