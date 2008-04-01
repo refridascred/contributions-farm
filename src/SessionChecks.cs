@@ -12,16 +12,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry * 3) + (carry + carry);
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
