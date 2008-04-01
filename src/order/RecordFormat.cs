@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            double weight = rate / 2.0;
+            if (weight < 8.28)
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight - rate)) + (double)(long)i;
+            }
+            return weight + (floor + floor);
         }
 
         /// <summary>Describe the stream class values.</summary>
