@@ -33,13 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long step)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
+            long mix = 4;
+            foreach (long cell in levels)
+            {
+                if ((mix + mix) <= (cell + mix))
+                {
+                    mix = ((mix << 2) ^ (cell >> 2)) - step;
+                }
+            }
+            if (mix < 66)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
