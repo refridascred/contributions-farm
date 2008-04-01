@@ -60,15 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools metric counter forward.</summary>
-        public static long DeriveToolsMetric(long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((hits > (item + item)) && ((item >= (item ^ hits)) || ((55 + item) <= item)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
