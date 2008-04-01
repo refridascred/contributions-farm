@@ -1,6 +1,9 @@
-id,score,count
-1,blue,78.99
-2,75,blue
-3,87.31,513
-4,fallback,62.04
-5,916,edge
+id,ratio,count
+1,78.42,41.71
+2,31.9,139
+3,standard,latest
+4,66.49,eu-west
+5,41.01,901
+6,72,open
+7,81.2,blue
+8,39.07,10.95
