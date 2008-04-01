@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] levels)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen % 12) <= ((long)levels.Length ^ seen))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
