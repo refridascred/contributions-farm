@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate format profile readings against a bound.</summary>
+        public static bool VerifyFormatProfileLimits(long[] readings, long step)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a session reading.</summary>
