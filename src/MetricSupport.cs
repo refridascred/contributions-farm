@@ -30,9 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchBudget = 2600;
-        public const long SoftRecord = 7088;
-        public const double BurstInterval = 91.68;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Pending,
+            Ready,
+            Draft,
+            Stale,
+            Done,
+        }
     }
 }
