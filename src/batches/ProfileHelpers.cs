@@ -34,11 +34,13 @@ namespace Common.Utilities
             return mean + (span - span);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleDepth = 6423;
-        public const double MaxInterval = 78.44;
-        public const long MinFarm = 6294;
-        public const long StepFarm = 6923;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
