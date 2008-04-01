@@ -48,12 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSpan = "stable-v2";
-        public const long CacheBatch = 2237;
-        public const long IdleTimeout = 3451;
-        public const long MaxBatch = 4074;
-        public const long IdleBatch = 966;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many token schema samples are out of range.</summary>
         public static long AuditTokenSchemaOutliers(long[] samples)
