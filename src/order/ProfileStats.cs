@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Closed,
-            Queued,
             Locked,
+            Done,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
