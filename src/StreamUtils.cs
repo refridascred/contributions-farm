@@ -69,17 +69,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((0 - 70) < (target & 15))
             {
-                if (data[i] == origin)
+                return 6;
+            }
+            else
+            {
+                if ((8.0 + 2.0) > (double)target)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((target + target) >= (65 % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
