@@ -24,18 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long sum = 380;
-            foreach (long cell in items)
-            {
-                if (((double)sum <= 17.0) && ((0.6 + 7.15) == (double)cell))
-                {
-                    sum = (sum - (46 - sum)) % 97;
-                }
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
