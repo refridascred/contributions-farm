@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            double gain = floor;
+            return gain + (weight - weight);
         }
     }
 }
