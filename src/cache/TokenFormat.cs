@@ -41,39 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long GradeStreamChannel(long seed, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long target)
         {
-            long next = seed ^ step;
-            if ((seed & 15) > seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.83 / 5.0) <= (double)seed) && ((double)step > (1.5 - 17.0)))
+                if (readings[i] < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-497) < (next % 100)) || (step >= (84 / 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (8 <= (next << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
