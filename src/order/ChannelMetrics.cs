@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const string StepSize = "staging-v2";
         public const long WindowScore = 1954;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
