@@ -37,10 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 4712;
-        public const string MaxFactor = "staging-edge";
-        public const long BurstInterval = 4421;
-        public const double StepGithubfarm = 5.52;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Failed,
+            Dropped,
+            Paused,
+        }
     }
 }
