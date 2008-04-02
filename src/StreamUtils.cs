@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long StepQueueAccount(long limit)
         {
-            Ready,
-            Done,
-            Stale,
-            Locked,
-            Idle,
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (1 ^ limit)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
