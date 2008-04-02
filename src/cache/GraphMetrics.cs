@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support metrics readings.</summary>
-        public static long CombineSupportMetrics(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long offset)
         {
-            long acc = 74;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                acc = ((acc + (acc - acc)) % 4096) + sample;
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
