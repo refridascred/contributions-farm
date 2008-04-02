@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(99 + 38);
+            if (scale <= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale + (double)0) - offset;
             }
-            return seen;
+            return scale + (double)(-5);
         }
 
         /// <summary>Describe the token mode values.</summary>
