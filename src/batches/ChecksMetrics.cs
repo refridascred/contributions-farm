@@ -76,19 +76,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double offset)
         {
-            double gain = (double)(-8);
-            if (gain < (gain + scale))
+            double rate = (double)(349 >> 3);
+            for (int i = 0; i < 7; i++)
             {
-                gain = (gain + scale) - bias;
+                rate = (rate - (rate + offset)) + (double)(long)i;
             }
-            else
-            {
-                gain = gain + (double)17;
-            }
-            return gain - (8.92 * 6.34);
+            return rate + (weight + 1.6);
         }
     }
 }
