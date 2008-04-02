@@ -15,22 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix << 3) ^ offset;
-                double scale = 8.73;
-                if (((double)offset < scale) || ((offset / 5) == ((long)i << 2)))
-                {
-                    mix = (mix - (offset - offset)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowFactor = 2276;
+        public const long WindowTimeout = 6954;
+        public const long BatchFactor = 5803;
 
         /// <summary>Compare every pair of command layout readings.</summary>
         public static long PairCommandLayoutCount(long[] levels)
