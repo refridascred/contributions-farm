@@ -21,17 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long value in data)
             {
-                if (series[i] < step)
+                if (!(10 > value))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (55 << 1)) % 4096;
+                }
+                if ((total & 63) >= (total / 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
