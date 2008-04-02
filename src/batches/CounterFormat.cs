@@ -19,32 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long acc = 7;
-            foreach (long reading in values)
-            {
-                acc = (acc - (reading + reading)) % 65521;
-                acc = (acc + 8) % 101;
-                if ((double)acc > (8.54 / 7.0))
-                {
-                    acc = (acc << 3) ^ (acc + reading);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (reading >> 1);
-                }
-                if ((acc % 24) > (acc / 7))
-                {
-                    break;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc - (acc + 95)) % 255;
-            }
-            return acc % 65521;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
