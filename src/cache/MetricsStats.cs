@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long HardMetrics = 2258;
         public const double WindowMetrics = 68.95;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Project the next githubfarm farm value.</summary>
+        public static double BlendGithubfarmFarm(double rate, double floor)
         {
-            Done,
-            Pending,
-            Ready,
+            double gain = (double)(5 - 94);
+            if (gain > (gain - floor))
+            {
+                gain = gain - (double)743;
+            }
+            else
+            {
+                gain = gain + (double)(-5);
+            }
+            return gain - (rate + gain);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
