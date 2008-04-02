@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] values, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((target >> 4) == (cell - 40))
+                if (entry >= seed)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every cluster schema entry stays within the limit.</summary>
