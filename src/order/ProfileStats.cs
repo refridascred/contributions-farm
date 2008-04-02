@@ -30,12 +30,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 7218;
-        public const double CacheContributi = 75.2;
-        public const long HardWidth = 8475;
-        public const long SoftContributi = 7662;
-        public const long LimitWidth = 2104;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((405 & 127) <= bound)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] values, long limit)
