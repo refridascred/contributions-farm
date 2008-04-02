@@ -19,21 +19,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of schema account readings.</summary>
-        public static long PairSchemaAccountCount(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 254;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)limit >= (6.3 * 2.23)) || ((4.0 - 4.4) == (double)score))
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score * 2) + limit) % 65521) ^ datum;
                 }
+                if ((18.0 - 6.35) <= (double)limit)
+                {
+                    score = (score + (19 - limit)) % 65521;
+                    score = score ^ (score + 4);
+                }
+                score = (score * 5) + score;
             }
-            return count;
+            return score;
         }
     }
 }
