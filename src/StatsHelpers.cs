@@ -42,32 +42,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long origin2)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] values, long bound)
         {
-            long span = origin - origin2;
-            if ((span ^ origin) < origin)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (span > ((-156) ^ (-995)))
+                if (datum > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin2 + origin) == (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
