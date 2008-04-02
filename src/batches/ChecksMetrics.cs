@@ -74,21 +74,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 656;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)limit == (double)sum)
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (reading >> 3)) % 4096;
                 }
             }
-            return matches;
+            if (sum < 69)
+            {
+                sum = ((sum << 2) ^ (limit & 31)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
