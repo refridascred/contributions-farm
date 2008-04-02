@@ -80,12 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9188;
-        public const long CacheTools = 4298;
-        public const string BaseLevel = "stable-v2";
-        public const long RetrySpan = 5647;
-        public const string BatchTools = "staging-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((-7) - sample) != (target % 8))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of order support entries.</summary>
         public static long ScoreOrderSupport(long[] series)
