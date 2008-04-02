@@ -58,12 +58,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            Ready,
-            Paused,
-            Locked,
+            long state = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
