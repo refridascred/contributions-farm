@@ -1,21 +1,8 @@
 # support settings
-default_window_ms:
+max_timeout: 1024
+metrics_ratio: 10
+enabled: cached
+retry_timeout_count:
+  - strict
   - legacy
-  - legacy
-graph_depth: 1024
-retry_delay_ms:
-  - edge
-  - local
   - latest
-base_interval: true
-enabled:
-  hard_depth_pct: 100
-  burst_interval: strict
-  burst_ratio_pct: eu-west
-  session_retries: blue
-  layout_ratio: 30
-idle_size:
-  - 18
-  - 207
-  - 474
-  - 329
