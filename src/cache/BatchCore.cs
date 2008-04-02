@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor command readings against a rule.</summary>
-        public static long AuditEditorCommandMatches(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((0 % 24) < (sample >> 4))
+                if (reading < step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a order stats.</summary>
