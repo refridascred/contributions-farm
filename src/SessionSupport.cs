@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] values)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (value <= bound)
+                if ((matches ^ (long)values.Length) == ((-75) & 127))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
