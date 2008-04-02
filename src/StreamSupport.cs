@@ -14,22 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double mean = floor;
+            if (mean < scale)
             {
-                if ((matches + 9) > sample)
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (mean - 18.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + (floor - floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (scale + mean)) + (double)(long)i;
+            }
+            return mean + (scale + mean);
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
