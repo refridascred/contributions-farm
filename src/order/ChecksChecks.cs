@@ -27,18 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item * 3) < item)
-                {
-                    tally = (tally + 3) + origin;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
