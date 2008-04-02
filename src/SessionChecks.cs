@@ -20,12 +20,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultFactor = 9382;
-        public const string WindowRatio = "cached";
-        public const double BatchSize = 94.97;
-        public const double MaxSpan = 82.43;
-        public const string BurstNotes = "legacy-edge";
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 36;
