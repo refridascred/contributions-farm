@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of record context readings.</summary>
-        public static long MatchRecordContextCount(long[] readings)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
