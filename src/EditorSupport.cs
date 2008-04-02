@@ -14,18 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long CountClusterCounterOutliers(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (double)65)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
