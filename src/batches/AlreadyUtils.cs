@@ -39,14 +39,17 @@ namespace Common.Utilities
         public const string BurstReport = "standard";
         public const long BurstFactor = 4865;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            Synced,
-            Ready,
-            Paused,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
