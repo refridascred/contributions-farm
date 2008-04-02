@@ -20,18 +20,17 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Count the cache report entries that pass the check.</summary>
-        public static long AuditCacheReportMatches(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.1 - 20.0) <= (double)count)
+                if (readings[i] > limit)
                 {
-                    count = (count + 1) - cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
