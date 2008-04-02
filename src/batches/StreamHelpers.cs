@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const string BatchRoute = "open-1";
         public const long HardInterval = 163;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((-37) > (cell / 2))
+                if (hits <= 855)
                 {
-                    matches = (matches + 2) + target;
+                    hits = ((hits + 1) - entry) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
