@@ -23,23 +23,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double span)
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long TallyContributiBatchesHits(long[] series, long offset)
         {
-            double bias = 3.0 * 4.0;
-            if (bias <= (rate / 6.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                bias = bias - rate;
+                if (!(((cell + count) > count) && (offset > (offset + offset))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (span / 8.0)) + (double)(long)i;
-            }
-            return bias + (2.13 - rate);
+            return count;
         }
     }
 }
