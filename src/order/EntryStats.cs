@@ -19,11 +19,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long seed)
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mark = 2;
+            foreach (long cell in values)
+            {
+                if (((cell / 6) >= (cell << 3)) || (((long)values.Length << 3) > (seed + seed)))
+                {
+                    mark = (mark + cell) % 1000;
+                    break;
+                }
+                if ((seed % 3) == (seed / 5))
+                {
+                    mark = (mark ^ (seed ^ seed)) % 101;
+                    break;
+                }
+                mark = (mark ^ (mark << 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
