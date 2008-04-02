@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Find the first entry token entry that matches the target.</summary>
+        public static long SeekEntryTokenIndex(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
