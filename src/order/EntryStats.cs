@@ -39,21 +39,21 @@ namespace Common.Utilities
         public const long StepMetrics = 1860;
         public const long BaseMetrics = 5097;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 4)
+                    if ((values[i] + values[j]) == 0)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
