@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of record payload readings.</summary>
-        public static long FoldRecordPayload(long[] readings, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long origin)
         {
-            long sum = 4;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum ^ (sum + cell)) % 4096) - offset;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the cache metric entries that pass the check.</summary>
