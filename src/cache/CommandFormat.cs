@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the order class values.</summary>
