@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long floor)
         {
-            Synced,
-            Active,
-            Stale,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of support metrics readings.</summary>
