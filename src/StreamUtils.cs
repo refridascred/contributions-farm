@@ -82,17 +82,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBudget = 4344;
+        public const long StepCount = 6995;
+        public const long MinBatches = 9583;
+        public const long SoftBatches = 9843;
+        public const long BaseLevel = 801;
     }
 }
