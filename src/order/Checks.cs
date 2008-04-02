@@ -53,11 +53,18 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long MeasurePayloadClusterMatches(long[] items)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((92 << 1) <= (cell + cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
