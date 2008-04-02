@@ -32,39 +32,17 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long seed, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] samples, long target)
         {
-            long slot = seed + bound;
-            if ((double)slot == (3.0 * 14.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (slot + slot))
+                if (samples[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((slot ^ bound) <= (bound + bound)) || ((3 - seed) > (6 - 795)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (slot >= (slot + 175))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
