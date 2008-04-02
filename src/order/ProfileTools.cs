@@ -22,18 +22,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 79.56;
+        public const double CacheOrder = 8.59;
+        public const long BurstFactor = 8090;
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] data)
