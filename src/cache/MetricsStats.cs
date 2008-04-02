@@ -13,15 +13,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items, long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long target)
         {
-            long total = 671;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total << 3) ^ (datum - total)) % 101) - target;
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
