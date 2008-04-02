@@ -85,13 +85,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long target)
         {
-            Retry,
-            Synced,
-            Paused,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
