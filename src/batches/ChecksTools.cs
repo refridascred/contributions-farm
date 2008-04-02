@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count account batch pairs that satisfy a relation.</summary>
-        public static long PairAccountBatchCount(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)count > 9.9) && ((count / 7) > reading))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) - step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
