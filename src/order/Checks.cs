@@ -31,21 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 26;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((state * 3) < (state ^ 313)) && ((double)13 < (double)state))
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 3) + 15) ^ cell;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Describe the layout status values.</summary>
