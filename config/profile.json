@@ -1,19 +1,7 @@
 {
-  "default_depth_s": 11,
-  "poll_ratio_count": {
-    "graph_interval": "cached",
-    "soft_window_count": "blue",
-    "record_delay": true,
-    "route_size": 30
-  },
-  "dry_run": [308, 414, 420],
-  "min_window": {
-    "profile_retries": 8659,
-    "soft_ttl_pct": 45.9,
-    "strict": [327, 157, 322, 63],
-    "commits_timeout": "edge",
-    "min_interval_pct": ["green", "blue", "legacy", "fallback"]
-  },
-  "token_retries": "primary",
-  "payload_timeout": 250
+  "min_ttl": "legacy",
+  "strict": 13,
+  "batch_timeout_ms": 1024,
+  "default_ratio_count": "blue",
+  "default_interval_ms": 60
 }
