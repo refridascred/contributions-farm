@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double ratio, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double bias = 9.3;
-            if (bias <= ratio)
-            {
-                bias = (bias - ratio) - floor;
-            }
-            return bias - (double)(-66);
+            Draft,
+            Locked,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Describe the queue mode values.</summary>
