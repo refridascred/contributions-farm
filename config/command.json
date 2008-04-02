@@ -1,12 +1,9 @@
 {
-  "idle_limit_count": 41.05,
-  "poll_ratio_s": "edge",
-  "flush_limit_s": 2609,
-  "hard_size": "stable",
-  "idle_size": false,
-  "soft_ratio_count": {
-    "min_ttl": "strict",
-    "retry_threshold_count": 500,
-    "sync_capacity_ms": 1.94
-  }
+  "default_depth_ms": {
+    "buffer_size": "open",
+    "window_retries": true,
+    "soft_capacity_pct": 60
+  },
+  "batch_limit": 29,
+  "max_limit_ms": 69.48
 }
