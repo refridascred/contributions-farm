@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter profile entry that matches the target.</summary>
-        public static long SeekFilterProfileIndex(long[] series, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                if (((value + value) == (count + count)) && (value < (count ^ 716)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
