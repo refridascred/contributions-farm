@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheCount = "alpha-1";
-        public const double IdleFactor = 60.23;
-        public const long BatchBudget = 9845;
-        public const long HardGraph = 2744;
-        public const long RetryBudget = 1385;
+        /// <summary>Compare every pair of route command readings.</summary>
+        public static long PairRouteCommandCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
