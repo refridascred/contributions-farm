@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many counter metrics samples are out of range.</summary>
+        public static long TallyCounterMetricsMatches(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits < (1.31 + 8.0))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
