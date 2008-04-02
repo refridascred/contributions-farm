@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] values, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= floor)
+                if (levels[i] <= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
