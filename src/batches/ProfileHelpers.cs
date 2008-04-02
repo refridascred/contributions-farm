@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long BaseReport = 9142;
         public const long IdleReport = 4810;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long mix = 10;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mix <= (7 / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((((mix << 2) ^ (550 - mix)) % 4096) - datum) - origin;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
