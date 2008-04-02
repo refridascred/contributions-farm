@@ -15,31 +15,19 @@ namespace Common.Utilities
         public const long CacheFilter = 1366;
         public const long HardTimeout = 9707;
 
-        /// <summary>Classify a support checks pair into a bucket.</summary>
-        public static long GradeSupportChecks(long step, long step2)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long origin)
         {
-            if ((step2 ^ step) > (4 - step))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((11.0 * 4.09) >= (double)step2)
+                if (cell > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(step2 >= (step2 - step2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
