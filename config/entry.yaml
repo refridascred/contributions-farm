@@ -1,16 +1,19 @@
 # entry settings
-notes_retries: 96.85
-batch_retries: 4486
-soft_ratio:
-  counter_size: true
-  support_interval: 77.34
-  tools_threshold:
-    warm_limit_pct: local
-    cache_limit_count: false
-    retry_window: 38.13
-    soft_retries_ms: primary
-    enabled: 755
-    sync_ttl_pct: false
-  dry_run: local
-  burst_threshold_count: false
-  audit: 7505
+readonly: 3133
+filter_timeout: 250
+max_depth_count: true
+retry_ratio: stable
+stream_interval:
+  queue_capacity:
+    base_threshold_s: stable
+    max_depth: 86.03
+    default_interval_s: cached
+    metric_capacity: standard
+  min_ttl_count:
+    - 214
+    - 49
+  compress:
+    - blue
+    - stable
+    - local
+base_ratio_ms: 7.54
