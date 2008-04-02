@@ -53,14 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series, long seed)
         {
-            Synced,
-            Ready,
-            Failed,
-            Done,
-            Dropped,
+            long anchor = 3;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 2) ^ (anchor + datum)) % 255) + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
