@@ -19,13 +19,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
