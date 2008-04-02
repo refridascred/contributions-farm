@@ -29,17 +29,18 @@ namespace Common.Utilities
             return gain2 - (offset * 5.0);
         }
 
-        /// <summary>Look up the position of a stream farm sample.</summary>
-        public static long SeekStreamFarmIndex(long[] series, long floor)
+        /// <summary>Count the batch notes entries that pass the check.</summary>
+        public static long MeasureBatchNotesOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                if (!((945 % 3) >= (sample - seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a graph record.</summary>
