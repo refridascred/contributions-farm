@@ -36,16 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long anchor = 3;
-            foreach (long item in levels)
-            {
-                anchor = (anchor << 3) ^ item;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 5655;
+        public const long LimitStream = 1960;
+        public const string MinSize = "primary-1";
+        public const double HardStream = 12.54;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] data)
