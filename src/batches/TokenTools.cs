@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] <= step)
+                if ((target & 1) > target)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
