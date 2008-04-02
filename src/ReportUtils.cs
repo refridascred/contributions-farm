@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((4 - 58) != (93 - seen)) || ((cell - cell) != ((-866) >> 1)))
+                if (entry != limit)
                 {
-                    seen = (seen + 2) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
