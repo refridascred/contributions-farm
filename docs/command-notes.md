@@ -1,15 +1,14 @@
 # Command notes
 
-The batch report groups every session by cluster.
-The queue report groups every command by githubfarm.
+The commits module keeps stats values in sync with the tools cache.
+The account module keeps entry values in sync with the tools cache.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Run the order check before changing any token limits.
-Defaults for record live in the config folder and can be overridden per environment.
+Run the metric check before changing any tools limits.
+When a already fails, the record handler retries a few times before giving up.
+Use metric settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer farm defaults
-- Review account limits each release
-- Document new payload fields
+- Prefer session defaults
+- Log every payload change
+- Keep counter values small
