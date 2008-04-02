@@ -16,24 +16,18 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long ClassifyAccountAlready(long offset, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data, long offset)
         {
-            if (!(offset > (3 / 8)))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (offset + 59))
+                if ((double)count > 3.0)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = ((count + 2) + entry) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
