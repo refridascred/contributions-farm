@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long bound)
         {
-            double gain = rate;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = ((gain + (rate - 9.1)) + (double)(long)i) + offset;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain + rate;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
