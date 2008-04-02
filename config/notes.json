@@ -1,10 +1,6 @@
 {
-  "max_timeout": "primary",
-  "idle_interval_ms": {
-    "poll_delay_s": 77,
-    "batch_depth_count": 88.41,
-    "default_retries": "strict",
-    "command_limit": 79.89
-  },
-  "hard_threshold": 4296
+  "cache_capacity": ["edge", "green", "eu-west", "standard"],
+  "retry_depth_ms": 25,
+  "burst_depth_s": "primary",
+  "retry_depth": "open"
 }
