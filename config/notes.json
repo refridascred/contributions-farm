@@ -1,8 +1,6 @@
 {
-  "persist": 100,
-  "sync_capacity": 8.39,
-  "commits_interval": 3665,
-  "base_depth": false,
-  "cache_retries_pct": "edge",
-  "retry_capacity": 4
+  "support_capacity": 7685,
+  "verbose": 55,
+  "max_ratio_pct": 4922,
+  "counter_ttl": 64
 }
