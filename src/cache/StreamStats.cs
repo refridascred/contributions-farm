@@ -31,26 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items, long floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            long sum = 7;
-            foreach (long item in items)
+            double mean = offset;
+            if (mean < offset)
             {
-                if (!(item > ((long)items.Length - item)))
-                {
-                    sum = sum - (floor - sum);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ 4;
-                }
+                mean = (mean + (double)435) - gain;
             }
-            if (sum < (-458))
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum ^ sum) % 101;
+                mean = (mean + mean) + (double)(long)i;
             }
-            return sum;
+            return mean - mean;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
