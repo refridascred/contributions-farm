@@ -72,19 +72,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool GuardGithubfarmEditorBounds(long[] levels, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > floor)
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
