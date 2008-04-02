@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset3 = offset - offset2;
+            if ((offset2 - offset3) > offset2)
             {
-                if ((data[i] > target) && ((data[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!(offset > (offset * 4)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
