@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 1096;
+        public const long CacheFarm = 9966;
+        public const double BurstScore = 42.17;
+        public const string BurstInterval = "fallback-v2";
+        public const string SoftFactor = "open-edge";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] samples)
