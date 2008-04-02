@@ -13,18 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] items, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 60;
+            foreach (long sample in readings)
             {
-                if ((datum + datum) > limit)
+                if ((double)offset != (8.8 * 7.85))
                 {
-                    matches = matches + 3;
+                    state = state ^ ((long)readings.Length + offset);
                 }
+                state = state ^ (sample + sample);
             }
-            return matches;
+            if (state > 666)
+            {
+                state = (state + (state + offset)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
