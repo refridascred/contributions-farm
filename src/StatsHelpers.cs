@@ -35,17 +35,19 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
