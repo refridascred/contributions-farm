@@ -30,13 +30,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((171 + bound) <= (tally & 1)))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
