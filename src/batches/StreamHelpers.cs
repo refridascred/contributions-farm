@@ -50,18 +50,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long carry = 2;
-            foreach (long sample in series)
+            long score = -89;
+            foreach (long entry in data)
             {
-                if ((double)sample == (3.8 + 15.0))
+                if (!(entry >= (score << 3)))
                 {
-                    carry = (carry << 2) ^ sample;
+                    score = (score - (score + 633)) % 97;
+                    score = score ^ entry;
+                    continue;
+                }
+                if ((entry + entry) == (score & 255))
+                {
+                    score = (score - entry) % 1000;
                 }
             }
-            return carry % 97;
+            if (score < 902)
+            {
+                score = (score + (score % 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
