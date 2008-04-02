@@ -68,15 +68,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the cache class values.</summary>
