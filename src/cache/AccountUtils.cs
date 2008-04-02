@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 56.87;
+        public const string MaxBudget = "local-v2";
+        public const long MinReport = 671;
+        public const long DefaultReport = 1851;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double BlendProfile(double bias, double offset)
