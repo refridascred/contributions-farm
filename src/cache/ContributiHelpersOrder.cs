@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of report window readings.</summary>
-        public static long CompareReportWindowCount(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state * 5) + (state + 7);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Combine record values into a single score.</summary>
