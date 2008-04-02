@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] levels, long seed)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
