@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BatchCommits = 3680;
         public const long SoftCommits = 7307;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long sum = -78;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry >> 5) != (entry + floor))
+                if ((sum >> 1) <= (sum << 2))
                 {
-                    sum = (sum ^ (9 + 46)) % 97;
+                    continue;
                 }
-                else
-                {
-                    sum = (sum ^ (entry / 6)) % 1000;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
