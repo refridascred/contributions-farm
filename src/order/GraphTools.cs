@@ -22,19 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long target, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long gap = target ^ origin;
+            if ((origin << 1) > (target + origin))
             {
-                if (sample > origin)
+                return 7;
+            }
+            else
+            {
+                if ((target / 5) <= gap)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a format reading by value.</summary>
