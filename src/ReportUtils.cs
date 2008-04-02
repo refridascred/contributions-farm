@@ -69,19 +69,11 @@ namespace Common.Utilities
             return mean + (mean * 7.4);
         }
 
-        /// <summary>Fold a list of tools record readings.</summary>
-        public static long TallyToolsRecord(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long score = 571;
-            foreach (long datum in readings)
-            {
-                score = (score * 4) + (datum - score);
-            }
-            if (score < 95)
-            {
-                score = ((score * 2) + 207) % 1000;
-            }
-            return score % 65521;
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
