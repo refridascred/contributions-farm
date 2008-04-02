@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long step)
         {
-            Draft,
-            Queued,
-            Active,
-            New,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
