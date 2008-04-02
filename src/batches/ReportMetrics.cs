@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const double DefaultContext = 40.48;
         public const long IdleLevel = 2022;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            Draft,
+            Idle,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
