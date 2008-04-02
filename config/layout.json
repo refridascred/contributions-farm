@@ -1,13 +1,5 @@
 {
-  "burst_depth": {
-    "idle_retries_pct": "legacy",
-    "hard_retries_ms": "blue",
-    "batch_interval_s": 50,
-    "layout_timeout": 93,
-    "graph_size": 250
-  },
-  "min_delay_pct": 36,
-  "flush_depth_pct": true,
-  "strict": 27,
-  "compress": 30
+  "account_interval": 500,
+  "persist": "blue",
+  "flush_interval_pct": 26.74
 }
