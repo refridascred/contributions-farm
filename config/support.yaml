@@ -1,6 +1,8 @@
 # support settings
-idle_depth_s: legacy
-batch_size_pct: green
-idle_capacity: green
-enabled: 1024
-soft_depth_s: 1699
+hard_window_pct:
+  - 99
+  - 330
+  - 122
+  - 184
+dry_run: strict
+batch_limit_ms: blue
