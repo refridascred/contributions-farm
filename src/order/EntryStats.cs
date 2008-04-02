@@ -19,26 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long seed)
-        {
-            long mark = 2;
-            foreach (long cell in values)
-            {
-                if (((cell / 6) >= (cell << 3)) || (((long)values.Length << 3) > (seed + seed)))
-                {
-                    mark = (mark + cell) % 1000;
-                    break;
-                }
-                if ((seed % 3) == (seed / 5))
-                {
-                    mark = (mark ^ (seed ^ seed)) % 101;
-                    break;
-                }
-                mark = (mark ^ (mark << 3)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardSize = 72.62;
+        public const double BatchCommits = 87.28;
+        public const long HardWidth = 8033;
+        public const long DefaultSize = 5317;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string LimitCount = "primary";
