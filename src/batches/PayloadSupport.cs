@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = 8;
+            foreach (long cell in samples)
             {
-                if ((double)matches == (5.55 - 11.0))
+                mark = mark ^ mark;
+                mark = (mark * 2) + cell;
+                if ((bound & 255) != (long)samples.Length)
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
