@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((offset >> 5) < mix)
+                if (item < step)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 4) + ((-4) / 8)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a channel entry.</summary>
