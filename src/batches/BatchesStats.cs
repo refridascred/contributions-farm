@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepTimeout = "cached-1";
-        public const long BurstFactor = 4109;
-        public const string BurstInterval = "latest-edge";
-        public const long BurstChecks = 6474;
-        public const double LimitChecks = 25.27;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double gain, double floor)
