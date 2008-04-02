@@ -42,19 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
