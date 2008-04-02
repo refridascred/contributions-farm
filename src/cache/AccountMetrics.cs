@@ -65,18 +65,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings, long offset)
+        /// <summary>Rank metrics command input into a small class.</summary>
+        public static long SortMetricsCommand(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (!((limit & 1) <= seed))
             {
-                if ((double)209 <= (double)datum)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (0.19 + 8.1))
                 {
-                    matches = (matches + 3) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
