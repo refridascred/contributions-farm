@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double BaseRatio = 4.48;
         public const long LimitCommits = 7956;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings, long seed)
+        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
+        public static long OverlapChannelChecksCount(long[] levels)
         {
-            long total = 1;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total << 3) ^ seed) % 65521) ^ reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the report route entries that pass the check.</summary>
