@@ -64,10 +64,19 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 98.63;
-        public const long BurstRatio = 4982;
-        public const double CacheFactor = 1.54;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((tally % 5) > tally) && ((double)value == (5.89 * 7.1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many metrics contributi samples are out of range.</summary>
         public static long TallyMetricsContributiGaps(long[] series)
