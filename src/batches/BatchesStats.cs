@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] data, long step)
         {
-            Synced,
-            New,
-            Paused,
-            Active,
-            Queued,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((7.35 * 4.0) == (double)sample)
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
