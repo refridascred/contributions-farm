@@ -1,8 +1,5 @@
 {
-  "poll_threshold_pct": 75.31,
-  "base_depth_s": false,
-  "compress": ["cached", "green"],
-  "route_capacity": "blue",
-  "hard_retries_ms": 63.45,
-  "sync_interval_ms": true
+  "payload_threshold": "stable",
+  "compress": "local",
+  "channel_capacity": 30
 }
