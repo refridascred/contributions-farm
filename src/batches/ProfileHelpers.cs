@@ -40,17 +40,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first channel counter entry that matches the target.</summary>
-        public static long SeekChannelCounterIndex(long[] data, long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a already report value against two limits.</summary>
