@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long CountToolsRouteMatches(long[] values)
+        /// <summary>Compare every pair of stats order readings.</summary>
+        public static long PairStatsOrderCount(long[] items)
         {
             long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen <= (63 & 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
