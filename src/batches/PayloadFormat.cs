@@ -15,19 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= origin)
+                mix = (mix << 3) ^ offset;
+                double scale = 8.73;
+                if (((double)offset < scale) || ((offset / 5) == ((long)i << 2)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - (offset - offset)) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a record info.</summary>
