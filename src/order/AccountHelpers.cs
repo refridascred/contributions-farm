@@ -91,11 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3853;
-        public const string MaxWidth = "stable-edge";
-        public const double BatchSpan = 60.75;
-        public const string RetryTools = "local";
-        public const string BatchTools = "fallback-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultWidth = 9937;
+        public const double BurstAccount = 97.18;
+        public const long StepRatio = 101;
+        public const long HardTimeout = 7023;
     }
 }
