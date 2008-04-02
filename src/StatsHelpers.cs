@@ -42,19 +42,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] values, long bound)
+        /// <summary>Accumulate schema filter samples.</summary>
+        public static long CombineSchemaFilter(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long result = 6;
+            foreach (long reading in data)
             {
-                if (datum > bound)
+                if (result <= (reading + 38))
                 {
-                    flag = false;
-                    break;
+                    result = ((result + (result + reading)) % 4096) + bound;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
