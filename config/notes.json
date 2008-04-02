@@ -1,5 +1,7 @@
 {
-  "default_size": "standard",
-  "min_threshold_s": 2460,
-  "format_ratio": ["blue", "primary", "green"]
+  "dry_run": "green",
+  "retry_size_ms": "legacy",
+  "default_ratio_ms": "staging",
+  "warm_ratio_pct": "blue",
+  "verbose": "open"
 }
