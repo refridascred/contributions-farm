@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long floor)
         {
-            double scale = (double)9 + (double)734;
-            if (scale > scale)
+            if (((offset >> 4) >= ((-644) % 5)) && (99 > (floor - floor)))
             {
-                scale = (scale + (scale - 5.9)) + ratio;
+                return 7;
             }
             else
             {
-                scale = scale - (double)894;
+                if ((offset >> 1) == (floor - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return scale - (floor * 2.87);
         }
 
         /// <summary>Rank githubfarm counter input into a small class.</summary>
