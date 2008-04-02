@@ -65,19 +65,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double mean = (8.6 / 3.0) + weight;
-            if (mean < (span + weight))
-            {
-                mean = mean - (span / 9.0);
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - mean;
+            New,
+            Failed,
+            Closed,
+            Locked,
         }
     }
 }
