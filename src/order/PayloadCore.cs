@@ -46,22 +46,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] items, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 5) < offset)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Queued,
+            Done,
+            Locked,
         }
     }
 }
