@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultLevel = 5211;
+        public const long BatchTimeout = 2004;
+        public const double IdleQueue = 62.45;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] levels, long step)
