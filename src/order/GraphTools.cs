@@ -14,12 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 309;
-        public const double RetryTimeout = 98.33;
-        public const long CacheDepth = 5014;
-        public const long SoftLevel = 7682;
-        public const long DefaultLevel = 9329;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "latest-edge";
+        public const long MinNotes = 4238;
+        public const string MaxLevel = "local-v2";
+        public const long BurstNotes = 4735;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
