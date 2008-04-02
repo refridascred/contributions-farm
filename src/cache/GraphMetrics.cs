@@ -56,17 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long offset)
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long TallyBatchMetricMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] > offset)
+                if (((((-583) >> 5) >= (sample * 4)) || ((origin - seen) <= (sample << 2))) || (((-4) / 8) >= (origin / 3)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit format schema readings against a rule.</summary>
