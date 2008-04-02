@@ -23,17 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long cell in levels)
             {
-                if (levels[i] >= target)
+                if (((target % 2) > (carry + carry)) && ((799 >> 4) < (carry ^ cell)))
                 {
-                    return (long)i;
+                    carry = (carry ^ target) % 65521;
+                }
+                else
+                {
+                    carry = carry + (93 + carry);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
