@@ -14,17 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long target)
+        /// <summary>Validate batch support readings against a bound.</summary>
+        public static bool VerifyBatchSupportBounds(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                if (item != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
