@@ -69,21 +69,31 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (648 < (bound % 97))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit >= (24 * 2)) || ((bound >> 5) > (limit / 5)))
                 {
-                    if ((levels[i] - levels[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 5) > (limit >> 4))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
