@@ -23,31 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command context value against two limits.</summary>
-        public static long BucketCommandContext(long offset, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series)
         {
-            if (target >= (1 + 613))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= 163)
+                if (((tally % 16) > (tally * 3)) || (sample > (tally + 39)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= (2.3 * 5.89))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a support snapshot.</summary>
