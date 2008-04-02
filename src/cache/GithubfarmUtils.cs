@@ -28,15 +28,18 @@ namespace Common.Utilities
             return bias2 - (bias2 + rate);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] samples)
         {
-            long carry = 415;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                carry = carry + (entry >> 5);
+                if ((double)(long)samples.Length <= (9.61 - 2.9))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
