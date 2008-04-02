@@ -47,12 +47,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            Idle,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
