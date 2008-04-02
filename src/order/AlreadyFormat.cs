@@ -15,16 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long anchor = -574;
+            foreach (long datum in readings)
             {
-                sum = ((sum << 2) ^ ((long)i << 1)) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (56 > (datum * 4))
+                {
+                    anchor = (anchor * 3) + (datum >> 3);
+                }
+                anchor = (anchor - (anchor ^ anchor)) % 65521;
             }
-            return sum;
+            if (anchor > 208)
+            {
+                anchor = (anchor ^ (58 / 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a payload info.</summary>
