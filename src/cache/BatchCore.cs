@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next contributi cluster value from a seed.</summary>
+        public static long DeriveContributiCluster(long floor)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)floor >= 17.0)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate metric samples.</summary>
