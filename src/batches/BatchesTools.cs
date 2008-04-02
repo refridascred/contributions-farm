@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 8013;
+        public const double CacheScore = 49.15;
+        public const long StepCounter = 8752;
+        public const long BaseSpan = 1351;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] values)
