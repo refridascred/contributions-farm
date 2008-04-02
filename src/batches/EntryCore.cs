@@ -94,20 +94,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long ScoreOrderSupport(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long seed)
         {
-            long sum = 46;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ ((long)series.Length + sum)) % 65521;
-                sum = (sum + value) % 101;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < (-772))
-            {
-                sum = (sum ^ (sum << 1)) % 65521;
-            }
-            return sum;
+            return -1;
         }
     }
 }
