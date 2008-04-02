@@ -62,22 +62,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long CombineAlreadyProfile(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long mark = 2;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < (cell - mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark + (mark * 4)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (cell >> 5)) % 97;
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
