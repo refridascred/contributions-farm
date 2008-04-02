@@ -31,13 +31,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepLevel = "local-1";
+        public const double IdleTimeout = 90.4;
+        public const long MaxTimeout = 6524;
+        public const double DefaultContext = 44.86;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
