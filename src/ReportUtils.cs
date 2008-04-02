@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseScore = 5431;
-        public const long LimitSession = 853;
-        public const double MinSession = 17.05;
-        public const long HardSize = 5829;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((4 - 58) != (93 - seen)) || ((cell - cell) != ((-866) >> 1)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
