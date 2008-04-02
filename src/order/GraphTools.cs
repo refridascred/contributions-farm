@@ -52,20 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter order series from a seed.</summary>
-        public static long DeriveFilterOrder(long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target < (target >> 1)) || ((carry + (-1)) == ((long)i / 9)))
-                {
-                    carry = ((carry << 3) ^ (target - carry)) % 4096;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
