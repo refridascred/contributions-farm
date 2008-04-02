@@ -28,12 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 68.99;
-        public const long BaseCommand = 2612;
-        public const long DefaultCommand = 1134;
-        public const long CacheFactor = 8721;
-        public const long BurstTimeout = 4095;
+        /// <summary>Match up notes support samples.</summary>
+        public static long OverlapNotesSupportCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] levels, long limit)
