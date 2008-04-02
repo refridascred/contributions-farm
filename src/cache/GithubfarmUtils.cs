@@ -23,11 +23,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the batches editor entries that pass the check.</summary>
