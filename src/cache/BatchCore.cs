@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order payload value from a seed.</summary>
-        public static long RollOrderPayload(long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i > (6.1 - 2.2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - state;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
