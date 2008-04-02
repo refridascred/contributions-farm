@@ -37,23 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long CountGithubfarmGraphGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (double)hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitCount = "primary";
+        public const long CacheFactor = 463;
+        public const string BatchBudget = "strict-1";
+        public const long StepMetrics = 1860;
+        public const long BaseMetrics = 5097;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] items)
