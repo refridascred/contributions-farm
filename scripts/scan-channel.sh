@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for item in primary stable open green; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-green}"
+CHANNEL_LIMIT=174
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
