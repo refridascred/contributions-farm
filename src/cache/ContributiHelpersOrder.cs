@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long floor)
+        /// <summary>Compare every pair of report window readings.</summary>
+        public static long CompareReportWindowCount(long[] levels)
         {
-            long offset2 = offset + floor;
-            if ((offset * 4) <= (floor + offset2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (13.0 / 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
