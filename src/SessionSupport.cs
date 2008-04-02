@@ -13,12 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the cache metric entries that pass the check.</summary>
+        public static long AuditCacheMetricOutliers(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length > (7.79 * 3.94))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
