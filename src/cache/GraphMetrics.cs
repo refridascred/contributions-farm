@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchTimeout = 1889;
-        public const string CacheCommits = "stable-1";
-        public const long LimitCommits = 3949;
-        public const long RetryDepth = 3199;
-        public const string MaxCommits = "strict-edge";
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Failed,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] levels, long floor)
