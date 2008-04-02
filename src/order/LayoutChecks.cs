@@ -21,18 +21,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long MeasureSessionRouteOutliers(long[] samples)
+        /// <summary>Project the next batches order value.</summary>
+        public static double BlendBatchesOrder(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double scale2 = scale;
+            if (scale2 > (scale - scale2))
             {
-                if ((double)tally <= (double)entry)
-                {
-                    tally = tally + 3;
-                }
+                scale2 = (scale2 + (double)97) - offset;
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + (double)6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - 10.0) - (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
