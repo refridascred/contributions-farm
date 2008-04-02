@@ -29,20 +29,18 @@ namespace Common.Utilities
         public const long MaxReport = 6710;
         public const long IdleScore = 2765;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] values, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)758 <= (double)floor)
+                if ((double)hits >= (17.0 / 2.0))
                 {
-                    mix = (mix ^ floor) % 4096;
+                    hits = ((hits + 1) ^ value) + floor;
                 }
-                mix = ((mix * 3) + (floor - (long)i)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
