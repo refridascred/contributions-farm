@@ -15,11 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
