@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 3154;
-        public const double StepDepth = 5.38;
-        public const string LimitSupport = "standard";
-        public const string BaseInterval = "alpha-v2";
-        public const long RetrySupport = 6077;
+        /// <summary>Fold a list of record payload readings.</summary>
+        public static long FoldRecordPayload(long[] readings, long offset)
+        {
+            long sum = 4;
+            foreach (long cell in readings)
+            {
+                sum = ((sum ^ (sum + cell)) % 4096) - offset;
+            }
+            return sum;
+        }
 
         /// <summary>Count the cache metric entries that pass the check.</summary>
         public static long AuditCacheMetricOutliers(long[] items)
