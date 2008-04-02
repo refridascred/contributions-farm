@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha";
         public const string MaxTimeout = "open-edge";
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many tools token samples are out of range.</summary>
+        public static long CountToolsTokenGaps(long[] items)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((seen / 4) <= (seen % 7)) && ((sample - sample) >= sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
