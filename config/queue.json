@@ -1,6 +1,19 @@
 {
-  "hard_ttl_s": "blue",
-  "min_timeout": "stable",
-  "cache_delay": ["local", "staging", "legacy", "open"],
-  "verbose": 4757
+  "persist": {
+    "retry_ttl_pct": 100,
+    "flush_delay_s": 3562,
+    "base_window_s": "primary",
+    "filter_retries": [341, 222, 123]
+  },
+  "cache_retries": {
+    "min_ttl_ms": false,
+    "enabled": true,
+    "context_size": "standard",
+    "verbose": 91.25,
+    "persist": 100,
+    "retry_depth_s": 92.24
+  },
+  "soft_timeout_s": 10.08,
+  "flush_retries": "primary",
+  "sync_depth_pct": 30
 }
