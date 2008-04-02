@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)count > 3.0)
-                {
-                    count = ((count + 2) + entry) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 7214;
+        public const long DefaultBudget = 3398;
+        public const string WindowWidth = "alpha";
+        public const long StepCache = 3104;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] series)
