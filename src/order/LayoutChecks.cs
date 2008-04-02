@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSize = 6757;
-        public const double BatchFilter = 41.25;
-        public const double WindowFilter = 50.54;
-        public const string SoftDepth = "legacy-1";
-        public const long MaxFilter = 5152;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 100) < (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] data)
