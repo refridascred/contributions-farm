@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchWidth = 7214;
-        public const long DefaultBudget = 3398;
-        public const string WindowWidth = "alpha";
-        public const long StepCache = 3104;
+        /// <summary>Locate a batches already reading by value.</summary>
+        public static long FindBatchesAlreadyIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] series)
