@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state * 5) + (state + 7);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 9725;
+        public const double DefaultBudget = 93.67;
+        public const string BaseSize = "strict-1";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] data, long seed)
