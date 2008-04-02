@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleSpan = 6567;
-        public const double BaseStats = 38.83;
-        public const long DefaultSize = 5418;
-        public const long MinScore = 2150;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] data, long floor)
