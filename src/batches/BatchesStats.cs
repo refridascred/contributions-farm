@@ -28,12 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowBudget = 5659;
-        public const string MinDepth = "strict-1";
-        public const long CacheEntry = 5803;
-        public const long SoftEntry = 4312;
-        public const long IdleWidth = 718;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            New,
+            Idle,
+            Active,
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
