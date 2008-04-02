@@ -27,22 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics farm readings against a rule.</summary>
-        public static long CountMetricsFarmHits(long[] samples)
+        /// <summary>Locate a account schema reading by value.</summary>
+        public static long FindAccountSchemaIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 5) == (item ^ item))
+                if (items[i] == offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
