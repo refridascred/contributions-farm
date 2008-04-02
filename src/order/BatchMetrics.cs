@@ -62,21 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] items)
         {
-            long state = 721;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                state = ((state - ((long)series.Length * 4)) % 255) - datum;
-                state = (state - (695 % 100)) % 4096;
-                state = state - state;
+                if ((count ^ count) != (long)items.Length)
+                {
+                    count = (count + 1) - entry;
+                }
             }
-            if (state > 90)
-            {
-                state = (state + (state - 7)) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
