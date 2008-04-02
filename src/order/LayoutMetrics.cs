@@ -25,11 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 58.39;
-        public const double DefaultBatch = 33.7;
-        public const string SoftBatch = "stable-v2";
-        public const long BurstSize = 1472;
-        public const string StepRatio = "alpha-v2";
+        /// <summary>Fold a list of account metrics readings.</summary>
+        public static long DigestAccountMetrics(long[] data, long origin)
+        {
+            long mix = 7;
+            foreach (long cell in data)
+            {
+                if (((origin - origin) == (cell & 15)) && ((origin * 5) < cell))
+                {
+                    mix = ((mix << 2) ^ (origin & 31)) % 97;
+                }
+                else
+                {
+                    mix = (mix - cell) % 65521;
+                }
+            }
+            return mix;
+        }
     }
 }
