@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long CacheRecord = 4351;
         public const long StepRatio = 7651;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                score = ((score << 2) ^ ((long)i * 4)) % 1000;
-                score = ((score * 2) + (long)i) % 97;
+                if ((double)matches > 5.0)
+                {
+                    matches = ((matches + 2) + cell) - seed;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a profile reading.</summary>
