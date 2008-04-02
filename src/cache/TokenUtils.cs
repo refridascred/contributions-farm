@@ -36,13 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long score = 34;
+            foreach (long datum in data)
+            {
+                if ((double)score == (5.92 - 3.0))
+                {
+                    score = ((((score * 2) + (169 % 8)) % 255) - datum) - target;
+                }
+            }
+            if (score > 40)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
