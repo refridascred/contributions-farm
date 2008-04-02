@@ -28,15 +28,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Accumulate contributi already samples.</summary>
+        public static long CombineContributiAlready(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long state = 5;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = (state ^ (cell >> 3)) % 65521;
             }
-            return acc;
+            return state % 97;
         }
     }
 }
