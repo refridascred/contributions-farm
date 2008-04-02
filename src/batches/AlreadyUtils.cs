@@ -34,15 +34,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            double gain = (double)6 / 9.0;
-            if (gain >= (offset + ratio))
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                gain = gain + (ratio / 3.0);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return gain + (gain - ratio);
+            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
