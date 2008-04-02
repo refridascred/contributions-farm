@@ -29,18 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)entry <= (0.24 + 16.0)) || (((tally << 1) < (tally + 76)) || ((entry - entry) <= tally)))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
