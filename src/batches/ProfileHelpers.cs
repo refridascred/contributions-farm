@@ -28,12 +28,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long offset, long limit)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            long offset2 = offset - limit;
+            if (16.0 >= (double)offset2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit <= (391 - offset)) && (limit > (offset - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
