@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const long HardTimeout = 4664;
         public const double RetryBudget = 39.71;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((16.0 - 6.7) <= (double)target)
+                if ((seen % 24) == (value / 8))
                 {
-                    hits = (hits + 2) ^ value;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two command measurements.</summary>
