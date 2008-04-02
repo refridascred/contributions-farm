@@ -79,18 +79,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster filter entries that pass the check.</summary>
-        public static long CountClusterFilterMatches(long[] samples)
+        /// <summary>Compare every pair of contributi notes readings.</summary>
+        public static long PairContributiNotesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading - reading) <= tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
