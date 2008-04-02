@@ -28,25 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long limit, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long gap = limit - bound;
-            if ((gap % 12) < (bound & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(limit <= (624 & 31)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
