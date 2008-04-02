@@ -24,22 +24,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (matches > (sample ^ sample))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Retry,
         }
     }
 }
