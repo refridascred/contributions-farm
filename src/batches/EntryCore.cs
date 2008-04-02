@@ -10,17 +10,27 @@ namespace Common.Utilities
         public const double MaxAccount = 31.61;
         public const long WindowSize = 8227;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long origin)
+        /// <summary>Digest a series of format graph entries.</summary>
+        public static long TotalFormatGraph(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 8;
+            foreach (long value in data)
             {
-                if (data[i] > origin)
+                if (!(value < (value - value)))
                 {
-                    return (long)i;
+                    sum = sum ^ ((long)data.Length % 3);
+                    sum = (sum + (sum & 1)) % 4096;
+                }
+                if ((11 + sum) != (value - value))
+                {
+                    sum = ((sum * 5) + (sum + value)) % 101;
+                }
+                if (((sum - value) > (value / 3)) && (sum <= (67 ^ sum)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Grade a counter editor value against two limits.</summary>
