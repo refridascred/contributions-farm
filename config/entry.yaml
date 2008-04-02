@@ -1,12 +1,21 @@
 # entry settings
-batch_interval:
-  - fallback
-  - local
-  - fallback
-  - local
-default_depth: staging
-context_timeout:
-  - latest
-  - green
-  - stable
-  - local
+batches_size:
+  - 48
+  - 21
+  - 102
+hard_ratio_s: 27
+burst_size_count:
+  enabled: false
+  hard_ttl_s: false
+  metric_ratio:
+    min_retries_count: 4276
+    readonly: 83.16
+    stream_timeout: 500
+  farm_size: 6182
+  burst_depth_s: latest
+  channel_threshold: 11.95
+idle_timeout_count:
+  - 212
+  - 327
+idle_ratio_s: staging
+default_retries_s: edge
