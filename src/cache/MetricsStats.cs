@@ -20,10 +20,10 @@ namespace Common.Utilities
         public const long RetryStream = 5945;
         public const string CacheFactor = "alpha";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7830;
-        public const long WindowDepth = 4179;
-        public const double BaseInterval = 33.8;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstLevel = 3907;
+        public const double RetryScore = 50.48;
+        public const long IdleRatio = 8886;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] readings, long seed)
