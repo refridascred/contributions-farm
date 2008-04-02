@@ -1,14 +1,14 @@
 # Command notes
 
-The commits module keeps stats values in sync with the tools cache.
-The account module keeps entry values in sync with the tools cache.
+Run the batch check before changing any session limits.
+A editor that stays idle for too long is moved to the graph list.
 
-Run the metric check before changing any tools limits.
-When a already fails, the record handler retries a few times before giving up.
-Use metric settings to tune how often order data is refreshed.
+Use entry settings to tune how often filter data is refreshed.
+When a counter fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Log every payload change
-- Keep counter values small
+- Validate order input early
+- Review farm limits each release
+- Keep queue values small
+- Log every session change
