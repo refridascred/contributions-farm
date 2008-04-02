@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of githubfarm support entries.</summary>
-        public static long TallyGithubfarmSupport(long[] data, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long offset)
         {
-            long result = 300;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + result) <= (sample - bound))
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
-                    result = result - result;
-                }
-                else
-                {
-                    result = result ^ (bound % 16);
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
