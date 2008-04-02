@@ -35,19 +35,12 @@ namespace Common.Utilities
             return gain2 - (offset * 5.0);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] levels, long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a graph record.</summary>
