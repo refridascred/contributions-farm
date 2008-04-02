@@ -1,5 +1,12 @@
 # support settings
-retry_interval_count: 6029
-buffer_ttl: 7332
-max_timeout_count: 87
-batches_depth: standard
+compress: green
+flush_timeout_count:
+  - edge
+  - standard
+  - green
+  - standard
+audit:
+  warm_ratio_s: 25
+  idle_timeout: false
+  strict: 3.22
+poll_interval_ms: 65.2
