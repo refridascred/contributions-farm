@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long AuditRecordSupportOutliers(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (8.5 < (double)sample)
+                if ((datum + datum) > limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
