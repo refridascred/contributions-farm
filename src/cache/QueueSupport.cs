@@ -26,15 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            double mean = 5.0;
+            return ((mean + (mean + 8.4)) + bias) + span;
         }
     }
 }
