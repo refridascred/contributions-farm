@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const double MaxEditor = 51.49;
         public const double RetryLevel = 14.34;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstCount = 2609;
+        public const long SoftFarm = 88;
+        public const long RetryInterval = 9530;
+        public const string BaseScore = "alpha-v2";
+        public const double StepRatio = 51.39;
 
         /// <summary>Rank record notes input into a small class.</summary>
         public static long GradeRecordNotes(long origin, long origin2)
