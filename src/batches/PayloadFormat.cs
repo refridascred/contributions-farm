@@ -20,22 +20,24 @@ namespace Common.Utilities
         public const long WindowTimeout = 6954;
         public const long BatchFactor = 5803;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Rank format entry input into a small class.</summary>
+        public static long GradeFormatEntry(long offset, long step)
         {
-            long mark = -66;
-            foreach (long entry in readings)
+            if ((step % 10) <= offset)
             {
-                if (!((mark % 60) > (entry >> 3)))
+                return 3;
+            }
+            else
+            {
+                if (((offset >> 5) >= (offset - offset)) || ((offset / 9) != (offset + step)))
                 {
-                    mark = mark ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark ^ (mark - mark)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
