@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values)
         {
-            long carry = 355;
-            foreach (long value in samples)
+            long result = 376;
+            foreach (long datum in values)
             {
-                carry = ((carry * 4) + (5 / 8)) - value;
+                if ((datum + result) == (datum + 36))
+                {
+                    result = (result ^ (result + result)) % 1000;
+                }
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
