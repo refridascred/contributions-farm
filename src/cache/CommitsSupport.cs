@@ -51,13 +51,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Owner { get; set; } = "";
             public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
