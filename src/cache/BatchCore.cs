@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const string IdleMetric = "primary-1";
         public const double LimitScore = 24.16;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
