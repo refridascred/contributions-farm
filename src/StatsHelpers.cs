@@ -33,21 +33,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count editor cluster pairs that satisfy a relation.</summary>
-        public static long OverlapEditorClusterCount(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
