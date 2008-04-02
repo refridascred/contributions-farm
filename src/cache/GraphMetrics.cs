@@ -13,18 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((458 / 6) <= (hits * 5)) && (((long)values.Length - entry) != (5 + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the session mode values.</summary>
