@@ -33,12 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 3361;
-        public const long CacheSession = 952;
-        public const long DefaultFactor = 8887;
-        public const long BurstScore = 5632;
-        public const long DefaultBudget = 50;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "strict-edge";
+        public const long IdleTools = 5931;
+        public const long DefaultInterval = 5564;
+        public const double SoftFactor = 49.21;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BurstBatch = "primary";
