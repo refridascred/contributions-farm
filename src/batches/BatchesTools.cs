@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] series, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up metrics samples.</summary>
