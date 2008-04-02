@@ -49,25 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long offset, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long offset2 = offset - limit;
-            if (16.0 >= (double)offset2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= (391 - offset)) && (limit > (offset - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
