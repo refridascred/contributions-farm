@@ -38,11 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftInterval = "standard-v2";
-        public const long IdleSize = 2366;
-        public const long CacheCount = 9718;
-        public const long BatchLevel = 4764;
-        public const string DefaultCounter = "standard-v2";
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
+        {
+            long state = 27;
+            foreach (long cell in items)
+            {
+                state = state - (cell << 3);
+            }
+            return state;
+        }
     }
 }
