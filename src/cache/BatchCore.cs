@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batch support readings against a bound.</summary>
-        public static bool VerifyBatchSupportBounds(long[] data, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double gain = weight;
+            if (gain < gain)
             {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + 11.0) + offset;
             }
-            return ready;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + weight;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
