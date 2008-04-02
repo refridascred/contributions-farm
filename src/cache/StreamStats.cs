@@ -31,19 +31,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long sum = 7;
+            foreach (long item in items)
             {
-                if ((double)limit < (4.0 - 2.5))
+                if (!(item > ((long)items.Length - item)))
                 {
-                    total = (total ^ (limit - limit)) % 255;
+                    sum = sum - (floor - sum);
                 }
-                total = ((total * 4) + (long)i) % 65521;
+                else
+                {
+                    sum = (sum << 3) ^ 4;
+                }
             }
-            return total;
+            if (sum < (-458))
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
