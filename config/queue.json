@@ -1,11 +1,10 @@
 {
-  "base_ttl_s": "cached",
-  "queue_limit": 34.38,
-  "flush_limit": [371, 136, 481],
-  "dry_run": {
-    "batch_capacity": "legacy",
-    "soft_timeout_s": 7,
-    "sync_timeout_s": ["standard", "strict"]
-  },
-  "idle_ratio": 55
+  "notes_depth": 7739,
+  "verbose": 87,
+  "min_ratio_pct": {
+    "poll_timeout_s": "open",
+    "max_timeout_s": "stable",
+    "farm_capacity": "latest",
+    "compress": 98.22
+  }
 }
