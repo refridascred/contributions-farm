@@ -51,13 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (5 < (hits + hits))
+                {
+                    hits = ((hits + 3) + entry) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
