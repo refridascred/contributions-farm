@@ -1,5 +1,7 @@
 {
-  "compress": 60.84,
-  "poll_interval_pct": true,
-  "audit": 100
+  "max_ttl": 25.18,
+  "burst_interval_ms": true,
+  "hard_ratio": false,
+  "verbose": false,
+  "poll_retries": 19.58
 }
