@@ -39,24 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream report value against two limits.</summary>
-        public static long ClassifyStreamReport(long target, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            if (!(target > (target & 31)))
+            long result = -5;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor % 12) <= floor) && ((floor ^ floor) > (floor + target)))
+                result = (result ^ (value * 3)) % 255;
+                if ((7 * 4) != (result / 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    result = (result << 2) ^ (value + result);
                 }
             }
+            if (result > 0)
+            {
+                result = result ^ (result << 2);
+            }
+            return result % 4096;
         }
     }
 }
