@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const long MinReport = 671;
         public const long DefaultReport = 1851;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long step2)
         {
-            double drift = 12.0;
-            if (drift <= (drift * 5.0))
+            long gap = step - step2;
+            if (((step2 >> 2) == (step2 / 3)) && ((gap % 10) < (gap << 1)))
             {
-                drift = (drift + bias) - offset;
+                return 4;
             }
-            return drift + (double)419;
+            else
+            {
+                if ((gap + step2) < (gap / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step2 * 3) < (gap * 5)) || ((double)step <= (7.6 - 3.4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
