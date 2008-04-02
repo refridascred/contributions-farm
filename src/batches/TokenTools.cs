@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the report context series from a seed.</summary>
+        public static long IterateReportContext(long floor)
         {
-            Closed,
-            Draft,
-            Retry,
-            Locked,
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the layout phase values.</summary>
