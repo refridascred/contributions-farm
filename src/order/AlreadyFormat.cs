@@ -35,31 +35,19 @@ namespace Common.Utilities
         public const long MinFilter = 144;
         public const long BatchCount = 5217;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] data, long origin)
         {
-            if ((target <= (249 & 255)) && ((double)target != (1.0 + 7.8)))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 3) != (35 - 3))
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit << 3) >= (target + target)) && ((target % 60) > limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a schema info.</summary>
