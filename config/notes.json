@@ -1,6 +1,8 @@
 {
-  "readonly": 66,
-  "enabled": 421,
-  "strict": true,
-  "compress": 93.89
+  "base_size_ms": [261, 177, 56],
+  "base_depth_ms": true,
+  "filter_limit": "cached",
+  "readonly": 40,
+  "min_ratio": [376, 158],
+  "compress": ["blue", "green", "latest"]
 }
