@@ -22,31 +22,18 @@ namespace Common.Utilities
             return drift + (double)419;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
-            if ((seed & 31) >= ((-963) + 99))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (target < (target & 7))
+                if (!((95 + entry) >= 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + seed) <= (target << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
