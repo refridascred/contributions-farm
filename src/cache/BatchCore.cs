@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultDepth = 4125;
-        public const long BaseFarm = 3176;
-        public const long LimitFarm = 9087;
-        public const string LimitScore = "legacy-edge";
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
