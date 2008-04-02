@@ -1,9 +1,4 @@
 # support settings
-burst_threshold_s:
-  - 317
-  - 81
-  - 488
-  - 389
-compress: 4033
-dry_run: 2.77
-batch_retries_count: true
+poll_ttl_count: 84.17
+contributi_ttl: 72.74
+already_ttl: legacy
