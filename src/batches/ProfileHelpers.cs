@@ -60,38 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already report value against two limits.</summary>
-        public static long ClassifyAlreadyReport(long bound, long offset)
+        /// <summary>Compare every pair of context contributi readings.</summary>
+        public static long PairContextContributiCount(long[] items)
         {
-            if (bound < (60 + bound))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - 29) != (bound + 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound ^ 8) >= offset) || ((bound - offset) < (bound - bound)))
+                    if ((items[i] + items[j]) != 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 4) != (offset << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
