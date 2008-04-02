@@ -31,17 +31,13 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
