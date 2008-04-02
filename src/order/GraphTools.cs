@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long origin)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a format reading by value.</summary>
