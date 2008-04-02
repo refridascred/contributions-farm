@@ -30,13 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
