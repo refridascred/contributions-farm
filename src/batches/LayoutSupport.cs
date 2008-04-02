@@ -22,24 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((4.5 - 4.3) > (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((79 >= (offset + offset)) && ((offset2 << 1) < offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
