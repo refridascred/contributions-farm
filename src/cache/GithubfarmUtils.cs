@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
             long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)samples.Length <= (9.61 - 2.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
