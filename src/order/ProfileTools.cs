@@ -13,18 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long MeasureEditorProfileHits(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((double)count > (3.26 + 13.0))
+                if (value != seed)
                 {
-                    count = (count + 2) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
