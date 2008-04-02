@@ -1,19 +1,4 @@
 # entry settings
-compress:
-  soft_interval_pct: latest
-  checks_capacity:
-    - primary
-    - cached
-    - primary
-  buffer_window:
-    poll_delay_count: 11
-    min_capacity:
-      - 298
-      - 355
-    compress: 54
-    default_limit_s: open
-verbose: eu-west
-base_threshold_pct: true
-soft_depth: 8250
-flush_capacity_ms: 53.48
-metric_delay: true
+flush_ratio_ms: fallback
+profile_interval: local
+compress: legacy
