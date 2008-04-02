@@ -1,5 +1,17 @@
 {
-  "poll_depth": 1024,
-  "context_interval": false,
-  "max_ttl": 31
+  "token_capacity": 1416,
+  "dry_run": 85.17,
+  "persist": 100,
+  "retry_depth": 7591,
+  "sync_capacity": "standard",
+  "batch_ratio": {
+    "verbose": "blue",
+    "window_capacity": "stable",
+    "retry_window_pct": {
+      "stream_timeout": 36,
+      "cache_window": false,
+      "strict": [37, 488, 147],
+      "poll_limit_pct": 29.9
+    }
+  }
 }
