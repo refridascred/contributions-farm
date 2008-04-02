@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the queue stream entries that pass the check.</summary>
-        public static long CountQueueStreamGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((3.0 - 3.81) < (double)datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "primary";
+        public const long MinScore = 6205;
+        public const long BaseFarm = 1965;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 8013;
