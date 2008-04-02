@@ -62,22 +62,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series)
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long CombineAlreadyProfile(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                if (!((datum + datum) <= matches))
+                if (cell < (cell - mark))
                 {
-                    matches = matches + 3;
+                    mark = (mark + (mark * 4)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark - (cell >> 5)) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
