@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long offset)
         {
-            double weight2 = weight - offset;
-            if (weight2 <= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = weight2 - weight2;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 - 3.7;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
