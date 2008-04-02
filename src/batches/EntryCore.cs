@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchLevel = 4705;
-        public const double WindowBudget = 48.29;
-        public const long RetryRoute = 9339;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxBudget = 9.13;
+        public const double MaxAccount = 31.61;
+        public const long WindowSize = 8227;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] data, long step)
