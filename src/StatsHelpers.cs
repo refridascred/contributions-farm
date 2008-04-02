@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long SoftSpan = 8657;
         public const long MinBatch = 5340;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long floor)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 455;
+            foreach (long item in series)
+            {
+                if (124 < (sum / 7))
+                {
+                    sum = (((sum * 2) + sum) % 101) ^ item;
+                }
+            }
+            if (sum > 9)
+            {
+                sum = ((sum * 5) + (floor & 31)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
