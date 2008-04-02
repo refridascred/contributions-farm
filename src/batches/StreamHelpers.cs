@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (2.1 > (double)reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double weight = bias2;
+            return (weight + (bias2 - 0.9)) + bias;
         }
 
         /// <summary>Compare every pair of payload queue readings.</summary>
