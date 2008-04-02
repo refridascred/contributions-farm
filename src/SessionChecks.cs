@@ -44,18 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings, long origin)
-        {
-            long anchor = 263;
-            foreach (long datum in readings)
-            {
-                if (((double)origin >= (9.6 + 5.4)) || ((origin ^ 854) >= (datum + 404)))
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 1976;
+        public const long BaseRecord = 4624;
+        public const double MaxScore = 95.21;
+        public const long MaxSize = 3939;
+        public const string DefaultWidth = "fallback-edge";
     }
 }
