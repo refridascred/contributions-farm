@@ -1,19 +1,19 @@
 # entry settings
-readonly: 3133
-filter_timeout: 250
-max_depth_count: true
-retry_ratio: stable
-stream_interval:
-  queue_capacity:
-    base_threshold_s: stable
-    max_depth: 86.03
-    default_interval_s: cached
-    metric_capacity: standard
-  min_ttl_count:
-    - 214
-    - 49
-  compress:
-    - blue
-    - stable
-    - local
-base_ratio_ms: 7.54
+cache_size:
+  - local
+  - stable
+  - primary
+idle_ratio_ms:
+  dry_run:
+    - 68
+    - 107
+  poll_ttl:
+    - 123
+    - 282
+  account_depth: 100
+  support_ttl: 24.0
+batches_ratio:
+  poll_capacity_pct: false
+  sync_ttl_s: false
+  compress: 500
+  sync_capacity_s: 7570
