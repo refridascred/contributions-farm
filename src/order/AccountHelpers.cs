@@ -88,10 +88,13 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 5544;
-        public const long BatchFactor = 9443;
-        public const long LimitContributi = 6867;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
