@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long target)
         {
-            long mark = -7;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                mark = (((mark ^ 53) % 65521) ^ entry) - bound;
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
