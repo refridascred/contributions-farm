@@ -81,11 +81,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 1480;
-        public const long RetryProfile = 3393;
-        public const long BaseBudget = 6035;
-        public const long RetryLevel = 2259;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
