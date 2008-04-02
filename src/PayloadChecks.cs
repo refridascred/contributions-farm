@@ -82,11 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7254;
-        public const long DefaultContext = 823;
-        public const string DefaultCount = "open-edge";
-        public const long BaseContext = 2380;
-        public const string BatchBudget = "open-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstCount = "open-edge";
+        public const long StepTools = 3558;
+        public const string MinTools = "legacy-v2";
+        public const long DefaultRatio = 4274;
     }
 }
