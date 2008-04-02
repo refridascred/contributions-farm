@@ -42,16 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long score = 8;
+            foreach (long value in items)
             {
-                acc = (acc * 3) + acc;
-                acc = ((acc * 3) + (long)i) % 101;
+                score = (score ^ (value & 15)) % 65521;
             }
-            return acc;
+            return score;
         }
     }
 }
