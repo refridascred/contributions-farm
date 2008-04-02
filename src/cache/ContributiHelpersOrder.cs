@@ -41,9 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowTimeout = 628;
-        public const long SoftCluster = 4809;
-        public const long MaxCluster = 8459;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
