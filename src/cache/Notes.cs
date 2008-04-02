@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "standard-v2";
-        public const long HardInterval = 7466;
-        public const string SoftPayload = "latest";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > (1 >> 2))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double SmoothOrder(double gain, double span)
