@@ -1,4 +1,16 @@
 # entry settings
-flush_ratio_ms: fallback
-profile_interval: local
-compress: legacy
+base_ttl_ms:
+  - legacy
+  - staging
+min_capacity: green
+retry_timeout_s:
+  buffer_timeout: 2414
+  sync_ttl_pct:
+    - 97
+    - 236
+    - 172
+    - 7
+  command_ttl: 60
+  channel_ttl: true
+  audit: false
+  compress: 43.55
