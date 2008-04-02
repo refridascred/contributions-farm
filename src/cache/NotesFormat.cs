@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long LookupContributiFormatIndex(long[] samples, long step)
         {
-            Done,
-            Pending,
-            Active,
-            Locked,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
