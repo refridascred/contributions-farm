@@ -1,5 +1,18 @@
 {
-  "verbose": true,
-  "metric_retries": 98,
-  "default_window_pct": 24.95
+  "idle_delay": {
+    "idle_threshold": "blue",
+    "enabled": "standard",
+    "verbose": 8,
+    "soft_window": {
+      "default_delay": ["edge", "eu-west", "cached"],
+      "hard_retries_count": [211, 238, 44],
+      "route_retries": [106, 208],
+      "flush_capacity": 9360,
+      "poll_retries_s": 14,
+      "window_ratio": "edge"
+    }
+  },
+  "retry_timeout_count": "open",
+  "farm_window": 250,
+  "channel_window": ["primary", "latest", "cached"]
 }
