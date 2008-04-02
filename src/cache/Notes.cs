@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 5908;
         public const double LimitBudget = 91.88;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Done,
             Synced,
-            Idle,
-            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up payload samples.</summary>
