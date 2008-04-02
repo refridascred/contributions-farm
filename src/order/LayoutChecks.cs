@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((double)reading != (6.0 + 7.0))
+                if (!(((double)tally >= (double)cell) || ((tally << 3) != (800 + 713))))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the batch kind values.</summary>
