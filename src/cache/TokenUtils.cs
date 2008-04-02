@@ -27,11 +27,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            double ratio = (weight / 7.0) - weight;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - weight) - bias;
+            }
+            return ratio - (ratio - ratio);
         }
     }
 }
