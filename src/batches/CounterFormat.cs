@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Rank payload counter input into a small class.</summary>
+        public static long SortPayloadCounter(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long delta = bound + bound2;
+            if ((double)bound2 <= 2.78)
             {
-                if ((236 % 64) != (count / 3))
+                return 2;
+            }
+            else
+            {
+                if (((7.0 - 10.0) > (double)bound2) || (((-659) * 4) == (delta % 7)))
                 {
-                    count = (count + 2) + datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((11.0 + 9.0) < (double)bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((84 >= (bound2 + bound)) && ((delta * 5) > (bound - delta)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a command summary.</summary>
