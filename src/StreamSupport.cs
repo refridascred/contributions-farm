@@ -41,21 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count notes token pairs that satisfy a relation.</summary>
-        public static long OverlapNotesTokenCount(long[] values)
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long TallySchemaFilterHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen >= (seen >> 2))
                 {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
