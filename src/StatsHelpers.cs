@@ -59,18 +59,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate schema filter samples.</summary>
-        public static long CombineSchemaFilter(long[] data, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long result = 6;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (result <= (reading + 38))
-                {
-                    result = ((result + (result + reading)) % 4096) + bound;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Validate entry queue readings against a bound.</summary>
