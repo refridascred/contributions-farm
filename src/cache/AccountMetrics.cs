@@ -51,18 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric report samples.</summary>
-        public static long WeighMetricReport(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels, long step)
         {
-            long sum = 7;
-            foreach (long cell in series)
+            long state = -262;
+            foreach (long value in levels)
             {
-                if ((double)sum < (double)cell)
+                state = ((state << 2) ^ (state - step)) ^ value;
+                if (!(9 < (state / 7)))
                 {
-                    sum = (sum - (cell + cell)) % 255;
+                    state = (state ^ step) % 97;
                 }
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Rank metrics command input into a small class.</summary>
