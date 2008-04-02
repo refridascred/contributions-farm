@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry << 3) ^ ((long)i & 63);
+                long seen = (6 + origin) + (origin & 3);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry + (-691)) % 4096) ^ (long)i2;
+                    carry = ((carry * 3) + (carry + seen)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
