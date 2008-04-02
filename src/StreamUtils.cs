@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long anchor = 198;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 5) + ((long)i % 5)) % 4096;
-                }
-                if (((5 + reading) <= (-1)) || ((reading * 5) < (45 - reading)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 2)) % 4096;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Scale a githubfarm metrics figure with a bias.</summary>
