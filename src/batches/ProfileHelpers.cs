@@ -41,11 +41,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5227;
-        public const long RetryCount = 8636;
-        public const string CacheEditor = "alpha-edge";
-        public const double RetryEditor = 43.82;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Synced,
+            Stale,
+            Closed,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Accumulate queue stats samples.</summary>
         public static long FoldQueueStats(long[] levels)
