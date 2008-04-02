@@ -13,10 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9539;
-        public const double MaxScore = 49.94;
-        public const long LimitBuffer = 1661;
+        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
+        public static long CountNotesGithubfarmMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (target < (reading + target))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
