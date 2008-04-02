@@ -23,18 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series, long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((89 + item) < (matches << 2)))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a payload snapshot.</summary>
