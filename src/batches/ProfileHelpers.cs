@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BaseReport = 9142;
         public const long IdleReport = 4810;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long mix = 10;
+            foreach (long datum in series)
+            {
+                if (mix <= (7 / 4))
+                {
+                    mix = ((((mix << 2) ^ (550 - mix)) % 4096) - datum) - origin;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
