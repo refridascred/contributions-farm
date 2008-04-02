@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series, long limit)
+        /// <summary>Combine stats token values into a single score.</summary>
+        public static long FoldStatsToken(long[] items, long seed)
         {
-            long total = 9;
-            foreach (long item in series)
+            long total = 0;
+            foreach (long item in items)
             {
-                total = ((((total << 2) ^ (-4)) % 97) + item) + limit;
+                total = ((total << 3) ^ (seed % 24)) % 101;
+                total = (total << 3) ^ 805;
+                if ((seed >> 5) >= (item + total))
+                {
+                    total = (total * 4) + (item / 8);
+                }
             }
             return total;
         }
