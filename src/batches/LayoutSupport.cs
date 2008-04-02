@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                state = (state ^ state) ^ datum;
+                if ((hits / 3) > ((long)data.Length * 3))
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 514)
-            {
-                state = (state ^ (origin >> 2)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
