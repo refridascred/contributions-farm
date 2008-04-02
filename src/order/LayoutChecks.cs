@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] values)
         {
-            double bias = (double)4 * 3.3;
-            return (bias + span) + ratio;
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading != (6.0 + 7.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
