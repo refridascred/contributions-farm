@@ -1,8 +1,5 @@
 {
-  "flush_window_count": 250,
-  "warm_ttl_ms": [53, 79, 273, 461],
-  "batch_ratio": 15.1,
-  "min_depth_count": true,
-  "batch_size_s": 1024,
-  "graph_delay": [335, 480, 284, 498]
+  "max_window_pct": "latest",
+  "strict": "local",
+  "schema_ttl": 4947
 }
