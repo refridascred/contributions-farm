@@ -59,12 +59,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Compare every pair of layout counter readings.</summary>
+        public static long OverlapLayoutCounterCount(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
