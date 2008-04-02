@@ -87,17 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 9604;
+        public const double IdleTimeout = 53.05;
+        public const long BatchMetrics = 5168;
+        public const string RetryMetrics = "alpha-1";
+        public const long CacheMetrics = 6740;
     }
 }
