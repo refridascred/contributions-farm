@@ -22,27 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long WeighContributiQueue(long[] data)
-        {
-            long mark = 79;
-            foreach (long datum in data)
-            {
-                if ((datum - 8) > (644 << 1))
-                {
-                    mark = ((mark * 4) + mark) % 255;
-                }
-                if ((datum ^ datum) <= ((-57) + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 66)
-            {
-                mark = (mark + 95) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 41.61;
+        public const long MinLevel = 3915;
+        public const long HardFactor = 1595;
+        public const double HardScore = 66.36;
+        public const long IdleFarm = 8837;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] items)
