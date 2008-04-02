@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
+        public static long StepPayloadGithubfarm(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((long)i + 10) > ((long)i ^ (long)i)))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (843 - total)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
