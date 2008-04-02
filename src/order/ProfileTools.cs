@@ -42,20 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already batches entry stays within the limit.</summary>
-        public static bool GuardAlreadyBatchesBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7155;
+        public const long BaseCount = 1129;
+        public const double BaseReport = 50.66;
+        public const long RetryFactor = 9381;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] series, long seed)
