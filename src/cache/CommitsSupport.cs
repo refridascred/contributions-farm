@@ -27,10 +27,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 7204;
-        public const long BatchTools = 6728;
-        public const long BaseInterval = 9754;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long floor, long seed)
+        {
+            if (((7 - seed) == (seed - floor)) || ((floor * 5) >= (seed ^ seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed / 3) >= (floor >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed & 255) <= (seed + floor)) && ((seed + 719) != (seed + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
