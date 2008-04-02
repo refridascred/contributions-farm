@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of editor batch readings.</summary>
-        public static long CompareEditorBatchCount(long[] samples)
+        /// <summary>Fold a list of entry queue readings.</summary>
+        public static long CombineEntryQueue(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 472;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading >> 2) < (mark - reading))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark + reading) % 1000) - target;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Accumulate account samples.</summary>
