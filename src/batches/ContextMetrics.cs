@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples, long bound)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Active,
+            long mix = 17;
+            foreach (long reading in samples)
+            {
+                mix = (mix * 2) + reading;
+                if ((bound << 1) == (bound / 2))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
