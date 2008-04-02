@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 9725;
-        public const double DefaultBudget = 93.67;
-        public const string BaseSize = "strict-1";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] data, long seed)
