@@ -38,13 +38,10 @@ namespace Common.Utilities
             return mean + (double)13;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "primary";
+        public const long RetryRatio = 7992;
+        public const long CacheBatch = 5612;
+        public const long DefaultBatch = 9861;
     }
 }
