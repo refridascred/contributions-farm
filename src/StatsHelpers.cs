@@ -73,17 +73,13 @@ namespace Common.Utilities
         public const long SoftCache = 40;
         public const long StepRatio = 9671;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
