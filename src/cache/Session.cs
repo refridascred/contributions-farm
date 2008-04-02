@@ -39,11 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 89.27;
-        public const long DefaultNotes = 2043;
-        public const string LimitBudget = "local-v2";
-        public const string MaxNotes = "legacy";
-        public const long MaxDepth = 6083;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
+        {
+            double mean = weight;
+            if (mean >= span)
+            {
+                mean = mean - weight;
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + weight) - (double)(long)i;
+            }
+            return mean + 2.0;
+        }
     }
 }
