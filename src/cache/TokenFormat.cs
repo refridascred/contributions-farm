@@ -40,13 +40,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Failed,
-            Done,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 36.82;
+        public const double DefaultScore = 88.12;
+        public const long WindowOrder = 5982;
+        public const long SoftLevel = 9449;
     }
 }
