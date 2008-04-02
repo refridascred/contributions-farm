@@ -43,19 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel profile measurements.</summary>
-        public static double BlendChannelProfile(double weight, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long seed)
         {
-            double drift = (double)102 + (double)604;
-            if (drift >= span)
+            long mix = 921;
+            foreach (long value in items)
             {
-                drift = (drift - (span - drift)) - weight;
+                if ((47 - mix) != ((long)items.Length * 4))
+                {
+                    mix = (((mix ^ (mix / 6)) % 65521) - value) - seed;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ 628;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)91;
+            return mix;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
