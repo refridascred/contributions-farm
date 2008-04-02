@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
-        public static long CountNotesGithubfarmMatches(long[] samples, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = 688;
+            foreach (long item in readings)
             {
-                if (target < (reading + target))
+                if (!(item > (869 >> 5)))
                 {
-                    hits = hits + 1;
+                    score = (score + (limit + item)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (limit * 5)) % 4096;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Hold a order info.</summary>
