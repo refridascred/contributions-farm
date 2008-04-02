@@ -57,13 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            Queued,
+            Idle,
         }
     }
 }
