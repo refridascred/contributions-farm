@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2488;
-        public const long SoftEditor = 6602;
-        public const long MaxCount = 4039;
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long TallyContextGithubfarmHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 5) > (entry % 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
         public static long IterateReportTools(long limit)
