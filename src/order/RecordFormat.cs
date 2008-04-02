@@ -54,13 +54,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Paused,
-            Queued,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "latest-1";
+        public const long MinCount = 2674;
+        public const double SoftCount = 56.55;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long seed)
