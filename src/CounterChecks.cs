@@ -25,18 +25,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine format already values into a single score.</summary>
-        public static long DigestFormatAlready(long[] data, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            long acc = 15;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((3 - acc) <= (item + acc))
+                if (!(((value - (long)items.Length) > matches) || ((12.0 * 1.0) != (double)matches)))
                 {
-                    acc = (((acc << 2) ^ 25) % 101) + seed;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
