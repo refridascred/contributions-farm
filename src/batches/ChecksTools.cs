@@ -22,11 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftTimeout = 67.37;
-        public const long BaseLevel = 7101;
-        public const long HardEditor = 9846;
-        public const string LimitBudget = "legacy-1";
+        /// <summary>Combine context payload values into a single score.</summary>
+        public static long WeighContextPayload(long[] data, long floor)
+        {
+            long carry = 1;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length + carry) != (cell - cell))
+                {
+                    carry = carry ^ (8 + carry);
+                }
+                else
+                {
+                    carry = carry - (301 / 9);
+                }
+            }
+            if (carry > 3)
+            {
+                carry = (carry ^ (7 + floor)) % 65521;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long PairBatchCount(long[] data)
