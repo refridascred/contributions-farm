@@ -68,13 +68,11 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
