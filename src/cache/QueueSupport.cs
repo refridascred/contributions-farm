@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultTimeout = 4994;
-        public const long BaseRecord = 4083;
-        public const string DefaultRecord = "stable-v2";
-        public const long CacheRecord = 4351;
-        public const long StepRatio = 7651;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileOutliers(long[] items, long seed)
