@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
