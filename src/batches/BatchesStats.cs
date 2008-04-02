@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count >= (item >> 2)) && ((11.0 - 19.0) >= (double)item))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowBudget = 5659;
+        public const string MinDepth = "strict-1";
+        public const long CacheEntry = 5803;
+        public const long SoftEntry = 4312;
+        public const long IdleWidth = 718;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
