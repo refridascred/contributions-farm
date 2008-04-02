@@ -28,11 +28,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 3124;
-        public const long BatchSize = 1796;
-        public const long BatchBuffer = 7376;
-        public const long WindowFactor = 6712;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Accumulate queue stats samples.</summary>
         public static long FoldQueueStats(long[] levels)
