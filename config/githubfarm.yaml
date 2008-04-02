@@ -1,13 +1,12 @@
 # githubfarm settings
-window_limit:
-  - 186
-  - 25
-  - 283
-batch_size: 4850
-poll_interval_pct:
-  - blue
-  - cached
-  - green
-  - legacy
-enabled: false
-window_ratio: 500
+entry_depth: 6434
+cache_threshold_s:
+  hard_interval_pct: staging
+  sync_window: 0.36
+  cache_retries_pct: true
+  max_ratio_count: 625
+  already_delay:
+    - eu-west
+    - standard
+    - local
+layout_retries: fallback
