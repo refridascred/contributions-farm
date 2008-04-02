@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Pending,
-            Locked,
-            Idle,
-            Synced,
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
