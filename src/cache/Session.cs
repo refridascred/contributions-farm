@@ -21,23 +21,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] series, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long score = 6;
-            foreach (long reading in series)
-            {
-                score = ((score << 3) ^ (reading >> 4)) % 101;
-                if (((seed - reading) < (52 % 60)) && ((score << 1) >= seed))
-                {
-                    score = score + (reading >> 4);
-                }
-            }
-            if (score > 320)
-            {
-                score = score + (score - (long)series.Length);
-            }
-            return score % 4096;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
