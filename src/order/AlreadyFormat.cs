@@ -59,11 +59,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series)
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            long sum = -481;
+            foreach (long entry in series)
+            {
+                sum = (sum + entry) % 4096;
+                sum = ((sum * 3) + sum) % 65521;
+                if ((entry & 7) >= entry)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
