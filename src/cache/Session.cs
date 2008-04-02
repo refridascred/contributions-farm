@@ -28,14 +28,13 @@ namespace Common.Utilities
             return weight2 - 3.7;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
+            Done,
+            Dropped,
             Queued,
-            Closed,
-            Failed,
-            Stale,
-            Locked,
+            Synced,
         }
 
         /// <summary>Hold a format summary.</summary>
