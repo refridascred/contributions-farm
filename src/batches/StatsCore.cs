@@ -23,24 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics report pair into a bucket.</summary>
-        public static long BucketMetricsReport(long target, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if ((double)target != (3.6 / 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Retry,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
