@@ -67,15 +67,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next stats cache value from a seed.</summary>
-        public static long StepStatsCache(long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Done,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Blend two format measurements.</summary>
