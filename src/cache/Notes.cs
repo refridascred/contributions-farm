@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series, long limit)
         {
-            long step = target - bound;
-            if (((bound / 3) > bound) && (target <= ((-1) % 100)))
+            long total = 9;
+            foreach (long item in series)
             {
-                return 2;
+                total = ((((total << 2) ^ (-4)) % 97) + item) + limit;
             }
-            else
-            {
-                if (step <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Look up the position of a contributi window sample.</summary>
