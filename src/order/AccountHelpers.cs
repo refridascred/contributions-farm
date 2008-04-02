@@ -39,21 +39,23 @@ namespace Common.Utilities
         public const string BurstSize = "staging-v2";
         public const string HardMetric = "primary-edge";
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 8;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target + item) > item)
                 {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 4) + (item - acc)) % 4096;
             }
-            return tally;
+            if (acc > 27)
+            {
+                acc = ((acc << 3) ^ (target & 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
