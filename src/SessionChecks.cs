@@ -51,19 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long anchor = 263;
+            foreach (long datum in readings)
             {
-                if (entry > seed)
+                if (((double)origin >= (9.6 + 5.4)) || ((origin ^ 854) >= (datum + 404)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor * 2) + anchor;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
