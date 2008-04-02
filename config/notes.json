@@ -1,5 +1,12 @@
 {
-  "payload_threshold": "stable",
-  "compress": "local",
-  "channel_capacity": 30
+  "audit": "standard",
+  "hard_ttl": ["stable", "primary"],
+  "sync_window_ms": false,
+  "default_ratio": {
+    "batch_depth_pct": 60,
+    "burst_capacity": 92,
+    "idle_timeout": 500,
+    "idle_ttl": "strict"
+  },
+  "base_threshold_count": 18
 }
