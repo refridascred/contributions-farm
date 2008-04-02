@@ -60,13 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Pending,
             Draft,
-            Queued,
-            Closed,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the layout queue entries that pass the check.</summary>
