@@ -14,26 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = 182;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ anchor) > (entry * 5))
-                {
-                    anchor = ((anchor << 2) ^ 4) + target;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = (((anchor << 2) ^ entry) % 255) + (long)i;
-                }
-                if ((-3) < (0 + anchor))
-                {
-                    anchor = ((anchor * 4) + (anchor / 8)) % 65521;
-                }
-            }
-            return anchor;
+            Paused,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
