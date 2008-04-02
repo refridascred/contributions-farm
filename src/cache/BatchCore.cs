@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long BatchInterval = 6037;
         public const long MaxOrder = 8480;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Ready,
+            Idle,
         }
     }
 }
