@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every counter notes entry stays within the limit.</summary>
-        public static bool VerifyCounterNotesBounds(long[] data, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (item < limit)
+                if ((double)value < 17.0)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + step;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
