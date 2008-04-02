@@ -62,21 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context contributi readings.</summary>
-        public static long PairContextContributiCount(long[] items)
+        /// <summary>Match up batch farm samples.</summary>
+        public static long PairBatchFarmCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 9)
+                    if ((readings[i] - readings[j]) == 7)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
