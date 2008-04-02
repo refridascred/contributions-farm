@@ -43,38 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile support value against two limits.</summary>
-        public static long RankProfileSupport(long origin, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] items, long limit)
         {
-            if ((origin <= bound) || (origin < (origin % 16)))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((1 >> 2) >= (bound >> 2)) && ((double)bound < (6.0 - 11.0)))
+                if (item != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin % 24) > 7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound > (origin >> 5)) && (origin >= (bound / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
