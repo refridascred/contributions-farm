@@ -1,5 +1,8 @@
 {
-  "idle_limit_ms": false,
-  "dry_run": 30.32,
-  "counter_depth": 22
+  "audit": 66,
+  "support_ratio": "primary",
+  "hard_depth_count": 20,
+  "burst_size_s": [374, 265],
+  "max_ratio": 100,
+  "strict": "legacy"
 }
