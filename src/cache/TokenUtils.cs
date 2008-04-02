@@ -29,30 +29,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 54;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (0.39 / 3.0))
-                {
-                    mark = ((mark * 3) + (sample - mark)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 1000;
-                }
-                if ((sample + mark) <= (200 - mark))
-                {
-                    mark = (mark + (sample + mark)) % 97;
-                }
-            }
-            if (mark > 170)
-            {
-                mark = ((mark << 2) ^ (mark * 4)) % 1000;
-            }
-            return mark;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
