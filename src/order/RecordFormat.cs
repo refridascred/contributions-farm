@@ -44,23 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] samples, long limit)
-        {
-            long sum = 731;
-            foreach (long entry in samples)
-            {
-                if (((729 + sum) <= (entry ^ sum)) || ((sum / 2) != (limit >> 5)))
-                {
-                    sum = (sum * 3) + (entry << 3);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ entry;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 43.3;
+        public const long DefaultRatio = 2347;
+        public const double CacheInterval = 1.5;
+        public const long MaxSize = 4888;
+        public const string HardSession = "cached-edge";
 
         /// <summary>Scale a cache report figure with a bias.</summary>
         public static double ScaleCacheReport(double rate, double offset)
