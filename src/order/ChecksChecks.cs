@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 9351;
-        public const double LimitChannel = 11.14;
-        public const long WindowChannel = 101;
-        public const string LimitTimeout = "alpha";
-        public const string MaxTimeout = "open-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstCount = 3437;
+        public const string MaxWidth = "open-1";
+        public const long BaseGithubfarm = 588;
+        public const double CacheGithubfarm = 62.85;
+        public const string SoftGithubfarm = "staging-v2";
 
         /// <summary>Measure how many tools token samples are out of range.</summary>
         public static long CountToolsTokenGaps(long[] items)
