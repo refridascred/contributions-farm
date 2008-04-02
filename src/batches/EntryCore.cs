@@ -67,10 +67,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardWidth = 53.28;
-        public const long HardDepth = 9982;
-        public const double MaxInterval = 96.26;
-        public const string IdleScore = "latest";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 21.75;
+        public const double IdleRatio = 28.24;
+        public const long HardFilter = 8460;
+        public const long LimitFilter = 2212;
+        public const string StepInterval = "stable-edge";
     }
 }
