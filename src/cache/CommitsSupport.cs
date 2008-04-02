@@ -65,12 +65,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double bias, double offset)
         {
-            Ready,
-            New,
-            Active,
+            double gain = bias;
+            if (gain < offset)
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (19.0 + gain)) + (double)(long)i;
+            }
+            return gain + (bias * 17.0);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
