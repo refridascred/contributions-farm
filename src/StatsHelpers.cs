@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
