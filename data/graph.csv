@@ -1,7 +1,9 @@
-id,label,ratio,count,weight
-1,43.61,fallback,64.86,green
-2,64.67,cached,639,edge
-3,62.71,49.9,20.46,960
-4,327,strict,549,green
-5,96.1,677,504,standard
-6,6.11,eu-west,85.5,58.97
+id,active,ratio
+1,684,standard
+2,legacy,97.65
+3,578,26.52
+4,356,eu-west
+5,839,5.76
+6,open,541
+7,837,218
+8,open,38.71
