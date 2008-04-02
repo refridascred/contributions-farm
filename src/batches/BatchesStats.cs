@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            Synced,
+            New,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two already measurements.</summary>
