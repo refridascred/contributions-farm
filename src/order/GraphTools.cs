@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples, long seed)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Active,
+            long state = 9;
+            foreach (long datum in samples)
+            {
+                if ((981 << 1) <= state)
+                {
+                    state = ((state - state) + datum) - seed;
+                }
+                if ((6.8 + 8.2) == (double)state)
+                {
+                    state = state ^ (state & 7);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
