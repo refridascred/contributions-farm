@@ -63,18 +63,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!((double)matches <= (3.1 + 2.0)))
+                if (!((-16) < limit))
                 {
-                    matches = (matches + 2) ^ datum;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
