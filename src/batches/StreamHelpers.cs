@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry support series from a seed.</summary>
-        public static long RollEntrySupport(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long mark = 84;
+            foreach (long value in series)
             {
-                mix = (mix ^ ((long)i * 5)) % 101;
-                mix = mix ^ (-26);
-                mix = (mix ^ seed) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                mark = ((mark << 2) ^ (mark - value)) + target;
             }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of payload queue readings.</summary>
