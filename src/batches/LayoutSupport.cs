@@ -46,15 +46,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = -6;
+            foreach (long cell in data)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((7.1 + 9.78) > (double)cell)
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
             }
-            return state;
+            return mix;
         }
     }
 }
