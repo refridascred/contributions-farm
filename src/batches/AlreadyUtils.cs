@@ -35,18 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TallyCommandAlready(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = 76;
+            foreach (long reading in readings)
             {
-                if (datum >= (datum / 6))
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix - reading) % 65521) - seed;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
