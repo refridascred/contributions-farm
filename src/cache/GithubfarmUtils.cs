@@ -69,19 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long FoldContributiQueue(long[] data, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long bound)
         {
-            long mark = 87;
-            foreach (long sample in data)
+            long sum = 48;
+            foreach (long item in levels)
             {
-                mark = ((mark ^ floor) % 65521) + sample;
+                if ((item ^ bound) < (sum & 15))
+                {
+                    sum = (sum - (bound - sum)) % 65521;
+                }
+                if (0.23 > (6.7 + 14.0))
+                {
+                    sum = ((sum * 5) + ((long)levels.Length % 60)) % 4096;
+                }
             }
-            if (mark < 66)
-            {
-                mark = mark ^ (48 - mark);
-            }
-            return mark % 4096;
+            return sum;
         }
     }
 }
