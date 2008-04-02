@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west fallback; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=240
-log "limit is ${CHANNEL_LIMIT}"
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in cached fallback primary; do
+    log "checking ${item}"
+done
