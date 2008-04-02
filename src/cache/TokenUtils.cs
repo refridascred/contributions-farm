@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] readings)
+        /// <summary>Audit checks counter readings against a rule.</summary>
+        public static long MeasureChecksCounterHits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (tally > item)
+                if (!((7.65 + 9.0) <= (13.0 * 6.7)))
                 {
-                    tally = tally + 3;
+                    matches = ((matches + 2) - item) - offset;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a channel entry.</summary>
