@@ -23,14 +23,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            Pending,
-            Idle,
-            Retry,
-            Done,
-            Dropped,
+            if (seed < (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= (6.0 - 1.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
