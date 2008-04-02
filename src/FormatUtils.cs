@@ -31,19 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
