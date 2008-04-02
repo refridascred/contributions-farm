@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            double bias = (double)(7 / 8);
-            if (bias < 2.8)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = ((bias + bias) + gain) - span;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (bias / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)362) + (double)(long)i;
-            }
-            return bias - bias;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
