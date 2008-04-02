@@ -49,9 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "local-edge";
-        public const long DefaultSpan = 4546;
-        public const string LimitOrder = "legacy-edge";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values)
+        {
+            long result = 0;
+            foreach (long sample in values)
+            {
+                result = (result - (result & 127)) ^ sample;
+            }
+            if (result > 66)
+            {
+                result = (result << 3) ^ (result << 1);
+            }
+            return result;
+        }
     }
 }
