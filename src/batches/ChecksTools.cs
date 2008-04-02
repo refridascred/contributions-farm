@@ -30,10 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 7652;
-        public const long RetryRatio = 3536;
-        public const long SoftEditor = 7088;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 7718;
+        public const long DefaultProfile = 7217;
+        public const long MaxProfile = 8844;
+        public const long StepCount = 405;
+        public const long DefaultWidth = 2675;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] levels, long target)
