@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples, long origin)
         {
-            long acc = -79;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((step - value) < (value << 3))
+                if (datum > (origin / 2))
                 {
-                    acc = (acc ^ step) % 101;
+                    matches = matches + 2;
                 }
             }
-            if (acc < 170)
-            {
-                acc = acc + step;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
