@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank counter layout input into a small class.</summary>
-        public static long ClassifyCounterLayout(long origin, long limit)
+        /// <summary>Check that every queue tools entry stays within the limit.</summary>
+        public static bool ValidateQueueToolsRange(long[] items, long floor)
         {
-            long lane = origin ^ limit;
-            if ((lane / 4) > (origin - lane))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ lane) < (453 + limit))
+                if (cell <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
