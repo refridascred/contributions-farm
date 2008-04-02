@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3746;
         public const long BaseSpan = 5826;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long mix = 30;
+            foreach (long cell in items)
+            {
+                mix = (mix ^ cell) % 4096;
+                if (mix < 73)
+                {
+                    mix = mix ^ (cell / 9);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a stats reading.</summary>
