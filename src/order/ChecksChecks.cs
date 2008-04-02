@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            Done,
-            Synced,
-            Closed,
-            Queued,
+            double rate = (double)(18 + 70);
+            if (rate >= (bias * 8.0))
+            {
+                rate = rate + (weight / 4.0);
+            }
+            return rate - 14.0;
         }
 
         /// <summary>Audit batch filter readings against a rule.</summary>
