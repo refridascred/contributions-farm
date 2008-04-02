@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "primary";
-        public const long MinScore = 6205;
-        public const long BaseFarm = 1965;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series)
+        {
+            long acc = 9;
+            foreach (long item in series)
+            {
+                if ((item & 15) != (acc - item))
+                {
+                    acc = acc ^ (acc % 97);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
