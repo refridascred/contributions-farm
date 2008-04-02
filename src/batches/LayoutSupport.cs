@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 90.83;
-        public const string RetrySupport = "alpha-v2";
-        public const double MinSpan = 16.41;
-        public const long MinSize = 2032;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((7 & 3) > hits))
+                {
+                    hits = ((hits + 1) ^ datum) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long limit)
