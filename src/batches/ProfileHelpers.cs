@@ -28,25 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats format series from a seed.</summary>
-        public static long SeriesStatsFormat(long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((total + floor) <= ((long)i & 31))
-                {
-                    total = total ^ 75;
-                    total = total + 30;
-                    continue;
-                }
-                else
-                {
-                    total = total - (total + 0);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
