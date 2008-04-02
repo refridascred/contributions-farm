@@ -51,13 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            New,
-            Failed,
-            Closed,
-            Queued,
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
