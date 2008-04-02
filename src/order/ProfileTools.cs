@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next order value.</summary>
