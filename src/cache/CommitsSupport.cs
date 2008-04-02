@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] items, long step)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the order level values.</summary>
