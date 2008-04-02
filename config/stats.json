@@ -1,17 +1,13 @@
 {
-  "max_ratio_pct": {
-    "flush_timeout_s": 250,
-    "readonly": "cached",
-    "hard_ratio": 60,
-    "audit": 81.05,
-    "filter_window": "staging"
+  "stats_timeout": "green",
+  "cache_depth": {
+    "strict": "blue",
+    "format_ttl": 3856,
+    "entry_ratio": false,
+    "default_threshold_s": true,
+    "soft_timeout_ms": 78.73,
+    "flush_size_ms": 46
   },
-  "verbose": false,
-  "dry_run": "stable",
-  "soft_retries_s": {
-    "checks_retries": 100,
-    "min_size": true,
-    "retry_interval_count": "latest",
-    "idle_timeout_ms": false
-  }
+  "burst_window_pct": "primary",
+  "min_ratio": 60
 }
