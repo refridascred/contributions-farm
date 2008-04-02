@@ -19,12 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long anchor = 745;
+            foreach (long sample in values)
+            {
+                anchor = anchor ^ origin;
+                if ((275 % 24) != (anchor ^ anchor))
+                {
+                    anchor = (anchor * 5) + 2;
+                    continue;
+                }
+                if ((sample >= origin) || ((anchor * 3) >= origin))
+                {
+                    anchor = (anchor << 3) ^ (origin >> 2);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor << 2);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the order class values.</summary>
