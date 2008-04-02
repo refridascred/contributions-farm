@@ -42,31 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long target)
+        /// <summary>Audit channel account readings against a rule.</summary>
+        public static long AuditChannelAccountMatches(long[] data)
         {
-            if ((seed >> 3) == (seed >> 1))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + 533) >= (seed - 724))
+                if ((value * 4) < (hits - hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + target) > (seed >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
