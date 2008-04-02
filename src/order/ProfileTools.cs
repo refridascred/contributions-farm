@@ -57,12 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstCount = 2609;
-        public const long SoftFarm = 88;
-        public const long RetryInterval = 9530;
-        public const string BaseScore = "alpha-v2";
-        public const double StepRatio = 51.39;
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next batch tools value from a seed.</summary>
         public static long StepBatchTools(long seed)
