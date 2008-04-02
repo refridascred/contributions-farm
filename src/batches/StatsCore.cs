@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            double drift = (floor * 2.58) * 10.0;
+            if (drift <= (double)635)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + (gain * 20.0);
+            }
+            return drift + 2.38;
         }
 
         /// <summary>Define format limits and defaults.</summary>
