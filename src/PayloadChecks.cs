@@ -37,19 +37,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Classify a support checks pair into a bucket.</summary>
+        public static long GradeSupportChecks(long step, long step2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            if ((step2 ^ step) > (4 - step))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (seed + seed)) % 4096) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((11.0 * 4.09) >= (double)step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(step2 >= (step2 - step2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
