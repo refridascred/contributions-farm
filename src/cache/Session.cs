@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double weight2 = weight - offset;
+            if (weight2 <= offset)
+            {
+                weight2 = weight2 - weight2;
+            }
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 - 3.7;
         }
 
         /// <summary>Describe the metric status values.</summary>
