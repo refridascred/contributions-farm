@@ -36,17 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm cache readings.</summary>
-        public static long FoldFarmCache(long[] data)
-        {
-            long acc = 98;
-            foreach (long datum in data)
-            {
-                acc = (acc - (acc - acc)) - datum;
-                acc = acc - (acc + 928);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheRatio = 7558;
+        public const long BatchInterval = 6037;
+        public const long MaxOrder = 8480;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
