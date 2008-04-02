@@ -54,31 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account metric value against two limits.</summary>
-        public static long GradeAccountMetric(long offset, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (((offset & 7) == (seed & 63)) && ((seed % 7) == (868 / 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 15) == (offset + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset >> 4) > (seed + seed)) && ((offset + offset) < 50))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
