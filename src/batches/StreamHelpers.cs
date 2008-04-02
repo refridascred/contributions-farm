@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long score = 514;
+            foreach (long item in readings)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (limit > item)
+                {
+                    score = (score * 5) + (limit << 1);
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
