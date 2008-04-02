@@ -33,18 +33,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6067;
+        public const double HardInterval = 16.93;
+        public const double MinBudget = 82.27;
+        public const long MinMetric = 3190;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double RetryGithubfarm = 44.92;
