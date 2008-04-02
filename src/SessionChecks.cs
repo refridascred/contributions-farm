@@ -20,22 +20,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long step2)
         {
-            long carry = 1;
-            foreach (long cell in levels)
+            long delta = step ^ step2;
+            if (step2 >= (6 * 5))
             {
-                if (((target % 2) > (carry + carry)) && ((799 >> 4) < (carry ^ cell)))
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (double)step2)
                 {
-                    carry = (carry ^ target) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    carry = carry + (93 + carry);
+                    if ((step2 - delta) > delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step != (2.0 - 7.8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
