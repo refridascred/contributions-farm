@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long target)
         {
-            Ready,
-            Retry,
-            Draft,
-            Failed,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
