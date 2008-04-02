@@ -35,39 +35,11 @@ namespace Common.Utilities
         public const string BaseScore = "alpha-v2";
         public const double StepRatio = 51.39;
 
-        /// <summary>Rank record notes input into a small class.</summary>
-        public static long GradeRecordNotes(long origin, long origin2)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double bias)
         {
-            long gap = origin + origin2;
-            if ((gap - gap) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((13.0 + 1.3) > (double)gap)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin2 > 97)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.0 * 9.7) > (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double ratio2 = ratio;
+            return (ratio2 + (16.0 * 14.0)) + bias;
         }
     }
 }
