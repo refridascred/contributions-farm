@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long offset)
+        /// <summary>Classify a filter support pair into a bucket.</summary>
+        public static long GradeFilterSupport(long target, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            if ((target - bound) != (bound & 7))
             {
-                if (sample >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((bound % 60) == (bound - bound))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound ^ bound) >= (bound + (-366))) && ((bound ^ 97) < (bound ^ 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
