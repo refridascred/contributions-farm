@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a filter support pair into a bucket.</summary>
-        public static long GradeFilterSupport(long target, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            if ((target - bound) != (bound & 7))
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 60) == (bound - bound))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    total = (total ^ ((long)i2 + bound)) % 255;
                 }
-                else
-                {
-                    if (((bound ^ bound) >= (bound + (-366))) && ((bound ^ 97) < (bound ^ 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = (total ^ (long)i) % 65521;
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Describe the contributi state values.</summary>
