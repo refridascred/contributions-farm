@@ -33,22 +33,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi metric value against two limits.</summary>
-        public static long SortContributiMetric(long seed, long bound)
+        /// <summary>Grade a already layout value against two limits.</summary>
+        public static long SortAlreadyLayout(long origin, long origin2)
         {
-            if (((seed - bound) < (2 + bound)) || ((seed % 16) > seed))
+            if ((origin2 ^ 0) > origin)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((bound & 7) > (659 / 5))
+                if ((7.0 * 2.4) <= (double)origin2)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    if (!(origin >= (5 - 79)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.35 - 2.05) == (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
