@@ -27,26 +27,18 @@ namespace Common.Utilities
         public const double SoftSize = 86.51;
         public const long BurstGithubfarm = 4297;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long target)
+        /// <summary>Measure how many route profile samples are out of range.</summary>
+        public static long MeasureRouteProfileGaps(long[] series, long step)
         {
-            long state = 704;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((5.48 + 4.07) < (double)target)
+                if (!((double)sample >= (8.86 + 4.78)))
                 {
-                    state = (state + (long)data.Length) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (reading * 2)) % 65521;
+                    seen = (seen + 3) + step;
                 }
             }
-            if (state > (-82))
-            {
-                state = ((state << 3) ^ target) % 255;
-            }
-            return state;
+            return seen;
         }
     }
 }
