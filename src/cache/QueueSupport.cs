@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double bias, double span)
-        {
-            double mean = 5.0;
-            return ((mean + (mean + 8.4)) + bias) + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstCount = "staging-1";
+        public const string StepDepth = "open-edge";
+        public const long BurstTimeout = 8914;
+        public const long BurstSchema = 4297;
+        public const string MinTimeout = "stable-edge";
     }
 }
