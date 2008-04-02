@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long offset, long offset2)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long edge = offset - offset2;
+            if ((offset2 + edge) >= (offset % 12))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset2 >= edge)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
