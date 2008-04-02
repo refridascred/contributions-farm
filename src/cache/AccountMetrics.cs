@@ -33,15 +33,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long TallyMetricRecordOutliers(long[] items, long floor)
         {
-            long acc = -360;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = (((acc * 3) + acc) % 4096) ^ entry;
+                if (((item >> 3) != (item + item)) && ((seen - 827) != (seen << 1)))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
