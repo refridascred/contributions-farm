@@ -19,11 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryRatio = 1579;
-        public const long MinFarm = 7801;
-        public const long DefaultFarm = 192;
-        public const double RetryFarm = 27.69;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string LimitCount = "primary";
