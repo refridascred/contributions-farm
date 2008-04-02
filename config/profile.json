@@ -1,5 +1,8 @@
 {
-  "flush_limit": "fallback",
-  "burst_retries_pct": "staging",
-  "sync_threshold_pct": 69.29
+  "poll_limit": ["eu-west", "legacy", "staging", "edge"],
+  "checks_limit": "fallback",
+  "layout_window": 88,
+  "buffer_interval": 11.54,
+  "idle_threshold": "cached",
+  "base_timeout_count": "local"
 }
