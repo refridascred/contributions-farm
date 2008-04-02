@@ -19,14 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long step, long step2)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Retry,
-            Pending,
+            if ((2.0 / 9.0) > (double)step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step >> 4) >= 986)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ step2) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step2 + 17) <= (step << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a window reading.</summary>
