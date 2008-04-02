@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BaseRatio = 4.48;
         public const long LimitCommits = 7956;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (7.8 < (double)item)
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSpan = 5909;
+        public const long RetrySchema = 1149;
+        public const long BurstRatio = 7802;
+        public const string HardSchema = "standard-v2";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] samples, long bound)
