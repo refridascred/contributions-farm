@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum > (origin / 2))
+                long bound = result;
+                if (!(bound >= ((long)i * 2)))
                 {
-                    matches = matches + 2;
+                    bound = bound - (bound - bound);
+                    result = (result * 3) + (bound << 1);
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
