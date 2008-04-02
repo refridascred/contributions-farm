@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor + seed) % 255;
+                anchor = (anchor ^ ((-80) + seed)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
