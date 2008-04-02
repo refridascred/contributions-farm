@@ -35,17 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count counter cache pairs that satisfy a relation.</summary>
