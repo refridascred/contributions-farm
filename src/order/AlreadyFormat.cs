@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((bound + origin) != (bound ^ bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((316 >> 1) >= (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((5.0 * 20.0) > (double)origin) || ((double)origin <= (8.5 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
