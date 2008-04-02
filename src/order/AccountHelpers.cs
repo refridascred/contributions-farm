@@ -48,14 +48,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepLevel = 49.81;
+        public const long StepPayload = 9510;
+        public const string WindowFactor = "latest-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] levels, long origin)
