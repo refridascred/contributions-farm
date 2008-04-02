@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 12.36;
+        public const long IdleBudget = 5229;
+        public const string MaxGraph = "fallback-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MaxRatio = 8.17;
