@@ -29,18 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((95 + entry) >= 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
