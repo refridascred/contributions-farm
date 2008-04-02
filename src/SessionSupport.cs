@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 3;
-        public const string LimitScore = "cached-1";
-        public const string StepBudget = "open";
-        public const long DefaultFilter = 6145;
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long AuditRouteMetricOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally - step) >= entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
         public static long IterateReportTools(long limit)
