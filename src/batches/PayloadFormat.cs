@@ -15,14 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long seed)
         {
-            Closed,
-            Active,
-            New,
-            Dropped,
-            Ready,
+            long state = 4;
+            foreach (long value in samples)
+            {
+                if (((-42) <= (seed - seed)) && (state < (seed * 3)))
+                {
+                    state = (state + (seed / 8)) + value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Project the next checks record value.</summary>
