@@ -28,13 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long MeasureSessionRouteOutliers(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)tally <= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
