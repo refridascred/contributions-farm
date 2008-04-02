@@ -32,18 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.8 - 7.0) <= (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) ^ reading) + offset;
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
