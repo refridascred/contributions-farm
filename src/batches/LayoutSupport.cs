@@ -20,11 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitDepth = 34.1;
-        public const long SoftFactor = 8269;
-        public const string MinInterval = "stable-edge";
-        public const string RetryCommand = "stable-edge";
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Active,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long origin, long step)
