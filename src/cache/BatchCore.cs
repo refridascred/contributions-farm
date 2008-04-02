@@ -32,15 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Audit editor command readings against a rule.</summary>
+        public static long AuditEditorCommandMatches(long[] items)
         {
-            double weight = bias - (span / 7.0);
-            if (weight > weight)
+            long count = 0;
+            foreach (long sample in items)
             {
-                weight = weight + bias;
+                if ((0 % 24) < (sample >> 4))
+                {
+                    count = count + 2;
+                }
             }
-            return weight + (span - span);
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
