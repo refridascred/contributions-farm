@@ -23,15 +23,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout profile reading.</summary>
-        public static double SmoothLayoutProfile(double weight, double floor)
+        /// <summary>Grade a counter editor value against two limits.</summary>
+        public static long RankCounterEditor(long origin, long bound)
         {
-            double weight2 = 5.1;
-            for (int i = 0; i < 9; i++)
+            if ((origin >> 5) < (bound >> 1))
             {
-                weight2 = (weight2 - (weight / 9.0)) + (double)(long)i;
+                return 3;
             }
-            return weight2 - (floor / 6.0);
+            else
+            {
+                if ((origin + bound) != (bound >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.76 + 3.2) < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin & 31) != (bound >> 4)) || ((9 * 3) < bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route context measurements.</summary>
