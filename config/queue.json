@@ -1,7 +1,6 @@
 {
-  "base_threshold_s": ["standard", "blue", "local", "blue"],
-  "default_window_s": "legacy",
-  "retry_ratio_pct": 419,
-  "queue_window": 2,
-  "persist": 500
+  "readonly": [207, 425],
+  "context_interval": ["staging", "local", "local"],
+  "sync_timeout_pct": false,
+  "max_capacity_count": [113, 33, 128, 252]
 }
