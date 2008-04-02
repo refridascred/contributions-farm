@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mean + (double)13;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 44.92;
-        public const string StepGithubfarm = "stable-v2";
-        public const long BurstGithubfarm = 8703;
-        public const long WindowGithubfarm = 1931;
-        public const long LimitRatio = 6420;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
