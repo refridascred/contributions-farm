@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many session metrics samples are out of range.</summary>
+        public static long CountSessionMetricsHits(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally ^ 31) < (tally / 4))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
