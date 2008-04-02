@@ -30,18 +30,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((649 - tally) != (bound - (long)samples.Length))
+                if (values[i] <= bound)
                 {
-                    tally = (tally + 2) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
