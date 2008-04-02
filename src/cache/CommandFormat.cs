@@ -24,18 +24,15 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] data, long seed)
+        /// <summary>Fold a list of commits report readings.</summary>
+        public static long CombineCommitsReport(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 936;
+            foreach (long item in series)
             {
-                if ((hits / 6) == (seed << 3))
-                {
-                    hits = (hits + 2) - item;
-                }
+                carry = ((carry << 3) ^ (carry + carry)) - item;
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
