@@ -39,22 +39,39 @@ namespace Common.Utilities
         public const double BaseReport = 50.66;
         public const long RetryFactor = 9381;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Rank record notes input into a small class.</summary>
+        public static long GradeRecordNotes(long origin, long origin2)
         {
-            long mark = -4;
-            foreach (long entry in data)
+            long gap = origin + origin2;
+            if ((gap - gap) <= origin)
             {
-                if ((mark + mark) == (820 / 9))
+                return 3;
+            }
+            else
+            {
+                if ((13.0 + 1.3) > (double)gap)
                 {
-                    mark = (mark + entry) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark ^ entry) % 97;
+                    if (origin2 > 97)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.0 * 9.7) > (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
