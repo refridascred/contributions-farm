@@ -64,21 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > origin)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
