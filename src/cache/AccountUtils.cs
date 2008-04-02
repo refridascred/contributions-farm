@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long MaxBudget = 7618;
         public const long LimitRatio = 1880;
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long CountBatchesCommitsHits(long[] samples, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target <= (target ^ target))
+                if (items[i] >= target)
                 {
-                    matches = (matches + 2) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
