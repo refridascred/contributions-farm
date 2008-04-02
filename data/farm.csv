@@ -1,8 +1,9 @@
-id,weight,active
-1,71.51,538
-2,922,50.96
-3,eu-west,7.63
-4,418,latest
-5,640,blue
-6,78.48,primary
-7,645,798
+id,active,owner,token
+1,900,582,655
+2,81.26,8,open
+3,eu-west,696,753
+4,544,62.06,blue
+5,32,346,432
+6,801,primary,22.41
+7,standard,550,795
+8,947,998,fallback
