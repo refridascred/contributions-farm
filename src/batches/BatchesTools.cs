@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long CountBatchesRouteMatches(long[] values)
+        /// <summary>Count the queue stream entries that pass the check.</summary>
+        public static long CountQueueStreamGaps(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long datum in values)
             {
-                if (((double)count > (6.34 - 15.0)) || ((datum & 7) == (83 * 5)))
+                if ((3.0 - 3.81) < (double)datum)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
