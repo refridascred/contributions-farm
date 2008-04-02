@@ -59,18 +59,18 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long seed)
         {
-            long carry = 806;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((limit ^ carry) != (limit & 31))
+                if (sample > (seed - seed))
                 {
-                    carry = (((carry << 3) ^ carry) % 101) ^ sample;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
