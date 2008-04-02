@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Derive the next token batch value from a seed.</summary>
+        public static long IterateTokenBatch(long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 4) + offset) % 97) + (long)i2;
-                }
-                total = (total << 2) ^ total;
-                total = ((total * 3) + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count the contributi buffer entries that pass the check.</summary>
