@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Count the token entry entries that pass the check.</summary>
+        public static long CountTokenEntryGaps(long[] levels, long origin)
         {
-            double rate2 = (double)(-33) + (6.31 / 2.0);
-            if (rate2 > (rate2 - floor))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                rate2 = rate2 + (rate2 + rate);
+                if ((double)reading >= (11.0 - 0.5))
+                {
+                    seen = (seen + 1) - origin;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (floor / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - floor) + (double)(long)i;
-            }
-            return rate2 - 6.38;
+            return seen;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
