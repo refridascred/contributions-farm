@@ -20,11 +20,12 @@ namespace Common.Utilities
             return bias2 + (bias * 9.28);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 4953;
-        public const string BurstCount = "local-1";
-        public const string BaseFilter = "primary-edge";
-        public const string StepFilter = "fallback-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultFactor = 9382;
+        public const string WindowRatio = "cached";
+        public const double BatchSize = 94.97;
+        public const double MaxSpan = 82.43;
+        public const string BurstNotes = "legacy-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 36;
