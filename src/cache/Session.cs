@@ -51,23 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double mean = weight;
-            if (mean >= span)
-            {
-                mean = mean - weight;
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + weight) - (double)(long)i;
-            }
-            return mean + 2.0;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
