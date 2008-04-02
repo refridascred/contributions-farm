@@ -26,11 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
