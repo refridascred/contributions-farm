@@ -63,13 +63,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((anchor * 2) >= (anchor + (long)i))
+                {
+                    anchor = ((anchor * 4) + ((-1) + origin)) % 65521;
+                    anchor = (anchor * 5) + (origin ^ (long)i);
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
