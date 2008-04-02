@@ -57,18 +57,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long CountGithubfarmEntryOutliers(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double rate = (double)(89 << 2);
+            if (rate <= (double)281)
             {
-                if (((83 <= (5 + matches)) && ((84 / 9) <= (matches >> 4))) || ((1 + cell) >= (matches % 10)))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - (scale / 6.0);
             }
-            return matches;
+            else
+            {
+                rate = rate - (span * 16.0);
+            }
+            return rate - (rate * 15.0);
         }
     }
 }
