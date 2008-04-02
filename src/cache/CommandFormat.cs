@@ -41,15 +41,34 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            double rate = offset + (offset / 8.0);
-            if (rate > gain)
+            long carry = 27;
+            foreach (long cell in items)
             {
-                rate = rate - 9.53;
+                if ((cell * 2) >= carry)
+                {
+                    carry = (carry * 2) + carry;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (cell - cell)) % 65521;
+                }
+                if (carry > (cell + cell))
+                {
+                    carry = (carry << 2) ^ (carry ^ carry);
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 65521;
+                }
+                if ((carry + cell) >= (carry >> 4))
+                {
+                    carry = (carry + (long)items.Length) % 101;
+                }
             }
-            return rate + offset;
+            return carry % 4096;
         }
     }
 }
