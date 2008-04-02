@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            long acc = 403;
-            foreach (long entry in items)
+            long score = 32;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ acc) + entry;
-                acc = acc + ((long)items.Length + 43);
+                score = (score - datum) % 101;
             }
-            return acc % 4096;
+            if (score < 74)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Validate farm payload readings against a bound.</summary>
