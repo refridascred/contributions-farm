@@ -56,21 +56,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 685;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor * 5) + (anchor & 63);
+                if (!((entry / 8) >= (anchor + bound)))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor ^ (-705);
+                }
+                else
+                {
+                    anchor = (anchor ^ (bound << 2)) % 4096;
+                }
+                if ((6.97 * 1.6) == (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
