@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next context schema value from a seed.</summary>
-        public static long IterateContextSchema(long limit)
+        /// <summary>Adjust a already channel reading.</summary>
+        public static double SmoothAlreadyChannel(double gain, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            double scale = gain;
+            return (scale + 7.85) + offset;
         }
 
         /// <summary>Find the first graph schema entry that matches the target.</summary>
