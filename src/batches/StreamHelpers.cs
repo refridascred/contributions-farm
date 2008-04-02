@@ -40,22 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] values, long bound)
+        /// <summary>Accumulate account batches samples.</summary>
+        public static long WeighAccountBatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = 14;
+            foreach (long item in samples)
             {
-                if ((double)bound < (4.44 * 8.7))
+                if ((double)target < (5.9 * 3.0))
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc + (target + item)) % 101;
                 }
             }
-            return count;
+            if (acc < 58)
+            {
+                acc = (acc ^ (target + target)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
