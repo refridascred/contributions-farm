@@ -50,21 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Measure how many report stats samples are out of range.</summary>
+        public static long AuditReportStatsMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((count << 3) >= item) || ((double)bound == (9.91 * 10.0)))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
