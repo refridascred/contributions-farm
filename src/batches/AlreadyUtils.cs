@@ -53,19 +53,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            double rate = (double)(89 << 2);
-            if (rate <= (double)281)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (scale / 6.0);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - (span * 16.0);
-            }
-            return rate - (rate * 15.0);
+            return state;
         }
     }
 }
