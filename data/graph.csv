@@ -1,11 +1,6 @@
-id,owner,token,state,region
-1,edge,primary,953,84
-2,414,80.0,stable,65.63
-3,primary,blue,212,68.38
-4,77.79,341,51.54,primary
-5,57.26,966,17.62,594
-6,612,53,4.27,457
-7,3.45,839,60.31,840
-8,40.43,20,open,170
-9,staging,51.73,435,green
-10,68.91,legacy,41.93,38.21
+id,active,score,label
+1,507,312,386
+2,66.23,845,edge
+3,48,stable,136
+4,721,269,0.04
+5,legacy,38.92,161
