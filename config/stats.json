@@ -1,6 +1,12 @@
 {
-  "sync_window": 2112,
-  "min_depth_s": "blue",
-  "strict": true,
-  "enabled": 94
+  "enabled": "strict",
+  "soft_retries_s": 1980,
+  "payload_window": 100,
+  "soft_ttl_s": 54.8,
+  "verbose": {
+    "base_limit_pct": 8509,
+    "max_limit": 30,
+    "batch_capacity_ms": "cached",
+    "soft_ttl": 6497
+  }
 }
