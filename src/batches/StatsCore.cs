@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = span;
-            if (rate > (double)(-464))
-            {
-                rate = (rate - rate) - bias;
-            }
-            return rate + (double)2;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the window state values.</summary>
