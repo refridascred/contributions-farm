@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Pending,
-            Retry,
-            Active,
             Synced,
+            Closed,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Project the next batches order value.</summary>
