@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green local standard staging; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=385
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
