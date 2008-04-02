@@ -31,19 +31,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long MeasureChannelContributiGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!(((long)data.Length - value) >= (value % 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxTimeout = 30.16;
+        public const long HardMetrics = 2258;
+        public const double WindowMetrics = 68.95;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
