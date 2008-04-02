@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double ratio = (double)(3 & 63);
-            if (ratio > ratio)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - bias;
+            Ready,
+            Dropped,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Adjust a window reading.</summary>
