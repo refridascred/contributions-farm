@@ -43,18 +43,11 @@ namespace Common.Utilities
             return weight - (floor + ratio);
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long CountToolsEditorMatches(long[] levels)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ sample) < (count - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
