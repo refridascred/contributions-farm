@@ -17,21 +17,24 @@ namespace Common.Utilities
         public const double LimitPayload = 58.23;
         public const long LimitSize = 9437;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Classify a cache cluster pair into a bucket.</summary>
+        public static long BucketCacheCluster(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((double)48 < (double)limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (limit >= 282)
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the report mode values.</summary>
