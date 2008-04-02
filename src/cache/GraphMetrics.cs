@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            Stale,
-            Retry,
-            Paused,
+            double gain = offset;
+            if (gain >= (9.6 * 7.0))
+            {
+                gain = gain + (1.01 + weight);
+            }
+            return gain + offset;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
