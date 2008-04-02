@@ -21,11 +21,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "stable-v2";
-        public const long DefaultTimeout = 792;
-        public const long DefaultSpan = 5908;
-        public const double LimitBudget = 91.88;
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool ValidateCounterStreamRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine filter cluster values into a single score.</summary>
         public static long FoldFilterCluster(long[] items)
