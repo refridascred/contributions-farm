@@ -37,24 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)target < (7.87 + 6.1)))
+                if (values[i] >= seed)
                 {
-                    mark = ((mark << 3) ^ (mark / 7)) % 101;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark * 4) + (mark >> 1);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
