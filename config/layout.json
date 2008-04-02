@@ -1,5 +1,18 @@
 {
-  "persist": 2.78,
-  "verbose": "primary",
-  "cache_window_pct": 17
+  "readonly": {
+    "burst_size_s": {
+      "poll_threshold_ms": 44,
+      "persist": true,
+      "base_depth_s": 85.48
+    },
+    "burst_limit_ms": 99,
+    "idle_capacity_s": false,
+    "githubfarm_retries": [82, 407],
+    "min_limit_count": 5.96
+  },
+  "min_retries_ms": 250,
+  "payload_depth": [265, 445, 318],
+  "poll_interval_ms": "legacy",
+  "sync_size_ms": 95,
+  "max_limit_count": 100
 }
