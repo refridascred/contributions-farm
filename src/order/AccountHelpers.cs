@@ -51,12 +51,14 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxFactor = 2124;
-        public const long DefaultWidth = 3001;
-        public const long BurstSpan = 1393;
-        public const long RetryBudget = 9843;
-        public const long MaxScore = 5874;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many metrics contributi samples are out of range.</summary>
         public static long TallyMetricsContributiGaps(long[] series)
