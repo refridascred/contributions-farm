@@ -41,18 +41,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long MeasureFilterContextMatches(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((tally & 3) >= (datum + datum)) && ((datum / 8) >= (datum & 31))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
