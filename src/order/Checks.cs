@@ -53,27 +53,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long limit)
         {
-            long anchor = 685;
-            foreach (long entry in levels)
+            long carry = 806;
+            foreach (long sample in values)
             {
-                anchor = (anchor * 5) + (anchor & 63);
-                if (!((entry / 8) >= (anchor + bound)))
+                if ((limit ^ carry) != (limit & 31))
                 {
-                    anchor = anchor ^ (-705);
-                }
-                else
-                {
-                    anchor = (anchor ^ (bound << 2)) % 4096;
-                }
-                if ((6.97 * 1.6) == (double)anchor)
-                {
-                    break;
+                    carry = (((carry << 3) ^ carry) % 101) ^ sample;
                 }
             }
-            return anchor % 97;
+            return carry;
         }
     }
 }
