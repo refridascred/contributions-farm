@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BatchCommits = 3680;
         public const long SoftCommits = 7307;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
