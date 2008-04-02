@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next counter tools value.</summary>
