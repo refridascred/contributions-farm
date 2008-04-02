@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score - (entry - 863);
+                if (((score << 3) <= (22 + offset)) || ((entry % 5) > (score - offset)))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (score + offset);
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
