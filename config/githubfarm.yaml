@@ -1,15 +1,14 @@
 # githubfarm settings
-batch_retries_pct: strict
-report_retries:
-  compress:
-    - strict
-    - green
-  min_timeout_count:
-    compress: true
-    poll_interval_s: 31.21
-    base_timeout: 816
-    max_window: fallback
-    poll_timeout: 6004
-  cache_limit_ms: 5
-warm_limit_s: false
-poll_window: true
+readonly: eu-west
+soft_delay_s:
+  burst_delay_s: 97.23
+  poll_limit_count: 100
+  strict: 18
+  batch_interval: blue
+  persist: stable
+  account_size: 500
+soft_delay:
+  - 358
+  - 415
+notes_ratio: 85.9
+retry_depth_s: true
