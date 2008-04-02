@@ -24,10 +24,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxTimeout = 30.16;
-        public const long HardMetrics = 2258;
-        public const double WindowMetrics = 68.95;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Queued,
+            Pending,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double LimitWidth = 15.81;
