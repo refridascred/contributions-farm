@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Ready,
-            Pending,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultTimeout = 4994;
+        public const long BaseRecord = 4083;
+        public const string DefaultRecord = "stable-v2";
+        public const long CacheRecord = 4351;
+        public const long StepRatio = 7651;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
