@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = 783;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 1) != ((long)readings.Length >> 3))
-                {
-                    anchor = ((anchor * 4) + (anchor ^ 0)) % 65521;
-                }
-                if ((sample <= (anchor % 100)) && ((double)sample > (double)anchor))
-                {
-                    anchor = anchor ^ (5 + 20);
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 2) ^ (anchor << 3);
-            }
-            return anchor % 65521;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
