@@ -67,22 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = 73;
+            foreach (long value in series)
             {
-                if (((double)datum > (7.78 - 8.5)) && (((datum - datum) <= count) || ((datum ^ datum) <= count)))
+                if ((double)value < (2.99 - 2.11))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total << 3) ^ (673 >> 4)) + target;
                 }
             }
-            return count;
+            if (total < (-353))
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
