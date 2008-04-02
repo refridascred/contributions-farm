@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two record route measurements.</summary>
-        public static double SmoothRecordRoute(double weight, double span)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            double load = span;
-            if (load > weight)
+            double load = scale;
+            if (load > 1.2)
             {
-                load = load + (span * 3.1);
+                load = load - 1.0;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - weight;
+            return load - (bias / 2.0);
         }
 
         /// <summary>Locate a account reading by value.</summary>
