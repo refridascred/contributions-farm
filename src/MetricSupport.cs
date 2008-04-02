@@ -20,20 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(((long)i ^ origin) < (-8)))
-                {
-                    result = (result ^ (origin - result)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardDepth = 7416;
+        public const long DefaultSession = 3192;
+        public const long IdleFactor = 4222;
+        public const long MaxDepth = 7034;
 
         /// <summary>Audit graph farm readings against a rule.</summary>
         public static long CountGraphFarmHits(long[] values, long step)
