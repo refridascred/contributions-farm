@@ -39,19 +39,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next command schema value.</summary>
-        public static double ProjectCommandSchema(double rate, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            double bias = floor;
-            if (bias < floor)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                bias = bias - 4.6;
+                if (matches > (sample ^ sample))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (rate / 6.0)) + (double)(long)i;
-            }
-            return bias + (bias / 4.0);
+            return matches;
         }
     }
 }
