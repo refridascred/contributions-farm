@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] levels, long target)
+        /// <summary>Digest a series of githubfarm support entries.</summary>
+        public static long TallyGithubfarmSupport(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long result = 300;
+            foreach (long sample in data)
             {
-                if (0 < (7 ^ target))
+                if ((sample + result) <= (sample - bound))
                 {
-                    count = (count + 1) ^ entry;
+                    result = result - result;
+                }
+                else
+                {
+                    result = result ^ (bound % 16);
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
