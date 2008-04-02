@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)count <= 4.0))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
