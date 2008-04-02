@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Compare every pair of route cluster readings.</summary>
+        public static long MatchRouteClusterCount(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 < (double)126)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias / 7.0);
-            }
-            return bias2 + (bias * 9.28);
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
