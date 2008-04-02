@@ -36,26 +36,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long FoldFilterCluster(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels, long floor)
         {
-            long sum = 259;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((entry + sum) < (entry & 1))
+                if ((double)tally >= (7.0 + 8.8))
                 {
-                    sum = ((sum << 2) ^ (entry << 1)) % 65521;
+                    tally = ((tally + 3) + datum) + floor;
                 }
                 else
                 {
-                    sum = (sum - (30 + 416)) % 255;
+                    tally = tally - 1;
                 }
             }
-            if (sum < 94)
-            {
-                sum = (sum << 2) ^ (sum % 8);
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
