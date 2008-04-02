@@ -20,25 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format cache series from a seed.</summary>
-        public static long SeriesFormatCache(long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long mark = 23;
+            foreach (long item in data)
             {
-                if ((4.5 / 3.0) >= (double)(long)i)
+                mark = mark + ((long)data.Length >> 4);
+                if (!((item >> 2) != (item & 31)))
                 {
-                    carry = ((carry * 4) + ((long)i & 255)) % 97;
                     break;
                 }
-                if ((long)i > ((long)i >> 4))
-                {
-                    carry = (carry + (carry >> 5)) % 97;
-                }
-                carry = (carry * 3) + (carry + 5);
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            if (mark > 12)
+            {
+                mark = (mark + (mark >> 4)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
