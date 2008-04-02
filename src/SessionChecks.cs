@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long CacheRecord = 9711;
         public const double WindowRecord = 98.86;
 
-        /// <summary>Project the next already queue value.</summary>
-        public static double SmoothAlreadyQueue(double rate, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            double rate2 = rate;
-            if (rate2 < span)
+            double scale = 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                rate2 = rate2 - (double)67;
+                scale = (((scale + (double)(-341)) + (double)(long)i) + gain) - offset;
             }
-            else
-            {
-                rate2 = rate2 + (span - 19.0);
-            }
-            return rate2 - span;
+            return scale - (double)(-27);
         }
     }
 }
