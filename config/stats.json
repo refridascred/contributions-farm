@@ -1,17 +1,7 @@
 {
-  "window_threshold": true,
-  "cache_capacity_pct": 2056,
-  "max_depth_ms": {
-    "batch_threshold_count": "stable",
-    "cache_ratio": 1024,
-    "burst_threshold_count": 1771,
-    "min_interval_pct": "cached"
-  },
-  "account_threshold": ["latest", "fallback"],
-  "counter_interval": {
-    "entry_ttl": false,
-    "enabled": 73,
-    "poll_delay": 78
-  },
-  "retry_capacity_pct": "green"
+  "compress": "staging",
+  "persist": 1024,
+  "dry_run": 30,
+  "max_delay_s": 70.28,
+  "payload_capacity": 99
 }
