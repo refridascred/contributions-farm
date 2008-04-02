@@ -28,21 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the batches editor entries that pass the check.</summary>
