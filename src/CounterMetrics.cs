@@ -33,11 +33,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Adjust a metric counter reading.</summary>
+        public static double AdjustMetricCounter(double ratio, double span)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            double rate = (double)(7 + 0);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate - ratio) + (double)(long)i) + span;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
