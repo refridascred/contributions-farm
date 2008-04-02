@@ -13,17 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] data, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                if ((double)matches > 4.3)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + item) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
