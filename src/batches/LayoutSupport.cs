@@ -83,18 +83,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the layout queue entries that pass the check.</summary>
-        public static long CountLayoutQueueOutliers(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = 52;
+            foreach (long value in items)
             {
-                if ((datum < (3 >> 1)) || ((335 ^ datum) >= datum))
-                {
-                    matches = matches + 3;
-                }
+                sum = (((sum * 5) + ((-23) + (-51))) % 65521) - value;
             }
-            return matches;
+            if (sum < 24)
+            {
+                sum = sum + (sum * 3);
+            }
+            return sum;
         }
     }
 }
