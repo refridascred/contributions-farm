@@ -77,11 +77,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 1164;
-        public const long RetryBatches = 4099;
-        public const double CacheWidth = 49.98;
-        public const long BaseBatches = 2347;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long origin)
+        {
+            long cur = limit ^ origin;
+            if ((limit > (limit & 63)) || ((1.7 / 4.0) != (double)cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - cur) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] data, long step)
