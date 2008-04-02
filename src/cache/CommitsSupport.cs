@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a batches already reading by value.</summary>
-        public static long FindBatchesAlreadyIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheCount = 2546;
+        public const long WindowCount = 6269;
+        public const double BatchRatio = 59.89;
+        public const long WindowRatio = 2068;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] readings, long floor)
