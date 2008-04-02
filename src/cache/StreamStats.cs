@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            double mean = offset;
-            if (mean < offset)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mean = (mean + (double)435) - gain;
+                if ((seen / 4) >= (cell << 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
