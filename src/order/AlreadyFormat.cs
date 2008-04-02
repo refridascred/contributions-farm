@@ -52,20 +52,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            if (origin < (limit << 1))
             {
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    result = (result - (offset - (long)i)) - (long)i3;
-                }
-                result = (result ^ ((long)i >> 3)) % 101;
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((41 <= (517 ^ origin)) || ((origin + (-15)) != (limit & 15)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit >= 6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
