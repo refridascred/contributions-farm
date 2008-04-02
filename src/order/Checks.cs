@@ -55,13 +55,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
