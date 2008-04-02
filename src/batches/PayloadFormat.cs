@@ -20,21 +20,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 6954;
         public const long BatchFactor = 5803;
 
-        /// <summary>Compare every pair of command layout readings.</summary>
-        public static long PairCommandLayoutCount(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a contributi metric value against two limits.</summary>
