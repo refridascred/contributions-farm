@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 26.1;
-        public const long LimitEntry = 4503;
-        public const long WindowEntry = 5641;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally << 3) < (floor << 1))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
