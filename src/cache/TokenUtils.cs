@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Pending,
-            Synced,
-            Queued,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 76;
+        public const double IdleScore = 64.52;
+        public const long SoftProfile = 7621;
+        public const long StepFactor = 2584;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] data, long target)
