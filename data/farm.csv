@@ -1,9 +1,7 @@
-id,active,owner,token
-1,900,582,655
-2,81.26,8,open
-3,eu-west,696,753
-4,544,62.06,blue
-5,32,346,432
-6,801,primary,22.41
-7,standard,550,795
-8,947,998,fallback
+id,count,score,state,region
+1,11.87,stable,50.32,legacy
+2,edge,2.71,fallback,65.28
+3,92.37,6.12,46,69.4
+4,587,primary,open,87.12
+5,legacy,275,strict,477
+6,19.31,953,80.6,811
