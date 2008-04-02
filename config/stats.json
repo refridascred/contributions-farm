@@ -1,8 +1,6 @@
 {
-  "verbose": "strict",
-  "sync_ratio_pct": [236, 153, 72],
-  "readonly": 25,
-  "strict": 1272,
-  "soft_depth_pct": [492, 168],
-  "min_ttl_s": 250
+  "sync_window": 2112,
+  "min_depth_s": "blue",
+  "strict": true,
+  "enabled": 94
 }
