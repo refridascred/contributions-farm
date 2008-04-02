@@ -20,11 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardDepth = 7416;
-        public const long DefaultSession = 3192;
-        public const long IdleFactor = 4222;
-        public const long MaxDepth = 7034;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit graph farm readings against a rule.</summary>
         public static long CountGraphFarmHits(long[] values, long step)
