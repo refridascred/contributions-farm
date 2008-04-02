@@ -72,13 +72,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            Queued,
+            Synced,
+            Pending,
+            Retry,
+            Stale,
         }
     }
 }
