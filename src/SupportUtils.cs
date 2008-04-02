@@ -28,19 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
