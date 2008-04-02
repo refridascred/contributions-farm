@@ -36,24 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long step2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long origin)
         {
-            if ((step / 8) > (step % 16))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step >= 2.9))
+                if ((799 >> 1) <= matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    matches = ((matches + 3) ^ reading) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm info.</summary>
