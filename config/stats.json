@@ -1,14 +1,7 @@
 {
-  "hard_capacity_count": 3,
-  "readonly": 76.5,
-  "record_interval": "edge",
-  "persist": "standard",
-  "filter_depth": "standard",
-  "idle_limit_s": {
-    "batch_ratio": 3617,
-    "readonly": 8407,
-    "batch_depth_s": "open",
-    "soft_depth_s": 69,
-    "retry_capacity_s": ["eu-west", "eu-west"]
-  }
+  "batch_ttl_pct": true,
+  "base_size_pct": "staging",
+  "min_limit_pct": "latest",
+  "max_limit_count": [427, 343, 216],
+  "cache_ttl": [117, 487, 216]
 }
