@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] samples, long bound)
+        /// <summary>Match up channel order samples.</summary>
+        public static long MatchChannelOrderCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + (long)samples.Length) < 63)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 1) ^ reading) + bound;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
