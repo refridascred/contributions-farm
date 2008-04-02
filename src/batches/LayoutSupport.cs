@@ -26,26 +26,19 @@ namespace Common.Utilities
         public const string MinInterval = "stable-edge";
         public const string RetryCommand = "stable-edge";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long bound)
         {
-            long result = 127;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (!((result - 674) >= 923))
+                if (item >= bound)
                 {
-                    result = result - (result + 21);
-                }
-                if ((cell / 3) != (cell - result))
-                {
-                    result = ((result << 3) ^ (result + result)) % 255;
-                }
-                else
-                {
-                    result = result - (cell + 76);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Audit filter context readings against a rule.</summary>
