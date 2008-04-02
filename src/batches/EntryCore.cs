@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double MaxAccount = 31.61;
         public const long WindowSize = 8227;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if (data[i] > origin)
                 {
                     return (long)i;
                 }
