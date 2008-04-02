@@ -48,24 +48,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((double)total > (5.1 * 0.34))
+                if (item < step)
                 {
-                    total = ((total << 2) ^ (total + floor)) % 65521;
-                    total = ((total << 3) ^ (total * 5)) % 1000;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 2) + floor) % 97;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a schema info.</summary>
