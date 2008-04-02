@@ -39,23 +39,14 @@ namespace Common.Utilities
         public const string BurstReport = "standard";
         public const long BurstFactor = 4865;
 
-        /// <summary>Project the next report order value.</summary>
-        public static double BlendReportOrder(double bias, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double ratio = bias;
-            if (ratio <= offset)
-            {
-                ratio = ratio + (double)54;
-            }
-            else
-            {
-                ratio = ratio + (offset * 5.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (offset - offset)) + (double)(long)i;
-            }
-            return ratio + (15.0 - 8.0);
+            Synced,
+            Ready,
+            Paused,
+            Draft,
+            Queued,
         }
     }
 }
