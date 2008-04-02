@@ -1,16 +1,10 @@
 # entry settings
-base_ttl_ms:
-  - legacy
-  - staging
-min_capacity: green
-retry_timeout_s:
-  buffer_timeout: 2414
-  sync_ttl_pct:
-    - 97
-    - 236
-    - 172
-    - 7
-  command_ttl: 60
-  channel_ttl: true
-  audit: false
-  compress: 43.55
+account_delay: green
+retry_threshold:
+  - 118
+  - 174
+min_limit:
+  poll_window_pct: 8
+  sync_delay_ms: cached
+  soft_size_pct: 72.78
+  already_delay: latest
