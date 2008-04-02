@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels, long target)
         {
-            long seen = 0;
+            long total = 97;
             foreach (long entry in levels)
             {
-                if (!((double)seen > 14.0))
-                {
-                    seen = ((seen + 2) + entry) + target;
-                }
+                total = ((total ^ (total & 31)) - entry) - target;
             }
-            return seen;
+            return total;
         }
     }
 }
