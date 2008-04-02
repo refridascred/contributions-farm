@@ -1,12 +1,13 @@
 # Command notes
 
-The batch module keeps batch values in sync with the tools cache.
-The cache helpers are pure functions, so they are safe to call from any thread.
-The account module keeps format values in sync with the graph cache.
+Use githubfarm settings to tune how often cache data is refreshed.
+Use notes settings to tune how often tools data is refreshed.
+
+When a queue fails, the githubfarm handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer route defaults
-- Keep cache values small
-- Log every profile change
-- Document new schema fields
+- Review commits limits each release
+- Prefer entry defaults
+- Validate stats input early
