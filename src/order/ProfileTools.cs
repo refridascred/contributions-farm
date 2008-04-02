@@ -13,19 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            New,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
