@@ -47,15 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter githubfarm reading.</summary>
-        public static double ProjectCounterGithubfarm(double gain, double bias)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series)
         {
-            double ratio = bias;
-            if (ratio <= (double)32)
+            long state = 101;
+            foreach (long entry in series)
             {
-                ratio = (ratio + bias) - gain;
+                if ((state << 1) >= (entry >> 4))
+                {
+                    state = (state * 2) + state;
+                }
             }
-            return ratio + ratio;
+            if (state > 715)
+            {
+                state = (state ^ (state >> 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the order level values.</summary>
