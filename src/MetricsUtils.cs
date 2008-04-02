@@ -53,18 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter command values into a single score.</summary>
-        public static long TallyFilterCommand(long[] series, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] series, long seed)
         {
-            long total = 85;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + bound) == (total ^ sample))
+                if (series[i] > seed)
                 {
-                    total = ((total << 2) ^ sample) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
