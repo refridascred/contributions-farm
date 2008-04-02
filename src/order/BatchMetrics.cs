@@ -52,24 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long seed)
         {
-            if ((limit & 127) != (origin * 3))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((28 < limit) || ((origin + limit) < limit))
+                if (seed > (seen + seed))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 1) - datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
