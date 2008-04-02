@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long result = 87;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result ^ result) % 97) + item) + origin;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result < 560)
-            {
-                result = ((result * 3) + (result ^ 687)) % 4096;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
