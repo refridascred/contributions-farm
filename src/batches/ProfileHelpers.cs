@@ -41,12 +41,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5227;
+        public const long RetryCount = 8636;
+        public const string CacheEditor = "alpha-edge";
+        public const double RetryEditor = 43.82;
 
         /// <summary>Accumulate queue stats samples.</summary>
         public static long FoldQueueStats(long[] levels)
