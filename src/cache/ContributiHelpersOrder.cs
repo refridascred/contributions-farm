@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a support graph pair into a bucket.</summary>
-        public static long ClassifySupportGraph(long origin, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if ((origin << 2) <= (origin + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 2) == (bound / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound != (3.7 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin > 9.72)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a farm githubfarm value against two limits.</summary>
