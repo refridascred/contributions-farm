@@ -57,23 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long seed)
-        {
-            long mix = 921;
-            foreach (long value in items)
-            {
-                if ((47 - mix) != ((long)items.Length * 4))
-                {
-                    mix = (((mix ^ (mix / 6)) % 65521) - value) - seed;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 628;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 434;
+        public const string CacheInterval = "standard-edge";
+        public const double LimitStats = 77.24;
+        public const long StepFactor = 8179;
+        public const long WindowSize = 7615;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long bound, long limit)
