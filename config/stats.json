@@ -1,13 +1,13 @@
 {
-  "stats_timeout": "green",
-  "cache_depth": {
-    "strict": "blue",
-    "format_ttl": 3856,
-    "entry_ratio": false,
-    "default_threshold_s": true,
-    "soft_timeout_ms": 78.73,
-    "flush_size_ms": 46
+  "batch_threshold": [166, 421],
+  "max_size_count": false,
+  "batch_retries_pct": {
+    "graph_size": 500,
+    "cache_threshold_pct": 27,
+    "checks_interval": false,
+    "enabled": 61.63,
+    "warm_limit": "local"
   },
-  "burst_window_pct": "primary",
-  "min_ratio": 60
+  "max_retries_s": 7956,
+  "cache_limit_count": 56.69
 }
