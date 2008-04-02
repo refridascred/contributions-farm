@@ -37,13 +37,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long mix = 22;
+            foreach (long reading in levels)
+            {
+                mix = mix - (mix + reading);
+                mix = ((mix << 3) ^ (mix - mix)) % 65521;
+            }
+            if (mix < 7)
+            {
+                mix = mix ^ (mix - 40);
+            }
+            return mix;
         }
     }
 }
