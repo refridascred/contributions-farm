@@ -1,19 +1,7 @@
 {
-  "cache_depth_pct": {
-    "warm_size": [347, 82, 389],
-    "hard_size_ms": 12.1,
-    "sync_delay_ms": true,
-    "warm_capacity_pct": false,
-    "enabled": "primary",
-    "verbose": "stable"
-  },
-  "warm_limit_s": 17,
-  "warm_threshold_s": {
-    "max_depth_ms": ["staging", "legacy"],
-    "enabled": 24,
-    "warm_size_pct": 4529
-  },
-  "flush_timeout_pct": true,
-  "token_ratio": ["edge", "primary", "edge", "legacy"],
-  "readonly": 27.46
+  "sync_ttl_s": false,
+  "default_window_count": 12.68,
+  "profile_depth": [103, 271],
+  "sync_capacity_pct": 77,
+  "report_interval": "open"
 }
