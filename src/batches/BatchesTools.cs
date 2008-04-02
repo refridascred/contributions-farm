@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long target)
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long CountBatchesRouteMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (reading <= target)
+                if (((double)count > (6.34 - 15.0)) || ((datum & 7) == (83 * 5)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
