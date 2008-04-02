@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 714;
+            foreach (long entry in values)
+            {
+                if ((sum + sum) <= ((-624) % 60))
+                {
+                    sum = ((sum * 4) + (sum << 2)) % 1000;
+                }
+                sum = (sum - (entry & 31)) % 4096;
+                if (((entry - sum) > (sum + entry)) || ((double)entry < 6.84))
+                {
+                    sum = (sum - (70 + entry)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
