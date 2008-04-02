@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double scale = rate / 8.0;
-            if (scale <= scale)
-            {
-                scale = scale + scale;
-            }
-            return scale + bias;
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
