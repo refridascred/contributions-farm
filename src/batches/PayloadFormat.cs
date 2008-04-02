@@ -59,15 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Grade a contributi metric value against two limits.</summary>
+        public static long SortContributiMetric(long seed, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            if (((seed - bound) < (2 + bound)) || ((seed % 16) > seed))
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((bound & 7) > (659 / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
