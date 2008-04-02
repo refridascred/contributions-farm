@@ -53,12 +53,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many cluster order samples are out of range.</summary>
+        public static long MeasureClusterOrderOutliers(long[] values)
         {
-            Ready,
-            Stale,
-            Failed,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((((-844) >= (cell % 16)) && ((cell << 3) >= seen)) || (seen <= (cell & 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
