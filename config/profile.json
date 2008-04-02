@@ -1,10 +1,6 @@
 {
-  "persist": {
-    "hard_threshold": 2.22,
-    "poll_retries_ms": "staging",
-    "notes_depth": 64,
-    "tools_threshold": ["standard", "open", "eu-west"]
-  },
-  "base_threshold_count": 100,
-  "max_delay": ["staging", "standard", "local"]
+  "burst_capacity_pct": "staging",
+  "batch_threshold": 1519,
+  "order_ttl": 23,
+  "metric_size": ["stable", "legacy", "open"]
 }
