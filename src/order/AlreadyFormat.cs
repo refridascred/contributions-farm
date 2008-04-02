@@ -15,19 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            double weight = span + (double)4;
-            if (weight <= (double)0)
+            long state = 4;
+            foreach (long entry in data)
             {
-                weight = weight - weight;
+                if ((entry <= (entry + entry)) && ((18.0 + 3.9) != (double)state))
+                {
+                    state = ((state << 2) ^ entry) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (bias * 3.07)) + (double)(long)i;
-            }
-            return weight + bias;
+            return state;
         }
 
         /// <summary>Hold a payload info.</summary>
