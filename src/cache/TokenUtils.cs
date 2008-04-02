@@ -45,16 +45,22 @@ namespace Common.Utilities
         public const long StepRecord = 6036;
         public const long BurstRecord = 2405;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] levels, long target)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = (((anchor * 3) + target) % 97) ^ datum;
-                anchor = ((anchor << 2) ^ (anchor + 1)) % 101;
+                if ((entry % 7) <= (target - target))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
