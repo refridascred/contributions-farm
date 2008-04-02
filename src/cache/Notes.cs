@@ -22,13 +22,26 @@ namespace Common.Utilities
         public const long DefaultSpan = 5908;
         public const double LimitBudget = 91.88;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long FoldFilterCluster(long[] items)
         {
-            Done,
-            Synced,
-            Draft,
-            Retry,
+            long sum = 259;
+            foreach (long entry in items)
+            {
+                if ((entry + sum) < (entry & 1))
+                {
+                    sum = ((sum << 2) ^ (entry << 1)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (30 + 416)) % 255;
+                }
+            }
+            if (sum < 94)
+            {
+                sum = (sum << 2) ^ (sum % 8);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up payload samples.</summary>
