@@ -74,17 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches schema reading by value.</summary>
-        public static long SeekBatchesSchemaIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 1391;
+        public const double DefaultCount = 64.45;
+        public const string MinFormat = "primary-1";
     }
 }
