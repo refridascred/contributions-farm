@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Grade a editor notes value against two limits.</summary>
+        public static long GradeEditorNotes(long bound, long target)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long offset = bound ^ target;
+            if ((target - bound) > (128 & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next record value.</summary>
