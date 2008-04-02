@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Locate a graph batches reading by value.</summary>
+        public static long LocateGraphBatchesIndex(long[] values, long origin)
         {
-            double weight = (offset * 1.0) - (offset / 6.0);
-            return (weight + (double)476) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
