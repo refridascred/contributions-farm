@@ -1,6 +1,18 @@
 {
-  "idle_depth": "open",
-  "batch_threshold_pct": "green",
-  "batch_window": false,
-  "persist": 5540
+  "sync_window": 14.34,
+  "default_depth_s": 33,
+  "min_threshold": {
+    "batches_retries": {
+      "flush_depth_ms": "blue",
+      "hard_window": 46.39,
+      "flush_threshold": 5
+    },
+    "soft_depth": false,
+    "hard_interval_ms": 100,
+    "profile_delay": true,
+    "report_ratio": 3620
+  },
+  "max_ttl_count": false,
+  "compress": "standard",
+  "soft_timeout_s": 63
 }
