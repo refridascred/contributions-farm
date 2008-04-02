@@ -45,22 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long sum = 656;
-            foreach (long reading in samples)
-            {
-                if ((double)limit == (double)sum)
-                {
-                    sum = (sum - (reading >> 3)) % 4096;
-                }
-            }
-            if (sum < 69)
-            {
-                sum = ((sum << 2) ^ (limit & 31)) % 97;
-            }
-            return sum;
+            Failed,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
