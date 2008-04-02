@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long CombineTokenSession(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = 398;
-            foreach (long cell in values)
-            {
-                if ((96 >= (245 + result)) || ((142 * 5) < (result ^ (long)values.Length)))
-                {
-                    result = ((result + (result << 3)) % 101) - cell;
-                }
-            }
-            if (result < 58)
-            {
-                result = ((result * 2) + (5 - result)) % 1000;
-            }
-            return result % 97;
+            Ready,
+            Done,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define support limits and defaults.</summary>
