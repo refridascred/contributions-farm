@@ -1,10 +1,5 @@
 # support settings
-verbose: 250
-cache_ratio: 3
-burst_size_pct:
-  - fallback
-  - green
-  - green
-  - latest
-min_ratio_count: 5
-report_limit: strict
+retry_interval_count: 6029
+buffer_ttl: 7332
+max_timeout_count: 87
+batches_depth: standard
