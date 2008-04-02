@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account counter readings against a bound.</summary>
-        public static bool CheckAccountCounterBounds(long[] values, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (cell != origin)
+                if ((item - step) >= (step % 5))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
