@@ -63,39 +63,22 @@ namespace Common.Utilities
         public const string CacheLevel = "strict";
         public const long RetryFarm = 6832;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long target2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] readings, long step)
         {
-            long span = target ^ target2;
-            if ((33 ^ target) != (span - target2))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target2 & 31) == (target & 1)) && ((span ^ span) == (target2 ^ target)))
+                if ((17.0 / 2.0) >= (double)sample)
                 {
-                    return 7;
+                    matches = (matches + 1) + step;
                 }
                 else
                 {
-                    if ((target2 > (target2 << 3)) && (0.85 < (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target2 ^ target) >= 61)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
