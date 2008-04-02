@@ -40,14 +40,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Find the first channel counter entry that matches the target.</summary>
+        public static long SeekChannelCounterIndex(long[] data, long origin)
         {
-            Synced,
-            Stale,
-            Closed,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a already report value against two limits.</summary>
