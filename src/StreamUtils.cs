@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items)
         {
-            Synced,
-            Active,
-            Idle,
-            Dropped,
-            Stale,
+            long anchor = 198;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor * 5) + ((long)i % 5)) % 4096;
+                }
+                if (((5 + reading) <= (-1)) || ((reading * 5) < (45 - reading)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 2)) % 4096;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
