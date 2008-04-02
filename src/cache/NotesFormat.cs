@@ -29,13 +29,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long offset)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            if (floor < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (floor >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
