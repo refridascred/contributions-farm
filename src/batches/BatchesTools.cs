@@ -20,18 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)datum <= (18.0 + 1.19))
+                if ((carry << 3) <= seed)
                 {
-                    seen = seen + 2;
+                    carry = carry + (carry & 63);
+                    continue;
                 }
+                carry = ((carry << 3) ^ (seed + 7)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
