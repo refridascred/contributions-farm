@@ -35,22 +35,17 @@ namespace Common.Utilities
         public const long LimitSpan = 8068;
         public const long DefaultNotes = 7557;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long limit)
         {
-            long total = 6;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total >= (sample * 3))
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    total = (total * 4) + 662;
+                    return (long)i;
                 }
             }
-            if (total > 5)
-            {
-                total = (total * 3) + (total >> 3);
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
