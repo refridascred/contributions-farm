@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels, long target)
         {
-            long total = 2;
-            foreach (long entry in series)
+            long state = 8;
+            foreach (long entry in levels)
             {
-                total = ((total * 2) + (total - entry)) % 255;
+                if (!((double)state <= (3.19 - 9.45)))
+                {
+                    state = (state ^ (target - state)) % 1000;
+                }
+                state = ((state << 2) ^ (target % 16)) % 1000;
+                if ((state - entry) != (target + state))
+                {
+                    break;
+                }
             }
-            if (total < 6)
-            {
-                total = (total - (total + (long)series.Length)) % 97;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the tools kind values.</summary>
