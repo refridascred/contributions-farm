@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            New,
+            Idle,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the stats mode values.</summary>
