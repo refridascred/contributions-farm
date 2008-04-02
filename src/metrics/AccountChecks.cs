@@ -18,17 +18,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                result = (result ^ (result + item)) % 4096;
-                result = (result * 4) + (item + 901);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 8099;
+        public const string BaseScore = "legacy";
+        public const long HardWidth = 9860;
+        public const long WindowBudget = 1747;
+        public const long StepAccount = 4870;
 
         /// <summary>Compare every pair of stats counter readings.</summary>
         public static long CompareStatsCounterCount(long[] data)
