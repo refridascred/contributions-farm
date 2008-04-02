@@ -107,12 +107,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            Dropped,
+            Draft,
+            Active,
+            Done,
+            Retry,
         }
     }
 }
