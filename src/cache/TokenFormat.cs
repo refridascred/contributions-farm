@@ -14,13 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            double bias = (9.72 / 3.0) + (double)17;
+            return ((bias - 9.5) + ratio) + floor;
         }
 
         /// <summary>Describe the support phase values.</summary>
