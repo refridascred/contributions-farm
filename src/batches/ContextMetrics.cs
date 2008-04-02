@@ -24,11 +24,14 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6735;
-        public const long DefaultAccount = 1640;
-        public const long WindowSpan = 6625;
-        public const long DefaultSpan = 4386;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
