@@ -19,38 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long step, long step2)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long limit)
         {
-            if ((2.0 / 9.0) > (double)step2)
+            long mark = 648;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 4) >= 986)
+                if ((limit & 63) < 455)
                 {
-                    return 3;
+                    mark = (((mark * 3) + (mark >> 5)) % 1000) - sample;
                 }
                 else
                 {
-                    if ((step ^ step2) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step2 + 17) <= (step << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = (mark ^ (limit & 63)) % 255;
                 }
             }
+            if (mark < 840)
+            {
+                mark = mark + (mark + limit);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a window reading.</summary>
