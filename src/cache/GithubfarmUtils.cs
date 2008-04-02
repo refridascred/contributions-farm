@@ -13,20 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next report already value.</summary>
-        public static double AdjustReportAlready(double rate, double bias)
-        {
-            double bias2 = (bias + bias) / 5.0;
-            if (bias2 < (rate + bias2))
-            {
-                bias2 = bias2 + (rate + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 / 6.0)) + (double)(long)i;
-            }
-            return bias2 - (bias2 + rate);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitBudget = 8750;
+        public const long WindowScore = 9045;
+        public const long RetryFactor = 3179;
+        public const double HardWidth = 79.72;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] samples)
