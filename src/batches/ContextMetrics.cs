@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long WindowSpan = 6625;
         public const long DefaultSpan = 4386;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftSpan = "cached";
+        public const double SoftBudget = 15.49;
+        public const double LimitGithubfarm = 25.82;
+        public const double HardLevel = 96.52;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] samples, long bound)
