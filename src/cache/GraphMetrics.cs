@@ -40,20 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] values, long seed)
         {
-            long state = 59;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                state = (state - ((-9) + state)) % 255;
-                state = ((state * 4) + (entry - state)) % 97;
-                if ((entry > (3 + state)) && ((double)entry >= 5.1))
+                if (value <= seed)
                 {
-                    state = (state << 3) ^ (state * 5);
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
