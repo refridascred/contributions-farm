@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
+        /// <summary>Audit already filter readings against a rule.</summary>
+        public static long AuditAlreadyFilterOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if ((double)sample > (7.76 + 8.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
