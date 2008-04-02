@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long IdleCount = 5331;
         public const long StepBudget = 4484;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowWidth = 10.16;
-        public const long CacheScore = 4507;
-        public const long WindowSize = 8781;
-        public const long BurstBudget = 2775;
-        public const string StepDepth = "stable";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((((double)seen < (14.0 / 8.0)) && ((double)85 <= (double)entry)) && ((step % 64) >= 500))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long origin)
