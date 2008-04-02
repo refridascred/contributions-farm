@@ -1,15 +1,14 @@
 # Command notes
 
-Each route is validated before it reaches the entry queue.
-Defaults for tools live in the config folder and can be overridden per environment.
+Keep buffer and support names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-Each layout is validated before it reaches the githubfarm queue.
-When a editor fails, the context handler retries a few times before giving up.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Keep route values small
-- Review token limits each release
-- Prefer schema defaults
-- Document new tools fields
+- Document new buffer fields
+- Review already limits each release
+- Prefer layout defaults
+- Keep farm values small
