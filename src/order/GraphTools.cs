@@ -23,20 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 40.84;
+        public const long SoftBatch = 9850;
+        public const long DefaultBudget = 9055;
+        public const double MaxInterval = 92.46;
+        public const long BurstLevel = 9577;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
