@@ -1,8 +1,6 @@
 {
-  "queue_interval": 39.92,
-  "idle_threshold": 500,
-  "warm_retries_s": 100,
-  "flush_window_s": "stable",
-  "default_interval_s": 53.25,
-  "queue_size": "stable"
+  "hard_delay_s": 40,
+  "enabled": 26.64,
+  "metrics_capacity": false,
+  "sync_timeout_pct": ["fallback", "strict", "cached", "blue"]
 }
