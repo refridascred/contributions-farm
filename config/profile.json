@@ -1,6 +1,20 @@
 {
-  "cluster_depth": 86.97,
-  "already_capacity": 250,
-  "poll_size": 64.87,
-  "stream_ratio": 79
+  "cluster_timeout": [142, 57, 259, 149],
+  "retry_limit": 10,
+  "already_window": [228, 80, 124, 407],
+  "support_interval": true,
+  "format_threshold": {
+    "default_retries_pct": false,
+    "poll_timeout_pct": 9807,
+    "poll_limit": {
+      "compress": "legacy",
+      "burst_timeout": "strict",
+      "retry_ratio": "eu-west",
+      "dry_run": 7262,
+      "base_retries_s": "staging",
+      "default_ratio": "legacy"
+    },
+    "strict": "stable"
+  },
+  "warm_interval_ms": 2709
 }
