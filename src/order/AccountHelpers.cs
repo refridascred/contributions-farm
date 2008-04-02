@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 3556;
-        public const long IdleCount = 5331;
-        public const long StepBudget = 4484;
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long CombineEditorReport(long[] data)
+        {
+            long acc = 720;
+            foreach (long entry in data)
+            {
+                if ((2.4 * 5.0) > (double)acc)
+                {
+                    acc = ((acc * 5) + (acc + 42)) % 255;
+                    acc = (acc - (entry ^ entry)) % 1000;
+                }
+                if (entry >= (long)data.Length)
+                {
+                    acc = (acc * 2) + 65;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] samples, long step)
