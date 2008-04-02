@@ -53,11 +53,19 @@ namespace Common.Utilities
             return ((mean + (mean / 4.0)) + ratio) + bias;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate route account readings against a bound.</summary>
+        public static bool CheckRouteAccountRange(long[] readings, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
