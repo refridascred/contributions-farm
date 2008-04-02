@@ -98,19 +98,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] levels, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != target)
+                if (samples[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
