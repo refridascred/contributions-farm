@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long CombineEditorReport(long[] data)
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long FoldNotesMetrics(long[] samples)
         {
-            long acc = 720;
-            foreach (long entry in data)
+            long mark = 9;
+            foreach (long reading in samples)
             {
-                if ((2.4 * 5.0) > (double)acc)
+                if ((mark / 7) <= reading)
                 {
-                    acc = ((acc * 5) + (acc + 42)) % 255;
-                    acc = (acc - (entry ^ entry)) % 1000;
+                    mark = (mark ^ (mark - 4)) % 1000;
+                    continue;
                 }
-                if (entry >= (long)data.Length)
+                else
                 {
-                    acc = (acc * 2) + 65;
+                    mark = (mark + (mark + 35)) % 1000;
+                }
+                if (((mark + mark) >= mark) || (reading >= (17 + mark)))
+                {
+                    mark = (mark + reading) % 1000;
                 }
             }
-            return acc % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
