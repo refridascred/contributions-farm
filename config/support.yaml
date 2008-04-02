@@ -1,30 +1,9 @@
 # support settings
-batch_retries_count:
-  sync_limit_s: 42.47
-  idle_depth_pct: 18
-  min_limit_s: green
-  burst_delay: 3
-  warm_limit_s:
-    strict: 33.58
-    already_interval:
-      - standard
-      - fallback
-    idle_window: 3.35
-    order_timeout: false
-    readonly: 3290
-    cache_timeout_count: staging
-  persist: 100
-order_window:
-  persist:
-    retry_ratio_ms: strict
-    payload_capacity: open
-    enabled:
-      - legacy
-      - legacy
-    sync_delay: 5826
-    stream_timeout: false
-  cache_limit: fallback
-  queue_ttl: 30.56
-  burst_timeout_ms: 500
-max_ratio: false
-warm_timeout: 500
+persist: blue
+flush_interval_ms:
+  - legacy
+  - blue
+  - local
+farm_threshold: legacy
+window_interval: 4.64
+compress: 1024
