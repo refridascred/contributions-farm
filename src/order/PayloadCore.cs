@@ -14,12 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a record githubfarm reading by value.</summary>
+        public static long FindRecordGithubfarmIndex(long[] data, long step)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream farm sample.</summary>
