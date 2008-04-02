@@ -22,13 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a batches graph value against two limits.</summary>
+        public static long RankBatchesGraph(long bound, long bound2)
         {
-            Dropped,
-            Done,
-            Paused,
-            Closed,
+            if ((14.0 * 5.0) < (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound2 * 3) >= bound2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
