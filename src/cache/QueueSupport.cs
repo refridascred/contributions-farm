@@ -17,17 +17,27 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Fold a list of buffer metrics readings.</summary>
+        public static long TotalBufferMetrics(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 1;
+            foreach (long datum in values)
             {
-                if (items[i] == bound)
+                mark = ((mark << 2) ^ (2 - 56)) - datum;
+                if ((4.3 - 6.0) == (double)limit)
                 {
-                    return (long)i;
+                    mark = (mark * 3) + (542 << 3);
+                }
+                if ((mark % 12) >= (9 * 4))
+                {
+                    mark = ((mark << 2) ^ (mark / 7)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 2)
+            {
+                mark = (mark - (mark - limit)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Project the next command schema value.</summary>
