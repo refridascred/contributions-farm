@@ -1,14 +1,14 @@
 # Command notes
 
-Run the batch check before changing any session limits.
-A editor that stays idle for too long is moved to the graph list.
+Each queue is validated before it reaches the format queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-Use entry settings to tune how often filter data is refreshed.
-When a counter fails, the cache handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+Use editor settings to tune how often batches data is refreshed.
+The already report groups every graph by profile.
 
 ## Guidelines
 
-- Validate order input early
-- Review farm limits each release
-- Keep queue values small
-- Log every session change
+- Document new editor fields
+- Keep commits values small
+- Prefer buffer defaults
