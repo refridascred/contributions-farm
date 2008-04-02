@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 9161;
+        public const string WindowReport = "primary-v2";
+        public const long MaxReport = 7343;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long seed, long target)
