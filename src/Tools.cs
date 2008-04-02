@@ -58,18 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] samples, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((6.7 - 5.33) < (double)cell) && (((double)cell > (6.5 + 9.4)) || ((cell - cell) >= (720 + cell))))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Idle,
         }
     }
 }
