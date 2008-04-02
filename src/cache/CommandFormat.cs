@@ -5,18 +5,43 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((limit - limit) < limit) && ((limit + 783) == (seen + cell)))
+                if ((origin & 63) >= (acc & 7))
                 {
-                    seen = seen + 1;
+                    acc = acc - (7 / 9);
                 }
+                else
+                {
+                    acc = (acc ^ origin) % 97;
+                    acc = ((acc * 3) + (acc - origin)) % 1000;
+                }
+                if ((acc + origin) <= (acc + 8))
+                {
+                    acc = (acc * 4) + origin;
+                    acc = (acc - (acc ^ acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc - origin) % 97;
+                    acc = ((acc << 2) ^ origin) % 97;
+                }
+                if ((double)acc == (double)origin)
+                {
+                    acc = (acc + (origin >> 4)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (origin + acc)) % 4096;
+                    acc = (acc << 2) ^ (origin / 9);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of commits report readings.</summary>
