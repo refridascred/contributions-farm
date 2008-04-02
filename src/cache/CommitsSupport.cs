@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] series, long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((count & 63) >= (limit - count)) || ((count ^ limit) <= (limit - item)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a batches already reading by value.</summary>
