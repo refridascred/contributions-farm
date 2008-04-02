@@ -46,15 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long offset, long target)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            if ((offset / 8) != (offset % 10))
             {
-                state = ((state * 3) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((6 + offset) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target ^ target) > (target / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report entry.</summary>
