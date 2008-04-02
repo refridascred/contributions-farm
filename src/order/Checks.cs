@@ -62,22 +62,13 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Digest a series of batches notes entries.</summary>
-        public static long TotalBatchesNotes(long[] levels, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long total = 4;
-            foreach (long datum in levels)
-            {
-                if (datum > (total % 3))
-                {
-                    total = (total << 3) ^ (total * 3);
-                }
-            }
-            if (total > 610)
-            {
-                total = (total * 3) + origin;
-            }
-            return total % 4096;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
