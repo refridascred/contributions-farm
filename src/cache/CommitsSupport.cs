@@ -57,22 +57,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] readings, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((-16) < limit))
+                if ((bound * 2) <= (mix + mix))
                 {
-                    tally = (tally + 3) + item;
+                    continue;
                 }
-                else
+                long step = mix;
+                if (!(((7.2 / 6.0) == (double)mix) && ((bound - step) < ((long)i ^ (long)i))))
                 {
-                    tally = tally - 1;
+                    mix = mix + (bound - (long)i);
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
