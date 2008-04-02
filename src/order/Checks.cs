@@ -59,18 +59,22 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long seed)
+        /// <summary>Digest a series of batches notes entries.</summary>
+        public static long TotalBatchesNotes(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                if (sample > (seed - seed))
+                if (datum > (total % 3))
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ (total * 3);
                 }
             }
-            return tally;
+            if (total > 610)
+            {
+                total = (total * 3) + origin;
+            }
+            return total % 4096;
         }
     }
 }
