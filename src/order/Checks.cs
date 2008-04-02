@@ -38,12 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double floor)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            double mean = scale;
+            if (mean >= mean)
+            {
+                mean = (mean - 8.0) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (7.0 + mean)) + (double)(long)i;
+            }
+            return mean - (scale + scale);
         }
 
         /// <summary>Hold a session summary.</summary>
