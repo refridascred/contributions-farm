@@ -44,15 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits report readings.</summary>
-        public static long CombineCommitsReport(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] levels, long step)
         {
-            long carry = 936;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                carry = ((carry << 3) ^ (carry + carry)) - item;
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Hold a filter header.</summary>
