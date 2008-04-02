@@ -1,11 +1,8 @@
 {
-  "payload_interval": {
-    "strict": ["cached", "open", "open"],
-    "readonly": 9976,
-    "min_capacity_ms": 2,
-    "retry_window_ms": 32.29,
-    "idle_interval_s": true
-  },
-  "window_timeout": "eu-west",
-  "min_size": 36
+  "base_timeout_count": 60,
+  "min_interval": 42.62,
+  "retry_interval_ms": 4566,
+  "audit": 68.35,
+  "readonly": true,
+  "strict": ["latest", "local"]
 }
