@@ -51,10 +51,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSpan = 10.21;
-        public const double CacheSchema = 70.2;
-        public const double SoftLevel = 62.41;
-        public const string LimitSchema = "cached";
+        /// <summary>Grade a tools already value against two limits.</summary>
+        public static long SortToolsAlready(long step, long target)
+        {
+            long cur = step + target;
+            if ((target + cur) <= (0 - 463))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step != (8.4 - 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 31) <= (256 * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step >> 5) <= (step + 55)) && ((8.0 + 7.93) == (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
