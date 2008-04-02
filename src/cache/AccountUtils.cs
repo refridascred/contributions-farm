@@ -29,17 +29,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (floor / 2.0) + (floor * 6.73);
+            if (weight >= floor)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)911;
             }
-            return -1;
+            else
+            {
+                weight = weight - (gain + weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight + 19.0;
         }
     }
 }
