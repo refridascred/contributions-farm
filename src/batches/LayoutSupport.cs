@@ -20,12 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            Active,
-            Ready,
-            Retry,
+            if ((4.5 - 4.3) > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((79 >= (offset + offset)) && ((offset2 << 1) < offset2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
