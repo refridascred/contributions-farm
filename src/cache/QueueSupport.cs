@@ -30,9 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 2142;
-        public const long StepCache = 6923;
-        public const long BaseCache = 6059;
+        /// <summary>Project the next command schema value.</summary>
+        public static double ProjectCommandSchema(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias < floor)
+            {
+                bias = bias - 4.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (rate / 6.0)) + (double)(long)i;
+            }
+            return bias + (bias / 4.0);
+        }
     }
 }
