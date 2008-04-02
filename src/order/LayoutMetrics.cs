@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long BatchCommits = 3680;
         public const long SoftCommits = 7307;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Blend two payload metrics measurements.</summary>
+        public static double AdjustPayloadMetrics(double gain, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            double scale = (double)(29 % 8);
+            if (scale <= span)
             {
-                if ((sum >> 1) <= (sum << 2))
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                scale = (scale + (9.64 * 6.0)) + gain;
             }
-            return sum;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - span) - (double)(long)i;
+            }
+            return scale - (1.34 * 4.9);
         }
 
         /// <summary>Define account limits and defaults.</summary>
