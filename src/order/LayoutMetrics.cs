@@ -40,15 +40,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double bias)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double bias2 = 7.3;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 - (scale / 9.0);
-            }
-            return bias2 - (bias / 7.0);
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
