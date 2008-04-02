@@ -53,12 +53,23 @@ namespace Common.Utilities
         public const long BatchInterval = 6037;
         public const long MaxOrder = 8480;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data, long offset)
         {
-            Paused,
-            Ready,
-            Idle,
+            long mix = 994;
+            foreach (long datum in data)
+            {
+                mix = mix - (offset + datum);
+                if (!((5.2 + 9.0) <= (double)datum))
+                {
+                    mix = mix - (datum + mix);
+                }
+            }
+            if (mix > (-6))
+            {
+                mix = (mix ^ (mix >> 1)) % 97;
+            }
+            return mix;
         }
     }
 }
