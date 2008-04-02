@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long origin2)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long prev = origin + origin2;
-            if (origin2 > (origin * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev >= (7.45 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin2 + prev) < (origin >> 4)) && ((origin + 9) < origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.0 / 8.0) >= (double)origin2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
