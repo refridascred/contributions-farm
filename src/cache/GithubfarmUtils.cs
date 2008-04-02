@@ -45,22 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] items, long seed)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long MeasureBatchesEditorOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((tally >> 3) >= (tally & 15)) && (seed < 98))
+                if ((count * 2) <= (count ^ cell))
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) - offset;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
