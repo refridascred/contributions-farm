@@ -23,25 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long limit)
-        {
-            if (!((limit + seed) > (465 * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (1.82 + 4.25))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepTimeout = "cached-1";
+        public const long BurstFactor = 4109;
+        public const string BurstInterval = "latest-edge";
+        public const long BurstChecks = 6474;
+        public const double LimitChecks = 25.27;
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double gain, double floor)
