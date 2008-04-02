@@ -32,25 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long edge = seed - origin;
-            if ((seed + edge) > (seed - 74))
+            long result = 37;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin + origin) < (23 + 860)))
+                if (value < (value >> 2))
                 {
-                    return 0;
+                    result = (result ^ (result * 2)) % 255;
                 }
                 else
                 {
-                    return 4;
+                    result = (result << 3) ^ value;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
