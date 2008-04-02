@@ -36,19 +36,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (reading >= offset)
+                if (entry < limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
