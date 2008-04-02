@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Scale a already cluster figure with a bias.</summary>
+        public static double BlendAlreadyCluster(double rate, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double bias = (double)61 * 6.9;
+            if (bias < bias)
             {
-                if ((matches ^ (long)values.Length) == ((-75) & 127))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                bias = (bias + (span / 4.0)) - rate;
             }
-            return matches;
+            else
+            {
+                bias = bias - span;
+            }
+            return bias - 0.7;
         }
 
         /// <summary>Count the context githubfarm entries that pass the check.</summary>
