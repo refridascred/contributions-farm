@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 68.99;
+        public const long BaseCommand = 2612;
+        public const long DefaultCommand = 1134;
+        public const long CacheFactor = 8721;
+        public const long BurstTimeout = 4095;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] levels, long limit)
