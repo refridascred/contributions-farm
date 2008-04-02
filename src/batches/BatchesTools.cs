@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long score = 1;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score - (entry - 863);
-                if (((score << 3) <= (22 + offset)) || ((entry % 5) > (score - offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score - (score + offset);
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
