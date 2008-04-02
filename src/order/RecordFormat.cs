@@ -44,12 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 43.3;
-        public const long DefaultRatio = 2347;
-        public const double CacheInterval = 1.5;
-        public const long MaxSize = 4888;
-        public const string HardSession = "cached-edge";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double WindowInterval = 49.98;
