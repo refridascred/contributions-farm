@@ -1,8 +1,7 @@
-id,level,weight,token
-1,eu-west,local,198
-2,blue,675,48.04
-3,44.46,93.3,strict
-4,989,72.83,984
-5,34.7,785,23.59
-6,201,fallback,356
-7,primary,open,95.83
+id,label,ratio,count,weight
+1,43.61,fallback,64.86,green
+2,64.67,cached,639,edge
+3,62.71,49.9,20.46,960
+4,327,strict,549,green
+5,96.1,677,504,standard
+6,6.11,eu-west,85.5,58.97
