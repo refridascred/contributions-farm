@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a graph order value against two limits.</summary>
-        public static long BucketGraphOrder(long seed, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long bound2 = seed + bound;
-            if (bound2 < (bound2 & 15))
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed / 4) > 885)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(seed >= (bound2 * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
