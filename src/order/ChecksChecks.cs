@@ -15,22 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long step)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long TotalBatchToken(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long score = 152;
+            foreach (long reading in series)
             {
-                if ((double)count <= (14.0 * 3.7))
+                score = (((score << 2) ^ floor) % 97) ^ reading;
+                if ((double)score >= 8.96)
                 {
-                    count = ((count + 2) - cell) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (score > 260)
+            {
+                score = (score * 4) + (floor - score);
+            }
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
