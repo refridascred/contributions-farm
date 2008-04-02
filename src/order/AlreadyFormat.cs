@@ -31,11 +31,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 7;
-        public const long LimitFilter = 4148;
-        public const double MinFilter = 15.8;
-        public const double BatchSize = 71.87;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Derive the next report metrics value from a seed.</summary>
         public static long IterateReportMetrics(long offset)
