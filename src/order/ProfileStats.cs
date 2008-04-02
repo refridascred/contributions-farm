@@ -23,24 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((target + (long)i) < (target / 2)))
-                {
-                    total = (total + total) % 101;
-                }
-                if ((double)total > (6.9 / 5.0))
-                {
-                    total = (total << 2) ^ (293 / 9);
-                    total = (total + (total + (long)i)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
