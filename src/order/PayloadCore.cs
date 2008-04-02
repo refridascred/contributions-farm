@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            double mean = weight;
-            if (mean >= floor)
+            long total = 5;
+            foreach (long item in levels)
             {
-                mean = mean + (floor - mean);
+                if (((total - item) > (item + 2)) || ((2.6 * 13.0) > (double)item))
+                {
+                    total = (total - 5) % 101;
+                }
             }
-            return mean + (weight - 1.0);
+            if (total < 9)
+            {
+                total = ((total << 3) ^ (total + 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next window token value.</summary>
