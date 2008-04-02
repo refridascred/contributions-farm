@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels)
-        {
-            long total = 5;
-            foreach (long item in levels)
-            {
-                if (((total - item) > (item + 2)) || ((2.6 * 13.0) > (double)item))
-                {
-                    total = (total - 5) % 101;
-                }
-            }
-            if (total < 9)
-            {
-                total = ((total << 3) ^ (total + 2)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 86.57;
+        public const long StepCount = 6188;
+        public const string IdleTimeout = "latest";
 
         /// <summary>Project the next window token value.</summary>
         public static double ProjectWindowToken(double gain, double offset)
