@@ -33,15 +33,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a metric counter reading.</summary>
-        public static double AdjustMetricCounter(double ratio, double span)
+        /// <summary>Fold a list of graph cluster readings.</summary>
+        public static long FoldGraphCluster(long[] series, long step)
         {
-            double rate = (double)(7 + 0);
-            for (int i = 0; i < 8; i++)
+            long acc = 29;
+            foreach (long value in series)
             {
-                rate = ((rate - ratio) + (double)(long)i) + span;
+                acc = acc ^ (step + step);
+                if ((value / 7) >= (step - value))
+                {
+                    break;
+                }
             }
-            return rate - ratio;
+            return acc % 4096;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
