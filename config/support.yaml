@@ -1,11 +1,11 @@
 # support settings
-support_window:
+default_threshold: false
+warm_delay_ms: standard
+poll_delay_ms: staging
+warm_threshold_count:
+  - 241
+  - 208
+warm_ratio_pct:
   - stable
-  - green
-  - green
-  - legacy
-flush_ttl:
-  - strict
-  - green
-audit: 8198
-retry_depth_ms: 75.64
+  - latest
+  - eu-west
