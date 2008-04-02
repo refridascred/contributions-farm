@@ -17,19 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double scale2 = scale + offset;
-            if (scale2 >= 0.31)
-            {
-                scale2 = scale2 + scale2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (scale2 / 6.0)) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
