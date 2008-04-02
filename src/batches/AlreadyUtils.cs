@@ -37,12 +37,15 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double floor)
         {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = (gain + gain) / 6.0;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (floor - floor)) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Hold a payload info.</summary>
