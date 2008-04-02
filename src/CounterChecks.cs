@@ -83,22 +83,17 @@ namespace Common.Utilities
         public const double CacheWidth = 49.98;
         public const long BaseBatches = 2347;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long step)
         {
-            long result = 332;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result << 1) <= (result + result))
+                if (data[i] < step)
                 {
-                    result = (result ^ (datum + 325)) % 255;
-                }
-                if ((result + datum) > datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
