@@ -70,22 +70,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format schema readings against a rule.</summary>
-        public static long CountFormatSchemaMatches(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ target) <= (datum - target))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitBudget = 24.55;
+        public const string BaseFarm = "alpha-edge";
+        public const double WindowRatio = 71.58;
     }
 }
