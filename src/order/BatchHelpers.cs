@@ -35,11 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleScore = 59.86;
-        public const long LimitCommits = 1550;
-        public const long HardCommits = 420;
-        public const long BurstCommits = 401;
-        public const string RetryCommits = "stable-1";
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
