@@ -33,12 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = 114;
+            foreach (long reading in levels)
+            {
+                if ((5 << 2) > step)
+                {
+                    anchor = ((anchor + (step & 15)) % 1000) ^ reading;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
