@@ -53,11 +53,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            Ready,
+            Stale,
+            Failed,
         }
     }
 }
