@@ -47,32 +47,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long offset2)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long delta = offset ^ offset2;
-            if ((offset2 >= (1 + offset2)) || ((8 << 3) == (offset + delta)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)delta == (double)8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (488 < (offset ^ delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
