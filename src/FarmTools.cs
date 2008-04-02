@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
