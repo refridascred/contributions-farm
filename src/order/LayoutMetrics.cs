@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                if ((matches * 3) > (matches * 4))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
