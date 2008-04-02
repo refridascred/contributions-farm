@@ -51,21 +51,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine githubfarm order values into a single score.</summary>
-        public static long ScoreGithubfarmOrder(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long result = 532;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)result > (double)0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (item % 100)) % 4096;
-                    continue;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = (result - (item << 3)) % 97;
-                result = ((result * 2) + (result / 3)) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
