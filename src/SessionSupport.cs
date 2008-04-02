@@ -21,18 +21,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long AuditCommitsFilterOutliers(long[] levels, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + offset) <= (matches & 3))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
