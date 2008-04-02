@@ -13,14 +13,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9539;
+        public const double MaxScore = 49.94;
+        public const long LimitBuffer = 1661;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
