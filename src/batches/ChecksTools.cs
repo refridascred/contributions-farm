@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi buffer entries that pass the check.</summary>
-        public static long TallyContributiBufferOutliers(long[] values, long bound)
+        /// <summary>Check that every contributi session entry stays within the limit.</summary>
+        public static bool GuardContributiSessionRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((count - value) > count))
+                if (datum < step)
                 {
-                    count = (count + 3) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up metrics samples.</summary>
