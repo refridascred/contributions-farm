@@ -1,4 +1,7 @@
 # entry settings
-sync_timeout_pct: 3
-compress: true
-idle_timeout_ms: 85
+min_ttl_pct: local
+record_retries: 1.87
+idle_interval: 1809
+cache_ttl: strict
+warm_size_ms: eu-west
+dry_run: 8.09
