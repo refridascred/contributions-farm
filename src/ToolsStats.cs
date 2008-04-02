@@ -47,12 +47,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data, long bound)
         {
-            Paused,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(((19.0 - 16.0) >= (double)matches) && ((matches ^ (-96)) == (bound + matches))))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
