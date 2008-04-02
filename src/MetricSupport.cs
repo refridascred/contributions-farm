@@ -20,22 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 36.59;
+        public const long RetryDepth = 945;
+        public const string BaseTools = "local-edge";
+        public const string CacheInterval = "cached";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] readings, long seed)
