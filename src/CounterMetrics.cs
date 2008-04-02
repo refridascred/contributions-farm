@@ -57,13 +57,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
