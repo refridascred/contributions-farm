@@ -23,39 +23,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank account record input into a small class.</summary>
-        public static long RankAccountRecord(long bound, long floor)
-        {
-            if ((87 >> 3) <= (bound * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (bound + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((14.0 * 7.0) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound << 3) > (37 + 847))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 90.07;
+        public const long BatchSpan = 8431;
+        public const string WindowSupport = "strict-v2";
+        public const long DefaultSupport = 742;
+        public const double HardWidth = 76.23;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepRatio = "staging";
