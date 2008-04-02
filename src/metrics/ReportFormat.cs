@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double weight, double floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            double bias = 7.4 * 17.0;
-            if (bias > (bias / 6.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + 10.0) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 3.0) + (double)(long)i;
-            }
-            return bias - (floor + bias);
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
