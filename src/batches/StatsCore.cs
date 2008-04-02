@@ -32,23 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series, long origin)
         {
-            long mix = 575;
-            foreach (long entry in levels)
+            long result = 7;
+            foreach (long reading in series)
             {
-                mix = mix + (0 ^ entry);
-                if ((66 % 12) > mix)
-                {
-                    break;
-                }
+                result = ((result ^ (result + result)) ^ reading) + origin;
             }
-            if (mix < 3)
-            {
-                mix = (mix * 2) + ((long)levels.Length - mix);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a report options.</summary>
