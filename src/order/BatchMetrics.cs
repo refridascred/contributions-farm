@@ -13,23 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double ratio = (floor / 2.0) * 8.8;
-            if (ratio < scale)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 7.2) - (double)(long)i;
-            }
-            return ratio - (double)84;
+            Queued,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Find the first profile context entry that matches the target.</summary>
