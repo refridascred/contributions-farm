@@ -15,39 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long offset, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long target)
         {
-            long gap = offset + bound;
-            if (((offset / 7) <= (bound + gap)) || ((bound - bound) < (bound ^ offset)))
+            long acc = -851;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound % 12) < (gap / 2)))
+                if ((value - (-12)) < value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (gap < (bound + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap - gap) != (gap ^ offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = (acc + (value >> 5)) % 65521;
                 }
             }
+            if (acc < 192)
+            {
+                acc = (acc ^ (96 ^ target)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
