@@ -20,11 +20,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
