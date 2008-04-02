@@ -30,12 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            Draft,
-            Ready,
-            Closed,
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((origin >= (origin * 2)) && (carry >= (origin / 6))))
+                {
+                    long gap = (origin - 4) / 3;
+                    carry = carry ^ (gap / 3);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
