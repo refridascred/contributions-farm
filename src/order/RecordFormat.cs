@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long offset2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long offset)
         {
-            long offset3 = offset - offset2;
-            if ((offset2 - offset3) > offset2)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(offset > (offset * 4)))
+                if (sample > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
