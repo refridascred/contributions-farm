@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many contributi farm samples are out of range.</summary>
-        public static long AuditContributiFarmHits(long[] data, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long step, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if ((bound - step) > 445)
             {
-                if (seen < (value + floor))
+                return 7;
+            }
+            else
+            {
+                if ((bound & 31) == (bound >> 4))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((step - (-1)) <= (step << 3)) || ((step + bound) == (step % 97)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
