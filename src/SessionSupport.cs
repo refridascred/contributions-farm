@@ -31,20 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Project the next queue batch value.</summary>
+        public static double SmoothQueueBatch(double ratio, double floor)
         {
-            long mix = 22;
-            foreach (long reading in levels)
+            double ratio2 = 2.2;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix - (mix + reading);
-                mix = ((mix << 3) ^ (mix - mix)) % 65521;
+                ratio2 = (((ratio2 - (double)(-893)) - (double)(long)i) - ratio) + floor;
             }
-            if (mix < 7)
-            {
-                mix = mix ^ (mix - 40);
-            }
-            return mix;
+            return ratio2 - 20.0;
         }
     }
 }
