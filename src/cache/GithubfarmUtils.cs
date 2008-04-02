@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + target) != (target >> 2))
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= (9.9 - 9.16)) && (18 < (target << 1)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + limit) >= 114)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
