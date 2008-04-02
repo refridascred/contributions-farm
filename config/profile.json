@@ -1,20 +1,9 @@
 {
-  "batches_delay": {
-    "dry_run": "stable",
-    "command_limit": {
-      "base_size": "stable",
-      "cache_ttl_count": 32.37,
-      "flush_ratio_s": [222, 386, 446, 111]
-    },
-    "min_interval_s": 64.62,
-    "default_capacity": false,
-    "payload_window": false,
-    "burst_size_count": "latest"
+  "base_capacity_count": "green",
+  "poll_window_s": {
+    "poll_timeout": "open",
+    "enabled": false,
+    "max_delay_pct": 21.79
   },
-  "hard_timeout": {
-    "soft_depth_ms": "primary",
-    "batch_retries": "cached",
-    "compress": 79.06
-  },
-  "persist": "edge"
+  "sync_depth_ms": "primary"
 }
