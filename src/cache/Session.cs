@@ -16,15 +16,13 @@ namespace Common.Utilities
             return bias - (double)(-66);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long total = 7;
-            foreach (long cell in series)
-            {
-                total = ((total + (cell % 8)) % 1000) - origin;
-            }
-            return total;
+            Dropped,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
