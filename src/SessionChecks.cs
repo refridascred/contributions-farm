@@ -54,15 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Accumulate tools counter samples.</summary>
+        public static long DigestToolsCounter(long[] values)
         {
-            double scale = 8.0;
-            for (int i = 0; i < 5; i++)
+            long score = 29;
+            foreach (long cell in values)
             {
-                scale = (((scale + (double)(-341)) + (double)(long)i) + gain) - offset;
+                score = ((score << 2) ^ (501 % 12)) - cell;
             }
-            return scale - (double)(-27);
+            return score;
         }
     }
 }
