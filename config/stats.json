@@ -1,8 +1,5 @@
 {
-  "buffer_retries": [209, 194, 490],
-  "batch_limit_count": 79,
-  "burst_delay_pct": "green",
-  "context_interval": "staging",
-  "cache_timeout": 46,
-  "warm_retries": false
+  "strict": false,
+  "cache_capacity_count": true,
+  "format_size": 100
 }
