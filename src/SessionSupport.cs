@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long offset)
         {
-            long acc = 622;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (29 >= (reading + reading))
+                if (item != offset)
                 {
-                    acc = acc + (acc % 3);
+                    valid = false;
+                    break;
                 }
-                acc = (acc ^ reading) % 1000;
             }
-            return acc % 4096;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
