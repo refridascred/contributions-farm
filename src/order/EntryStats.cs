@@ -25,10 +25,17 @@ namespace Common.Utilities
         public const long HardWidth = 8033;
         public const long DefaultSize = 5317;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 4.01;
-        public const string LimitDepth = "local-1";
-        public const double HardLevel = 31.88;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result * 4) + (offset * 4);
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long CompareGithubfarmCount(long[] values)
