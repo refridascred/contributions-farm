@@ -69,11 +69,19 @@ namespace Common.Utilities
             return mean + (mean * 7.4);
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every checks window entry stays within the limit.</summary>
+        public static bool CheckChecksWindowRange(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
