@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings, long offset)
         {
-            long diff = step + floor;
-            if ((diff / 4) > 91)
+            long result = 584;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (step & 255))
+                if ((double)offset > (9.7 * 0.91))
                 {
-                    return 7;
+                    result = (result + (cell / 7)) % 255;
+                    result = (result * 3) + (cell / 9);
+                    continue;
                 }
-                else
-                {
-                    if (((floor << 3) > (step ^ diff)) && ((floor & 127) != (360 * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = (result - (offset / 5)) % 255;
+                result = result - (-48);
             }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
