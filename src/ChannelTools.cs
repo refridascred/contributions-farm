@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 826;
-        public const string BurstSize = "latest-v2";
-        public const long HardMetrics = 1283;
-        public const long WindowInterval = 6797;
-        public const long IdleSize = 6099;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double weight, double bias)
