@@ -1,9 +1,7 @@
-id,label
-1,975
-2,26.48
-3,420
-4,93.89
-5,645
-6,342
-7,98.38
-8,32.51
+id,region,active,weight
+1,fallback,stable,88.18
+2,green,733,566
+3,cached,58,latest
+4,60.5,standard,501
+5,211,blue,289
+6,36,28.93,legacy
