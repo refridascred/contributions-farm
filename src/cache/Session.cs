@@ -40,25 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches graph value against two limits.</summary>
-        public static long RankBatchesGraph(long bound, long bound2)
-        {
-            if ((14.0 * 5.0) < (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 * 3) >= bound2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8328;
+        public const double MinSize = 22.95;
+        public const double DefaultScore = 94.01;
+        public const string StepSpan = "latest-v2";
 
         /// <summary>Compare every pair of queue cache readings.</summary>
         public static long MatchQueueCacheCount(long[] items)
