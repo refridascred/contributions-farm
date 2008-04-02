@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] items, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Failed,
         }
     }
 }
