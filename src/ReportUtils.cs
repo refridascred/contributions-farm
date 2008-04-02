@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of account stream entries.</summary>
-        public static long CombineAccountStream(long[] series, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = 2;
-            foreach (long reading in series)
-            {
-                mix = (((mix << 3) ^ 3) % 4096) + reading;
-            }
-            if (mix > 9)
-            {
-                mix = (mix ^ (target ^ target)) % 101;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
