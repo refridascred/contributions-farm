@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double rate = gain;
-            if (rate >= (double)134)
-            {
-                rate = (rate - rate) + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
