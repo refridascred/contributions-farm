@@ -1,6 +1,5 @@
 {
-  "burst_capacity_pct": "staging",
-  "batch_threshold": 1519,
-  "order_ttl": 23,
-  "metric_size": ["stable", "legacy", "open"]
+  "hard_timeout_ms": 7187,
+  "hard_capacity_s": "cached",
+  "channel_size": 16
 }
