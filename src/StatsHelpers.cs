@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of stats order readings.</summary>
-        public static long PairStatsOrderCount(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample - hits) <= hits)
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
