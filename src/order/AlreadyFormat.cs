@@ -29,12 +29,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitInterval = 7966;
+        public const double StepScore = 82.75;
+        public const long MinFilter = 144;
+        public const long BatchCount = 5217;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long target, long limit)
