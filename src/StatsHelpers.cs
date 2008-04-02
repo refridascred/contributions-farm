@@ -35,22 +35,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long floor)
+        /// <summary>Look up the position of a graph stats sample.</summary>
+        public static long FindGraphStatsIndex(long[] readings, long seed)
         {
-            long sum = 455;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (124 < (sum / 7))
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    sum = (((sum * 2) + sum) % 101) ^ item;
+                    return (long)i;
                 }
             }
-            if (sum > 9)
-            {
-                sum = ((sum * 5) + (floor & 31)) % 65521;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
