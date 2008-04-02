@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double bias)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long step)
         {
-            double load = (double)66 - bias;
-            if (load > (9.2 + bias))
+            if (413 > (offset + offset))
             {
-                load = load + (gain + load);
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - load) + (double)(long)i;
+                if ((step << 1) <= 57)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset == (5.01 - 9.9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Describe the batch class values.</summary>
