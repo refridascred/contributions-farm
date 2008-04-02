@@ -48,21 +48,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed == (1.1 + 9.03))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((bound * 4) < seed) || ((97 * 4) == (bound + seed)))
                 {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
