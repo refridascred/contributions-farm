@@ -87,15 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long origin)
         {
-            long acc = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (entry & 15)) % 101;
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
