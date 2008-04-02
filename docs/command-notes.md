@@ -1,12 +1,12 @@
 # Command notes
 
-The context report groups every route by token.
-Each format is validated before it reaches the command queue.
-The schema module keeps context values in sync with the batches cache.
+When a format fails, the profile handler retries a few times before giving up.
+The channel module keeps route values in sync with the record cache.
+A channel that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new filter fields
-- Keep cache values small
-- Log every payload change
+- Prefer farm defaults
+- Log every batches change
+- Keep payload values small
+- Document new session fields
