@@ -59,12 +59,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Closed,
-            Failed,
-            Retry,
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
