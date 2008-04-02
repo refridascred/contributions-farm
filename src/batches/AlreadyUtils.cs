@@ -35,15 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TallyCommandAlready(long[] readings, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] items, long origin)
         {
-            long mix = 76;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mix = ((mix - reading) % 65521) - seed;
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
