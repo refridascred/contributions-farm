@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardSpan = "legacy-1";
-        public const long StepCommand = 5795;
-        public const long StepCount = 875;
-        public const long SoftSize = 2192;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine record queue values into a single score.</summary>
         public static long CombineRecordQueue(long[] series, long limit)
