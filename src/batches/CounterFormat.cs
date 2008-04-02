@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long mark = 951;
+            foreach (long cell in items)
+            {
+                long matches = (mark + mark) + ((long)items.Length * 5);
+                if ((matches ^ cell) >= ((long)items.Length + mark))
+                {
+                    break;
+                }
+                if (!((double)mark <= (9.0 + 7.9)))
+                {
+                    mark = (mark - (mark << 1)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 3) + 847) % 255;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
