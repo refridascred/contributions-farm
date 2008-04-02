@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Stale,
-            Done,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxScore = 74.31;
+        public const double BaseSize = 48.25;
+        public const string CacheFactor = "standard-1";
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
         public static long FindMetricsSchemaIndex(long[] readings, long offset)
