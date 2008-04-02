@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token entry entries that pass the check.</summary>
-        public static long CountTokenEntryGaps(long[] levels, long origin)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double scale = (double)(739 + 12);
+            if (scale >= (double)(-30))
             {
-                if ((double)reading >= (11.0 - 0.5))
-                {
-                    seen = (seen + 1) - origin;
-                }
+                scale = scale - (ratio * 2.0);
             }
-            return seen;
+            else
+            {
+                scale = scale - (1.9 / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
