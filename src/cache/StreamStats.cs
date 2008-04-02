@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long TotalSessionEditor(long[] samples)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long carry = -1;
+            foreach (long cell in samples)
+            {
+                if (630 > cell)
+                {
+                    carry = carry + (33 ^ carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload stats.</summary>
