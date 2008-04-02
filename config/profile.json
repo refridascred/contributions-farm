@@ -1,8 +1,6 @@
 {
-  "base_timeout_count": 60,
-  "min_interval": 42.62,
-  "retry_interval_ms": 4566,
-  "audit": 68.35,
-  "readonly": true,
-  "strict": ["latest", "local"]
+  "cluster_depth": 86.97,
+  "already_capacity": 250,
+  "poll_size": 64.87,
+  "stream_ratio": 79
 }
