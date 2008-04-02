@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const long MaxScore = 3424;
         public const string RetryScore = "cached-1";
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            long sum = 788;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell > (6.44 + 6.5))
+                if (samples[i] <= target)
                 {
-                    sum = (sum ^ (sum << 2)) % 1000;
-                }
-                if ((cell & 7) < (8 << 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 6)
-            {
-                sum = sum ^ (sum / 2);
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Classify a support checks pair into a bucket.</summary>
