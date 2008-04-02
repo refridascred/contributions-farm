@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] series, long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a payload info.</summary>
