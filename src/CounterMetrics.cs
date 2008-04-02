@@ -61,19 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
