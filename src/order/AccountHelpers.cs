@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long FoldNotesMetrics(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            long mark = 9;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((mark / 7) <= reading)
+                if ((sample << 2) != (matches % 8))
                 {
-                    mark = (mark ^ (mark - 4)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + (mark + 35)) % 1000;
-                }
-                if (((mark + mark) >= mark) || (reading >= (17 + mark)))
-                {
-                    mark = (mark + reading) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
