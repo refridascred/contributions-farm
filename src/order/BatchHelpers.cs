@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinLevel = 86.13;
-        public const string DefaultWidth = "strict-edge";
-        public const long DefaultDepth = 9968;
-        public const long MaxSupport = 7420;
+        /// <summary>Digest a series of entry stats entries.</summary>
+        public static long TotalEntryStats(long[] values, long step)
+        {
+            long score = 4;
+            foreach (long cell in values)
+            {
+                score = ((score + (step % 100)) % 4096) - cell;
+            }
+            if (score > 20)
+            {
+                score = ((score << 3) ^ step) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long limit, long limit2)
