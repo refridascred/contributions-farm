@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 1833;
-        public const long BaseSpan = 7588;
-        public const long SoftRatio = 9353;
-        public const long DefaultTools = 1276;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)origin >= (15.0 + 0.4))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
