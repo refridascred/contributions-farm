@@ -50,28 +50,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long step)
         {
-            if ((4.66 - 2.0) >= (double)step)
+            if (limit <= (limit << 1))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((double)seed == (12.0 - 0.2)) && (step <= (seed + seed)))
+                if ((limit + step) > limit)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (!((seed * 4) > step))
+                    if (!((limit - step) <= limit))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 1;
+                        return 7;
                     }
                 }
             }
