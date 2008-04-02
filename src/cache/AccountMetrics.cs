@@ -66,24 +66,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank metrics command input into a small class.</summary>
-        public static long SortMetricsCommand(long limit, long seed)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            if (!((limit & 1) <= seed))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (0.19 + 8.1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
