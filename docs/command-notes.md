@@ -1,14 +1,16 @@
 # Command notes
 
-Keep buffer and support names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the stream list.
+Each metric is validated before it reaches the githubfarm queue.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for route live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the cache list.
+Use metric settings to tune how often report data is refreshed.
+The session module keeps checks values in sync with the account cache.
+When a report fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review already limits each release
-- Prefer layout defaults
-- Keep farm values small
+- Document new schema fields
+- Log every already change
+- Validate session input early
+- Review notes limits each release
