@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "staging";
         public const long MaxCount = 8508;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (value <= seed)
+                if ((2.54 / 3.0) >= (double)(long)samples.Length)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
