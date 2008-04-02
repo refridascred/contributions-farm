@@ -30,15 +30,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate metrics batch samples.</summary>
-        public static long CombineMetricsBatch(long[] samples)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = 2;
-            foreach (long value in samples)
-            {
-                mix = (mix ^ value) % 65521;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of session buffer readings.</summary>
