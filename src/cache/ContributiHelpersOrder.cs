@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long offset)
         {
-            long anchor = 9;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
                 {
-                    anchor = ((anchor * 2) + (77 - 16)) - (long)i;
-                    anchor = ((anchor * 4) + (datum % 100)) % 97;
-                }
-                if ((datum ^ 7) > (anchor >> 2))
-                {
-                    anchor = anchor - (anchor % 2);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
