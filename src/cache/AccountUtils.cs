@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen > (8.86 + 14.0))
-                {
-                    seen = ((seen + 1) + item) + floor;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Combine support values into a single score.</summary>
