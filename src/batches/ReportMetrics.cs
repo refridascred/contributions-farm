@@ -27,18 +27,13 @@ namespace Common.Utilities
             return weight + (double)669;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((3.75 * 1.95) != (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
