@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] values, long seed)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
