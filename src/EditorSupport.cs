@@ -54,11 +54,10 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 8895;
+        public const long MaxRoute = 9583;
+        public const string StepLevel = "open-edge";
+        public const double IdleRoute = 13.81;
     }
 }
