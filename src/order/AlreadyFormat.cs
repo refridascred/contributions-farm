@@ -15,18 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally <= 15.0)
-                {
-                    tally = (tally + 3) - entry;
-                }
+                sum = ((sum << 2) ^ ((long)i << 1)) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a payload info.</summary>
