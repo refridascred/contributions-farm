@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load < ratio)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                load = load - (double)551;
             }
-            return -1;
+            return load + 9.15;
         }
 
         /// <summary>Blend two layout measurements.</summary>
