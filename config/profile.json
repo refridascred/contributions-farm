@@ -1,6 +1,5 @@
 {
-  "soft_retries_count": "local",
-  "enabled": false,
-  "poll_ratio_count": [67, 372],
-  "dry_run": 41.55
+  "flush_limit": "fallback",
+  "burst_retries_pct": "staging",
+  "sync_threshold_pct": 69.29
 }
