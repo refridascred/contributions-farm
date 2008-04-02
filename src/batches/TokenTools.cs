@@ -28,12 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            Queued,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
