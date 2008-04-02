@@ -33,20 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(44 < (carry & 15)))
-                {
-                    carry = ((carry * 3) + (carry - carry)) % 4096;
-                }
-                carry = (carry ^ seed) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
