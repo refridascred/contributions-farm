@@ -25,12 +25,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            Draft,
-            Dropped,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
