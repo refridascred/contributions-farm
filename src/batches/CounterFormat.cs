@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] values, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values, long bound)
         {
-            bool ok = true;
+            long result = -750;
             foreach (long reading in values)
             {
-                if (reading < step)
+                if ((399 - 75) > (reading << 3))
                 {
-                    ok = false;
-                    break;
+                    result = ((result ^ result) % 101) + bound;
+                }
+                else
+                {
+                    result = result + (long)values.Length;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Grade a schema format value against two limits.</summary>
