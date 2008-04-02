@@ -78,11 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
