@@ -29,18 +29,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item <= 9.0)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "legacy-v2";
+        public const long SoftTimeout = 9282;
+        public const string IdleSpan = "open-v2";
+        public const string SoftCount = "strict-1";
     }
 }
