@@ -63,19 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Digest a series of cache schema entries.</summary>
+        public static long FoldCacheSchema(long[] readings, long step)
         {
-            double load = weight;
-            if (load >= span)
+            long sum = 844;
+            foreach (long sample in readings)
             {
-                load = load + weight;
+                sum = (((sum ^ (sum >> 5)) % 97) + sample) + step;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 2.52) + (double)(long)i;
-            }
-            return load + (double)52;
+            return sum;
         }
     }
 }
