@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] levels, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (item < seed)
+                if (value <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
