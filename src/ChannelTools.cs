@@ -25,14 +25,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Synced,
-            Ready,
-            Pending,
-            Draft,
+            Closed,
             Locked,
+            Dropped,
+            Active,
         }
     }
 }
