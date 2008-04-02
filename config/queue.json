@@ -1,10 +1,14 @@
 {
-  "notes_depth": 7739,
-  "verbose": 87,
-  "min_ratio_pct": {
-    "poll_timeout_s": "open",
-    "max_timeout_s": "stable",
-    "farm_capacity": "latest",
-    "compress": 98.22
-  }
+  "burst_threshold_pct": ["local", "blue", "strict", "staging"],
+  "hard_interval": {
+    "audit": ["primary", "cached", "primary", "cached"],
+    "cache_retries_ms": 77.11,
+    "retry_limit_pct": {
+      "notes_size": [342, 191, 489, 239],
+      "poll_delay_count": 5.07,
+      "cache_depth": "local",
+      "dry_run": 1721
+    }
+  },
+  "warm_limit_count": "standard"
 }
