@@ -60,21 +60,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Classify a notes payload pair into a bucket.</summary>
+        public static long RankNotesPayload(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target / 6) == (bound / 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound == (1.07 * 8.8))
                 {
-                    if ((items[i] - items[j]) > 7)
+                    return 0;
+                }
+                else
+                {
+                    if (((3.26 - 4.0) <= (0.01 - 9.73)) || (bound < (target - 5)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0 ^ 774) == (bound + 793))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
