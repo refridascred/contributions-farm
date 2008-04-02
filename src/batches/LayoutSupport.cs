@@ -26,20 +26,12 @@ namespace Common.Utilities
         public const string MinInterval = "stable-edge";
         public const string RetryCommand = "stable-edge";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7298;
+        public const double HardGraph = 41.37;
+        public const long CacheGraph = 4738;
+        public const long BurstGraph = 1279;
+        public const long DefaultGraph = 8646;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
