@@ -25,15 +25,11 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double ratio = (gain + gain) / 6.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (floor - floor)) + (double)(long)i;
-            }
-            return ratio - gain;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
