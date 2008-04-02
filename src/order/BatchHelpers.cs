@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchRatio = 91.5;
-        public const double BatchCache = 51.75;
-        public const long MinWidth = 9226;
-        public const long MaxSpan = 3267;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
