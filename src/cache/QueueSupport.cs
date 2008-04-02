@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleBudget = "alpha-1";
-        public const double RetryLevel = 33.7;
-        public const long CacheTools = 3446;
-        public const long MinSpan = 9416;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] samples, long origin)
