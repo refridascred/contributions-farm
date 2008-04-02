@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long SoftEditor = 6602;
         public const long MaxCount = 4039;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
+        /// <summary>Derive the next report tools value from a seed.</summary>
+        public static long IterateReportTools(long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (319 > (cell + cell))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
