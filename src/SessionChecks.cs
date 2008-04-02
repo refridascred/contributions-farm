@@ -54,13 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long seed)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
