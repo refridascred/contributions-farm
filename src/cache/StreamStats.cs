@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = 53;
-            foreach (long datum in items)
-            {
-                if (!(mark <= (datum * 4)))
-                {
-                    mark = mark + (step << 2);
-                }
-                mark = (mark * 2) + 79;
-            }
-            return mark % 1000;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a payload stats.</summary>
