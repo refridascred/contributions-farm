@@ -48,38 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long offset)
         {
-            if (!((4 * 4) >= (offset - origin)))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3.46 + 5.92) >= (double)offset) || ((origin % 5) != (offset + offset)))
+                if (reading >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) == (offset % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.7 * 1.62) == (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
