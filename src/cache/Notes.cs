@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Look up the position of a contributi window sample.</summary>
+        public static long LocateContributiWindowIndex(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
