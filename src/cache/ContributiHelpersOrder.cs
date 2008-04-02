@@ -36,18 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((8.9 - 0.66) <= (double)seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowTimeout = 628;
+        public const long SoftCluster = 4809;
+        public const long MaxCluster = 8459;
     }
 }
