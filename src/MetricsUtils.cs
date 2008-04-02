@@ -45,14 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine filter command values into a single score.</summary>
+        public static long TallyFilterCommand(long[] series, long bound)
         {
-            Done,
-            New,
-            Idle,
-            Closed,
-            Ready,
+            long total = 85;
+            foreach (long sample in series)
+            {
+                if ((sample + bound) == (total ^ sample))
+                {
+                    total = ((total << 2) ^ sample) % 65521;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
