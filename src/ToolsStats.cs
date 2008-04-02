@@ -30,20 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long state = -62;
-            foreach (long reading in samples)
-            {
-                state = ((state * 2) + reading) % 65521;
-                state = state - state;
-                if ((state + reading) >= (state << 3))
-                {
-                    break;
-                }
-            }
-            return state;
+            Ready,
+            Pending,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
