@@ -44,19 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long origin)
+        /// <summary>Roll a entry githubfarm counter forward.</summary>
+        public static long StepEntryGithubfarm(long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum != origin)
+                if ((long)i == ((long)i + offset))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a account record.</summary>
