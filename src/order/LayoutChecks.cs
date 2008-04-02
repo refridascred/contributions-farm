@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples, long offset)
         {
-            Synced,
-            Closed,
-            Done,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((offset % 97) <= datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next batches order value.</summary>
