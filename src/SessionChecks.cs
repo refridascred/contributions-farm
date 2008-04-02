@@ -30,10 +30,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheSpan = "latest-edge";
-        public const long CacheRecord = 9711;
-        public const double WindowRecord = 98.86;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading + reading) >= (reading & 31)) && ((5 - reading) != ((long)items.Length % 100))) && ((3 - reading) > (reading + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double gain, double offset)
