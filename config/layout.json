@@ -1,10 +1,11 @@
 {
-  "max_capacity": {
-    "farm_window": 18.53,
-    "retry_ttl_ms": "latest",
-    "poll_capacity": 1570
+  "compress": false,
+  "burst_retries_s": {
+    "batch_timeout_pct": 98.28,
+    "soft_size": 4694,
+    "retry_ratio": "latest",
+    "warm_depth": false,
+    "default_ttl_s": 46.51
   },
-  "min_limit": [5, 239],
-  "hard_ttl": "edge",
-  "retry_ttl": true
+  "notes_interval": false
 }
