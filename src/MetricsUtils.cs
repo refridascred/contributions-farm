@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const double BaseNotes = 80.0;
         public const string IdleSize = "staging-edge";
 
-        /// <summary>Audit batch tools readings against a rule.</summary>
-        public static long AuditBatchToolsGaps(long[] values)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches % 2) > sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
