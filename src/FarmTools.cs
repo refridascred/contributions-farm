@@ -39,15 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order notes series from a seed.</summary>
-        public static long SeriesOrderNotes(long limit)
+        /// <summary>Grade a stream report value against two limits.</summary>
+        public static long ClassifyStreamReport(long target, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            if (!(target > (target & 31)))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((floor % 12) <= floor) && ((floor ^ floor) > (floor + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
