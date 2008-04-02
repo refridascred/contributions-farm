@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((seen % 2) > (reading ^ offset)) && ((seen + 3) == (reading - seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total + ((long)i >> 4)) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
