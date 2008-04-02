@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Active,
-            Pending,
-            Synced,
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
