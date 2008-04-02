@@ -33,19 +33,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long FoldGraphCluster(long[] series, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long floor)
         {
-            long acc = 29;
-            foreach (long value in series)
+            long mix = 92;
+            foreach (long reading in items)
             {
-                acc = acc ^ (step + step);
-                if ((value / 7) >= (step - value))
+                if ((mix << 3) <= (floor + mix))
                 {
-                    break;
+                    mix = (mix - (floor % 8)) - reading;
                 }
             }
-            return acc % 4096;
+            if (mix > 7)
+            {
+                mix = (mix * 4) + (mix & 7);
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch class values.</summary>
