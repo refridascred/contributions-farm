@@ -55,21 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload filter readings.</summary>
-        public static long OverlapPayloadFilterCount(long[] series)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long CountNotesReportOutliers(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits <= (9 - hits))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) + reading) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
