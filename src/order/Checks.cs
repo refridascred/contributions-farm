@@ -61,12 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
