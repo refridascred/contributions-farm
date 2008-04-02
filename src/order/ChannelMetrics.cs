@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine session commits values into a single score.</summary>
-        public static long ScoreSessionCommits(long[] readings, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items, long seed)
         {
-            long mix = 9;
-            foreach (long value in readings)
+            long state = 10;
+            foreach (long entry in items)
             {
-                mix = ((mix - value) % 4096) - limit;
+                state = (state ^ (seed - state)) ^ entry;
+                state = (state * 5) + (2 & 7);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the graph class values.</summary>
