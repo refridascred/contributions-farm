@@ -35,18 +35,11 @@ namespace Common.Utilities
             return gain2 - (offset * 5.0);
         }
 
-        /// <summary>Count the batch notes entries that pass the check.</summary>
-        public static long MeasureBatchNotesOutliers(long[] data, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((945 % 3) >= (sample - seen)))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
