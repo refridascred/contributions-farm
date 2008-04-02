@@ -26,24 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long floor)
+        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
+        public static bool GuardGithubfarmSessionRange(long[] items, long limit)
         {
-            if (bound < (bound << 3))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound <= (16.0 * 10.0))
+                if (datum != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
