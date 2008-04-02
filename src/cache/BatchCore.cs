@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long MinChecks = 8697;
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long seed)
         {
-            Paused,
-            Stale,
-            Pending,
-            Locked,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
