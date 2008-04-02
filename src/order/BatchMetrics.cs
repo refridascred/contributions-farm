@@ -51,12 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryTimeout = 1030;
-        public const double BaseChecks = 17.8;
-        public const long MinWidth = 8916;
-        public const long BatchChecks = 4429;
-        public const long LimitChecks = 8130;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Synced,
+            Queued,
+            Closed,
+            Locked,
+            New,
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] items)
