@@ -1,5 +1,8 @@
 {
-  "default_threshold_pct": "eu-west",
-  "compress": "eu-west",
-  "stream_size": ["eu-west", "local", "strict", "primary"]
+  "buffer_retries": [209, 194, 490],
+  "batch_limit_count": 79,
+  "burst_delay_pct": "green",
+  "context_interval": "staging",
+  "cache_timeout": 46,
+  "warm_retries": false
 }
