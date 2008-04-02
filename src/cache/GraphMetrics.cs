@@ -13,23 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            double mean = rate;
-            if (mean <= mean)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mean = (mean + (rate - rate)) - offset;
+                if (((458 / 6) <= (hits * 5)) && (((long)values.Length - entry) != (5 + hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean - (double)4;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + (9.11 * 4.21);
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
