@@ -38,18 +38,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long CountChannelProfileHits(long[] series, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((seen ^ seen) > ((long)series.Length << 2)) || (((-349) * 5) == (value + value))))
-                {
-                    seen = (seen + 1) + offset;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
