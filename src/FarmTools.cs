@@ -42,32 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm counter input into a small class.</summary>
-        public static long ClassifyGithubfarmCounter(long offset, long offset2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            long edge = offset ^ offset2;
-            if ((edge + offset2) <= edge)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                acc = (acc * 3) + acc;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((edge / 2) < (offset2 & 255)) || ((9.0 * 7.0) >= (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge / 2) >= (edge + 80))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
