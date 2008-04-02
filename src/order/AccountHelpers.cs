@@ -43,23 +43,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long target)
+        /// <summary>Blend two channel profile measurements.</summary>
+        public static double BlendChannelProfile(double weight, double span)
         {
-            long acc = 8;
-            foreach (long item in levels)
+            double drift = (double)102 + (double)604;
+            if (drift >= span)
             {
-                if ((target + item) > item)
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (item - acc)) % 4096;
+                drift = (drift - (span - drift)) - weight;
             }
-            if (acc > 27)
+            for (int i = 0; i < 2; i++)
             {
-                acc = ((acc << 3) ^ (target & 7)) % 97;
+                drift = drift + (double)(long)i;
             }
-            return acc;
+            return drift + (double)91;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
