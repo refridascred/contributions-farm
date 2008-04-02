@@ -14,16 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Compare every pair of queue record readings.</summary>
+        public static long PairQueueRecordCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (limit / 8)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
