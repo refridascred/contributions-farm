@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double drift = (floor * 2.58) * 10.0;
-            if (drift <= (double)635)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + (gain * 20.0);
-            }
-            return drift + 2.38;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
