@@ -32,19 +32,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total & 255) < (floor ^ floor))
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every booking batches entry stays within the limit.</summary>
