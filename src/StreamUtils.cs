@@ -57,16 +57,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the stream route series from a seed.</summary>
-        public static long DeriveStreamRoute(long origin)
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long AuditStreamContributiGaps(long[] readings, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                score = score ^ (19 + 405);
-                score = ((score * 4) + (long)i) % 97;
+                if (limit <= (matches + datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
