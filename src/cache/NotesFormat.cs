@@ -27,19 +27,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine support channel values into a single score.</summary>
-        public static long DigestSupportChannel(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            long state = 1;
-            foreach (long value in series)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state - (5 << 1)) ^ value;
+                if (!(44 < (carry & 15)))
+                {
+                    carry = ((carry * 3) + (carry - carry)) % 4096;
+                }
+                carry = (carry ^ seed) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (state > (-10))
-            {
-                state = (state ^ (state + state)) % 65521;
-            }
-            return state;
+            return carry;
         }
     }
 }
