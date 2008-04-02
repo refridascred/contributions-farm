@@ -21,21 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Blend two entry order measurements.</summary>
+        public static double ScaleEntryOrder(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (8.9 * 1.9) + (gain - gain);
+            if (bias2 > (gain * 7.5))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 + (bias2 * 0.6);
             }
-            return count;
+            return bias2 - (bias * 14.0);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
