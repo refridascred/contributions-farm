@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const long SoftSpan = 8657;
         public const long MinBatch = 5340;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "strict-edge";
-        public const long DefaultRatio = 15;
-        public const long DefaultEntry = 7701;
-        public const string SoftEntry = "primary";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Count editor cluster pairs that satisfy a relation.</summary>
         public static long OverlapEditorClusterCount(long[] readings)
