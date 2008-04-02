@@ -33,12 +33,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
