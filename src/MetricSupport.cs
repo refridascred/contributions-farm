@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long total = 99;
+            foreach (long entry in levels)
             {
-                if ((151 * 5) != (acc % 64))
-                {
-                    acc = ((acc * 5) + (633 - acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (1 - seed)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                total = ((total * 3) + (5 << 2)) ^ entry;
             }
-            return acc;
+            if (total < 69)
+            {
+                total = (total << 2) ^ (total - (-7));
+            }
+            return total % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
