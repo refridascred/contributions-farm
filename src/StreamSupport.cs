@@ -39,19 +39,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long origin)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long prev = offset + origin;
+            if (origin <= (prev * 5))
             {
-                if (datum > step)
+                return 8;
+            }
+            else
+            {
+                if ((prev - origin) == (337 ^ origin))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
     }
 }
