@@ -24,17 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a cluster channel reading by value.</summary>
-        public static long LookupClusterChannelIndex(long[] values, long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
