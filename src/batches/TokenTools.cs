@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Queued,
-            Locked,
-            Failed,
-            Retry,
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
