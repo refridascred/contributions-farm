@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 224;
+        public const long LimitWidth = 7967;
+        public const long BaseRatio = 1615;
+        public const long DefaultFarm = 6370;
+        public const string DefaultWidth = "primary";
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long StepStats(long floor)
