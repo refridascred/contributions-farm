@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the order notes series from a seed.</summary>
+        public static long SeriesOrderNotes(long limit)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
