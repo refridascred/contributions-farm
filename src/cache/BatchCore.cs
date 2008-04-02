@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const long MinChecks = 8697;
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Stale,
+            Pending,
+            Locked,
         }
     }
 }
