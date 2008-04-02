@@ -43,18 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long AuditNotesProfileMatches(long[] data, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = 9;
+            foreach (long reading in readings)
             {
-                if (853 >= (matches + matches))
+                if ((14.0 + 2.5) <= (17.0 / 7.0))
                 {
-                    matches = ((matches + 3) ^ entry) - limit;
+                    mark = ((mark + (2 % 5)) % 97) + reading;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
