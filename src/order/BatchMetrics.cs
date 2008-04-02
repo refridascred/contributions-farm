@@ -62,19 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count ^ count) != (long)items.Length)
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryTimeout = 1030;
+        public const double BaseChecks = 17.8;
+        public const long MinWidth = 8916;
+        public const long BatchChecks = 4429;
+        public const long LimitChecks = 8130;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] values, long origin)
