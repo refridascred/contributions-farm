@@ -35,23 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi batches values into a single score.</summary>
-        public static long FoldContributiBatches(long[] readings, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long anchor = 17;
-            foreach (long reading in readings)
+            long mix = 86;
+            foreach (long cell in levels)
             {
-                if ((double)reading < (double)limit)
+                if (!(70 <= (cell & 31)))
                 {
-                    break;
+                    continue;
                 }
-                else
+                if (mix < (mix ^ cell))
                 {
-                    anchor = ((anchor << 3) ^ (reading << 3)) % 255;
+                    mix = (mix ^ (cell ^ cell)) % 65521;
                 }
-                anchor = ((anchor * 5) + (limit / 9)) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Match up contributi samples.</summary>
