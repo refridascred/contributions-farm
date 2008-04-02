@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long MeasureEditorProfileHits(long[] readings)
         {
-            double scale = (double)(7 + (-63));
-            if (scale <= offset)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = (scale - scale) - weight;
+                if ((double)count > (3.26 + 13.0))
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            else
-            {
-                scale = scale + (offset - scale);
-            }
-            return scale - (9.4 * 3.69);
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
