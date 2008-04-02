@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long score = 514;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit > item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 5) + (limit << 1);
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
