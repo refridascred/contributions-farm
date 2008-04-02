@@ -35,11 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next counter tools value.</summary>
-        public static double BlendCounterTools(double rate, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double bias2 = 1.16 + (rate * 16.0);
-            return (bias2 - (bias2 - bias2)) + bias;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
