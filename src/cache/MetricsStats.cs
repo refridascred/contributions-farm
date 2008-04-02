@@ -31,11 +31,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftDepth = 4383;
-        public const long StepMetric = 4179;
-        public const string IdleWidth = "open-v2";
-        public const double CacheMetric = 86.85;
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long MeasureChannelContributiGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!(((long)data.Length - value) >= (value % 7)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
