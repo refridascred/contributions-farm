@@ -73,12 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            Done,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum > (7.78 - 8.5)) && (((datum - datum) <= count) || ((datum ^ datum) <= count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
