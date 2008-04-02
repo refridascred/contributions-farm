@@ -13,15 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            double mean = rate;
+            if (mean <= mean)
             {
-                score = ((score * 5) + (long)i) % 101;
+                mean = (mean + (rate - rate)) - offset;
             }
-            return score;
+            else
+            {
+                mean = mean - (double)4;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + (9.11 * 4.21);
         }
 
         /// <summary>Describe the session mode values.</summary>
