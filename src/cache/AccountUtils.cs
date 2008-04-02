@@ -22,32 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long step2)
+        /// <summary>Check that every checks session entry stays within the limit.</summary>
+        public static bool CheckChecksSessionRange(long[] data, long bound)
         {
-            long gap = step - step2;
-            if (((step2 >> 2) == (step2 / 3)) && ((gap % 10) < (gap << 1)))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap + step2) < (gap / 4))
+                if (datum != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step2 * 3) < (gap * 5)) || ((double)step <= (7.6 - 3.4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
