@@ -16,18 +16,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values, long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((tally + tally) < (52 / 2)) || ((tally + tally) <= (item << 1)))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine format already values into a single score.</summary>
