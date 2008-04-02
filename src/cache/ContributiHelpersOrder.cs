@@ -57,19 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] series, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= origin)
+                if ((series[i] == step) && ((series[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
