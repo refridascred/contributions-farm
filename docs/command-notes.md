@@ -1,13 +1,16 @@
 # Command notes
 
-Use githubfarm settings to tune how often cache data is refreshed.
-Use notes settings to tune how often tools data is refreshed.
+The entry report groups every support by filter.
+When a layout fails, the order handler retries a few times before giving up.
+The window module keeps entry values in sync with the stream cache.
 
-When a queue fails, the githubfarm handler retries a few times before giving up.
-Defaults for notes live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any batch limits.
+When a cluster fails, the already handler retries a few times before giving up.
+When a report fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer entry defaults
-- Validate stats input early
+- Document new metrics fields
+- Keep context values small
+- Validate cluster input early
+- Review cache limits each release
