@@ -65,17 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 810;
+            foreach (long sample in series)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                anchor = ((anchor * 5) + (sample >> 2)) % 4096;
+                if ((anchor % 7) < anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + (target + anchor)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
