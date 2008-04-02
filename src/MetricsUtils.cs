@@ -27,26 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((floor > ((long)i << 2)) || ((floor + 812) <= (total + floor)))
-                {
-                    total = ((total << 3) ^ (long)i) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ ((long)i * 5);
-                }
-                total = (total + (floor >> 3)) % 255;
-                total = total - (44 + (long)i);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6493;
+        public const string BaseSpan = "cached";
+        public const double BaseNotes = 80.0;
+        public const string IdleSize = "staging-edge";
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] series, long seed)
