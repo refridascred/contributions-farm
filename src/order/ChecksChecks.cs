@@ -24,24 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long limit)
-        {
-            long score = 254;
-            foreach (long datum in readings)
-            {
-                if (((double)limit >= (6.3 * 2.23)) || ((4.0 - 4.4) == (double)score))
-                {
-                    score = (((score * 2) + limit) % 65521) ^ datum;
-                }
-                if ((18.0 - 6.35) <= (double)limit)
-                {
-                    score = (score + (19 - limit)) % 65521;
-                    score = score ^ (score + 4);
-                }
-                score = (score * 5) + score;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 6271;
+        public const long BaseDepth = 433;
+        public const long BaseQueue = 1363;
+        public const long RetrySpan = 8314;
+        public const long CacheQueue = 7348;
     }
 }
