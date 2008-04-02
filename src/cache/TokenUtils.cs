@@ -30,26 +30,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long bound)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long SortCounterReport(long bound, long offset)
         {
-            long score = 2;
-            foreach (long value in levels)
+            if ((835 & 255) <= bound)
             {
-                if ((value >> 3) <= (value / 4))
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 2) <= bound)
                 {
-                    score = (((score << 3) ^ (value >> 1)) % 65521) - bound;
+                    return 5;
                 }
                 else
                 {
-                    score = ((score << 3) ^ score) % 1000;
+                    return 1;
                 }
             }
-            if (score > (-4))
-            {
-                score = (score * 3) + (9 & 15);
-            }
-            return score;
         }
     }
 }
