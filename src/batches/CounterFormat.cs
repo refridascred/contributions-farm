@@ -41,25 +41,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema format value against two limits.</summary>
-        public static long BucketSchemaFormat(long limit, long seed)
-        {
-            long next = limit - seed;
-            if (!((limit + 57) != (seed - next)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + 2) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitBudget = 1245;
+        public const double MinLevel = 16.49;
+        public const long LimitOrder = 9230;
     }
 }
