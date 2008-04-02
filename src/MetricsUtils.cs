@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = 7;
-            foreach (long reading in levels)
-            {
-                state = (state ^ (reading & 1)) % 101;
-                state = state + 1;
-                if ((18.0 + 4.11) > (double)state)
-                {
-                    state = ((state << 3) ^ (reading + 930)) % 97;
-                }
-            }
-            return state;
+            Stale,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the record support entries that pass the check.</summary>
