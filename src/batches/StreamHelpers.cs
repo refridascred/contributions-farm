@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long CountFilterContextMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading / 6) != (count / 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a stream stats.</summary>
