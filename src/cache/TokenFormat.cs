@@ -37,12 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Locked,
+            Failed,
+            Done,
             Pending,
-            Paused,
+            Locked,
         }
     }
 }
