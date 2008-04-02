@@ -56,12 +56,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Rank window stats input into a small class.</summary>
+        public static long RankWindowStats(long seed, long seed2)
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long edge = seed - seed2;
+            if ((double)seed2 >= (6.58 + 6.73))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed2 * 4) == (edge % 12))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed > (1.31 / 8.0)) && ((seed2 * 2) >= (edge >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed * 3) <= (seed2 ^ edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
