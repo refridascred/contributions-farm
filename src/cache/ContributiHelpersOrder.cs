@@ -57,17 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                if (!((double)seen > 14.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + entry) + target;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
