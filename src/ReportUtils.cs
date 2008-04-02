@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const double MinSession = 17.05;
         public const long HardSize = 5829;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7377;
-        public const double StepTimeout = 13.11;
-        public const long StepRatio = 586;
-        public const double IdleTools = 63.08;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Draft,
+            Queued,
+            Active,
+            New,
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] values, long origin)
