@@ -32,17 +32,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] series, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] >= offset)
+                if ((floor > ((long)i << 2)) || ((floor + 812) <= (total + floor)))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (long)i) % 4096;
                 }
+                else
+                {
+                    total = (total << 2) ^ ((long)i * 5);
+                }
+                total = (total + (floor >> 3)) % 255;
+                total = total - (44 + (long)i);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine filter command values into a single score.</summary>
