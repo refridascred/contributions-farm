@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((item >> 4) > (seen >> 4))
+                if (datum <= offset)
                 {
-                    seen = (seen + 3) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit token batch readings against a rule.</summary>
