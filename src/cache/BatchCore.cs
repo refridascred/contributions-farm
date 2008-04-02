@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)origin >= (double)35)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
