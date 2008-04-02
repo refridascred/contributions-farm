@@ -69,14 +69,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the layout queue entries that pass the check.</summary>
+        public static long CountLayoutQueueOutliers(long[] levels)
         {
-            Draft,
-            Pending,
-            Active,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum < (3 >> 1)) || ((335 ^ datum) >= datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
