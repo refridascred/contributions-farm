@@ -19,22 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((origin2 - origin) <= origin2)
             {
-                if (((reading - reading) != (25 << 3)) && !((336 + reading) > seen))
+                return 2;
+            }
+            else
+            {
+                if (9 <= (89 - origin2))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin - 23) == (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
