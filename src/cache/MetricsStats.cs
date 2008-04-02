@@ -58,12 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryFactor = 4.3;
+        public const double BaseEditor = 85.2;
+        public const long BaseTimeout = 1548;
+        public const double BaseFactor = 43.77;
     }
 }
