@@ -1,9 +1,12 @@
 {
-  "flush_window_ms": {
-    "batches_timeout": true,
-    "audit": "blue",
-    "githubfarm_ratio": false
+  "counter_depth": {
+    "readonly": 28,
+    "cache_depth": 1024,
+    "audit": "standard",
+    "burst_window_ms": ["blue", "strict"],
+    "enabled": [33, 422]
   },
-  "enabled": ["local", "fallback", "green"],
-  "dry_run": 47.99
+  "base_window": "cached",
+  "verbose": false,
+  "warm_depth": 9.33
 }
