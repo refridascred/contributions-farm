@@ -85,19 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Count the cluster filter entries that pass the check.</summary>
+        public static long CountClusterFilterMatches(long[] samples)
         {
-            long result = -8;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = ((result - (568 - result)) % 1000) - cell;
+                if ((reading - reading) <= tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (result < 82)
-            {
-                result = (result ^ (result % 3)) % 1000;
-            }
-            return result % 65521;
+            return tally;
         }
     }
 }
