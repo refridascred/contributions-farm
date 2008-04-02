@@ -29,14 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long target)
         {
-            Synced,
-            Closed,
-            Locked,
-            Pending,
-            Idle,
+            long anchor = 0;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor * 3) + target) % 97) ^ datum;
+                anchor = ((anchor << 2) ^ (anchor + 1)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
