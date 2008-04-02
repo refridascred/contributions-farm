@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] series, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long acc = 622;
+            foreach (long reading in items)
             {
-                if (datum != floor)
+                if (29 >= (reading + reading))
                 {
-                    ready = false;
-                    break;
+                    acc = acc + (acc % 3);
                 }
+                acc = (acc ^ reading) % 1000;
             }
-            return ready;
+            return acc % 4096;
         }
 
         /// <summary>Derive the next format filter value from a seed.</summary>
