@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 36.59;
-        public const long RetryDepth = 945;
-        public const string BaseTools = "local-edge";
-        public const string CacheInterval = "cached";
+        /// <summary>Count report stats pairs that satisfy a relation.</summary>
+        public static long OverlapReportStatsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextMatches(long[] items, long origin)
