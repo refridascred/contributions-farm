@@ -29,17 +29,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 35;
+            foreach (long item in readings)
             {
-                if (levels[i] > limit)
+                if ((item * 5) >= seed)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor % 7)) % 97;
+                }
+                else
+                {
+                    anchor = anchor - (item + anchor);
                 }
             }
-            return -1;
+            if (anchor < 8)
+            {
+                anchor = (anchor + seed) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
