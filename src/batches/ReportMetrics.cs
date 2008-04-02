@@ -36,22 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long TallyContributiBatchesHits(long[] series, long offset)
+        /// <summary>Count editor stream pairs that satisfy a relation.</summary>
+        public static long OverlapEditorStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((cell + count) > count) && (offset > (offset + offset))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
