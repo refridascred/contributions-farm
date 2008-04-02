@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - step) <= step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
