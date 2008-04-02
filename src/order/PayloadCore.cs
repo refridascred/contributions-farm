@@ -35,11 +35,19 @@ namespace Common.Utilities
             return gain2 - (offset * 5.0);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] levels, long bound)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph record.</summary>
