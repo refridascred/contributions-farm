@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinSpan = 799;
+        public const double RetryChannel = 86.15;
+        public const long WindowCount = 1960;
+        public const long CacheChannel = 7081;
+        public const long LimitChannel = 1533;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] items)
