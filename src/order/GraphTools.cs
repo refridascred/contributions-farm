@@ -16,25 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long target, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long gap = target ^ origin;
-            if ((origin << 1) > (target + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 5) <= gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
