@@ -1,8 +1,14 @@
 # support settings
-warm_ratio:
-  - staging
-  - green
-  - primary
-token_timeout: 50.69
-retry_ratio_pct: false
-format_ttl: 100
+profile_window: 563
+default_delay_ms: legacy
+report_limit:
+  warm_threshold_ms: 51.66
+  batch_ratio: primary
+  flush_window: 100
+  flush_depth_s: strict
+  default_window_s: strict
+  enabled: standard
+min_size_s: 77.55
+audit:
+  - cached
+  - strict
