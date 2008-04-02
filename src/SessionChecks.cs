@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long ClassifyGraphSchema(long limit, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] readings, long step)
         {
-            long gap = limit + origin;
-            if ((40 / 3) >= origin)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((827 >= (gap % 12)) || (gap > (origin % 8)))
+                if ((step >> 2) > (datum - count))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
