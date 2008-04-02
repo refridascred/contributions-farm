@@ -1,7 +1,6 @@
 {
-  "sync_ttl_s": false,
-  "default_window_count": 12.68,
-  "profile_depth": [103, 271],
-  "sync_capacity_pct": 77,
-  "report_interval": "open"
+  "readonly": 66,
+  "enabled": 421,
+  "strict": true,
+  "compress": 93.89
 }
