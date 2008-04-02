@@ -45,9 +45,11 @@ namespace Common.Utilities
         public const string BurstReport = "standard";
         public const long BurstFactor = 4865;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "standard-edge";
-        public const double HardBatches = 96.99;
-        public const double SoftDepth = 63.38;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
