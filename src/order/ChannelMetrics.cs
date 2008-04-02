@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Synced,
-            Draft,
-            Closed,
-            Done,
+            Retry,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
