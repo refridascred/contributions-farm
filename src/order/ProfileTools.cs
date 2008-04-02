@@ -27,10 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 9201;
-        public const long RetryFilter = 4657;
-        public const long SoftRatio = 6119;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 37.26;
+        public const long MaxSize = 8366;
+        public const long BatchCount = 4059;
+        public const double StepFactor = 76.97;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 7155;
