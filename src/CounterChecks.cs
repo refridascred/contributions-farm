@@ -77,22 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 1164;
+        public const long RetryBatches = 4099;
+        public const double CacheWidth = 49.98;
+        public const long BaseBatches = 2347;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] levels)
