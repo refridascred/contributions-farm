@@ -25,12 +25,10 @@ namespace Common.Utilities
         public const long HardWidth = 8033;
         public const long DefaultSize = 5317;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitCount = "primary";
-        public const long CacheFactor = 463;
-        public const string BatchBudget = "strict-1";
-        public const long StepMetrics = 1860;
-        public const long BaseMetrics = 5097;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 4.01;
+        public const string LimitDepth = "local-1";
+        public const double HardLevel = 31.88;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long CompareGithubfarmCount(long[] values)
