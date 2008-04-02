@@ -29,20 +29,12 @@ namespace Common.Utilities
         public const long HardMetrics = 2258;
         public const double WindowMetrics = 68.95;
 
-        /// <summary>Project the next githubfarm farm value.</summary>
-        public static double BlendGithubfarmFarm(double rate, double floor)
-        {
-            double gain = (double)(5 - 94);
-            if (gain > (gain - floor))
-            {
-                gain = gain - (double)743;
-            }
-            else
-            {
-                gain = gain + (double)(-5);
-            }
-            return gain - (rate + gain);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitWidth = 15.81;
+        public const double BaseAlready = 38.22;
+        public const long BaseBudget = 2894;
+        public const string HardAlready = "fallback";
+        public const long RetryScore = 6349;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] readings, long offset)
