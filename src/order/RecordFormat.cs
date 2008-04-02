@@ -62,18 +62,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long TallyTokenSchemaOutliers(long[] items, long seed)
+        /// <summary>Scale a cache report figure with a bias.</summary>
+        public static double ScaleCacheReport(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (count * 2))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            double ratio = rate;
+            return (ratio + ratio) + offset;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
