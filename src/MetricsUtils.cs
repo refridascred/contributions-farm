@@ -50,12 +50,18 @@ namespace Common.Utilities
         public const string BaseSpan = "open-v2";
         public const long HardEditor = 1743;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 5853;
-        public const long WindowCounter = 217;
-        public const string LimitWidth = "open";
-        public const double DefaultCount = 48.59;
-        public const double MinCounter = 39.27;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long limit, long offset)
