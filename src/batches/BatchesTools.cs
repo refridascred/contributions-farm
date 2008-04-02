@@ -32,21 +32,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Roll a entry order counter forward.</summary>
+        public static long StepEntryOrder(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
