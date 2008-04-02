@@ -1,7 +1,6 @@
 {
-  "context_ratio": 96.56,
-  "sync_timeout": ["primary", "latest"],
-  "batch_ttl_count": "edge",
-  "cache_capacity": false,
-  "readonly": 7
+  "warm_capacity": "staging",
+  "min_capacity_pct": "primary",
+  "burst_threshold_ms": 87.89,
+  "cache_ratio": "edge"
 }
