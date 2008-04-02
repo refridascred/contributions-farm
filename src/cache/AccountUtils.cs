@@ -22,33 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long target2)
-        {
-            long offset = target + target2;
-            if ((target2 - offset) == (target2 << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)target != (1.8 * 9.23)) || ((double)offset != (1.59 + 13.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target2 % 97) == (target << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 8086;
+        public const long MaxProfile = 7947;
+        public const long MinScore = 4236;
+        public const long MaxBudget = 7618;
+        public const long LimitRatio = 1880;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string HardLevel = "strict";
