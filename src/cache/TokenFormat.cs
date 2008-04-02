@@ -45,18 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) > datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
