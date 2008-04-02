@@ -33,12 +33,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 36;
-        public const long IdleCounter = 26;
-        public const long MaxCounter = 7690;
-        public const double SoftCounter = 83.42;
-        public const long MinScore = 7737;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Project the next already queue value.</summary>
         public static double SmoothAlreadyQueue(double rate, double span)
