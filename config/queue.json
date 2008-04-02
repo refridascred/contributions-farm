@@ -1,5 +1,5 @@
 {
-  "hard_capacity_count": true,
-  "verbose": "primary",
-  "soft_capacity_pct": ["cached", "strict"]
+  "session_limit": "blue",
+  "idle_window": ["eu-west", "local"],
+  "batch_capacity": "legacy"
 }
