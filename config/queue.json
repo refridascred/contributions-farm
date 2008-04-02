@@ -1,11 +1,7 @@
 {
-  "hard_limit_ms": 34.12,
-  "order_retries": false,
-  "editor_delay": {
-    "queue_size": 59.0,
-    "persist": 100,
-    "idle_retries": "primary"
-  },
-  "idle_delay_ms": 41,
-  "poll_interval": false
+  "retry_ratio_ms": ["strict", "open", "eu-west", "blue"],
+  "poll_capacity_ms": true,
+  "default_ttl": true,
+  "hard_depth_ms": 1024,
+  "compress": 700
 }
