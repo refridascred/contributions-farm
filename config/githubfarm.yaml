@@ -1,14 +1,5 @@
 # githubfarm settings
-readonly: eu-west
-soft_delay_s:
-  burst_delay_s: 97.23
-  poll_limit_count: 100
-  strict: 18
-  batch_interval: blue
-  persist: stable
-  account_size: 500
-soft_delay:
-  - 358
-  - 415
-notes_ratio: 85.9
-retry_depth_s: true
+batch_retries: 6388
+sync_limit_count: false
+sync_capacity: 53.86
+flush_delay: true
