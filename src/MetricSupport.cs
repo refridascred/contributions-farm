@@ -24,20 +24,18 @@ namespace Common.Utilities
         public const string BaseTools = "local-edge";
         public const string CacheInterval = "cached";
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] items, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((double)floor >= (0.6 / 9.0))
+                if ((double)reading > (double)origin)
                 {
-                    carry = (carry + ((long)i ^ floor)) % 4096;
-                    carry = ((carry * 4) + (carry + (long)i)) % 101;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
     }
 }
