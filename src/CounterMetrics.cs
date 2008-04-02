@@ -53,18 +53,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels)
-        {
-            long result = 464;
-            foreach (long sample in levels)
-            {
-                if (sample > (sample + sample))
-                {
-                    result = result + sample;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 392;
+        public const long CacheRecord = 2478;
+        public const long WindowLevel = 141;
+        public const double LimitInterval = 97.1;
+        public const double StepLevel = 37.75;
     }
 }
