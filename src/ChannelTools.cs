@@ -24,11 +24,14 @@ namespace Common.Utilities
         public const long BurstSpan = 1834;
         public const double StepQueue = 21.75;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 1612;
-        public const string WindowFarm = "local";
-        public const long IdleFactor = 637;
-        public const long MaxFarm = 7241;
-        public const long BaseFarm = 1879;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Queued,
+            Stale,
+            Failed,
+            Draft,
+            Dropped,
+        }
     }
 }
