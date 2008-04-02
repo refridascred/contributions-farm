@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the githubfarm token entries that pass the check.</summary>
-        public static long CountGithubfarmTokenGaps(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] data, long origin)
         {
             long count = 0;
-            foreach (long datum in readings)
+            foreach (long value in data)
             {
-                if ((count ^ datum) <= (datum + count))
+                if ((count + origin) > count)
                 {
-                    count = count + 1;
+                    count = (count + 3) ^ value;
                 }
             }
             return count;
