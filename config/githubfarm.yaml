@@ -1,5 +1,13 @@
 # githubfarm settings
-batch_retries: 6388
-sync_limit_count: false
-sync_capacity: 53.86
-flush_delay: true
+window_limit:
+  - 186
+  - 25
+  - 283
+batch_size: 4850
+poll_interval_pct:
+  - blue
+  - cached
+  - green
+  - legacy
+enabled: false
+window_ratio: 500
