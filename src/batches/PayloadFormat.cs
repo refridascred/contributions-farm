@@ -32,31 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long floor)
+        /// <summary>Compare every pair of command layout readings.</summary>
+        public static long PairCommandLayoutCount(long[] levels)
         {
-            if ((floor >> 2) <= floor)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(offset > (floor & 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset * 5) < (floor % 7))
+                    if ((levels[i] - levels[j]) == 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a contributi metric value against two limits.</summary>
