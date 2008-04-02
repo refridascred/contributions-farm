@@ -52,29 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long step)
         {
-            if ((9 & 127) <= limit)
+            if ((step & 63) < target)
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((16.0 + 13.0) < (double)seed)
+                if (15.0 >= (double)step)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)limit <= (6.9 - 17.0)) && ((double)5 != (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 4;
                 }
             }
         }
