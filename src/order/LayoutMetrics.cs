@@ -26,18 +26,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if (bound < (bound << 3))
             {
-                if ((item - step) >= (step % 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (16.0 * 10.0))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
