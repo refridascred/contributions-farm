@@ -50,18 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report stats samples are out of range.</summary>
-        public static long AuditReportStatsMatches(long[] levels, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((count << 3) >= item) || ((double)bound == (9.91 * 10.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
