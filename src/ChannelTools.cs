@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long WindowInterval = 6797;
         public const long IdleSize = 6099;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double drift = bias;
+            if (drift > (drift + bias))
             {
-                if (!((hits + (long)levels.Length) > hits))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - (weight * 3.0);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + (double)76;
         }
     }
 }
