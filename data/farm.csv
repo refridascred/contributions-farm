@@ -1,8 +1,7 @@
-id,label,owner,count
-1,93.75,standard,85.59
-2,standard,83.97,eu-west
-3,183,82.18,73.3
-4,74.22,74,23.33
-5,20.1,654,strict
-6,97.87,3.14,eu-west
-7,green,97.91,57.42
+id,active,rank,weight
+1,50.92,green,326
+2,95.49,primary,132
+3,31.89,46.1,127
+4,553,387,standard
+5,25.5,262,95.29
+6,43.17,edge,latest
