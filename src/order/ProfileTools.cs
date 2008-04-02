@@ -22,39 +22,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a command contributi value against two limits.</summary>
-        public static long BucketCommandContributi(long seed, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] values, long bound)
         {
-            long step = seed + target;
-            if ((step & 63) >= (5 - 37))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.7 / 8.0) > (double)target)
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (7.9 > (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step * 3) < seed) && ((step * 3) <= (seed / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
