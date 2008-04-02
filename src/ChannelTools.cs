@@ -38,15 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long state = 27;
-            foreach (long cell in items)
-            {
-                state = state - (cell << 3);
-            }
-            return state;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
