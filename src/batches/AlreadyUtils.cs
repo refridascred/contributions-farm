@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels, long origin)
         {
-            long diff = seed - bound;
-            if (((seed + diff) >= (seed & 127)) && (17.0 < (double)diff))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (5 >= (bound & 31))
+                if (count > 4)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = ((count + 3) + reading) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
