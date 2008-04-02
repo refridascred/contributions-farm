@@ -37,15 +37,26 @@ namespace Common.Utilities
         public const string BaseQueue = "latest-1";
         public const string StepQueue = "local";
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values)
         {
-            double mean = ratio;
-            if (mean > (ratio + offset))
+            long score = 381;
+            foreach (long cell in values)
             {
-                mean = mean - offset;
+                if ((double)score == (3.61 / 2.0))
+                {
+                    score = ((score << 3) ^ (cell / 8)) % 1000;
+                }
+                else
+                {
+                    score = (score - (cell % 3)) % 65521;
+                }
             }
-            return mean + (2.99 - 5.0);
+            if (score < 2)
+            {
+                score = ((score * 5) + (score + score)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
