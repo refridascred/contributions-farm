@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] samples, long limit)
+        /// <summary>Check that every cluster schema entry stays within the limit.</summary>
+        public static bool CheckClusterSchemaBounds(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (cell < limit)
+                if (entry != origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
