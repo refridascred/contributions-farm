@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((7.88 / 7.0) <= (double)limit)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
