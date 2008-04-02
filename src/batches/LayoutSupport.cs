@@ -57,17 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (data[i] <= step)
+                if ((limit <= (seen + datum)) && ((13 / 8) >= seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
