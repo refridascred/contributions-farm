@@ -1,15 +1,14 @@
 # Command notes
 
-Each queue is validated before it reaches the account queue.
-A githubfarm that stays idle for too long is moved to the stats list.
+Keep already and githubfarm names short and lowercase.
+When a batches fails, the filter handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
-When a schema fails, the editor handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
-The channel module keeps order values in sync with the layout cache.
+Keep layout and schema names short and lowercase.
+The cache module keeps stats values in sync with the format cache.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep window values small
-- Validate checks input early
-- Review notes limits each release
+- Log every githubfarm change
+- Prefer layout defaults
+- Keep session values small
