@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route context measurements.</summary>
-        public static double AdjustRouteContext(double scale, double bias)
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmGraphCount(long[] levels)
         {
-            double scale2 = bias;
-            if (scale2 > (9.4 * 6.3))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 - (scale2 + scale2);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - (scale - scale2);
-            }
-            return scale2 + (scale2 * 5.0);
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
