@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const double DefaultContext = 40.48;
         public const long IdleLevel = 2022;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleSize = 2519;
-        public const long MinCount = 758;
-        public const long BaseToken = 1691;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 460;
+        public const long BatchMetric = 2254;
+        public const long StepScore = 4156;
+        public const long WindowMetric = 3097;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double rate, double span)
