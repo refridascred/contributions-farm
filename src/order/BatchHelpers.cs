@@ -28,20 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long seed)
-        {
-            long state = 207;
-            foreach (long entry in series)
-            {
-                state = ((state + (entry >> 5)) % 255) + seed;
-                state = (state << 3) ^ state;
-            }
-            if (state < (-60))
-            {
-                state = ((state * 4) + (state << 1)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleScore = 59.86;
+        public const long LimitCommits = 1550;
+        public const long HardCommits = 420;
+        public const long BurstCommits = 401;
+        public const string RetryCommits = "stable-1";
     }
 }
