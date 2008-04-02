@@ -1,8 +1,20 @@
 # support settings
-hard_window_pct:
-  - 99
-  - 330
-  - 122
-  - 184
-dry_run: strict
-batch_limit_ms: blue
+batch_ratio: 2069
+cache_size: blue
+retry_interval_count: staging
+sync_size_pct:
+  - strict
+  - staging
+poll_ttl_s:
+  report_size: eu-west
+  warm_window_pct:
+    default_capacity:
+      - legacy
+      - strict
+      - stable
+      - local
+    burst_timeout_count: standard
+    support_interval: eu-west
+    soft_delay: 30
+  persist: true
+  strict: 2283
