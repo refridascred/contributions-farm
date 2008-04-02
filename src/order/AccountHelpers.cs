@@ -51,14 +51,10 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 5544;
+        public const long BatchFactor = 9443;
+        public const long LimitContributi = 6867;
 
         /// <summary>Measure how many metrics contributi samples are out of range.</summary>
         public static long TallyMetricsContributiGaps(long[] series)
