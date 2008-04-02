@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const long MaxBudget = 7618;
         public const long LimitRatio = 1880;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardLevel = "strict";
-        public const string WindowSession = "primary-edge";
-        public const string BurstRatio = "cached-1";
-        public const long CacheSession = 1960;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values)
+        {
+            long mark = 1;
+            foreach (long sample in values)
+            {
+                if ((sample - mark) <= sample)
+                {
+                    mark = ((mark << 3) ^ sample) % 65521;
+                }
+                else
+                {
+                    mark = (mark - mark) % 65521;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
