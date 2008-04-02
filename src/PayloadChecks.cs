@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long offset)
         {
-            long score = 688;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!(item > (869 >> 5)))
+                if ((double)487 == (double)tally)
                 {
-                    score = (score + (limit + item)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (limit * 5)) % 4096;
+                    tally = ((tally + 3) ^ entry) + offset;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Hold a order info.</summary>
