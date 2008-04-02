@@ -44,19 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (entry <= origin)
+                if (!((target >> 3) <= (sample + count)) || ((double)sample < (double)target))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Adjust a queue reading.</summary>
