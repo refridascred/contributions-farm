@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long seed)
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long LookupWindowLayoutIndex(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if (values[i] < limit)
                 {
                     return (long)i;
                 }
