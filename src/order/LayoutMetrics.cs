@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)floor <= (double)(long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 2) + floor) % 97;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    long matches = -73;
-                    sum = (sum + (matches >> 1)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
