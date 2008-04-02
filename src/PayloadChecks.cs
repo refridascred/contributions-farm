@@ -22,19 +22,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
