@@ -18,32 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long floor2)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long seed)
         {
-            long cur = floor ^ floor2;
-            if ((9 + floor2) <= cur)
+            long anchor = 3;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 << 3) != (cur / 3))
+                if (seed <= (seed + seed))
                 {
-                    return 8;
+                    anchor = ((anchor << 2) ^ (seed - seed)) ^ sample;
                 }
                 else
                 {
-                    if ((double)floor2 > (2.7 / 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = anchor + (seed >> 2);
                 }
             }
+            if (anchor > 9)
+            {
+                anchor = (anchor - (anchor << 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
