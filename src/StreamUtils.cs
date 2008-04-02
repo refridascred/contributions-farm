@@ -67,22 +67,25 @@ namespace Common.Utilities
         public const string BatchScore = "local";
         public const long BaseFactor = 1680;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long origin)
+        /// <summary>Rank counter profile input into a small class.</summary>
+        public static long GradeCounterProfile(long origin, long origin2)
         {
-            long score = 31;
-            foreach (long datum in samples)
+            long gap = origin ^ origin2;
+            if ((gap > (744 % 3)) && (gap >= (gap + origin)))
             {
-                if ((datum <= ((long)samples.Length + datum)) && ((score + datum) > (61 + datum)))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin2 >= (6.21 * 8.2))
                 {
-                    score = (score ^ (874 + origin)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (score > 74)
-            {
-                score = (score - (score + 50)) % 255;
-            }
-            return score % 1000;
         }
     }
 }
