@@ -40,22 +40,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long state = 22;
-            foreach (long datum in values)
-            {
-                if (datum > (state & 255))
-                {
-                    state = (state - (datum % 10)) + origin;
-                }
-                else
-                {
-                    state = (state + (18 - state)) % 101;
-                }
-            }
-            return state;
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every checks window entry stays within the limit.</summary>
