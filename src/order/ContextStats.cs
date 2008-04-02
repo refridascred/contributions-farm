@@ -47,17 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric layout entry that matches the target.</summary>
-        public static long FindMetricLayoutIndex(long[] readings, long seed)
+        /// <summary>Count counter cache pairs that satisfy a relation.</summary>
+        public static long MatchCounterCacheCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
