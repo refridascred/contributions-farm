@@ -1,11 +1,11 @@
 # Command notes
 
-The notes module keeps counter values in sync with the support cache.
-Run the buffer check before changing any githubfarm limits.
-Use account settings to tune how often channel data is refreshed.
+The report module keeps graph values in sync with the format cache.
+A token that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep route values small
-- Log every command change
+- Log every commits change
+- Prefer token defaults
+- Document new filter fields
+- Review githubfarm limits each release
