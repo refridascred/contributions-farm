@@ -37,12 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Failed,
-            Dropped,
-            Paused,
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
