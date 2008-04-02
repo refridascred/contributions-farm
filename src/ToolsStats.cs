@@ -47,31 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long limit, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if ((origin >= (limit ^ origin)) || ((origin + origin) > (origin - origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ limit) >= (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit / 9) != (limit ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
