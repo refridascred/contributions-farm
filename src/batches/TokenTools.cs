@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((sample * 4) >= (sample << 2)) || ((double)641 != (double)sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinFactor = 47.81;
+        public const long LimitAccount = 5529;
+        public const long MaxSpan = 4048;
+        public const long CacheAccount = 6610;
+        public const long BaseAccount = 284;
 
         /// <summary>Iterate the report context series from a seed.</summary>
         public static long IterateReportContext(long floor)
