@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next buffer context value.</summary>
+        public static double SmoothBufferContext(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            double gain = bias2;
+            if (gain < bias2)
+            {
+                gain = (gain - gain) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (gain / 6.0)) + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Accumulate schema samples.</summary>
