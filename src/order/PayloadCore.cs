@@ -40,12 +40,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            if (!((4 * 4) >= (offset - origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3.46 + 5.92) >= (double)offset) || ((origin % 5) != (offset + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) == (offset % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.7 * 1.62) == (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
