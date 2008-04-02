@@ -12,17 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a counter format sample.</summary>
-        public static long LookupCounterFormatIndex(long[] series, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (series[i] > target)
+                if (entry > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a notes summary.</summary>
