@@ -1,9 +1,7 @@
-id,active,ratio
-1,684,standard
-2,legacy,97.65
-3,578,26.52
-4,356,eu-west
-5,839,5.76
-6,open,541
-7,837,218
-8,open,38.71
+id,owner,state
+1,primary,862
+2,71.19,604
+3,open,eu-west
+4,eu-west,305
+5,eu-west,legacy
+6,836,cached
