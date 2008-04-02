@@ -21,22 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long AuditRecordSupportOutliers(long[] series)
         {
-            long total = 6;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(10 > value))
+                if (8.5 < (double)sample)
                 {
-                    total = ((total << 3) ^ (55 << 1)) % 4096;
+                    hits = hits + 2;
                 }
-                if ((total & 63) >= (total / 7))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
