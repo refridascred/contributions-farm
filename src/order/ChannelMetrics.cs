@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long step, long floor)
         {
-            Retry,
-            Locked,
-            Stale,
-            Active,
+            long diff = step + floor;
+            if ((diff / 4) > 91)
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor >= (step & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor << 3) > (step ^ diff)) && ((floor & 127) != (360 * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
