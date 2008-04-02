@@ -14,10 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "fallback-v2";
-        public const long BurstChannel = 8205;
-        public const long RetryRatio = 7563;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen / 2) <= (datum ^ 300))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowScore = 88.9;
