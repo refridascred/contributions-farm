@@ -38,18 +38,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long MeasureBatchesEditorOutliers(long[] data, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count * 2) <= (count ^ cell))
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
