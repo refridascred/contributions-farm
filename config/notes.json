@@ -1,19 +1,8 @@
 {
-  "cache_timeout_pct": {
-    "soft_limit": 1038,
-    "retry_limit_count": false,
-    "record_ratio": "legacy",
-    "poll_timeout": 29.26
-  },
-  "stats_delay": true,
-  "enabled": 4,
-  "compress": {
-    "warm_size_count": "stable",
-    "dry_run": 64,
-    "compress": [215, 71],
-    "min_timeout_count": "stable",
-    "soft_interval_s": 20.3,
-    "batch_delay_count": [48, 317, 286]
-  },
-  "base_delay": 81
+  "base_size_ms": 54.51,
+  "poll_delay_s": 4298,
+  "command_ratio": 16,
+  "verbose": "local",
+  "readonly": [308, 114, 266],
+  "poll_capacity": 40
 }
