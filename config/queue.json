@@ -1,6 +1,7 @@
 {
-  "format_interval": 4105,
-  "burst_ttl_ms": "legacy",
-  "sync_window_count": "latest",
-  "base_retries_pct": "strict"
+  "base_threshold_s": ["standard", "blue", "local", "blue"],
+  "default_window_s": "legacy",
+  "retry_ratio_pct": 419,
+  "queue_window": 2,
+  "persist": 500
 }
