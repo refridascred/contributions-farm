@@ -1,12 +1,10 @@
 # Command notes
 
-When a format fails, the profile handler retries a few times before giving up.
-The channel module keeps route values in sync with the record cache.
-A channel that stays idle for too long is moved to the farm list.
+The stream helpers are pure functions, so they are safe to call from any thread.
+When a metrics fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Log every batches change
-- Keep payload values small
-- Document new session fields
+- Review command limits each release
+- Keep command values small
+- Document new command fields
