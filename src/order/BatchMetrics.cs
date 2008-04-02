@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry - ((long)i + carry)) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 1082;
+        public const double BurstBatch = 11.88;
+        public const long StepBatch = 6731;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] levels, long target)
