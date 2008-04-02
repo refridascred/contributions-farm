@@ -31,11 +31,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepLevel = "local-1";
-        public const double IdleTimeout = 90.4;
-        public const long MaxTimeout = 6524;
-        public const double DefaultContext = 44.86;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftDepth = 4383;
+        public const long StepMetric = 4179;
+        public const string IdleWidth = "open-v2";
+        public const double CacheMetric = 86.85;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
