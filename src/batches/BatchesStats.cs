@@ -33,11 +33,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6067;
-        public const double HardInterval = 16.93;
-        public const double MinBudget = 82.27;
-        public const long MinMetric = 3190;
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (gain * 5.6)) + (double)(long)i;
+            }
+            return mean + (double)13;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double RetryGithubfarm = 44.92;
