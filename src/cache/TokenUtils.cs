@@ -30,17 +30,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] <= bound)
+                if ((cell * 5) >= tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
