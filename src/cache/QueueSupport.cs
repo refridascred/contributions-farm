@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long LookupGithubfarmSessionIndex(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
