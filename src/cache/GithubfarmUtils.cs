@@ -28,18 +28,15 @@ namespace Common.Utilities
             return bias2 - (bias2 + rate);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long carry = 415;
+            foreach (long entry in data)
             {
-                if (hits < 0)
-                {
-                    hits = ((hits + 3) + sample) + target;
-                }
+                carry = carry + (entry >> 5);
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
