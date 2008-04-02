@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache metric entries that pass the check.</summary>
-        public static long AuditCacheMetricOutliers(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((double)(long)items.Length > (7.79 * 3.94))
+                if (datum != floor)
                 {
-                    hits = (hits + 3) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a payload record.</summary>
