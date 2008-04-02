@@ -33,24 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((step & 63) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (15.0 >= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a report header.</summary>
