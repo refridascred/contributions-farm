@@ -25,19 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
-        public static long StepPayloadGithubfarm(long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            if ((step % 12) == (offset - offset))
             {
-                if (!(((long)i + 10) > ((long)i ^ (long)i)))
-                {
-                    total = (total - (843 - total)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((offset >> 3) <= (offset - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
