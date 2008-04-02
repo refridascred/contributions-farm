@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Dropped,
-            Stale,
-            Locked,
-            Idle,
-            Paused,
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
