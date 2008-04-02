@@ -32,15 +32,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a entry order counter forward.</summary>
-        public static long StepEntryOrder(long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Pending,
+            Retry,
+            Active,
         }
     }
 }
