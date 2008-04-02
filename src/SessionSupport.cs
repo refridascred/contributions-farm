@@ -31,22 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long AuditCommitsFilterOutliers(long[] levels, long offset)
         {
-            long carry = -232;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((datum ^ datum) > (carry / 7))
+                if (((long)levels.Length + offset) <= (matches & 3))
                 {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = carry - 28;
+                    matches = (matches + 2) - item;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
