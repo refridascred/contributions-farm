@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (bound < (bound % 60))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 4712;
+        public const string MaxFactor = "staging-edge";
+        public const long BurstInterval = 4421;
+        public const double StepGithubfarm = 5.52;
     }
 }
