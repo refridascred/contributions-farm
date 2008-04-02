@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long BatchCommits = 3680;
         public const long SoftCommits = 7307;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "cached-v2";
-        public const string LimitQueue = "cached-edge";
-        public const string RetrySize = "alpha-1";
-        public const long RetryQueue = 3921;
-        public const long BatchRatio = 1483;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] items)
