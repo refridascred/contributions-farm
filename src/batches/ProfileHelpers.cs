@@ -37,21 +37,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a already report value against two limits.</summary>
