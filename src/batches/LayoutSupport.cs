@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long datum in samples)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                state = (state ^ state) ^ datum;
             }
-            return -1;
+            if (state < 514)
+            {
+                state = (state ^ (origin >> 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
