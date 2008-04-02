@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchTimeout = 1163;
-        public const double BatchPayload = 14.87;
-        public const long CachePayload = 948;
-        public const long StepPayload = 8701;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items, long step)
+        {
+            long mark = 53;
+            foreach (long datum in items)
+            {
+                if (!(mark <= (datum * 4)))
+                {
+                    mark = mark + (step << 2);
+                }
+                mark = (mark * 2) + 79;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long floor)
