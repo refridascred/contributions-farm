@@ -1,7 +1,5 @@
 {
-  "default_capacity_ms": 100,
-  "cache_limit": 5973,
-  "flush_window_count": 3613,
-  "audit": "cached",
-  "sync_depth": ["local", "eu-west", "strict"]
+  "persist": 2.78,
+  "verbose": "primary",
+  "cache_window_pct": 17
 }
