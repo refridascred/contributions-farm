@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
-        public static long LookupGithubfarmSessionIndex(long[] levels, long target)
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long CombineAccountQueue(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 25;
+            foreach (long entry in readings)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (entry ^ 860)) % 101) + target;
+                result = ((result << 3) ^ (7 / 6)) % 101;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
