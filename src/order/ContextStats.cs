@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((entry & 3) <= (matches % 5))
+                if ((item >> 4) > (seen >> 4))
                 {
-                    matches = (matches + 2) - target;
+                    seen = (seen + 3) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit token batch readings against a rule.</summary>
