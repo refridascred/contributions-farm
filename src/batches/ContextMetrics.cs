@@ -42,22 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long seed)
         {
-            long state = 2;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((value - state) > state)
+                if (entry >= seed)
                 {
-                    state = (state * 4) + (state >> 1);
+                    stale = false;
+                    break;
                 }
             }
-            if (state > (-737))
-            {
-                state = ((state * 3) + (state + state)) % 65521;
-            }
-            return state;
+            return stale;
         }
     }
 }
