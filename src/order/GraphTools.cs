@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long limit2)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long step = limit ^ limit2;
-            if (!(limit2 <= (limit - limit2)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step ^ limit) <= (116 << 1)) || ((limit2 >> 5) == (limit2 + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit2 < (64 ^ limit2))
+                    if ((values[i] - values[j]) == 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
