@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate format support readings against a bound.</summary>
-        public static bool ValidateFormatSupportBounds(long[] readings, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double rate = span;
+            if (rate > (double)(-464))
             {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - rate) - bias;
             }
-            return ok;
+            return rate + (double)2;
         }
 
         /// <summary>Describe the window state values.</summary>
