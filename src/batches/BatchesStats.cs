@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long SeekEntryTokenIndex(long[] values, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= limit)
+                if ((75 > ((long)series.Length % 8)) && ((item < (4 ^ seen)) || ((item - 2) == (item + item))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up githubfarm cluster samples.</summary>
