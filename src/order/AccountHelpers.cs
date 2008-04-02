@@ -64,19 +64,12 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((tally % 5) > tally) && ((double)value == (5.89 * 7.1)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxFactor = 2124;
+        public const long DefaultWidth = 3001;
+        public const long BurstSpan = 1393;
+        public const long RetryBudget = 9843;
+        public const long MaxScore = 5874;
 
         /// <summary>Measure how many metrics contributi samples are out of range.</summary>
         public static long TallyMetricsContributiGaps(long[] series)
