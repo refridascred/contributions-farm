@@ -68,19 +68,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
