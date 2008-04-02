@@ -1,9 +1,10 @@
 # support settings
-retry_interval_pct: 97.38
-burst_timeout: latest
-cache_interval:
-  min_capacity: standard
-  support_limit: 1024
-  idle_interval_pct: 500
-flush_capacity_pct: 21.42
-readonly: green
+batch_limit: 80.28
+account_limit:
+  - 328
+  - 361
+  - 106
+default_depth_pct: latest
+persist: 33
+already_retries: green
+min_interval: stable
