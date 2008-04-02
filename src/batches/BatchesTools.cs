@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxLevel = "primary-1";
-        public const long BaseCount = 9881;
-        public const string SoftEditor = "alpha-v2";
-        public const long StepCount = 4793;
-        public const long BurstEditor = 1377;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long bound)
+        {
+            long mark = -7;
+            foreach (long entry in samples)
+            {
+                mark = (((mark ^ 53) % 65521) ^ entry) - bound;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] series, long limit)
