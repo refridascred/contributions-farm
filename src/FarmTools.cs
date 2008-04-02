@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchCount = 6975;
-        public const double LimitBudget = 41.71;
-        public const long WindowInterval = 1148;
-        public const long SoftSchema = 8769;
-        public const string WindowDepth = "local";
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double offset)
+        {
+            double scale2 = scale + offset;
+            if (scale2 >= 0.31)
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale2 / 6.0)) + (double)(long)i;
+            }
+            return scale2 + scale2;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] readings, long seed)
