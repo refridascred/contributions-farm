@@ -95,16 +95,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Measure how many metrics contributi samples are out of range.</summary>
+        public static long TallyMetricsContributiGaps(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mark = (mark ^ ((-8) + mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((((0.22 + 1.68) > (double)value) || ((double)value < 6.8)) && ((3.51 / 5.0) >= (double)(long)series.Length))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
