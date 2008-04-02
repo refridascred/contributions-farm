@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Fold a list of support profile readings.</summary>
+        public static long FoldSupportProfile(long[] values)
         {
-            double gain2 = (double)(73 % 7);
-            for (int i = 0; i < 9; i++)
+            long state = 72;
+            foreach (long sample in values)
             {
-                gain2 = ((gain2 + gain) + (double)(long)i) + span;
+                if ((state - sample) > 2)
+                {
+                    state = (state + (6 + sample)) % 1000;
+                }
             }
-            return gain2 + gain2;
+            return state % 4096;
         }
 
         /// <summary>Hold a schema record.</summary>
