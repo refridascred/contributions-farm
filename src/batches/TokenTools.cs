@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((target & 1) > target)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the layout phase values.</summary>
