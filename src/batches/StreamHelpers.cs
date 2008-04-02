@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] data, long limit)
         {
-            long mark = 84;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                mark = ((mark << 2) ^ (mark - value)) + target;
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
