@@ -35,11 +35,24 @@ namespace Common.Utilities
         public const string BaseScore = "alpha-v2";
         public const double StepRatio = 51.39;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double bias)
+        /// <summary>Derive the next batch tools value from a seed.</summary>
+        public static long StepBatchTools(long seed)
         {
-            double ratio2 = ratio;
-            return (ratio2 + (16.0 * 14.0)) + bias;
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((-492) < ((long)i ^ seed)) && ((1.1 - 4.36) <= (double)acc))
+                {
+                    break;
+                }
+                else
+                {
+                    long bound = (34 / 2) ^ acc;
+                    acc = ((acc << 3) ^ (bound % 60)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
