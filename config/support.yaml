@@ -1,12 +1,9 @@
 # support settings
-compress: green
-flush_timeout_count:
-  - edge
-  - standard
-  - green
-  - standard
-audit:
-  warm_ratio_s: 25
-  idle_timeout: false
-  strict: 3.22
-poll_interval_ms: 65.2
+burst_threshold_s:
+  - 317
+  - 81
+  - 488
+  - 389
+compress: 4033
+dry_run: 2.77
+batch_retries_count: true
