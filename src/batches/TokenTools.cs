@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftCache = 8431;
         public const long WindowInterval = 2191;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] values, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
