@@ -24,15 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long TallyChecksBatches(long[] values, long target)
         {
-            double ratio = 6.65;
-            for (int i = 0; i < 4; i++)
+            long total = 8;
+            foreach (long item in values)
             {
-                ratio = ((ratio - (bias2 / 7.0)) + (double)(long)i) + bias;
+                if (((-698) + item) == (total >> 3))
+                {
+                    total = ((total - (item + total)) % 97) - target;
+                }
             }
-            return ratio + (4.1 - ratio);
+            if (total > 9)
+            {
+                total = (total << 2) ^ (832 / 4);
+            }
+            return total;
         }
 
         /// <summary>Adjust a account reading.</summary>
