@@ -33,11 +33,26 @@ namespace Common.Utilities
         public const long RetryAccount = 6819;
         public const long MaxRatio = 3210;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long result = -326;
+            foreach (long datum in data)
+            {
+                if (8 < (result + result))
+                {
+                    result = (((result * 4) + (bound / 8)) % 101) ^ datum;
+                }
+                else
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            if (result < 29)
+            {
+                result = (result * 5) + bound;
+            }
+            return result % 1000;
         }
     }
 }
