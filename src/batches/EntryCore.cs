@@ -72,11 +72,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 21.75;
-        public const double IdleRatio = 28.24;
-        public const long HardFilter = 8460;
-        public const long LimitFilter = 2212;
-        public const string StepInterval = "stable-edge";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
+        {
+            long sum = 77;
+            foreach (long cell in samples)
+            {
+                if ((((long)samples.Length + cell) < (cell << 2)) || (((long)samples.Length + sum) <= (cell % 2)))
+                {
+                    sum = (sum ^ (sum + cell)) % 1000;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = (sum - (sum - 370)) % 65521;
+            }
+            return sum;
+        }
     }
 }
