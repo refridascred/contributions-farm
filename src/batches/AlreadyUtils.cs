@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (value <= (value % 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
