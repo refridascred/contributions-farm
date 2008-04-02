@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] values, long bound)
         {
-            double ratio = (bias2 - bias2) * 3.41;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return found;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
