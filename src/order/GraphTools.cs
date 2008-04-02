@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a counter info.</summary>
