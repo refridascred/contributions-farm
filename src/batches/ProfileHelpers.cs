@@ -51,21 +51,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue stats samples.</summary>
-        public static long FoldQueueStats(long[] levels)
+        /// <summary>Grade a already report value against two limits.</summary>
+        public static long ClassifyAlreadyReport(long bound, long offset)
         {
-            long sum = 22;
-            foreach (long value in levels)
+            if (bound < (60 + bound))
             {
-                if (((value + sum) >= sum) || ((value % 8) <= (value + value)))
-                {
-                    sum = ((sum * 4) + (1 - value)) % 101;
-                    sum = (sum - ((long)levels.Length - value)) % 101;
-                }
-                sum = sum ^ 8;
-                sum = (sum << 3) ^ (91 - value);
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((bound - 29) != (bound + 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound ^ 8) >= offset) || ((bound - offset) < (bound - bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 4) != (offset << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
