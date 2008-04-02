@@ -1,17 +1,8 @@
 {
-  "burst_capacity_pct": 65.11,
-  "idle_capacity_ms": {
-    "cache_interval_count": "latest",
-    "token_timeout": {
-      "format_timeout": 16.76,
-      "dry_run": 8473,
-      "verbose": 49,
-      "persist": 60
-    },
-    "base_capacity_count": 4,
-    "default_depth": 40.35,
-    "sync_threshold": 21.59
-  },
-  "route_size": true,
-  "format_interval": [433, 314, 71, 330]
+  "persist": 100,
+  "sync_capacity": 8.39,
+  "commits_interval": 3665,
+  "base_depth": false,
+  "cache_retries_pct": "edge",
+  "retry_capacity": 4
 }
