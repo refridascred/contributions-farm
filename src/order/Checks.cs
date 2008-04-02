@@ -53,18 +53,22 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long MeasurePayloadClusterMatches(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((92 << 1) <= (cell + cell))
+                if (((seen - floor) <= (253 & 255)) && (((double)478 >= (double)seen) || ((6.7 - 16.0) <= (double)seen)))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
