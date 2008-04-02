@@ -49,11 +49,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                long lane = (anchor >> 3) + floor;
+                if ((double)lane == (11.0 / 7.0))
+                {
+                    lane = (lane - (lane / 7)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
