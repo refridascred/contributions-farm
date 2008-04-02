@@ -23,21 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((89 + item) < (matches << 2)))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
