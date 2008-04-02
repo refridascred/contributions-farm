@@ -22,10 +22,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 5908;
         public const double LimitBudget = 91.88;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleWidth = "fallback-edge";
-        public const double SoftScore = 97.64;
-        public const long BaseSize = 4026;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Synced,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] levels)
