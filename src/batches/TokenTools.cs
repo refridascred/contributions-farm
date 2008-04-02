@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long SoftCache = 8431;
         public const long WindowInterval = 2191;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine record queue values into a single score.</summary>
+        public static long TallyRecordQueue(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long carry = 45;
+            foreach (long item in levels)
+            {
+                if (((item / 6) != (item / 7)) || ((item + item) > carry))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 255;
+                }
+            }
+            if (carry > (-291))
+            {
+                carry = carry ^ (carry & 1);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
