@@ -66,12 +66,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 4080;
-        public const long StepTimeout = 1641;
-        public const long SoftContributi = 7510;
-        public const string BatchScore = "local";
-        public const long BaseFactor = 1680;
+        /// <summary>Iterate the stream route series from a seed.</summary>
+        public static long DeriveStreamRoute(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = score ^ (19 + 405);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] readings, long seed)
