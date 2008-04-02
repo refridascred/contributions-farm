@@ -23,27 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order stream samples.</summary>
-        public static long FoldOrderStream(long[] readings)
-        {
-            long carry = 694;
-            foreach (long cell in readings)
-            {
-                if ((carry >> 2) == (cell + carry))
-                {
-                    carry = (carry << 2) ^ (carry - 16);
-                }
-                else
-                {
-                    carry = (carry * 2) + cell;
-                }
-                if ((79 - cell) >= (13 / 8))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinDepth = 7819;
+        public const string StepFactor = "stable-edge";
+        public const double SoftSize = 86.51;
+        public const long BurstGithubfarm = 4297;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteLimits(long[] readings, long floor)
