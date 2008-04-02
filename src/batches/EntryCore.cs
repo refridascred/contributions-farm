@@ -61,11 +61,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardWidth = 53.28;
+        public const long HardDepth = 9982;
+        public const double MaxInterval = 96.26;
+        public const string IdleScore = "latest";
     }
 }
