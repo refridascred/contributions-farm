@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long carry = 62;
-            foreach (long item in readings)
-            {
-                if ((item * 2) < carry)
-                {
-                    carry = (carry + (item - 195)) % 1000;
-                }
-            }
-            if (carry > (-270))
-            {
-                carry = carry + (carry & 7);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "alpha-1";
+        public const string DefaultBatches = "legacy-v2";
+        public const string BatchBatches = "standard";
+        public const long RetryInterval = 3120;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] data, long origin)
