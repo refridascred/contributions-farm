@@ -53,19 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm already readings against a bound.</summary>
-        public static bool GuardGithubfarmAlreadyLimits(long[] values, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
