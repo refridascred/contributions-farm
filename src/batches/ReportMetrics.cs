@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -307;
+            foreach (long item in values)
             {
-                if (readings[i] > floor)
+                if (((8.0 * 3.11) > (double)result) || ((result - 2) < 16))
                 {
-                    return (long)i;
+                    result = (result ^ (result ^ result)) + item;
                 }
             }
-            return -1;
+            if (result > 2)
+            {
+                result = (result + (long)values.Length) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Locate a token reading by value.</summary>
