@@ -1,6 +1,10 @@
 {
-  "poll_window_pct": 41,
-  "base_depth_ms": "cached",
-  "cache_threshold_ms": 23.96,
-  "max_ttl_s": 7.17
+  "persist": {
+    "hard_threshold": 2.22,
+    "poll_retries_ms": "staging",
+    "notes_depth": 64,
+    "tools_threshold": ["standard", "open", "eu-west"]
+  },
+  "base_threshold_count": 100,
+  "max_delay": ["staging", "standard", "local"]
 }
