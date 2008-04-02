@@ -37,15 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Blend two metric editor measurements.</summary>
+        public static double BlendMetricEditor(double ratio, double bias)
         {
-            double load = (scale * 3.57) / 7.0;
-            if (load < span)
-            {
-                load = load + span;
-            }
-            return load + span;
+            double mean = 4.34;
+            return ((mean + (mean / 4.0)) + ratio) + bias;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
