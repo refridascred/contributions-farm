@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every layout stats entry stays within the limit.</summary>
-        public static bool GuardLayoutStatsBounds(long[] levels, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long lane = step + limit;
+            if (79 <= (step - limit))
             {
-                if (cell != limit)
+                return 2;
+            }
+            else
+            {
+                if ((limit << 2) <= (lane ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit >> 3) == ((-145) % 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
