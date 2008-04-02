@@ -16,21 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Find the first graph schema entry that matches the target.</summary>
+        public static long FindGraphSchemaIndex(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] <= floor)
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
