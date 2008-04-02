@@ -1,6 +1,9 @@
-id,count,rank,ratio
-1,66.58,stable,2.37
-2,staging,stable,612
-3,open,788,3.98
-4,44.55,85.16,862
-5,staging,52.62,stable
+id,ratio,rank
+1,49.83,latest
+2,65.39,standard
+3,82.55,legacy
+4,edge,26.15
+5,648,912
+6,20.76,250
+7,cached,cached
+8,624,cached
