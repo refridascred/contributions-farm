@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long seed)
+        /// <summary>Count the cache report entries that pass the check.</summary>
+        public static long AuditCacheReportMatches(long[] items)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long cell in items)
             {
-                if ((double)matches > 5.0)
+                if ((2.1 - 20.0) <= (double)count)
                 {
-                    matches = ((matches + 2) + cell) - seed;
+                    count = (count + 1) - cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
