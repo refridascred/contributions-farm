@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a batch cache value against two limits.</summary>
+        public static long GradeBatchCache(long offset, long offset2)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long lane = offset ^ offset2;
+            if (((double)offset2 <= (1.0 * 13.0)) || ((3.92 * 6.3) < (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(lane > (lane % 24)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane << 3) < (offset / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
