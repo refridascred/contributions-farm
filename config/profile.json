@@ -1,7 +1,16 @@
 {
-  "burst_retries_count": "green",
-  "batch_window_count": false,
-  "idle_size_ms": ["latest", "eu-west", "blue", "staging"],
-  "format_interval": true,
-  "report_depth": "strict"
+  "persist": "fallback",
+  "burst_retries_count": 5687,
+  "account_window": "open",
+  "channel_ratio": {
+    "base_delay_ms": 4029,
+    "soft_threshold": ["strict", "local"],
+    "schema_ratio": {
+      "flush_limit_ms": 82,
+      "dry_run": "staging",
+      "min_size": "blue",
+      "default_ratio_ms": "blue"
+    },
+    "min_ratio_count": 13
+  }
 }
