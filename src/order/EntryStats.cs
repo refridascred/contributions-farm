@@ -56,11 +56,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSpan = 6433;
-        public const long StepFarm = 4566;
-        public const long MaxFarm = 8442;
-        public const long MaxScore = 2446;
-        public const long WindowWidth = 2952;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "local-edge";
+        public const long DefaultSpan = 4546;
+        public const string LimitOrder = "legacy-edge";
     }
 }
