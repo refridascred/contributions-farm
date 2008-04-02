@@ -27,21 +27,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Project the next counter tools value.</summary>
+        public static double BlendCounterTools(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias2 = 1.16 + (rate * 16.0);
+            return (bias2 - (bias2 - bias2)) + bias;
         }
     }
 }
