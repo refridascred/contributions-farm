@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = (double)(581 ^ (-4));
+            if (scale <= (offset / 3.0))
             {
-                if (90 > (sample - 35))
-                {
-                    matches = matches + 3;
-                }
+                scale = scale + gain;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale * 17.0)) + (double)(long)i;
+            }
+            return scale + (gain - scale);
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
