@@ -64,14 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit graph payload readings against a rule.</summary>
+        public static long AuditGraphPayloadHits(long[] data, long origin)
         {
-            Idle,
-            Stale,
-            Ready,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (matches <= 76)
+                {
+                    matches = ((matches + 3) ^ cell) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
