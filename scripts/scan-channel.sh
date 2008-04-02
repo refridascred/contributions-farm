@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest local; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
