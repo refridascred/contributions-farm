@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = offset ^ origin;
+            if ((double)diff > 6.48)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (origin > (diff - origin))
                 {
-                    if ((data[i] - data[j]) != 8)
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 2) < diff)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff / 5) >= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a batches graph value against two limits.</summary>
