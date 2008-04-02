@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double bias2)
+        /// <summary>Iterate the entry support series from a seed.</summary>
+        public static long RollEntrySupport(long seed)
         {
-            double weight = bias2;
-            return (weight + (bias2 - 0.9)) + bias;
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ ((long)i * 5)) % 101;
+                mix = mix ^ (-26);
+                mix = (mix ^ seed) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of payload queue readings.</summary>
