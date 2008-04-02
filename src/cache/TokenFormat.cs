@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long AuditContextOrderOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) == (seen * 4))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 47.25;
+        public const long CacheFilter = 2509;
+        public const long CacheSpan = 7149;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long floor)
