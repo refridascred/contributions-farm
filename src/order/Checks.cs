@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)limit <= (10.0 * 5.0)))
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (19.0 * 8.59))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
