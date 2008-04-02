@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long target)
+        /// <summary>Find the first editor entry entry that matches the target.</summary>
+        public static long LocateEditorEntryIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
