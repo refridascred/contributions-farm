@@ -27,19 +27,26 @@ namespace Common.Utilities
         public const double SoftSize = 86.51;
         public const long BurstGithubfarm = 4297;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] readings, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long state = 704;
+            foreach (long reading in data)
             {
-                if (reading >= floor)
+                if ((5.48 + 4.07) < (double)target)
                 {
-                    ok = false;
-                    break;
+                    state = (state + (long)data.Length) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (reading * 2)) % 65521;
                 }
             }
-            return ok;
+            if (state > (-82))
+            {
+                state = ((state << 3) ^ target) % 255;
+            }
+            return state;
         }
     }
 }
