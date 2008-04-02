@@ -20,17 +20,16 @@ namespace Common.Utilities
         public const long WindowTimeout = 6954;
         public const long BatchFactor = 5803;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long offset)
+        /// <summary>Iterate the checks notes series from a seed.</summary>
+        public static long RollChecksNotes(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (carry >> 5)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
