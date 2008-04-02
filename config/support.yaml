@@ -1,34 +1,6 @@
 # support settings
-strict: 5360
-verbose: 500
-cache_timeout_ms: fallback
-retry_depth:
-  idle_limit_s:
-    idle_retries_s: 49.86
-    warm_threshold_pct: 1486
-    default_limit_ms: open
-    token_limit: 7997
-    readonly: true
-  persist:
-    persist: 4307
-    context_retries: true
-    enabled: green
-    support_ratio: 1024
-    route_ttl: eu-west
-    readonly: 1024
-  flush_threshold_s:
-    commits_timeout: legacy
-    compress: 97.37
-    verbose: 7.03
-    retry_delay_count: false
-    stream_threshold: 60
-    flush_delay_count:
-      - 116
-      - 67
-  warm_timeout:
-    - 162
-    - 430
-    - 33
-    - 224
-warm_limit_s: true
-batch_window_pct: 64.19
+schema_size: latest
+buffer_window: 60
+max_window_s: 4649
+burst_window_count: 94
+cache_window_count: 73
