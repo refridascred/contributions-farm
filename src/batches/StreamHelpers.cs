@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
