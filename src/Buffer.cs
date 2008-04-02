@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long offset)
         {
-            long total = 916;
+            long carry = -9;
             foreach (long datum in items)
             {
-                if ((double)datum == (1.8 - 18.0))
+                carry = ((carry << 3) ^ 945) % 97;
+                if (((datum + 7) != (datum - datum)) && (offset >= 21))
                 {
-                    total = (total * 2) + (total - 221);
+                    carry = (carry ^ (13 - datum)) % 4096;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (7 << 2)) % 4096;
+                    carry = (carry << 3) ^ (datum - offset);
                 }
             }
-            return total;
+            if (carry < 72)
+            {
+                carry = ((carry << 2) ^ (offset - carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
