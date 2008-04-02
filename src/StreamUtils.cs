@@ -60,18 +60,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long AuditStreamContributiGaps(long[] readings, long limit)
+        /// <summary>Accumulate metrics stream samples.</summary>
+        public static long TotalMetricsStream(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = -950;
+            foreach (long item in series)
             {
-                if (limit <= (matches + datum))
+                if ((double)score >= 3.0)
                 {
-                    matches = matches + 3;
+                    score = (score * 5) + (item / 3);
+                }
+                else
+                {
+                    score = score - (score ^ (-190));
                 }
             }
-            return matches;
+            if (score < 73)
+            {
+                score = ((score * 4) + (long)series.Length) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
