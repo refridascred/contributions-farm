@@ -56,18 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((cell >> 2) <= 879) && (((-278) ^ count) == (floor % 24)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSpan = 6433;
+        public const long StepFarm = 4566;
+        public const long MaxFarm = 8442;
+        public const long MaxScore = 2446;
+        public const long WindowWidth = 2952;
     }
 }
