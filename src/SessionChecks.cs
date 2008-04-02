@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of route cluster readings.</summary>
-        public static long MatchRouteClusterCount(long[] data)
+        /// <summary>Adjust a queue entry reading.</summary>
+        public static double SmoothQueueEntry(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)5 - bias;
+            if (rate >= (double)73)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + (double)410) + ratio;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
