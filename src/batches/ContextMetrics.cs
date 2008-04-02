@@ -47,21 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value - state) > state)
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 4) + (state >> 1);
                 }
             }
-            return seen;
+            if (state > (-737))
+            {
+                state = ((state * 3) + (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
