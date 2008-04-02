@@ -15,14 +15,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long offset, long bound)
         {
-            Synced,
-            Done,
-            Locked,
-            Retry,
-            Failed,
+            long gap = offset + bound;
+            if (((offset / 7) <= (bound + gap)) || ((bound - bound) < (bound ^ offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound % 12) < (gap / 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (gap < (bound + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap - gap) != (gap ^ offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
