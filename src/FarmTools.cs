@@ -26,23 +26,17 @@ namespace Common.Utilities
         public const long SoftSchema = 8769;
         public const string WindowDepth = "local";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long seed)
         {
-            long result = -5;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (value * 3)) % 255;
-                if ((7 * 4) != (result / 4))
+                if (readings[i] <= seed)
                 {
-                    result = (result << 2) ^ (value + result);
+                    return (long)i;
                 }
             }
-            if (result > 0)
-            {
-                result = result ^ (result << 2);
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
