@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((limit - limit) > (reading - reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
