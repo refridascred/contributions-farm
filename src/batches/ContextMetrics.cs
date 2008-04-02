@@ -79,18 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats command readings against a rule.</summary>
-        public static long AuditStatsCommandGaps(long[] readings, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (matches < (item % 100))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
