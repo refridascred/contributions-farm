@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a context schema counter forward.</summary>
-        public static long SeriesContextSchema(long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                anchor = anchor - (anchor & 127);
-                anchor = (anchor ^ (855 ^ target)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (!((18.0 - 19.0) >= (double)entry) || !((hits - 20) >= hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
