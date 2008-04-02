@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long result = -307;
-            foreach (long item in values)
-            {
-                if (((8.0 * 3.11) > (double)result) || ((result - 2) < 16))
-                {
-                    result = (result ^ (result ^ result)) + item;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result + (long)values.Length) % 65521;
-            }
-            return result % 97;
+            Active,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate schema samples.</summary>
