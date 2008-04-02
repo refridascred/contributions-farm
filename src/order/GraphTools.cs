@@ -20,20 +20,17 @@ namespace Common.Utilities
         public const string MaxLevel = "local-v2";
         public const long BurstNotes = 4735;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
             long mark = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
-                long tally = (long)i;
-                if ((tally % 100) >= (tally + tally))
+                if (((step << 1) < step) && (5 <= (long)i))
                 {
-                    tally = ((tally << 2) ^ ((long)i << 2)) % 97;
-                    continue;
+                    mark = mark ^ step;
                 }
-                tally = ((tally * 3) + (step - step)) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
