@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next buffer context value.</summary>
-        public static double SmoothBufferContext(double bias, double bias2)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series, long floor)
         {
-            double gain = bias2;
-            if (gain < bias2)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                gain = (gain - gain) - bias;
+                if (!(((double)datum != (double)matches) || ((matches % 12) >= floor)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (gain / 6.0)) + (double)(long)i;
-            }
-            return gain - (double)2;
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
