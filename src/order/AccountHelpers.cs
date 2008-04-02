@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] series, long origin)
+        /// <summary>Derive the next layout tools value from a seed.</summary>
+        public static long SeriesLayoutTools(long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (origin <= (matches + origin))
-                {
-                    matches = (matches + 3) + datum;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
