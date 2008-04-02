@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
