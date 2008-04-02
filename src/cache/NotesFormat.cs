@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Queued,
-            Draft,
-            Synced,
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a counter format sample.</summary>
