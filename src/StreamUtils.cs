@@ -65,11 +65,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 744;
-        public const long LimitSchema = 287;
-        public const long DefaultSchema = 4449;
-        public const long CacheSchema = 2780;
-        public const string BaseSchema = "legacy";
+        /// <summary>Count profile token pairs that satisfy a relation.</summary>
+        public static long PairProfileTokenCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
