@@ -47,19 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels, long floor)
         {
-            double load = floor - floor;
-            if (load <= (floor - floor))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                load = (load - load) - ratio;
+                if (!((1.21 * 15.0) <= (double)floor) || !((6.72 - 6.6) < (double)sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + (double)90;
-            }
-            return load + 1.2;
+            return tally;
         }
 
         /// <summary>Hold a tools record.</summary>
