@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepDepth = "standard-v2";
-        public const long HardContributi = 5131;
-        public const long BatchContributi = 4284;
-        public const long RetryDepth = 9771;
-        public const string DefaultContributi = "standard-edge";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileMatches(long[] values)
