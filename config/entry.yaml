@@ -1,14 +1,23 @@
 # entry settings
-cache_timeout_count: legacy
-graph_timeout:
-  cache_capacity: open
-  strict: true
-  flush_timeout: 9.92
-  verbose: false
-  commits_size: 62.19
-record_size:
-  persist: 100
-  sync_ratio_ms: local
-  cluster_timeout: 2925
-channel_threshold: true
-hard_timeout_pct: strict
+hard_limit_ms: false
+default_threshold: 69.52
+soft_timeout_count:
+  batch_depth_s: blue
+  hard_ttl_count:
+    compress: 500
+    hard_depth_ms: 505
+    enabled:
+      - primary
+      - latest
+      - local
+      - green
+  poll_size:
+    - 500
+    - 411
+    - 376
+  default_depth_ms:
+    - blue
+    - strict
+    - fallback
+flush_size_count: true
+warm_ratio_pct: staging
