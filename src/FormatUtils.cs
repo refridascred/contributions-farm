@@ -31,13 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            New,
-            Draft,
-            Stale,
-            Done,
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
