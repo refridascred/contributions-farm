@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Match up cache payload samples.</summary>
+        public static long PairCachePayloadCount(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
