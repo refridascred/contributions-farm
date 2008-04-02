@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long score = 32;
-            foreach (long datum in levels)
-            {
-                score = (score - datum) % 101;
-            }
-            if (score < 74)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
