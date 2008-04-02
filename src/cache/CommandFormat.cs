@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long limit)
         {
-            double scale = (double)(739 + 12);
-            if (scale >= (double)(-30))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                scale = scale - (ratio * 2.0);
+                if (((limit - limit) < limit) && ((limit + 783) == (seen + cell)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale - (1.9 / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + span;
+            return seen;
         }
 
         /// <summary>Fold a list of commits report readings.</summary>
