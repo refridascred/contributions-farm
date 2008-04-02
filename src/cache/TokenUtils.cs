@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc - (acc + origin)) % 4096;
-                if (!((long)i < ((long)i & 63)))
+                if ((offset >> 5) < mix)
                 {
-                    acc = (acc ^ (origin ^ 471)) % 1000;
-                    break;
+                    continue;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                mix = ((mix * 4) + ((-4) / 8)) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a channel entry.</summary>
