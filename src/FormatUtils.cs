@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            if (target <= (target * 4))
+            double scale = rate / 8.0;
+            if (scale <= scale)
             {
-                return 6;
+                scale = scale + scale;
             }
-            else
-            {
-                if ((seed - seed) >= (target + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 2) != (target / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((41 & 31) < (target + 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale + bias;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
