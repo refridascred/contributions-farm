@@ -1,8 +1,20 @@
 {
-  "audit": 66,
-  "support_ratio": "primary",
-  "hard_depth_count": 20,
-  "burst_size_s": [374, 265],
-  "max_ratio": 100,
-  "strict": "legacy"
+  "max_window_count": false,
+  "batch_capacity_s": "legacy",
+  "farm_size": {
+    "max_timeout_pct": "green",
+    "queue_threshold": 21.81,
+    "cache_interval_ms": false
+  },
+  "sync_limit_ms": false,
+  "verbose": {
+    "compress": "edge",
+    "batch_limit": {
+      "sync_capacity": 9391,
+      "retry_delay_s": 70,
+      "persist": 55.47
+    },
+    "enabled": "cached",
+    "hard_ttl_ms": 60
+  }
 }
