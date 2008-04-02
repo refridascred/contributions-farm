@@ -14,15 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Locked,
-            Stale,
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "local-v2";
+        public const long BurstProfile = 4352;
+        public const long BaseProfile = 5477;
+        public const string MinRatio = "staging";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] readings, long seed)
