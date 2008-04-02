@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long DefaultFarm = 6370;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
