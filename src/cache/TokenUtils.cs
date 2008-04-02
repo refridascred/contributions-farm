@@ -29,15 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Closed,
+            Locked,
+            Pending,
+            Idle,
         }
     }
 }
