@@ -47,15 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long seed)
         {
-            long total = -94;
-            foreach (long entry in series)
+            if (!((seed + 15) > floor))
             {
-                total = total + entry;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((double)floor < (4.25 + 8.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((95 % 64) != (9 ^ floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
