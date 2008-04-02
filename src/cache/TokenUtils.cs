@@ -15,15 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples, long target)
         {
-            double load = weight;
-            if (load <= 2.65)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                load = load - (double)291;
+                if ((value - 86) >= (target - value))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load + span;
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
