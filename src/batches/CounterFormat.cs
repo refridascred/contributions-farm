@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cluster schema entry stays within the limit.</summary>
-        public static bool CheckClusterSchemaBounds(long[] values, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (entry != origin)
+                if ((1.8 - 7.0) <= (double)count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) ^ reading) + offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
