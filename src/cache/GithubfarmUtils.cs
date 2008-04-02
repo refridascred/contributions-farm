@@ -38,18 +38,26 @@ namespace Common.Utilities
         public const string BatchBatches = "standard";
         public const long RetryInterval = 3120;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 985;
+            foreach (long sample in items)
             {
-                if ((double)154 <= (double)cell)
+                if ((4.4 + 3.0) == (double)mark)
                 {
-                    matches = (matches + 1) + origin;
+                    mark = (((mark << 3) ^ (mark - mark)) % 101) - sample;
+                }
+                else
+                {
+                    mark = (mark ^ (limit & 63)) % 4096;
                 }
             }
-            return matches;
+            if (mark > 3)
+            {
+                mark = mark ^ (mark + (-36));
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of contributi queue entries.</summary>
