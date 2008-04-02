@@ -23,21 +23,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long bound, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long bound2 = bound - origin;
+            if (((bound2 << 2) >= 95) || ((bound % 2) > 53))
             {
-                if ((double)result > (double)(long)i)
-                {
-                    result = result + (seed + seed);
-                    result = (result << 2) ^ result;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (868 <= (origin - bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 1) != (404 & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((49 % 3) > (origin + bound2)) || ((4.11 - 20.0) <= (double)bound2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
