@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long BaseContext = 9969;
         public const long BurstSize = 9814;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != offset)
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
