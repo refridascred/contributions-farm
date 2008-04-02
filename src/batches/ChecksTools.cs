@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next token batch value from a seed.</summary>
-        public static long IterateTokenBatch(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (90 > (sample - 35))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the contributi buffer entries that pass the check.</summary>
