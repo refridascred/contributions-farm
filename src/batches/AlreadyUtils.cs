@@ -44,12 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entry entries that pass the check.</summary>
