@@ -18,32 +18,19 @@ namespace Common.Utilities
         public const long WindowSpan = 6625;
         public const long DefaultSpan = 4386;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long offset)
+        /// <summary>Derive the next contributi command value from a seed.</summary>
+        public static long SeriesContributiCommand(long seed)
         {
-            long delta = step ^ offset;
-            if ((-900) < (offset + delta))
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9 + step) <= (2 + delta))
+                if (mix <= (78 * 4))
                 {
-                    return 3;
+                    mix = ((mix << 2) ^ seed) % 97;
                 }
-                else
-                {
-                    if (step > (offset << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
