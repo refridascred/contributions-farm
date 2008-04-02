@@ -28,17 +28,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = limit - bound;
+            if ((gap % 12) < (bound & 3))
             {
-                if (series[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if (!(limit <= (624 & 31)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
