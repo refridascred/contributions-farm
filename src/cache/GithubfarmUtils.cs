@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long origin)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            long edge = seed - origin;
+            if ((seed + edge) > (seed - 74))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin + origin) < (23 + 860)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
