@@ -14,13 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            Active,
-            Closed,
-            Ready,
-            Retry,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
