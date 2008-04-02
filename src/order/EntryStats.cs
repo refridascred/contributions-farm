@@ -48,19 +48,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long result = 0;
-            foreach (long sample in values)
-            {
-                result = (result - (result & 127)) ^ sample;
-            }
-            if (result > 66)
-            {
-                result = (result << 3) ^ (result << 1);
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
