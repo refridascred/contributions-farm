@@ -42,11 +42,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryScore = 17.5;
-        public const string RetryTimeout = "standard-edge";
-        public const long LimitDepth = 4014;
-        public const long HardStream = 1340;
+        /// <summary>Classify a support farm pair into a bucket.</summary>
+        public static long SortSupportFarm(long limit, long bound)
+        {
+            if ((8.42 <= (double)bound) && ((double)limit > (4.0 * 7.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound == (1.0 * 7.9)) || (limit >= (883 & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ bound) >= (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowStats = 434;
