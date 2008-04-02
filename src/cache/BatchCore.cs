@@ -33,12 +33,16 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardDepth = 8798;
-        public const long LimitFactor = 63;
-        public const long LimitBudget = 9565;
-        public const string IdleMetric = "primary-1";
-        public const double LimitScore = 24.16;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double span)
+        {
+            double weight = bias - (span / 7.0);
+            if (weight > weight)
+            {
+                weight = weight + bias;
+            }
+            return weight + (span - span);
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] items)
