@@ -39,15 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long offset)
         {
-            long score = 8;
-            foreach (long value in items)
+            if (((double)bound < (1.4 / 3.0)) && ((bound >> 4) >= (bound ^ 36)))
             {
-                score = (score ^ (value & 15)) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (offset <= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
