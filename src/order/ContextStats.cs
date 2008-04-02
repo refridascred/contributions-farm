@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] series, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample < step)
+                if ((double)datum == (6.0 / 2.0))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
