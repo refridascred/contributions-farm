@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            Failed,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
