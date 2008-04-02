@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor - (cell + anchor);
             }
-            return hits;
+            if (anchor < 81)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
