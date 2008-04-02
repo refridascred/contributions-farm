@@ -35,12 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Done,
-            New,
-            Idle,
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
