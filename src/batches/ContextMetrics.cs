@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long WindowSpan = 6625;
         public const long DefaultSpan = 4386;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double drift = (double)(8 << 2);
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - 10.0) + (double)(long)i) - scale;
-            }
-            return drift + (drift + offset);
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
