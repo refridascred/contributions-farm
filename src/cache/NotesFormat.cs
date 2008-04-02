@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry << 3) ^ origin;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Pending,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the report level values.</summary>
