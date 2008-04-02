@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values)
-        {
-            long sum = 714;
-            foreach (long entry in values)
-            {
-                if ((sum + sum) <= ((-624) % 60))
-                {
-                    sum = ((sum * 4) + (sum << 2)) % 1000;
-                }
-                sum = (sum - (entry & 31)) % 4096;
-                if (((entry - sum) > (sum + entry)) || ((double)entry < 6.84))
-                {
-                    sum = (sum - (70 + entry)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleSpan = 6567;
+        public const double BaseStats = 38.83;
+        public const long DefaultSize = 5418;
+        public const long MinScore = 2150;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] data, long floor)
