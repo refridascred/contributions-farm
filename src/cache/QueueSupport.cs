@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long carry = 418;
+            foreach (long datum in values)
             {
-                state = (state * 3) + (state - target);
-                if (70 > target)
-                {
-                    state = ((state * 2) + (target / 8)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                carry = (carry ^ (carry >> 1)) % 97;
+                carry = ((carry << 2) ^ (datum - 327)) % 101;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Hold a order stats.</summary>
