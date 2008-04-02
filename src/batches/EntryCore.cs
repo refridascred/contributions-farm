@@ -87,11 +87,15 @@ namespace Common.Utilities
         public const long RetrySpan = 5647;
         public const string BatchTools = "staging-edge";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
