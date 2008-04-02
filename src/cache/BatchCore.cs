@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "fallback-edge";
+        public const long RetryInterval = 7631;
+        public const long MinChecks = 8697;
+        public const string MaxDepth = "local-v2";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
