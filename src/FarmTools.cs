@@ -19,25 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long floor)
-        {
-            if (((offset >> 4) >= ((-644) % 5)) && (99 > (floor - floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 1) == (floor - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchCount = 6975;
+        public const double LimitBudget = 41.71;
+        public const long WindowInterval = 1148;
+        public const long SoftSchema = 8769;
+        public const string WindowDepth = "local";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] items)
