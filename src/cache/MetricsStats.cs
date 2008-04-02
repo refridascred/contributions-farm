@@ -35,12 +35,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitWidth = 15.81;
-        public const double BaseAlready = 38.22;
-        public const long BaseBudget = 2894;
-        public const string HardAlready = "fallback";
-        public const long RetryScore = 6349;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long offset, long offset2)
