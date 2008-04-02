@@ -110,17 +110,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long entry in data)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (entry & 15)) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
