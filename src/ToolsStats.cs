@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next already token value from a seed.</summary>
-        public static long DeriveAlreadyToken(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (0 < (7 ^ target))
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
