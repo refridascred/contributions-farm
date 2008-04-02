@@ -1,8 +1,10 @@
 # support settings
-flush_timeout_s: 60
-channel_window: true
-default_ttl_count:
-  - green
-  - fallback
-  - local
-poll_capacity_s: true
+min_retries_count:
+  - staging
+  - stable
+  - open
+default_retries: true
+audit: false
+buffer_ttl: 89.78
+warm_limit: latest
+batch_delay: fallback
