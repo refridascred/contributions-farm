@@ -72,13 +72,18 @@ namespace Common.Utilities
             return scale2 + (scale2 * 5.0);
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] data, long offset)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((20.0 - 8.51) <= (double)value)
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
