@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long MaxSize = 4888;
         public const string HardSession = "cached-edge";
 
-        /// <summary>Scale a cache report figure with a bias.</summary>
-        public static double ScaleCacheReport(double rate, double offset)
-        {
-            double ratio = rate;
-            return (ratio + ratio) + offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowInterval = 49.98;
+        public const long StepTools = 4541;
+        public const long HardInterval = 7121;
+        public const string DefaultTools = "alpha";
+        public const long RetrySpan = 412;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long seed)
