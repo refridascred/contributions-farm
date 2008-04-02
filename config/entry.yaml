@@ -1,13 +1,30 @@
 # entry settings
-metric_ttl:
-  - 74
-  - 274
-min_window_ms:
-  sync_capacity_pct: staging
-  base_limit_pct: true
-  sync_retries_count: fallback
-  max_timeout: 2489
-token_interval:
-  buffer_capacity: true
-  default_threshold_ms: 83.48
-  hard_capacity: standard
+idle_capacity: edge
+hard_threshold_ms: 61.41
+session_retries: 89
+buffer_ttl:
+  burst_ttl_pct: green
+  commits_ttl: edge
+  enabled:
+    - open
+    - strict
+    - local
+    - latest
+  channel_threshold:
+    - open
+    - stable
+    - latest
+  idle_retries: open
+  editor_interval:
+    - latest
+    - eu-west
+    - standard
+    - primary
+max_limit_s: 6666
+retry_window_s:
+  min_limit: 872
+  githubfarm_threshold: 93.78
+  strict: latest
+  stats_capacity: true
+  soft_retries: true
+  counter_timeout: edge
