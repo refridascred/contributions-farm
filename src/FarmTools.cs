@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 5698;
-        public const long HardCommand = 6216;
-        public const long IdleFactor = 2783;
-        public const long WindowTimeout = 1081;
+        /// <summary>Measure how many contributi farm samples are out of range.</summary>
+        public static long AuditContributiFarmHits(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen < (value + floor))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
