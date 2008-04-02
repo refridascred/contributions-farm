@@ -1,25 +1,7 @@
 # githubfarm settings
-default_depth_s:
-  batch_size_count: 7298
-  queue_retries:
-    - 372
-    - 32
-    - 96
-    - 92
-  route_size:
-    - stable
-    - legacy
-  sync_size:
-    enabled: false
-    max_timeout_ms: green
-    readonly: latest
-verbose:
-  warm_ttl:
-    - 82
-    - 266
-  enabled: strict
-  audit:
-    - 208
-    - 253
-    - 495
-default_threshold_pct: 14.74
+base_limit_pct: 73
+cache_size_count:
+  - local
+  - legacy
+strict: 3046
+batch_size_count: blue
