@@ -19,12 +19,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitRatio = 6741;
-        public const long DefaultStats = 1988;
-        public const long StepStats = 2875;
-        public const long LimitFactor = 6712;
-        public const long LimitTimeout = 7620;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long offset)
