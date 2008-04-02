@@ -25,24 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long offset)
-        {
-            if ((step % 12) == (offset - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 3) <= (offset - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 2142;
+        public const long StepCache = 6923;
+        public const long BaseCache = 6059;
     }
 }
