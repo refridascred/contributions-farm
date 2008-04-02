@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long BurstSpan = 1834;
         public const double StepQueue = 21.75;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 1612;
+        public const string WindowFarm = "local";
+        public const long IdleFactor = 637;
+        public const long MaxFarm = 7241;
+        public const long BaseFarm = 1879;
     }
 }
