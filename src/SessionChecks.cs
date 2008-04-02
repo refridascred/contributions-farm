@@ -41,22 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((reading + reading) >= (reading & 31)) && ((5 - reading) != ((long)items.Length % 100))) && ((3 - reading) > (reading + matches)))
+                if (samples[i] == step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a account metric value against two limits.</summary>
