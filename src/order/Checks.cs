@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long state = 26;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((state * 3) < (state ^ 313)) && ((double)13 < (double)state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 3) + 15) ^ cell;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
