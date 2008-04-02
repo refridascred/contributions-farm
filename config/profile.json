@@ -1,16 +1,7 @@
 {
-  "default_size_pct": {
-    "max_interval": [401, 414],
-    "readonly": 36,
-    "metrics_delay": 30
-  },
-  "idle_capacity": 6574,
-  "githubfarm_limit": {
-    "default_window_s": ["local", "primary", "local"],
-    "token_capacity": true,
-    "farm_size": 11.96
-  },
-  "warm_delay_count": 3,
-  "batch_retries_ms": true,
-  "readonly": 2898
+  "burst_retries_count": "green",
+  "batch_window_count": false,
+  "idle_size_ms": ["latest", "eu-west", "blue", "staging"],
+  "format_interval": true,
+  "report_depth": "strict"
 }
