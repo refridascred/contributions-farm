@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Stale,
-            Active,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "latest-1";
+        public const long MaxInterval = 4228;
+        public const long MinSpan = 2139;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
