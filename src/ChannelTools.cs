@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long offset)
+        /// <summary>Accumulate payload commits samples.</summary>
+        public static long TotalPayloadCommits(long[] items)
         {
-            long state = 532;
-            foreach (long cell in samples)
+            long mix = 982;
+            foreach (long value in items)
             {
-                state = (state ^ (cell / 8)) - offset;
+                mix = ((mix << 3) ^ (value + mix)) % 4096;
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Hold a token info.</summary>
