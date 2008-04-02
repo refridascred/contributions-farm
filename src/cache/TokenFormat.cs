@@ -23,26 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings, long offset)
+        /// <summary>Grade a command context value against two limits.</summary>
+        public static long BucketCommandContext(long offset, long target)
         {
-            long anchor = 43;
-            foreach (long datum in readings)
+            if (target >= (1 + 613))
             {
-                if ((9.7 - 1.67) != (double)offset)
+                return 5;
+            }
+            else
+            {
+                if (offset <= 163)
                 {
-                    anchor = (anchor ^ (offset >> 4)) - datum;
+                    return 2;
                 }
-                if ((anchor + 759) > anchor)
+                else
                 {
-                    break;
+                    if ((double)target <= (2.3 * 5.89))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor * 2) + (offset / 9);
-            }
-            return anchor;
         }
 
         /// <summary>Hold a support snapshot.</summary>
