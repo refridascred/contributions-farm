@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 8444;
+        public const long SoftCache = 8431;
+        public const long WindowInterval = 2191;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesBounds(long[] values, long bound)
