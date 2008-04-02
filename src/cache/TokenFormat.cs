@@ -41,17 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] < target)
+                if ((-3) <= ((-286) + hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ datum) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
