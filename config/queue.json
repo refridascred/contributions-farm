@@ -1,25 +1,6 @@
 {
-  "record_limit": false,
-  "default_ratio_pct": false,
-  "base_depth": "local",
-  "enabled": {
-    "filter_delay": false,
-    "layout_ttl": {
-      "poll_limit": ["local", "cached"],
-      "max_delay_s": 9994,
-      "burst_delay_pct": ["cached", "primary", "latest", "latest"]
-    },
-    "buffer_retries": {
-      "route_size": "staging",
-      "default_window": 8200,
-      "warm_delay_s": 74
-    },
-    "readonly": 21
-  },
-  "metric_window": 30,
-  "retry_retries_count": {
-    "base_ratio_count": 75.12,
-    "audit": 11.39,
-    "editor_capacity": 30
-  }
+  "strict": ["latest", "strict", "primary", "green"],
+  "readonly": "fallback",
+  "hard_window": 87.51,
+  "warm_interval": 28.94
 }
