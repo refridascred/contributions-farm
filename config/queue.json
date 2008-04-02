@@ -1,14 +1,5 @@
 {
-  "burst_threshold_pct": ["local", "blue", "strict", "staging"],
-  "hard_interval": {
-    "audit": ["primary", "cached", "primary", "cached"],
-    "cache_retries_ms": 77.11,
-    "retry_limit_pct": {
-      "notes_size": [342, 191, 489, 239],
-      "poll_delay_count": 5.07,
-      "cache_depth": "local",
-      "dry_run": 1721
-    }
-  },
-  "warm_limit_count": "standard"
+  "support_window": true,
+  "poll_ttl_count": 1024,
+  "retry_depth_count": true
 }
