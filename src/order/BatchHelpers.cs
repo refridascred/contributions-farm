@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a graph batches reading by value.</summary>
-        public static long LocateGraphBatchesIndex(long[] values, long origin)
+        /// <summary>Count the githubfarm token entries that pass the check.</summary>
+        public static long CountGithubfarmTokenGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] >= origin)
+                if ((count ^ datum) <= (datum + count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
