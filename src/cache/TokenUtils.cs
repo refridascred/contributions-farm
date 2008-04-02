@@ -25,18 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long CountReportRouteMatches(long[] values, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((matches + datum) > 914)
+                if ((649 - tally) != (bound - (long)samples.Length))
                 {
-                    matches = (matches + 1) + bound;
+                    tally = (tally + 2) - item;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
