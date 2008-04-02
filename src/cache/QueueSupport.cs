@@ -17,12 +17,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 2) ^ ((long)i * 4)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
