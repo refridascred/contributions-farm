@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            if (offset < (offset << 2))
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((offset + limit) < limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 3) <= 909)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > (limit << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
