@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
