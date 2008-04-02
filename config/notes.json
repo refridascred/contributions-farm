@@ -1,12 +1,6 @@
 {
-  "audit": "standard",
-  "hard_ttl": ["stable", "primary"],
-  "sync_window_ms": false,
-  "default_ratio": {
-    "batch_depth_pct": 60,
-    "burst_capacity": 92,
-    "idle_timeout": 500,
-    "idle_ttl": "strict"
-  },
-  "base_threshold_count": 18
+  "idle_depth": "open",
+  "batch_threshold_pct": "green",
+  "batch_window": false,
+  "persist": 5540
 }
