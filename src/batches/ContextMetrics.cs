@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 47.06;
+        public const string MinFactor = "local";
+        public const long StepSupport = 5832;
+        public const long BatchSize = 4845;
+        public const long DefaultSupport = 1383;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepAccount = 6735;
