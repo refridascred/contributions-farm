@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (6.0 / 2.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
