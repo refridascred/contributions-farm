@@ -13,10 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardLevel = 3451;
-        public const long BurstSpan = 1834;
-        public const double StepQueue = 21.75;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 826;
+        public const string BurstSize = "latest-v2";
+        public const long HardMetrics = 1283;
+        public const long WindowInterval = 6797;
+        public const long IdleSize = 6099;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
