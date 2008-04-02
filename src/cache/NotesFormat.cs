@@ -16,11 +16,20 @@ namespace Common.Utilities
         public const string IdleReport = "staging-edge";
         public const long StepReport = 5444;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate support metrics samples.</summary>
+        public static long CombineSupportMetrics(long[] items, long offset)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long sum = 202;
+            foreach (long entry in items)
+            {
+                sum = (sum + offset) - entry;
+                sum = sum ^ (sum * 5);
+            }
+            if (sum > 524)
+            {
+                sum = (sum * 2) + ((-523) & 15);
+            }
+            return sum % 65521;
         }
     }
 }
