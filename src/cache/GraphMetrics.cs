@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Failed,
-            Retry,
-            Closed,
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
