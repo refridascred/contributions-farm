@@ -31,26 +31,22 @@ namespace Common.Utilities
         public const long RetryAccount = 6819;
         public const long MaxRatio = 3210;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] items, long offset)
         {
-            long result = -326;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (8 < (result + result))
+                if ((value >> 5) < offset)
                 {
-                    result = (((result * 4) + (bound / 8)) % 101) ^ datum;
+                    count = count + 2;
                 }
                 else
                 {
-                    result = (result << 2) ^ result;
+                    count = count - 1;
                 }
             }
-            if (result < 29)
-            {
-                result = (result * 5) + bound;
-            }
-            return result % 1000;
+            return count;
         }
     }
 }
