@@ -38,12 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == seed)
+                if (data[i] < offset)
                 {
                     return (long)i;
                 }
