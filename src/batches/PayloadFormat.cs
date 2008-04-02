@@ -15,17 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = ((sum << 2) ^ ((long)i / 4)) % 101;
-                sum = sum + 20;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a record info.</summary>
