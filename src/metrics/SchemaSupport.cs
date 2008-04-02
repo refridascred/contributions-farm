@@ -67,10 +67,13 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 8579;
-        public const string LimitSpan = "standard-edge";
-        public const long MaxCommits = 8419;
-        public const double HardTimeout = 41.51;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
