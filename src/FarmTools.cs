@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleFactor = 2783;
         public const long WindowTimeout = 1081;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
