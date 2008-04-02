@@ -27,17 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (long)i;
-                mix = ((mix * 2) + (offset >> 1)) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
