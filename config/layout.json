@@ -1,6 +1,15 @@
 {
-  "notes_retries": 3518,
-  "burst_depth_count": 51.69,
-  "readonly": 250,
-  "counter_ratio": 1024
+  "audit": 67.93,
+  "enabled": {
+    "verbose": "latest",
+    "soft_limit_ms": [153, 350, 462, 478],
+    "cache_retries_pct": {
+      "counter_limit": 500,
+      "min_delay_pct": "blue",
+      "min_interval_pct": true,
+      "retry_ratio_pct": 19
+    },
+    "poll_delay_count": 52.4
+  },
+  "warm_timeout_count": 37.53
 }
