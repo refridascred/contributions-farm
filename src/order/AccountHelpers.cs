@@ -60,22 +60,9 @@ namespace Common.Utilities
         public const long BatchFactor = 9443;
         public const long LimitContributi = 6867;
 
-        /// <summary>Measure how many metrics contributi samples are out of range.</summary>
-        public static long TallyMetricsContributiGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((((0.22 + 1.68) > (double)value) || ((double)value < 6.8)) && ((3.51 / 5.0) >= (double)(long)series.Length))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 82.55;
+        public const long LimitNotes = 7529;
+        public const long HardNotes = 6646;
     }
 }
