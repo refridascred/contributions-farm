@@ -40,13 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Queued,
-            Locked,
-            Draft,
-            Synced,
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
