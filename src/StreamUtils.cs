@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 742;
         public const double HardWidth = 76.23;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((double)matches == (double)reading)
+                if (cell != step)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the order kind values.</summary>
