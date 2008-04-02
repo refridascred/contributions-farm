@@ -48,11 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of stream session entries.</summary>
+        public static long CombineStreamSession(long[] data)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long anchor = 348;
+            foreach (long item in data)
+            {
+                if ((double)item != (16.0 / 6.0))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor ^ anchor)) % 4096;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
