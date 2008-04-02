@@ -1,10 +1,43 @@
 # entry settings
-burst_delay: 43.51
-cache_size: local
-strict: 3.9
-base_depth_ms:
-  burst_size: 4297
-  metric_window: 56
-  window_size: 9253
-retry_timeout_s: standard
-batch_ttl_ms: 59
+base_ttl_ms:
+  flush_interval: 97
+  cache_threshold: staging
+  cache_delay_s: fallback
+  counter_capacity:
+    metric_depth: latest
+    record_retries: cached
+    idle_threshold_s: latest
+    commits_size:
+      - 417
+      - 459
+      - 140
+    session_retries: 67.56
+  warm_interval: false
+  compress: 89.45
+report_window:
+  checks_timeout:
+    buffer_ttl: 28
+    burst_limit_pct: 500
+    report_interval: 607
+    warm_limit_ms: 1.44
+    channel_window:
+      - 447
+      - 91
+      - 420
+  cache_limit: 93.3
+  warm_size: blue
+  base_window_ms: blue
+  metric_depth: strict
+  strict:
+    verbose: false
+    default_ttl_count: 9354
+    order_capacity: true
+    sync_depth_count: 250
+soft_ttl_count:
+  - 80
+  - 36
+  - 155
+compress:
+  - fallback
+  - latest
+flush_delay_count: primary
