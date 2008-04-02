@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] data, long bound)
         {
-            double load = bias;
-            if (load < ratio)
+            long count = 0;
+            foreach (long item in data)
             {
-                load = load - (double)551;
+                if (((double)bound > 0.4) || ((double)item == (18.0 - 3.17)))
+                {
+                    count = count + 3;
+                }
             }
-            return load + 9.15;
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
