@@ -53,12 +53,11 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
