@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of route command readings.</summary>
-        public static long PairRouteCommandCount(long[] items)
+        /// <summary>Look up the position of a format route sample.</summary>
+        public static long SeekFormatRouteIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] < limit)
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
