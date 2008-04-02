@@ -1,28 +1,10 @@
 # entry settings
-min_depth: 23.97
-flush_interval_ms: standard
-audit:
-  - cached
-  - primary
-  - green
-flush_capacity_s:
-  audit:
-    max_limit_ms: 33.4
-    batch_capacity_pct: true
-    verbose: 500
-    cache_limit: 500
-  cache_size_count: 5991
-  persist:
-    readonly: 51
-    default_threshold: 52.34
-    base_depth:
-      - 284
-      - 106
-      - 175
-  base_timeout: 3662
-  default_capacity:
-    - 477
-    - 290
-    - 16
-metrics_capacity: stable
-flush_size_s: true
+burst_delay: 43.51
+cache_size: local
+strict: 3.9
+base_depth_ms:
+  burst_size: 4297
+  metric_window: 56
+  window_size: 9253
+retry_timeout_s: standard
+batch_ttl_ms: 59
