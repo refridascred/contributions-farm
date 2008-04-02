@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long anchor = 83;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((99 - sample) > (43 + anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (offset + 25)) % 255;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 14)
-            {
-                anchor = (anchor - (anchor ^ offset)) % 101;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a contributi stats.</summary>
