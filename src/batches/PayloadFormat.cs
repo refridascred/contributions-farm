@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 2184;
-        public const long SoftWidth = 4315;
-        public const long WindowQueue = 1886;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a record context reading by value.</summary>
         public static long LookupRecordContextIndex(long[] values, long origin)
