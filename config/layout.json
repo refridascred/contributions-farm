@@ -1,16 +1,7 @@
 {
-  "sync_timeout": {
-    "base_interval_pct": "latest",
-    "min_capacity": 3840,
-    "hard_ratio": 69.22,
-    "profile_threshold": {
-      "batch_window": 51.77,
-      "tools_delay": "strict",
-      "flush_window_count": [393, 120],
-      "compress": "edge",
-      "soft_ratio_pct": false
-    }
-  },
-  "persist": ["fallback", "stable", "staging"],
-  "strict": true
+  "context_ratio": 96.56,
+  "sync_timeout": ["primary", "latest"],
+  "batch_ttl_count": "edge",
+  "cache_capacity": false,
+  "readonly": 7
 }
