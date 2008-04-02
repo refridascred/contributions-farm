@@ -27,19 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate account batches samples.</summary>
