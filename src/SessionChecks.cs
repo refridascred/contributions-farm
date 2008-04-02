@@ -32,23 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches + matches) == (cell + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 92.99;
+        public const string MinTools = "standard-edge";
+        public const long IdleSize = 7014;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
