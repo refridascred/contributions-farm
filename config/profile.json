@@ -1,14 +1,6 @@
 {
-  "audit": {
-    "burst_ratio_ms": 62.61,
-    "flush_depth_s": {
-      "commits_ttl": 250,
-      "warm_retries_ms": true,
-      "stats_ttl": true,
-      "min_ratio_s": "green"
-    },
-    "strict": true
-  },
-  "queue_interval": ["staging", "stable"],
-  "soft_retries": 395
+  "soft_retries_count": "local",
+  "enabled": false,
+  "poll_ratio_count": [67, 372],
+  "dry_run": 41.55
 }
