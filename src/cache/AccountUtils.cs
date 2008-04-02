@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const long MaxBudget = 7618;
         public const long LimitRatio = 1880;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long CountBatchesCommitsHits(long[] samples, long target)
         {
-            long mark = 1;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((sample - mark) <= sample)
+                if (target <= (target ^ target))
                 {
-                    mark = ((mark << 3) ^ sample) % 65521;
-                }
-                else
-                {
-                    mark = (mark - mark) % 65521;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
     }
 }
