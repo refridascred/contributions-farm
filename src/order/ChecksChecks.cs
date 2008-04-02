@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long AuditBatchFilterMatches(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value - value) <= value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
