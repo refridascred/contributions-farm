@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const double SoftSize = 86.51;
         public const long BurstGithubfarm = 4297;
 
-        /// <summary>Measure how many route profile samples are out of range.</summary>
-        public static long MeasureRouteProfileGaps(long[] series, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)sample >= (8.86 + 4.78)))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
