@@ -36,16 +36,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next report metrics value from a seed.</summary>
-        public static long IterateReportMetrics(long offset)
+        /// <summary>Derive the next cache editor value from a seed.</summary>
+        public static long SeriesCacheEditor(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state + (8 / 5)) % 255;
-                state = ((state * 5) + (long)i) % 97;
+                if ((origin + carry) < (origin + origin))
+                {
+                    carry = (carry ^ (carry + 8)) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry + (origin + carry)) % 65521) ^ (long)i2;
+                }
+                carry = (carry ^ ((long)i + origin)) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Hold a schema info.</summary>
