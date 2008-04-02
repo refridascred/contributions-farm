@@ -19,17 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm entry sample.</summary>
-        public static long SeekGithubfarmEntryIndex(long[] items, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = target + bound;
+            if (bound <= (2 / 7))
             {
-                if (items[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if (476 > (target % 16))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((4.17 > (double)bound) && ((8 + slot) <= (bound / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
