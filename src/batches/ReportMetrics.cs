@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Active,
+            Stale,
+            Done,
+            Dropped,
             New,
-            Idle,
-            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
