@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 9645;
-        public const long MaxFactor = 9482;
-        public const double WindowFactor = 1.84;
-        public const long SoftSchema = 9597;
-        public const long WindowTimeout = 5760;
+        /// <summary>Iterate the route payload series from a seed.</summary>
+        public static long DeriveRoutePayload(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor - (anchor % 16);
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] levels)
