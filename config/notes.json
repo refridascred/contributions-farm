@@ -1,8 +1,14 @@
 {
-  "base_size_ms": [261, 177, 56],
-  "base_depth_ms": true,
-  "filter_limit": "cached",
-  "readonly": 40,
-  "min_ratio": [376, 158],
-  "compress": ["blue", "green", "latest"]
+  "dry_run": "primary",
+  "schema_ttl": {
+    "filter_ratio": "edge",
+    "retry_retries_pct": "eu-west",
+    "warm_timeout_s": "primary",
+    "readonly": 76,
+    "strict": "legacy",
+    "dry_run": "edge"
+  },
+  "verbose": [383, 106],
+  "base_threshold": 52,
+  "idle_threshold_ms": 8214
 }
