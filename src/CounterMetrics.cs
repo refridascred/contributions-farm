@@ -48,15 +48,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            long total = origin;
+            long total = floor;
             for (int i = 0; i < 4; i++)
             {
-                total = total + (4 + (long)i);
-                total = ((total * 4) + (origin / 4)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((double)total > (5.1 * 0.34))
+                {
+                    total = ((total << 2) ^ (total + floor)) % 65521;
+                    total = ((total << 3) ^ (total * 5)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 2) + floor) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
             return total;
         }
