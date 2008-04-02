@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a cache batches pair into a bucket.</summary>
-        public static long GradeCacheBatches(long bound, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            long step = bound + target;
-            if ((bound ^ target) >= (step ^ step))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)target == (double)step))
+                if ((double)matches == (5.55 - 11.0))
                 {
-                    return 2;
+                    matches = (matches + 3) + datum;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
