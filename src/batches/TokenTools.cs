@@ -28,16 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state << 2) ^ (state % 60);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
