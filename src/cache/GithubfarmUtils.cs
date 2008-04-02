@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseWidth = "latest";
-        public const string WindowFarm = "open-edge";
-        public const long LimitCount = 6556;
-        public const string HardFarm = "staging-v2";
-        public const double MaxSpan = 37.9;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - step) <= step)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] data, long origin)
