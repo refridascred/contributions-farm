@@ -37,16 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long CountGithubfarmGraphGaps(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                carry = (carry - offset) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((double)datum >= (double)hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
