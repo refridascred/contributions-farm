@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 2173;
-        public const double RetryNotes = 35.34;
-        public const long LimitSpan = 8068;
-        public const long DefaultNotes = 7557;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardDepth = 8798;
+        public const long LimitFactor = 63;
+        public const long LimitBudget = 9565;
+        public const string IdleMetric = "primary-1";
+        public const double LimitScore = 24.16;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long limit)
