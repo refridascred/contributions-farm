@@ -13,23 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long state = 60;
-            foreach (long sample in readings)
-            {
-                if ((double)offset != (8.8 * 7.85))
-                {
-                    state = state ^ ((long)readings.Length + offset);
-                }
-                state = state ^ (sample + sample);
-            }
-            if (state > 666)
-            {
-                state = (state + (state + offset)) % 255;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
