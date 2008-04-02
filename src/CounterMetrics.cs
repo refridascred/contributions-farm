@@ -37,11 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 392;
-        public const long CacheRecord = 2478;
-        public const long WindowLevel = 141;
-        public const double LimitInterval = 97.1;
-        public const double StepLevel = 37.75;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ seed) % 101;
+                if (!((851 >> 3) != ((long)i & 127)))
+                {
+                    anchor = (anchor ^ seed) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
