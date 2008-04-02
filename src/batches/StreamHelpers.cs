@@ -40,12 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 63.39;
-        public const long StepNotes = 7215;
-        public const double BurstNotes = 29.43;
-        public const long DefaultLevel = 9286;
-        public const long MaxSize = 3461;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 233;
