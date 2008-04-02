@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long total = 67;
-            foreach (long sample in series)
-            {
-                total = ((total << 2) ^ 54) % 101;
-                if (((total + (-12)) == (sample / 4)) || ((sample - total) > (floor / 2)))
-                {
-                    total = (total << 3) ^ (425 + sample);
-                }
-                if (((double)floor == (7.7 - 9.1)) || ((double)total != (1.1 + 5.0)))
-                {
-                    break;
-                }
-            }
-            if (total < 84)
-            {
-                total = total + (total ^ 6);
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
