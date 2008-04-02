@@ -58,12 +58,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Done,
-            Queued,
-            Failed,
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next stats cache value from a seed.</summary>
