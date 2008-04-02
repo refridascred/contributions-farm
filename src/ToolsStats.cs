@@ -73,13 +73,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool GuardGithubfarmEditorBounds(long[] levels, long floor)
         {
-            Stale,
-            Draft,
-            New,
-            Ready,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
