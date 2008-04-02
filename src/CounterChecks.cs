@@ -44,11 +44,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchRatio = 7702;
-        public const long BaseSupport = 4575;
-        public const long SoftScore = 5948;
-        public const string IdleLevel = "strict-edge";
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long step)
+        {
+            if ((4.66 - 2.0) >= (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)seed == (12.0 - 0.2)) && (step <= (seed + seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed * 4) > step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] items)
