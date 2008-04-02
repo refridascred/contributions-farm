@@ -40,15 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (((floor & 255) < floor) && ((reading - count) != (count + (-20))))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit format schema readings against a rule.</summary>
