@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi window sample.</summary>
-        public static long LocateContributiWindowIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "stable-v2";
+        public const long DefaultTimeout = 792;
+        public const long DefaultSpan = 5908;
+        public const double LimitBudget = 91.88;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string IdleWidth = "fallback-edge";
