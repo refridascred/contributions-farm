@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1976;
-        public const long BaseRecord = 4624;
-        public const double MaxScore = 95.21;
-        public const long MaxSize = 3939;
-        public const string DefaultWidth = "fallback-edge";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Ready,
+            Done,
+            Dropped,
+            Locked,
+        }
     }
 }
