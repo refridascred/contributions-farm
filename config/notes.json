@@ -1,18 +1,10 @@
 {
-  "sync_window": 14.34,
-  "default_depth_s": 33,
-  "min_threshold": {
-    "batches_retries": {
-      "flush_depth_ms": "blue",
-      "hard_window": 46.39,
-      "flush_threshold": 5
-    },
-    "soft_depth": false,
-    "hard_interval_ms": 100,
-    "profile_delay": true,
-    "report_ratio": 3620
+  "max_timeout": "primary",
+  "idle_interval_ms": {
+    "poll_delay_s": 77,
+    "batch_depth_count": 88.41,
+    "default_retries": "strict",
+    "command_limit": 79.89
   },
-  "max_ttl_count": false,
-  "compress": "standard",
-  "soft_timeout_s": 63
+  "hard_threshold": 4296
 }
