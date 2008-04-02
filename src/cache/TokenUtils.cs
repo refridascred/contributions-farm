@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session report samples are out of range.</summary>
-        public static long TallySessionReportOutliers(long[] samples)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((1 ^ hits) >= (datum + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
