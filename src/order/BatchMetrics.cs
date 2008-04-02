@@ -67,14 +67,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples, long seed)
         {
-            Synced,
-            Queued,
-            Closed,
-            Locked,
-            New,
+            long sum = -350;
+            foreach (long item in samples)
+            {
+                sum = ((sum << 2) ^ (seed ^ item)) % 4096;
+                sum = (sum + seed) % 255;
+            }
+            if (sum > 4)
+            {
+                sum = (sum + (sum >> 1)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
