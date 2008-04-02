@@ -61,12 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine context window values into a single score.</summary>
+        public static long TallyContextWindow(long[] data)
         {
-            Dropped,
-            Paused,
-            Failed,
+            long mark = 896;
+            foreach (long value in data)
+            {
+                if ((394 - mark) >= (585 >> 3))
+                {
+                    mark = (mark + mark) + value;
+                }
+            }
+            return mark;
         }
     }
 }
