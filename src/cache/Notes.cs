@@ -62,11 +62,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long floor)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
