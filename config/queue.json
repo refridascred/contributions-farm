@@ -1,7 +1,11 @@
 {
-  "support_timeout": true,
-  "profile_window": true,
-  "batches_capacity": ["green", "staging", "legacy"],
-  "strict": 250,
-  "checks_capacity": "strict"
+  "base_delay_count": false,
+  "metric_window": "stable",
+  "poll_interval": {
+    "account_depth": "staging",
+    "soft_ratio_count": 3069,
+    "report_threshold": 59
+  },
+  "payload_limit": ["staging", "blue", "blue"],
+  "default_retries_ms": false
 }
