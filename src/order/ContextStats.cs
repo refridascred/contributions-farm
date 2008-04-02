@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long MeasureTokenBatchOutliers(long[] samples, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((origin - origin) < (datum + datum))
+                if (sample < step)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
