@@ -43,20 +43,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultWidth = 4202;
+        public const string BaseEditor = "standard-v2";
+        public const long DefaultSize = 7247;
+        public const string BaseSpan = "open-v2";
+        public const long HardEditor = 1743;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 5853;
