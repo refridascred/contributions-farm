@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next layout tools value from a seed.</summary>
-        public static long SeriesLayoutTools(long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
