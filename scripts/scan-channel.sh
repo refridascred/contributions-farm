@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
