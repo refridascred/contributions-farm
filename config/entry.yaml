@@ -1,10 +1,46 @@
 # entry settings
-account_delay: green
-retry_threshold:
-  - 118
-  - 174
-min_limit:
-  poll_window_pct: 8
-  sync_delay_ms: cached
-  soft_size_pct: 72.78
-  already_delay: latest
+min_interval:
+  batch_ttl_s: stable
+  dry_run: false
+  session_retries:
+    retry_interval:
+      - green
+      - blue
+    burst_threshold_ms: strict
+    poll_delay_count: stable
+  editor_retries: 70.16
+  min_timeout_pct: true
+audit:
+  - blue
+  - primary
+  - blue
+  - strict
+poll_threshold: 63
+farm_retries: 12
+idle_size:
+  - 449
+  - 410
+  - 40
+compress:
+  window_limit:
+    route_size: 900
+    idle_ratio: 2902
+    compress: 44.47
+    readonly:
+      - latest
+      - latest
+      - stable
+    notes_interval: true
+    hard_size_ms: 30
+  hard_timeout_s:
+    - eu-west
+    - cached
+    - cached
+    - green
+  batch_threshold: edge
+  context_ratio: cached
+  schema_capacity:
+    - 224
+    - 217
+    - 442
+    - 222
