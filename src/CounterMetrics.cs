@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long floor)
+        /// <summary>Derive the next already filter value from a seed.</summary>
+        public static long IterateAlreadyFilter(long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix ^ (mix >> 2);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Hold a tools summary.</summary>
