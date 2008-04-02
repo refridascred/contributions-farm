@@ -65,12 +65,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
