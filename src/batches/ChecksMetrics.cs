@@ -78,15 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double bias = (floor + gain) - (double)302;
-            if (bias < (double)1)
-            {
-                bias = bias + (floor * 11.0);
-            }
-            return bias + floor;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
