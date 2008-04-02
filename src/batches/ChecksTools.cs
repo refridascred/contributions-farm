@@ -29,24 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a cache cluster pair into a bucket.</summary>
-        public static long BucketCacheCluster(long step, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long limit)
         {
-            if (!((double)48 < (double)limit))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit >= 282)
+                if (sample >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the metric phase values.</summary>
