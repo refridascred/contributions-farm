@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] values, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
