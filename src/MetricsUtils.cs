@@ -32,12 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultWidth = 4202;
-        public const string BaseEditor = "standard-v2";
-        public const long DefaultSize = 7247;
-        public const string BaseSpan = "open-v2";
-        public const long HardEditor = 1743;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] data)
