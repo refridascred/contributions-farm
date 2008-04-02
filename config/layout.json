@@ -1,8 +1,7 @@
 {
-  "audit": "green",
-  "soft_size_count": 4.11,
-  "queue_interval": 56,
-  "farm_threshold": "stable",
-  "cache_delay_s": "latest",
-  "verbose": 3433
+  "max_depth_ms": ["local", "stable", "eu-west"],
+  "soft_ratio_ms": 3398,
+  "min_limit": 100,
+  "readonly": ["standard", "edge", "legacy"],
+  "cache_ttl": [48, 83, 352]
 }
