@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long MaxScore = 3424;
         public const string RetryScore = "cached-1";
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Active,
-            Dropped,
-            Ready,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
