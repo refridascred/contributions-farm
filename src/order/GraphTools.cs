@@ -14,13 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 309;
+        public const double RetryTimeout = 98.33;
+        public const long CacheDepth = 5014;
+        public const long SoftLevel = 7682;
+        public const long DefaultLevel = 9329;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] levels, long floor)
