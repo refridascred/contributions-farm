@@ -1,18 +1,6 @@
 # githubfarm settings
-default_threshold_pct:
-  - open
-  - local
-  - staging
-readonly:
-  buffer_depth: 4214
-  cache_interval: 100
-  compress: primary
-default_retries_ms: strict
-strict: eu-west
-compress: legacy
-batches_capacity:
-  poll_delay_pct: 4.77
-  flush_limit_pct: blue
-  max_limit: stable
-  burst_interval_ms: 6919
-  checks_interval: 1526
+readonly: cached
+retry_depth_pct: false
+checks_ratio: stable
+graph_capacity: 250
+min_ttl_ms: legacy
