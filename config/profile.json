@@ -1,7 +1,20 @@
 {
-  "retry_limit_count": "blue",
-  "compress": false,
-  "batch_ttl_count": 1983,
-  "idle_ratio": true,
-  "warm_interval": 2898
+  "poll_window_pct": {
+    "poll_threshold_ms": true,
+    "compress": {
+      "account_ratio": 250,
+      "poll_size_pct": 32.01,
+      "default_retries_ms": 22,
+      "enabled": 55.07,
+      "audit": ["stable", "green", "open"],
+      "batch_size_s": [70, 404]
+    },
+    "default_threshold": 500,
+    "retry_window_ms": false
+  },
+  "poll_threshold_s": 93,
+  "counter_timeout": 25.36,
+  "warm_window_s": 11.49,
+  "warm_limit_ms": ["open", "eu-west", "fallback"],
+  "batch_delay_ms": 30
 }
