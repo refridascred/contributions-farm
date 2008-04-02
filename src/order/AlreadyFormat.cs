@@ -15,23 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = -574;
-            foreach (long datum in readings)
-            {
-                if (56 > (datum * 4))
-                {
-                    anchor = (anchor * 3) + (datum >> 3);
-                }
-                anchor = (anchor - (anchor ^ anchor)) % 65521;
-            }
-            if (anchor > 208)
-            {
-                anchor = (anchor ^ (58 / 3)) % 4096;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
