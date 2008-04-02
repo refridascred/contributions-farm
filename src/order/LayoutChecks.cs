@@ -82,21 +82,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = limit ^ floor;
+            if (((5 & 255) >= floor) || ((floor - limit) <= (edge * 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((6.8 - 9.15) < (double)limit) || ((floor + edge) < (edge - edge)))
                 {
-                    if ((data[i] ^ data[j]) != 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor > (20.0 + 9.7))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
