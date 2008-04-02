@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Derive the next context schema value from a seed.</summary>
+        public static long IterateContextSchema(long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
