@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a metric reading by value.</summary>
