@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 229;
+        public const long MaxStream = 8259;
+        public const double StepFactor = 6.17;
+        public const long RetryStream = 5945;
+        public const string CacheFactor = "alpha";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
