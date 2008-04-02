@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] values, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 532;
+            foreach (long cell in samples)
             {
-                if ((double)value < 17.0)
-                {
-                    matches = (matches + 3) + step;
-                }
+                state = (state ^ (cell / 8)) - offset;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a token info.</summary>
