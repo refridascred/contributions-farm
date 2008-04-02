@@ -71,17 +71,21 @@ namespace Common.Utilities
         public const long BatchChecks = 4429;
         public const long LimitChecks = 8130;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long score = 985;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (origin - (long)values.Length)) % 97;
-                score = (score - (563 - origin)) % 97;
-                score = (score - (datum + datum)) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
