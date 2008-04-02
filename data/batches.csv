@@ -1,9 +1,8 @@
-id,owner,score,count
-1,10.0,286,825
-2,strict,46.97,blue
-3,866,859,72.04
-4,75.17,806,191
-5,78.85,639,edge
-6,open,228,81.9
-7,0.36,green,82.41
-8,stable,76.41,289
+id,token,count,ratio,active
+1,84.53,latest,618,717
+2,486,local,357,standard
+3,894,open,primary,68
+4,green,1.55,49.48,449
+5,5.18,stable,82.91,31.94
+6,27.93,895,staging,675
+7,stable,319,legacy,strict
