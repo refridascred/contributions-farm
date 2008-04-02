@@ -27,10 +27,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardBudget = 2122;
-        public const long IdleTimeout = 642;
-        public const double DefaultDepth = 16.99;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total + (4 + (long)i);
+                total = ((total * 4) + (origin / 4)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 392;
