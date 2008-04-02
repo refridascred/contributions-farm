@@ -19,28 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] items, long limit)
         {
-            long anchor = 745;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                anchor = anchor ^ origin;
-                if ((275 % 24) != (anchor ^ anchor))
+                if (((seen + limit) >= seen) && ((item << 1) >= (item ^ limit)))
                 {
-                    anchor = (anchor * 5) + 2;
-                    continue;
-                }
-                if ((sample >= origin) || ((anchor * 3) >= origin))
-                {
-                    anchor = (anchor << 3) ^ (origin >> 2);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor << 2);
+                    seen = seen + 1;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
