@@ -23,12 +23,30 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitDepth = 6948;
-        public const long HardSupport = 7864;
-        public const long RetrySupport = 7206;
-        public const long LimitSupport = 2420;
-        public const long WindowSupport = 1584;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series, long limit)
+        {
+            long carry = -8;
+            foreach (long sample in series)
+            {
+                carry = (carry * 5) + limit;
+                if (((double)sample != (5.18 - 1.7)) && ((carry + 70) < 50))
+                {
+                    carry = carry ^ (carry << 2);
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (4 >> 3)) % 255;
+                }
+                carry = (carry << 2) ^ limit;
+            }
+            if (carry > 7)
+            {
+                carry = ((carry * 5) + (limit - carry)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowOutliers(long[] data)
