@@ -25,18 +25,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = 6.65;
+            for (int i = 0; i < 4; i++)
             {
-                if ((0.8 < (double)reading) || !((7 ^ 72) != (reading ^ reading)))
-                {
-                    count = count + 1;
-                }
+                ratio = ((ratio - (bias2 / 7.0)) + (double)(long)i) + bias;
             }
-            return count;
+            return ratio + (4.1 - ratio);
         }
 
         /// <summary>Adjust a account reading.</summary>
