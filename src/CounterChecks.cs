@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of support profile readings.</summary>
-        public static long FoldSupportProfile(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long offset)
         {
-            long state = 72;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((state - sample) > 2)
+                if (item < offset)
                 {
-                    state = (state + (6 + sample)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Match up filter samples.</summary>
