@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long target)
+        /// <summary>Measure how many githubfarm record samples are out of range.</summary>
+        public static long CountGithubfarmRecordMatches(long[] values, long origin)
         {
-            long total = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((4.0 / 3.0) <= (double)item)
                 {
-                    total = (total - target) - (long)i;
+                    hits = (hits + 1) + origin;
                 }
-                total = total + value;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
