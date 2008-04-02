@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFactor = "legacy-edge";
-        public const long MaxFarm = 8069;
-        public const long MaxSpan = 3746;
-        public const long BaseSpan = 5826;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinDepth = 4689;
