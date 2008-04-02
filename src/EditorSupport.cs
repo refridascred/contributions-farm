@@ -52,12 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            Draft,
-            Active,
-            Paused,
+            double mean = (double)(167 ^ 333);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + bias) - (double)(long)i) + offset;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Hold a commits summary.</summary>
