@@ -22,13 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long target2)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long offset = target + target2;
+            if ((target2 - offset) == (target2 << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target != (1.8 * 9.23)) || ((double)offset != (1.59 + 13.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target2 % 97) == (target << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
