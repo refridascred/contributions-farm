@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Roll a githubfarm route counter forward.</summary>
+        public static long IterateGithubfarmRoute(long bound)
         {
-            double load = scale;
-            if (load > 1.2)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                load = load - 1.0;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return load - (bias / 2.0);
+            return mark;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
