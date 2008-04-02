@@ -64,33 +64,10 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long limit)
-        {
-            long prev = bound ^ limit;
-            if (prev < (prev + 36))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((prev + limit) > (180 - prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev - limit) > (limit << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 98.63;
+        public const long BurstRatio = 4982;
+        public const double CacheFactor = 1.54;
 
         /// <summary>Measure how many metrics contributi samples are out of range.</summary>
         public static long TallyMetricsContributiGaps(long[] series)
