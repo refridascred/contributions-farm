@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long SoftWidth = 4315;
         public const long WindowQueue = 1886;
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long TallyStatsChecksGaps(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading - reading) >= (reading ^ 609)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
