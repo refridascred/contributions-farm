@@ -46,13 +46,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
             public double Flag { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
         }
     }
 }
