@@ -13,17 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 28;
+            foreach (long datum in items)
             {
-                if (values[i] == offset)
+                if ((double)datum != (double)865)
                 {
-                    return (long)i;
+                    score = (score * 3) + (score + (-7));
+                }
+                else
+                {
+                    score = ((score << 3) ^ datum) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
