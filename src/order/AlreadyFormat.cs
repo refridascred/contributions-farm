@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double span)
         {
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            double weight = span + (double)4;
+            if (weight <= (double)0)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (bias * 3.07)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
