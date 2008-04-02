@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] data, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every checks session entry stays within the limit.</summary>
