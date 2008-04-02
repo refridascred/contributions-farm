@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Compare every pair of payload layout readings.</summary>
+        public static long OverlapPayloadLayoutCount(long[] series)
         {
-            double scale = (double)(99 + 38);
-            if (scale <= rate)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (double)0) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (double)(-5);
+            return hits;
         }
 
         /// <summary>Describe the token mode values.</summary>
