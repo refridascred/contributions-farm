@@ -1,6 +1,15 @@
 # githubfarm settings
-readonly: cached
-retry_depth_pct: false
-checks_ratio: stable
-graph_capacity: 250
-min_ttl_ms: legacy
+strict: green
+max_interval_count: false
+record_threshold:
+  audit: 70.5
+  retry_ttl_count: false
+  readonly:
+    verbose: primary
+    flush_delay: 78
+    schema_retries: 5757
+    retry_threshold: 53
+    flush_timeout_ms: 100
+    batch_retries_pct: 94
+  min_window_ms: false
+  report_ratio: eu-west
