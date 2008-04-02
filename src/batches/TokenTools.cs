@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinFactor = 47.81;
-        public const long LimitAccount = 5529;
-        public const long MaxSpan = 4048;
-        public const long CacheAccount = 6610;
-        public const long BaseAccount = 284;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + 60) >= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the report context series from a seed.</summary>
         public static long IterateReportContext(long floor)
