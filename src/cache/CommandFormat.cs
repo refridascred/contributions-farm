@@ -51,22 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long TallyEditorChecksMatches(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((-67) < (tally ^ entry))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSpan = 10.21;
+        public const double CacheSchema = 70.2;
+        public const double SoftLevel = 62.41;
+        public const string LimitSchema = "cached";
     }
 }
