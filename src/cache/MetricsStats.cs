@@ -27,10 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstLevel = 3907;
-        public const double RetryScore = 50.48;
-        public const long IdleRatio = 8886;
+        /// <summary>Audit metrics farm readings against a rule.</summary>
+        public static long CountMetricsFarmHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches * 5) == (item ^ item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] readings, long seed)
