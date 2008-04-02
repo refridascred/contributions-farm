@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels, long limit)
+        /// <summary>Validate report githubfarm readings against a bound.</summary>
+        public static bool GuardReportGithubfarmLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (sample > (1 >> 2))
+                if (value <= seed)
                 {
-                    count = (count + 3) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a queue record.</summary>
