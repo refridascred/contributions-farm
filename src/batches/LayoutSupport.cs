@@ -20,19 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer graph samples are out of range.</summary>
-        public static long CountBufferGraphHits(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches ^ matches) >= (seed / 8))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitDepth = 34.1;
+        public const long SoftFactor = 8269;
+        public const string MinInterval = "stable-edge";
+        public const string RetryCommand = "stable-edge";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long limit)
