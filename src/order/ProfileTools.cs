@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Pending,
-            Draft,
-            Locked,
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
