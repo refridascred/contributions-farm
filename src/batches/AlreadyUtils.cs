@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            long diff = seed - bound;
+            if (((seed + diff) >= (seed & 127)) && (17.0 < (double)diff))
+            {
+                return 3;
+            }
+            else
+            {
+                if (5 >= (bound & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
