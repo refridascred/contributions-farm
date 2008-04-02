@@ -28,18 +28,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] samples, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long step = target + seed;
+            if ((step - step) != (step + target))
             {
-                if ((((double)seen < (14.0 / 8.0)) && ((double)85 <= (double)entry)) && ((step % 64) >= 500))
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (16.0 * 0.8))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.4 * 1.3) <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target - seed) <= (seed + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a support farm pair into a bucket.</summary>
