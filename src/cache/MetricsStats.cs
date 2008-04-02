@@ -62,12 +62,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
             public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
