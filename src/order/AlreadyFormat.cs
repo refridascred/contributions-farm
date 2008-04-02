@@ -56,12 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
