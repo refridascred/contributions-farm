@@ -18,12 +18,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 8099;
-        public const string BaseScore = "legacy";
-        public const long HardWidth = 9860;
-        public const long WindowBudget = 1747;
-        public const long StepAccount = 4870;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Failed,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Compare every pair of stats counter readings.</summary>
         public static long CompareStatsCounterCount(long[] data)
