@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long TallySchemaFilterHits(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (seen >= (seen >> 2))
+                if (datum > step)
                 {
-                    seen = (seen + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
