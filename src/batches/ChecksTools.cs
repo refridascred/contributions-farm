@@ -33,13 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Synced,
-            Active,
-            Dropped,
-            Draft,
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
