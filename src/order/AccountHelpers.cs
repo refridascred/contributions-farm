@@ -58,19 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)(long)i <= (19.0 - 15.0)))
-                {
-                    score = ((score << 2) ^ (score % 60)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
