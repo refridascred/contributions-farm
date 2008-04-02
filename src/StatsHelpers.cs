@@ -56,19 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] data, long origin)
+        /// <summary>Validate entry queue readings against a bound.</summary>
+        public static bool VerifyEntryQueueLimits(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (entry > origin)
+                if (value >= bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
