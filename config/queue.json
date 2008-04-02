@@ -1,11 +1,7 @@
 {
-  "compress": {
-    "readonly": 78,
-    "min_ratio": 5526,
-    "graph_retries": 30
-  },
-  "flush_window": "eu-west",
-  "soft_window_ms": "edge",
-  "window_ratio": 49.0,
-  "cache_threshold_count": 500
+  "support_timeout": true,
+  "profile_window": true,
+  "batches_capacity": ["green", "staging", "legacy"],
+  "strict": 250,
+  "checks_capacity": "strict"
 }
