@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a already cluster figure with a bias.</summary>
-        public static double BlendAlreadyCluster(double rate, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            double bias = (double)61 * 6.9;
-            if (bias < bias)
+            long state = 64;
+            foreach (long value in data)
             {
-                bias = (bias + (span / 4.0)) - rate;
+                if (((994 - value) != (value - state)) || (state > (state - state)))
+                {
+                    state = state - (state + state);
+                }
             }
-            else
+            if (state < 59)
             {
-                bias = bias - span;
+                state = (state << 3) ^ state;
             }
-            return bias - 0.7;
+            return state % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
