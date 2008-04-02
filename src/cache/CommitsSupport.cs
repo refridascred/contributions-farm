@@ -57,24 +57,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long sum = 3;
+            foreach (long cell in items)
             {
-                if ((bound * 2) <= (mix + mix))
-                {
-                    continue;
-                }
-                long step = mix;
-                if (!(((7.2 / 6.0) == (double)mix) && ((bound - step) < ((long)i ^ (long)i))))
-                {
-                    mix = mix + (bound - (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                sum = sum ^ cell;
             }
-            return mix;
+            if (sum > 80)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine support values into a single score.</summary>
