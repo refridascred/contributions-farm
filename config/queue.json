@@ -1,11 +1,12 @@
 {
-  "cache_threshold_s": {
-    "readonly": true,
-    "batch_limit_ms": "standard",
-    "base_limit_ms": "eu-west",
-    "retry_limit": 83
+  "idle_size_pct": {
+    "batch_capacity_ms": "open",
+    "min_threshold": 8903,
+    "flush_ratio": true,
+    "retry_capacity_count": "green"
   },
-  "base_size_s": "blue",
-  "burst_capacity": false,
-  "poll_limit_pct": "cached"
+  "dry_run": [185, 276, 103, 435],
+  "githubfarm_ratio": 250,
+  "batch_threshold_pct": "blue",
+  "idle_delay_ms": 1024
 }
