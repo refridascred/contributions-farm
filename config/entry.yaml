@@ -1,4 +1,25 @@
 # entry settings
-warm_limit_ms: 1024
-readonly: false
-channel_ratio: 85.07
+retry_size_count:
+  retry_interval_count: 18
+  burst_delay_ms:
+    - latest
+    - fallback
+    - open
+  warm_retries: 64
+  audit: standard
+hard_window_ms:
+  - 413
+  - 329
+hard_ratio_s:
+  - 203
+  - 476
+  - 253
+  - 95
+contributi_ratio:
+  account_retries: 3404
+  strict: 91
+  editor_timeout: false
+  cluster_depth: staging
+  dry_run: legacy
+  base_retries_ms: 9387
+idle_timeout: 30
