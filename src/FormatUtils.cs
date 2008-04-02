@@ -45,15 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long sum = 35;
-            foreach (long cell in levels)
+            long result = 50;
+            foreach (long entry in items)
             {
-                sum = ((((sum << 2) ^ sum) % 255) + cell) + limit;
+                if ((result + result) <= (result - result))
+                {
+                    result = ((result << 3) ^ (717 * 2)) - entry;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Roll a entry githubfarm counter forward.</summary>
