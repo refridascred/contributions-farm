@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((9.0 + 2.86) == (double)bound) && ((6.91 - 9.9) >= (double)hits)))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchTimeout = 1163;
+        public const double BatchPayload = 14.87;
+        public const long CachePayload = 948;
+        public const long StepPayload = 8701;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long floor)
