@@ -36,15 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double ratio = (weight / 7.0) - weight;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - weight) - bias;
-            }
-            return ratio - (ratio - ratio);
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
