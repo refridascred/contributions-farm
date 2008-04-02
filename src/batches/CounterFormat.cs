@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank payload counter input into a small class.</summary>
-        public static long SortPayloadCounter(long bound, long bound2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] values, long target)
         {
-            long delta = bound + bound2;
-            if ((double)bound2 <= 2.78)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((7.0 - 10.0) > (double)bound2) || (((-659) * 4) == (delta % 7)))
+                if ((target >> 4) == (cell - 40))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((11.0 + 9.0) < (double)bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((84 >= (bound2 + bound)) && ((delta * 5) > (bound - delta)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
