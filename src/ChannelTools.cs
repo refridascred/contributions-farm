@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long BurstSpan = 1834;
         public const double StepQueue = 21.75;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
