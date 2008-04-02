@@ -40,22 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] items, long target)
+        /// <summary>Count token farm pairs that satisfy a relation.</summary>
+        public static long PairTokenFarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((target >> 3) <= (sample + count)) || ((double)sample < (double)target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a queue reading.</summary>
