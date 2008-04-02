@@ -15,19 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] samples, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double load = weight;
+            if (load <= 2.65)
             {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - (double)291;
             }
-            return found;
+            return load + span;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
