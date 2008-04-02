@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((double)hits <= (9.9 * 7.81))
+                if (value >= limit)
                 {
-                    hits = ((hits + 1) ^ cell) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the graph class values.</summary>
