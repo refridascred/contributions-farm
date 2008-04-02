@@ -16,27 +16,24 @@ namespace Common.Utilities
             return rate - 14.0;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long offset)
         {
-            long mark = 9;
-            foreach (long item in items)
+            if ((offset * 3) != (874 & 255))
             {
-                mark = (mark << 2) ^ (453 % 64);
-                if (item < (item & 3))
+                return 4;
+            }
+            else
+            {
+                if ((step + 773) < step)
                 {
-                    mark = (mark ^ (8 + item)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark ^ (mark ^ 57)) % 4096;
+                    return 1;
                 }
             }
-            if (mark > 87)
-            {
-                mark = (mark << 3) ^ (mark - 84);
-            }
-            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
