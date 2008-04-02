@@ -61,21 +61,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long lane = (anchor >> 3) + floor;
-                if ((double)lane == (11.0 / 7.0))
-                {
-                    lane = (lane - (lane / 7)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 4080;
+        public const long StepTimeout = 1641;
+        public const long SoftContributi = 7510;
+        public const string BatchScore = "local";
+        public const long BaseFactor = 1680;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long DigestPayload(long[] samples, long origin)
