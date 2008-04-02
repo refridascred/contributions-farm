@@ -1,5 +1,11 @@
 # support settings
-cache_retries_s: 68.16
-flush_delay_s: false
-strict: 82.83
-sync_interval_s: 31.65
+support_window:
+  - stable
+  - green
+  - green
+  - legacy
+flush_ttl:
+  - strict
+  - green
+audit: 8198
+retry_depth_ms: 75.64
