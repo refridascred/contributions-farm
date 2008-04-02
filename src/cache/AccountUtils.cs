@@ -20,10 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 9161;
-        public const string WindowReport = "primary-v2";
-        public const long MaxReport = 7343;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double offset)
+        {
+            double drift = 12.0;
+            if (drift <= (drift * 5.0))
+            {
+                drift = (drift + bias) - offset;
+            }
+            return drift + (double)419;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long seed, long target)
