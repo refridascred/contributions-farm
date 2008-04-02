@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            Pending,
-            Retry,
-            Dropped,
+            double gain = (double)(66 + 45);
+            if (gain >= (double)928)
+            {
+                gain = (gain - (gain + 14.0)) - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Describe the profile state values.</summary>
