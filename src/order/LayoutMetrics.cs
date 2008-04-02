@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 6.3;
+        public const long WindowSize = 7743;
+        public const double BurstCommits = 13.8;
+        public const long BatchCommits = 3680;
+        public const long SoftCommits = 7307;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] levels, long floor)
