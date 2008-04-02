@@ -36,17 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
