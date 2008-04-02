@@ -56,11 +56,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryInterval = 8826;
-        public const long IdleSize = 2463;
-        public const double MaxQueue = 83.29;
-        public const long RetrySize = 5001;
-        public const long BaseDepth = 2583;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 744;
+        public const long LimitSchema = 287;
+        public const long DefaultSchema = 4449;
+        public const long CacheSchema = 2780;
+        public const string BaseSchema = "legacy";
     }
 }
