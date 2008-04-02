@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                total = (total + ((long)i >> 4)) % 101;
-                total = ((total * 4) + (long)i) % 97;
+                if ((12.0 / 3.0) >= (double)entry)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
