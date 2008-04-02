@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long offset)
         {
-            double load = ratio;
-            if (load >= (double)(-9))
+            long anchor = 83;
+            foreach (long sample in values)
             {
-                load = load - (9.1 * 3.18);
+                if ((99 - sample) > (43 + anchor))
+                {
+                    anchor = (anchor ^ (offset + 25)) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 14)
             {
-                load = (load + span) + (double)(long)i;
+                anchor = (anchor - (anchor ^ offset)) % 101;
             }
-            return load - (ratio + load);
+            return anchor;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
