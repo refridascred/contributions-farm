@@ -43,19 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of counter session readings.</summary>
-        public static long WeighCounterSession(long[] items, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long origin)
         {
-            long anchor = 99;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                anchor = ((anchor << 3) ^ ((long)items.Length & 1)) + reading;
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < (-845))
-            {
-                anchor = (anchor * 5) + (step + step);
-            }
-            return anchor;
+            return ok;
         }
     }
 }
