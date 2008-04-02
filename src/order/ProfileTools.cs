@@ -38,22 +38,22 @@ namespace Common.Utilities
         public const double BaseReport = 50.66;
         public const long RetryFactor = 9381;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long carry = 716;
-            foreach (long entry in series)
+            long mark = -4;
+            foreach (long entry in data)
             {
-                if ((carry >> 2) > entry)
+                if ((mark + mark) == (820 / 9))
                 {
-                    carry = ((carry * 2) + (entry + seed)) % 65521;
+                    mark = (mark + entry) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ entry) % 97;
                 }
             }
-            if (carry < 501)
-            {
-                carry = (carry ^ (seed - 446)) % 255;
-            }
-            return carry;
+            return mark % 1000;
         }
     }
 }
