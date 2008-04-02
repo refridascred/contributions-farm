@@ -34,15 +34,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a stats record.</summary>
