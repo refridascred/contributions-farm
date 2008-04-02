@@ -37,21 +37,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = origin ^ floor;
+            if ((70 >> 2) <= step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (63 <= (origin + step))
                 {
-                    if ((values[i] - values[j]) == 0)
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (step * 3))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.6 * 2.4) != (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
