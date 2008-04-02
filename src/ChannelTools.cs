@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardLevel = 5885;
+        public const double BatchBudget = 24.0;
+        public const string RetryBudget = "staging-v2";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
