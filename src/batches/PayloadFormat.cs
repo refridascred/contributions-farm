@@ -29,15 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next checks record value.</summary>
-        public static double BlendChecksRecord(double gain, double floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double bias = (gain + gain) / 4.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (floor / 2.0);
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
