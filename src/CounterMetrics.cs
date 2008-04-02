@@ -11,11 +11,33 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "staging-edge";
-        public const long IdleSpan = 8672;
-        public const long MaxCommand = 5865;
-        public const long DefaultCommand = 2276;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long offset, long limit)
+        {
+            long span = offset ^ limit;
+            if (offset <= (offset - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ limit) != (737 + span)) && (952 > (limit * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + limit) > (span % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine contributi batches values into a single score.</summary>
         public static long FoldContributiBatches(long[] readings, long limit)
