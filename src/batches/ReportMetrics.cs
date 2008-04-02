@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 3306;
-        public const long LimitContext = 7073;
-        public const double DefaultContext = 40.48;
-        public const long IdleLevel = 2022;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Draft,
+            Active,
+            Ready,
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
