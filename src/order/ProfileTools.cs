@@ -13,14 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Closed,
-            New,
-            Ready,
-            Dropped,
-            Locked,
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a command contributi value against two limits.</summary>
