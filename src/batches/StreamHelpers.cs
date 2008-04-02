@@ -48,22 +48,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long score = 649;
-            foreach (long sample in items)
-            {
-                if (!(5.0 < (double)score))
-                {
-                    score = ((score << 3) ^ floor) + sample;
-                }
-            }
-            if (score < 262)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
