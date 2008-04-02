@@ -44,24 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch tools value from a seed.</summary>
-        public static long StepBatchTools(long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((-492) < ((long)i ^ seed)) && ((1.1 - 4.36) <= (double)acc))
+                if (!((-88) < (tally - 68)) && ((9.8 + 8.0) >= (double)tally))
                 {
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
-                else
-                {
-                    long bound = (34 / 2) ^ acc;
-                    acc = ((acc << 3) ^ (bound % 60)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
     }
 }
