@@ -29,11 +29,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitInterval = 7966;
-        public const double StepScore = 82.75;
-        public const long MinFilter = 144;
-        public const long BatchCount = 5217;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] data, long origin)
