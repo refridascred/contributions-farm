@@ -31,11 +31,21 @@ namespace Common.Utilities
             return scale - (1.34 * 4.9);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 80.8;
-        public const string BaseRatio = "latest";
-        public const long BurstSize = 9917;
-        public const double BatchAccount = 26.79;
-        public const long MaxAccount = 9741;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
