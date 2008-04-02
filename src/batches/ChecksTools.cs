@@ -38,12 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] levels, long target)
         {
-            Failed,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((((double)tally <= (double)target) || ((target - target) > (target & 255))) && ((tally ^ value) == (target + target)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
