@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double floor)
         {
-            Retry,
-            New,
-            Pending,
+            double scale = (double)9 + (double)734;
+            if (scale > scale)
+            {
+                scale = (scale + (scale - 5.9)) + ratio;
+            }
+            else
+            {
+                scale = scale - (double)894;
+            }
+            return scale - (floor * 2.87);
         }
 
         /// <summary>Rank githubfarm counter input into a small class.</summary>
