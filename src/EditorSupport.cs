@@ -44,21 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= origin)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Adjust a queue reading.</summary>
