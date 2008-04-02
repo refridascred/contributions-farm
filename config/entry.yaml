@@ -1,7 +1,12 @@
 # entry settings
-min_ttl_pct: local
-record_retries: 1.87
-idle_interval: 1809
-cache_ttl: strict
-warm_size_ms: eu-west
-dry_run: 8.09
+batch_interval:
+  - fallback
+  - local
+  - fallback
+  - local
+default_depth: staging
+context_timeout:
+  - latest
+  - green
+  - stable
+  - local
