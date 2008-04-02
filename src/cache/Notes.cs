@@ -43,17 +43,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
