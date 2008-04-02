@@ -65,19 +65,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long anchor = 810;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (sample >> 2)) % 4096;
-                if ((anchor % 7) < anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (target + anchor)) % 255;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
