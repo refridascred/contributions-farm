@@ -66,12 +66,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            New,
-            Done,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 6352;
+        public const double BurstStream = 69.87;
+        public const long BatchStream = 9045;
+        public const long RetryStream = 8882;
     }
 }
