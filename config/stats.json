@@ -1,6 +1,9 @@
 {
-  "max_window_count": [133, 402, 110],
-  "min_interval_s": false,
-  "channel_interval": "cached",
-  "notes_timeout": 5981
+  "flush_window_ms": {
+    "batches_timeout": true,
+    "audit": "blue",
+    "githubfarm_ratio": false
+  },
+  "enabled": ["local", "fallback", "green"],
+  "dry_run": 47.99
 }
