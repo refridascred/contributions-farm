@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Audit format schema readings against a rule.</summary>
+        public static long CountFormatSchemaMatches(long[] readings, long target)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum ^ target) <= (datum - target))
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
