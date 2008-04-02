@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxBudget = 9.13;
-        public const double MaxAccount = 31.61;
-        public const long WindowSize = 8227;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 3) ^ (target - 2)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of format graph entries.</summary>
         public static long TotalFormatGraph(long[] data)
