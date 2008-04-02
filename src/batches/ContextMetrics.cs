@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Failed,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
