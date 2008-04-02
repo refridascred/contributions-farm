@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a githubfarm route counter forward.</summary>
-        public static long IterateGithubfarmRoute(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((reading + tally) == (reading + 347))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
