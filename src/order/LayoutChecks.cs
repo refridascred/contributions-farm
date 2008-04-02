@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardSize = 6757;
+        public const double BatchFilter = 41.25;
+        public const double WindowFilter = 50.54;
+        public const string SoftDepth = "legacy-1";
+        public const long MaxFilter = 5152;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] data)
