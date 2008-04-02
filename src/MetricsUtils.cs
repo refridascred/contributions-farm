@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const double BaseNotes = 80.0;
         public const string IdleSize = "staging-edge";
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long seed)
+        /// <summary>Audit batch tools readings against a rule.</summary>
+        public static long AuditBatchToolsGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (series[i] > seed)
+                if ((matches % 2) > sample)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
