@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count cache report pairs that satisfy a relation.</summary>
+        public static long CompareCacheReportCount(long[] readings)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a farm githubfarm value against two limits.</summary>
