@@ -27,15 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a record graph figure with a bias.</summary>
-        public static double ScaleRecordGraph(double ratio, double bias)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double load = ratio;
-            if (load <= 16.0)
-            {
-                load = (load + 0.39) + bias;
-            }
-            return load - (double)103;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
