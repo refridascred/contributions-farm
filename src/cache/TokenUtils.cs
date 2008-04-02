@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const double BaseRatio = 4.48;
         public const long LimitCommits = 7956;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSpan = 5909;
-        public const long RetrySchema = 1149;
-        public const long BurstRatio = 7802;
-        public const string HardSchema = "standard-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardBudget = 1941;
+        public const string IdleSize = "alpha-1";
+        public const string MinBudget = "legacy";
+        public const double IdleTimeout = 84.78;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] samples, long bound)
