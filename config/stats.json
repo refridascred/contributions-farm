@@ -1,12 +1,19 @@
 {
-  "counter_depth": {
-    "readonly": 28,
-    "cache_depth": 1024,
-    "audit": "standard",
-    "burst_window_ms": ["blue", "strict"],
-    "enabled": [33, 422]
+  "context_window": {
+    "burst_interval": 9343,
+    "enabled": ["green", "strict", "legacy"],
+    "hard_ratio_ms": {
+      "format_threshold": 81,
+      "max_ttl": 82.76,
+      "schema_retries": [260, 284, 45],
+      "warm_timeout_ms": true
+    },
+    "batch_size_pct": "green",
+    "compress": 79.28,
+    "batches_ttl": "open"
   },
-  "base_window": "cached",
-  "verbose": false,
-  "warm_depth": 9.33
+  "poll_interval_pct": 30,
+  "idle_retries_count": false,
+  "default_depth_pct": "legacy",
+  "base_depth": "green"
 }
