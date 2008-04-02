@@ -46,39 +46,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a tools already value against two limits.</summary>
-        public static long SortToolsAlready(long step, long target)
+        /// <summary>Fold a list of session buffer readings.</summary>
+        public static long TotalSessionBuffer(long[] readings, long seed)
         {
-            long cur = step + target;
-            if ((target + cur) <= (0 - 463))
+            long mark = -3;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step != (8.4 - 3.0))
+                mark = ((mark * 4) + (mark + datum)) % 97;
+                if (datum > mark)
                 {
-                    return 0;
+                    mark = (mark - (seed / 9)) % 97;
                 }
                 else
                 {
-                    if ((target & 31) <= (256 * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step >> 5) <= (step + 55)) && ((8.0 + 7.93) == (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = mark ^ (mark / 4);
                 }
             }
+            if (mark < (-3))
+            {
+                mark = (mark - (mark / 4)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
