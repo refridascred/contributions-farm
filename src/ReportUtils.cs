@@ -44,17 +44,23 @@ namespace Common.Utilities
         public const long StepRatio = 586;
         public const double IdleTools = 63.08;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)((-251) * 2);
+            if (mean >= span)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            else
+            {
+                mean = mean + (scale * 5.37);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (scale + span)) + (double)(long)i;
+            }
+            return mean + (mean * 7.4);
         }
 
         /// <summary>Fold a list of tools record readings.</summary>
