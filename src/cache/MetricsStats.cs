@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two counter stream measurements.</summary>
-        public static double ScaleCounterStream(double weight, double span)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double ratio = (0.3 / 5.0) / 9.0;
-            if (ratio < (double)2)
-            {
-                ratio = (ratio + (weight - 0.83)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio + (double)479;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
