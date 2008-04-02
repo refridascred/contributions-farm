@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-33) < (tally & 31)) && !((tally + 778) > (tally + tally)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
