@@ -19,23 +19,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long WeighEntryBatch(long[] series)
+        /// <summary>Compare every pair of schema account readings.</summary>
+        public static long PairSchemaAccountCount(long[] values)
         {
-            long result = 944;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ (result * 5)) % 1000;
-                if (result >= (entry * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result << 3) ^ entry;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
