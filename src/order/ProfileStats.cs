@@ -34,11 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 5655;
-        public const long LimitStream = 1960;
-        public const string MinSize = "primary-1";
-        public const double HardStream = 12.54;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a profile support value against two limits.</summary>
         public static long RankProfileSupport(long origin, long bound)
