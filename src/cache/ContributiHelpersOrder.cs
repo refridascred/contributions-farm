@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Blend two token stats measurements.</summary>
+        public static double ScaleTokenStats(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(67 * 4);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = ((rate - (rate + span)) - (double)(long)i) - bias;
             }
-            return matches;
+            return rate + (double)97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
