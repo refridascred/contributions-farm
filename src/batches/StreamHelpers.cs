@@ -50,12 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long score = 649;
+            foreach (long sample in items)
+            {
+                if (!(5.0 < (double)score))
+                {
+                    score = ((score << 3) ^ floor) + sample;
+                }
+            }
+            if (score < 262)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
