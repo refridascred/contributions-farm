@@ -1,20 +1,13 @@
 # support settings
-batch_ratio: 2069
-cache_size: blue
-retry_interval_count: staging
-sync_size_pct:
-  - strict
-  - staging
-poll_ttl_s:
-  report_size: eu-west
-  warm_window_pct:
-    default_capacity:
-      - legacy
-      - strict
-      - stable
-      - local
-    burst_timeout_count: standard
-    support_interval: eu-west
-    soft_delay: 30
-  persist: true
-  strict: 2283
+warm_threshold: 1635
+audit:
+  strict: true
+  layout_capacity: stable
+  cache_capacity_ms: 43.25
+  cluster_ttl: false
+  graph_interval: standard
+  dry_run: open
+base_depth: 62
+compress:
+  - 185
+  - 478
