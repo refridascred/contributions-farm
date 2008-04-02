@@ -22,39 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm githubfarm value against two limits.</summary>
-        public static long BucketFarmGithubfarm(long origin, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long bound = origin + floor;
-            if ((bound & 63) <= origin)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (origin - bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin < (37 << 1))
+                    if ((readings[i] ^ readings[j]) == 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound % 8) > (floor - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
