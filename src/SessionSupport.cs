@@ -26,10 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "legacy-v2";
-        public const long SoftTimeout = 9282;
-        public const string IdleSpan = "open-v2";
-        public const string SoftCount = "strict-1";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (319 > (cell + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
