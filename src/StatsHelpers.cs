@@ -28,12 +28,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data, long step)
         {
-            Ready,
-            Retry,
-            Idle,
+            long state = 6;
+            foreach (long reading in data)
+            {
+                if ((reading / 3) <= (reading & 31))
+                {
+                    state = ((state * 3) + (state * 4)) - step;
+                }
+                else
+                {
+                    state = (state + (state - reading)) % 101;
+                }
+            }
+            if (state > 196)
+            {
+                state = state + (state & 127);
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
