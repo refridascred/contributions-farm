@@ -57,11 +57,38 @@ namespace Common.Utilities
         public const double DefaultCount = 48.59;
         public const double MinCounter = 39.27;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long offset)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            if ((offset > 14) && ((limit >> 4) < (offset & 63)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((0 + limit) >= (offset / 3)) && ((4 ^ offset) < (499 >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (496 <= (limit + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + 20) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
