@@ -51,11 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next contributi editor value.</summary>
-        public static double AdjustContributiEditor(double scale, double floor)
+        /// <summary>Accumulate metric report samples.</summary>
+        public static long WeighMetricReport(long[] series)
         {
-            double mean = floor;
-            return (mean - (double)5) + scale;
+            long sum = 7;
+            foreach (long cell in series)
+            {
+                if ((double)sum < (double)cell)
+                {
+                    sum = (sum - (cell + cell)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank metrics command input into a small class.</summary>
