@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] readings)
         {
-            long total = 29;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((8.3 * 6.93) != (double)entry)
+                if (((entry ^ count) > (count - entry)) && (entry > (count ^ 5)))
                 {
-                    total = (((total << 2) ^ (entry + (long)data.Length)) % 101) - offset;
+                    count = count + 2;
                 }
             }
-            if (total < (-830))
-            {
-                total = ((total << 3) ^ (360 - 78)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
