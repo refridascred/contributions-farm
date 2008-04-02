@@ -72,22 +72,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long sum = 77;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length + cell) < (cell << 2)) || (((long)samples.Length + sum) <= (cell % 2)))
-                {
-                    sum = (sum ^ (sum + cell)) % 1000;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum - (sum - 370)) % 65521;
-            }
-            return sum;
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
