@@ -40,18 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((2.54 / 3.0) >= (double)(long)samples.Length)
-                {
-                    hits = (hits + 1) - reading;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit format schema readings against a rule.</summary>
