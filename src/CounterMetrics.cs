@@ -51,11 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
