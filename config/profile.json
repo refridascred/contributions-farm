@@ -1,8 +1,8 @@
 {
-  "batch_limit_s": 4676,
-  "warm_timeout_ms": 3186,
-  "min_delay_count": 95,
-  "flush_size": 36.82,
-  "retry_limit_count": 4519,
-  "retry_threshold_count": true
+  "batch_size_ms": 100,
+  "poll_ratio_ms": 32,
+  "audit": "open",
+  "max_timeout_pct": 60,
+  "soft_delay_count": "local",
+  "compress": 30
 }
