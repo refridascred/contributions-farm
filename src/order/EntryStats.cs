@@ -19,11 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardSize = 72.62;
-        public const double BatchCommits = 87.28;
-        public const long HardWidth = 8033;
-        public const long DefaultSize = 5317;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitRatio = 6741;
+        public const long DefaultStats = 1988;
+        public const long StepStats = 2875;
+        public const long LimitFactor = 6712;
+        public const long LimitTimeout = 7620;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long offset)
