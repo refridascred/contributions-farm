@@ -21,17 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long offset)
+        /// <summary>Count the contributi buffer entries that pass the check.</summary>
+        public static long TallyContributiBufferOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (items[i] < offset)
+                if (!((count - value) > count))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
