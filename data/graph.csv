@@ -1,9 +1,6 @@
-id,ratio,label
-1,914,212
-2,local,414
-3,standard,legacy
-4,949,open
-5,983,open
-6,32.49,829
-7,737,latest
-8,25.04,edge
+id,ratio,owner
+1,legacy,92.56
+2,108,latest
+3,42.81,edge
+4,27.65,95.16
+5,0.92,7.22
