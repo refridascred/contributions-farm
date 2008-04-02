@@ -28,17 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a editor stats.</summary>
