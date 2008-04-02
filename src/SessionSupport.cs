@@ -13,19 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum <= step)
+                if ((tally % 10) > (value + 1))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
