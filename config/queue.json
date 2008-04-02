@@ -1,5 +1,15 @@
 {
-  "support_window": true,
-  "poll_ttl_count": 1024,
-  "retry_depth_count": true
+  "retry_ratio_ms": {
+    "flush_ratio": {
+      "channel_ttl": "legacy",
+      "default_ttl_s": false,
+      "notes_ttl": 500,
+      "cache_delay_ms": 51.18,
+      "default_retries": true
+    },
+    "hard_window": 44,
+    "min_depth_ms": 36
+  },
+  "enabled": "blue",
+  "max_size": 93.68
 }
