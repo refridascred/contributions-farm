@@ -35,17 +35,23 @@ namespace Common.Utilities
         public const long StepCount = 405;
         public const long DefaultWidth = 2675;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] <= origin)
+                mark = mark + (seed % 3);
+                mark = ((mark * 3) + (seed << 3)) % 1000;
+                if (((7.36 * 6.0) <= (double)seed) || ((4.4 + 7.4) < (double)mark))
                 {
-                    return (long)i;
+                    mark = (mark * 3) + (89 << 1);
+                    mark = (mark << 3) ^ (mark & 127);
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
