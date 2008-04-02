@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const long BatchCommits = 3680;
         public const long SoftCommits = 7307;
 
-        /// <summary>Blend two payload metrics measurements.</summary>
-        public static double AdjustPayloadMetrics(double gain, double span)
-        {
-            double scale = (double)(29 % 8);
-            if (scale <= span)
-            {
-                scale = (scale + (9.64 * 6.0)) + gain;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - span) - (double)(long)i;
-            }
-            return scale - (1.34 * 4.9);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "cached-v2";
+        public const string LimitQueue = "cached-edge";
+        public const string RetrySize = "alpha-1";
+        public const long RetryQueue = 3921;
+        public const long BatchRatio = 1483;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] items)
