@@ -49,24 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long target, long bound)
+        /// <summary>Scale a layout buffer figure with a bias.</summary>
+        public static double AdjustLayoutBuffer(double bias, double floor)
         {
-            if ((4.7 / 4.0) == (double)bound)
+            double drift = (double)73 - (floor - floor);
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                drift = ((drift - (drift + drift)) - (double)(long)i) - bias;
             }
-            else
-            {
-                if (bound <= (target % 10))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift - (floor * 4.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
