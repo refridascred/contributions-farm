@@ -51,17 +51,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile editor reading by value.</summary>
-        public static long FindProfileEditorIndex(long[] readings, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = bound + step;
+            if (((cur - step) < (cur / 5)) || ((85 * 2) > (step * 4)))
             {
-                if (readings[i] < bound)
+                return 1;
+            }
+            else
+            {
+                if (((bound * 3) <= (step / 5)) && ((cur & 3) >= (cur << 1)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
