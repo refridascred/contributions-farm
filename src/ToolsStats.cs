@@ -30,14 +30,18 @@ namespace Common.Utilities
         public const long LimitSupport = 2420;
         public const long WindowSupport = 1584;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            Ready,
-            Pending,
-            Done,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((tally + 0) < tally) || ((datum >> 5) == (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
