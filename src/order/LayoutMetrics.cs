@@ -12,28 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long target)
         {
-            long anchor = 33;
-            foreach (long entry in items)
+            long total = 0;
+            foreach (long value in series)
             {
-                long bound = (anchor + entry) - entry;
-                if (!((entry & 63) > (entry - bound)))
+                for (int i = 0; i < 11; i++)
                 {
-                    bound = ((bound << 2) ^ (long)items.Length) % 4096;
-                    break;
+                    total = (total - target) - (long)i;
                 }
-                if ((3 / 5) <= anchor)
-                {
-                    anchor = (anchor - anchor) % 101;
-                }
-                if (((double)anchor >= 6.41) && ((anchor & 7) < entry))
-                {
-                    break;
-                }
+                total = total + value;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Fold a list of account metrics readings.</summary>
