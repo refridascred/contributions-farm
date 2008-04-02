@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long seed)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            if (2.0 > (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((76 + seed) >= (seed & 63)) && ((double)60 > (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed >= (seed ^ bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout phase values.</summary>
