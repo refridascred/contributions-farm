@@ -36,22 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long floor)
         {
-            long state = 101;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state << 1) >= (entry >> 4))
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    state = (state * 2) + state;
+                    return (long)i;
                 }
             }
-            if (state > 715)
-            {
-                state = (state ^ (state >> 4)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
