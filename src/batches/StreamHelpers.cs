@@ -58,28 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            long score = -89;
-            foreach (long entry in data)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(entry >= (score << 3)))
+                if (!((floor * 2) > (floor - result)))
                 {
-                    score = (score - (score + 633)) % 97;
-                    score = score ^ entry;
-                    continue;
+                    result = result ^ floor;
                 }
-                if ((entry + entry) == (score & 255))
-                {
-                    score = (score - entry) % 1000;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (score < 902)
-            {
-                score = (score + (score % 3)) % 65521;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
