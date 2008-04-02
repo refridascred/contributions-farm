@@ -1,6 +1,7 @@
 # support settings
-schema_size: latest
-buffer_window: 60
-max_window_s: 4649
-burst_window_count: 94
-cache_window_count: 73
+session_limit: 82.42
+poll_size: false
+session_delay: 25
+stats_interval: 72
+readonly: false
+metrics_ratio: 21
