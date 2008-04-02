@@ -1,7 +1,16 @@
 {
-  "dry_run": "green",
-  "retry_size_ms": "legacy",
-  "default_ratio_ms": "staging",
-  "warm_ratio_pct": "blue",
-  "verbose": "open"
+  "warm_retries": {
+    "token_ttl": "green",
+    "burst_interval": "fallback",
+    "window_interval": {
+      "max_limit_count": "blue",
+      "base_ttl_pct": "staging",
+      "batch_window_count": 4079,
+      "batch_interval": [408, 85, 232, 406]
+    }
+  },
+  "base_ratio_pct": "standard",
+  "payload_depth": 9308,
+  "account_limit": 87,
+  "dry_run": [433, 474, 469, 388]
 }
