@@ -63,18 +63,24 @@ namespace Common.Utilities
         public const string CacheLevel = "strict";
         public const long RetryFarm = 6832;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long step2)
         {
-            long score = 553;
-            foreach (long reading in values)
+            if ((step / 8) > (step % 16))
             {
-                if (((reading << 2) > score) || (1.64 < (double)reading))
+                return 5;
+            }
+            else
+            {
+                if (!((double)step >= 2.9))
                 {
-                    score = (score - score) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
