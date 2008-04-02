@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const long BatchSpan = 9095;
         public const double SoftStats = 79.47;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double span)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            double mean = rate;
-            if (mean < (5.2 / 4.0))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - (double)384;
+                long matches = (seed + seed) - seed;
+                if (!((((long)i / 9) > matches) && ((19 + mix) < seed)))
+                {
+                    matches = (matches ^ seed) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean + (double)4;
+            return mix;
         }
 
         /// <summary>Hold a contributi entry.</summary>
