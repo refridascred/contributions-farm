@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const string MaxLevel = "local-v2";
         public const long BurstNotes = 4735;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                long tally = (long)i;
+                if ((tally % 100) >= (tally + tally))
+                {
+                    tally = ((tally << 2) ^ ((long)i << 2)) % 97;
+                    continue;
+                }
+                tally = ((tally * 3) + (step - step)) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit notes report readings against a rule.</summary>
