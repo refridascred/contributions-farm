@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next already filter value from a seed.</summary>
-        public static long IterateAlreadyFilter(long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = mix ^ (mix >> 2);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Idle,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a tools summary.</summary>
