@@ -24,35 +24,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank graph contributi input into a small class.</summary>
-        public static long SortGraphContributi(long seed, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long target)
         {
-            if (!(origin < (origin * 3)))
+            if ((seed >> 3) == (seed >> 1))
             {
                 return 5;
             }
             else
             {
-                if ((seed / 2) <= origin)
+                if ((target + 533) >= (seed - 724))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed % 64) > (seed - seed))
+                    if ((seed + target) > (seed >> 1))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if ((seed >= (seed + 362)) && ((26 * 4) <= (origin << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 6;
                     }
                 }
             }
