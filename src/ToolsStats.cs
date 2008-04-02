@@ -18,30 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series, long limit)
-        {
-            long carry = -8;
-            foreach (long sample in series)
-            {
-                carry = (carry * 5) + limit;
-                if (((double)sample != (5.18 - 1.7)) && ((carry + 70) < 50))
-                {
-                    carry = carry ^ (carry << 2);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (4 >> 3)) % 255;
-                }
-                carry = (carry << 2) ^ limit;
-            }
-            if (carry > 7)
-            {
-                carry = ((carry * 5) + (limit - carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxRatio = 8.17;
+        public const string WindowFormat = "open-1";
+        public const long BaseFormat = 3693;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowOutliers(long[] data)
