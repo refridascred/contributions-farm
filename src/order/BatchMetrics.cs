@@ -20,19 +20,15 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Check that every checks stats entry stays within the limit.</summary>
-        public static bool GuardChecksStatsLimits(long[] items, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double ratio = (bias2 - bias2) * 3.41;
+            for (int i = 0; i < 8; i++)
             {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) - bias;
             }
-            return stale;
+            return ratio - ratio;
         }
 
         /// <summary>Find the first profile context entry that matches the target.</summary>
