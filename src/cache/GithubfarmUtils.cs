@@ -42,22 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long bound)
-        {
-            long sum = 48;
-            foreach (long item in levels)
-            {
-                if ((item ^ bound) < (sum & 15))
-                {
-                    sum = (sum - (bound - sum)) % 65521;
-                }
-                if (0.23 > (6.7 + 14.0))
-                {
-                    sum = ((sum * 5) + ((long)levels.Length % 60)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheCount = 5229;
+        public const long WindowWidth = 5799;
+        public const long LimitTimeout = 3946;
+        public const long WindowEntry = 3341;
     }
 }
