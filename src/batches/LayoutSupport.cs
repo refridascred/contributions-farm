@@ -47,32 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long seed)
-        {
-            if (!((seed + 15) > floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (4.25 + 8.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((95 % 64) != (9 ^ floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "legacy-v2";
+        public const long BurstAlready = 7741;
+        public const long DefaultCount = 8629;
+        public const long MaxAlready = 2981;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
