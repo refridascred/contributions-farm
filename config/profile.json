@@ -1,14 +1,7 @@
 {
-  "format_window": "staging",
-  "idle_limit_pct": {
-    "idle_ttl_s": ["stable", "latest"],
-    "flush_depth": [488, 261, 91],
-    "readonly": true,
-    "min_delay": [111, 134, 430, 472],
-    "filter_depth": ["local", "cached", "strict", "open"],
-    "base_ttl_count": 100
-  },
-  "schema_interval": 250,
-  "batch_timeout_pct": false,
-  "batches_ttl": "local"
+  "cache_retries": 85.5,
+  "compress": 1203,
+  "readonly": 3538,
+  "soft_ratio_pct": ["local", "primary", "staging", "fallback"],
+  "hard_size": "eu-west"
 }
