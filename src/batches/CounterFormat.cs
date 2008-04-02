@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series)
         {
-            long mark = 951;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                long matches = (mark + mark) + ((long)items.Length * 5);
-                if ((matches ^ cell) >= ((long)items.Length + mark))
+                if (((4.9 - 7.67) == (double)sample) && ((sample < seen) || ((sample + 9) < seen)))
                 {
-                    break;
-                }
-                if (!((double)mark <= (9.0 + 7.9)))
-                {
-                    mark = (mark - (mark << 1)) % 255;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    mark = ((mark * 3) + 847) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
