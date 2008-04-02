@@ -73,12 +73,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
