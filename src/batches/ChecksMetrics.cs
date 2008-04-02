@@ -45,13 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Failed,
-            Pending,
-            Stale,
+            Retry,
             Synced,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
