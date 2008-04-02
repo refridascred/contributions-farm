@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long origin)
         {
-            long anchor = 7;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                anchor = (((anchor << 3) ^ (42 * 4)) % 1000) ^ datum;
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < (-9))
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Check that every already batches entry stays within the limit.</summary>
