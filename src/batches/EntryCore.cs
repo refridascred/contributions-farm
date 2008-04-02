@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a batch cache value against two limits.</summary>
-        public static long GradeBatchCache(long offset, long offset2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series, long bound)
         {
-            long lane = offset ^ offset2;
-            if (((double)offset2 <= (1.0 * 13.0)) || ((3.92 * 6.3) < (double)offset))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset & 7))
+                if ((968 + value) >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(lane > (lane % 24)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane << 3) < (offset / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
