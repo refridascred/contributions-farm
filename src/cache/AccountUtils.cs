@@ -14,13 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Draft,
-            Failed,
-            Done,
-            Queued,
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
