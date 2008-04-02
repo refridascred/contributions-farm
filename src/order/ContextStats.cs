@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] values, long target)
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long MeasureTokenBatchOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((origin - origin) < (datum + datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
