@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
