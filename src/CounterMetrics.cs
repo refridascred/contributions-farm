@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of channel cache readings.</summary>
+        public static long ScoreChannelCache(long[] values, long seed)
         {
-            Idle,
-            Draft,
-            Active,
-            Closed,
+            long mark = 91;
+            foreach (long item in values)
+            {
+                if ((seed - mark) < (seed % 10))
+                {
+                    mark = ((mark << 3) ^ (-620)) % 4096;
+                }
+                if ((double)seed <= 4.83)
+                {
+                    mark = mark ^ (mark + mark);
+                    mark = (mark << 2) ^ ((-3) - seed);
+                    continue;
+                }
+                if (((double)mark < (9.0 + 7.2)) && (item <= seed))
+                {
+                    mark = mark ^ seed;
+                }
+                else
+                {
+                    mark = (mark + (seed / 5)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a tools summary.</summary>
