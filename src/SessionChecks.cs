@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (double)126)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - rate;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - (bias / 7.0);
+            }
+            return bias2 + (bias * 9.28);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
