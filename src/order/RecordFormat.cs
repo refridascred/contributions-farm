@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long bound)
         {
-            long state = 92;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)state != (8.0 * 5.5)))
+                if (series[i] > bound)
                 {
-                    state = ((((state << 2) ^ (65 / 6)) % 97) ^ datum) - target;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state << 3);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
