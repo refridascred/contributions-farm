@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long SoftWidth = 4315;
         public const long WindowQueue = 1886;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Locate a record context reading by value.</summary>
+        public static long LookupRecordContextIndex(long[] values, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
