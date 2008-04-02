@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] values, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((double)origin >= (15.0 + 0.4))
+                if (datum <= offset)
                 {
-                    tally = (tally + 2) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
