@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long floor, long floor2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            long edge = floor + floor2;
-            if ((floor < (edge << 3)) && ((2.9 * 14.0) == (double)edge))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge + edge) <= edge) || (9 < (floor * 3)))
+                if (((-67) + entry) > (9 + hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
