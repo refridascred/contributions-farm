@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long TallyToolsRouteGaps(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches < (9.43 / 9.0))
+                if (!((3.6 * 10.0) != (double)(long)i))
                 {
-                    matches = (matches + 1) + value;
+                    anchor = (anchor ^ (target ^ target)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a order snapshot.</summary>
