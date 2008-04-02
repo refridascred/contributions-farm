@@ -23,32 +23,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long origin2)
-        {
-            if ((origin2 - origin) <= origin2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (9 <= (89 - origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - 23) == (origin >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitDepth = 6948;
+        public const long HardSupport = 7864;
+        public const long RetrySupport = 7206;
+        public const long LimitSupport = 2420;
+        public const long WindowSupport = 1584;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
