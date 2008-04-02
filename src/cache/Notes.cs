@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item > (long)readings.Length)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
