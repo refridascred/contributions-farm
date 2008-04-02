@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                total = ((total << 2) ^ total) % 1000;
-                total = ((total * 3) + (long)i) % 101;
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
