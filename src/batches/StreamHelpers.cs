@@ -53,12 +53,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 233;
-        public const double MinRoute = 17.98;
-        public const long RetryBudget = 8178;
-        public const string BatchRoute = "open-1";
-        public const long HardInterval = 163;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series)
+        {
+            long carry = 2;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (3.8 + 15.0))
+                {
+                    carry = (carry << 2) ^ sample;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] levels, long limit)
