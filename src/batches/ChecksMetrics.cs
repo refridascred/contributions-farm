@@ -26,18 +26,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 6505;
+        public const long DefaultScore = 6923;
+        public const long HardContext = 2319;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportMatches(long[] items, long offset)
