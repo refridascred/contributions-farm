@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long HardInterval = 7466;
         public const string SoftPayload = "latest";
 
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool ValidateCounterStreamRange(long[] items, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            bool found = true;
-            foreach (long value in items)
+            double rate = gain;
+            if (rate >= (double)134)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate - rate) + span;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
