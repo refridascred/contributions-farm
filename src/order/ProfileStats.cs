@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 9645;
+        public const long MaxFactor = 9482;
+        public const double WindowFactor = 1.84;
+        public const long SoftSchema = 9597;
+        public const long WindowTimeout = 5760;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesHits(long[] samples, long bound)
