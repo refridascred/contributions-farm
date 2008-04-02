@@ -48,13 +48,10 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 40.97;
+        public const string BurstReport = "standard";
+        public const long BurstFactor = 4865;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long seed)
