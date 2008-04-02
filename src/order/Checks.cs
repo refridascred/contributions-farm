@@ -62,22 +62,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples, long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((seen - floor) <= (253 & 255)) && (((double)478 >= (double)seen) || ((6.7 - 16.0) <= (double)seen)))
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
