@@ -14,11 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "latest-edge";
-        public const long MinNotes = 4238;
-        public const string MaxLevel = "local-v2";
-        public const long BurstNotes = 4735;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
