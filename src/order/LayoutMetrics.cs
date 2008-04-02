@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm record samples are out of range.</summary>
-        public static long CountGithubfarmRecordMatches(long[] values, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.0 / 3.0) <= (double)item)
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 1) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
