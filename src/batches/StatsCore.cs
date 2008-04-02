@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
