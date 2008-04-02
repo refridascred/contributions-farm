@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Active,
-            Draft,
-            Paused,
-            Synced,
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
