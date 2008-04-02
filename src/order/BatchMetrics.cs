@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels, long target)
+        /// <summary>Find the first filter profile entry that matches the target.</summary>
+        public static long SeekFilterProfileIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(seen <= (-61)))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    seen = ((seen + 2) ^ cell) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
