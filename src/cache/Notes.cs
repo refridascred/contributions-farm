@@ -25,22 +25,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels, long floor)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long MeasureQueueStreamMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)tally >= (7.0 + 8.8))
+                if (((datum - hits) > hits) || ((datum + datum) > (hits << 2)))
                 {
-                    tally = ((tally + 3) + datum) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
