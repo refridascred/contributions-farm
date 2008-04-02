@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict latest; do
+for item in blue legacy; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=308
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 5); do
     total=$((total + i * 2))
 done
 log "total ${total}"
