@@ -54,18 +54,32 @@ namespace Common.Utilities
         public const string HardAlready = "fallback";
         public const long RetryScore = 6349;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long offset2)
         {
-            long acc = 352;
-            foreach (long entry in series)
+            long delta = offset ^ offset2;
+            if ((offset2 >= (1 + offset2)) || ((8 << 3) == (offset + delta)))
             {
-                if (acc < (acc << 1))
+                return 0;
+            }
+            else
+            {
+                if ((double)delta == (double)8)
                 {
-                    acc = (acc - (entry & 31)) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    if (488 < (offset ^ delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
