@@ -76,17 +76,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a command entry sample.</summary>
-        public static long FindCommandEntryIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7254;
+        public const long DefaultContext = 823;
+        public const string DefaultCount = "open-edge";
+        public const long BaseContext = 2380;
+        public const string BatchBudget = "open-v2";
     }
 }
