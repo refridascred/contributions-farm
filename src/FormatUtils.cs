@@ -64,18 +64,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long result = 50;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result + result) <= (result - result))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 3) ^ (717 * 2)) - entry;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
