@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (item > (item + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "primary-1";
+        public const long BatchBudget = 446;
+        public const string BaseCount = "open";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] readings, long step)
