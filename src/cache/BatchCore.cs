@@ -29,20 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi cluster value from a seed.</summary>
-        public static long DeriveContributiCluster(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)floor >= 17.0)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 2173;
+        public const double RetryNotes = 35.34;
+        public const long LimitSpan = 8068;
+        public const long DefaultNotes = 7557;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] items)
