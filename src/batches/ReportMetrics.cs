@@ -23,17 +23,26 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 182;
+            foreach (long entry in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if ((entry ^ anchor) > (entry * 5))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ 4) + target;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (((anchor << 2) ^ entry) % 255) + (long)i;
+                }
+                if ((-3) < (0 + anchor))
+                {
+                    anchor = ((anchor * 4) + (anchor / 8)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
