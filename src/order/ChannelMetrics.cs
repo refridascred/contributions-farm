@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 10;
-            foreach (long entry in items)
-            {
-                state = (state ^ (seed - state)) ^ entry;
-                state = (state * 5) + (2 & 7);
-            }
-            return state;
+            Synced,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the graph class values.</summary>
