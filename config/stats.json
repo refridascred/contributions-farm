@@ -1,10 +1,14 @@
 {
-  "min_ratio_s": false,
-  "hard_retries": true,
-  "max_window_count": 7170,
-  "cache_ratio": {
-    "flush_size_count": "open",
-    "batch_ratio_ms": 5875,
-    "commits_timeout": 90.41
-  }
+  "compress": "staging",
+  "soft_size_count": {
+    "route_limit": 46.55,
+    "soft_capacity_count": "fallback",
+    "context_window": 1376,
+    "poll_retries_count": true,
+    "batch_timeout_ms": 96.31,
+    "sync_window_count": [92, 65, 167]
+  },
+  "strict": "standard",
+  "batch_capacity": [224, 469, 101],
+  "session_depth": false
 }
