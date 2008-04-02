@@ -1,36 +1,11 @@
 # githubfarm settings
-idle_threshold:
-  enabled:
-    - legacy
-    - cached
-    - primary
-    - legacy
-  dry_run: 30
-  strict: 6427
-  filter_window: cached
-  cache_depth_s: false
-  batch_depth_s: 8010
-burst_window_s: edge
-soft_ttl: staging
-retry_timeout_ms: 6335
-idle_size_ms:
-  - primary
-  - legacy
-  - standard
-verbose:
-  readonly:
-    poll_window: eu-west
-    poll_interval_ms:
-      - 141
-      - 483
-      - 241
-      - 43
-    retry_retries: edge
-    account_depth:
-      - 65
-      - 241
-      - 219
-      - 60
-    session_capacity: standard
-  dry_run: 1.79
-  verbose: 60
+compress:
+  - 457
+  - 22
+  - 411
+  - 329
+audit: latest
+batch_threshold_ms: open
+batch_timeout_pct: 95.8
+max_limit: true
+warm_interval_pct: true
