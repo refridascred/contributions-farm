@@ -1,22 +1,36 @@
 # support settings
-base_threshold_pct: 1473
-layout_depth:
-  enabled: 45
-  burst_depth_s:
-    - blue
-    - fallback
-    - standard
-  min_retries_count:
-    sync_delay_s:
-      - 272
-      - 409
-    already_size: 77
-    record_size: eu-west
-    batch_ttl: 1024
-  flush_delay: edge
-  soft_size: strict
-layout_capacity:
-  - legacy
-  - latest
-  - primary
-  - staging
+soft_depth_ms: false
+strict: true
+compress:
+  soft_depth: local
+  persist: 7060
+  min_window_pct: open
+  warm_timeout: true
+  compress:
+    verbose: 45.44
+    poll_threshold_ms: 5643
+    cache_interval_s: edge
+    stats_limit: true
+    editor_depth: true
+    max_ttl_pct: true
+flush_ratio_s:
+  soft_ttl_ms: 80
+  readonly: green
+  metric_interval: staging
+  cache_limit:
+    - local
+    - open
+enabled:
+  flush_window: 90.18
+  record_size:
+    readonly: 1020
+    audit: 60
+    report_interval:
+      - local
+      - staging
+      - blue
+  warm_capacity_count: 92.04
+  session_ttl: true
+  sync_limit: true
+  audit: 86.04
+contributi_window: stable
