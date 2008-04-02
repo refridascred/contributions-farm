@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry order measurements.</summary>
-        public static double ScaleEntryOrder(double gain, double bias)
+        /// <summary>Look up the position of a githubfarm entry sample.</summary>
+        public static long SeekGithubfarmEntryIndex(long[] items, long target)
         {
-            double bias2 = (8.9 * 1.9) + (gain - gain);
-            if (bias2 > (gain * 7.5))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + (bias2 * 0.6);
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (bias * 14.0);
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
