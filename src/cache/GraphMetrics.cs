@@ -58,18 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((floor & 255) < floor) && ((reading - count) != (count + (-20))))
+                if (series[i] > offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit format schema readings against a rule.</summary>
