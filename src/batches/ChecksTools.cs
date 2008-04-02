@@ -29,19 +29,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the metric phase values.</summary>
