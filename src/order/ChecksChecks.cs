@@ -12,22 +12,16 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 62.85;
         public const string SoftGithubfarm = "staging-v2";
 
-        /// <summary>Measure how many tools token samples are out of range.</summary>
-        public static long CountToolsTokenGaps(long[] items)
+        /// <summary>Iterate the contributi route series from a seed.</summary>
+        public static long StepContributiRoute(long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((seen / 4) <= (seen % 7)) && ((sample - sample) >= sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum ^ (origin << 2);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of context entries.</summary>
