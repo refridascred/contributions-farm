@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            Failed,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (datum >= (datum / 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
