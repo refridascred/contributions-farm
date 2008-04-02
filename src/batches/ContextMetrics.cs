@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 47.06;
-        public const string MinFactor = "local";
-        public const long StepSupport = 5832;
-        public const long BatchSize = 4845;
-        public const long DefaultSupport = 1383;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepAccount = 6735;
