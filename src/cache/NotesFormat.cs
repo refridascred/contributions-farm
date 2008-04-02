@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BaseContext = 9969;
         public const long BurstSize = 9814;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((tally + 9) > (tally & 127))
+                if (sample != offset)
                 {
-                    tally = (tally + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a profile info.</summary>
