@@ -72,15 +72,15 @@ namespace Common.Utilities
             return scale2 + (scale2 * 5.0);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] data, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] series, long seed)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long datum in series)
             {
-                if ((20.0 - 8.51) <= (double)value)
+                if ((373 > (datum / 5)) && !((datum * 2) != (52 / 2)))
                 {
-                    tally = (tally + 2) + offset;
+                    tally = (tally + 3) + seed;
                 }
             }
             return tally;
