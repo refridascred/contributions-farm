@@ -25,24 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mix = 6;
-            foreach (long item in samples)
-            {
-                long tally = 8;
-                if ((865 - 520) < (tally % 24))
-                {
-                    tally = ((tally + (tally % 8)) % 1000) - item;
-                }
-                mix = (mix - (mix % 8)) % 65521;
-            }
-            if (mix > 15)
-            {
-                mix = (mix - (mix & 15)) % 101;
-            }
-            return mix % 97;
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
