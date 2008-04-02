@@ -1,8 +1,6 @@
-id,label,score,owner
-1,standard,53.54,24.77
-2,cached,primary,fallback
-3,stable,standard,blue
-4,53.49,781,683
-5,61.36,2.55,fallback
-6,41.77,946,fallback
-7,493,latest,869
+id,weight,active,rank
+1,cached,87.72,primary
+2,blue,standard,strict
+3,54.08,standard,887
+4,783,87.58,25.34
+5,540,119,26.15
