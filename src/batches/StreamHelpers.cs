@@ -64,17 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long cur = (long)i;
-                state = state - (cur * 4);
-                state = ((state * 4) + (long)i) % 65521;
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
