@@ -76,18 +76,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long ScoreContributiLayout(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long result = 876;
-            foreach (long cell in readings)
-            {
-                if (((double)result < 17.0) && ((result & 15) != (result - cell)))
-                {
-                    result = result - (cell * 4);
-                }
-            }
-            return result;
+            Idle,
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
