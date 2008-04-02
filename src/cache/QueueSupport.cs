@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double ratio, double offset)
         {
-            New,
-            Retry,
-            Synced,
-            Draft,
+            double drift = (double)((-24) & 15);
+            if (drift < 6.0)
+            {
+                drift = drift - (2.7 - 0.4);
+            }
+            else
+            {
+                drift = drift + (ratio * 3.1);
+            }
+            return drift + (ratio + offset);
         }
 
         /// <summary>Locate a payload reading by value.</summary>
