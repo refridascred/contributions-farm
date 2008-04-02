@@ -1,8 +1,5 @@
 # support settings
-max_timeout: 1024
-metrics_ratio: 10
-enabled: cached
-retry_timeout_count:
-  - strict
-  - legacy
-  - latest
+strict: legacy
+verbose: true
+cache_capacity: green
+cache_capacity_ms: local
