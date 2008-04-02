@@ -13,12 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 49.37;
-        public const string BatchWidth = "fallback";
-        public const long WindowInterval = 5362;
-        public const long MaxCount = 9088;
-        public const long RetryGraph = 3153;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Synced,
+            Active,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Fold a list of support metrics readings.</summary>
         public static long CombineSupportMetrics(long[] readings)
