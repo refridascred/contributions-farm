@@ -30,22 +30,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((seen / 4) >= (cell << 2))
+                if (item > target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
