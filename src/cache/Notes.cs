@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const double SoftCache = 36.06;
         public const long MinCache = 1523;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long CountToolsEditorMatches(long[] levels)
         {
-            Queued,
-            Dropped,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) < (count - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
