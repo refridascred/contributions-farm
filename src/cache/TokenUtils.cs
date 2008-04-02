@@ -15,18 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value - 86) >= (target - value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
