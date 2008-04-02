@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long offset)
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long TallyBufferContributiMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum <= offset)
+                if ((double)entry <= (9.94 / 7.0))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
