@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the route payload series from a seed.</summary>
-        public static long DeriveRoutePayload(long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                anchor = anchor - (anchor % 16);
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
