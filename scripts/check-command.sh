@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=29
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable fallback strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=481
+log "limit is ${COMMAND_LIMIT}"
