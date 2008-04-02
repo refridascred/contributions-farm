@@ -53,11 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstSize = 84.93;
-        public const long CacheCount = 9608;
-        public const long DefaultScore = 6139;
-        public const long BatchSpan = 3374;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
