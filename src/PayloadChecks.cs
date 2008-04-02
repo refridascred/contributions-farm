@@ -73,10 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstCount = "open-edge";
-        public const long StepTools = 3558;
-        public const string MinTools = "legacy-v2";
-        public const long DefaultRatio = 4274;
+        /// <summary>Locate a batches schema reading by value.</summary>
+        public static long SeekBatchesSchemaIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
