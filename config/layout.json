@@ -1,15 +1,15 @@
 {
-  "audit": 67.93,
-  "enabled": {
-    "verbose": "latest",
-    "soft_limit_ms": [153, 350, 462, 478],
-    "cache_retries_pct": {
-      "counter_limit": 500,
-      "min_delay_pct": "blue",
-      "min_interval_pct": true,
-      "retry_ratio_pct": 19
+  "verbose": {
+    "checks_size": ["legacy", "blue"],
+    "verbose": {
+      "audit": false,
+      "context_depth": 57.24,
+      "compress": ["open", "edge", "open"],
+      "cache_depth_pct": 84.07
     },
-    "poll_delay_count": 52.4
+    "base_depth_ms": "latest",
+    "compress": false
   },
-  "warm_timeout_count": 37.53
+  "sync_ttl_pct": 18.33,
+  "poll_threshold_pct": true
 }
