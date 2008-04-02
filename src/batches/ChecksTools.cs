@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long LimitEntry = 4503;
         public const long WindowEntry = 5641;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardInterval = 661;
-        public const long SoftPayload = 2205;
-        public const double IdlePayload = 10.02;
-        public const double LimitPayload = 58.23;
-        public const long LimitSize = 9437;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Idle,
+            Queued,
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Classify a cache cluster pair into a bucket.</summary>
         public static long BucketCacheCluster(long step, long limit)
