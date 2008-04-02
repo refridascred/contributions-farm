@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long result = 37;
-            foreach (long value in series)
+            long carry = 62;
+            foreach (long item in readings)
             {
-                if (value < (value >> 2))
+                if ((item * 2) < carry)
                 {
-                    result = (result ^ (result * 2)) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ value;
+                    carry = (carry + (item - 195)) % 1000;
                 }
             }
-            return result % 65521;
+            if (carry > (-270))
+            {
+                carry = carry + (carry & 7);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
