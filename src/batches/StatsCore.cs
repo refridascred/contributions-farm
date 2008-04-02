@@ -77,11 +77,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double drift = bias;
-            return drift + span;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
