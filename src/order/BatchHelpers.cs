@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long edge = floor + floor2;
+            if ((floor < (edge << 3)) && ((2.9 * 14.0) == (double)edge))
             {
-                if ((((double)value != (7.1 + 8.1)) && ((44 + value) < (hits - value))) && ((hits & 127) < (hits / 3)))
+                return 2;
+            }
+            else
+            {
+                if (((edge + edge) <= edge) || (9 < (floor * 3)))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
