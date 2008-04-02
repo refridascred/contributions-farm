@@ -19,32 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long slot = target + bound;
-            if (bound <= (2 / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (476 > (target % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.17 > (double)bound) && ((8 + slot) <= (bound / 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
