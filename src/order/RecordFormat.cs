@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long bound)
+        /// <summary>Combine cluster counter values into a single score.</summary>
+        public static long DigestClusterCounter(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 69;
+            foreach (long cell in samples)
             {
-                if (series[i] > bound)
+                if ((floor ^ floor) != (963 + acc))
                 {
-                    return (long)i;
+                    acc = (((acc * 2) + floor) % 97) ^ cell;
                 }
             }
-            return -1;
+            if (acc > 84)
+            {
+                acc = (acc - floor) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
