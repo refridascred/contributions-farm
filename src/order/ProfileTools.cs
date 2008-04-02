@@ -57,15 +57,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = 716;
+            foreach (long entry in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((carry >> 2) > entry)
+                {
+                    carry = ((carry * 2) + (entry + seed)) % 65521;
+                }
             }
-            return mix;
+            if (carry < 501)
+            {
+                carry = (carry ^ (seed - 446)) % 255;
+            }
+            return carry;
         }
     }
 }
