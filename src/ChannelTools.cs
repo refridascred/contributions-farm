@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Check that every counter notes entry stays within the limit.</summary>
+        public static bool VerifyCounterNotesBounds(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((value + value) >= (131 / 7))
+                if (item < limit)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
