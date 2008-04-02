@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long CountToolsRouteMatches(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (seen <= (63 & 1))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
