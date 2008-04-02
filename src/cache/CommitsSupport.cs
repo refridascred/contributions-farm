@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] levels, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (levels[i] < bound)
+                if (((count & 63) >= (limit - count)) || ((count ^ limit) <= (limit - item)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a batches already reading by value.</summary>
