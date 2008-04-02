@@ -33,12 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next format filter value from a seed.</summary>
+        public static long DeriveFormatFilter(long seed)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
