@@ -1,12 +1,6 @@
 {
-  "max_window_s": [73, 233, 343, 58],
-  "payload_size": 63.53,
-  "retry_ratio_s": {
-    "max_interval_pct": 2916,
-    "checks_limit": "green",
-    "verbose": 44.35,
-    "layout_limit": "strict",
-    "channel_ttl": "legacy"
-  },
-  "metrics_threshold": "cached"
+  "format_interval": 4105,
+  "burst_ttl_ms": "legacy",
+  "sync_window_count": "latest",
+  "base_retries_pct": "strict"
 }
