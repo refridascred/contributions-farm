@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            Failed,
-            Draft,
-            Closed,
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (carry - ((long)i + carry)) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
