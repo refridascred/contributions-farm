@@ -34,17 +34,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long offset)
+        /// <summary>Grade a context editor value against two limits.</summary>
+        public static long GradeContextEditor(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin < (origin * 2))
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((origin / 5) != (origin >> 5)) && (origin < 6))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - 934) > floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
