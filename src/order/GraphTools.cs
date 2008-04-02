@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const string MaxLevel = "local-v2";
         public const long BurstNotes = 4735;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit notes report readings against a rule.</summary>
