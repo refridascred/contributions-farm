@@ -24,19 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double bias, double bias2)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items)
         {
-            double bias3 = (bias2 / 8.0) + (double)833;
-            if (bias3 >= (double)39)
+            long total = 70;
+            foreach (long reading in items)
             {
-                bias3 = bias3 - (bias / 6.0);
+                total = ((total ^ total) % 1000) ^ reading;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 + (bias2 + bias)) + (double)(long)i;
-            }
-            return bias3 - bias3;
+            return total;
         }
     }
 }
