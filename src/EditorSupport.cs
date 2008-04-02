@@ -63,18 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels, long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            long result = 9;
-            foreach (long entry in levels)
+            double load = weight;
+            if (load >= span)
             {
-                if (((long)levels.Length % 3) == (entry ^ 1))
-                {
-                    result = (((result * 2) + (result / 9)) % 4096) - floor;
-                }
+                load = load + weight;
             }
-            return result % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 2.52) + (double)(long)i;
+            }
+            return load + (double)52;
         }
     }
 }
