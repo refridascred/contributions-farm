@@ -1,9 +1,6 @@
 {
-  "base_capacity_count": "green",
-  "poll_window_s": {
-    "poll_timeout": "open",
-    "enabled": false,
-    "max_delay_pct": 21.79
-  },
-  "sync_depth_ms": "primary"
+  "poll_window_pct": 41,
+  "base_depth_ms": "cached",
+  "cache_threshold_ms": 23.96,
+  "max_ttl_s": 7.17
 }
