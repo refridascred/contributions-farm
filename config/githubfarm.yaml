@@ -1,11 +1,13 @@
 # githubfarm settings
-readonly: 84.96
-retry_ttl:
-  warm_threshold_count: 1703
-  min_window_ms: open
-  graph_retries: 72
-flush_interval_s: false
-schema_delay:
-  - local
-  - edge
-tools_threshold: 9534
+soft_threshold_pct: false
+base_threshold:
+  warm_ratio:
+    - local
+    - strict
+    - local
+    - standard
+  batch_limit: primary
+  max_threshold_ms: standard
+  flush_window_ms: 91.37
+burst_interval_s: open
+entry_timeout: 90.88
