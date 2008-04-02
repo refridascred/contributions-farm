@@ -59,10 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "open-v2";
-        public const double MinScore = 14.3;
-        public const double IdleLevel = 92.26;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((double)target < (7.87 + 6.1)))
+                {
+                    mark = ((mark << 3) ^ (mark / 7)) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark >> 1);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] readings)
