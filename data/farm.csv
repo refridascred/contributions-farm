@@ -1,6 +1,11 @@
-id,rank,ratio,count
-1,53,735,40.1
-2,5.86,27.14,stable
-3,226,latest,386
-4,64.56,401,21.97
-5,47,604,blue
+id,level,ratio
+1,strict,green
+2,59.38,latest
+3,91.5,fallback
+4,55.5,124
+5,primary,75.64
+6,staging,11.41
+7,734,open
+8,8,fallback
+9,243,primary
+10,883,latest
