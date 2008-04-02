@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseScore = 5431;
+        public const long LimitSession = 853;
+        public const double MinSession = 17.05;
+        public const long HardSize = 5829;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 7377;
