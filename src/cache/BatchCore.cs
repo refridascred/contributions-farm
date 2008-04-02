@@ -20,33 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long origin, long seed)
-        {
-            long prev = origin ^ seed;
-            if (((prev * 3) <= (origin % 5)) && ((17.0 / 8.0) <= (double)origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.04 * 9.01) < (double)prev)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((29 + origin) < origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultDepth = 4125;
+        public const long BaseFarm = 3176;
+        public const long LimitFarm = 9087;
+        public const string LimitScore = "legacy-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheRatio = 7558;
