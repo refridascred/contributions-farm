@@ -68,20 +68,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "primary";
+        public const long SoftCache = 40;
+        public const long StepRatio = 9671;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
