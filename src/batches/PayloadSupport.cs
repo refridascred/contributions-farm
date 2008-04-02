@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] samples, long bound)
+        /// <summary>Rank counter layout input into a small class.</summary>
+        public static long ClassifyCounterLayout(long origin, long limit)
         {
-            long mark = 8;
-            foreach (long cell in samples)
+            long lane = origin ^ limit;
+            if ((lane / 4) > (origin - lane))
             {
-                mark = mark ^ mark;
-                mark = (mark * 2) + cell;
-                if ((bound & 255) != (long)samples.Length)
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ lane) < (453 + limit))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
