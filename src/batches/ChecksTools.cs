@@ -35,11 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
