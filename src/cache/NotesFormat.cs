@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry << 3) ^ origin;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the report level values.</summary>
