@@ -1,6 +1,11 @@
 {
-  "flush_limit_ms": ["latest", "latest", "stable"],
-  "stats_interval": "open",
-  "route_capacity": "standard",
-  "layout_limit": "local"
+  "strict": "latest",
+  "burst_interval_s": [29, 226],
+  "flush_limit_pct": true,
+  "burst_window_pct": 35.76,
+  "payload_ttl": {
+    "warm_delay_s": 9.26,
+    "entry_timeout": ["cached", "eu-west", "strict"],
+    "retry_capacity_pct": 250
+  }
 }
