@@ -1,15 +1,7 @@
 # githubfarm settings
-soft_limit_count:
-  cache_delay: 72.54
-  max_timeout_pct:
-    - cached
-    - local
-  default_delay: 60
-  strict: strict
-retry_capacity: 51.78
-hard_ttl:
-  - strict
-  - fallback
-  - latest
-  - green
-batch_limit_ms: local
+payload_timeout:
+  - 232
+  - 177
+warm_size: false
+base_retries_ms: false
+poll_capacity_pct: staging
