@@ -43,23 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = mark + (seed % 3);
-                mark = ((mark * 3) + (seed << 3)) % 1000;
-                if (((7.36 * 6.0) <= (double)seed) || ((4.4 + 7.4) < (double)mark))
-                {
-                    mark = (mark * 3) + (89 << 1);
-                    mark = (mark << 3) ^ (mark & 127);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            double drift = (scale / 3.0) * 12.0;
+            return (drift - scale) + bias;
         }
     }
 }
