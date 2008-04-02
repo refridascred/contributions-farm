@@ -1,17 +1,6 @@
 {
-  "buffer_depth": true,
-  "batch_threshold_ms": 55.07,
-  "retry_interval": ["edge", "fallback", "open", "blue"],
-  "cache_delay": {
-    "min_capacity_ms": 83.19,
-    "record_ratio": "eu-west",
-    "retry_timeout_pct": 45.21,
-    "default_ratio_pct": {
-      "support_size": "blue",
-      "entry_ttl": "eu-west",
-      "retry_limit_ms": [209, 202]
-    },
-    "min_timeout_s": "fallback",
-    "schema_interval": "latest"
-  }
+  "hard_ttl_s": "blue",
+  "min_timeout": "stable",
+  "cache_delay": ["local", "staging", "legacy", "open"],
+  "verbose": 4757
 }
