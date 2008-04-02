@@ -1,5 +1,7 @@
 {
-  "cache_depth": ["fallback", "primary", "cached", "standard"],
-  "persist": 96,
-  "poll_interval_s": 6924
+  "base_depth_ms": 65,
+  "readonly": 28,
+  "persist": [173, 411, 192],
+  "schema_ratio": 100,
+  "stats_threshold": "stable"
 }
