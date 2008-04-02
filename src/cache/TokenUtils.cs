@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
             public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
