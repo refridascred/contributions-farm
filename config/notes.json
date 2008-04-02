@@ -1,6 +1,6 @@
 {
-  "support_capacity": 7685,
-  "verbose": 55,
-  "max_ratio_pct": 4922,
-  "counter_ttl": 64
+  "checks_size": true,
+  "burst_depth": 6134,
+  "hard_timeout_s": [471, 60],
+  "cache_interval_ms": 7.04
 }
