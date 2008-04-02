@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            double gain = weight;
-            if (gain < gain)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                gain = (gain + 11.0) + offset;
+                if (item > (item + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + weight;
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
