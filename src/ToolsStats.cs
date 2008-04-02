@@ -85,17 +85,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            New,
+            Ready,
         }
     }
 }
