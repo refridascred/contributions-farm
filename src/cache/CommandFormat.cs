@@ -24,22 +24,12 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary-edge";
+        public const long BaseWidth = 6044;
+        public const double HardDepth = 95.22;
+        public const double SoftMetric = 63.96;
+        public const long BatchDepth = 9022;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
