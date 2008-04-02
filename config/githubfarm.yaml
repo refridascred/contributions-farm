@@ -1,6 +1,10 @@
 # githubfarm settings
-poll_retries_ms: 28.17
-schema_limit: true
-contributi_timeout: 97.17
-persist: open
-audit: 1024
+retry_depth_ms:
+  - 196
+  - 285
+  - 71
+  - 175
+readonly: strict
+soft_depth_ms: blue
+persist: staging
+poll_window: blue
