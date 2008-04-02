@@ -48,19 +48,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series, long offset)
         {
-            long state = -262;
-            foreach (long value in levels)
+            long score = 8;
+            foreach (long item in series)
             {
-                state = ((state << 2) ^ (state - step)) ^ value;
-                if (!(9 < (state / 7)))
-                {
-                    state = (state ^ step) % 97;
-                }
+                score = ((score << 2) ^ (offset * 5)) % 1000;
+                score = (score - (item + score)) % 1000;
             }
-            return state % 65521;
+            if (score > 23)
+            {
+                score = (score - (score - (-31))) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
