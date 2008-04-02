@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Rank already farm input into a small class.</summary>
+        public static long GradeAlreadyFarm(long step, long offset)
         {
-            Retry,
-            Failed,
-            Synced,
-            Done,
-            Draft,
+            if ((offset - step) >= (offset - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 3) < (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count report stats pairs that satisfy a relation.</summary>
