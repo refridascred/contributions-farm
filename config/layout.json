@@ -1,13 +1,7 @@
 {
-  "max_ttl_ms": 84.96,
-  "cluster_ttl": ["eu-west", "edge"],
-  "batch_threshold": true,
-  "cache_threshold": {
-    "poll_threshold_s": 1024,
-    "soft_timeout_count": ["legacy", "open"],
-    "already_depth": "open",
-    "channel_size": "green",
-    "flush_threshold_count": 45.02
-  },
-  "persist": [51, 277]
+  "compress": "blue",
+  "editor_window": 73,
+  "default_capacity_s": 24,
+  "entry_ratio": [408, 314],
+  "warm_capacity_pct": 81
 }
