@@ -1,14 +1,7 @@
 # support settings
-profile_window: 563
-default_delay_ms: legacy
-report_limit:
-  warm_threshold_ms: 51.66
-  batch_ratio: primary
-  flush_window: 100
-  flush_depth_s: strict
-  default_window_s: strict
-  enabled: standard
-min_size_s: 77.55
-audit:
-  - cached
-  - strict
+batch_size_ms: cached
+hard_limit_count: true
+warm_ratio:
+  - eu-west
+  - local
+  - latest
