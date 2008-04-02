@@ -1,10 +1,11 @@
 # githubfarm settings
-burst_size_count:
-  - blue
-  - fallback
-  - fallback
-token_ttl: 25.95
-session_ttl: false
-command_delay: 69.16
-idle_ttl_pct: 60
-min_size: 67
+readonly: 84.96
+retry_ttl:
+  warm_threshold_count: 1703
+  min_window_ms: open
+  graph_retries: 72
+flush_interval_s: false
+schema_delay:
+  - local
+  - edge
+tools_threshold: 9534
