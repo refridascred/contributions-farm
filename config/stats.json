@@ -1,11 +1,17 @@
 {
-  "report_capacity": 85.21,
-  "dry_run": {
-    "base_ttl_ms": [22, 481],
-    "dry_run": ["staging", "green"],
-    "cache_retries": 30.95
+  "max_ratio_pct": {
+    "flush_timeout_s": 250,
+    "readonly": "cached",
+    "hard_ratio": 60,
+    "audit": 81.05,
+    "filter_window": "staging"
   },
-  "warm_capacity_count": 42.88,
-  "cache_window_ms": "staging",
-  "default_timeout_count": 85
+  "verbose": false,
+  "dry_run": "stable",
+  "soft_retries_s": {
+    "checks_retries": 100,
+    "min_size": true,
+    "retry_interval_count": "latest",
+    "idle_timeout_ms": false
+  }
 }
