@@ -30,24 +30,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long SortCounterReport(long bound, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
         {
-            if ((835 & 255) <= bound)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset >> 2) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
     }
 }
