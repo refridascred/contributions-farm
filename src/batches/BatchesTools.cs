@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data, long offset)
         {
-            long acc = 9;
-            foreach (long item in series)
+            long total = 29;
+            foreach (long entry in data)
             {
-                if ((item & 15) != (acc - item))
+                if ((8.3 * 6.93) != (double)entry)
                 {
-                    acc = acc ^ (acc % 97);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    total = (((total << 2) ^ (entry + (long)data.Length)) % 101) - offset;
                 }
             }
-            return acc;
+            if (total < (-830))
+            {
+                total = ((total << 3) ^ (360 - 78)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
