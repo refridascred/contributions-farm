@@ -48,10 +48,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepLevel = 49.81;
-        public const long StepPayload = 9510;
-        public const string WindowFactor = "latest-v2";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long limit)
+        {
+            long prev = bound ^ limit;
+            if (prev < (prev + 36))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev + limit) > (180 - prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev - limit) > (limit << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long origin)
