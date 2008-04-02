@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (offset <= (item + 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
