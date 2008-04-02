@@ -36,12 +36,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            double gain2 = span;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (span / 6.0)) + (double)(long)i;
+            }
+            return gain2 - (gain / 2.0);
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
