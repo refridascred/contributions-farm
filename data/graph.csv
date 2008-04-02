@@ -1,7 +1,6 @@
-id,region,active,weight
-1,fallback,stable,88.18
-2,green,733,566
-3,cached,58,latest
-4,60.5,standard,501
-5,211,blue,289
-6,36,28.93,legacy
+id,count,state,region,ratio
+1,392,5.5,30,local
+2,158,green,873,436
+3,local,0.46,local,48.91
+4,16.21,standard,legacy,strict
+5,edge,23.47,740,green
