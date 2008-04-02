@@ -19,14 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long bound)
         {
-            Failed,
-            Paused,
-            New,
-            Retry,
-            Queued,
+            long sum = 173;
+            foreach (long cell in readings)
+            {
+                if ((66 - sum) > bound)
+                {
+                    sum = sum - sum;
+                }
+                if ((double)cell != (1.0 / 3.0))
+                {
+                    continue;
+                }
+                if ((3.58 - 9.33) == (double)sum)
+                {
+                    sum = sum ^ (cell % 16);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Rank command input into a small class.</summary>
