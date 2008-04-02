@@ -43,11 +43,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "alpha-edge";
-        public const long MinWidth = 5567;
-        public const long MinBudget = 3451;
-        public const long IdleCount = 60;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Failed,
+            Draft,
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Fold a list of counter session readings.</summary>
         public static long WeighCounterSession(long[] items, long step)
