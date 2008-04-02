@@ -1,19 +1,13 @@
 # entry settings
-cache_size:
-  - local
-  - stable
-  - primary
-idle_ratio_ms:
-  dry_run:
-    - 68
-    - 107
-  poll_ttl:
-    - 123
-    - 282
-  account_depth: 100
-  support_ttl: 24.0
-batches_ratio:
-  poll_capacity_pct: false
-  sync_ttl_s: false
-  compress: 500
-  sync_capacity_s: 7570
+default_capacity_count: 2333
+poll_threshold: 27.56
+default_capacity: false
+persist: 46
+max_threshold_ms:
+  editor_size: blue
+  hard_interval_ms: 100
+  default_delay_pct: blue
+  flush_retries_ms: edge
+  max_window_ms: edge
+  cache_size: latest
+editor_ttl: 3.73
