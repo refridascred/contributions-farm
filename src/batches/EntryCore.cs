@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Adjust a layout profile reading.</summary>
+        public static double SmoothLayoutProfile(double weight, double floor)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            double weight2 = 5.1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (weight / 9.0)) + (double)(long)i;
+            }
+            return weight2 - (floor / 6.0);
         }
 
         /// <summary>Hold a record options.</summary>
