@@ -51,13 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
