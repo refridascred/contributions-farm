@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values, long seed)
+        /// <summary>Measure how many buffer graph samples are out of range.</summary>
+        public static long CountBufferGraphHits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((7 & 3) > hits))
+                if ((matches ^ matches) >= (seed / 8))
                 {
-                    hits = ((hits + 1) ^ datum) + seed;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
