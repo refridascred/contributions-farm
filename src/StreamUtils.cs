@@ -23,12 +23,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 90.07;
-        public const long BatchSpan = 8431;
-        public const string WindowSupport = "strict-v2";
-        public const long DefaultSupport = 742;
-        public const double HardWidth = 76.23;
+        /// <summary>Scale a githubfarm metrics figure with a bias.</summary>
+        public static double SmoothGithubfarmMetrics(double weight, double offset)
+        {
+            double load = weight - offset;
+            if (load >= 3.94)
+            {
+                load = load - (offset * 9.45);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - (load + offset);
+        }
 
         /// <summary>Measure how many tools route samples are out of range.</summary>
         public static long TallyToolsRouteGaps(long[] items)
