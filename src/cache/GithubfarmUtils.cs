@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long limit)
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long BucketGithubfarmFarm(long step, long origin)
         {
-            if (limit < 425)
+            long next = step ^ origin;
+            if (!((step + next) <= (step + step)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (limit <= (limit & 255))
+                if ((step > origin) && ((6.65 - 10.0) > (double)origin))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((limit % 7) >= limit)
+                    if ((16 + origin) > origin)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        if ((step / 9) >= next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
