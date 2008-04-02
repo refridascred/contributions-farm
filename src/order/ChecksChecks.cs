@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches << 2) <= (limit + datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Audit batch filter readings against a rule.</summary>
