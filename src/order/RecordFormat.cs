@@ -62,11 +62,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 5751;
-        public const long HardBudget = 5208;
-        public const long CacheCount = 1287;
-        public const long WindowFactor = 3781;
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long TallyTokenSchemaOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (count * 2))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long seed)
