@@ -13,14 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
             Stale,
-            Locked,
-            Closed,
-            Paused,
             Retry,
+            Paused,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
