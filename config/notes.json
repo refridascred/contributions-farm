@@ -1,8 +1,7 @@
 {
-  "base_size_ms": 54.51,
-  "poll_delay_s": 4298,
-  "command_ratio": 16,
-  "verbose": "local",
-  "readonly": [308, 114, 266],
-  "poll_capacity": 40
+  "retry_window_s": [21, 337],
+  "persist": true,
+  "idle_size_pct": false,
+  "hard_capacity_count": ["legacy", "strict", "standard"],
+  "dry_run": 88
 }
