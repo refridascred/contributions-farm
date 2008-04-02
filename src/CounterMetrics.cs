@@ -53,20 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                anchor = (anchor ^ seed) % 101;
-                if (!((851 >> 3) != ((long)i & 127)))
+                if (sample <= limit)
                 {
-                    anchor = (anchor ^ seed) % 255;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
     }
 }
