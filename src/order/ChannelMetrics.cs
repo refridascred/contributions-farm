@@ -26,19 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double bias, double bias2)
         {
-            double rate = offset + offset;
-            if (rate >= 5.0)
+            double bias3 = (bias2 / 8.0) + (double)833;
+            if (bias3 >= (double)39)
             {
-                rate = (rate + 17.0) + weight;
+                bias3 = bias3 - (bias / 6.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                rate = rate - (7.87 / 6.0);
+                bias3 = (bias3 + (bias2 + bias)) + (double)(long)i;
             }
-            return rate - (double)6;
+            return bias3 - bias3;
         }
     }
 }
