@@ -33,10 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 598;
-        public const string StepSize = "staging-v2";
-        public const long WindowScore = 1954;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6142;
+        public const long WindowBudget = 7067;
+        public const double BurstRatio = 11.66;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
