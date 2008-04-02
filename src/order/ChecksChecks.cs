@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstCount = 3437;
-        public const string MaxWidth = "open-1";
-        public const long BaseGithubfarm = 588;
-        public const double CacheGithubfarm = 62.85;
-        public const string SoftGithubfarm = "staging-v2";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Ready,
+            Locked,
+            Done,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Iterate the contributi route series from a seed.</summary>
         public static long StepContributiRoute(long origin)
