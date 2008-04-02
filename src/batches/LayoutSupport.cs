@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long WeighClusterBatches(long[] samples, long bound)
         {
-            Failed,
-            Done,
-            Synced,
+            long mix = 4;
+            foreach (long sample in samples)
+            {
+                if (bound <= (mix + bound))
+                {
+                    mix = ((mix << 3) ^ mix) - sample;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
