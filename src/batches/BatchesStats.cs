@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
