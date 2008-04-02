@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long WindowBudget = 7067;
         public const double BurstRatio = 11.66;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long state = -559;
+            foreach (long cell in readings)
+            {
+                if ((double)state != (5.09 * 9.9))
+                {
+                    state = ((state * 3) + (21 - cell)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
