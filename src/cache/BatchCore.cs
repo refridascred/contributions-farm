@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const long BatchInterval = 6037;
         public const long MaxOrder = 8480;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
