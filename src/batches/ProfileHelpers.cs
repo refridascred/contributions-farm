@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinBudget = 19.9;
+        public const string BurstRatio = "stable-edge";
+        public const double DefaultSpan = 56.59;
+        public const string StepFilter = "strict-edge";
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
