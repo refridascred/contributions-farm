@@ -13,19 +13,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Iterate the checks channel series from a seed.</summary>
+        public static long SeriesChecksChannel(long floor)
         {
-            long carry = 55;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                carry = carry ^ 31;
-                if ((double)carry > 6.0)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    carry = carry + (reading << 3);
+                    long diff = (552 / 3) - (floor * 2);
+                    mix = ((mix ^ ((long)i - diff)) % 101) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    mix = ((mix * 2) + (floor ^ floor)) + (long)i3;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a graph header.</summary>
