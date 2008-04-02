@@ -23,11 +23,24 @@ namespace Common.Utilities
         public const long BurstBudget = 2775;
         public const string StepDepth = "stable";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 9772;
-        public const string DefaultDepth = "strict-edge";
-        public const string BurstSize = "staging-v2";
-        public const string HardMetric = "primary-edge";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((result - origin) > (result << 3))
+                {
+                    result = (result * 2) + (long)i;
+                }
+                if ((4 % 2) > (346 + result))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] levels, long target)
