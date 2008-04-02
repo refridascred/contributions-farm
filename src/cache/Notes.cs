@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MaxSpan = 3746;
         public const long BaseSpan = 5826;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
