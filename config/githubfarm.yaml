@@ -1,7 +1,31 @@
 # githubfarm settings
-base_limit_pct: 73
-cache_size_count:
-  - local
-  - legacy
-strict: 3046
-batch_size_count: blue
+poll_delay_s:
+  readonly:
+    retry_interval_ms: fallback
+    buffer_timeout:
+      - blue
+      - latest
+      - open
+    cache_interval: 53
+    readonly: 22.02
+    max_size: true
+  sync_ttl_pct:
+    - strict
+    - primary
+    - latest
+  base_delay_count:
+    window_delay: 59.27
+    compress: open
+    enabled: 18.9
+session_ratio: true
+metric_timeout:
+  - 411
+  - 401
+  - 90
+strict:
+  cache_capacity: true
+  retry_capacity_ms: 26
+  enabled: 21.69
+  dry_run: 95.08
+  warm_retries: 12.74
+  poll_threshold_count: 60.27
