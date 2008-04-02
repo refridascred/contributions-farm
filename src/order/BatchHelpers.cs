@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultFarm = 6370;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchRatio = 91.5;
+        public const double BatchCache = 51.75;
+        public const long MinWidth = 9226;
+        public const long MaxSpan = 3267;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] items, long target)
