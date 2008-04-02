@@ -15,22 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples, long bound)
         {
-            long acc = -851;
-            foreach (long value in values)
+            long sum = 20;
+            foreach (long item in samples)
             {
-                if ((value - (-12)) < value)
+                if ((bound + item) < (sum / 8))
                 {
-                    acc = (acc + (value >> 5)) % 65521;
+                    sum = (sum + (sum + bound)) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 2) + (bound & 63);
                 }
             }
-            if (acc < 192)
+            if (sum > 0)
             {
-                acc = (acc ^ (96 ^ target)) % 1000;
+                sum = (sum ^ (97 << 2)) % 255;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
