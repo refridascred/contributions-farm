@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitBudget = 8750;
-        public const long WindowScore = 9045;
-        public const long RetryFactor = 3179;
-        public const double HardWidth = 79.72;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] samples)
