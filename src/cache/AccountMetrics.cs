@@ -61,21 +61,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of graph queue readings.</summary>
-        public static long PairGraphQueueCount(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)209 <= (double)datum)
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + offset;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
