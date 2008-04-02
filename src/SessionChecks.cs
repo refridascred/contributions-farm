@@ -33,14 +33,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheSpan = "latest-edge";
+        public const long CacheRecord = 9711;
+        public const double WindowRecord = 98.86;
 
         /// <summary>Project the next already queue value.</summary>
         public static double SmoothAlreadyQueue(double rate, double span)
