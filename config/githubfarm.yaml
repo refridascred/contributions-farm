@@ -1,7 +1,25 @@
 # githubfarm settings
-payload_timeout:
-  - 232
-  - 177
-warm_size: false
-base_retries_ms: false
-poll_capacity_pct: staging
+default_depth_s:
+  batch_size_count: 7298
+  queue_retries:
+    - 372
+    - 32
+    - 96
+    - 92
+  route_size:
+    - stable
+    - legacy
+  sync_size:
+    enabled: false
+    max_timeout_ms: green
+    readonly: latest
+verbose:
+  warm_ttl:
+    - 82
+    - 266
+  enabled: strict
+  audit:
+    - 208
+    - 253
+    - 495
+default_threshold_pct: 14.74
