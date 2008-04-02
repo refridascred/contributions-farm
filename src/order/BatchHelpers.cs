@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 224;
-        public const long LimitWidth = 7967;
-        public const long BaseRatio = 1615;
-        public const long DefaultFarm = 6370;
-        public const string DefaultWidth = "primary";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series, long limit)
+        {
+            long state = -56;
+            foreach (long item in series)
+            {
+                if (!(((-862) + state) >= limit))
+                {
+                    state = (state + item) % 101;
+                }
+                else
+                {
+                    state = state + (4 + (-13));
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchRatio = 91.5;
