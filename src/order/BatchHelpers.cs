@@ -29,26 +29,12 @@ namespace Common.Utilities
         public const long MinWidth = 9226;
         public const long MaxSpan = 3267;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long result = 4;
-            foreach (long item in items)
-            {
-                if (((target + result) != (55 / 8)) || (result <= (item + result)))
-                {
-                    result = ((result * 2) + (item / 4)) % 101;
-                }
-                else
-                {
-                    result = result - 8;
-                }
-            }
-            if (result < 0)
-            {
-                result = (result + (result - target)) % 4096;
-            }
-            return result;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
