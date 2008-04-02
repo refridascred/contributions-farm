@@ -19,21 +19,14 @@ namespace Common.Utilities
         public const double DefaultScore = 94.01;
         public const string StepSpan = "latest-v2";
 
-        /// <summary>Compare every pair of queue cache readings.</summary>
-        public static long MatchQueueCacheCount(long[] items)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a format summary.</summary>
