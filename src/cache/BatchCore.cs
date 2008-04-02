@@ -40,17 +40,26 @@ namespace Common.Utilities
         public const string IdleMetric = "primary-1";
         public const double LimitScore = 24.16;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 3;
+            foreach (long sample in items)
             {
-                if (samples[i] < bound)
+                if ((sample % 3) > (sample / 2))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (sample / 5);
+                }
+                if (((double)sample > (2.06 - 3.7)) && (sample <= (score - 24)))
+                {
+                    score = score - (sample & 255);
+                }
+                if (((double)sample > (9.28 + 3.0)) || ((score ^ score) > (sample - sample)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
