@@ -51,13 +51,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Stale,
-            Done,
-            Pending,
-            Draft,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
