@@ -22,12 +22,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Look up the position of a stream farm sample.</summary>
+        public static long SeekStreamFarmIndex(long[] series, long floor)
         {
-            Draft,
-            Done,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
