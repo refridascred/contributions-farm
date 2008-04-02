@@ -20,10 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowFactor = 2276;
-        public const long WindowTimeout = 6954;
-        public const long BatchFactor = 5803;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 2184;
+        public const long SoftWidth = 4315;
+        public const long WindowQueue = 1886;
 
         /// <summary>Count the stats checks entries that pass the check.</summary>
         public static long TallyStatsChecksGaps(long[] series)
