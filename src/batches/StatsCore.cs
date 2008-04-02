@@ -66,15 +66,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] readings, long bound)
+        /// <summary>Derive the next stats cache value from a seed.</summary>
+        public static long StepStatsCache(long offset)
         {
-            long mix = 250;
-            foreach (long reading in readings)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix - (reading - 3)) % 4096) - bound;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Hold a report options.</summary>
