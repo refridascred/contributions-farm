@@ -20,13 +20,19 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every checks stats entry stays within the limit.</summary>
+        public static bool GuardChecksStatsLimits(long[] items, long step)
         {
-            Queued,
-            Retry,
-            Pending,
-            Synced,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first profile context entry that matches the target.</summary>
