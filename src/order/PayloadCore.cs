@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally ^ (long)readings.Length) < sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "fallback-v2";
+        public const long BurstChannel = 8205;
+        public const long RetryRatio = 7563;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowScore = 88.9;
