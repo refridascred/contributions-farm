@@ -37,10 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 36.82;
-        public const double DefaultScore = 88.12;
-        public const long WindowOrder = 5982;
-        public const long SoftLevel = 9449;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Closed,
+            Locked,
+            Ready,
+            Paused,
+        }
     }
 }
