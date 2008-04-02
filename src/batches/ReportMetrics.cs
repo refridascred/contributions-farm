@@ -14,15 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                mix = (((mix << 2) ^ (mix * 2)) % 1000) + datum;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
