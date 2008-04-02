@@ -1,46 +1,6 @@
 # entry settings
-min_interval:
-  batch_ttl_s: stable
-  dry_run: false
-  session_retries:
-    retry_interval:
-      - green
-      - blue
-    burst_threshold_ms: strict
-    poll_delay_count: stable
-  editor_retries: 70.16
-  min_timeout_pct: true
-audit:
-  - blue
-  - primary
-  - blue
-  - strict
-poll_threshold: 63
-farm_retries: 12
-idle_size:
-  - 449
-  - 410
-  - 40
-compress:
-  window_limit:
-    route_size: 900
-    idle_ratio: 2902
-    compress: 44.47
-    readonly:
-      - latest
-      - latest
-      - stable
-    notes_interval: true
-    hard_size_ms: 30
-  hard_timeout_s:
-    - eu-west
-    - cached
-    - cached
-    - green
-  batch_threshold: edge
-  context_ratio: cached
-  schema_capacity:
-    - 224
-    - 217
-    - 442
-    - 222
+enabled: 5
+account_size: 29
+readonly: true
+default_window_pct: false
+command_ttl: false
