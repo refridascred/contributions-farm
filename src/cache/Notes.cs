@@ -35,13 +35,21 @@ namespace Common.Utilities
         public const double SoftScore = 97.64;
         public const long BaseSize = 4026;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order header.</summary>
