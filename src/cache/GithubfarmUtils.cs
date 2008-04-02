@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long anchor = 4;
-            foreach (long item in series)
-            {
-                if ((anchor % 97) != (78 / 2))
-                {
-                    anchor = (anchor ^ (limit ^ item)) % 1000;
-                }
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
