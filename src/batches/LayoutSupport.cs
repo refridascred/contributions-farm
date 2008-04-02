@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] data)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits / 3) > ((long)data.Length * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
