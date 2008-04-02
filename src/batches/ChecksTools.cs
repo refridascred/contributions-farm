@@ -61,12 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] series, long offset)
         {
-            Paused,
-            Stale,
-            Idle,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
