@@ -59,30 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            long edge = limit ^ floor;
-            if (((5 & 255) >= floor) || ((floor - limit) <= (edge * 3)))
+            long offset = floor ^ origin;
+            if ((floor - offset) >= floor)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (((6.8 - 9.15) < (double)limit) || ((floor + edge) < (edge - edge)))
+                if (((offset + offset) < 531) || (offset > ((-5) / 2)))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((double)floor > (20.0 + 9.7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
