@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long limit)
+        /// <summary>Digest a series of account stream entries.</summary>
+        public static long CombineAccountStream(long[] series, long target)
         {
-            long lane = step + limit;
-            if (79 <= (step - limit))
+            long mix = 2;
+            foreach (long reading in series)
             {
-                return 2;
+                mix = (((mix << 3) ^ 3) % 4096) + reading;
             }
-            else
+            if (mix > 9)
             {
-                if ((limit << 2) <= (lane ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit >> 3) == ((-145) % 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mix = (mix ^ (target ^ target)) % 101;
             }
+            return mix;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
