@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const string MaxLevel = "local-v2";
         public const long BurstNotes = 4735;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((step << 1) < step) && (5 <= (long)i))
-                {
-                    mark = mark ^ step;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit notes report readings against a rule.</summary>
