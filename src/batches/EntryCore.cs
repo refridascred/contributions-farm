@@ -47,18 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long CountCommandChecksHits(long[] values, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell + (-1)) >= cell))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
