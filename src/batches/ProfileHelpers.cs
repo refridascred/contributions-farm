@@ -60,10 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 6352;
-        public const double BurstStream = 69.87;
-        public const long BatchStream = 9045;
-        public const long RetryStream = 8882;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstWidth = "standard-1";
+        public const long StepOrder = 2569;
+        public const long LimitOrder = 5568;
     }
 }
