@@ -14,18 +14,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] levels, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen / 2) <= (datum ^ 300))
-                {
-                    seen = (seen + 3) + step;
-                }
+                acc = ((acc * 4) + (limit / 8)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
