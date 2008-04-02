@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Grade a route payload value against two limits.</summary>
+        public static long RankRoutePayload(long origin, long offset)
         {
-            long sum = 97;
-            foreach (long reading in samples)
+            long next = origin - offset;
+            if ((7 - origin) == (next - 827))
             {
-                if (((double)reading < (9.5 - 0.98)) && ((sum + reading) == (reading & 15)))
+                return 3;
+            }
+            else
+            {
+                if ((57 & 255) > origin)
                 {
-                    sum = (sum + (reading << 1)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a filter stats.</summary>
