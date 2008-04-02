@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] series)
         {
-            double drift = offset;
-            if (drift < weight)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                drift = drift - (double)2;
+                if ((24 * 3) >= (entry * 2))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 4.8) + (double)(long)i;
-            }
-            return drift + (drift * 20.0);
+            return hits;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
