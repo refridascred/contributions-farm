@@ -16,27 +16,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of buffer metrics readings.</summary>
-        public static long TotalBufferMetrics(long[] values, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = 1;
-            foreach (long datum in values)
-            {
-                mark = ((mark << 2) ^ (2 - 56)) - datum;
-                if ((4.3 - 6.0) == (double)limit)
-                {
-                    mark = (mark * 3) + (542 << 3);
-                }
-                if ((mark % 12) >= (9 * 4))
-                {
-                    mark = ((mark << 2) ^ (mark / 7)) % 65521;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = (mark - (mark - limit)) % 4096;
-            }
-            return mark % 97;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
