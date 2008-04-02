@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((double)count > 9.9) && ((count / 7) > reading))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 26.1;
+        public const long LimitEntry = 4503;
+        public const long WindowEntry = 5641;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardInterval = 661;
