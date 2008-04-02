@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 4968;
+        public const double BaseWidth = 72.83;
+        public const double IdlePayload = 14.35;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] values)
