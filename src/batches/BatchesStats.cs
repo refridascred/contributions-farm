@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - (4 << 3);
-                result = (result - target) % 4096;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
