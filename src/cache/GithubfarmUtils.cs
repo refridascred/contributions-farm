@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long anchor = 4;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((anchor % 97) != (78 / 2))
+                {
+                    anchor = (anchor ^ (limit ^ item)) % 1000;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
