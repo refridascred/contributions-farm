@@ -1,7 +1,5 @@
 {
-  "max_depth_ms": ["local", "stable", "eu-west"],
-  "soft_ratio_ms": 3398,
-  "min_limit": 100,
-  "readonly": ["standard", "edge", "legacy"],
-  "cache_ttl": [48, 83, 352]
+  "hard_capacity": [117, 281, 448, 101],
+  "base_retries_count": [259, 243, 67, 336],
+  "base_depth_count": 9074
 }
