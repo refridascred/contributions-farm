@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (item > (long)readings.Length)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
