@@ -13,22 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] items, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen >= ((-5) % 8)) || (((datum >> 4) <= (8 - datum)) || ((datum << 1) != (datum + seen))))
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
