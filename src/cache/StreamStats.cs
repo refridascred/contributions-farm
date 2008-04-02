@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
             long total = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total << 3) ^ (1 + (long)i2)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                total = ((total << 2) ^ total) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
             return total;
         }
