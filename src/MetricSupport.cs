@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long bound)
         {
-            long total = 99;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (5 << 2)) ^ entry;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 69)
-            {
-                total = (total << 2) ^ (total - (-7));
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
