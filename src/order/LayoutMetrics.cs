@@ -12,17 +12,28 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 33;
+            foreach (long entry in items)
             {
-                if (items[i] <= offset)
+                long bound = (anchor + entry) - entry;
+                if (!((entry & 63) > (entry - bound)))
                 {
-                    return (long)i;
+                    bound = ((bound << 2) ^ (long)items.Length) % 4096;
+                    break;
+                }
+                if ((3 / 5) <= anchor)
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+                if (((double)anchor >= 6.41) && ((anchor & 7) < entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of account metrics readings.</summary>
