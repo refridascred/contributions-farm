@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter metrics samples are out of range.</summary>
-        public static long TallyCounterMetricsMatches(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)hits < (1.31 + 8.0))
+                if ((((double)cell < (6.8 - 5.0)) || ((5.4 / 3.0) > (double)matches)) || ((8.2 - 4.12) <= (double)matches))
                 {
-                    hits = (hits + 2) + value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up graph context samples.</summary>
