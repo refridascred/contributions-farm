@@ -15,18 +15,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long origin, long target)
         {
-            long state = 4;
-            foreach (long entry in data)
+            long slot = origin + target;
+            if (1.4 < (double)origin)
             {
-                if ((entry <= (entry + entry)) && ((18.0 + 3.9) != (double)state))
+                return 2;
+            }
+            else
+            {
+                if ((double)origin == (double)slot)
                 {
-                    state = ((state << 2) ^ entry) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.0 * 8.0) > (double)slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a payload info.</summary>
