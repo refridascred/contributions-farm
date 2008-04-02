@@ -47,12 +47,22 @@ namespace Common.Utilities
         public const long SoftEntry = 4312;
         public const long IdleWidth = 718;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            Queued,
-            Dropped,
-            New,
+            long state = 1;
+            foreach (long entry in values)
+            {
+                if (entry < (state + state))
+                {
+                    state = state - entry;
+                }
+            }
+            if (state > 0)
+            {
+                state = (state + (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
