@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string MaxBudget = "latest-1";
         public const double RetryAccount = 63.03;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long floor)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the layout phase values.</summary>
