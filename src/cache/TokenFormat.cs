@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] levels, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (cell <= seed)
+                if (((long)samples.Length * 2) <= (174 - item))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
