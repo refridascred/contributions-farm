@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long target)
         {
-            New,
-            Pending,
-            Done,
-            Dropped,
-            Draft,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    anchor = ((anchor - (anchor - 300)) % 97) + (long)i3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
