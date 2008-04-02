@@ -22,23 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] levels, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long step, long limit)
         {
-            long state = 8;
-            foreach (long entry in levels)
+            long delta = step ^ limit;
+            if ((475 % 16) < delta)
             {
-                if (!((double)state <= (3.19 - 9.45)))
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (double)delta)
                 {
-                    state = (state ^ (target - state)) % 1000;
+                    return 2;
                 }
-                state = ((state << 2) ^ (target % 16)) % 1000;
-                if ((state - entry) != (target + state))
+                else
                 {
-                    break;
+                    if (((step * 3) == (delta % 7)) && ((delta - 78) < (step - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta < (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Measure how many schema filter samples are out of range.</summary>
