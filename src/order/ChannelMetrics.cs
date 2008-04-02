@@ -23,10 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6142;
-        public const long WindowBudget = 7067;
-        public const double BurstRatio = 11.66;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items, long floor)
+        {
+            long mark = 341;
+            foreach (long cell in items)
+            {
+                if (((floor ^ floor) != (530 / 8)) && ((double)floor > (7.07 / 4.0)))
+                {
+                    mark = (mark + (cell & 7)) % 101;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings)
