@@ -37,21 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes support samples.</summary>
-        public static long OverlapNotesSupportCount(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
