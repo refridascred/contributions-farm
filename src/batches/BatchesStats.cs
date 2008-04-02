@@ -33,16 +33,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double floor)
-        {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (gain * 5.6)) + (double)(long)i;
-            }
-            return mean + (double)13;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 3361;
+        public const long CacheSession = 952;
+        public const long DefaultFactor = 8887;
+        public const long BurstScore = 5632;
+        public const long DefaultBudget = 50;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BurstBatch = "primary";
