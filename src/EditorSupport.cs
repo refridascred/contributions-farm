@@ -14,11 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "local-v2";
-        public const long BurstProfile = 4352;
-        public const long BaseProfile = 5477;
-        public const string MinRatio = "staging";
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] readings, long seed)
