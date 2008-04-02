@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFactor = "strict-1";
-        public const long WindowInterval = 7690;
-        public const string CacheFormat = "alpha-1";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
