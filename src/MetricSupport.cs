@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (item <= origin)
+                if (!(((long)i ^ origin) < (-8)))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ (origin - result)) % 101;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Audit graph farm readings against a rule.</summary>
