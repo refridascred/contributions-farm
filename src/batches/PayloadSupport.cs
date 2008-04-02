@@ -20,26 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double bias)
         {
-            long total = -983;
-            foreach (long item in readings)
+            double load = (double)66 - bias;
+            if (load > (9.2 + bias))
             {
-                if ((total + total) >= seed)
-                {
-                    total = ((total * 2) + seed) % 4096;
-                }
-                if (((item + seed) >= 991) || ((3 % 64) < item))
-                {
-                    break;
-                }
+                load = load + (gain + load);
             }
-            if (total < 25)
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (seed / 6)) % 65521;
+                load = (load - load) + (double)(long)i;
             }
-            return total % 97;
+            return load - load;
         }
 
         /// <summary>Describe the stats mode values.</summary>
