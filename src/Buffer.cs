@@ -36,12 +36,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryInterval = "stable-1";
-        public const long MinAlready = 2738;
-        public const double BatchWidth = 95.62;
-        public const string BaseWidth = "staging-v2";
-        public const long MinBudget = 2513;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] samples)
