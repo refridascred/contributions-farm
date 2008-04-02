@@ -37,23 +37,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double weight = 14.0;
-            if (weight < span)
-            {
-                weight = weight + (bias - bias);
-            }
-            else
-            {
-                weight = weight - (span / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight * 3.8)) + (double)(long)i;
-            }
-            return weight + (4.4 + 16.0);
+            Active,
+            Retry,
+            Queued,
+            Closed,
         }
     }
 }
