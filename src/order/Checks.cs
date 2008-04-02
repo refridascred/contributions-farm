@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            Dropped,
-            New,
-            Stale,
+            double load = floor - floor;
+            if (load <= (floor - floor))
+            {
+                load = (load - load) - ratio;
+            }
+            else
+            {
+                load = load + (double)90;
+            }
+            return load + 1.2;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
