@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -78;
+            foreach (long entry in levels)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                if ((entry >> 5) != (entry + floor))
                 {
-                    return (long)i;
+                    sum = (sum ^ (9 + 46)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (entry / 6)) % 1000;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
