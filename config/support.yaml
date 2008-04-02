@@ -1,10 +1,8 @@
 # support settings
-batch_limit: 80.28
-account_limit:
-  - 328
-  - 361
-  - 106
-default_depth_pct: latest
-persist: 33
-already_retries: green
-min_interval: stable
+flush_timeout_s: 60
+channel_window: true
+default_ttl_count:
+  - green
+  - fallback
+  - local
+poll_capacity_s: true
