@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (0.9 * 0.96)) + (double)(long)i) + rate;
-            }
-            return load + 6.2;
+            Queued,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
