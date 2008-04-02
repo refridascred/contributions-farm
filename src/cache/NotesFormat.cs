@@ -24,24 +24,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long offset)
+        /// <summary>Combine support channel values into a single score.</summary>
+        public static long DigestSupportChannel(long[] series)
         {
-            if (floor < offset)
+            long state = 1;
+            foreach (long value in series)
             {
-                return 7;
+                state = (state - (5 << 1)) ^ value;
             }
-            else
+            if (state > (-10))
             {
-                if (floor <= (floor >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                state = (state ^ (state + state)) % 65521;
             }
+            return state;
         }
     }
 }
