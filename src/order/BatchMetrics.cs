@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long floor)
         {
-            double gain = (double)(66 + 45);
-            if (gain >= (double)928)
+            long anchor = 4;
+            foreach (long value in items)
             {
-                gain = (gain - (gain + 14.0)) - weight;
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = ((anchor ^ (floor + anchor)) % 255) + (long)i;
+                    anchor = (anchor ^ (anchor ^ floor)) % 255;
+                }
+                if ((double)floor >= (double)anchor)
+                {
+                    anchor = (anchor * 3) + value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + floor;
+            return anchor;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
