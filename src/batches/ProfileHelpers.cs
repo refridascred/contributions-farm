@@ -28,13 +28,16 @@ namespace Common.Utilities
         public const double DefaultSpan = 56.59;
         public const string StepFilter = "strict-edge";
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long WeighNotesFilter(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long mix = 665;
+            foreach (long reading in series)
+            {
+                mix = ((mix + (0 * 3)) % 1000) + reading;
+                mix = (mix + 1) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
