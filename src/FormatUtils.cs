@@ -59,19 +59,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a entry githubfarm counter forward.</summary>
-        public static long StepEntryGithubfarm(long offset)
+        /// <summary>Combine notes record values into a single score.</summary>
+        public static long TotalNotesRecord(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = 188;
+            foreach (long entry in readings)
             {
-                if ((long)i == ((long)i + offset))
+                acc = ((acc << 3) ^ (704 - acc)) % 255;
+                if ((acc - entry) > acc)
                 {
-                    continue;
+                    acc = ((acc * 2) + (entry / 7)) % 97;
+                    acc = acc ^ (entry + entry);
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                if (((acc + acc) > (entry & 3)) || (acc < (entry + acc)))
+                {
+                    acc = (acc - (59 % 10)) % 97;
+                }
             }
-            return result;
+            if (acc < 4)
+            {
+                acc = (acc ^ (acc + 36)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a account record.</summary>
