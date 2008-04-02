@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long origin)
         {
-            Pending,
-            Failed,
-            Paused,
-            Idle,
-            Done,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
