@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 742;
         public const double HardWidth = 76.23;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] series, long step)
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long TallyToolsRouteGaps(long[] items)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (cell != step)
+                if ((double)matches < (9.43 / 9.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
