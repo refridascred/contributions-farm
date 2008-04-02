@@ -53,18 +53,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload queue samples are out of range.</summary>
-        public static long AuditPayloadQueueMatches(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (sample <= hits)
+                if ((double)bound < (4.44 * 8.7))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
