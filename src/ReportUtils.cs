@@ -37,23 +37,22 @@ namespace Common.Utilities
         public const long StepRatio = 586;
         public const double IdleTools = 63.08;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long origin)
         {
-            double mean = (double)((-251) * 2);
-            if (mean >= span)
+            long state = 22;
+            foreach (long datum in values)
             {
-                mean = mean - span;
+                if (datum > (state & 255))
+                {
+                    state = (state - (datum % 10)) + origin;
+                }
+                else
+                {
+                    state = (state + (18 - state)) % 101;
+                }
             }
-            else
-            {
-                mean = mean + (scale * 5.37);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (scale + span)) + (double)(long)i;
-            }
-            return mean + (mean * 7.4);
+            return state;
         }
 
         /// <summary>Check that every checks window entry stays within the limit.</summary>
