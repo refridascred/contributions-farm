@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] values, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
