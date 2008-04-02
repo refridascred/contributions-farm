@@ -51,11 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Locate a profile editor reading by value.</summary>
+        public static long FindProfileEditorIndex(long[] readings, long bound)
         {
-            double drift = (scale / 3.0) * 12.0;
-            return (drift - scale) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
