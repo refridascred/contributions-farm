@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in staging edge open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-COMMAND_LIMIT=354
+COMMAND_LIMIT=232
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-green}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
