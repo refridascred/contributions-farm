@@ -1,15 +1,12 @@
 {
-  "retry_ratio_ms": {
-    "flush_ratio": {
-      "channel_ttl": "legacy",
-      "default_ttl_s": false,
-      "notes_ttl": 500,
-      "cache_delay_ms": 51.18,
-      "default_retries": true
-    },
-    "hard_window": 44,
-    "min_depth_ms": 36
+  "idle_retries_s": false,
+  "batch_size": 72.29,
+  "batch_capacity_ms": 71,
+  "min_threshold": {
+    "warm_timeout_pct": true,
+    "retry_depth_pct": true,
+    "poll_capacity_pct": 95.24,
+    "dry_run": false
   },
-  "enabled": "blue",
-  "max_size": 93.68
+  "format_limit": false
 }
