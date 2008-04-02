@@ -33,11 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "strict-edge";
-        public const long IdleTools = 5931;
-        public const long DefaultInterval = 5564;
-        public const double SoftFactor = 49.21;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BurstBatch = "primary";
