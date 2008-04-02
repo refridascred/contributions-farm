@@ -39,22 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((entry < (hits + limit)) || !(((-4) & 7) <= (entry ^ entry)))
+                if (sample >= (sample / 9))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
