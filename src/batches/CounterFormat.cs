@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long AuditGraphCommitsOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((4.9 - 7.67) == (double)sample) && ((sample < seen) || ((sample + 9) < seen)))
+                if (778 > hits)
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) ^ datum) - seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
