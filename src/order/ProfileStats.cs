@@ -47,21 +47,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sum == (5.9 - 7.17))
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ (value + value)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum & 63)) % 1000;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
