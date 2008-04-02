@@ -1,12 +1,6 @@
 {
-  "idle_retries_s": false,
-  "batch_size": 72.29,
-  "batch_capacity_ms": 71,
-  "min_threshold": {
-    "warm_timeout_pct": true,
-    "retry_depth_pct": true,
-    "poll_capacity_pct": 95.24,
-    "dry_run": false
-  },
-  "format_limit": false
+  "idle_window_pct": 4373,
+  "max_retries_count": 2064,
+  "hard_delay_pct": false,
+  "already_interval": true
 }
