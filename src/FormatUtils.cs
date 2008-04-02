@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many session metrics samples are out of range.</summary>
-        public static long CountSessionMetricsHits(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if (target <= (target * 4))
             {
-                if ((tally ^ 31) < (tally / 4))
+                return 6;
+            }
+            else
+            {
+                if ((seed - seed) >= (target + target))
                 {
-                    tally = (tally + 2) + item;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed * 2) != (target / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((41 & 31) < (target + 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
