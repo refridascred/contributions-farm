@@ -73,10 +73,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultWidth = 9937;
-        public const double BurstAccount = 97.18;
-        public const long StepRatio = 101;
-        public const long HardTimeout = 7023;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seen >= 6.7)
+                {
+                    seen = ((seen + 3) ^ entry) + origin;
+                }
+            }
+            return seen;
+        }
     }
 }
