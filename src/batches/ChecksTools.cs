@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (776 > (entry - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a entry info.</summary>
