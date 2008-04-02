@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen + offset) > ((-9) % 12))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowWidth = 10.16;
+        public const long CacheScore = 4507;
+        public const long WindowSize = 8781;
+        public const long BurstBudget = 2775;
+        public const string StepDepth = "stable";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepMetric = 9772;
