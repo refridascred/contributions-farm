@@ -1,16 +1,6 @@
 {
-  "verbose": 54.09,
-  "poll_depth": {
-    "idle_limit_s": 55.26,
-    "poll_limit_ms": "eu-west",
-    "default_delay_count": {
-      "idle_depth_s": 60,
-      "order_depth": 100,
-      "sync_threshold_ms": 26.89,
-      "poll_delay": "eu-west",
-      "poll_window_count": 30
-    }
-  },
-  "record_timeout": "eu-west",
-  "idle_threshold_ms": "legacy"
+  "flush_limit_ms": ["latest", "latest", "stable"],
+  "stats_interval": "open",
+  "route_capacity": "standard",
+  "layout_limit": "local"
 }
