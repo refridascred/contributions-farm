@@ -62,18 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(((19.0 - 16.0) >= (double)matches) && ((matches ^ (-96)) == (bound + matches))))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            double scale2 = (scale + scale) + scale;
+            return (scale2 + (17.0 + scale)) + bias;
         }
 
         /// <summary>Describe the batches status values.</summary>
