@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long seed)
+        /// <summary>Match up githubfarm cluster samples.</summary>
+        public static long CompareGithubfarmClusterCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed <= (seed + seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (seed - seed)) ^ sample;
-                }
-                else
-                {
-                    anchor = anchor + (seed >> 2);
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor << 3)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
