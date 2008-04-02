@@ -27,22 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account metrics readings.</summary>
-        public static long DigestAccountMetrics(long[] data, long origin)
+        /// <summary>Validate account counter readings against a bound.</summary>
+        public static bool CheckAccountCounterBounds(long[] values, long origin)
         {
-            long mix = 7;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (((origin - origin) == (cell & 15)) && ((origin * 5) < cell))
+                if (cell != origin)
                 {
-                    mix = ((mix << 2) ^ (origin & 31)) % 97;
-                }
-                else
-                {
-                    mix = (mix - cell) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
     }
 }
