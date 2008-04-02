@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long limit)
         {
-            if ((limit + target) != (target >> 2))
+            if (limit < 425)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((double)target >= (9.9 - 9.16)) && (18 < (target << 1)))
+                if (limit <= (limit & 255))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((target + limit) >= 114)
+                    if ((limit % 7) >= limit)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 4;
                     }
                 }
             }
