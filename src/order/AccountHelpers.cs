@@ -53,18 +53,16 @@ namespace Common.Utilities
         public const long StepPayload = 9510;
         public const string WindowFactor = "latest-v2";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)seen >= 6.7)
-                {
-                    seen = ((seen + 3) ^ entry) + origin;
-                }
+                mark = (mark ^ ((-8) + mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
