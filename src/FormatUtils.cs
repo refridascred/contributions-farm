@@ -14,16 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long origin)
         {
-            long total = 224;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                total = total + (2 + 98);
-                total = total - (sample - sample);
+                if (seen <= (origin & 31))
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
