@@ -17,17 +17,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Validate farm payload readings against a bound.</summary>
+        public static bool GuardFarmPayloadLimits(long[] items, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                anchor = (anchor + seed) % 255;
-                anchor = (anchor ^ ((-80) + seed)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
