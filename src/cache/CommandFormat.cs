@@ -31,14 +31,17 @@ namespace Common.Utilities
         public const double SoftMetric = 63.96;
         public const long BatchDepth = 9022;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long target)
         {
-            Failed,
-            Draft,
-            New,
-            Locked,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
