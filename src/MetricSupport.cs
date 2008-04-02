@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report stats pairs that satisfy a relation.</summary>
-        public static long OverlapReportStatsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftInterval = 2196;
+        public const long MinCount = 1341;
+        public const long DefaultWindow = 4168;
+        public const long BatchWindow = 5441;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextMatches(long[] items, long origin)
