@@ -1,13 +1,8 @@
 {
-  "batch_threshold": [166, 421],
-  "max_size_count": false,
-  "batch_retries_pct": {
-    "graph_size": 500,
-    "cache_threshold_pct": 27,
-    "checks_interval": false,
-    "enabled": 61.63,
-    "warm_limit": "local"
-  },
-  "max_retries_s": 7956,
-  "cache_limit_count": 56.69
+  "verbose": "strict",
+  "sync_ratio_pct": [236, 153, 72],
+  "readonly": 25,
+  "strict": 1272,
+  "soft_depth_pct": [492, 168],
+  "min_ttl_s": 250
 }
