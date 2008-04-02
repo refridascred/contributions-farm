@@ -44,31 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long bound, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            if ((double)floor > (7.1 / 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((((-43) + 2) <= (floor + bound)) || ((double)bound < (6.0 + 5.95)))
+                if ((data[i] < step) && ((data[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor - bound) != (7 * 3)) && ((floor - floor) > 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
