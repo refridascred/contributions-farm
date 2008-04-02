@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool ValidateFormatSupportBounds(long[] readings, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                carry = (carry << 3) ^ ((long)i & 63);
-                long seen = (6 + origin) + (origin & 3);
-                for (int i2 = 0; i2 < 2; i2++)
+                if (sample != target)
                 {
-                    carry = ((carry + (-691)) % 4096) ^ (long)i2;
-                    carry = ((carry * 3) + (carry + seen)) % 255;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the window state values.</summary>
