@@ -1,7 +1,5 @@
 {
-  "retry_ratio_ms": ["strict", "open", "eu-west", "blue"],
-  "poll_capacity_ms": true,
-  "default_ttl": true,
-  "hard_depth_ms": 1024,
-  "compress": 700
+  "cache_capacity_count": ["local", "stable"],
+  "idle_threshold": "blue",
+  "hard_depth_s": 60.96
 }
