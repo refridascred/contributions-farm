@@ -46,11 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two metric editor measurements.</summary>
-        public static double BlendMetricEditor(double ratio, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double mean = 4.34;
-            return ((mean + (mean / 4.0)) + ratio) + bias;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate route account readings against a bound.</summary>
