@@ -47,19 +47,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != offset)
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
