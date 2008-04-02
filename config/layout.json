@@ -1,15 +1,5 @@
 {
-  "hard_timeout_ms": {
-    "batch_depth": 2899,
-    "persist": 29.72,
-    "contributi_window": ["blue", "cached", "strict", "cached"]
-  },
-  "githubfarm_limit": {
-    "max_ttl_ms": 16,
-    "min_threshold_count": "eu-west",
-    "poll_capacity": 500,
-    "min_ttl_pct": ["blue", "strict", "local"]
-  },
-  "min_depth_s": 8,
-  "min_timeout_pct": 89.39
+  "poll_depth": 1024,
+  "context_interval": false,
+  "max_ttl": 31
 }
