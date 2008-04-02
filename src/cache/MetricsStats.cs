@@ -20,14 +20,10 @@ namespace Common.Utilities
         public const long RetryStream = 5945;
         public const string CacheFactor = "alpha";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Queued,
-            Pending,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7830;
+        public const long WindowDepth = 4179;
+        public const double BaseInterval = 33.8;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] readings, long seed)
