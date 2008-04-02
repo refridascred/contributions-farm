@@ -32,22 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mix = 250;
+            foreach (long reading in readings)
             {
-                if ((origin ^ hits) <= (origin / 7))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix - (reading - 3)) % 4096) - bound;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Hold a report options.</summary>
