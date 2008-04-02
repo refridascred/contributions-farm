@@ -1,10 +1,6 @@
 # githubfarm settings
-githubfarm_retries:
-  burst_interval_s: 1444
-  contributi_ttl: false
-  soft_interval_pct: 7094
-  idle_window_ms:
-    - 124
-    - 11
-filter_retries: true
-strict: true
+poll_retries_ms: 28.17
+schema_limit: true
+contributi_timeout: 97.17
+persist: open
+audit: 1024
