@@ -41,9 +41,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitBudget = 1245;
-        public const double MinLevel = 16.49;
-        public const long LimitOrder = 9230;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings)
+        {
+            long carry = 1;
+            foreach (long reading in readings)
+            {
+                if (((carry - reading) < carry) && ((carry * 4) != (2 - reading)))
+                {
+                    carry = (carry - 7) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
+                if ((reading > (carry & 3)) && ((carry / 8) == (long)readings.Length))
+                {
+                    carry = ((carry * 3) + (carry + reading)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (94 << 1)) % 1000;
+                }
+                if (((-61) ^ 79) > (reading + reading))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
