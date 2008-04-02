@@ -79,21 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi notes readings.</summary>
-        public static long PairContributiNotesCount(long[] readings)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Dropped,
+            Locked,
+            Done,
         }
     }
 }
