@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Grade a graph order value against two limits.</summary>
+        public static long BucketGraphOrder(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = seed + bound;
+            if (bound2 < (bound2 & 15))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed / 4) > 885)
                 {
-                    if ((values[i] - values[j]) == 2)
+                    return 5;
+                }
+                else
+                {
+                    if (!(seed >= (bound2 * 3)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
