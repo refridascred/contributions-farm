@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const string MinInterval = "stable-edge";
         public const string RetryCommand = "stable-edge";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit filter context readings against a rule.</summary>
