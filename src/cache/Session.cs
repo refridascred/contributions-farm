@@ -26,13 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] series, long seed)
         {
-            Done,
-            Dropped,
-            Queued,
-            Synced,
+            long score = 6;
+            foreach (long reading in series)
+            {
+                score = ((score << 3) ^ (reading >> 4)) % 101;
+                if (((seed - reading) < (52 % 60)) && ((score << 1) >= seed))
+                {
+                    score = score + (reading >> 4);
+                }
+            }
+            if (score > 320)
+            {
+                score = score + (score - (long)series.Length);
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the support state values.</summary>
