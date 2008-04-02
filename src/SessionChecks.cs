@@ -35,9 +35,19 @@ namespace Common.Utilities
         public const double SoftCounter = 83.42;
         public const long MinScore = 7737;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitFactor = 7539;
-        public const double DefaultSpan = 29.05;
-        public const long HardSpan = 6823;
+        /// <summary>Project the next already queue value.</summary>
+        public static double SmoothAlreadyQueue(double rate, double span)
+        {
+            double rate2 = rate;
+            if (rate2 < span)
+            {
+                rate2 = rate2 - (double)67;
+            }
+            else
+            {
+                rate2 = rate2 + (span - 19.0);
+            }
+            return rate2 - span;
+        }
     }
 }
