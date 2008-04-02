@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] levels, long origin)
         {
-            New,
-            Active,
-            Draft,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
