@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] readings, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = -1;
+            foreach (long datum in samples)
             {
-                if ((step >> 2) > (datum - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score ^ (2 * 5)) + datum;
             }
-            return count;
+            if (score < 1)
+            {
+                score = (score - (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
