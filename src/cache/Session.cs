@@ -24,22 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long TallyChecksBatches(long[] values, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long step)
         {
-            long total = 8;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (((-698) + item) == (total >> 3))
+                if (value <= step)
                 {
-                    total = ((total - (item + total)) % 97) - target;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 9)
-            {
-                total = (total << 2) ^ (832 / 4);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Adjust a account reading.</summary>
