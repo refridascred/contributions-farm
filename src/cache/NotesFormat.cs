@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a contributi format sample.</summary>
-        public static long LookupContributiFormatIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 54.02;
+        public const long BaseContext = 9969;
+        public const long BurstSize = 9814;
 
         /// <summary>Audit notes already readings against a rule.</summary>
         public static long CountNotesAlreadyHits(long[] samples, long step)
