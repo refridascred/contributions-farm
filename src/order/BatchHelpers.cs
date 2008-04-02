@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const double BaseWidth = 72.83;
         public const double IdlePayload = 14.35;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long anchor = 21;
+            foreach (long value in data)
             {
-                anchor = anchor - (cell + anchor);
+                if (!((19.0 + 8.33) >= (double)anchor))
+                {
+                    anchor = (anchor << 2) ^ (anchor / 9);
+                    anchor = ((anchor * 3) + (value / 8)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor >> 3)) % 97;
+                }
+                anchor = anchor + (308 >> 1);
+                if (((value >> 5) >= anchor) && (2 > (anchor & 63)))
+                {
+                    anchor = anchor ^ (value ^ anchor);
+                }
             }
-            if (anchor < 81)
+            if (anchor < 748)
             {
-                anchor = (anchor ^ anchor) % 65521;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
