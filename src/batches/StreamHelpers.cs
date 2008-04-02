@@ -53,12 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many payload queue samples are out of range.</summary>
+        public static long AuditPayloadQueueMatches(long[] values)
         {
-            New,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
