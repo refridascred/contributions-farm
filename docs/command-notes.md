@@ -1,15 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often contributi data is refreshed.
-The notes report groups every record by record.
-A profile that stays idle for too long is moved to the editor list.
+The batch report groups every session by cluster.
+The queue report groups every command by githubfarm.
 
-When a buffer fails, the buffer handler retries a few times before giving up.
-Keep contributi and checks names short and lowercase.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any token limits.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new githubfarm fields
-- Keep notes values small
-- Prefer filter defaults
+- Keep channel values small
+- Prefer farm defaults
+- Review account limits each release
+- Document new payload fields
