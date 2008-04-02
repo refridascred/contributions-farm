@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            Idle,
-            Queued,
-            New,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (776 > (entry - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format phase values.</summary>
