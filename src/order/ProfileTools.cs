@@ -28,11 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 37.26;
-        public const long MaxSize = 8366;
-        public const long BatchCount = 4059;
-        public const double StepFactor = 76.97;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 530;
+        public const double MaxEditor = 51.49;
+        public const double RetryLevel = 14.34;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 7155;
