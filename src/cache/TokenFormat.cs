@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit schema metric readings against a rule.</summary>
-        public static long MeasureSchemaMetricOutliers(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)count >= 4.0)
+                if (((seen % 2) > (reading ^ offset)) && ((seen + 3) == (reading - seen)))
                 {
-                    count = (count + 3) ^ item;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate account samples.</summary>
