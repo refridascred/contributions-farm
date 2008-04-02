@@ -48,19 +48,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a schema info.</summary>
