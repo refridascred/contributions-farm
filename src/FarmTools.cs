@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            if (((double)bound < (1.4 / 3.0)) && ((bound >> 4) >= (bound ^ 36)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
