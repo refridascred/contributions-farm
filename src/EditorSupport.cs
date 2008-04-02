@@ -37,11 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardBudget = 9874;
-        public const double LimitLayout = 90.9;
-        public const long LimitSize = 5923;
-        public const long HardLayout = 192;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double bias, double offset)
