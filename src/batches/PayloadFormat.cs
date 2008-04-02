@@ -20,24 +20,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 6954;
         public const long BatchFactor = 5803;
 
-        /// <summary>Rank format entry input into a small class.</summary>
-        public static long GradeFormatEntry(long offset, long step)
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long TallyStatsChecksGaps(long[] series)
         {
-            if ((step % 10) <= offset)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset >> 5) >= (offset - offset)) || ((offset / 9) != (offset + step)))
+                if (!((reading - reading) >= (reading ^ 609)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
