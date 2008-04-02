@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long CountPayloadMetricOutliers(long[] items, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((78 - limit) <= (tally + tally))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
