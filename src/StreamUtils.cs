@@ -96,18 +96,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
-        {
-            long score = 189;
-            foreach (long sample in readings)
-            {
-                if ((8.0 + 4.3) >= (double)sample)
-                {
-                    score = (score ^ 4) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 1084;
+        public const long RetryFactor = 3842;
+        public const long RetryOrder = 2394;
+        public const long HardOrder = 3671;
     }
 }
