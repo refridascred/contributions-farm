@@ -24,11 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 6271;
-        public const long BaseDepth = 433;
-        public const long BaseQueue = 1363;
-        public const long RetrySpan = 8314;
-        public const long CacheQueue = 7348;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item * 3) < item)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
