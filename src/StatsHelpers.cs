@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] items, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long total = 67;
+            foreach (long sample in series)
             {
-                if ((sample - hits) <= hits)
+                total = ((total << 2) ^ 54) % 101;
+                if (((total + (-12)) == (sample / 4)) || ((sample - total) > (floor / 2)))
                 {
-                    hits = (hits + 2) + offset;
+                    total = (total << 3) ^ (425 + sample);
+                }
+                if (((double)floor == (7.7 - 9.1)) || ((double)total != (1.1 + 5.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 84)
+            {
+                total = total + (total ^ 6);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
