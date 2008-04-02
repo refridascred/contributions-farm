@@ -51,13 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Draft,
-            Locked,
-            Synced,
-            Stale,
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a notes payload pair into a bucket.</summary>
