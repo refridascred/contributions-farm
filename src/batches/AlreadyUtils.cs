@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph window pairs that satisfy a relation.</summary>
-        public static long PairGraphWindowCount(long[] levels)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = rate;
+            if (mean < (5.2 / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (double)384;
             }
-            return seen;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean + (double)4;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
