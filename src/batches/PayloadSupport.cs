@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a editor notes value against two limits.</summary>
-        public static long GradeEditorNotes(long bound, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long target)
         {
-            long offset = bound ^ target;
-            if ((target - bound) > (128 & 31))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (double)offset)
+                if (items[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
