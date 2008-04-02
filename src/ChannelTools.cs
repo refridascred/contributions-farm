@@ -16,10 +16,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardLevel = 5885;
-        public const double BatchBudget = 24.0;
-        public const string RetryBudget = "staging-v2";
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Done,
+            New,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
