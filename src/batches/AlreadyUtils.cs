@@ -19,12 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count graph window pairs that satisfy a relation.</summary>
+        public static long PairGraphWindowCount(long[] levels)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
