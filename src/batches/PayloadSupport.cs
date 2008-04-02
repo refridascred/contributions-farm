@@ -45,12 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many account report samples are out of range.</summary>
+        public static long TallyAccountReportMatches(long[] samples, long offset)
         {
-            New,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (offset > tally)
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
     }
 }
