@@ -24,11 +24,32 @@ namespace Common.Utilities
         public const long WindowSpan = 6625;
         public const long DefaultSpan = 4386;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long offset)
         {
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            long delta = step ^ offset;
+            if ((-900) < (offset + delta))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9 + step) <= (2 + delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step > (offset << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
