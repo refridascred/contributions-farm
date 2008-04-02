@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate order samples.</summary>
