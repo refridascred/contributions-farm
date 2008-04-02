@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((968 + value) >= bound)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchLevel = 4705;
+        public const double WindowBudget = 48.29;
+        public const long RetryRoute = 9339;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] data, long step)
