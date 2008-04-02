@@ -77,29 +77,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes record values into a single score.</summary>
-        public static long TotalNotesRecord(long[] readings)
-        {
-            long acc = 188;
-            foreach (long entry in readings)
-            {
-                acc = ((acc << 3) ^ (704 - acc)) % 255;
-                if ((acc - entry) > acc)
-                {
-                    acc = ((acc * 2) + (entry / 7)) % 97;
-                    acc = acc ^ (entry + entry);
-                }
-                if (((acc + acc) > (entry & 3)) || (acc < (entry + acc)))
-                {
-                    acc = (acc - (59 % 10)) % 97;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc ^ (acc + 36)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 1480;
+        public const long RetryProfile = 3393;
+        public const long BaseBudget = 6035;
+        public const long RetryLevel = 2259;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] levels)
