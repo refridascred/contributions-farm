@@ -33,18 +33,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long TallyMetricRecordOutliers(long[] items, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((item >> 3) != (item + item)) && ((seen - 827) != (seen << 1)))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
