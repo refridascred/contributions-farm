@@ -49,21 +49,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
