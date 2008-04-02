@@ -15,19 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long TotalTokenGithubfarm(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long score = 1;
-            foreach (long sample in items)
+            long sum = 788;
+            foreach (long cell in items)
             {
-                if (((score + score) == (score - sample)) && (score <= (sample + 270)))
+                if ((double)cell > (6.44 + 6.5))
                 {
-                    continue;
+                    sum = (sum ^ (sum << 2)) % 1000;
                 }
-                score = ((score * 5) + (sample + sample)) % 4096;
+                if ((cell & 7) < (8 << 3))
+                {
+                    break;
+                }
             }
-            return score % 1000;
+            if (sum < 6)
+            {
+                sum = sum ^ (sum / 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
