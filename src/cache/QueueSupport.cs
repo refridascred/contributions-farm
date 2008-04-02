@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(3 & 63);
+            if (ratio > ratio)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + ratio;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Adjust a window reading.</summary>
