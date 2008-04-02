@@ -23,24 +23,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            if (seed < (target + target))
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= (6.0 - 1.7))
+                if ((double)result > (double)(long)i)
                 {
-                    return 8;
+                    result = result + (seed + seed);
+                    result = (result << 2) ^ result;
+                    break;
                 }
-                else
-                {
-                    return 6;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
