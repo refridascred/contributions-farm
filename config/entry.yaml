@@ -1,8 +1,19 @@
 # entry settings
-sync_interval_pct:
-  - legacy
-  - open
-  - legacy
-  - cached
-enabled: legacy
-compress: strict
+profile_limit: 100
+idle_ttl_pct:
+  - standard
+  - strict
+  - green
+  - blue
+compress: 59
+metrics_limit: stable
+flush_ratio_ms:
+  persist: 63
+  context_ratio: 500
+  cache_interval_ms:
+    - eu-west
+    - strict
+    - strict
+  default_timeout_ms: cached
+  readonly: edge
+  flush_timeout: 6039
