@@ -13,12 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Look up the position of a counter format sample.</summary>
+        public static long LookupCounterFormatIndex(long[] series, long target)
         {
-            Dropped,
-            Queued,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes summary.</summary>
