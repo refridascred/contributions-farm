@@ -27,29 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long floor, long seed)
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long ClassifyAccountAlready(long offset, long seed)
         {
-            if (((7 - seed) == (seed - floor)) || ((floor * 5) >= (seed ^ seed)))
+            if (!(offset > (3 / 8)))
             {
                 return 7;
             }
             else
             {
-                if ((seed / 3) >= (floor >> 1))
+                if (offset <= (offset + 59))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (((seed & 255) <= (seed + floor)) && ((seed + 719) != (seed + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 3;
                 }
             }
         }
