@@ -79,14 +79,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Derive the next graph buffer value from a seed.</summary>
+        public static long StepGraphBuffer(long floor)
         {
-            Queued,
-            Synced,
-            Pending,
-            Retry,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
