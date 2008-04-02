@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] readings, long bound)
         {
-            Queued,
-            Ready,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum - datum) <= (datum + bound)) || ((double)hits != (double)25)) || (((hits + bound) >= 966) && ((double)bound >= (7.2 - 1.95))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of queue record readings.</summary>
