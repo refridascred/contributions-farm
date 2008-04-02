@@ -30,18 +30,30 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mark = 54;
+            foreach (long sample in series)
             {
-                if ((cell * 5) >= tally)
+                if ((double)sample != (0.39 / 3.0))
                 {
-                    tally = tally + 1;
+                    mark = ((mark * 3) + (sample - mark)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 1000;
+                }
+                if ((sample + mark) <= (200 - mark))
+                {
+                    mark = (mark + (sample + mark)) % 97;
                 }
             }
-            return tally;
+            if (mark > 170)
+            {
+                mark = ((mark << 2) ^ (mark * 4)) % 1000;
+            }
+            return mark;
         }
     }
 }
