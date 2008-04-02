@@ -20,19 +20,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate farm payload readings against a bound.</summary>
-        public static bool GuardFarmPayloadLimits(long[] items, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long prev = origin ^ seed;
+            if (((prev * 3) <= (origin % 5)) && ((17.0 / 8.0) <= (double)origin))
             {
-                if (reading <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((1.04 * 9.01) < (double)prev)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((29 + origin) < origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
