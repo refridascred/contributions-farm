@@ -10,17 +10,26 @@ namespace Common.Utilities
         public const double BaseSize = 48.25;
         public const string CacheFactor = "standard-1";
 
-        /// <summary>Look up the position of a metrics schema sample.</summary>
-        public static long FindMetricsSchemaIndex(long[] readings, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 43;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= offset)
+                if ((9.7 - 1.67) != (double)offset)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (offset >> 4)) - datum;
+                }
+                if ((anchor + 759) > anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 7)
+            {
+                anchor = (anchor * 2) + (offset / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the support phase values.</summary>
