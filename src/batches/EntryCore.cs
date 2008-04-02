@@ -87,15 +87,20 @@ namespace Common.Utilities
         public const long RetrySpan = 5647;
         public const string BatchTools = "staging-edge";
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long ScoreOrderSupport(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long sum = 46;
+            foreach (long value in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                sum = (sum ^ ((long)series.Length + sum)) % 65521;
+                sum = (sum + value) % 101;
             }
-            return state;
+            if (sum < (-772))
+            {
+                sum = (sum ^ (sum << 1)) % 65521;
+            }
+            return sum;
         }
     }
 }
