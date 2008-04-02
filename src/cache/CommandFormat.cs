@@ -41,18 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double rate = offset + (offset / 8.0);
+            if (rate > gain)
             {
-                if (seen <= (item - item))
-                {
-                    seen = seen + 1;
-                }
+                rate = rate - 9.53;
             }
-            return seen;
+            return rate + offset;
         }
     }
 }
