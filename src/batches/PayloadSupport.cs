@@ -28,12 +28,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
+            Paused,
+            Queued,
             Synced,
-            Pending,
-            Failed,
+            New,
+            Idle,
         }
     }
 }
