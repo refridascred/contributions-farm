@@ -68,38 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if ((offset > 14) && ((limit >> 4) < (offset & 63)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0 + limit) >= (offset / 3)) && ((4 ^ offset) < (499 >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (496 <= (limit + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + 20) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
