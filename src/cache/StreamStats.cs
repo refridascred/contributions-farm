@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] values, long target)
+        /// <summary>Project the next githubfarm schema value.</summary>
+        public static double SmoothGithubfarmSchema(double bias, double span)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double scale = (9.03 * 14.0) * 18.0;
+            if (scale > span)
             {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return ready;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale - (double)796;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
