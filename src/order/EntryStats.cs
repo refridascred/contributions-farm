@@ -19,18 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first editor entry entry that matches the target.</summary>
-        public static long LocateEditorEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryRatio = 1579;
+        public const long MinFarm = 7801;
+        public const long DefaultFarm = 192;
+        public const double RetryFarm = 27.69;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string LimitCount = "primary";
