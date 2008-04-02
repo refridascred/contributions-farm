@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxScore = 74.31;
-        public const double BaseSize = 48.25;
-        public const string CacheFactor = "standard-1";
+        /// <summary>Compare every pair of editor batch readings.</summary>
+        public static long CompareEditorBatchCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] readings, long offset)
