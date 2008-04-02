@@ -33,23 +33,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long floor)
-        {
-            long mix = 92;
-            foreach (long reading in items)
-            {
-                if ((mix << 3) <= (floor + mix))
-                {
-                    mix = (mix - (floor % 8)) - reading;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = (mix * 4) + (mix & 7);
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstDepth = 2.61;
+        public const long IdleEntry = 499;
+        public const long RetryEntry = 8699;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
