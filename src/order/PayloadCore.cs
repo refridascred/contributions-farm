@@ -31,10 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowScore = 88.9;
-        public const long RetryAccount = 6819;
-        public const long MaxRatio = 3210;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] items, long offset)
