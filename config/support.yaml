@@ -1,16 +1,14 @@
 # support settings
-default_retries_count:
-  - stable
-  - green
-  - open
-  - fallback
-max_capacity_ms: 82.25
-readonly: fallback
-stats_delay: 100
-hard_retries:
-  graph_depth: 68
-  notes_depth: green
-  readonly:
-    - 294
-    - 442
-    - 445
+retry_threshold_count:
+  hard_timeout_count:
+    - 187
+    - 260
+    - 224
+    - 162
+  default_limit:
+    - staging
+    - fallback
+    - eu-west
+  enabled: true
+sync_limit: true
+audit: cached
