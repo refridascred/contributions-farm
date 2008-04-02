@@ -13,13 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Active,
-            Done,
-            Queued,
-            Stale,
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
