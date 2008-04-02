@@ -56,39 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window stats input into a small class.</summary>
-        public static long RankWindowStats(long seed, long seed2)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long offset)
         {
-            long edge = seed - seed2;
-            if ((double)seed2 >= (6.58 + 6.73))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 * 4) == (edge % 12))
+                if (!((double)(long)i <= (19.0 - 15.0)))
                 {
-                    return 0;
+                    score = ((score << 2) ^ (score % 60)) % 101;
                 }
-                else
-                {
-                    if (((double)seed > (1.31 / 8.0)) && ((seed2 * 2) >= (edge >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed * 3) <= (seed2 ^ edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
