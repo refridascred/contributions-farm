@@ -15,18 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = 4;
-            foreach (long value in samples)
-            {
-                if (((-42) <= (seed - seed)) && (state < (seed * 3)))
-                {
-                    state = (state + (seed / 8)) + value;
-                }
-            }
-            return state;
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
