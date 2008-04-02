@@ -46,22 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] values)
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long FoldContributiQueue(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = 87;
+            foreach (long sample in data)
             {
-                if (sample >= (sample / 9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark ^ floor) % 65521) + sample;
             }
-            return seen;
+            if (mark < 66)
+            {
+                mark = mark ^ (48 - mark);
+            }
+            return mark % 4096;
         }
     }
 }
