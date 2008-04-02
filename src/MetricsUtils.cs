@@ -45,16 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long acc = 888;
-            foreach (long datum in data)
-            {
-                acc = (acc - (datum - acc)) % 65521;
-                acc = acc - acc;
-            }
-            return acc % 97;
+            Done,
+            New,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
