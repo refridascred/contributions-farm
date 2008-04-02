@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 783;
+            foreach (long sample in readings)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if ((sample >> 1) != ((long)readings.Length >> 3))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (anchor ^ 0)) % 65521;
+                }
+                if ((sample <= (anchor % 100)) && ((double)sample > (double)anchor))
+                {
+                    anchor = anchor ^ (5 + 20);
                 }
             }
-            return -1;
+            if (anchor < 3)
+            {
+                anchor = (anchor << 2) ^ (anchor << 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
