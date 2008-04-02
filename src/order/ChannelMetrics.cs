@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double rate, double offset)
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            double bias = 16.0;
+            return (bias + rate) + offset;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
