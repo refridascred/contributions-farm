@@ -59,15 +59,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools counter samples.</summary>
-        public static long DigestToolsCounter(long[] values)
+        /// <summary>Grade a account metric value against two limits.</summary>
+        public static long GradeAccountMetric(long offset, long seed)
         {
-            long score = 29;
-            foreach (long cell in values)
+            if (((offset & 7) == (seed & 63)) && ((seed % 7) == (868 / 4)))
             {
-                score = ((score << 2) ^ (501 % 12)) - cell;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((seed & 15) == (offset + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset >> 4) > (seed + seed)) && ((offset + offset) < 50))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
