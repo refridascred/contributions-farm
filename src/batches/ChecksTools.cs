@@ -22,27 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context payload values into a single score.</summary>
-        public static long WeighContextPayload(long[] data, long floor)
-        {
-            long carry = 1;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length + carry) != (cell - cell))
-                {
-                    carry = carry ^ (8 + carry);
-                }
-                else
-                {
-                    carry = carry - (301 / 9);
-                }
-            }
-            if (carry > 3)
-            {
-                carry = (carry ^ (7 + floor)) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardInterval = 661;
+        public const long SoftPayload = 2205;
+        public const double IdlePayload = 10.02;
+        public const double LimitPayload = 58.23;
+        public const long LimitSize = 9437;
 
         /// <summary>Match up batch samples.</summary>
         public static long PairBatchCount(long[] data)
