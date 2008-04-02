@@ -20,39 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long step2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long delta = step ^ step2;
-            if (step2 >= (6 * 5))
+            long carry = 355;
+            foreach (long value in samples)
             {
-                return 6;
+                carry = ((carry * 4) + (5 / 8)) - value;
             }
-            else
-            {
-                if ((double)step > (double)step2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 - delta) > delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step != (2.0 - 7.8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
