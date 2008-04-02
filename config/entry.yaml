@@ -1,19 +1,37 @@
 # entry settings
-already_capacity: false
-sync_delay: 13.31
-command_threshold:
-  sync_retries: open
-  context_ratio:
-    queue_retries: 86
-    queue_delay: 26
-    metrics_ratio: 65
-    min_size: standard
-    max_interval_s: 63.15
-  poll_interval_pct:
-    layout_timeout: 8341
-    sync_depth_s: 90
-    flush_capacity_ms:
-      - 411
-      - 20
-      - 460
-      - 32
+strict:
+  - 238
+  - 186
+  - 261
+  - 250
+retry_depth: 500
+batch_limit_count:
+  - 466
+  - 30
+  - 445
+enabled: fallback
+warm_delay_pct:
+  token_window: false
+  already_retries: stable
+  burst_threshold:
+    audit:
+      - green
+      - primary
+      - edge
+      - green
+    sync_size: 4768
+    batch_delay_ms: true
+    enabled: false
+  batch_ratio: open
+  flush_size:
+    support_ttl:
+      - blue
+      - local
+      - blue
+      - local
+    base_interval: 9695
+    editor_capacity: 6046
+    strict:
+      - green
+      - cached
+      - primary
