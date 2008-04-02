@@ -73,13 +73,17 @@ namespace Common.Utilities
         public const long SoftCache = 40;
         public const long StepRatio = 9671;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] readings, long bound)
         {
-            New,
-            Failed,
-            Closed,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
