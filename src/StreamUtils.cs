@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of profile cluster entries.</summary>
+        public static long WeighProfileCluster(long[] data, long offset)
         {
-            Locked,
-            Done,
-            Pending,
+            long acc = 98;
+            foreach (long cell in data)
+            {
+                acc = (((acc - (5 / 8)) % 101) - cell) + offset;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Rank order batches input into a small class.</summary>
