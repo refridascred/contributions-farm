@@ -22,15 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token stats measurements.</summary>
-        public static double ScaleTokenStats(double bias, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples)
         {
-            double rate = (double)(67 * 4);
-            for (int i = 0; i < 3; i++)
+            long anchor = 9;
+            foreach (long datum in samples)
             {
-                rate = ((rate - (rate + span)) - (double)(long)i) - bias;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor * 2) + (77 - 16)) - (long)i;
+                    anchor = ((anchor * 4) + (datum % 100)) % 97;
+                }
+                if ((datum ^ 7) > (anchor >> 2))
+                {
+                    anchor = anchor - (anchor % 2);
+                }
             }
-            return rate + (double)97;
+            return anchor % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
