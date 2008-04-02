@@ -1,16 +1,4 @@
 # entry settings
-cache_interval: 94.2
-warm_capacity_count: 4256
-dry_run:
-  metrics_retries:
-    enabled: 80.2
-    batch_size_pct: true
-    audit: false
-  min_delay_count: true
-  retry_ttl_count: 1024
-  warm_ratio: false
-channel_retries:
-  - primary
-  - stable
-  - standard
-  - cached
+soft_depth_ms: 34
+support_threshold: green
+cache_delay_count: 7143
