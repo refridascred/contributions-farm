@@ -58,22 +58,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long mix = 24;
-            foreach (long reading in series)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < (reading * 2))
-                {
-                    mix = (mix - (mix >> 1)) % 101;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (mix > 695)
-            {
-                mix = mix + offset;
-            }
-            return mix % 65521;
+            return mix;
         }
     }
 }
