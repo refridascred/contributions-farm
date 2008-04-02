@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long target, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long step = target - bound;
+            if (((bound / 3) > bound) && (target <= ((-1) % 100)))
             {
-                if (entry >= bound)
+                return 2;
+            }
+            else
+            {
+                if (step <= bound)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
