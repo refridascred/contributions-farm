@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 229;
-        public const long MaxStream = 8259;
-        public const double StepFactor = 6.17;
-        public const long RetryStream = 5945;
-        public const string CacheFactor = "alpha";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((7.88 / 7.0) <= (double)limit)
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstLevel = 3907;
