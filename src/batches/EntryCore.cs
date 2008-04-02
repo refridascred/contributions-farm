@@ -53,22 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstSize = 84.93;
+        public const long CacheCount = 9608;
+        public const long DefaultScore = 6139;
+        public const long BatchSpan = 3374;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
