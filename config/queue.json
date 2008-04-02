@@ -1,7 +1,25 @@
 {
-  "queue_interval": false,
-  "persist": true,
-  "warm_ratio_s": 1766,
-  "payload_ratio": 53.53,
-  "schema_threshold": 100
+  "record_limit": false,
+  "default_ratio_pct": false,
+  "base_depth": "local",
+  "enabled": {
+    "filter_delay": false,
+    "layout_ttl": {
+      "poll_limit": ["local", "cached"],
+      "max_delay_s": 9994,
+      "burst_delay_pct": ["cached", "primary", "latest", "latest"]
+    },
+    "buffer_retries": {
+      "route_size": "staging",
+      "default_window": 8200,
+      "warm_delay_s": 74
+    },
+    "readonly": 21
+  },
+  "metric_window": 30,
+  "retry_retries_count": {
+    "base_ratio_count": 75.12,
+    "audit": 11.39,
+    "editor_capacity": 30
+  }
 }
