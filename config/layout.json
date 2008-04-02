@@ -1,14 +1,7 @@
 {
-  "sync_limit_pct": [30, 220, 58],
-  "compress": "local",
-  "retry_window_ms": "staging",
-  "stats_delay": {
-    "sync_interval_count": "cached",
-    "enabled": 1024,
-    "idle_size_count": "stable",
-    "verbose": "fallback",
-    "dry_run": 5823
-  },
-  "dry_run": 7,
-  "idle_interval_s": "staging"
+  "enabled": "cached",
+  "persist": [438, 499, 426, 212],
+  "cache_ratio_pct": ["green", "latest", "strict"],
+  "sync_depth": 23.22,
+  "warm_ttl_count": true
 }
