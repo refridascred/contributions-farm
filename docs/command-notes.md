@@ -1,12 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the session queue.
-Run the stream check before changing any window limits.
-Run the payload check before changing any record limits.
+Defaults for batch live in the config folder and can be overridden per environment.
+The entry module keeps payload values in sync with the cache cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+When a metric fails, the token handler retries a few times before giving up.
+Use batch settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep command values small
-- Review cache limits each release
-- Document new filter fields
-- Log every notes change
+- Document new entry fields
+- Review account limits each release
+- Validate notes input early
+- Log every route change
