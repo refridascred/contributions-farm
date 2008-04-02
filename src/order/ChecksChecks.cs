@@ -15,23 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long TotalBatchToken(long[] series, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long bound)
         {
-            long score = 152;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score << 2) ^ floor) % 97) ^ reading;
-                if ((double)score >= 8.96)
+                if (data[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 260)
-            {
-                score = (score * 4) + (floor - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
