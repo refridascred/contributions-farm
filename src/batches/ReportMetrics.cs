@@ -14,17 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a channel entry reading by value.</summary>
-        public static long LookupChannelEntryIndex(long[] samples, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
