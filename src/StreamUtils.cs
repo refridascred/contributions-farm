@@ -62,21 +62,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            if (!((target << 3) <= target))
             {
-                if ((anchor * 2) >= (anchor + (long)i))
-                {
-                    anchor = ((anchor * 4) + ((-1) + origin)) % 65521;
-                    anchor = (anchor * 5) + (origin ^ (long)i);
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (floor > (floor + 40))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
