@@ -67,22 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmGraphCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9188;
+        public const long CacheTools = 4298;
+        public const string BaseLevel = "stable-v2";
+        public const long RetrySpan = 5647;
+        public const string BatchTools = "staging-edge";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
