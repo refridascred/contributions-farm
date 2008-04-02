@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mark = 38;
-            foreach (long cell in values)
-            {
-                mark = mark - (seed % 2);
-                if ((18.0 * 6.32) > (double)mark)
-                {
-                    mark = (mark + (cell + cell)) % 101;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark - (mark + seed);
-            }
-            return mark % 1000;
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
