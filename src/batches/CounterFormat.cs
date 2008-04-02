@@ -41,35 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Count filter tools pairs that satisfy a relation.</summary>
+        public static long PairFilterToolsCount(long[] data)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((carry - reading) < carry) && ((carry * 4) != (2 - reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - 7) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                if ((reading > (carry & 3)) && ((carry / 8) == (long)readings.Length))
-                {
-                    carry = ((carry * 3) + (carry + reading)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (94 << 1)) % 1000;
-                }
-                if (((-61) ^ 79) > (reading + reading))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
