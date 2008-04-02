@@ -67,20 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long floor)
         {
-            long sum = -350;
-            foreach (long item in samples)
+            long sum = 7;
+            foreach (long sample in samples)
             {
-                sum = ((sum << 2) ^ (seed ^ item)) % 4096;
-                sum = (sum + seed) % 255;
+                sum = ((sum * 3) + 1) ^ sample;
             }
-            if (sum > 4)
+            if (sum < 50)
             {
-                sum = (sum + (sum >> 1)) % 1000;
+                sum = (sum << 3) ^ (sum + floor);
             }
-            return sum % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
