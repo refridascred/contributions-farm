@@ -1,8 +1,16 @@
 {
-  "channel_capacity": 250,
-  "warm_depth": ["cached", "standard"],
-  "persist": ["primary", "edge", "stable"],
-  "max_ttl_ms": 34,
-  "default_interval_ms": 30,
-  "token_window": 1024
+  "sync_timeout": {
+    "base_interval_pct": "latest",
+    "min_capacity": 3840,
+    "hard_ratio": 69.22,
+    "profile_threshold": {
+      "batch_window": 51.77,
+      "tools_delay": "strict",
+      "flush_window_count": [393, 120],
+      "compress": "edge",
+      "soft_ratio_pct": false
+    }
+  },
+  "persist": ["fallback", "stable", "staging"],
+  "strict": true
 }
