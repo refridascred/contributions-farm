@@ -21,22 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((90 - sample) >= 473)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = (double)63 - bias;
+            return (mean + (double)62) + floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
