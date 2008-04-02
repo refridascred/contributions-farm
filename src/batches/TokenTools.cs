@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            long carry = 410;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + carry) % 97;
-                if ((carry & 31) <= (item % 10))
+                if (((sample * 4) >= (sample << 2)) || ((double)641 != (double)sample))
                 {
-                    carry = (carry + item) % 101;
-                }
-                else
-                {
-                    carry = carry + item;
-                }
-                if ((carry ^ item) >= (item - item))
-                {
-                    carry = (carry - (carry + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry - ((long)samples.Length * 3)) % 97;
+                    tally = tally + 3;
                 }
             }
-            if (carry < 429)
-            {
-                carry = carry + (carry - 247);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
