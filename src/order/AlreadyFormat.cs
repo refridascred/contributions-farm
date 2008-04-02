@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long offset2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long edge = offset - offset2;
-            if ((offset2 + edge) >= (offset % 12))
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset2 >= edge)
+                long prev = (offset / 6) % 7;
+                if ((2.06 * 6.4) >= (double)total)
                 {
-                    return 5;
+                    total = (total + (prev - total)) % 4096;
+                    total = ((total * 5) + (prev << 1)) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a layout header.</summary>
