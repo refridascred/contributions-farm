@@ -1,23 +1,4 @@
 # entry settings
-hard_limit_ms: false
-default_threshold: 69.52
-soft_timeout_count:
-  batch_depth_s: blue
-  hard_ttl_count:
-    compress: 500
-    hard_depth_ms: 505
-    enabled:
-      - primary
-      - latest
-      - local
-      - green
-  poll_size:
-    - 500
-    - 411
-    - 376
-  default_depth_ms:
-    - blue
-    - strict
-    - fallback
-flush_size_count: true
-warm_ratio_pct: staging
+sync_timeout_pct: 3
+compress: true
+idle_timeout_ms: 85
