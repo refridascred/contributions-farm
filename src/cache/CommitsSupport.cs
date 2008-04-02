@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long bound)
         {
-            long cur = limit - seed;
-            if ((cur + cur) < cur)
+            long carry = 106;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.4 / 8.0) >= (double)seed)
+                if (!(carry <= (66 / 6)))
                 {
-                    return 6;
+                    carry = carry - ((-69) - cell);
                 }
-                else
+                if (((carry % 7) >= (176 + carry)) || ((bound + carry) > cell))
                 {
-                    if ((((-564) - seed) > (seed ^ cur)) && ((seed << 1) == (cur / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (carry < 3)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
