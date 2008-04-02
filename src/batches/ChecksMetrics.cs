@@ -51,32 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long span = step - limit;
-            if (((double)step != (double)limit) || ((span & 63) < (step >> 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step << 2) != (step * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step - step) <= (span - span)) || ((double)limit == (0.93 - 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
