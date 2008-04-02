@@ -70,16 +70,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long target, long bound)
         {
-            long carry = 153;
-            foreach (long value in readings)
+            if ((4.7 / 4.0) == (double)bound)
             {
-                carry = carry ^ (value - carry);
-                carry = ((carry * 4) + value) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (bound <= (target % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
