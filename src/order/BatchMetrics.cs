@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 1082;
-        public const double BurstBatch = 11.88;
-        public const long StepBatch = 6731;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Retry,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] levels, long target)
