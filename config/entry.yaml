@@ -1,13 +1,4 @@
 # entry settings
-default_capacity_count: 2333
-poll_threshold: 27.56
-default_capacity: false
-persist: 46
-max_threshold_ms:
-  editor_size: blue
-  hard_interval_ms: 100
-  default_delay_pct: blue
-  flush_retries_ms: edge
-  max_window_ms: edge
-  cache_size: latest
-editor_ttl: 3.73
+strict: local
+session_size: 65.43
+soft_timeout_count: 79
