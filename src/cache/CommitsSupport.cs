@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Locked,
-            Draft,
-            Synced,
-            New,
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
