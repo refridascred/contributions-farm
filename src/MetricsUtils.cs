@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            double weight = (double)0 * 11.0;
-            if (weight <= (double)2)
+            long state = 7;
+            foreach (long reading in levels)
             {
-                weight = weight + (bias / 2.0);
+                state = (state ^ (reading & 1)) % 101;
+                state = state + 1;
+                if ((18.0 + 4.11) > (double)state)
+                {
+                    state = ((state << 3) ^ (reading + 930)) % 97;
+                }
             }
-            return weight + floor;
+            return state;
         }
 
         /// <summary>Combine context values into a single score.</summary>
