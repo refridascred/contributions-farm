@@ -30,23 +30,20 @@ namespace Common.Utilities
         public const string BaseTools = "local-edge";
         public const string CacheInterval = "cached";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            long result = 877;
-            foreach (long entry in readings)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result ^ (entry << 3)) % 4096) - seed;
-                if ((57 + entry) > (result + result))
+                if ((double)floor >= (0.6 / 9.0))
                 {
-                    result = result + (5 * 5);
+                    carry = (carry + ((long)i ^ floor)) % 4096;
+                    carry = ((carry * 4) + (carry + (long)i)) % 101;
                 }
-                if ((result + result) > entry)
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
     }
 }
