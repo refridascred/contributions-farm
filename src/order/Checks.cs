@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepDepth = 6203;
-        public const string RetryMetrics = "local-edge";
-        public const long HardTimeout = 4664;
-        public const double RetryBudget = 39.71;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series, long origin)
+        {
+            long result = 87;
+            foreach (long item in series)
+            {
+                result = (((result ^ result) % 97) + item) + origin;
+            }
+            if (result < 560)
+            {
+                result = ((result * 3) + (result ^ 687)) % 4096;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] samples)
