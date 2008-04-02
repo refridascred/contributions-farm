@@ -56,10 +56,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryFactor = 4.3;
-        public const double BaseEditor = 85.2;
-        public const long BaseTimeout = 1548;
-        public const double BaseFactor = 43.77;
+        /// <summary>Classify a stats queue pair into a bucket.</summary>
+        public static long BucketStatsQueue(long bound, long seed)
+        {
+            if (((double)seed >= (double)682) && ((17.0 - 5.0) < (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound & 1) != (bound - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound / 2) == (seed ^ bound)) || ((double)bound < (double)725))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
