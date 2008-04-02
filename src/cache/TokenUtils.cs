@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route batch samples are out of range.</summary>
-        public static long MeasureRouteBatchGaps(long[] levels, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 59;
+            foreach (long sample in data)
             {
-                if ((((double)count >= (3.3 / 9.0)) && ((double)(-45) == (double)origin)) && ((count + count) == (item * 3)))
+                long step = sample;
+                if ((double)step == (double)floor)
                 {
-                    count = count + 3;
+                    break;
                 }
+                result = (result - (floor & 3)) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
