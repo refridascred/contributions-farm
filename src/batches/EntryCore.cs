@@ -84,18 +84,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] series, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((373 > (datum / 5)) && !((datum * 2) != (52 / 2)))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
