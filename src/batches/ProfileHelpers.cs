@@ -65,9 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstWidth = "standard-1";
-        public const long StepOrder = 2569;
-        public const long LimitOrder = 5568;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values)
+        {
+            long result = -8;
+            foreach (long cell in values)
+            {
+                result = ((result - (568 - result)) % 1000) - cell;
+            }
+            if (result < 82)
+            {
+                result = (result ^ (result % 3)) % 1000;
+            }
+            return result % 65521;
+        }
     }
 }
