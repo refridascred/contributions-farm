@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
