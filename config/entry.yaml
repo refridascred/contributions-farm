@@ -1,37 +1,8 @@
 # entry settings
-strict:
-  - 238
-  - 186
-  - 261
-  - 250
-retry_depth: 500
-batch_limit_count:
-  - 466
-  - 30
-  - 445
-enabled: fallback
-warm_delay_pct:
-  token_window: false
-  already_retries: stable
-  burst_threshold:
-    audit:
-      - green
-      - primary
-      - edge
-      - green
-    sync_size: 4768
-    batch_delay_ms: true
-    enabled: false
-  batch_ratio: open
-  flush_size:
-    support_ttl:
-      - blue
-      - local
-      - blue
-      - local
-    base_interval: 9695
-    editor_capacity: 6046
-    strict:
-      - green
-      - cached
-      - primary
+sync_interval_pct:
+  - legacy
+  - open
+  - legacy
+  - cached
+enabled: legacy
+compress: strict
