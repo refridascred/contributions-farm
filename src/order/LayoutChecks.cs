@@ -68,18 +68,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((value % 100) < (tally + tally))
+                if (!((datum + datum) <= matches))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
