@@ -43,12 +43,25 @@ namespace Common.Utilities
             return load - (double)103;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate record support samples.</summary>
+        public static long DigestRecordSupport(long[] samples)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = 6;
+            foreach (long sample in samples)
+            {
+                long prev = (sample - anchor) / 9;
+                if ((double)prev <= (8.5 - 8.88))
+                {
+                    prev = ((prev * 5) + (prev / 8)) % 255;
+                    prev = (prev + anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (3 + sample)) % 97;
+                }
+                anchor = ((anchor * 4) + (sample + 47)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
