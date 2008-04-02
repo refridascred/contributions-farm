@@ -24,12 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinInterval = 5884;
-        public const long IdleSize = 1862;
-        public const long BatchWidth = 1591;
-        public const string DefaultBudget = "staging";
-        public const long MaxCount = 8508;
+        /// <summary>Locate a cluster channel reading by value.</summary>
+        public static long LookupClusterChannelIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutGaps(long[] samples)
