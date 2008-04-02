@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            long carry = 106;
-            foreach (long cell in series)
+            double gain = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(carry <= (66 / 6)))
-                {
-                    carry = carry - ((-69) - cell);
-                }
-                if (((carry % 7) >= (176 + carry)) || ((bound + carry) > cell))
-                {
-                    break;
-                }
+                gain = ((gain + (rate - 9.1)) + (double)(long)i) + offset;
             }
-            if (carry < 3)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 1000;
-            }
-            return carry;
+            return gain + rate;
         }
 
         /// <summary>Grade a account already value against two limits.</summary>
