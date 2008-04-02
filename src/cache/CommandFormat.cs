@@ -51,19 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long origin)
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long TallyEditorChecksMatches(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell < origin)
+                if ((-67) < (tally ^ entry))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
