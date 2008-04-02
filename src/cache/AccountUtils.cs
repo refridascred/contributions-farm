@@ -29,23 +29,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long target)
         {
-            double weight = (floor / 2.0) + (floor * 6.73);
-            if (weight >= floor)
+            if ((seed & 31) >= ((-963) + 99))
             {
-                weight = weight - (double)911;
+                return 1;
             }
             else
             {
-                weight = weight - (gain + weight);
+                if (target < (target & 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + seed) <= (target << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight + 19.0;
         }
     }
 }
