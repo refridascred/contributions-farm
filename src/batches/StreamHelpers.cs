@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up channel order samples.</summary>
-        public static long MatchChannelOrderCount(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
