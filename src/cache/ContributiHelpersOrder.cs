@@ -41,9 +41,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 8402;
-        public const long MaxLevel = 7983;
-        public const double MinCount = 46.21;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((8.9 - 0.66) <= (double)seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
