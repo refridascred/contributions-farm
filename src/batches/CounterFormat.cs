@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
