@@ -59,28 +59,35 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long bound, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long floor)
         {
-            if (648 < (bound % 97))
+            if (!((limit * 4) < (limit / 4)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((limit >= (24 * 2)) || ((bound >> 5) > (limit / 5)))
+                if (((limit >> 5) == (5 % 3)) && ((floor + floor) > floor))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit >> 5) > (limit >> 4))
+                    if ((floor + 6) != (floor - limit))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 2;
+                        if ((limit <= floor) && ((limit - floor) < (floor - limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
