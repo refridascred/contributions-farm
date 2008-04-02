@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = 97;
+            foreach (long reading in samples)
             {
-                if ((24 * 3) >= (entry * 2))
+                if (((double)reading < (9.5 - 0.98)) && ((sum + reading) == (reading & 15)))
                 {
-                    hits = hits + 3;
+                    sum = (sum + (reading << 1)) % 1000;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
