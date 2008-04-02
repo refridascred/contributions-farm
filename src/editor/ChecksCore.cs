@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 9628;
         public const double RetryReport = 45.35;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 83.03;
+        public const string LimitContext = "strict-1";
+        public const long BaseContext = 5096;
+        public const long DefaultContext = 5426;
+        public const long RetryDepth = 6164;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] samples, long limit)
