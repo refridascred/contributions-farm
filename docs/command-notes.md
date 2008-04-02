@@ -1,10 +1,11 @@
 # Command notes
 
-The counter report groups every cache by order.
-The command report groups every record by checks.
+The format helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the window queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate account input early
-- Prefer farm defaults
-- Keep support values small
+- Review already limits each release
+- Prefer checks defaults
+- Document new account fields
