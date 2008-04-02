@@ -51,11 +51,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Closed,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine support values into a single score.</summary>
