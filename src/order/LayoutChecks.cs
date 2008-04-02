@@ -37,26 +37,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            long state = 7;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((target & 63) != (state ^ 927))
+                if ((double)value < (double)hits)
                 {
-                    state = state - (value ^ state);
-                }
-                else
-                {
-                    state = (state * 5) + (51 & 127);
+                    hits = hits + 1;
                 }
             }
-            if (state < 19)
-            {
-                state = state ^ (target >> 4);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
