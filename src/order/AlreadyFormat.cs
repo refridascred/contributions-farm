@@ -29,18 +29,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = -23;
-            foreach (long value in data)
-            {
-                if ((double)mark <= 5.1)
-                {
-                    mark = (mark - (896 + mark)) - value;
-                }
-            }
-            return mark;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next report metrics value from a seed.</summary>
