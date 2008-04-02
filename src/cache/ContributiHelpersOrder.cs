@@ -57,15 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long total = 97;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total ^ (total & 31)) - entry) - target;
+                sum = (sum * 5) + (sum & 255);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
