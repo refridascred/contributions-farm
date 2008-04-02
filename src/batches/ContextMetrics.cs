@@ -42,19 +42,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
         {
-            long mix = 17;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mix = (mix * 2) + reading;
-                if ((bound << 1) == (bound / 2))
+                if ((tally + datum) > (26 - 491))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
