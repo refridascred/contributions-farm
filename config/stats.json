@@ -1,7 +1,10 @@
 {
-  "compress": "staging",
-  "persist": 1024,
-  "dry_run": 30,
-  "max_delay_s": 70.28,
-  "payload_capacity": 99
+  "min_ratio_s": false,
+  "hard_retries": true,
+  "max_window_count": 7170,
+  "cache_ratio": {
+    "flush_size_count": "open",
+    "batch_ratio_ms": 5875,
+    "commits_timeout": 90.41
+  }
 }
