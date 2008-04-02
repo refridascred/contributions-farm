@@ -20,26 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples)
         {
-            long sum = 173;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((66 - sum) > bound)
+                if ((double)seen <= (double)368)
                 {
-                    sum = sum - sum;
-                }
-                if ((double)cell != (1.0 / 3.0))
-                {
-                    continue;
-                }
-                if ((3.58 - 9.33) == (double)sum)
-                {
-                    sum = sum ^ (cell % 16);
+                    seen = (seen + 2) + item;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
