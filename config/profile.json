@@ -1,7 +1,8 @@
 {
-  "min_ttl": "legacy",
-  "strict": 13,
-  "batch_timeout_ms": 1024,
-  "default_ratio_count": "blue",
-  "default_interval_ms": 60
+  "batch_limit_s": 4676,
+  "warm_timeout_ms": 3186,
+  "min_delay_count": 95,
+  "flush_size": 36.82,
+  "retry_limit_count": 4519,
+  "retry_threshold_count": true
 }
