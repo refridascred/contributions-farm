@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Rank graph schema input into a small class.</summary>
+        public static long ClassifyGraphSchema(long limit, long origin)
         {
-            Active,
-            Closed,
-            Ready,
-            Stale,
+            long gap = limit + origin;
+            if ((40 / 3) >= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((827 >= (gap % 12)) || (gap > (origin % 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
