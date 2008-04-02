@@ -35,22 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardFactor = "cached-v2";
+        public const string MaxCount = "strict-v2";
+        public const long WindowSpan = 3277;
+        public const string BaseQueue = "latest-1";
+        public const string StepQueue = "local";
 
         /// <summary>Count counter cache pairs that satisfy a relation.</summary>
         public static long MatchCounterCacheCount(long[] values)
