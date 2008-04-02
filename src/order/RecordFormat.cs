@@ -59,12 +59,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowInterval = 49.98;
-        public const long StepTools = 4541;
-        public const long HardInterval = 7121;
-        public const string DefaultTools = "alpha";
-        public const long RetrySpan = 412;
+        /// <summary>Find the first route session entry that matches the target.</summary>
+        public static long FindRouteSessionIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long seed)
