@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if (((-710) & 63) > hits)
                 {
-                    anchor = ((anchor - (anchor - 300)) % 97) + (long)i3;
+                    hits = (hits + 1) - entry;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
