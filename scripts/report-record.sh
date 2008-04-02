@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green fallback; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=23
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=106
-log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west stable; do
-    log "checking ${item}"
-done
