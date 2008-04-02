@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const long MaxScore = 3424;
         public const string RetryScore = "cached-1";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 9769;
-        public const long CacheFilter = 1366;
-        public const long HardTimeout = 9707;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Active,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] items, long origin)
