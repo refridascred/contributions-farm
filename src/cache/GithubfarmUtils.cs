@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long BucketGithubfarmFarm(long step, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long next = step ^ origin;
-            if (!((step + next) <= (step + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step > origin) && ((6.65 - 10.0) > (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16 + origin) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 9) >= next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Project the next report already value.</summary>
