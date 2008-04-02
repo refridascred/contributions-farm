@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long StepQueueAccount(long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum - (1 ^ limit)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Synced,
+            Active,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define support limits and defaults.</summary>
