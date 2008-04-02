@@ -45,17 +45,9 @@ namespace Common.Utilities
         public const string BurstReport = "standard";
         public const long BurstFactor = 4865;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "standard-edge";
+        public const double HardBatches = 96.99;
+        public const double SoftDepth = 63.38;
     }
 }
