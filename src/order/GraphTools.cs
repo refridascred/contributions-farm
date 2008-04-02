@@ -21,17 +21,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7682;
         public const long DefaultLevel = 9329;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit notes report readings against a rule.</summary>
