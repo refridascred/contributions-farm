@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long limit)
         {
-            Ready,
-            Locked,
-            Done,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches << 2) <= (limit + datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
