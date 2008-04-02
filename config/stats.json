@@ -1,7 +1,5 @@
 {
-  "batch_ttl_pct": true,
-  "base_size_pct": "staging",
-  "min_limit_pct": "latest",
-  "max_limit_count": [427, 343, 216],
-  "cache_ttl": [117, 487, 216]
+  "compress": 60.84,
+  "poll_interval_pct": true,
+  "audit": 100
 }
