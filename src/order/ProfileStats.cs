@@ -40,22 +40,38 @@ namespace Common.Utilities
         public const string MinSize = "primary-1";
         public const double HardStream = 12.54;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Grade a profile support value against two limits.</summary>
+        public static long RankProfileSupport(long origin, long bound)
         {
-            long sum = 9;
-            foreach (long value in data)
+            if ((origin <= bound) || (origin < (origin % 16)))
             {
-                if ((double)sum == (5.9 - 7.17))
+                return 4;
+            }
+            else
+            {
+                if (((1 >> 2) >= (bound >> 2)) && ((double)bound < (6.0 - 11.0)))
                 {
-                    sum = ((sum << 3) ^ (value + value)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (sum & 63)) % 1000;
+                    if ((origin % 24) > 7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound > (origin >> 5)) && (origin >= (bound / 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 4096;
         }
     }
 }
