@@ -54,22 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series, long target)
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long ScoreContributiLayout(long[] readings)
         {
-            long total = 73;
-            foreach (long value in series)
+            long result = 876;
+            foreach (long cell in readings)
             {
-                if ((double)value < (2.99 - 2.11))
+                if (((double)result < 17.0) && ((result & 15) != (result - cell)))
                 {
-                    total = ((total << 3) ^ (673 >> 4)) + target;
+                    result = result - (cell * 4);
                 }
             }
-            if (total < (-353))
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
