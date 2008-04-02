@@ -11,27 +11,31 @@ namespace Common.Utilities
         public const string RetryCount = "standard-v2";
         public const long DefaultCount = 4330;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Grade a layout profile value against two limits.</summary>
+        public static long GradeLayoutProfile(long offset, long offset2)
         {
-            long result = 7;
-            foreach (long datum in samples)
+            if (((offset2 - offset) < offset) || (offset2 <= (offset % 16)))
             {
-                long step = (result + result) ^ (result ^ 1);
-                if ((datum << 3) < step)
+                return 3;
+            }
+            else
+            {
+                if (!((offset % 60) > offset))
                 {
-                    result = ((result << 3) ^ (34 - datum)) % 4096;
+                    return 7;
                 }
-                if ((result + result) <= (result >> 4))
+                else
                 {
-                    result = result ^ (result & 1);
-                }
-                if ((double)datum >= (2.0 * 5.57))
-                {
-                    break;
+                    if ((2 - offset) <= (offset & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
