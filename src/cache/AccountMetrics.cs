@@ -45,19 +45,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double rate = (double)(8 + 15);
-            if (rate < floor)
-            {
-                rate = (rate - (rate - floor)) - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - floor;
+            Idle,
+            Stale,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of graph queue readings.</summary>
