@@ -1,13 +1,10 @@
 {
-  "soft_retries_s": "legacy",
-  "readonly": {
-    "sync_threshold": "standard",
-    "persist": 72,
-    "window_window": 30,
-    "burst_size_s": "cached",
-    "idle_timeout_s": true,
-    "context_timeout": "fallback"
-  },
-  "retry_ttl_count": "standard",
-  "hard_window_ms": "cached"
+  "retry_threshold": "staging",
+  "notes_depth": ["green", "local", "legacy"],
+  "enabled": {
+    "default_retries_s": false,
+    "dry_run": 77.27,
+    "strict": true,
+    "min_delay_s": "legacy"
+  }
 }
