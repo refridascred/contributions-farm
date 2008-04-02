@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long MaxSpan = 3746;
         public const long BaseSpan = 5826;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
-        {
-            long mix = 30;
-            foreach (long cell in items)
-            {
-                mix = (mix ^ cell) % 4096;
-                if (mix < 73)
-                {
-                    mix = mix ^ (cell / 9);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinDepth = 4689;
+        public const double MinPayload = 69.46;
+        public const long DefaultPayload = 2661;
+        public const long RetryPayload = 2371;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double ratio, double floor)
