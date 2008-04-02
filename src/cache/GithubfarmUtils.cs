@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Stale,
-            Retry,
-            Synced,
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
