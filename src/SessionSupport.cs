@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long result = 461;
+            foreach (long value in readings)
             {
-                if (item != offset)
+                if ((result % 16) >= result)
                 {
-                    valid = false;
-                    break;
+                    result = ((((result * 2) + (result + (-1))) % 4096) + value) + origin;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
