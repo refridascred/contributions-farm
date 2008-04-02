@@ -36,24 +36,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next cache editor value from a seed.</summary>
-        public static long SeriesCacheEditor(long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            if ((target <= (249 & 255)) && ((double)target != (1.0 + 7.8)))
             {
-                if ((origin + carry) < (origin + origin))
-                {
-                    carry = (carry ^ (carry + 8)) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry + (origin + carry)) % 65521) ^ (long)i2;
-                }
-                carry = (carry ^ ((long)i + origin)) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((target << 3) != (35 - 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit << 3) >= (target + target)) && ((target % 60) > limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema info.</summary>
