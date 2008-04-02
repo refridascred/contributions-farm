@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const string BaseQueue = "latest-1";
         public const string StepQueue = "local";
 
-        /// <summary>Count counter cache pairs that satisfy a relation.</summary>
-        public static long MatchCounterCacheCount(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = ratio;
+            if (mean > (ratio + offset))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - offset;
             }
-            return tally;
+            return mean + (2.99 - 5.0);
         }
     }
 }
