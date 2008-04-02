@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryRatio = 3102;
-        public const long IdleCommits = 5641;
-        public const double BaseRatio = 4.48;
-        public const long LimitCommits = 7956;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc - (acc + origin)) % 4096;
+                if (!((long)i < ((long)i & 63)))
+                {
+                    acc = (acc ^ (origin ^ 471)) % 1000;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
