@@ -1,13 +1,15 @@
 # Command notes
 
-Keep farm and cluster names short and lowercase.
-Each session is validated before it reaches the contributi queue.
+Use graph settings to tune how often contributi data is refreshed.
+The notes report groups every record by record.
+A profile that stays idle for too long is moved to the editor list.
 
-The metrics report groups every buffer by githubfarm.
-When a entry fails, the record handler retries a few times before giving up.
+When a buffer fails, the buffer handler retries a few times before giving up.
+Keep contributi and checks names short and lowercase.
 
 ## Guidelines
 
-- Log every commits change
-- Document new token fields
-- Review tools limits each release
+- Validate profile input early
+- Document new githubfarm fields
+- Keep notes values small
+- Prefer filter defaults
