@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Compare every pair of record context readings.</summary>
+        public static long MatchRecordContextCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step + step) >= result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + (result ^ step)) % 255;
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((3.3 + 6.59) <= (double)result)
-                {
-                    result = result ^ ((long)i + result);
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
