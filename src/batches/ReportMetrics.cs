@@ -16,13 +16,23 @@ namespace Common.Utilities
         public const long MinCount = 758;
         public const long BaseToken = 1691;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            double bias = 3.0 * 4.0;
+            if (bias <= (rate / 6.0))
+            {
+                bias = bias - rate;
+            }
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (span / 8.0)) + (double)(long)i;
+            }
+            return bias + (2.13 - rate);
         }
     }
 }
