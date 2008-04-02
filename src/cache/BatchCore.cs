@@ -35,19 +35,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] readings, long step)
+        /// <summary>Fold a list of farm cache readings.</summary>
+        public static long FoldFarmCache(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long acc = 98;
+            foreach (long datum in data)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc - (acc - acc)) - datum;
+                acc = acc - (acc + 928);
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Hold a order stats.</summary>
