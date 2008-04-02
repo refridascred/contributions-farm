@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long SoftSchema = 9597;
         public const long WindowTimeout = 5760;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 3;
+            foreach (long item in levels)
             {
-                if ((405 & 127) <= bound)
-                {
-                    seen = (seen + 1) + cell;
-                }
+                anchor = (anchor << 3) ^ item;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up payload samples.</summary>
