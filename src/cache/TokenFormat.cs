@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Measure how many context order samples are out of range.</summary>
+        public static long AuditContextOrderOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((12.0 / 3.0) >= (double)entry)
+                if ((entry + entry) == (seen * 4))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
