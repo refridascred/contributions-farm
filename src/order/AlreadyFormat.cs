@@ -37,10 +37,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryDepth = 9361;
-        public const string BurstPayload = "staging-v2";
-        public const long DefaultPayload = 4953;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] data, long origin)
