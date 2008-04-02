@@ -1,9 +1,10 @@
 # support settings
-persist: blue
-flush_interval_ms:
-  - legacy
-  - blue
-  - local
-farm_threshold: legacy
-window_interval: 4.64
-compress: 1024
+verbose: 250
+cache_ratio: 3
+burst_size_pct:
+  - fallback
+  - green
+  - green
+  - latest
+min_ratio_count: 5
+report_limit: strict
