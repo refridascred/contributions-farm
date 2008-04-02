@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Paused,
-            Idle,
             Active,
+            Done,
+            Queued,
             Stale,
         }
 
