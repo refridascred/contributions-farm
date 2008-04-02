@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 83.06;
-        public const long BatchSpan = 9095;
-        public const double SoftStats = 79.47;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (value <= (value % 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long seed)
