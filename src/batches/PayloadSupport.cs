@@ -20,14 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long seed)
         {
-            New,
-            Idle,
-            Stale,
-            Closed,
-            Active,
+            long total = -983;
+            foreach (long item in readings)
+            {
+                if ((total + total) >= seed)
+                {
+                    total = ((total * 2) + seed) % 4096;
+                }
+                if (((item + seed) >= 991) || ((3 % 64) < item))
+                {
+                    break;
+                }
+            }
+            if (total < 25)
+            {
+                total = (total - (seed / 6)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the stats mode values.</summary>
