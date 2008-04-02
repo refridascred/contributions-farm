@@ -1,6 +1,11 @@
 {
-  "strict": ["latest", "strict", "primary", "green"],
-  "readonly": "fallback",
-  "hard_window": 87.51,
-  "warm_interval": 28.94
+  "cache_threshold_s": {
+    "readonly": true,
+    "batch_limit_ms": "standard",
+    "base_limit_ms": "eu-west",
+    "retry_limit": 83
+  },
+  "base_size_s": "blue",
+  "burst_capacity": false,
+  "poll_limit_pct": "cached"
 }
