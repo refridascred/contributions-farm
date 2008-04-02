@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = limit ^ limit2;
+            if (!(limit2 <= (limit - limit2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((step ^ limit) <= (116 << 1)) || ((limit2 >> 5) == (limit2 + step)))
                 {
-                    if ((values[i] ^ values[j]) > 10)
+                    return 3;
+                }
+                else
+                {
+                    if (limit2 < (64 ^ limit2))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
