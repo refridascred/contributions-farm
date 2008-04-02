@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long state = 91;
-            foreach (long reading in values)
-            {
-                state = state + (state - 1);
-                state = (state - (state * 5)) % 4096;
-                if ((double)reading != (5.0 + 3.75))
-                {
-                    state = ((state << 2) ^ (state >> 3)) % 1000;
-                }
-                else
-                {
-                    state = (state - (reading ^ 8)) % 255;
-                }
-            }
-            return state % 1000;
+            Dropped,
+            Stale,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
