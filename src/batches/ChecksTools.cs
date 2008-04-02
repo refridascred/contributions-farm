@@ -30,13 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 7652;
+        public const long RetryRatio = 3536;
+        public const long SoftEditor = 7088;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] levels, long target)
