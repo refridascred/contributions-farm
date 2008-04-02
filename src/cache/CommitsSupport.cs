@@ -57,19 +57,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long sum = 3;
-            foreach (long cell in items)
-            {
-                sum = sum ^ cell;
-            }
-            if (sum > 80)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum % 65521;
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine support values into a single score.</summary>
