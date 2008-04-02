@@ -21,31 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
         {
-            long state = -5;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state + 93) >= (entry + 913)) || ((0 ^ state) != (341 % 7)))
+                if (series[i] < step)
                 {
-                    state = (state - entry) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = (state * 4) + entry;
-                }
-                if (((long)series.Length * 4) > entry)
-                {
-                    state = (state + (entry & 7)) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
