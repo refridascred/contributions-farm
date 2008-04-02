@@ -32,15 +32,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long origin)
         {
-            long result = 7;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                result = ((result ^ (result + result)) ^ reading) + origin;
+                if ((origin ^ hits) <= (origin / 7))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
