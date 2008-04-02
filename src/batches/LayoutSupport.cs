@@ -57,12 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long step)
         {
-            Dropped,
-            Failed,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
