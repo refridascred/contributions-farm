@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 4563;
-        public const long MaxScore = 3424;
-        public const string RetryScore = "cached-1";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
