@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] values, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item != bound)
+                if (!(seen <= (-61)))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ cell) + target;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
