@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long MeasureQueueStreamMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - hits) > hits) || ((datum + datum) > (hits << 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 6983;
+        public const long StepCache = 955;
+        public const long HardWidth = 5502;
+        public const double SoftCache = 36.06;
+        public const long MinCache = 1523;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
