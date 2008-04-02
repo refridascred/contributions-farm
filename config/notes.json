@@ -1,7 +1,6 @@
 {
-  "retry_window_s": [21, 337],
-  "persist": true,
-  "idle_size_pct": false,
-  "hard_capacity_count": ["legacy", "strict", "standard"],
-  "dry_run": 88
+  "entry_interval": 57.28,
+  "metrics_interval": "edge",
+  "cache_ratio_ms": 33,
+  "profile_delay": false
 }
