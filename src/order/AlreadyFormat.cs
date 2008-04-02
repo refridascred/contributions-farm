@@ -37,20 +37,10 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryDepth = 9361;
+        public const string BurstPayload = "staging-v2";
+        public const long DefaultPayload = 4953;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] data, long origin)
