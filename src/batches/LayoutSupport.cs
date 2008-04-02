@@ -39,11 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "legacy-v2";
-        public const long BurstAlready = 7741;
-        public const long DefaultCount = 8629;
-        public const long MaxAlready = 2981;
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long MeasureFilterContextMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((tally & 3) >= (datum + datum)) && ((datum / 8) >= (datum & 31))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
