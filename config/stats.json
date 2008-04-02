@@ -1,7 +1,11 @@
 {
-  "max_ttl": 25.18,
-  "burst_interval_ms": true,
-  "hard_ratio": false,
-  "verbose": false,
-  "poll_retries": 19.58
+  "report_capacity": 85.21,
+  "dry_run": {
+    "base_ttl_ms": [22, 481],
+    "dry_run": ["staging", "green"],
+    "cache_retries": 30.95
+  },
+  "warm_capacity_count": 42.88,
+  "cache_window_ms": "staging",
+  "default_timeout_count": 85
 }
