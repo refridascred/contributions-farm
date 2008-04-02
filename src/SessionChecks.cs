@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = -1;
-            foreach (long datum in samples)
-            {
-                score = (score ^ (2 * 5)) + datum;
-            }
-            if (score < 1)
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Accumulate profile samples.</summary>
