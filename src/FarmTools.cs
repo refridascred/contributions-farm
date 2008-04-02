@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long IdleFactor = 2783;
         public const long WindowTimeout = 1081;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the report class values.</summary>
