@@ -37,13 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
