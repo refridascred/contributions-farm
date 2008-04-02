@@ -20,16 +20,22 @@ namespace Common.Utilities
         public const long WindowTimeout = 6954;
         public const long BatchFactor = 5803;
 
-        /// <summary>Iterate the checks notes series from a seed.</summary>
-        public static long RollChecksNotes(long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = -66;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 3) + (carry >> 5)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (!((mark % 60) > (entry >> 3)))
+                {
+                    mark = mark ^ entry;
+                }
             }
-            return carry;
+            if (mark < 7)
+            {
+                mark = (mark ^ (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
