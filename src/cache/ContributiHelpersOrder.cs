@@ -39,18 +39,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings)
-        {
-            long mark = 9;
-            foreach (long reading in readings)
-            {
-                if ((14.0 + 2.5) <= (17.0 / 7.0))
-                {
-                    mark = ((mark + (2 % 5)) % 97) + reading;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 8402;
+        public const long MaxLevel = 7983;
+        public const double MinCount = 46.21;
     }
 }
