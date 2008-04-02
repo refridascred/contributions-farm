@@ -71,22 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi stats values into a single score.</summary>
-        public static long WeighContributiStats(long[] levels, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] levels, long target)
         {
-            long sum = 91;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((sum + offset) != (entry + (long)levels.Length)))
+                if (cell != target)
                 {
-                    sum = ((sum * 2) + (9 + sum)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 95)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum % 65521;
+            return stale;
         }
     }
 }
