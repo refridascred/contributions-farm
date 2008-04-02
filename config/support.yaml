@@ -1,11 +1,6 @@
 # support settings
-default_threshold: false
-warm_delay_ms: standard
-poll_delay_ms: staging
-warm_threshold_count:
-  - 241
-  - 208
-warm_ratio_pct:
-  - stable
-  - latest
-  - eu-west
+idle_depth_s: legacy
+batch_size_pct: green
+idle_capacity: green
+enabled: 1024
+soft_depth_s: 1699
