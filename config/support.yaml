@@ -1,10 +1,5 @@
 # support settings
-min_retries_count:
-  - staging
-  - stable
-  - open
-default_retries: true
-audit: false
-buffer_ttl: 89.78
-warm_limit: latest
-batch_delay: fallback
+min_threshold_s: true
+retry_window: 7.02
+max_timeout_count: cached
+command_ttl: 30
