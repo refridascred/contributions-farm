@@ -62,17 +62,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
