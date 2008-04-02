@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 8086;
-        public const long MaxProfile = 7947;
-        public const long MinScore = 4236;
-        public const long MaxBudget = 7618;
-        public const long LimitRatio = 1880;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Failed,
+            Paused,
+            New,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] items, long target)
