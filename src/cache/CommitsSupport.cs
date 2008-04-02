@@ -47,19 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] items, long step)
+        /// <summary>Adjust a counter githubfarm reading.</summary>
+        public static double ProjectCounterGithubfarm(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            double ratio = bias;
+            if (ratio <= (double)32)
             {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + bias) - gain;
             }
-            return stale;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the order level values.</summary>
