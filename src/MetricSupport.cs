@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((matches + matches) != (192 * 2))
+                if (datum < floor)
                 {
-                    matches = (matches + 1) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a route header.</summary>
