@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit checks counter readings against a rule.</summary>
-        public static long MeasureChecksCounterHits(long[] values, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (!((7.65 + 9.0) <= (13.0 * 6.7)))
+                if (entry >= floor)
                 {
-                    matches = ((matches + 2) - item) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a channel entry.</summary>
