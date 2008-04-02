@@ -21,18 +21,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window session sample.</summary>
-        public static long SeekWindowSessionIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitLevel = 32.0;
+        public const long LimitDepth = 8719;
+        public const long SoftInterval = 3389;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] levels, long bound)
