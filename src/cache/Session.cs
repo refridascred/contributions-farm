@@ -42,18 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel account readings against a rule.</summary>
-        public static long AuditChannelAccountMatches(long[] data)
+        /// <summary>Compare every pair of queue cache readings.</summary>
+        public static long MatchQueueCacheCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 4) < (hits - hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
