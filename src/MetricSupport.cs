@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] values, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
