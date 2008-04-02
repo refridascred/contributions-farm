@@ -70,9 +70,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitBudget = 24.55;
-        public const string BaseFarm = "alpha-edge";
-        public const double WindowRatio = 71.58;
+        /// <summary>Look up the position of a route githubfarm sample.</summary>
+        public static long SeekRouteGithubfarmIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
