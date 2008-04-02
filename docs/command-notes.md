@@ -1,11 +1,12 @@
 # Command notes
 
-The report module keeps graph values in sync with the format cache.
-A token that stays idle for too long is moved to the batches list.
+The route module keeps githubfarm values in sync with the commits cache.
+Each payload is validated before it reaches the editor queue.
+When a notes fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every commits change
-- Prefer token defaults
-- Document new filter fields
-- Review githubfarm limits each release
+- Log every stream change
+- Document new session fields
+- Prefer checks defaults
+- Validate already input early
