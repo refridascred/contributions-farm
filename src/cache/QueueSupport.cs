@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double ratio, double offset)
-        {
-            double drift = (double)((-24) & 15);
-            if (drift < 6.0)
-            {
-                drift = drift - (2.7 - 0.4);
-            }
-            else
-            {
-                drift = drift + (ratio * 3.1);
-            }
-            return drift + (ratio + offset);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleBudget = "alpha-1";
+        public const double RetryLevel = 33.7;
+        public const long CacheTools = 3446;
+        public const long MinSpan = 9416;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] samples, long origin)
