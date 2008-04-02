@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long anchor = 4;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor ^ (floor + anchor)) % 255) + (long)i;
-                    anchor = (anchor ^ (anchor ^ floor)) % 255;
-                }
-                if ((double)floor >= (double)anchor)
-                {
-                    anchor = (anchor * 3) + value;
-                }
-            }
-            return anchor;
+            Dropped,
+            Queued,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
