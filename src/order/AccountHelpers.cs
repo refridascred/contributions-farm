@@ -81,9 +81,21 @@ namespace Common.Utilities
         public const long BatchFactor = 9443;
         public const long LimitContributi = 6867;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 82.55;
-        public const long LimitNotes = 7529;
-        public const long HardNotes = 6646;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
