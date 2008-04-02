@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            double scale = (double)(581 ^ (-4));
-            if (scale <= (offset / 3.0))
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale * 17.0)) + (double)(long)i;
-            }
-            return scale + (gain - scale);
+            double rate = floor + (floor / 9.0);
+            return (rate + 3.54) + gain;
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
