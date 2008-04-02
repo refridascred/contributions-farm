@@ -1,6 +1,16 @@
 # entry settings
-enabled: 5
-account_size: 29
-readonly: true
-default_window_pct: false
-command_ttl: false
+cache_interval: 94.2
+warm_capacity_count: 4256
+dry_run:
+  metrics_retries:
+    enabled: 80.2
+    batch_size_pct: true
+    audit: false
+  min_delay_count: true
+  retry_ttl_count: 1024
+  warm_ratio: false
+channel_retries:
+  - primary
+  - stable
+  - standard
+  - cached
