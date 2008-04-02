@@ -24,14 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Stale,
-            New,
-            Active,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinInterval = 5884;
+        public const long IdleSize = 1862;
+        public const long BatchWidth = 1591;
+        public const string DefaultBudget = "staging";
+        public const long MaxCount = 8508;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountRange(long[] values, long seed)
