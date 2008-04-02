@@ -29,17 +29,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] samples, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] == step)
+                if ((matches + matches) == (cell + matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the channel phase values.</summary>
