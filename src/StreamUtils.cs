@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 742;
         public const double HardWidth = 76.23;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepRatio = "staging";
-        public const double BurstTimeout = 56.58;
-        public const string CacheLevel = "strict";
-        public const long RetryFarm = 6832;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)matches == (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long step, long step2)
