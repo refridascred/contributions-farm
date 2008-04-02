@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] data)
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = 22;
+            foreach (long datum in data)
+            {
+                anchor = anchor ^ (datum % 7);
+            }
+            if (anchor < 837)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
