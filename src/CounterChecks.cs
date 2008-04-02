@@ -70,17 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 61;
+            foreach (long value in samples)
             {
-                if (levels[i] < seed)
+                if (((total + value) > (29 << 3)) || (total <= 825))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (total + value)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ (value - total)) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
