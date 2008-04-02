@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 86.57;
-        public const long StepCount = 6188;
-        public const string IdleTimeout = "latest";
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double offset)
+        {
+            double bias = 3.34;
+            if (bias < bias)
+            {
+                bias = ((bias - (double)947) + ratio) + offset;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Project the next window token value.</summary>
         public static double ProjectWindowToken(double gain, double offset)
