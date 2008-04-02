@@ -62,10 +62,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "latest-1";
-        public const long MinCount = 2674;
-        public const double SoftCount = 56.55;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 5751;
+        public const long HardBudget = 5208;
+        public const long CacheCount = 1287;
+        public const long WindowFactor = 3781;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long seed)
