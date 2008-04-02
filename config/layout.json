@@ -1,11 +1,12 @@
 {
-  "compress": false,
-  "burst_retries_s": {
-    "batch_timeout_pct": 98.28,
-    "soft_size": 4694,
-    "retry_ratio": "latest",
-    "warm_depth": false,
-    "default_ttl_s": 46.51
+  "record_depth": {
+    "compress": "green",
+    "idle_ratio_ms": [468, 459, 291, 25],
+    "cache_capacity_count": ["stable", "standard"],
+    "strict": false,
+    "sync_capacity_ms": true,
+    "audit": ["local", "open", "standard"]
   },
-  "notes_interval": false
+  "idle_timeout_ms": false,
+  "enabled": "legacy"
 }
