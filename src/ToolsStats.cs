@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 12.36;
-        public const long IdleBudget = 5229;
-        public const string MaxGraph = "fallback-1";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MaxRatio = 8.17;
