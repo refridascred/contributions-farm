@@ -22,15 +22,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 3;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor << 2) ^ (anchor + datum)) % 255) + seed;
-            }
-            return anchor;
+            Queued,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
