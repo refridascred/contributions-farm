@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long MinScore = 6205;
         public const long BaseFarm = 1965;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 8013;
-        public const double CacheScore = 49.15;
-        public const long StepCounter = 8752;
-        public const long BaseSpan = 1351;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] values)
