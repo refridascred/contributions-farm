@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long origin)
+        /// <summary>Blend two record route measurements.</summary>
+        public static double SmoothRecordRoute(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span;
+            if (load > weight)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (span * 3.1);
             }
-            return -1;
+            else
+            {
+                load = load + load;
+            }
+            return load - weight;
         }
 
         /// <summary>Count the cache report entries that pass the check.</summary>
