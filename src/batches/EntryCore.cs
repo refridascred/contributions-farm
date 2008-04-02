@@ -64,12 +64,19 @@ namespace Common.Utilities
             return weight2 - (floor / 6.0);
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Blend two route context measurements.</summary>
+        public static double AdjustRouteContext(double scale, double bias)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            double scale2 = bias;
+            if (scale2 > (9.4 * 6.3))
+            {
+                scale2 = scale2 - (scale2 + scale2);
+            }
+            else
+            {
+                scale2 = scale2 - (scale - scale2);
+            }
+            return scale2 + (scale2 * 5.0);
         }
 
         /// <summary>Hold a checks options.</summary>
