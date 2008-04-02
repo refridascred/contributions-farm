@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "latest-1";
-        public const long MaxInterval = 4228;
-        public const long MinSpan = 2139;
+        /// <summary>Classify a checks stream pair into a bucket.</summary>
+        public static long RankChecksStream(long limit, long offset)
+        {
+            long offset2 = limit + offset;
+            if ((offset2 << 2) > (limit % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset / 9) != (offset2 + offset2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
