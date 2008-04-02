@@ -20,23 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            long mark = 23;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mark = mark + ((long)data.Length >> 4);
-                if (!((item >> 2) != (item & 31)))
+                if ((double)datum <= (18.0 + 1.19))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (mark > 12)
-            {
-                mark = (mark + (mark >> 4)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
