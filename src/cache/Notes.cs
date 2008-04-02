@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate report githubfarm readings against a bound.</summary>
-        public static bool GuardReportGithubfarmLimits(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFactor = "legacy-edge";
+        public const long MaxFarm = 8069;
+        public const long MaxSpan = 3746;
+        public const long BaseSpan = 5826;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
