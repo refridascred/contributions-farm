@@ -15,21 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ ((long)i / 4)) % 101;
+                sum = sum + 20;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a record info.</summary>
