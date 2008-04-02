@@ -1,8 +1,19 @@
 {
-  "poll_limit": ["eu-west", "legacy", "staging", "edge"],
-  "checks_limit": "fallback",
-  "layout_window": 88,
-  "buffer_interval": 11.54,
-  "idle_threshold": "cached",
-  "base_timeout_count": "local"
+  "default_depth_s": 11,
+  "poll_ratio_count": {
+    "graph_interval": "cached",
+    "soft_window_count": "blue",
+    "record_delay": true,
+    "route_size": 30
+  },
+  "dry_run": [308, 414, 420],
+  "min_window": {
+    "profile_retries": 8659,
+    "soft_ttl_pct": 45.9,
+    "strict": [327, 157, 322, 63],
+    "commits_timeout": "edge",
+    "min_interval_pct": ["green", "blue", "legacy", "fallback"]
+  },
+  "token_retries": "primary",
+  "payload_timeout": 250
 }
