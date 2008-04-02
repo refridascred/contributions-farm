@@ -59,17 +59,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first route session entry that matches the target.</summary>
-        public static long FindRouteSessionIndex(long[] items, long limit)
+        /// <summary>Combine githubfarm order values into a single score.</summary>
+        public static long ScoreGithubfarmOrder(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 532;
+            foreach (long item in values)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                if ((double)result > (double)0)
                 {
-                    return (long)i;
+                    result = (result - (item % 100)) % 4096;
+                    continue;
                 }
+                result = (result - (item << 3)) % 97;
+                result = ((result * 2) + (result / 3)) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the graph state values.</summary>
