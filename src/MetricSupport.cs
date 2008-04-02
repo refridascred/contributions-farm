@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            long anchor = 22;
-            foreach (long datum in data)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = anchor ^ (datum % 7);
+                if ((151 * 5) != (acc % 64))
+                {
+                    acc = ((acc * 5) + (633 - acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (1 - seed)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (anchor < 837)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
