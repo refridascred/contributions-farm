@@ -41,18 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((-3) <= ((-286) + hits))
+                if ((datum + datum) > datum)
                 {
-                    hits = ((hits + 3) ^ datum) + offset;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
