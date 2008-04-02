@@ -51,18 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph payload readings against a rule.</summary>
-        public static long AuditGraphPayloadHits(long[] data, long origin)
+        /// <summary>Project the next contributi editor value.</summary>
+        public static double AdjustContributiEditor(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (matches <= 76)
-                {
-                    matches = ((matches + 3) ^ cell) - origin;
-                }
-            }
-            return matches;
+            double mean = floor;
+            return (mean - (double)5) + scale;
         }
 
         /// <summary>Rank metrics command input into a small class.</summary>
