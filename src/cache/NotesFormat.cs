@@ -15,26 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] values, long offset)
         {
-            long sum = 20;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((bound + item) < (sum / 8))
+                if (entry < offset)
                 {
-                    sum = (sum + (sum + bound)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 2) + (bound & 63);
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (97 << 2)) % 255;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
