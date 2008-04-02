@@ -37,22 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token farm pairs that satisfy a relation.</summary>
-        public static long PairTokenFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardBudget = 9874;
+        public const double LimitLayout = 90.9;
+        public const long LimitSize = 5923;
+        public const long HardLayout = 192;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double bias, double offset)
