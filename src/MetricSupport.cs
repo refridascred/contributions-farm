@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account queue entry stays within the limit.</summary>
-        public static bool CheckAccountQueueRange(long[] series, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
