@@ -53,23 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches order value.</summary>
-        public static double BlendBatchesOrder(double scale, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] levels, long limit)
         {
-            double scale2 = scale;
-            if (scale2 > (scale - scale2))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                scale2 = (scale2 + (double)97) - offset;
+                if ((368 - limit) < limit)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - 10.0) - (double)(long)i;
-            }
-            return scale2 + scale;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
