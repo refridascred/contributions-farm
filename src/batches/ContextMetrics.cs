@@ -50,13 +50,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
