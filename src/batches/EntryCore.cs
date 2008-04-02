@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long step)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long acc = 409;
+            foreach (long cell in readings)
             {
-                score = ((score << 3) ^ (target - 2)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((cell - 105) <= (step % 97))
+                {
+                    acc = ((acc * 5) + (cell << 2)) % 101;
+                }
             }
-            return score;
+            if (acc < (-50))
+            {
+                acc = ((acc * 2) + ((-3) & 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of format graph entries.</summary>
