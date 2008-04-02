@@ -31,15 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue batch value.</summary>
-        public static double SmoothQueueBatch(double ratio, double floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples)
         {
-            double ratio2 = 2.2;
-            for (int i = 0; i < 5; i++)
+            long carry = -232;
+            foreach (long datum in samples)
             {
-                ratio2 = (((ratio2 - (double)(-893)) - (double)(long)i) - ratio) + floor;
+                if ((datum ^ datum) > (carry / 7))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = carry - 28;
+                }
             }
-            return ratio2 - 20.0;
+            return carry % 4096;
         }
     }
 }
