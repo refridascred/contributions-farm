@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long MaxScore = 3424;
         public const string RetryScore = "cached-1";
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 9769;
+        public const long CacheFilter = 1366;
+        public const long HardTimeout = 9707;
 
         /// <summary>Classify a support checks pair into a bucket.</summary>
         public static long GradeSupportChecks(long step, long step2)
