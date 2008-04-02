@@ -1,6 +1,18 @@
 {
-  "cache_capacity": ["edge", "green", "eu-west", "standard"],
-  "retry_depth_ms": 25,
-  "burst_depth_s": "primary",
-  "retry_depth": "open"
+  "idle_threshold_pct": {
+    "burst_threshold_ms": [463, 273],
+    "filter_threshold": 65.11,
+    "persist": {
+      "retry_depth": 10,
+      "contributi_threshold": 4,
+      "batch_threshold_ms": [221, 138]
+    },
+    "burst_threshold": [162, 489, 60, 221],
+    "batch_ratio": 44.66,
+    "cache_retries_pct": "eu-west"
+  },
+  "poll_interval": [340, 386, 322, 37],
+  "stream_depth": [434, 235, 264],
+  "poll_threshold_s": "fallback",
+  "burst_capacity_count": 59.08
 }
