@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 9286;
         public const long MaxSize = 3461;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 233;
+        public const double MinRoute = 17.98;
+        public const long RetryBudget = 8178;
+        public const string BatchRoute = "open-1";
+        public const long HardInterval = 163;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] data)
