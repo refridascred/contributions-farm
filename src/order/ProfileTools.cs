@@ -33,11 +33,18 @@ namespace Common.Utilities
         public const double MaxEditor = 51.49;
         public const double RetryLevel = 14.34;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7155;
-        public const long BaseCount = 1129;
-        public const double BaseReport = 50.66;
-        public const long RetryFactor = 9381;
+        /// <summary>Locate a layout payload reading by value.</summary>
+        public static long FindLayoutPayloadIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record notes input into a small class.</summary>
         public static long GradeRecordNotes(long origin, long origin2)
