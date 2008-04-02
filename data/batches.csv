@@ -1,8 +1,8 @@
-id,ratio
-1,13.71
-2,strict
-3,677
-4,215
-5,40
-6,727
-7,local
+id,count,weight,active,state
+1,22.7,strict,57.58,26.66
+2,97.66,60.43,446,cached
+3,38.89,legacy,7.95,699
+4,485,489,fallback,967
+5,primary,primary,0.12,363
+6,blue,53.75,24.85,56.04
+7,local,403,528,cached
