@@ -44,13 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Paused,
+            Dropped,
+            New,
             Stale,
-            Done,
-            Idle,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
