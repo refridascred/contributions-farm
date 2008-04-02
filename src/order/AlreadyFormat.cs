@@ -15,32 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long origin, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            long slot = origin + target;
-            if (1.4 < (double)origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin == (double)slot)
+                if (samples[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.0 * 8.0) > (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
