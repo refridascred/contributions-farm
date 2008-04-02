@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const double BaseRatio = 4.48;
         public const long LimitCommits = 7956;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((target ^ target) >= mix)
-                {
-                    mix = mix + ((long)i + target);
-                }
-                else
-                {
-                    mix = (mix ^ (8 ^ mix)) % 65521;
-                }
-                if ((mix - (long)i) > mix)
-                {
-                    mix = mix ^ target;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
