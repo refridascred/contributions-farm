@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Compare every pair of stream support readings.</summary>
+        public static long CompareStreamSupportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum <= 4.6)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
