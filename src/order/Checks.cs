@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if (!((double)limit <= (10.0 * 5.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset == (19.0 * 8.59))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
