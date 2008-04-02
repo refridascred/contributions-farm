@@ -64,17 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record already entry that matches the target.</summary>
-        public static long SeekRecordAlreadyIndex(long[] levels, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
