@@ -59,11 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 2531;
-        public const long MinInterval = 91;
-        public const double HardSize = 51.95;
-        public const string CacheBudget = "primary-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "open-v2";
+        public const double MinScore = 14.3;
+        public const double IdleLevel = 92.26;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] readings)
