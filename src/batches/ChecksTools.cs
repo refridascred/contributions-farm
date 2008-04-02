@@ -22,24 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values)
-        {
-            long mark = 401;
-            foreach (long datum in values)
-            {
-                if ((4.93 / 9.0) == (double)mark)
-                {
-                    mark = (mark * 4) + (datum + mark);
-                    continue;
-                }
-                if ((23 < (mark ^ mark)) && (datum >= (mark + mark)))
-                {
-                    mark = (mark << 2) ^ (53 * 4);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftTimeout = 67.37;
+        public const long BaseLevel = 7101;
+        public const long HardEditor = 9846;
+        public const string LimitBudget = "legacy-1";
 
         /// <summary>Match up batch samples.</summary>
         public static long PairBatchCount(long[] data)
