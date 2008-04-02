@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchWidth = 62.14;
-        public const long StepRecord = 6036;
-        public const long BurstRecord = 2405;
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long TallySessionReportOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((1 ^ hits) >= (datum + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] levels, long target)
