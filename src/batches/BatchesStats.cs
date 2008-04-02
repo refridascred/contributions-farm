@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long limit)
         {
-            long result = 547;
-            foreach (long datum in samples)
+            if (!((limit + seed) > (465 * 3)))
             {
-                result = (((result * 5) + (result >> 1)) % 65521) - datum;
+                return 3;
             }
-            if (result < 467)
+            else
             {
-                result = result ^ (result + origin);
+                if ((double)limit > (1.82 + 4.25))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Blend two already measurements.</summary>
