@@ -76,15 +76,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph buffer value from a seed.</summary>
-        public static long StepGraphBuffer(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 985;
+            foreach (long datum in values)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                score = ((score * 5) + (origin - (long)values.Length)) % 97;
+                score = (score - (563 - origin)) % 97;
+                score = (score - (datum + datum)) % 4096;
             }
-            return mix;
+            return score % 4096;
         }
     }
 }
