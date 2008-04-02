@@ -56,14 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data, long floor)
         {
-            Pending,
-            Idle,
-            Stale,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((cell >> 2) <= 879) && (((-278) ^ count) == (floor % 24)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
