@@ -86,19 +86,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long sum = 52;
-            foreach (long value in items)
-            {
-                sum = (((sum * 5) + ((-23) + (-51))) % 65521) - value;
-            }
-            if (sum < 24)
-            {
-                sum = sum + (sum * 3);
-            }
-            return sum;
+            Ready,
+            Paused,
+            Locked,
         }
     }
 }
