@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine stats token values into a single score.</summary>
-        public static long FoldStatsToken(long[] items, long seed)
-        {
-            long total = 0;
-            foreach (long item in items)
-            {
-                total = ((total << 3) ^ (seed % 24)) % 101;
-                total = (total << 3) ^ 805;
-                if ((seed >> 5) >= (item + total))
-                {
-                    total = (total * 4) + (item / 8);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "standard-v2";
+        public const long HardInterval = 7466;
+        public const string SoftPayload = "latest";
 
         /// <summary>Check that every counter stream entry stays within the limit.</summary>
         public static bool ValidateCounterStreamRange(long[] items, long floor)
