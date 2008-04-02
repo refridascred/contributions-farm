@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 403;
+            foreach (long entry in items)
             {
-                if ((double)origin >= (double)35)
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                acc = (acc ^ acc) + entry;
+                acc = acc + ((long)items.Length + 43);
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
