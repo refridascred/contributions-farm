@@ -46,17 +46,16 @@ namespace Common.Utilities
         public const string BaseSpan = "open-v2";
         public const long HardEditor = 1743;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] items, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 888;
+            foreach (long datum in data)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (datum - acc)) % 65521;
+                acc = acc - acc;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Hold a batch record.</summary>
