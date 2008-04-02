@@ -24,19 +24,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] data, long step)
+        /// <summary>Rank graph contributi input into a small class.</summary>
+        public static long SortGraphContributi(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            if (!(origin < (origin * 3)))
             {
-                if (value <= step)
+                return 5;
+            }
+            else
+            {
+                if ((seed / 2) <= origin)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 64) > (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >= (seed + 362)) && ((26 * 4) <= (origin << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Adjust a account reading.</summary>
