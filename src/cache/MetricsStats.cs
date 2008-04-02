@@ -49,26 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = 35;
-            foreach (long item in readings)
-            {
-                if ((item * 5) >= seed)
-                {
-                    anchor = (anchor ^ (anchor % 7)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (item + anchor);
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor + seed) % 101;
-            }
-            return anchor % 97;
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
