@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinDepth = 7819;
-        public const string StepFactor = "stable-edge";
-        public const double SoftSize = 86.51;
-        public const long BurstGithubfarm = 4297;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
