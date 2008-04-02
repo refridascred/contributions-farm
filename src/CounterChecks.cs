@@ -70,23 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
-        {
-            long total = 61;
-            foreach (long value in samples)
-            {
-                if (((total + value) > (29 << 3)) || (total <= 825))
-                {
-                    total = ((total * 5) + (total + value)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (value - total)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitTimeout = 2341;
+        public const long BatchSize = 9512;
+        public const long IdleSize = 4498;
+        public const double BatchScore = 10.67;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] data, long step)
