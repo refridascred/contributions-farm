@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of payload queue readings.</summary>
-        public static long MatchPayloadQueueCount(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of order readings.</summary>
