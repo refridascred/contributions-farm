@@ -23,22 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mark = 341;
-            foreach (long cell in items)
-            {
-                if (((floor ^ floor) != (530 / 8)) && ((double)floor > (7.07 / 4.0)))
-                {
-                    mark = (mark + (cell & 7)) % 101;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
