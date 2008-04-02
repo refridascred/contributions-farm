@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] data, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)bound > 0.4) || ((double)item == (18.0 - 3.17)))
-                {
-                    count = count + 3;
-                }
+                mix = mix - (offset >> 3);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Blend two layout measurements.</summary>
