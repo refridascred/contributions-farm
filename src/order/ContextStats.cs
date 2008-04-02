@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (reading > step)
+                if ((entry & 3) <= (matches % 5))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - target;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Match up cache payload samples.</summary>
