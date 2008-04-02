@@ -50,10 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 40.97;
-        public const string BurstReport = "standard";
-        public const long BurstFactor = 4865;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Failed,
+            Active,
+            Stale,
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
