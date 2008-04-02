@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many route batch samples are out of range.</summary>
+        public static long MeasureRouteBatchGaps(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((((double)count >= (3.3 / 9.0)) && ((double)(-45) == (double)origin)) && ((count + count) == (item * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
