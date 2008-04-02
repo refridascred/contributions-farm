@@ -32,12 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long state = 207;
+            foreach (long entry in series)
+            {
+                state = ((state + (entry >> 5)) % 255) + seed;
+                state = (state << 3) ^ state;
+            }
+            if (state < (-60))
+            {
+                state = ((state * 4) + (state << 1)) % 1000;
+            }
+            return state;
         }
     }
 }
