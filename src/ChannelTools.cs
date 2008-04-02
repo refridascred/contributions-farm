@@ -24,19 +24,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double drift = bias;
-            if (drift > (drift + bias))
-            {
-                drift = drift - (weight * 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift + (double)76;
+            Synced,
+            Ready,
+            Pending,
+            Draft,
+            Locked,
         }
     }
 }
