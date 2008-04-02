@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long limit)
+        /// <summary>Combine record queue values into a single score.</summary>
+        public static long CombineRecordQueue(long[] series, long limit)
         {
-            long span = offset ^ limit;
-            if (offset <= (offset - limit))
+            long sum = 27;
+            foreach (long reading in series)
             {
-                return 2;
+                sum = ((sum << 2) ^ (reading ^ limit)) % 4096;
             }
-            else
+            if (sum < 37)
             {
-                if (((offset ^ limit) != (737 + span)) && (952 > (limit * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + limit) > (span % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = sum ^ (78 >> 3);
             }
+            return sum;
         }
 
         /// <summary>Combine contributi batches values into a single score.</summary>
