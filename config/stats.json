@@ -1,18 +1,5 @@
 {
-  "base_timeout": 17.3,
-  "stream_interval": [414, 490],
-  "enabled": {
-    "retry_ratio": {
-      "notes_threshold": 31.87,
-      "idle_limit": 16.41,
-      "cluster_timeout": "standard",
-      "window_window": 100
-    },
-    "idle_delay_ms": 84.07,
-    "persist": [267, 127, 385, 315],
-    "hard_interval_ms": "blue",
-    "flush_ratio_ms": ["local", "primary", "local"]
-  },
-  "audit": "staging",
-  "burst_window_pct": "stable"
+  "queue_window": "latest",
+  "retry_size_ms": [322, 216, 387],
+  "dry_run": [37, 450]
 }
