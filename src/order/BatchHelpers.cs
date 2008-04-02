@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 4968;
-        public const double BaseWidth = 72.83;
-        public const double IdlePayload = 14.35;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double offset)
+        {
+            double weight = (offset * 1.0) - (offset / 6.0);
+            return (weight + (double)476) + bias;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] data)
