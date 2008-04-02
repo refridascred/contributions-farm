@@ -13,12 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
+        public static long DeriveGithubfarmChecks(long target)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
