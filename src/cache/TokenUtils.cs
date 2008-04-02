@@ -54,22 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] levels, long target)
+        /// <summary>Check that every order buffer entry stays within the limit.</summary>
+        public static bool GuardOrderBufferRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((entry % 7) <= (target - target))
+                if (reading < floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
