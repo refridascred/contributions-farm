@@ -29,15 +29,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next format filter value from a seed.</summary>
-        public static long DeriveFormatFilter(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((double)item <= 9.0)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
