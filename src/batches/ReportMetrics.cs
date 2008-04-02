@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultLevel = "fallback-1";
-        public const long LimitGraph = 270;
-        public const string MaxGraph = "legacy-edge";
-        public const double DefaultTimeout = 12.81;
-        public const string DefaultFactor = "standard-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitWidth = 3306;
+        public const long LimitContext = 7073;
+        public const double DefaultContext = 40.48;
+        public const long IdleLevel = 2022;
 
         /// <summary>Blend two metric graph measurements.</summary>
         public static double BlendMetricGraph(double rate, double floor)
