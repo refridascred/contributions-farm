@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] data, long target)
+        /// <summary>Match up payload metrics samples.</summary>
+        public static long OverlapPayloadMetricsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((9.41 * 3.12) < (double)target) && !((double)tally < (1.64 + 9.7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ datum;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
