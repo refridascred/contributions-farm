@@ -63,10 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 8895;
-        public const long MaxRoute = 9583;
-        public const string StepLevel = "open-edge";
-        public const double IdleRoute = 13.81;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels, long floor)
+        {
+            long result = 9;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length % 3) == (entry ^ 1))
+                {
+                    result = (((result * 2) + (result / 9)) % 4096) - floor;
+                }
+            }
+            return result % 97;
+        }
     }
 }
