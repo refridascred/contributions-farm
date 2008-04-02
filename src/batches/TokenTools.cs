@@ -37,39 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long step = origin ^ floor;
-            if ((70 >> 2) <= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (63 <= (origin + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (step * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.6 * 2.4) != (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
