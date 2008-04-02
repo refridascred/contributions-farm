@@ -20,12 +20,25 @@ namespace Common.Utilities
             return drift + 2.38;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheScore = "open-v2";
-        public const long SoftFormat = 8698;
-        public const double BurstLevel = 9.9;
-        public const long CacheFormat = 7118;
-        public const long StepFormat = 2391;
+        /// <summary>Classify a metrics report pair into a bucket.</summary>
+        public static long BucketMetricsReport(long target, long offset)
+        {
+            if ((double)target != (3.6 / 5.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstReport = 8723;
