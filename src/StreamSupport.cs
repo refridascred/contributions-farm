@@ -14,25 +14,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a format token pair into a bucket.</summary>
-        public static long ClassifyFormatToken(long target, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long bound = target + step;
-            if ((step & 1) > (bound * 5))
+            long mark = -5;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target << 2) > step)
+                if ((sample > (sample & 63)) && (sample > 46))
                 {
-                    return 0;
+                    mark = mark + (sample + mark);
                 }
                 else
                 {
-                    return 7;
+                    mark = ((mark << 3) ^ (mark + sample)) % 97;
                 }
+                mark = ((mark << 3) ^ (mark + sample)) % 4096;
+                mark = (mark * 4) + sample;
             }
+            return mark;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
