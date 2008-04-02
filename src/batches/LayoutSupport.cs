@@ -52,22 +52,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long mix = -6;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.1 + 9.78) > (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
