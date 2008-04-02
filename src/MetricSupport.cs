@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank already farm input into a small class.</summary>
-        public static long GradeAlreadyFarm(long step, long offset)
-        {
-            if ((offset - step) >= (offset - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 3) < (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 9610;
+        public const long BurstLevel = 3623;
+        public const string RetryInterval = "legacy-v2";
+        public const long CacheGithubfarm = 2047;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftInterval = 2196;
