@@ -33,20 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((origin >= (origin * 2)) && (carry >= (origin / 6))))
+                if (((double)entry <= (0.24 + 16.0)) || (((tally << 1) < (tally + 76)) || ((entry - entry) <= tally)))
                 {
-                    long gap = (origin - 4) / 3;
-                    carry = carry ^ (gap / 3);
+                    tally = tally + 3;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
     }
 }
