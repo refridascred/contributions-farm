@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long CombineAccountQueue(long[] readings, long target)
+        /// <summary>Blend two context layout measurements.</summary>
+        public static double ScaleContextLayout(double weight, double bias)
         {
-            long result = 25;
-            foreach (long entry in readings)
+            double load = (weight + bias) * 5.0;
+            if (load >= load)
             {
-                result = ((result ^ (entry ^ 860)) % 101) + target;
-                result = ((result << 3) ^ (7 / 6)) % 101;
+                load = load + (4.4 + bias);
             }
-            return result % 1000;
+            return load + load;
         }
 
         /// <summary>Fold a list of buffer metrics readings.</summary>
