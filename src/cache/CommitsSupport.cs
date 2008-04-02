@@ -54,19 +54,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double bias, double offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double gain = bias;
-            if (gain < offset)
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (19.0 + gain)) + (double)(long)i;
-            }
-            return gain + (bias * 17.0);
+            Locked,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
