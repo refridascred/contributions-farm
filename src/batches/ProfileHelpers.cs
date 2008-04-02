@@ -20,38 +20,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((2 > (floor / 4)) || ((floor - floor) != (origin * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin - origin) < (floor - floor)) || ((origin << 3) <= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(floor < (origin / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
