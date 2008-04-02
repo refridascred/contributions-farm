@@ -19,16 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 4) + 66) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((reading - reading) != (25 << 3)) && !((336 + reading) > seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
