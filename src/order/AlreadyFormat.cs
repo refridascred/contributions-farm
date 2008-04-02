@@ -15,17 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] < floor)
+                if ((double)tally <= 15.0)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a payload info.</summary>
