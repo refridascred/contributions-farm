@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long total = 224;
+            foreach (long sample in values)
             {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total + (2 + 98);
+                total = total - (sample - sample);
             }
-            return stale;
+            return total % 1000;
         }
 
         /// <summary>Hold a report header.</summary>
