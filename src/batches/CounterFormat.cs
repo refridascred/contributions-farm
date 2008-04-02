@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long AuditGraphCommitsOutliers(long[] samples, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long state = 138;
+            foreach (long datum in values)
             {
-                if (778 > hits)
-                {
-                    hits = ((hits + 2) ^ datum) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (((state + (522 / 5)) % 65521) + datum) + floor;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
