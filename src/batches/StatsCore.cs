@@ -78,12 +78,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            double drift = bias;
+            return drift + span;
         }
     }
 }
