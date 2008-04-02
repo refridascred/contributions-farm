@@ -53,18 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] levels, long limit)
+        /// <summary>Validate githubfarm already readings against a bound.</summary>
+        public static bool GuardGithubfarmAlreadyLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((368 - limit) < limit)
+                if (cell > target)
                 {
-                    hits = (hits + 1) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
