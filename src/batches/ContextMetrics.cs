@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long WindowSpan = 6625;
         public const long DefaultSpan = 4386;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
