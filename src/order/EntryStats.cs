@@ -26,13 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long origin2)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            if (((0.77 + 2.01) == (double)origin) || (origin2 > (origin >> 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + origin) == (origin2 - 335)) && ((origin ^ origin2) < (origin - origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
