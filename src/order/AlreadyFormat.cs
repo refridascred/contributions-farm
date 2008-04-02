@@ -49,12 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
