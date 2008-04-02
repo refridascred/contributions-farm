@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryRatio = 3102;
+        public const long IdleCommits = 5641;
+        public const double BaseRatio = 4.48;
+        public const long LimitCommits = 7956;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings, long seed)
