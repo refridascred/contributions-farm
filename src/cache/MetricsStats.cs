@@ -36,17 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account schema reading by value.</summary>
-        public static long FindAccountSchemaIndex(long[] items, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] == offset)
+                if ((double)758 <= (double)floor)
                 {
-                    return (long)i;
+                    mix = (mix ^ floor) % 4096;
                 }
+                mix = ((mix * 3) + (floor - (long)i)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
