@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] data, long seed)
         {
-            if (2.0 > (double)bound)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((76 + seed) >= (seed & 63)) && ((double)60 > (double)bound))
+                if (13.0 < (double)(long)data.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed >= (seed ^ bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 1) + cell) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
