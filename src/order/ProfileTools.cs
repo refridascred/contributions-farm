@@ -27,20 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 9201;
+        public const long RetryFilter = 4657;
+        public const long SoftRatio = 6119;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 7155;
