@@ -37,12 +37,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long origin)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            if ((double)origin == (8.7 / 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (origin ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a already report value against two limits.</summary>
