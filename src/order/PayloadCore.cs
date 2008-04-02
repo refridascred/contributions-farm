@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            double bias = 3.34;
-            if (bias < bias)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias - (double)947) + ratio) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Project the next window token value.</summary>
