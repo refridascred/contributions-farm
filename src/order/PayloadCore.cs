@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            Synced,
-            Queued,
-            New,
-            Idle,
+            double mean = weight;
+            if (mean >= floor)
+            {
+                mean = mean + (floor - mean);
+            }
+            return mean + (weight - 1.0);
         }
 
         /// <summary>Locate a record githubfarm reading by value.</summary>
