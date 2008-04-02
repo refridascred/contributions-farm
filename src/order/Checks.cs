@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Check that every layout batch entry stays within the limit.</summary>
+        public static bool CheckLayoutBatchRange(long[] items, long origin)
         {
-            Draft,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
