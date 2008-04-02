@@ -28,21 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of checks support readings.</summary>
-        public static long MatchChecksSupportCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count >= (item >> 2)) && ((11.0 - 19.0) >= (double)item))
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
