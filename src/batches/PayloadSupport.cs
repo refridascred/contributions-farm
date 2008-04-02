@@ -41,14 +41,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Paused,
-            Queued,
-            Synced,
             New,
-            Idle,
+            Dropped,
+            Locked,
         }
     }
 }
