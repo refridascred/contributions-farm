@@ -31,12 +31,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long mark = -23;
+            foreach (long value in data)
+            {
+                if ((double)mark <= 5.1)
+                {
+                    mark = (mark - (896 + mark)) - value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next report metrics value from a seed.</summary>
