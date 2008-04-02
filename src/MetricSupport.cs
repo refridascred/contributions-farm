@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string RetryInterval = "legacy-v2";
         public const long CacheGithubfarm = 2047;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftInterval = 2196;
-        public const long MinCount = 1341;
-        public const long DefaultWindow = 4168;
-        public const long BatchWindow = 5441;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextMatches(long[] items, long origin)
