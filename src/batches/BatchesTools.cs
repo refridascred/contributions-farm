@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long StepCount = 4793;
         public const long BurstEditor = 1377;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] series, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry << 3) <= seed)
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    carry = carry + (carry & 63);
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry << 3) ^ (seed + 7)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
