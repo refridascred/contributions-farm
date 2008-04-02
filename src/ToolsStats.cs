@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long SeekClusterChecksIndex(long[] series, long seed)
+        /// <summary>Derive the next already token value from a seed.</summary>
+        public static long DeriveAlreadyToken(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
