@@ -23,18 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long span = floor - limit;
+            if ((limit ^ span) > (limit + floor))
             {
-                if (((tally % 16) > (tally * 3)) || (sample > (tally + 39)))
+                return 2;
+            }
+            else
+            {
+                if (span < (limit + floor))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
