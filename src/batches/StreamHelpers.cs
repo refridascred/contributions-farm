@@ -54,26 +54,18 @@ namespace Common.Utilities
         public const string BatchRoute = "open-1";
         public const long HardInterval = 163;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples, long target)
         {
-            long mark = 21;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((0.38 - 0.2) > (double)sample) && ((mark << 2) != (mark / 6)))
+                if ((-37) > (cell / 2))
                 {
-                    mark = (mark - sample) % 1000;
-                }
-                if ((double)mark < (double)91)
-                {
-                    break;
+                    matches = (matches + 2) + target;
                 }
             }
-            if (mark < 448)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return matches;
         }
     }
 }
