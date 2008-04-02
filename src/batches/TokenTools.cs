@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + 60) >= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
