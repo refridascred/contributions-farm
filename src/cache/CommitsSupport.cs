@@ -68,30 +68,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long sum = 504;
-            foreach (long sample in samples)
-            {
-                if (((9.6 - 4.05) == (double)sample) || ((6.4 / 8.0) >= (double)(long)samples.Length))
-                {
-                    sum = sum - (sum & 31);
-                }
-                if ((target + sum) != (target << 3))
-                {
-                    sum = (sum << 3) ^ ((long)samples.Length + sum);
-                }
-                else
-                {
-                    sum = sum ^ (sum % 16);
-                }
-            }
-            if (sum > 915)
-            {
-                sum = (sum << 2) ^ (target - target);
-            }
-            return sum % 1000;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
