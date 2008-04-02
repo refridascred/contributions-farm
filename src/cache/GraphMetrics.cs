@@ -13,17 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
