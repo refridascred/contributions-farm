@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine record queue values into a single score.</summary>
-        public static long CombineRecordQueue(long[] series, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long sum = 27;
-            foreach (long reading in series)
-            {
-                sum = ((sum << 2) ^ (reading ^ limit)) % 4096;
-            }
-            if (sum < 37)
-            {
-                sum = sum ^ (78 >> 3);
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
