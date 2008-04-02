@@ -77,10 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 1084;
-        public const long RetryFactor = 3842;
-        public const long RetryOrder = 2394;
-        public const long HardOrder = 3671;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryInterval = 8826;
+        public const long IdleSize = 2463;
+        public const double MaxQueue = 83.29;
+        public const long RetrySize = 5001;
+        public const long BaseDepth = 2583;
     }
 }
