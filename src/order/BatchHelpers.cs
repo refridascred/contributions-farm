@@ -18,32 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long limit)
         {
-            long anchor = 21;
-            foreach (long value in data)
+            long span = step - limit;
+            if (limit < 212)
             {
-                if (!((19.0 + 8.33) >= (double)anchor))
+                return 2;
+            }
+            else
+            {
+                if ((span % 8) <= (limit - (-588)))
                 {
-                    anchor = (anchor << 2) ^ (anchor / 9);
-                    anchor = ((anchor * 3) + (value / 8)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (anchor >> 3)) % 97;
-                }
-                anchor = anchor + (308 >> 1);
-                if (((value >> 5) >= anchor) && (2 > (anchor & 63)))
-                {
-                    anchor = anchor ^ (value ^ anchor);
+                    if ((6.64 - 4.1) == (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - limit) > (step & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (anchor < 748)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Hold a stats summary.</summary>
