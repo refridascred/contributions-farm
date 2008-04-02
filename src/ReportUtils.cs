@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 2004;
         public const double IdleQueue = 62.45;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 4) > ((long)items.Length ^ count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a report options.</summary>
