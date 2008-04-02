@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
-        public static long DeriveGithubfarmChecks(long target)
+        /// <summary>Audit cluster counter readings against a rule.</summary>
+        public static long CountClusterCounterOutliers(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((double)item >= (double)65)
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
