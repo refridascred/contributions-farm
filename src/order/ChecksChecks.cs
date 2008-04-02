@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            double rate = (double)(18 + 70);
-            if (rate >= (bias * 8.0))
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate + (weight / 4.0);
+                total = (total + origin) % 255;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return rate - 14.0;
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
