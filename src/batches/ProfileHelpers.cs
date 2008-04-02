@@ -40,12 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a order options.</summary>
