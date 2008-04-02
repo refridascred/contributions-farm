@@ -52,14 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            New,
-            Idle,
-            Retry,
-            Synced,
-            Draft,
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
