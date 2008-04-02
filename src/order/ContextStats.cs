@@ -52,11 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Find the first metric layout entry that matches the target.</summary>
+        public static long FindMetricLayoutIndex(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
