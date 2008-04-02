@@ -71,15 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double offset)
-        {
-            double rate = (double)(349 >> 3);
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate + offset)) + (double)(long)i;
-            }
-            return rate + (weight + 1.6);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultCount = "alpha-edge";
+        public const long RetryStats = 41;
+        public const long StepStats = 9498;
+        public const string BatchInterval = "strict";
+        public const long CacheStats = 876;
     }
 }
