@@ -15,15 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two support format measurements.</summary>
-        public static double SmoothSupportFormat(double ratio, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long step)
         {
-            double gain = floor;
-            if (gain > (14.0 - gain))
+            long count = 0;
+            foreach (long cell in values)
             {
-                gain = (gain + floor) + ratio;
+                if ((double)count <= (14.0 * 3.7))
+                {
+                    count = ((count + 2) - cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + floor;
+            return count;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
