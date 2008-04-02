@@ -1,16 +1,11 @@
 {
-  "persist": "fallback",
-  "burst_retries_count": 5687,
-  "account_window": "open",
-  "channel_ratio": {
-    "base_delay_ms": 4029,
-    "soft_threshold": ["strict", "local"],
-    "schema_ratio": {
-      "flush_limit_ms": 82,
-      "dry_run": "staging",
-      "min_size": "blue",
-      "default_ratio_ms": "blue"
-    },
-    "min_ratio_count": 13
-  }
+  "payload_interval": {
+    "strict": ["cached", "open", "open"],
+    "readonly": 9976,
+    "min_capacity_ms": 2,
+    "retry_window_ms": 32.29,
+    "idle_interval_s": true
+  },
+  "window_timeout": "eu-west",
+  "min_size": 36
 }
