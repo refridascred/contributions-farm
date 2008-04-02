@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const double MaxEditor = 51.49;
         public const double RetryLevel = 14.34;
 
-        /// <summary>Locate a layout payload reading by value.</summary>
-        public static long FindLayoutPayloadIndex(long[] items, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank record notes input into a small class.</summary>
