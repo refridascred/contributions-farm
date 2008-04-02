@@ -30,17 +30,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a record context reading by value.</summary>
-        public static long LookupRecordContextIndex(long[] values, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long value in levels)
             {
-                if (values[i] < origin)
+                if ((double)state == (9.2 - 1.82))
                 {
-                    return (long)i;
+                    state = state + (value * 5);
+                }
+                else
+                {
+                    state = (state << 2) ^ (state + state);
                 }
             }
-            return -1;
+            if (state > (-645))
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
