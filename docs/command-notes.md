@@ -1,14 +1,11 @@
 # Command notes
 
-Keep already and githubfarm names short and lowercase.
-When a batches fails, the filter handler retries a few times before giving up.
-The batches helpers are pure functions, so they are safe to call from any thread.
-
-Keep layout and schema names short and lowercase.
-The cache module keeps stats values in sync with the format cache.
+Use context settings to tune how often stream data is refreshed.
+The metric report groups every queue by window.
+Keep contributi and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Prefer layout defaults
-- Keep session values small
+- Log every commits change
+- Review channel limits each release
+- Keep batch values small
