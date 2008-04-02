@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long score = 28;
-            foreach (long datum in items)
-            {
-                if ((double)datum != (double)865)
-                {
-                    score = (score * 3) + (score + (-7));
-                }
-                else
-                {
-                    score = ((score << 3) ^ datum) % 1000;
-                }
-            }
-            return score;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
