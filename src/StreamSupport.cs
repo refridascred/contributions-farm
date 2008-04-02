@@ -22,39 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long step, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels, long seed)
         {
-            long delta = step ^ limit;
-            if ((475 % 16) < delta)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (double)delta)
+                if ((matches + 9) > sample)
                 {
-                    return 2;
+                    matches = (matches + 2) - seed;
                 }
                 else
                 {
-                    if (((step * 3) == (delta % 7)) && ((delta - 78) < (step - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)delta < (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many schema filter samples are out of range.</summary>
