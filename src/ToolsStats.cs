@@ -30,13 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
