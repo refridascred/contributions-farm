@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every account layout entry stays within the limit.</summary>
-        public static bool VerifyAccountLayoutRange(long[] levels, long floor)
+        /// <summary>Check that every layout stats entry stays within the limit.</summary>
+        public static bool GuardLayoutStatsBounds(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (datum > floor)
+                if (cell != limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
