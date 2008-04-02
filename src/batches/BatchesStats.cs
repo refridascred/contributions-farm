@@ -28,18 +28,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels, long step)
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long MatchChecksSupportCount(long[] levels)
         {
-            long anchor = 114;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5 << 2) > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor + (step & 15)) % 1000) ^ reading;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
