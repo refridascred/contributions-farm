@@ -78,19 +78,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry queue readings against a bound.</summary>
-        public static bool VerifyEntryQueueLimits(long[] values, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double span)
         {
-            bool found = true;
-            foreach (long value in values)
+            double mean = (8.6 / 3.0) + weight;
+            if (mean < (span + weight))
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (span / 9.0);
             }
-            return found;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - mean;
         }
     }
 }
