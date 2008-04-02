@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count cache report pairs that satisfy a relation.</summary>
-        public static long CompareCacheReportCount(long[] readings)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = offset + floor;
+            if ((offset * 4) <= (floor + offset2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (13.0 / 9.0))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
