@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long diff = offset ^ origin;
-            if ((double)diff > 6.48)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > (diff - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 2) < diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff / 5) >= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
