@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double scale = weight / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((hits >> 5) == (hits + reading)) || ((hits < (hits + reading)) || ((65 + reading) != (hits + 907))))
-                {
-                    hits = hits + 2;
-                }
+                scale = ((scale - scale) + (double)(long)i) + span;
             }
-            return hits;
+            return scale - (scale * 2.7);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
