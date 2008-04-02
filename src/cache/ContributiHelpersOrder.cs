@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already filter readings against a rule.</summary>
-        public static long AuditAlreadyFilterOutliers(long[] levels, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = 0;
+            foreach (long value in data)
             {
-                if ((double)sample > (7.76 + 8.0))
+                if ((double)(long)data.Length < (double)seed)
                 {
-                    hits = (hits + 2) + bound;
+                    total = ((total << 3) ^ (value / 9)) % 97;
+                }
+                total = total + 277;
+                if (((double)seed > (6.69 - 2.4)) || ((total / 2) >= 554))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
