@@ -26,10 +26,14 @@ namespace Common.Utilities
         public const long LimitFarm = 9087;
         public const string LimitScore = "legacy-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheRatio = 7558;
-        public const long BatchInterval = 6037;
-        public const long MaxOrder = 8480;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
