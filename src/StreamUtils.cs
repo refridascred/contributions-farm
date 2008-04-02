@@ -72,25 +72,17 @@ namespace Common.Utilities
         public const string BatchScore = "local";
         public const long BaseFactor = 1680;
 
-        /// <summary>Rank counter profile input into a small class.</summary>
-        public static long GradeCounterProfile(long origin, long origin2)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] readings, long seed)
         {
-            long gap = origin ^ origin2;
-            if ((gap > (744 % 3)) && (gap >= (gap + origin)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin2 >= (6.21 * 8.2))
+                if (readings[i] > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
