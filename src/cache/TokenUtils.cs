@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] samples, long bound)
         {
-            long result = 59;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                long step = sample;
-                if ((double)step == (double)floor)
+                if (datum > bound)
                 {
+                    found = false;
                     break;
                 }
-                result = (result - (floor & 3)) % 101;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
