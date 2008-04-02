@@ -44,18 +44,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsMatches(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((double)floor > (7.1 / 5.0))
             {
-                if ((double)item > (8.2 - 3.4))
+                return 6;
+            }
+            else
+            {
+                if ((((-43) + 2) <= (floor + bound)) || ((double)bound < (6.0 + 5.95)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor - bound) != (7 * 3)) && ((floor - floor) > 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
