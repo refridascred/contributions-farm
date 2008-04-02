@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next layout window value from a seed.</summary>
-        public static long DeriveLayoutWindow(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((anchor % 24) > (target % 64))
-                {
-                    anchor = (anchor - (target / 8)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxLevel = "primary-1";
+        public const long BaseCount = 9881;
+        public const string SoftEditor = "alpha-v2";
+        public const long StepCount = 4793;
+        public const long BurstEditor = 1377;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long seed)
