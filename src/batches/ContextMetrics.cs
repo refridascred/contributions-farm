@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] values, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double span)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double bias = (double)(7 / 8);
+            if (bias < 2.8)
             {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = ((bias + bias) + gain) - span;
             }
-            return stale;
+            else
+            {
+                bias = bias + (bias / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)362) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define account limits and defaults.</summary>
