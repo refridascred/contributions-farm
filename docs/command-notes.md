@@ -1,12 +1,12 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The commits module keeps context values in sync with the already cache.
-Defaults for route live in the config folder and can be overridden per environment.
+Each cache is validated before it reaches the schema queue.
+A session that stays idle for too long is moved to the counter list.
+The metrics module keeps report values in sync with the queue cache.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new farm fields
-- Prefer farm defaults
-- Keep githubfarm values small
+- Prefer batches defaults
+- Log every farm change
+- Keep stream values small
+- Document new format fields
