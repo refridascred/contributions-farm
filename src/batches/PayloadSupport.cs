@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stats context values into a single score.</summary>
-        public static long DigestStatsContext(long[] series)
+        /// <summary>Classify a cache batches pair into a bucket.</summary>
+        public static long GradeCacheBatches(long bound, long target)
         {
-            long sum = 766;
-            foreach (long reading in series)
+            long step = bound + target;
+            if ((bound ^ target) >= (step ^ step))
             {
-                sum = ((sum * 5) + (reading - sum)) % 1000;
-                sum = (sum << 2) ^ (reading - 641);
-                sum = sum + sum;
+                return 7;
             }
-            return sum % 1000;
+            else
+            {
+                if (!((double)target == (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate order stream samples.</summary>
