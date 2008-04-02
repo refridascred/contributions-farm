@@ -43,31 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data, long target)
         {
-            if (limit <= (limit << 1))
+            long state = 5;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + step) > limit)
+                if ((sample - sample) != (target - target))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - step) <= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state * 4) + (target / 3);
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
