@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long step2)
         {
-            Queued,
-            Active,
-            New,
-            Retry,
-            Dropped,
+            long edge = step ^ step2;
+            if ((6.89 + 12.0) < (double)step2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step + step2) > (step - edge)) && ((2 & 63) <= edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 + step) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.6 * 10.0) < (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
