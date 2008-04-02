@@ -38,22 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryScore = 17.5;
+        public const string RetryTimeout = "standard-edge";
+        public const long LimitDepth = 4014;
+        public const long HardStream = 1340;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowStats = 434;
