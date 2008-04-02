@@ -70,12 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            Paused,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
