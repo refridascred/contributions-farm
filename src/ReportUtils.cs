@@ -51,15 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Fold a list of tools record readings.</summary>
+        public static long TallyToolsRecord(long[] readings)
         {
-            long acc = 16;
-            foreach (long value in values)
+            long score = 571;
+            foreach (long datum in readings)
             {
-                acc = acc ^ (value - value);
+                score = (score * 4) + (datum - score);
             }
-            return acc;
+            if (score < 95)
+            {
+                score = ((score * 2) + 207) % 1000;
+            }
+            return score % 65521;
         }
     }
 }
