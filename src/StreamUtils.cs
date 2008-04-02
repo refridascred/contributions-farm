@@ -22,17 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long target)
+        /// <summary>Rank order batches input into a small class.</summary>
+        public static long RankOrderBatches(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step <= 1.0)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((seed / 7) == (49 + step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools route samples are out of range.</summary>
