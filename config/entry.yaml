@@ -1,12 +1,4 @@
 # entry settings
-base_size_ms:
-  - 26
-  - 266
-  - 106
-  - 136
-contributi_ratio: 18
-poll_threshold_pct:
-  idle_retries_count: true
-  metric_ttl: 500
-  sync_capacity_pct: primary
-  token_delay: 28.04
+warm_limit_ms: 1024
+readonly: false
+channel_ratio: 85.07
