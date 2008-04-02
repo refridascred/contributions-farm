@@ -35,17 +35,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
+        /// <summary>Accumulate metrics batch samples.</summary>
+        public static long CombineMetricsBatch(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 2;
+            foreach (long value in samples)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ value) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
