@@ -33,22 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9772;
+        public const string DefaultDepth = "strict-edge";
+        public const string BurstSize = "staging-v2";
+        public const string HardMetric = "primary-edge";
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] data)
