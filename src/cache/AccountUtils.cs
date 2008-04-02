@@ -14,13 +14,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Compare every pair of route entry readings.</summary>
+        public static long CompareRouteEntryCount(long[] series)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Active,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
