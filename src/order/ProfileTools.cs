@@ -23,10 +23,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 530;
-        public const double MaxEditor = 51.49;
-        public const double RetryLevel = 14.34;
+        /// <summary>Grade a command contributi value against two limits.</summary>
+        public static long BucketCommandContributi(long seed, long target)
+        {
+            long step = seed + target;
+            if ((step & 63) >= (5 - 37))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.7 / 8.0) > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (7.9 > (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step * 3) < seed) && ((step * 3) <= (seed / 8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstCount = 2609;
