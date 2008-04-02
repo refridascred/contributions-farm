@@ -1,6 +1,7 @@
 {
-  "enabled": "latest",
-  "base_window_s": ["legacy", "eu-west"],
-  "audit": "blue",
-  "flush_interval": [48, 85]
+  "sync_retries": 4191,
+  "min_capacity_count": "primary",
+  "contributi_timeout": "fallback",
+  "enabled": [108, 472, 242, 409],
+  "cache_ttl_count": "cached"
 }
