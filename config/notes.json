@@ -1,6 +1,5 @@
 {
-  "checks_size": true,
-  "burst_depth": 6134,
-  "hard_timeout_s": [471, 60],
-  "cache_interval_ms": 7.04
+  "default_size": "standard",
+  "min_threshold_s": 2460,
+  "format_ratio": ["blue", "primary", "green"]
 }
