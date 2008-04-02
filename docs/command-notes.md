@@ -1,15 +1,11 @@
 # Command notes
 
-Use counter settings to tune how often record data is refreshed.
-Keep record and cluster names short and lowercase.
-When a counter fails, the command handler retries a few times before giving up.
-
-Use record settings to tune how often commits data is refreshed.
-Defaults for payload live in the config folder and can be overridden per environment.
+The notes module keeps counter values in sync with the support cache.
+Run the buffer check before changing any githubfarm limits.
+Use account settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate schema input early
-- Prefer record defaults
-- Keep filter values small
+- Prefer schema defaults
+- Keep route values small
+- Log every command change
