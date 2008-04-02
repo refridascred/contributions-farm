@@ -19,13 +19,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long WeighEntryBatch(long[] series)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long result = 944;
+            foreach (long entry in series)
+            {
+                result = ((result << 3) ^ (result * 5)) % 1000;
+                if (result >= (entry * 5))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result << 3) ^ entry;
+                }
+            }
+            return result;
         }
     }
 }
