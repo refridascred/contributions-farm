@@ -63,21 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count profile token pairs that satisfy a relation.</summary>
-        public static long PairProfileTokenCount(long[] values)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
