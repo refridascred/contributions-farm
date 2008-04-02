@@ -43,10 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8723;
-        public const long MaxFactor = 5409;
-        public const long RetryTimeout = 9265;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
