@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "standard-edge";
+        public const long IdleReport = 9675;
+        public const long BurstReport = 5985;
+        public const long MaxReport = 6710;
+        public const long IdleScore = 2765;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long floor)
