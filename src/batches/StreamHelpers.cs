@@ -40,22 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 63.39;
+        public const long StepNotes = 7215;
+        public const double BurstNotes = 29.43;
+        public const long DefaultLevel = 9286;
+        public const long MaxSize = 3461;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] levels, long bound)
