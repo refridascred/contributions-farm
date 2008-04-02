@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=93
+RECORD_LIMIT=89
 log "limit is ${RECORD_LIMIT}"
 
-for item in open fallback legacy; do
+for item in standard stable cached eu-west; do
     log "checking ${item}"
 done
