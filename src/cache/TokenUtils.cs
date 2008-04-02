@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 76;
-        public const double IdleScore = 64.52;
-        public const long SoftProfile = 7621;
-        public const long StepFactor = 2584;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchWidth = 62.14;
+        public const long StepRecord = 6036;
+        public const long BurstRecord = 2405;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] data, long target)
