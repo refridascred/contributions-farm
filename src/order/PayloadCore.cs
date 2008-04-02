@@ -31,17 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long bound)
+        /// <summary>Check that every already commits entry stays within the limit.</summary>
+        public static bool ValidateAlreadyCommitsBounds(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (readings[i] > bound)
+                if (datum > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
