@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a checks stream pair into a bucket.</summary>
-        public static long RankChecksStream(long limit, long offset)
-        {
-            long offset2 = limit + offset;
-            if ((offset2 << 2) > (limit % 12))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset / 9) != (offset2 + offset2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchTimeout = 1889;
+        public const string CacheCommits = "stable-1";
+        public const long LimitCommits = 3949;
+        public const long RetryDepth = 3199;
+        public const string MaxCommits = "strict-edge";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] levels, long floor)
