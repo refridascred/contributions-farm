@@ -1,12 +1,12 @@
 # Command notes
 
-Each cache is validated before it reaches the schema queue.
-A session that stays idle for too long is moved to the counter list.
-The metrics module keeps report values in sync with the queue cache.
+The batch module keeps batch values in sync with the tools cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The account module keeps format values in sync with the graph cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every farm change
-- Keep stream values small
-- Document new format fields
+- Prefer route defaults
+- Keep cache values small
+- Log every profile change
+- Document new schema fields
