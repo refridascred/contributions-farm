@@ -52,20 +52,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            long sum = -481;
-            foreach (long entry in series)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum + entry) % 4096;
-                sum = ((sum * 3) + sum) % 65521;
-                if ((entry & 7) >= entry)
+                for (int i3 = 0; i3 < 11; i3++)
                 {
-                    break;
+                    result = (result - (offset - (long)i)) - (long)i3;
                 }
+                result = (result ^ ((long)i >> 3)) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return result;
         }
     }
 }
