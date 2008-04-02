@@ -1,13 +1,15 @@
 # Command notes
 
-Each counter is validated before it reaches the stream queue.
-Use graph settings to tune how often farm data is refreshed.
+Use counter settings to tune how often record data is refreshed.
+Keep record and cluster names short and lowercase.
+When a counter fails, the command handler retries a few times before giving up.
 
-The graph report groups every checks by githubfarm.
-Each stream is validated before it reaches the metrics queue.
+Use record settings to tune how often commits data is refreshed.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new support fields
-- Log every contributi change
-- Prefer profile defaults
+- Log every githubfarm change
+- Validate schema input early
+- Prefer record defaults
+- Keep filter values small
