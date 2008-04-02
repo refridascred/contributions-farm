@@ -23,12 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            Synced,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
