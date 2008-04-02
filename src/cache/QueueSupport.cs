@@ -33,11 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstCount = "staging-1";
-        public const string StepDepth = "open-edge";
-        public const long BurstTimeout = 8914;
-        public const long BurstSchema = 4297;
-        public const string MinTimeout = "stable-edge";
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double scale, double floor)
+        {
+            double bias = (double)33 - 14.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (floor - 4.61)) + (double)(long)i;
+            }
+            return bias + scale;
+        }
     }
 }
