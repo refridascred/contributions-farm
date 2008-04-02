@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
             Idle,
-            New,
-            Closed,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit cluster counter readings against a rule.</summary>
