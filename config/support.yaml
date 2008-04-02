@@ -1,14 +1,5 @@
 # support settings
-retry_threshold_count:
-  hard_timeout_count:
-    - 187
-    - 260
-    - 224
-    - 162
-  default_limit:
-    - staging
-    - fallback
-    - eu-west
-  enabled: true
-sync_limit: true
-audit: cached
+cache_retries_s: 68.16
+flush_delay_s: false
+strict: 82.83
+sync_interval_s: 31.65
