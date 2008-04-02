@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Paused,
+            Dropped,
+            Locked,
+            Done,
+            Idle,
             New,
-            Closed,
         }
 
         /// <summary>Hold a cluster info.</summary>
