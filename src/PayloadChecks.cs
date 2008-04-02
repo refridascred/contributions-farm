@@ -27,13 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches ^ sample) <= 952)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
