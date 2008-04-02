@@ -53,21 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 464;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > (sample + sample))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + sample;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
