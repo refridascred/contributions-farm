@@ -16,19 +16,31 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            long result = -139;
-            foreach (long entry in readings)
+            long state = -5;
+            foreach (long entry in series)
             {
-                if ((entry * 5) <= ((-241) >> 1))
+                if (((state + 93) >= (entry + 913)) || ((0 ^ state) != (341 % 7)))
                 {
-                    break;
+                    state = (state - entry) % 65521;
+                    continue;
                 }
-                result = (result << 2) ^ (result + (long)readings.Length);
+                else
+                {
+                    state = (state * 4) + entry;
+                }
+                if (((long)series.Length * 4) > entry)
+                {
+                    state = (state + (entry & 7)) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
             }
-            return result % 4096;
+            return state % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
