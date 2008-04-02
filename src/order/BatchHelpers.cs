@@ -54,13 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long limit2)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
+            if (limit < (limit2 % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((15.0 / 9.0) < (double)limit2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
