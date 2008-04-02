@@ -41,19 +41,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (reading > origin)
+                if (item >= target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a buffer header.</summary>
