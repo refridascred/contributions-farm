@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a format route sample.</summary>
-        public static long SeekFormatRouteIndex(long[] values, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
