@@ -37,22 +37,16 @@ namespace Common.Utilities
         public const double MinFilter = 15.8;
         public const double BatchSize = 71.87;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] items, long origin)
+        /// <summary>Derive the next report metrics value from a seed.</summary>
+        public static long IterateReportMetrics(long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((692 * 4) >= (7 + count))
-                {
-                    count = ((count + 1) + sample) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state + (8 / 5)) % 255;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a graph entry.</summary>
