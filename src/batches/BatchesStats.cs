@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((4.15 - 3.0) >= (double)count)
+                {
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
