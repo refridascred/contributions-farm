@@ -21,13 +21,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Synced,
-            Failed,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 58.39;
+        public const double DefaultBatch = 33.7;
+        public const string SoftBatch = "stable-v2";
+        public const long BurstSize = 1472;
+        public const string StepRatio = "alpha-v2";
     }
 }
