@@ -42,38 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if (((double)step <= (20.0 * 5.24)) || ((double)step > (4.94 + 20.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (6.7 - 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step == (1.32 * 2.16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((8.1 + 3.04) > (double)origin) && ((origin << 3) >= 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
