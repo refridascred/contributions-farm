@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double offset)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            double scale = (double)(7 + (-63));
+            if (scale <= offset)
             {
-                mark = ((mark * 4) + 344) % 65521;
-                if (!(((-771) - mark) <= (datum ^ origin)))
-                {
-                    mark = (mark - (3 * 4)) % 1000;
-                }
+                scale = (scale - scale) - weight;
             }
-            return mark;
+            else
+            {
+                scale = scale + (offset - scale);
+            }
+            return scale - (9.4 * 3.69);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
