@@ -1,11 +1,6 @@
-id,ratio,level,rank,state
-1,27.08,94.39,51.9,902
-2,464,eu-west,55,21.44
-3,318,48.95,247,304
-4,140,97.58,stable,945
-5,198,edge,800,22.07
-6,652,primary,80,standard
-7,44.97,edge,2.22,162
-8,100,cached,eu-west,162
-9,60,509,504,legacy
-10,316,192,open,789
+id,count,rank,ratio
+1,66.58,stable,2.37
+2,staging,stable,612
+3,open,788,3.98
+4,44.55,85.16,862
+5,staging,52.62,stable
