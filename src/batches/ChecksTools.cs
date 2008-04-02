@@ -34,12 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 7718;
-        public const long DefaultProfile = 7217;
-        public const long MaxProfile = 8844;
-        public const long StepCount = 405;
-        public const long DefaultWidth = 2675;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Done,
+            New,
+            Idle,
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long seed)
