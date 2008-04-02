@@ -1,14 +1,15 @@
 # Command notes
 
-Keep notes and githubfarm names short and lowercase.
-Use checks settings to tune how often record data is refreshed.
-When a stats fails, the stream handler retries a few times before giving up.
+Each queue is validated before it reaches the account queue.
+A githubfarm that stays idle for too long is moved to the stats list.
 
-The payload module keeps payload values in sync with the notes cache.
-The support module keeps buffer values in sync with the tools cache.
+When a schema fails, the editor handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps order values in sync with the layout cache.
 
 ## Guidelines
 
-- Keep stats values small
-- Validate contributi input early
-- Prefer cluster defaults
+- Prefer context defaults
+- Keep window values small
+- Validate checks input early
+- Review notes limits each release
