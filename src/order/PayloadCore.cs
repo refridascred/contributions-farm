@@ -22,23 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window token value.</summary>
-        public static double ProjectWindowToken(double gain, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            double gain2 = gain / 3.0;
-            if (gain2 <= (gain * 1.79))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                gain2 = gain2 + (offset / 5.0);
+                if ((tally ^ (long)readings.Length) < sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - 4.92;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (offset / 9.0)) + (double)(long)i;
-            }
-            return gain2 - (offset * 5.0);
+            return tally;
         }
 
         /// <summary>Describe the support class values.</summary>
