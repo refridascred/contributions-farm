@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report context series from a seed.</summary>
-        public static long IterateReportContext(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (((hits >> 5) == (hits + reading)) || ((hits < (hits + reading)) || ((65 + reading) != (hits + 907))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
