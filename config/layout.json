@@ -1,5 +1,8 @@
 {
-  "hard_capacity": [117, 281, 448, 101],
-  "base_retries_count": [259, 243, 67, 336],
-  "base_depth_count": 9074
+  "channel_capacity": 250,
+  "warm_depth": ["cached", "standard"],
+  "persist": ["primary", "edge", "stable"],
+  "max_ttl_ms": 34,
+  "default_interval_ms": 30,
+  "token_window": 1024
 }
