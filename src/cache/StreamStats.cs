@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
