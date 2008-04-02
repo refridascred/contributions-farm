@@ -76,31 +76,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support metrics readings.</summary>
-        public static long ScoreSupportMetrics(long[] levels, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            long acc = 820;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((0.2 + 2.1) > (double)acc))
+                if (items[i] >= offset)
                 {
-                    acc = ((acc + (acc + acc)) % 255) + reading;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + (bound << 1)) % 65521;
-                }
-                if ((bound % 12) <= (bound << 1))
-                {
-                    acc = ((acc << 2) ^ (bound / 3)) % 255;
-                }
-                else
-                {
-                    acc = acc + (acc - bound);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
