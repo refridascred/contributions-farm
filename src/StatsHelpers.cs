@@ -42,11 +42,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long origin2)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long span = origin - origin2;
+            if ((span ^ origin) < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (span > ((-156) ^ (-995)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 + origin) == (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
