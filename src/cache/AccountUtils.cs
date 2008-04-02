@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every checks session entry stays within the limit.</summary>
-        public static bool CheckChecksSessionRange(long[] data, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Match up record samples.</summary>
