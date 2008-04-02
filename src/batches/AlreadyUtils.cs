@@ -41,12 +41,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long CountGithubfarmEntryOutliers(long[] data)
         {
-            Locked,
-            Done,
-            Stale,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((83 <= (5 + matches)) && ((84 / 9) <= (matches >> 4))) || ((1 + cell) >= (matches % 10)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
