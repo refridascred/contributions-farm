@@ -78,24 +78,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long origin)
         {
-            if (!((target << 3) <= target))
+            long score = 31;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor > (floor + 40))
+                if ((datum <= ((long)samples.Length + datum)) && ((score + datum) > (61 + datum)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    score = (score ^ (874 + origin)) % 97;
                 }
             }
+            if (score > 74)
+            {
+                score = (score - (score + 50)) % 255;
+            }
+            return score % 1000;
         }
     }
 }
