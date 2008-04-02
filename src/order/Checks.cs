@@ -49,19 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double mean = scale;
-            if (mean >= mean)
-            {
-                mean = (mean - 8.0) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (7.0 + mean)) + (double)(long)i;
-            }
-            return mean - (scale + scale);
+            Paused,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
