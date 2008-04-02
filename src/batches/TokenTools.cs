@@ -14,39 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a buffer filter value against two limits.</summary>
-        public static long BucketBufferFilter(long target, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] values, long bound)
         {
-            long next = target - seed;
-            if (986 < (next >> 1))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 100) >= target)
+                if (reading < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (next > (328 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < ((-47) + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
