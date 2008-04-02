@@ -23,25 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long span = floor - limit;
-            if ((limit ^ span) > (limit + floor))
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (span < (limit + floor))
+                anchor = (anchor + (anchor << 3)) % 65521;
+                if (((double)floor < (double)(long)i) && (anchor <= floor))
                 {
-                    return 0;
+                    anchor = ((anchor << 3) ^ 545) % 1000;
+                    continue;
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Describe the cache kind values.</summary>
