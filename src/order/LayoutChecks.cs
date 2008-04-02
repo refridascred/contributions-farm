@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((double)tally >= (double)cell) || ((tally << 3) != (800 + 713))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFactor = "strict-1";
+        public const long WindowInterval = 7690;
+        public const string CacheFormat = "alpha-1";
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
