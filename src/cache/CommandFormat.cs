@@ -41,34 +41,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Fold a list of counter session readings.</summary>
+        public static long WeighCounterSession(long[] items, long step)
         {
-            long carry = 27;
-            foreach (long cell in items)
+            long anchor = 99;
+            foreach (long reading in items)
             {
-                if ((cell * 2) >= carry)
-                {
-                    carry = (carry * 2) + carry;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (cell - cell)) % 65521;
-                }
-                if (carry > (cell + cell))
-                {
-                    carry = (carry << 2) ^ (carry ^ carry);
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 65521;
-                }
-                if ((carry + cell) >= (carry >> 4))
-                {
-                    carry = (carry + (long)items.Length) % 101;
-                }
+                anchor = ((anchor << 3) ^ ((long)items.Length & 1)) + reading;
             }
-            return carry % 4096;
+            if (anchor < (-845))
+            {
+                anchor = (anchor * 5) + (step + step);
+            }
+            return anchor;
         }
     }
 }
