@@ -1,36 +1,8 @@
 # support settings
-soft_depth_ms: false
-strict: true
-compress:
-  soft_depth: local
-  persist: 7060
-  min_window_pct: open
-  warm_timeout: true
-  compress:
-    verbose: 45.44
-    poll_threshold_ms: 5643
-    cache_interval_s: edge
-    stats_limit: true
-    editor_depth: true
-    max_ttl_pct: true
-flush_ratio_s:
-  soft_ttl_ms: 80
-  readonly: green
-  metric_interval: staging
-  cache_limit:
-    - local
-    - open
-enabled:
-  flush_window: 90.18
-  record_size:
-    readonly: 1020
-    audit: 60
-    report_interval:
-      - local
-      - staging
-      - blue
-  warm_capacity_count: 92.04
-  session_ttl: true
-  sync_limit: true
-  audit: 86.04
-contributi_window: stable
+warm_ratio:
+  - staging
+  - green
+  - primary
+token_timeout: 50.69
+retry_ratio_pct: false
+format_ttl: 100
