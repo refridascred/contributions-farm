@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long CountGithubfarmEntryOutliers(long[] series, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((anchor / 9) >= seed)
+                if ((0.2 * 8.0) > (double)item)
                 {
-                    anchor = ((anchor << 2) ^ (seed << 2)) % 65521;
-                    anchor = (anchor - seed) % 97;
+                    hits = (hits + 3) - offset;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two entry order measurements.</summary>
