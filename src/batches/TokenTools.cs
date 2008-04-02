@@ -14,15 +14,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Grade a buffer filter value against two limits.</summary>
+        public static long BucketBufferFilter(long target, long seed)
         {
-            double scale = weight / 6.0;
-            for (int i = 0; i < 8; i++)
+            long next = target - seed;
+            if (986 < (next >> 1))
             {
-                scale = ((scale - scale) + (double)(long)i) + span;
+                return 8;
             }
-            return scale - (scale * 2.7);
+            else
+            {
+                if ((seed % 100) >= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (next > (328 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < ((-47) + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
