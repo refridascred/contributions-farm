@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix << 3) ^ step) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 5698;
+        public const long HardCommand = 6216;
+        public const long IdleFactor = 2783;
+        public const long WindowTimeout = 1081;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
