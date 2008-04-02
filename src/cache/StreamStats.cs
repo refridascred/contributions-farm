@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long TotalSessionEditor(long[] samples)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long carry = -1;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (630 > cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry + (33 ^ carry);
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
