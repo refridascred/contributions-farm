@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Stale,
-            Synced,
-            Failed,
-            Queued,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the record support entries that pass the check.</summary>
