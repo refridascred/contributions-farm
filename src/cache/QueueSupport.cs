@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two context layout measurements.</summary>
-        public static double ScaleContextLayout(double weight, double bias)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            double load = (weight + bias) * 5.0;
-            if (load >= load)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                load = load + (4.4 + bias);
+                state = (state * 3) + (state - target);
+                if (70 > target)
+                {
+                    state = ((state * 2) + (target / 8)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return load + load;
+            return state;
         }
 
         /// <summary>Hold a order stats.</summary>
