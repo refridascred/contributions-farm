@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSize = 9636;
-        public const string IdleInterval = "cached";
-        public const long DefaultBudget = 2300;
-        public const string BaseOrder = "fallback-1";
-        public const long CacheOrder = 9892;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length != (reading % 8))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of queue record readings.</summary>
         public static long PairQueueRecordCount(long[] readings)
