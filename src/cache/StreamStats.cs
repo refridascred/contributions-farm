@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] levels, long bound)
         {
-            Active,
-            Draft,
-            Retry,
-            Stale,
-            Pending,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((9.0 + 2.86) == (double)bound) && ((6.91 - 9.9) >= (double)hits)))
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
