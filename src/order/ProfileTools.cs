@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route batches values into a single score.</summary>
-        public static long WeighRouteBatches(long[] levels, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long sum = 172;
-            foreach (long item in levels)
-            {
-                if (item <= (origin - item))
-                {
-                    sum = sum ^ (origin - sum);
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum - item)) % 1000;
-                }
-            }
-            return sum % 1000;
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit editor graph readings against a rule.</summary>
