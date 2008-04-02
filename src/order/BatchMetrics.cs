@@ -31,12 +31,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Find the first profile context entry that matches the target.</summary>
-        public static long SeekProfileContextIndex(long[] levels, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] < limit)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
