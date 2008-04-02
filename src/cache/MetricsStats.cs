@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const string HardAlready = "fallback";
         public const long RetryScore = 6349;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long acc = 352;
+            foreach (long entry in series)
             {
-                if (entry > offset)
+                if (acc < (acc << 1))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (entry & 31)) % 4096;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
