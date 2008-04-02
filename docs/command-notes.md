@@ -1,11 +1,12 @@
 # Command notes
 
-Use context settings to tune how often stream data is refreshed.
-The metric report groups every queue by window.
-Keep contributi and githubfarm names short and lowercase.
+The buffer module keeps batch values in sync with the githubfarm cache.
+Keep editor and buffer names short and lowercase.
+Keep githubfarm and entry names short and lowercase.
 
 ## Guidelines
 
-- Log every commits change
-- Review channel limits each release
-- Keep batch values small
+- Validate filter input early
+- Log every already change
+- Prefer farm defaults
+- Review entry limits each release
