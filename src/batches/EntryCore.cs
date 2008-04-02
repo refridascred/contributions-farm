@@ -13,25 +13,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the checks channel series from a seed.</summary>
-        public static long SeriesChecksChannel(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long diff = (552 / 3) - (floor * 2);
-                    mix = ((mix ^ ((long)i - diff)) % 101) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    mix = ((mix * 2) + (floor ^ floor)) + (long)i3;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepDepth = "standard-v2";
+        public const long HardContributi = 5131;
+        public const long BatchContributi = 4284;
+        public const long RetryDepth = 9771;
+        public const string DefaultContributi = "standard-edge";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileMatches(long[] values)
