@@ -32,12 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 731;
+            foreach (long entry in samples)
+            {
+                if (((729 + sum) <= (entry ^ sum)) || ((sum / 2) != (limit >> 5)))
+                {
+                    sum = (sum * 3) + (entry << 3);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ entry;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits status values.</summary>
