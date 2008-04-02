@@ -1,13 +1,15 @@
 # githubfarm settings
-soft_threshold_pct: false
-base_threshold:
-  warm_ratio:
+soft_limit_count:
+  cache_delay: 72.54
+  max_timeout_pct:
+    - cached
     - local
-    - strict
-    - local
-    - standard
-  batch_limit: primary
-  max_threshold_ms: standard
-  flush_window_ms: 91.37
-burst_interval_s: open
-entry_timeout: 90.88
+  default_delay: 60
+  strict: strict
+retry_capacity: 51.78
+hard_ttl:
+  - strict
+  - fallback
+  - latest
+  - green
+batch_limit_ms: local
