@@ -47,22 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((1.21 * 15.0) <= (double)floor) || !((6.72 - 6.6) < (double)sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a tools record.</summary>
