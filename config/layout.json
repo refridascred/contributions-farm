@@ -1,5 +1,12 @@
 {
-  "account_interval": 500,
-  "persist": "blue",
-  "flush_interval_pct": 26.74
+  "base_ratio": "strict",
+  "warm_limit_count": 6181,
+  "compress": {
+    "sync_delay": 9873,
+    "session_threshold": "green",
+    "max_depth_pct": 8324
+  },
+  "soft_timeout_pct": "latest",
+  "base_interval_ms": "latest",
+  "retry_capacity": 500
 }
