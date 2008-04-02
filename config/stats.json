@@ -1,5 +1,24 @@
 {
-  "queue_window": "latest",
-  "retry_size_ms": [322, 216, 387],
-  "dry_run": [37, 450]
+  "flush_threshold_pct": {
+    "window_capacity": 67.68,
+    "cache_size_count": 27,
+    "audit": {
+      "soft_timeout_ms": [375, 289, 178, 477],
+      "stats_window": 56.56,
+      "compress": false,
+      "soft_size_s": 652,
+      "poll_threshold_ms": true
+    },
+    "strict": {
+      "compress": "edge",
+      "poll_interval_ms": 90.05,
+      "poll_ratio_s": [102, 477, 188, 181],
+      "soft_timeout": [225, 183, 304, 291],
+      "sync_retries": "primary"
+    }
+  },
+  "flush_capacity": "strict",
+  "hard_timeout_count": false,
+  "dry_run": true,
+  "cache_window_pct": "legacy"
 }
