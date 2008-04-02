@@ -40,13 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Retry,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowScore = 88.9;
+        public const long RetryAccount = 6819;
+        public const long MaxRatio = 3210;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
