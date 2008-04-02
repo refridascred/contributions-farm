@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "primary-1";
-        public const long BatchBudget = 446;
-        public const string BaseCount = "open";
+        /// <summary>Derive the next order payload value from a seed.</summary>
+        public static long RollOrderPayload(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)(long)i > (6.1 - 2.2))
+                {
+                    state = state - state;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] readings, long step)
