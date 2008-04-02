@@ -33,12 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= 4.6)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
