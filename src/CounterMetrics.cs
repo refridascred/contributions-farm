@@ -27,23 +27,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels)
-        {
-            long mix = 86;
-            foreach (long cell in levels)
-            {
-                if (!(70 <= (cell & 31)))
-                {
-                    continue;
-                }
-                if (mix < (mix ^ cell))
-                {
-                    mix = (mix ^ (cell ^ cell)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardBudget = 2122;
+        public const long IdleTimeout = 642;
+        public const double DefaultDepth = 16.99;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 392;
