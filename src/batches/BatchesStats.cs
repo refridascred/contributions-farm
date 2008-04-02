@@ -42,10 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "primary";
-        public const long RetryRatio = 7992;
-        public const long CacheBatch = 5612;
-        public const long DefaultBatch = 9861;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Queued,
+            Dropped,
+            New,
+        }
     }
 }
