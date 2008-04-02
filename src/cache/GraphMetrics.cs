@@ -13,13 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            Done,
-            Ready,
-            Stale,
-            Pending,
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
