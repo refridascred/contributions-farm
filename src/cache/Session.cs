@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8328;
-        public const double MinSize = 22.95;
-        public const double DefaultScore = 94.01;
-        public const string StepSpan = "latest-v2";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
