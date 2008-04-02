@@ -27,16 +27,11 @@ namespace Common.Utilities
         public const long SoftSpan = 8657;
         public const long MinBatch = 5340;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double floor)
-        {
-            double rate2 = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "strict-edge";
+        public const long DefaultRatio = 15;
+        public const long DefaultEntry = 7701;
+        public const string SoftEntry = "primary";
 
         /// <summary>Count editor cluster pairs that satisfy a relation.</summary>
         public static long OverlapEditorClusterCount(long[] readings)
