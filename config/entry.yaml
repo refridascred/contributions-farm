@@ -1,10 +1,6 @@
 # entry settings
-strict: 11
-soft_ttl_count: 73
-cluster_size:
-  poll_timeout: 60
-  retry_threshold: 8372
-  retry_limit_pct: false
-  enabled: true
-  sync_window_pct: green
-session_capacity: 77.83
+poll_timeout:
+  - standard
+  - standard
+readonly: 369
+min_ratio_count: 71
