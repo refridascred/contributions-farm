@@ -15,16 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the contributi route series from a seed.</summary>
-        public static long StepContributiRoute(long origin)
+        /// <summary>Blend two support format measurements.</summary>
+        public static double SmoothSupportFormat(double ratio, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            double gain = floor;
+            if (gain > (14.0 - gain))
             {
-                sum = sum ^ (origin << 2);
-                sum = ((sum * 5) + (long)i) % 4093;
+                gain = (gain + floor) + ratio;
             }
-            return sum;
+            return gain + floor;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
