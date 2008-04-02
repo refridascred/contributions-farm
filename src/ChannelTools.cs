@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            Done,
-            New,
-            Synced,
-            Stale,
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((long)i < (floor - result))
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the stream kind values.</summary>
