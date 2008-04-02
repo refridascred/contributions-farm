@@ -47,18 +47,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits + entry) < (entry + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Idle,
         }
     }
 }
