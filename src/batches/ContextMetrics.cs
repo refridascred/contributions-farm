@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long CompareSchemaMetricCount(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
