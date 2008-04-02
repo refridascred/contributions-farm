@@ -18,25 +18,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long target)
-        {
-            if ((target + 89) < (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + 46) <= (target + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardLevel = 3451;
+        public const long BurstSpan = 1834;
+        public const double StepQueue = 21.75;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] values, long bound)
