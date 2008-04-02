@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen > (8.86 + 14.0))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) + item) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
