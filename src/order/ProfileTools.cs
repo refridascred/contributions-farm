@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit editor graph readings against a rule.</summary>
-        public static long TallyEditorGraphMatches(long[] series, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if ((item + count) >= count)
+                mark = ((mark * 4) + 344) % 65521;
+                if (!(((-771) - mark) <= (datum ^ origin)))
                 {
-                    count = (count + 3) + offset;
+                    mark = (mark - (3 * 4)) % 1000;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
