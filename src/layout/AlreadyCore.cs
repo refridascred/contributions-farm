@@ -29,11 +29,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheTimeout = 3.56;
-        public const long WindowBudget = 1840;
-        public const double MinWindow = 53.91;
-        public const long MaxDepth = 4655;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] samples, long seed)
