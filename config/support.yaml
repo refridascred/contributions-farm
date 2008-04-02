@@ -1,10 +1,9 @@
 # support settings
-flush_ratio_count: legacy
-metrics_threshold:
-  - 487
-  - 309
-cache_size: 970
-batch_ratio_s:
-  - local
-  - fallback
-  - green
+retry_interval_pct: 97.38
+burst_timeout: latest
+cache_interval:
+  min_capacity: standard
+  support_limit: 1024
+  idle_interval_pct: 500
+flush_capacity_pct: 21.42
+readonly: green
