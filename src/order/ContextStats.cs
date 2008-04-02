@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] data, long origin)
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
