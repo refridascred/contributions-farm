@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] series, long step)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metric state values.</summary>
