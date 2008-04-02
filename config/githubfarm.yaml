@@ -1,11 +1,15 @@
 # githubfarm settings
-compress:
-  - 457
-  - 22
-  - 411
-  - 329
-audit: latest
-batch_threshold_ms: open
-batch_timeout_pct: 95.8
-max_limit: true
-warm_interval_pct: true
+batch_retries_pct: strict
+report_retries:
+  compress:
+    - strict
+    - green
+  min_timeout_count:
+    compress: true
+    poll_interval_s: 31.21
+    base_timeout: 816
+    max_window: fallback
+    poll_timeout: 6004
+  cache_limit_ms: 5
+warm_limit_s: false
+poll_window: true
