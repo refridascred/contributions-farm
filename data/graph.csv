@@ -1,7 +1,6 @@
-id,token,count,level
-1,eu-west,747,171
-2,584,822,34.19
-3,582,80.52,cached
-4,open,69.0,open
-5,green,75.61,840
-6,33.31,81.75,primary
+id,owner,active
+1,849,71.64
+2,513,340
+3,88.88,724
+4,9.98,primary
+5,75,77.26
