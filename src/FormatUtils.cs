@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many report window samples are out of range.</summary>
-        public static long MeasureReportWindowHits(long[] samples, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!((60 << 3) <= (sample >> 3)))
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
