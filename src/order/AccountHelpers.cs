@@ -38,23 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - origin) > (result << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 2) + (long)i;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((4 % 2) > (346 + result))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
