@@ -33,13 +33,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two batch batches measurements.</summary>
+        public static double BlendBatchBatches(double rate, double offset)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            double rate2 = (offset - rate) / 7.0;
+            if (rate2 > (double)6)
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 - offset;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
