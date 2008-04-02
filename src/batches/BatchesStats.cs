@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((4.15 - 3.0) >= (double)count)
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
