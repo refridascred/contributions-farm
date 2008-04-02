@@ -43,32 +43,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long step, long limit)
-        {
-            if ((9 / 2) < (step << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)limit > 9.24))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step & 127) <= (600 ^ (-610)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "alpha-edge";
+        public const long MinWidth = 5567;
+        public const long MinBudget = 3451;
+        public const long IdleCount = 60;
 
         /// <summary>Fold a list of counter session readings.</summary>
         public static long WeighCounterSession(long[] items, long step)
