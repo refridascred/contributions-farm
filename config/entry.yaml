@@ -1,25 +1,19 @@
 # entry settings
-retry_size_count:
-  retry_interval_count: 18
-  burst_delay_ms:
-    - latest
-    - fallback
-    - open
-  warm_retries: 64
-  audit: standard
-hard_window_ms:
-  - 413
-  - 329
-hard_ratio_s:
-  - 203
-  - 476
-  - 253
-  - 95
-contributi_ratio:
-  account_retries: 3404
-  strict: 91
-  editor_timeout: false
-  cluster_depth: staging
-  dry_run: legacy
-  base_retries_ms: 9387
-idle_timeout: 30
+already_capacity: false
+sync_delay: 13.31
+command_threshold:
+  sync_retries: open
+  context_ratio:
+    queue_retries: 86
+    queue_delay: 26
+    metrics_ratio: 65
+    min_size: standard
+    max_interval_s: 63.15
+  poll_interval_pct:
+    layout_timeout: 8341
+    sync_depth_s: 90
+    flush_capacity_ms:
+      - 411
+      - 20
+      - 460
+      - 32
