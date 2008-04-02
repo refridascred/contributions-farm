@@ -23,21 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count editor stream pairs that satisfy a relation.</summary>
-        public static long OverlapEditorStreamCount(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!((65 + sample) < (6 % 97)))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + target;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
