@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry queue readings.</summary>
-        public static long CombineEntryQueue(long[] data, long target)
+        /// <summary>Audit schema metric readings against a rule.</summary>
+        public static long MeasureSchemaMetricOutliers(long[] samples)
         {
-            long mark = 472;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((reading >> 2) < (mark - reading))
+                if ((double)count >= 4.0)
                 {
-                    mark = ((mark + reading) % 1000) - target;
+                    count = (count + 3) ^ item;
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
