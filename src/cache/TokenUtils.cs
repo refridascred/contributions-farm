@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long origin2)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long prev = origin + origin2;
+            if (origin2 > (origin * 3))
             {
-                if (entry >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)prev >= (7.45 / 2.0))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin2 + prev) < (origin >> 4)) && ((origin + 9) < origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.0 / 8.0) >= (double)origin2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
