@@ -19,24 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Match up graph context samples.</summary>
+        public static long PairGraphContextCount(long[] samples)
         {
-            long mark = -5;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample > (sample & 63)) && (sample > 46))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (sample + mark);
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + sample)) % 97;
-                }
-                mark = ((mark << 3) ^ (mark + sample)) % 4096;
-                mark = (mark * 4) + sample;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
