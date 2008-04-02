@@ -14,13 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Pending,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 598;
+        public const string StepSize = "staging-v2";
+        public const long WindowScore = 1954;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] items)
