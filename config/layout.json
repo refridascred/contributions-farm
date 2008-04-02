@@ -1,7 +1,13 @@
 {
-  "compress": "blue",
-  "editor_window": 73,
-  "default_capacity_s": 24,
-  "entry_ratio": [408, 314],
-  "warm_capacity_pct": 81
+  "soft_retries_s": "legacy",
+  "readonly": {
+    "sync_threshold": "standard",
+    "persist": 72,
+    "window_window": 30,
+    "burst_size_s": "cached",
+    "idle_timeout_s": true,
+    "context_timeout": "fallback"
+  },
+  "retry_ttl_count": "standard",
+  "hard_window_ms": "cached"
 }
