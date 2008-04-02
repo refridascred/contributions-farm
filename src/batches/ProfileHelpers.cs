@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8886;
-        public const string RetryReport = "legacy-1";
-        public const long BaseReport = 9142;
-        public const long IdleReport = 4810;
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double span)
+        {
+            double load = ratio;
+            if (load >= (double)(-9))
+            {
+                load = load - (9.1 * 3.18);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (ratio + load);
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] levels)
