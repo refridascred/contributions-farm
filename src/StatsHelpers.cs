@@ -35,12 +35,12 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] <= target)
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
