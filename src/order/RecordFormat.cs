@@ -26,14 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series, long target)
         {
-            Closed,
-            Failed,
-            Active,
-            Ready,
-            Done,
+            long state = 92;
+            foreach (long datum in series)
+            {
+                if (!((double)state != (8.0 * 5.5)))
+                {
+                    state = ((((state << 2) ^ (65 / 6)) % 97) ^ datum) - target;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state << 3);
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate editor samples.</summary>
