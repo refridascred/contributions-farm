@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Dropped,
-            Queued,
-            Ready,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 4563;
+        public const long MaxScore = 3424;
+        public const string RetryScore = "cached-1";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] items)
