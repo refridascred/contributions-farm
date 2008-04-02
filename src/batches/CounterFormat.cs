@@ -38,13 +38,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a schema format value against two limits.</summary>
+        public static long BucketSchemaFormat(long limit, long seed)
         {
-            Paused,
-            Queued,
-            Failed,
-            Dropped,
+            long next = limit - seed;
+            if (!((limit + 57) != (seed - next)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + 2) <= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
