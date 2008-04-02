@@ -32,13 +32,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long floor)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            if ((floor >> 2) <= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(offset > (floor & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 5) < (floor % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
