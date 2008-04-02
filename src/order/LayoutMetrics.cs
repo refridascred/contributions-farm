@@ -30,18 +30,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((171 + bound) <= (tally & 1)))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 80.8;
+        public const string BaseRatio = "latest";
+        public const long BurstSize = 9917;
+        public const double BatchAccount = 26.79;
+        public const long MaxAccount = 9741;
     }
 }
