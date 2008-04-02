@@ -22,12 +22,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinSpan = 799;
-        public const double RetryChannel = 86.15;
-        public const long WindowCount = 1960;
-        public const long CacheChannel = 7081;
-        public const long LimitChannel = 1533;
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long WeighContributiQueue(long[] data)
+        {
+            long mark = 79;
+            foreach (long datum in data)
+            {
+                if ((datum - 8) > (644 << 1))
+                {
+                    mark = ((mark * 4) + mark) % 255;
+                }
+                if ((datum ^ datum) <= ((-57) + mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 66)
+            {
+                mark = (mark + 95) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] items)
