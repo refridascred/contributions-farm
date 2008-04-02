@@ -28,16 +28,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            long result = offset;
+            long state = step;
             for (int i = 0; i < 8; i++)
             {
-                result = (result * 4) + (offset * 4);
-                result = ((result * 5) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Blend two metric editor measurements.</summary>
