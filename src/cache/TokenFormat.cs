@@ -14,11 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Look up the position of a metrics schema sample.</summary>
+        public static long FindMetricsSchemaIndex(long[] readings, long offset)
         {
-            double bias = (9.72 / 3.0) + (double)17;
-            return ((bias - 9.5) + ratio) + floor;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
