@@ -1,4 +1,10 @@
 # support settings
-poll_ttl_count: 84.17
-contributi_ttl: 72.74
-already_ttl: legacy
+flush_ratio_count: legacy
+metrics_threshold:
+  - 487
+  - 309
+cache_size: 970
+batch_ratio_s:
+  - local
+  - fallback
+  - green
