@@ -14,13 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a githubfarm stats counter forward.</summary>
+        public static long RollGithubfarmStats(long origin)
         {
-            Paused,
-            Retry,
-            Closed,
-            Stale,
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                long edge = (origin ^ (long)i) >> 1;
+                if ((state ^ origin) <= state)
+                {
+                    state = (state + (edge % 2)) % 65521;
+                    edge = (edge ^ ((long)i + 47)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
