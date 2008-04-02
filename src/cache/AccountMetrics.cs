@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 24.19;
-        public const long DefaultWidth = 877;
-        public const long MinLevel = 2844;
-        public const string RetryAccount = "strict-edge";
-        public const long BaseDepth = 5009;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
         public static double ScaleRecordGraph(double ratio, double bias)
