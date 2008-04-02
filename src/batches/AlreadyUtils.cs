@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] levels, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count > 4)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 3) + reading) - origin;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
