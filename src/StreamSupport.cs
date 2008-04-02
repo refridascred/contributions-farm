@@ -14,23 +14,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double floor)
+        /// <summary>Classify a format token pair into a bucket.</summary>
+        public static long ClassifyFormatToken(long target, long step)
         {
-            double mean = floor;
-            if (mean < scale)
+            long bound = target + step;
+            if ((step & 1) > (bound * 5))
             {
-                mean = mean - (mean - 18.0);
+                return 2;
             }
             else
             {
-                mean = mean + (floor - floor);
+                if ((target << 2) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (scale + mean)) + (double)(long)i;
-            }
-            return mean + (scale + mean);
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
