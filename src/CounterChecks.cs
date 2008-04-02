@@ -70,11 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitTimeout = 2341;
-        public const long BatchSize = 9512;
-        public const long IdleSize = 4498;
-        public const double BatchScore = 10.67;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] data, long step)
