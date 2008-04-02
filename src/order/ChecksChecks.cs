@@ -16,22 +16,27 @@ namespace Common.Utilities
             return rate - 14.0;
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long AuditBatchFilterMatches(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mark = 9;
+            foreach (long item in items)
             {
-                if ((value - value) <= value)
+                mark = (mark << 2) ^ (453 % 64);
+                if (item < (item & 3))
                 {
-                    tally = tally + 1;
+                    mark = (mark ^ (8 + item)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark ^ (mark ^ 57)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 87)
+            {
+                mark = (mark << 3) ^ (mark - 84);
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
