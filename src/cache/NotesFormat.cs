@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] values, long offset)
+        /// <summary>Audit notes already readings against a rule.</summary>
+        public static long CountNotesAlreadyHits(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (entry < offset)
+                if (step <= matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a buffer summary.</summary>
