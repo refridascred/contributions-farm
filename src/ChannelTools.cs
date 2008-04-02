@@ -27,14 +27,22 @@ namespace Common.Utilities
         public const long WindowInterval = 6797;
         public const long IdleSize = 6099;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            Queued,
-            Stale,
-            Failed,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!((hits + (long)levels.Length) > hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
