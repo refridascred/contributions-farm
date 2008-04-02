@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            long state = -56;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!(((-862) + state) >= limit))
+                if ((((double)value != (7.1 + 8.1)) && ((44 + value) < (hits - value))) && ((hits & 127) < (hits / 3)))
                 {
-                    state = (state + item) % 101;
-                }
-                else
-                {
-                    state = state + (4 + (-13));
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
