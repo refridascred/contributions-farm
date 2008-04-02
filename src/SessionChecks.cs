@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
