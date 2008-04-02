@@ -33,19 +33,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            bool found = true;
+            long acc = -360;
             foreach (long entry in items)
             {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc * 3) + acc) % 4096) ^ entry;
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
