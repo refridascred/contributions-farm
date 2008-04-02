@@ -44,19 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] values, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
