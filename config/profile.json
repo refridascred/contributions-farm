@@ -1,5 +1,6 @@
 {
-  "max_window_pct": "latest",
-  "strict": "local",
-  "schema_ttl": 4947
+  "filter_ratio": "primary",
+  "burst_delay_pct": 87,
+  "flush_capacity_s": ["edge", "standard", "edge", "edge"],
+  "flush_retries": ["staging", "primary", "stable"]
 }
