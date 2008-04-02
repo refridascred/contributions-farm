@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Combine route batches values into a single score.</summary>
+        public static long WeighRouteBatches(long[] levels, long origin)
         {
-            long anchor = 87;
-            foreach (long item in samples)
+            long sum = 172;
+            foreach (long item in levels)
             {
-                if ((item << 2) < (anchor - anchor))
+                if (item <= (origin - item))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
+                    sum = sum ^ (origin - sum);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum - item)) % 1000;
                 }
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Audit editor graph readings against a rule.</summary>
