@@ -24,18 +24,21 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] items, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen + limit) >= seen) && ((item << 1) >= (item ^ limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
