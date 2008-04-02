@@ -1,8 +1,14 @@
 {
-  "batch_size_ms": 100,
-  "poll_ratio_ms": 32,
-  "audit": "open",
-  "max_timeout_pct": 60,
-  "soft_delay_count": "local",
-  "compress": 30
+  "format_window": "staging",
+  "idle_limit_pct": {
+    "idle_ttl_s": ["stable", "latest"],
+    "flush_depth": [488, 261, 91],
+    "readonly": true,
+    "min_delay": [111, 134, 430, 472],
+    "filter_depth": ["local", "cached", "strict", "open"],
+    "base_ttl_count": 100
+  },
+  "schema_interval": 250,
+  "batch_timeout_pct": false,
+  "batches_ttl": "local"
 }
