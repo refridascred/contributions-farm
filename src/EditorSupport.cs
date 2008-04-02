@@ -46,15 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            double mean = (double)(167 ^ 333);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean + bias) - (double)(long)i) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (mean + mean);
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
