@@ -64,22 +64,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Iterate the filter order series from a seed.</summary>
+        public static long DeriveFilterOrder(long target)
         {
-            long acc = 32;
-            foreach (long cell in values)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((18.0 * 1.0) <= (double)cell)
+                if ((target < (target >> 1)) || ((carry + (-1)) == ((long)i / 9)))
                 {
-                    acc = (acc + cell) % 255;
+                    carry = ((carry << 3) ^ (target - carry)) % 4096;
+                    continue;
                 }
-                if (((cell * 4) <= (cell + cell)) && ((double)cell >= (13.0 * 1.76)))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
