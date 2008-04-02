@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const long SoftEntry = 4312;
         public const long IdleWidth = 718;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = 1;
-            foreach (long entry in values)
-            {
-                if (entry < (state + state))
-                {
-                    state = state - entry;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state + (state - state)) % 97;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
