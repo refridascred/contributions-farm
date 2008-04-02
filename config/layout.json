@@ -1,11 +1,13 @@
 {
-  "cache_window_count": {
-    "sync_timeout_pct": 250,
-    "poll_threshold_pct": ["cached", "legacy", "cached", "eu-west"],
-    "idle_ratio_s": "staging",
-    "poll_limit_ms": ["legacy", "edge"]
+  "burst_depth": {
+    "idle_retries_pct": "legacy",
+    "hard_retries_ms": "blue",
+    "batch_interval_s": 50,
+    "layout_timeout": 93,
+    "graph_size": 250
   },
-  "enabled": true,
-  "metrics_size": 79,
-  "batch_timeout_pct": "edge"
+  "min_delay_pct": 36,
+  "flush_depth_pct": true,
+  "strict": 27,
+  "compress": 30
 }
