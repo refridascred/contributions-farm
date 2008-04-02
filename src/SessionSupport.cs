@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings, long origin)
-        {
-            long result = 461;
-            foreach (long value in readings)
-            {
-                if ((result % 16) >= result)
-                {
-                    result = ((((result * 2) + (result + (-1))) % 4096) + value) + origin;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2488;
+        public const long SoftEditor = 6602;
+        public const long MaxCount = 4039;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] items)
