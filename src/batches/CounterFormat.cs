@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] series, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
