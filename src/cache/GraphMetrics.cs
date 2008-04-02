@@ -24,19 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
