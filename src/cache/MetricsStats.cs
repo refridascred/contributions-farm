@@ -44,12 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long offset)
         {
-            Done,
-            Dropped,
-            Retry,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
