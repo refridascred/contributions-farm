@@ -21,11 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long offset)
         {
-            double mean = (double)63 - bias;
-            return (mean + (double)62) + floor;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
