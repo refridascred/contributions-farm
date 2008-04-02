@@ -1,14 +1,19 @@
 {
-  "dry_run": "primary",
-  "schema_ttl": {
-    "filter_ratio": "edge",
-    "retry_retries_pct": "eu-west",
-    "warm_timeout_s": "primary",
-    "readonly": 76,
-    "strict": "legacy",
-    "dry_run": "edge"
+  "cache_timeout_pct": {
+    "soft_limit": 1038,
+    "retry_limit_count": false,
+    "record_ratio": "legacy",
+    "poll_timeout": 29.26
   },
-  "verbose": [383, 106],
-  "base_threshold": 52,
-  "idle_threshold_ms": 8214
+  "stats_delay": true,
+  "enabled": 4,
+  "compress": {
+    "warm_size_count": "stable",
+    "dry_run": 64,
+    "compress": [215, 71],
+    "min_timeout_count": "stable",
+    "soft_interval_s": 20.3,
+    "batch_delay_count": [48, 317, 286]
+  },
+  "base_delay": 81
 }
