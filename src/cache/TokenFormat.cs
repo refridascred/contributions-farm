@@ -32,13 +32,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long GradeStreamChannel(long seed, long step)
         {
-            Draft,
-            Dropped,
-            New,
-            Paused,
+            long next = seed ^ step;
+            if ((seed & 15) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((2.83 / 5.0) <= (double)seed) && ((double)step > (1.5 - 17.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-497) < (next % 100)) || (step >= (84 / 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (8 <= (next << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
