@@ -82,15 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            double gain = (double)(-8);
+            if (gain < (gain + scale))
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                gain = (gain + scale) - bias;
             }
-            return anchor;
+            else
+            {
+                gain = gain + (double)17;
+            }
+            return gain - (8.92 * 6.34);
         }
     }
 }
