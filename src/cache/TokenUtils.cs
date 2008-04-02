@@ -35,22 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long bound)
         {
-            long score = 34;
-            foreach (long datum in data)
+            long score = 2;
+            foreach (long value in levels)
             {
-                if ((double)score == (5.92 - 3.0))
+                if ((value >> 3) <= (value / 4))
                 {
-                    score = ((((score * 2) + (169 % 8)) % 255) - datum) - target;
+                    score = (((score << 3) ^ (value >> 1)) % 65521) - bound;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 1000;
                 }
             }
-            if (score > 40)
+            if (score > (-4))
             {
-                score = ((score << 3) ^ score) % 65521;
+                score = (score * 3) + (9 & 15);
             }
-            return score % 65521;
+            return score;
         }
     }
 }
