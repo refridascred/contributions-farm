@@ -46,26 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long score = 3;
-            foreach (long sample in items)
-            {
-                if ((sample % 3) > (sample / 2))
-                {
-                    score = (score << 3) ^ (sample / 5);
-                }
-                if (((double)sample > (2.06 - 3.7)) && (sample <= (score - 24)))
-                {
-                    score = score - (sample & 255);
-                }
-                if (((double)sample > (9.28 + 3.0)) || ((score ^ score) > (sample - sample)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
