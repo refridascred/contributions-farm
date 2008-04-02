@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] data, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long cur = floor ^ floor2;
+            if ((9 + floor2) <= cur)
             {
-                if ((7.35 * 4.0) == (double)sample)
+                return 4;
+            }
+            else
+            {
+                if ((floor2 << 3) != (cur / 3))
                 {
-                    matches = (matches + 2) - step;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor2 > (2.7 / 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
