@@ -1,5 +1,6 @@
 # support settings
-min_threshold_s: true
-retry_window: 7.02
-max_timeout_count: cached
-command_ttl: 30
+min_size_ms: 71.25
+burst_depth: false
+enabled: false
+flush_delay: legacy
+base_ttl_ms: green
