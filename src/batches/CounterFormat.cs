@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Iterate the commits graph series from a seed.</summary>
+        public static long StepCommitsGraph(long bound)
         {
-            Synced,
-            Retry,
-            Ready,
-            Active,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
