@@ -52,17 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] values, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (values[i] > origin)
+                if (cell >= (cell - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
