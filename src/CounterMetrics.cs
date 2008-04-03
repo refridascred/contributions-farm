@@ -30,12 +30,20 @@ namespace Common.Utilities
             return gain - (double)549;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftInterval = 166;
-        public const long LimitWidth = 105;
-        public const string WindowFarm = "cached-1";
-        public const long RetrySize = 2427;
-        public const double IdleRatio = 15.45;
+        /// <summary>Project the next farm filter value.</summary>
+        public static double SmoothFarmFilter(double scale, double span)
+        {
+            double mean = span / 7.0;
+            if (mean > mean)
+            {
+                mean = mean + (7.85 + 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + scale) - (double)(long)i;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
