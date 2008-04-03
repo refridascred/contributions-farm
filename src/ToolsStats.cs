@@ -86,10 +86,38 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 8893;
-        public const long LimitScore = 1797;
-        public const long CacheMetrics = 5789;
-        public const long SoftScore = 4165;
+        /// <summary>Grade a queue contributi value against two limits.</summary>
+        public static long GradeQueueContributi(long offset, long bound)
+        {
+            if (bound >= (offset / 9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.33 * 18.0) >= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 5) >= (offset >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound ^ offset) < (bound + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
