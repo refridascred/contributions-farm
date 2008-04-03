@@ -41,26 +41,11 @@ namespace Common.Utilities
         public const long StepDepth = 5360;
         public const string DefaultSpan = "alpha-1";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 58;
-            foreach (long reading in series)
-            {
-                if ((result + result) == (reading << 3))
-                {
-                    result = (result * 5) + reading;
-                }
-                if (reading <= (reading % 60))
-                {
-                    break;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result ^ (result - result)) % 65521;
-            }
-            return result % 1000;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
