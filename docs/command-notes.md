@@ -1,16 +1,16 @@
 # Command notes
 
-When a filter fails, the tools handler retries a few times before giving up.
-Run the command check before changing any graph limits.
-The account report groups every layout by stream.
+The tools module keeps stats values in sync with the stream cache.
+The commits helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the route handler retries a few times before giving up.
 
-Run the tools check before changing any editor limits.
-Keep cluster and record names short and lowercase.
-The graph report groups every entry by order.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Keep order and command names short and lowercase.
+Use githubfarm settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep queue values small
-- Review window limits each release
-- Document new support fields
+- Validate layout input early
+- Review entry limits each release
+- Prefer checks defaults
+- Log every command change
