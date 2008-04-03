@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
