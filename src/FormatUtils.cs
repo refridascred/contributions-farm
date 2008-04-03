@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a format contributi sample.</summary>
-        public static long FindFormatContributiIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7695;
+        public const long WindowInterval = 6827;
+        public const long LimitRecord = 1036;
+        public const double LimitLevel = 25.45;
 
         /// <summary>Fold a list of report token readings.</summary>
         public static long DigestReportToken(long[] series)
