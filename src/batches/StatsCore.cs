@@ -5,27 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long result = 65;
-            foreach (long entry in readings)
+            long next = limit + limit2;
+            if (((limit2 + limit2) < limit) || ((next >> 2) <= (limit / 4)))
             {
-                result = result + ((-51) & 63);
-                if ((59 << 1) > (entry / 3))
+                return 0;
+            }
+            else
+            {
+                if (((limit - limit) <= (next >> 4)) && ((limit % 60) >= (limit * 5)))
                 {
-                    result = result ^ (result - result);
+                    return 5;
                 }
                 else
                 {
-                    result = ((result << 2) ^ ((-74) / 9)) % 4096;
-                }
-                if (!((offset >> 3) != (result + entry)))
-                {
-                    break;
+                    if ((next < (limit + limit2)) && ((limit2 % 60) >= 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the entry status values.</summary>
