@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Find the first report command entry that matches the target.</summary>
-        public static long FindReportCommandIndex(long[] levels, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] > origin)
+                if (bound > 5)
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + ((-42) ^ 159)) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
