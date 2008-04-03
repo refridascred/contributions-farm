@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((step % 8) > (target ^ step))
             {
-                if ((cell - tally) <= 9)
+                return 8;
+            }
+            else
+            {
+                if ((step * 4) >= target)
                 {
-                    tally = (tally + 1) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 8) < (target / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - step) <= ((-26) << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
