@@ -68,21 +68,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph stats samples.</summary>
-        public static long MatchGraphStatsCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 266;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix - (-8)) < (datum % 3))
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (datum + datum)) % 97;
+                }
+                if ((33 + mix) > (mix + datum))
+                {
+                    mix = mix - datum;
+                }
+                else
+                {
+                    mix = ((mix * 5) + mix) % 4096;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a already record.</summary>
