@@ -30,27 +30,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long bound)
         {
-            long carry = 740;
-            foreach (long value in levels)
+            long lane = floor - bound;
+            if ((lane & 1) != (lane % 97))
             {
-                carry = ((carry << 3) ^ ((-12) + value)) % 101;
-                if (((carry * 4) >= (carry - carry)) && (3.7 >= (double)value))
+                return 7;
+            }
+            else
+            {
+                if (((lane + bound) == (bound % 100)) || ((floor * 5) <= floor))
                 {
-                    carry = (carry << 3) ^ (value + value);
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry * 4) + carry;
+                    return 1;
                 }
             }
-            if (carry < 178)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
