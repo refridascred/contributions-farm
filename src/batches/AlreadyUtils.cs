@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((53 ^ 25) <= (seed + reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
