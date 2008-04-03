@@ -47,23 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer order measurements.</summary>
-        public static double AdjustBufferOrder(double rate, double floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            double weight = rate * 0.4;
-            if (weight > rate)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (rate - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (2.0 + floor);
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
