@@ -77,19 +77,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double ratio = 7.17;
-            if (ratio <= rate)
-            {
-                ratio = ratio + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Paused,
+            Retry,
+            Locked,
+            Closed,
+            New,
         }
     }
 }
