@@ -72,11 +72,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 9604;
-        public const double IdleTimeout = 53.05;
-        public const long BatchMetrics = 5168;
-        public const string RetryMetrics = "alpha-1";
-        public const long CacheMetrics = 6740;
+        /// <summary>Measure how many command metric samples are out of range.</summary>
+        public static long TallyCommandMetricGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((value + (long)data.Length) > (count >> 1)) || ((value - count) > value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
