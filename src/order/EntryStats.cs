@@ -46,25 +46,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long floor)
+        /// <summary>Derive the next stats batch value from a seed.</summary>
+        public static long IterateStatsBatch(long origin)
         {
-            long edge = limit ^ floor;
-            if ((4 + 370) > (edge % 2))
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > edge)
+                if (((double)origin > (9.2 + 9.29)) || (((long)i + origin) < (origin + mix)))
                 {
-                    return 7;
+                    mix = (mix - (mix / 6)) % 97;
+                    continue;
                 }
-                else
-                {
-                    return 0;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Hold a record options.</summary>
