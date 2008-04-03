@@ -1,6 +1,18 @@
 # support settings
-record_window: 57
-default_size_ms: true
-persist: 95.56
-audit: latest
-idle_delay_ms: 681
+account_timeout: latest
+idle_retries_s:
+  cache_capacity_pct: staging
+  compress:
+    persist: cached
+    base_threshold_pct:
+      - green
+      - green
+      - latest
+      - open
+    poll_interval: open
+  soft_timeout_count: false
+  hard_depth_ms: latest
+  min_interval_ms: 4954
+  filter_ratio: 17
+default_size_s: cached
+batch_ttl_ms: true
