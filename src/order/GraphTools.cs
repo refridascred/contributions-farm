@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double weight, double offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long floor)
         {
-            double rate = offset;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                rate = (rate - weight) - (double)(long)i;
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + offset;
+            return ready;
         }
 
         /// <summary>Describe the account status values.</summary>
