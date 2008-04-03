@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long step2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings)
         {
-            long edge = step ^ step2;
-            if ((6.89 + 12.0) < (double)step2)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + step2) > (step - edge)) && ((2 & 63) <= edge))
+                if ((7.84 * 7.06) != (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 + step) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.6 * 10.0) < (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
