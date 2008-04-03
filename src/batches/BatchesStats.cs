@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Roll a channel queue counter forward.</summary>
+        public static long StepChannelQueue(long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((75 > ((long)series.Length % 8)) && ((item < (4 ^ seen)) || ((item - 2) == (item + item))))
-                {
-                    seen = seen + 2;
-                }
+                carry = (carry - (carry * 4)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the already class values.</summary>
