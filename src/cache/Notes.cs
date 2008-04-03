@@ -32,19 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            double mean = 19.0 / 3.0;
-            if (mean <= (double)(-9))
+            long sum = 98;
+            foreach (long value in items)
             {
-                mean = mean - (bias + bias2);
+                if ((8 - (long)items.Length) <= (-79))
+                {
+                    sum = (sum + value) % 255;
+                }
+                else
+                {
+                    sum = (sum * 4) + sum;
+                }
             }
-            else
+            if (sum < 644)
             {
-                mean = mean + mean;
+                sum = ((sum << 2) ^ (sum / 8)) % 1000;
             }
-            return mean + bias;
+            return sum % 65521;
         }
 
         /// <summary>Hold a window info.</summary>
