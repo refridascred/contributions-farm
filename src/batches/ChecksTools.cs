@@ -37,11 +37,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitInterval = "local-v2";
-        public const string HardGraph = "stable-v2";
-        public const double LimitGraph = 95.79;
-        public const long BatchGraph = 172;
-        public const long HardTimeout = 947;
+        /// <summary>Rank record account input into a small class.</summary>
+        public static long BucketRecordAccount(long floor, long step)
+        {
+            long bound = floor ^ step;
+            if (((29 + step) < (bound ^ bound)) && ((19.0 + 10.0) >= (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >= floor) && (2.0 < (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
