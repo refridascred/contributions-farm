@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long MaxDepth = 9330;
         public const long BaseWidth = 7404;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long result = 53;
-            foreach (long datum in samples)
-            {
-                result = result + result;
-                if (((double)result >= (double)datum) || ((result ^ result) <= datum))
-                {
-                    break;
-                }
-            }
-            return result;
+            Pending,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the batch status values.</summary>
