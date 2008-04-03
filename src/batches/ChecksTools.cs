@@ -35,19 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] levels, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
