@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long origin)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long CombineBatchesTools(long[] data, long bound)
         {
-            if ((seed & 63) >= origin)
+            long mix = 1;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 4) >= origin)
+                if ((9 - mix) != ((long)data.Length + sample))
                 {
-                    return 2;
+                    mix = ((mix + (0 + mix)) % 101) - bound;
                 }
                 else
                 {
-                    if ((6.8 * 1.4) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed % 100) != (seed << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix ^ (sample + sample)) % 65521;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Hold a record info.</summary>
