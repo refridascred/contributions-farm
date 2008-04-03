@@ -44,12 +44,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 8324;
-        public const long CacheLevel = 8377;
-        public const double DefaultSession = 17.51;
-        public const double BurstRatio = 72.99;
-        public const string RetrySession = "strict-v2";
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels)
