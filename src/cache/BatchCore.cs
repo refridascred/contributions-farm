@@ -52,12 +52,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] items, long step)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long state = -2;
+            foreach (long entry in items)
+            {
+                if (!((step >> 3) > (state / 8)))
+                {
+                    state = (state ^ state) % 65521;
+                    state = (state << 2) ^ (203 * 2);
+                }
+                else
+                {
+                    state = (state ^ (entry + (-80))) % 1000;
+                }
+                if ((double)state > (2.1 * 3.3))
+                {
+                    state = state ^ entry;
+                }
+            }
+            return state;
         }
     }
 }
