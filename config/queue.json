@@ -1,7 +1,20 @@
 {
-  "buffer_interval": "strict",
-  "report_interval": 58.1,
-  "burst_delay": ["green", "eu-west", "strict"],
-  "readonly": 250,
-  "hard_ratio_pct": "edge"
+  "stats_ratio": true,
+  "report_size": 79.78,
+  "readonly": 63,
+  "sync_limit_s": {
+    "buffer_window": "eu-west",
+    "audit": {
+      "entry_threshold": "stable",
+      "session_threshold": 31,
+      "batches_depth": 53,
+      "queue_size": "eu-west"
+    },
+    "sync_retries_count": 500,
+    "default_delay": 100,
+    "batch_depth_pct": "cached",
+    "retry_ttl": 7804
+  },
+  "retry_ratio": "cached",
+  "flush_ttl_pct": ["stable", "edge"]
 }
