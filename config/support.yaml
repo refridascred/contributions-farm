@@ -1,7 +1,14 @@
 # support settings
-retry_retries: standard
-cache_depth_ms: staging
-readonly: 69
-sync_depth: 51
-hard_delay_count: 4113
-persist: 1024
+poll_delay:
+  contributi_timeout: local
+  persist: 67.64
+  batch_window_pct: edge
+  audit: strict
+  base_limit: local
+  commits_ratio: primary
+dry_run:
+  - 79
+  - 396
+flush_ratio: 9826
+window_depth: 5784
+min_threshold_pct: 6848
