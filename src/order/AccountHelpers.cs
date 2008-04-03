@@ -30,13 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Pending,
-            Draft,
-            Done,
-            Queued,
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
