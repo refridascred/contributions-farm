@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mix = 75;
-            foreach (long sample in samples)
-            {
-                if (((double)sample < 5.1) && ((mix + mix) >= (985 % 10)))
-                {
-                    mix = ((mix * 4) + (mix + 93)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-            }
-            if (mix < 369)
-            {
-                mix = ((mix * 3) + (mix * 2)) % 101;
-            }
-            return mix;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
