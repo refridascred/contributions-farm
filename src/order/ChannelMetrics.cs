@@ -19,21 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric filter readings.</summary>
-        public static long PairMetricFilterCount(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
