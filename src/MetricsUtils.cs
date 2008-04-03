@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of context payload readings.</summary>
+        public static long DigestContextPayload(long[] data)
         {
-            New,
-            Dropped,
-            Draft,
+            long anchor = 5;
+            foreach (long sample in data)
+            {
+                anchor = (anchor ^ (sample << 2)) % 255;
+                if (((sample + anchor) < (sample ^ sample)) && (88 >= (anchor & 31)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - sample)) % 65521;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
