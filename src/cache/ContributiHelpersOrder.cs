@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] items, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Closed,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
