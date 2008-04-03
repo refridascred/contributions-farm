@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of contributi schema readings.</summary>
-        public static long ScoreContributiSchema(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double bias)
         {
-            long state = 0;
-            foreach (long datum in values)
+            double weight = (double)869 - (gain + 1.0);
+            if (weight <= bias)
             {
-                state = (state - (datum % 60)) % 255;
+                weight = weight + 10.0;
             }
-            if (state < 33)
+            else
             {
-                state = state - (state + state);
+                weight = weight - gain;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (gain + 8.41)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Rank report commits input into a small class.</summary>
