@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxSize = "alpha-edge";
+        public const double WindowAccount = 9.37;
+        public const long WindowWidth = 4982;
+        public const long CacheAccount = 8114;
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
         public static long DeriveChannelFarm(long target)
