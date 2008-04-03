@@ -1,5 +1,22 @@
 {
-  "readonly": 9882,
-  "account_interval": "stable",
-  "cache_timeout_ms": false
+  "min_capacity": {
+    "max_interval": 46.76,
+    "route_timeout": {
+      "account_depth": 52,
+      "farm_delay": false,
+      "enabled": [77, 27, 193],
+      "sync_ttl_pct": true
+    },
+    "idle_retries": "blue",
+    "soft_ttl_s": {
+      "batch_ttl_count": 7,
+      "stats_size": 92,
+      "strict": "open"
+    },
+    "cache_threshold_count": 30
+  },
+  "persist": 57.78,
+  "default_depth_ms": 7914,
+  "readonly": true,
+  "hard_ratio_pct": 1
 }
