@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
             public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
