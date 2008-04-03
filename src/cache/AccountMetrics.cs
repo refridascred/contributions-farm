@@ -48,11 +48,16 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 74.62;
-        public const long BaseCount = 2651;
-        public const long BatchScore = 2846;
-        public const double CacheBudget = 43.75;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] series, long offset)
+        {
+            long anchor = 234;
+            foreach (long value in series)
+            {
+                anchor = ((anchor ^ (value + value)) % 255) + offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] readings)
