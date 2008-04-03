@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = 587;
+            foreach (long sample in levels)
             {
-                if ((double)cell >= 9.2)
-                {
-                    matches = matches + 1;
-                }
+                result = result + (9 - sample);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
