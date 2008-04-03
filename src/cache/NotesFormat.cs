@@ -15,17 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long offset)
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long MeasureLayoutAlreadyOutliers(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((items[i] > offset) && ((items[i] % 3) != 0))
+                if (((long)series.Length / 5) > (matches * 5))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) - item) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
