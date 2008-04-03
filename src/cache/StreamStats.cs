@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "strict-1";
-        public const long BatchTimeout = 2672;
-        public const long BaseSize = 8267;
-        public const string RetryEntry = "cached-v2";
-        public const long CacheEntry = 5349;
+        /// <summary>Validate entry batch readings against a bound.</summary>
+        public static bool GuardEntryBatchRange(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a window entry reading.</summary>
         public static double ProjectWindowEntry(double scale, double span)
