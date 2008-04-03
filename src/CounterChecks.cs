@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 906;
-            foreach (long entry in samples)
-            {
-                if (((6.9 / 8.0) == (double)score) || ((3.86 - 17.0) <= (double)score))
-                {
-                    score = score ^ entry;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
