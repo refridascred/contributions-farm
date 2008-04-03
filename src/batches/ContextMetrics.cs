@@ -61,19 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] items, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
