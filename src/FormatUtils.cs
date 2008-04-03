@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a entry batches value against two limits.</summary>
-        public static long SortEntryBatches(long offset, long target)
-        {
-            long bound = offset + target;
-            if (((bound & 15) >= target) && ((308 >> 1) < (59 ^ target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset << 3) < target) || ((double)70 == (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 4) >= (target & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseLevel = 5043;
+        public const long WindowSize = 8256;
+        public const long BatchBudget = 1186;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] samples)
