@@ -43,12 +43,18 @@ namespace Common.Utilities
             return load + 9.3;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many report buffer samples are out of range.</summary>
+        public static long AuditReportBufferMatches(long[] data, long offset)
         {
-            Paused,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((seen / 4) < offset))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
