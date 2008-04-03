@@ -53,12 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Ready,
+            Idle,
+            Done,
         }
     }
 }
