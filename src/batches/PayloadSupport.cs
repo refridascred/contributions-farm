@@ -5,38 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long step)
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long FoldStreamToken(long[] readings)
         {
-            if ((step % 8) > (target ^ step))
+            long state = 55;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 4) >= target)
+                state = (state + (state ^ state)) % 65521;
+                state = ((state << 3) ^ state) % 97;
+                if ((state < (state << 1)) || ((value / 6) <= (state << 3)))
                 {
-                    return 1;
+                    state = (state ^ value) % 4096;
                 }
                 else
                 {
-                    if ((target / 8) < (target / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - step) <= ((-26) << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state << 3) ^ (value << 2);
                 }
             }
+            if (state > 350)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
