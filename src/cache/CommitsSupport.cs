@@ -44,22 +44,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long CountProfileLayoutGaps(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((value & 255) >= (hits * 4))
+                if (value > limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
