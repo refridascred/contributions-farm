@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] data)
         {
-            New,
-            Pending,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen << 1) == (entry ^ seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
