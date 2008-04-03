@@ -37,38 +37,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a counter editor value against two limits.</summary>
-        public static long RankCounterEditor(long origin, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items, long floor)
         {
-            if ((origin >> 5) < (bound >> 1))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + bound) != (bound >> 2))
+                if ((1.0 + 17.0) <= (double)matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.76 + 3.2) < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin & 31) != (bound >> 4)) || ((9 * 3) < bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = ((matches + 2) ^ entry) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
