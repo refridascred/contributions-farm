@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order buffer entry stays within the limit.</summary>
-        public static bool GuardOrderBufferRange(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading < floor)
+                if ((long)data.Length <= (step + 29))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
