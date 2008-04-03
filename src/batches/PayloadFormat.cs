@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long anchor = 741;
-            foreach (long sample in items)
-            {
-                anchor = (anchor * 2) + (sample / 4);
-            }
-            if (anchor > 41)
-            {
-                anchor = anchor ^ (anchor % 3);
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
