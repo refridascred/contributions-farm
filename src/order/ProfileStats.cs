@@ -39,11 +39,11 @@ namespace Common.Utilities
         public const long HardSize = 6844;
         public const long SoftCounter = 7063;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheInterval = 7988;
-        public const long IdleBudget = 4932;
-        public const long MinLevel = 4802;
-        public const string HardInterval = "stable";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "stable-v2";
+        public const long LimitQueue = 2482;
+        public const long IdleSpan = 1634;
+        public const long DefaultLevel = 5002;
 
         /// <summary>Combine context window values into a single score.</summary>
         public static long TallyContextWindow(long[] data)
