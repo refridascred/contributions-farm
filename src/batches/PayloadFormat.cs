@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftLevel = 693;
-        public const string BatchCount = "fallback";
-        public const double SoftBudget = 97.06;
-        public const long MaxSession = 8266;
-        public const long BatchSession = 3932;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double offset)
+        {
+            double gain = offset;
+            if (gain < (double)(-7))
+            {
+                gain = (gain - gain) + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain * 0.3)) - (double)(long)i;
+            }
+            return gain + offset;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] samples, long limit)
