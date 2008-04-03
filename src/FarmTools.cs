@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstSpan = "cached-edge";
-        public const double CacheDepth = 33.25;
-        public const string CacheAccount = "strict-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryScore = 7246;
+        public const long DefaultFactor = 1037;
+        public const long BurstRecord = 8553;
+        public const long WindowRecord = 6100;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] samples, long limit)
