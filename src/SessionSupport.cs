@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            Closed,
-            Stale,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count - entry) == (0 >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
