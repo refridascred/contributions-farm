@@ -58,19 +58,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every metric entry entry stays within the limit.</summary>
-        public static bool GuardMetricEntryRange(long[] readings, long offset)
+        /// <summary>Iterate the command buffer series from a seed.</summary>
+        public static long SeriesCommandBuffer(long bound)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < offset)
+                if ((carry % 64) > (carry + carry))
                 {
-                    found = false;
-                    break;
+                    carry = (carry * 3) + ((-49) >> 3);
+                    carry = (carry << 2) ^ carry;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
     }
 }
