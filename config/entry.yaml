@@ -1,10 +1,8 @@
 # entry settings
-max_capacity_s: false
-retry_threshold: legacy
-default_capacity:
-  min_size_ms: 1
-  commits_window: 250
-  session_timeout: open
-  burst_ratio: green
-  dry_run: primary
-  min_ratio_count: 30
+compress:
+  - 464
+  - 319
+  - 328
+min_timeout_ms: 70
+checks_retries: true
+batches_size: 7072
