@@ -63,26 +63,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metrics stream samples.</summary>
-        public static long TotalMetricsStream(long[] series)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long score = -950;
-            foreach (long item in series)
-            {
-                if ((double)score >= 3.0)
-                {
-                    score = (score * 5) + (item / 3);
-                }
-                else
-                {
-                    score = score - (score ^ (-190));
-                }
-            }
-            if (score < 73)
-            {
-                score = ((score * 4) + (long)series.Length) % 97;
-            }
-            return score % 65521;
+            Idle,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
