@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order checks entry that matches the target.</summary>
-        public static long LocateOrderChecksIndex(long[] levels, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
