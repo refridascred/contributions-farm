@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a order record pair into a bucket.</summary>
-        public static long SortOrderRecord(long offset, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            if ((28 + origin) > (offset - offset))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) > (123 >> 1))
+                if ((6.3 * 9.0) == (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a route reading.</summary>
