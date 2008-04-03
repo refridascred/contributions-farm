@@ -44,11 +44,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 7838;
-        public const long LimitBudget = 3844;
-        public const long BatchFactor = 1447;
-        public const long StepScore = 7631;
-        public const string BatchSize = "standard-edge";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
