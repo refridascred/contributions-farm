@@ -59,18 +59,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of layout counter readings.</summary>
-        public static long OverlapLayoutCounterCount(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (5.0 < (double)count)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
