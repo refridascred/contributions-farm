@@ -1,6 +1,8 @@
 {
-  "commits_depth": "green",
-  "stats_interval": "cached",
-  "batches_ttl": 21.09,
-  "enabled": 66.23
+  "tools_size": "legacy",
+  "retry_threshold_s": "primary",
+  "retry_retries": ["cached", "primary"],
+  "default_capacity": "edge",
+  "compress": 3.29,
+  "verbose": 4296
 }
