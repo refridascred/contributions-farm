@@ -27,19 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double rate, double bias)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            double scale = bias;
+            if (scale <= bias)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark * 3) + mark) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                scale = scale + (scale * 8.0);
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale + rate)) + (double)(long)i;
+            }
+            return scale + 6.9;
         }
     }
 }
