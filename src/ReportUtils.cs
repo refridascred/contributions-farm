@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 2004;
         public const double IdleQueue = 62.45;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long target)
         {
-            Ready,
-            Paused,
-            Synced,
-            New,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a report options.</summary>
