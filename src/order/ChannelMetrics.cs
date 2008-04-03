@@ -24,38 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank buffer metrics input into a small class.</summary>
-        public static long RankBufferMetrics(long origin, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            if (offset > (7 >> 2))
+            long acc = 74;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < (2.3 + 20.0))
+                if ((acc + cell) > cell)
                 {
-                    return 6;
+                    acc = acc + (cell % 60);
                 }
-                else
-                {
-                    if ((origin / 7) <= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((67 % 24) < (offset ^ offset)) || (origin >= (offset & 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                acc = (acc ^ ((-41) % 2)) % 97;
             }
+            return acc;
         }
     }
 }
