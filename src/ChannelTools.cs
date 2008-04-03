@@ -28,13 +28,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (sample & 63))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
