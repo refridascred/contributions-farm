@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a githubfarm profile value against two limits.</summary>
-        public static long GradeGithubfarmProfile(long offset, long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long bound)
         {
-            if ((0 >> 4) != (offset ^ limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset / 9) <= offset) || (2.0 >= (double)limit))
+                if (levels[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset & 3) <= offset) || ((limit ^ offset) == (138 + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
