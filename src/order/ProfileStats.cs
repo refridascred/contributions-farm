@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Iterate the layout payload series from a seed.</summary>
+        public static long SeriesLayoutPayload(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long lane = (target - 44) + (long)i;
+                if ((target >= (lane + result)) && ((6.97 + 2.0) >= (double)(long)i))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    lane = (lane + (250 * 5)) % 97;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
