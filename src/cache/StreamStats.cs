@@ -45,11 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxScore = 4377;
-        public const long IdleContributi = 5146;
-        public const long DefaultContributi = 8199;
-        public const long BaseContributi = 2673;
-        public const double WindowRatio = 63.39;
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long TotalReportMetric(long[] samples)
+        {
+            long carry = -2;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry * 3)) % 65521;
+                }
+            }
+            if (carry < 40)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 97;
+        }
     }
 }
