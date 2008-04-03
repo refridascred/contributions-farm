@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 7790;
+        public const string LimitMetric = "standard-edge";
+        public const long HardMetric = 6645;
+        public const double SoftSize = 89.12;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long step)
