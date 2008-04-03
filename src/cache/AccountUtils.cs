@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "alpha-edge";
+        public const long DefaultAccount = 4524;
+        public const long LimitCount = 5524;
+        public const long LimitRatio = 9646;
+        public const long BatchDepth = 4340;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitStats = 646;
