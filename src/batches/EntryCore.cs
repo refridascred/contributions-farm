@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long acc = 409;
-            foreach (long cell in readings)
-            {
-                if ((cell - 105) <= (step % 97))
-                {
-                    acc = ((acc * 5) + (cell << 2)) % 101;
-                }
-            }
-            if (acc < (-50))
-            {
-                acc = ((acc * 2) + ((-3) & 1)) % 101;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of format graph entries.</summary>
