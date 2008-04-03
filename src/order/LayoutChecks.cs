@@ -33,17 +33,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a batch token counter forward.</summary>
-        public static long DeriveBatchToken(long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] items, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 3) ^ (offset - acc)) % 65521;
-                acc = (acc << 3) ^ (offset << 1);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a counter stats.</summary>
