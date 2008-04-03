@@ -44,14 +44,24 @@ namespace Common.Utilities
         public const string RetryQueue = "cached-edge";
         public const long DefaultQueue = 2880;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long offset)
         {
-            Done,
-            Synced,
-            Queued,
-            Closed,
-            Dropped,
+            long mark = 9;
+            foreach (long sample in items)
+            {
+                if (((sample << 3) == (sample % 64)) && ((3.0 / 6.0) == (double)mark))
+                {
+                    mark = (mark << 3) ^ (offset - sample);
+                    break;
+                }
+                mark = ((mark * 2) + (mark * 4)) % 97;
+            }
+            if (mark > 12)
+            {
+                mark = ((mark << 3) ^ (offset / 7)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
