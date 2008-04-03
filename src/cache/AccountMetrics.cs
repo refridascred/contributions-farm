@@ -22,11 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            Pending,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a context summary.</summary>
