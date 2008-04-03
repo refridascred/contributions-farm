@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every layout batch entry stays within the limit.</summary>
-        public static bool CheckLayoutBatchRange(long[] items, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if ((3.4 / 4.0) >= (double)limit)
             {
-                if (entry != origin)
+                return 7;
+            }
+            else
+            {
+                if (((target + target) >= (limit / 3)) || (limit < (263 % 16)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
