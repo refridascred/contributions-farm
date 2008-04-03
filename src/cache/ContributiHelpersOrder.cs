@@ -39,12 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry % 100) == (25 / 9))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
