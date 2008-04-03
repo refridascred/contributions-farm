@@ -35,22 +35,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of stats commits readings.</summary>
-        public static long FoldStatsCommits(long[] series, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] values, long offset)
         {
-            long anchor = 993;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((977 ^ 53) == (floor - anchor))
+                if ((entry + 160) >= seen)
                 {
-                    anchor = ((anchor + (3 + anchor)) % 255) + entry;
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 35)
-            {
-                anchor = anchor ^ 62;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
