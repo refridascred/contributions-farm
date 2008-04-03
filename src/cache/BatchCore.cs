@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string BatchMetric = "alpha";
         public const string BaseMetric = "fallback-1";
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of record readings.</summary>
