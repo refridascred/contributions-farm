@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] data, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((count << 1) < 3)
+                if ((((1.2 * 9.4) != (double)tally) || (tally <= (offset + tally))) && ((datum & 63) <= 143))
                 {
-                    count = ((count + 2) + value) - floor;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
