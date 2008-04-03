@@ -1,8 +1,10 @@
 # entry settings
-warm_depth:
-  - 177
-  - 113
-poll_ratio_s: 500
-cache_threshold_pct: 52
-retry_threshold_ms: false
-warm_interval_pct: 46.05
+max_capacity_s: false
+retry_threshold: legacy
+default_capacity:
+  min_size_ms: 1
+  commits_window: 250
+  session_timeout: open
+  burst_ratio: green
+  dry_run: primary
+  min_ratio_count: 30
