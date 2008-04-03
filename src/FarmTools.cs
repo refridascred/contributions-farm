@@ -37,13 +37,22 @@ namespace Common.Utilities
         public const long IdleCluster = 3063;
         public const long BurstTimeout = 6771;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            Dropped,
-            Active,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)(long)samples.Length >= 8.27)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
