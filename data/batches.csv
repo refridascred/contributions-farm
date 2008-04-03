@@ -1,6 +1,8 @@
-id,weight,active,rank
-1,cached,87.72,primary
-2,blue,standard,strict
-3,54.08,standard,887
-4,783,87.58,25.34
-5,540,119,26.15
+id,token,score
+1,latest,654
+2,17.25,93
+3,971,98.85
+4,standard,70.29
+5,357,98.63
+6,442,843
+7,standard,542
