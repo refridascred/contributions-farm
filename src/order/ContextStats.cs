@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Retry,
-            Done,
-            Pending,
+            Closed,
+            New,
             Failed,
-            Locked,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
