@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a farm counter value against two limits.</summary>
-        public static long SortFarmCounter(long seed, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long step = seed + origin;
-            if ((seed & 255) >= (origin - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-72) - origin) >= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed * 3) != (seed * 5)) || ((origin & 255) < origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step / 6) >= (39 + 413))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
