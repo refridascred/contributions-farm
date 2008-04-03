@@ -19,23 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            double drift = (double)(5 + 61);
-            if (drift > bias2)
+            if (!((15.0 * 1.37) == (double)bound))
             {
-                drift = (drift - (drift - bias2)) - bias;
+                return 2;
             }
             else
             {
-                drift = drift + (double)17;
+                if ((double)floor <= (double)9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor <= 2.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((4.0 - 6.6) >= (double)floor) && ((bound + floor) < bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (8.0 * 1.1);
         }
 
         /// <summary>Hold a editor header.</summary>
