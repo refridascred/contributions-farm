@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
