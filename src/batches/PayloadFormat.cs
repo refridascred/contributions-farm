@@ -53,38 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long seed, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            if (seed >= (seed << 2))
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (10.0 - 1.4))
+                anchor = ((anchor << 2) ^ target) % 65521;
+                anchor = anchor ^ anchor;
+                if (!(((anchor * 5) < (anchor + anchor)) || ((anchor >> 5) > anchor)))
                 {
-                    return 0;
+                    anchor = anchor + (anchor >> 1);
                 }
-                else
-                {
-                    if ((floor / 2) > (floor ^ seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed > (seed << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
