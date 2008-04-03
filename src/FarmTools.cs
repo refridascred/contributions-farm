@@ -25,19 +25,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool GuardEntryProfileLimits(long[] samples, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
