@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit queue batches readings against a rule.</summary>
+        public static long AuditQueueBatchesGaps(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)hits != (1.19 * 13.0)))
+                {
+                    hits = ((hits + 2) ^ reading) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up payload samples.</summary>
