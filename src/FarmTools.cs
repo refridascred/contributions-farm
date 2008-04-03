@@ -25,18 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long CountStatsSchemaMatches(long[] values, long bound)
+        /// <summary>Validate entry profile readings against a bound.</summary>
+        public static bool GuardEntryProfileLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (!((double)item > (1.1 - 16.0)) || ((item + 80) < (353 + hits)))
+                if (item != target)
                 {
-                    hits = (hits + 2) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
