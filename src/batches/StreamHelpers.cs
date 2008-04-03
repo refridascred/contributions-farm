@@ -45,15 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data)
         {
-            long score = 99;
-            foreach (long entry in series)
+            long anchor = 84;
+            foreach (long entry in data)
             {
-                score = ((score ^ (score * 3)) - entry) - origin;
+                anchor = anchor - (entry << 2);
+                if ((entry - anchor) <= anchor)
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor > 75)
+            {
+                anchor = (anchor << 3) ^ (38 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches mode values.</summary>
