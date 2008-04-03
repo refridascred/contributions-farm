@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + count) > (count >> 1))
-                {
-                    count = ((count + 3) + reading) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 26.11;
+        public const string MaxStats = "stable-edge";
+        public const string LimitStats = "fallback";
+        public const string MinStats = "cached-v2";
+        public const double RetrySize = 70.77;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
