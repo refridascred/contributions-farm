@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long CountStreamNotesMatches(long[] levels, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (((14.0 * 6.0) >= (double)offset) && ((7.89 / 5.0) != (double)seen))
+                if (entry > origin)
                 {
-                    seen = (seen + 1) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
