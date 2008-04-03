@@ -1,5 +1,9 @@
 # githubfarm settings
-batches_delay: local
-verbose: 882
-warm_depth_count: fallback
-warm_limit_pct: 4.18
+farm_ratio: 42.76
+cache_depth: strict
+strict:
+  - strict
+  - primary
+  - local
+  - primary
+burst_interval_ms: 29.79
