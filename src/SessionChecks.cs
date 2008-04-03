@@ -37,12 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 4653;
-        public const long BaseLevel = 4064;
-        public const string WindowFilter = "cached-1";
-        public const string DefaultWidth = "alpha-v2";
-        public const double SoftRatio = 85.55;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long offset, long target)
