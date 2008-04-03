@@ -89,16 +89,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] samples, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = (score - ((long)i - limit)) % 255;
-                score = ((score * 5) + (long)i) % 97;
+                if ((seed * 2) <= (490 >> 4))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
