@@ -39,13 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] samples, long offset)
         {
-            Ready,
-            Draft,
-            Locked,
-            Stale,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a report reading.</summary>
