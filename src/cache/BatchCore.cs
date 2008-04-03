@@ -73,18 +73,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((0 & 15) < hits) || (((entry - hits) != (entry * 2)) && (hits <= (entry & 1))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
