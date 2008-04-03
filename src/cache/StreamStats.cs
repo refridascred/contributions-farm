@@ -33,10 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 4966;
-        public const long LimitBudget = 4722;
-        public const double SoftPayload = 35.14;
+        /// <summary>Validate batches buffer readings against a bound.</summary>
+        public static bool ValidateBatchesBufferLimits(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long bound)
