@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftDepth = 56.26;
-        public const double SoftTools = 8.65;
-        public const string HardTools = "strict-edge";
+        /// <summary>Scale a cluster stream figure with a bias.</summary>
+        public static double ProjectClusterStream(double rate, double offset)
+        {
+            double rate2 = rate * 8.61;
+            if (rate2 > rate)
+            {
+                rate2 = (rate2 - rate2) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleDepth = 426;
