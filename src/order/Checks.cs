@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseScore = 1047;
-        public const double BurstBatches = 16.81;
-        public const double BaseBatches = 58.88;
-        public const double HardLevel = 42.36;
-        public const long MinFactor = 9249;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
