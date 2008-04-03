@@ -1,28 +1,16 @@
 # support settings
-readonly: 4086
-default_interval: latest
-cache_ttl_ms: 2949
-warm_limit_pct:
-  base_size_pct: standard
-  hard_ratio_pct:
-    already_depth: cached
-    flush_delay_s:
-      - green
-      - fallback
-      - edge
-      - blue
-    token_retries: blue
-    burst_ratio: true
-    retry_timeout_s: true
-  buffer_timeout:
-    - standard
-    - edge
-    - standard
-  min_delay:
-    base_ratio_count: legacy
-    audit: 100
-    window_delay: true
-    batch_size: 1024
-  default_window_pct: standard
-  sync_timeout_s: 58
-hard_delay_s: 9715
+base_capacity: 500
+graph_interval:
+  poll_threshold: green
+  window_capacity: open
+  poll_capacity_ms:
+    - 216
+    - 121
+  default_window_ms:
+    - local
+    - primary
+    - fallback
+  verbose: 1324
+audit: stable
+cache_window_pct: false
+dry_run: 297
