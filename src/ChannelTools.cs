@@ -34,24 +34,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long step, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if ((step >> 3) >= (limit * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + step) != (step + 866)) || ((limit ^ step) != (limit ^ limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Stale,
+            New,
+            Paused,
         }
     }
 }
