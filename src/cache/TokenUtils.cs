@@ -15,14 +15,13 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Pending,
-            Dropped,
-            Ready,
-            Retry,
-            Locked,
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
