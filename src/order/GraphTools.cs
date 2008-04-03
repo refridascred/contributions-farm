@@ -52,12 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] values, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
