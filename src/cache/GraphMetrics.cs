@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Retry,
-            Locked,
-            Idle,
+            Ready,
+            Pending,
             Draft,
             Active,
+            Done,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
