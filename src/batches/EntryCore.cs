@@ -32,11 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            Paused,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the batches mode values.</summary>
