@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry << 3) ^ origin) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (((carry << 2) ^ (70 >> 4)) % 65521) - (long)i2;
-                }
-                if ((carry + 895) < (9 & 1))
-                {
-                    carry = (carry ^ (67 * 5)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftDepth = 56.26;
+        public const double SoftTools = 8.65;
+        public const string HardTools = "strict-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleDepth = 426;
