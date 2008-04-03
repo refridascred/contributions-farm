@@ -57,24 +57,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long target, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if ((double)bound < (2.9 * 6.45))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ bound) >= (bound << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Draft,
+            Locked,
+            Active,
+            Pending,
         }
     }
 }
