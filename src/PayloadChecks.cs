@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (487 > (item % 12))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
