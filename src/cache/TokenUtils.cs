@@ -14,11 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftLevel = "local-1";
-        public const string IdleFormat = "cached-v2";
-        public const double WindowScore = 86.73;
-        public const long BaseDepth = 3995;
+        /// <summary>Fold a list of contributi schema readings.</summary>
+        public static long ScoreContributiSchema(long[] values)
+        {
+            long state = 0;
+            foreach (long datum in values)
+            {
+                state = (state - (datum % 60)) % 255;
+            }
+            if (state < 33)
+            {
+                state = state - (state + state);
+            }
+            return state;
+        }
 
         /// <summary>Rank report commits input into a small class.</summary>
         public static long RankReportCommits(long bound, long origin)
