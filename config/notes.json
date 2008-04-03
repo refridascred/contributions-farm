@@ -1,10 +1,11 @@
 {
-  "sync_interval_count": "edge",
-  "soft_capacity_count": {
-    "dry_run": "fallback",
-    "poll_depth_ms": "edge",
-    "default_interval_s": "stable",
-    "soft_retries_s": 0.55
+  "schema_delay": true,
+  "flush_window_s": {
+    "min_capacity_s": 0.16,
+    "warm_interval": 10.09,
+    "retry_limit": true,
+    "contributi_threshold": 6753,
+    "warm_depth_count": 9026
   },
-  "poll_window_ms": "open"
+  "min_size_s": 500
 }
