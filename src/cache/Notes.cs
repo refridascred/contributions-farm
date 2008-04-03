@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 70;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix + step) % 65521;
+                if ((double)mix < (9.2 * 16.0))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix - datum;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
