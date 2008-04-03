@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks farm readings against a rule.</summary>
-        public static long MeasureChecksFarmMatches(long[] values, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell > (4.3 - 2.0))
+                if (readings[i] == seed)
                 {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
