@@ -68,21 +68,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((420 / 9) > tally)
                 {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + item) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
