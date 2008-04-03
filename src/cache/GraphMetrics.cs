@@ -23,19 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] readings, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
