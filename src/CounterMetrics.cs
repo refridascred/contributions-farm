@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound & 127) > bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) > (offset >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
