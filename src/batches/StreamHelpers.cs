@@ -45,14 +45,19 @@ namespace Common.Utilities
         public const string MinCount = "staging-1";
         public const double RetryChannel = 46.99;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] data, long floor)
         {
-            Queued,
-            Dropped,
-            Active,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
