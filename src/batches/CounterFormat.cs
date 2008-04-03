@@ -34,21 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count filter tools pairs that satisfy a relation.</summary>
-        public static long PairFilterToolsCount(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] <= limit)
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
