@@ -26,12 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
             Locked,
-            Queued,
-            Idle,
+            Closed,
+            Synced,
         }
     }
 }
