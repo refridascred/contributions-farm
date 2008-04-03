@@ -45,22 +45,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long target)
         {
-            long acc = 897;
-            foreach (long sample in items)
+            long prev = offset + target;
+            if ((target >> 2) > prev)
             {
-                if (((sample % 97) > acc) || ((acc - acc) < (acc % 24)))
+                return 0;
+            }
+            else
+            {
+                if (prev <= (prev % 7))
                 {
-                    acc = (acc << 3) ^ (acc & 255);
+                    return 4;
+                }
+                else
+                {
+                    if (((double)prev >= (0.5 - 7.56)) && (offset >= (target + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc < 795)
-            {
-                acc = ((acc << 3) ^ 772) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
