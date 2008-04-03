@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const long MaxRoute = 3552;
         public const long SoftTimeout = 4773;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long seed)
-        {
-            long anchor = -67;
-            foreach (long item in items)
-            {
-                if ((double)anchor <= (double)616)
-                {
-                    anchor = (anchor << 3) ^ (seed * 5);
-                }
-                if ((item - seed) < (item - 32))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchRatio = 54.81;
+        public const double WindowDepth = 83.66;
+        public const double DefaultScore = 27.88;
+        public const string SoftMetric = "alpha-edge";
+        public const long BurstRatio = 5593;
     }
 }
