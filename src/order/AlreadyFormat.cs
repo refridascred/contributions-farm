@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 9570;
+        public const string LimitCount = "staging-edge";
+        public const string SoftSpan = "local-v2";
 
         /// <summary>Count graph checks pairs that satisfy a relation.</summary>
         public static long PairGraphChecksCount(long[] series)
