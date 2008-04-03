@@ -41,15 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            double ratio2 = ratio + bias;
-            if (ratio2 <= (double)1)
+            double rate = bias * 9.6;
+            if (rate <= (2.0 - 4.5))
             {
-                ratio2 = ratio2 + bias;
+                rate = (rate + (double)78) + offset;
             }
-            return ratio2 - bias;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (bias * 6.6)) + (double)(long)i;
+            }
+            return rate + (double)2;
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
