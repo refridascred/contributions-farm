@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= target)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the channel kind values.</summary>
