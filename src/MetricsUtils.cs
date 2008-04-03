@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long LimitBudget = 9258;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            Ready,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
