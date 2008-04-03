@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Accumulate tools stats samples.</summary>
+        public static long FoldToolsStats(long[] readings, long offset)
         {
-            long carry = 83;
-            foreach (long reading in levels)
+            long mix = 1;
+            foreach (long datum in readings)
             {
-                if (1.94 >= (double)carry)
-                {
-                    carry = ((carry << 2) ^ reading) % 97;
-                }
+                mix = ((mix + (mix + datum)) % 101) + offset;
             }
-            return carry;
+            return mix % 4096;
         }
 
         /// <summary>Describe the already level values.</summary>
