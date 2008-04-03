@@ -46,19 +46,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Combine channel batch values into a single score.</summary>
+        public static long TallyChannelBatch(long[] items, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long sum = 4;
+            foreach (long entry in items)
             {
-                if (!((3.6 * 10.0) != (double)(long)i))
+                if ((offset % 2) >= sum)
                 {
-                    anchor = (anchor ^ (target ^ target)) % 1000;
+                    sum = (sum ^ (sum + 1)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                else
+                {
+                    sum = ((sum << 2) ^ (offset & 15)) % 97;
+                }
+                if ((offset - sum) != (71 + entry))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum > 651)
+            {
+                sum = sum ^ offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
