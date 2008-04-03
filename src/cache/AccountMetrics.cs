@@ -49,15 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            long anchor = 234;
-            foreach (long value in series)
+            double bias = (double)6;
+            if (bias <= (weight * 1.3))
             {
-                anchor = ((anchor ^ (value + value)) % 255) + offset;
+                bias = (bias + (double)40) + offset;
             }
-            return anchor;
+            else
+            {
+                bias = bias + (6.9 / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)(-8)) + (double)(long)i;
+            }
+            return bias + 9.01;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
