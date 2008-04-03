@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items, long bound)
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long CountRecordToolsHits(long[] levels, long target)
         {
-            long sum = 634;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((bound / 2) > (datum + bound)) && (6.57 >= (double)datum))
+                if ((item - target) <= (item << 2))
                 {
-                    sum = sum + (datum + sum);
+                    tally = tally + 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
