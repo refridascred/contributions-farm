@@ -53,18 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long MeasureMetricsBatchesGaps(long[] data, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (seen < (limit + seen))
+                if (datum <= bound)
                 {
-                    seen = (seen + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
