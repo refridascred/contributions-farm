@@ -51,21 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > target)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
