@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long StepBudget = 8190;
         public const double BatchBudget = 20.67;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinScore = 93.84;
-        public const long DefaultCount = 3341;
-        public const long StepDepth = 5360;
-        public const string DefaultSpan = "alpha-1";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Ready,
+            New,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6133;
