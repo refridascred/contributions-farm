@@ -12,21 +12,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up support route samples.</summary>
-        public static long CompareSupportRouteCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = origin ^ step;
+            if ((origin * 4) < 52)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)bound <= (9.0 / 2.0)) || (((-6) << 2) <= bound))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
