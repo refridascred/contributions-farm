@@ -14,18 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 8) == (809 + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
