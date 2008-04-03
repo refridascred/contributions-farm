@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            New,
-            Done,
-            Idle,
+            Dropped,
+            Active,
             Pending,
+            Synced,
         }
     }
 }
