@@ -32,15 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long CombineGithubfarmCluster(long[] values, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = 72;
-            foreach (long entry in values)
-            {
-                score = ((((score << 3) ^ (score * 3)) % 101) + entry) - target;
-            }
-            return score;
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
