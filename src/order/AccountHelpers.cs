@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((1.0 - 3.8) >= (double)offset) || ((double)offset > (3.0 + 2.76)))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
