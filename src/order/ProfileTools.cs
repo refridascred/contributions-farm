@@ -32,13 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            New,
-            Locked,
-            Pending,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a token command value against two limits.</summary>
