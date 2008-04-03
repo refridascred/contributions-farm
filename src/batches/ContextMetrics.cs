@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 26.11;
-        public const string MaxStats = "stable-edge";
-        public const string LimitStats = "fallback";
-        public const string MinStats = "cached-v2";
-        public const double RetrySize = 70.77;
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long WeighBufferCache(long[] samples)
+        {
+            long score = 281;
+            foreach (long value in samples)
+            {
+                if ((value + value) == (value - score))
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            if (score > 740)
+            {
+                score = (score ^ (score + score)) % 4096;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
