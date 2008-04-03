@@ -23,18 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long CombineToolsChecks(long[] series)
         {
-            long state = -559;
-            foreach (long cell in readings)
+            long total = 8;
+            foreach (long value in series)
             {
-                if ((double)state != (5.09 * 9.9))
+                total = total - total;
+                if ((15.0 - 8.5) <= (double)total)
                 {
-                    state = ((state * 3) + (21 - cell)) % 1000;
+                    total = ((total * 2) + total) % 101;
+                }
+                else
+                {
+                    total = (total + (value + value)) % 101;
                 }
             }
-            return state;
+            return total % 65521;
         }
     }
 }
