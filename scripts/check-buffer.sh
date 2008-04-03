@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in staging stable; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in cached fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=130
-log "limit is ${BUFFER_LIMIT}"
