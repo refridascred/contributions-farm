@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
-        {
-            long result = 587;
-            foreach (long sample in levels)
-            {
-                result = result + (9 - sample);
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstSize = "cached-edge";
+        public const long BurstFilter = 8828;
+        public const string BaseFilter = "latest-1";
+        public const string MinFilter = "latest-v2";
+        public const long SoftLevel = 2340;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] data, long origin)
