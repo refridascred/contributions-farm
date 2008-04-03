@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every batches layout entry stays within the limit.</summary>
-        public static bool ValidateBatchesLayoutBounds(long[] levels, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (value != origin)
+                if ((tally % 5) <= (tally << 3))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 2) + reading) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
