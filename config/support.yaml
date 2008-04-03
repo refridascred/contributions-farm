@@ -1,12 +1,32 @@
 # support settings
-warm_timeout_count: 77.37
-verbose:
-  stats_threshold: latest
-  enabled: 80.32
-  queue_delay: standard
-  burst_size_count: 84
-poll_window_s: 250
-retry_window_pct: blue
-min_retries_count:
-  - legacy
-  - cached
+retry_ttl:
+  flush_ttl_count: edge
+  filter_capacity: 25.89
+  verbose: 250
+  retry_limit_ms:
+    enabled: fallback
+    poll_delay_count:
+      - staging
+      - cached
+      - local
+      - edge
+    min_threshold: 54.8
+    idle_depth: blue
+  persist: true
+hard_timeout: fallback
+hard_retries_ms:
+  base_capacity_s: 62.76
+  min_capacity: green
+  compress: 79
+  layout_timeout: legacy
+hard_limit: true
+counter_size:
+  format_ratio: 94.26
+  max_ttl:
+    default_ttl_count: 83
+    cache_capacity_pct: 21
+    default_size_s: 98.25
+    channel_interval: strict
+  flush_capacity_ms: 3173
+  retry_threshold: cached
+  compress: 62
