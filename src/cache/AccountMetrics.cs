@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings, long origin)
         {
-            Retry,
-            Paused,
-            Done,
+            long anchor = 69;
+            foreach (long reading in readings)
+            {
+                anchor = ((((anchor << 3) ^ 9) % 101) ^ reading) - origin;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the report mode values.</summary>
