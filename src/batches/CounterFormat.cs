@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a record filter reading.</summary>
-        public static double ScaleRecordFilter(double weight, double bias)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            double load = (double)(96 * 4);
-            if (load < (weight * 0.08))
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                load = load - (5.7 + bias);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return load - bias;
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
