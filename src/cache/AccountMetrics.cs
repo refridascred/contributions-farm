@@ -63,12 +63,23 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long carry = 66;
+            foreach (long sample in samples)
+            {
+                carry = (carry + carry) % 97;
+                if ((sample & 15) == (sample & 1))
+                {
+                    carry = (carry << 3) ^ (sample + carry);
+                }
+                if ((sample / 3) < sample)
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
