@@ -32,18 +32,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long AuditSessionLayoutOutliers(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (item < (seen + item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a token command value against two limits.</summary>
