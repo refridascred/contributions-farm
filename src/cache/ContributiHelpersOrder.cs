@@ -26,22 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6595;
+        public const long DefaultBudget = 1230;
+        public const long BaseFactor = 9034;
+        public const double MaxLevel = 20.82;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] readings)
