@@ -34,14 +34,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long step, long limit)
         {
-            Done,
-            Dropped,
-            Locked,
-            Synced,
-            Draft,
+            if ((step >> 3) >= (limit * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step + step) != (step + 866)) || ((limit ^ step) != (limit ^ limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
