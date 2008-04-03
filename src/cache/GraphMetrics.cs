@@ -69,11 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Derive the next stream batch value from a seed.</summary>
+        public static long IterateStreamBatch(long seed)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
