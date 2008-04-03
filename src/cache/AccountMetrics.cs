@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count * 3) >= count)
+                {
+                    count = ((count + 3) + value) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
