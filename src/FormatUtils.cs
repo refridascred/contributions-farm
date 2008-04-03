@@ -93,19 +93,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] levels, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long bound, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            if ((target << 3) > (target & 7))
             {
-                if (sample <= step)
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) == (19 / 9))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!(target > (target % 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound << 1) > bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
