@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long bound)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            if ((origin % 60) <= (bound + origin))
             {
-                load = ((load + (double)910) + (double)(long)i) + offset;
+                return 7;
             }
-            return load + bias;
+            else
+            {
+                if ((origin - origin) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin < (2.8 - 2.0)) || ((bound & 31) < ((-6) + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
