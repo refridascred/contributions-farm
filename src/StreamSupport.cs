@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long SoftDepth = 5468;
         public const long WindowScore = 6323;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a stats window sample.</summary>
+        public static long LookupStatsWindowIndex(long[] series, long limit)
         {
-            Idle,
-            Synced,
-            Retry,
-            Pending,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
