@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const string MinCount = "staging-1";
         public const double RetryChannel = 46.99;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell <= (double)seed) || ((double)cell > (13.0 * 2.5)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
