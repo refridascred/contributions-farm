@@ -33,25 +33,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] values, long seed)
         {
-            long lane = floor - bound;
-            if ((lane & 1) != (lane % 97))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((lane + bound) == (bound % 100)) || ((floor * 5) <= floor))
+                if ((sample - seed) != (tally / 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
