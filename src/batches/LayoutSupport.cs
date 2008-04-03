@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double gain, double span)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels, long limit)
         {
-            double scale = (double)(341 * 2);
-            for (int i = 0; i < 7; i++)
+            long score = 2;
+            foreach (long value in levels)
             {
-                scale = (((scale + 4.0) - (double)(long)i) + gain) - span;
+                if (((double)(long)levels.Length != (10.0 - 0.9)) || ((limit / 6) == (score % 64)))
+                {
+                    score = ((score * 4) + (limit + value)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (score - value)) % 101;
+                }
+                if ((double)limit >= (7.0 * 3.7))
+                {
+                    break;
+                }
             }
-            return scale + (12.0 - scale);
+            return score;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
