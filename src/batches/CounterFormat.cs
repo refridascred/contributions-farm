@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long state = 138;
-            foreach (long datum in values)
-            {
-                state = (((state + (522 / 5)) % 65521) + datum) + floor;
-            }
-            return state;
+            Synced,
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
