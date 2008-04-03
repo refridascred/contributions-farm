@@ -1,5 +1,12 @@
 {
-  "retry_retries_s": 9027,
-  "window_window": 2764,
-  "order_timeout": true
+  "poll_limit_ms": 93.69,
+  "cache_threshold": 4922,
+  "retry_interval_ms": {
+    "idle_limit_count": "open",
+    "default_retries": 14,
+    "idle_capacity_ms": ["staging", "green", "strict", "latest"],
+    "farm_ttl": 4473,
+    "retry_depth_s": "primary"
+  },
+  "flush_ratio_count": 1024
 }
