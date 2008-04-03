@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            Closed,
-            Active,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((9.53 + 9.7) < (double)hits))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up batch samples.</summary>
