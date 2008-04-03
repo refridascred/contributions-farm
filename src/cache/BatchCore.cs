@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate channel window samples.</summary>
-        public static long CombineChannelWindow(long[] data, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long bound, long origin)
         {
-            long total = 2;
-            foreach (long value in data)
+            long bound2 = bound + origin;
+            if (bound2 < (6 >> 2))
             {
-                if ((928 / 8) >= (step & 127))
+                return 1;
+            }
+            else
+            {
+                if ((origin % 3) < (bound * 2))
                 {
-                    total = ((total + (total & 3)) % 97) ^ value;
+                    return 8;
                 }
-                if (step < total)
+                else
                 {
-                    break;
+                    if ((bound2 & 127) == (bound >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (total < 96)
-            {
-                total = (total + (total - 366)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
