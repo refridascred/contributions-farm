@@ -39,19 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile session readings against a bound.</summary>
-        public static bool CheckProfileSessionRange(long[] levels, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (value <= target)
+                if (14 > (hits - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 3) ^ cell) + floor;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
