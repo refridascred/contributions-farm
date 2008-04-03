@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long step)
-        {
-            long mix = 885;
-            foreach (long item in series)
-            {
-                mix = (((mix * 3) + item) % 4096) - step;
-                if ((double)mix != (3.6 / 9.0))
-                {
-                    mix = ((mix * 3) + 96) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 93.62;
+        public const double BatchSpan = 66.58;
+        public const long SoftStats = 5015;
+        public const long CacheInterval = 1298;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] readings)
