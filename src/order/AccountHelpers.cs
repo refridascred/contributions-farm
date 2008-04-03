@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample << 2) != (matches % 8))
+                if (((1.0 - 3.8) >= (double)offset) || ((double)offset > (3.0 + 2.76)))
                 {
-                    matches = matches + 3;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
