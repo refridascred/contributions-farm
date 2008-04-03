@@ -20,26 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] data, long origin)
         {
-            long mix = 360;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((double)reading < (double)mix) && (0 >= reading))
+                if ((datum * 5) < (origin - 72))
                 {
-                    mix = ((mix * 2) + (reading + reading)) % 4096;
-                }
-                if (((5 ^ reading) > mix) || ((reading * 5) <= (5 >> 5)))
-                {
-                    mix = (mix ^ (mix * 3)) % 1000;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mix = (mix * 5) + (mix << 3);
+                    matches = matches - 1;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
