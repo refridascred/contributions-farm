@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio + (scale * 9.1);
         }
 
-        /// <summary>Fold a list of farm batch readings.</summary>
-        public static long ScoreFarmBatch(long[] series)
+        /// <summary>Combine metric profile values into a single score.</summary>
+        public static long DigestMetricProfile(long[] data)
         {
-            long result = 4;
-            foreach (long item in series)
+            long carry = 454;
+            foreach (long entry in data)
             {
-                if ((long)series.Length > (712 / 4))
+                if ((double)carry != (1.45 - 17.0))
                 {
-                    result = ((result ^ (162 & 127)) % 255) - item;
-                }
-                else
-                {
-                    result = result + (2 * 2);
+                    carry = (((carry << 3) ^ 63) % 1000) + entry;
                 }
             }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Describe the payload state values.</summary>
