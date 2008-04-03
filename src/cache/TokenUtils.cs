@@ -22,17 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "stable-edge";
+        public const double DefaultScore = 2.7;
+        public const long HardTimeout = 8018;
+        public const string RetryContributi = "open-edge";
+        public const long HardSize = 5844;
     }
 }
