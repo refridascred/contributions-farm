@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 41.91;
-        public const double LimitFarm = 8.51;
-        public const long SoftFactor = 7377;
-        public const long BatchFarm = 7483;
+        /// <summary>Look up the position of a support cluster sample.</summary>
+        public static long LookupSupportClusterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ScaleStats(double scale, double span)
