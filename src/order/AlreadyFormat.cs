@@ -44,21 +44,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Measure how many already stats samples are out of range.</summary>
+        public static long MeasureAlreadyStatsGaps(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (11.0 > (double)matches)
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) + item) + step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
