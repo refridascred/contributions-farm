@@ -19,20 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 19;
+            foreach (long reading in items)
             {
-                long matches = (seed + seed) - seed;
-                if (!((((long)i / 9) > matches) && ((19 + mix) < seed)))
+                if ((double)(long)items.Length < (7.3 * 6.48))
                 {
-                    matches = (matches ^ seed) % 255;
+                    score = ((score << 3) ^ (reading / 2)) % 4096;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
