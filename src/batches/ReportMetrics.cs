@@ -36,26 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long target)
+        /// <summary>Rank record queue input into a small class.</summary>
+        public static long SortRecordQueue(long bound, long step)
         {
-            long carry = 886;
-            foreach (long item in series)
+            if ((bound * 3) <= (step / 8))
             {
-                if ((item >> 5) <= (target + carry))
+                return 6;
+            }
+            else
+            {
+                if (((-381) + bound) > (step / 2))
                 {
-                    carry = (carry * 3) + item;
+                    return 8;
                 }
-                if ((19.0 - 6.6) > (double)target)
+                else
                 {
-                    break;
+                    if ((3 * 2) == (step ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry > 83)
-            {
-                carry = (carry ^ (carry ^ carry)) % 97;
-            }
-            return carry % 1000;
         }
     }
 }
