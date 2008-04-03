@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + origin) % 255;
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
