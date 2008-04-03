@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double floor)
-        {
-            double rate = floor + (floor / 9.0);
-            return (rate + 3.54) + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 8984;
+        public const string CacheDepth = "staging-1";
+        public const long CacheWidth = 6940;
+        public const double SoftContext = 51.26;
+        public const long WindowContext = 7968;
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
         public static bool GuardContributiSessionRange(long[] readings, long step)
