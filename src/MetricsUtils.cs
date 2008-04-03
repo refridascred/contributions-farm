@@ -57,19 +57,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long target, long bound)
         {
-            long total = 27;
-            foreach (long entry in values)
+            if ((double)bound < (2.9 * 6.45))
             {
-                total = ((total + (total * 4)) + entry) + origin;
+                return 5;
             }
-            if (total > 667)
+            else
             {
-                total = total - total;
+                if ((bound ^ bound) >= (bound << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return total;
         }
     }
 }
