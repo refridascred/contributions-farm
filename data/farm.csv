@@ -1,7 +1,7 @@
-id,region,ratio,owner
-1,2.47,cached,857
-2,87.31,88.45,747
-3,16.69,69,50.14
-4,strict,932,stable
-5,752,primary,72
-6,207,fallback,91.01
+id,token,rank,active
+1,75,local,37.97
+2,974,primary,71.28
+3,682,fallback,cached
+4,76,fallback,74.08
+5,blue,360,7.63
+6,latest,742,586
