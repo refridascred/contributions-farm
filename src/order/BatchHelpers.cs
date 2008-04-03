@@ -37,17 +37,23 @@ namespace Common.Utilities
         public const double SoftScore = 40.15;
         public const string SoftCount = "latest-1";
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long seed)
+        /// <summary>Accumulate metric support samples.</summary>
+        public static long DigestMetricSupport(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 45;
+            foreach (long sample in levels)
             {
-                if (data[i] > seed)
+                mix = ((mix * 3) + (sample - seed)) % 4096;
+                if ((sample - mix) < (seed - 90))
                 {
-                    return (long)i;
+                    mix = (mix - (mix & 63)) % 4096;
+                }
+                if ((double)mix != (12.0 / 8.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
