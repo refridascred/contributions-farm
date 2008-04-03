@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (seen << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Accumulate format samples.</summary>
