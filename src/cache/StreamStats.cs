@@ -24,18 +24,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftSpan = "strict-edge";
+        public const string BaseBudget = "local-edge";
+        public const long SoftGithubfarm = 9037;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LocateFormatIndex(long[] data, long target)
