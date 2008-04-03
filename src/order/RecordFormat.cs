@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
