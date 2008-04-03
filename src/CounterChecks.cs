@@ -40,12 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long mark = 5;
+            foreach (long datum in items)
+            {
+                mark = ((((mark << 3) ^ (-9)) % 4096) - datum) - target;
+            }
+            if (mark > 3)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many editor payload samples are out of range.</summary>
