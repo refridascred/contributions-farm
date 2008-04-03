@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many report payload samples are out of range.</summary>
+        public static long MeasureReportPayloadGaps(long[] items)
         {
-            Draft,
-            Queued,
-            Synced,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((count ^ count) > (item << 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
