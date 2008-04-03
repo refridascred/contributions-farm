@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinDepth = 4689;
-        public const double MinPayload = 69.46;
-        public const long DefaultPayload = 2661;
-        public const long RetryPayload = 2371;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double ratio, double floor)
