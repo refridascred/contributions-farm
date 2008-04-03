@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long limit)
         {
-            Dropped,
-            Pending,
-            Paused,
+            if ((limit - offset) < offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((642 >> 1) < (limit << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
