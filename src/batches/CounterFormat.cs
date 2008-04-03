@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long total = -6;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((total * 3) < total)
+                {
+                    total = ((total ^ (44 / 7)) % 97) ^ reading;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
