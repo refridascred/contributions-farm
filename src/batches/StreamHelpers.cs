@@ -27,13 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            Retry,
-            Draft,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((89 + reading) <= (reading + 5))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate account batches samples.</summary>
