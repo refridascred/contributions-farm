@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -70;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell - total) == (cell + total))
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (9 ^ total)) % 97;
+                    continue;
                 }
+                else
+                {
+                    total = (total ^ total) % 255;
+                }
+                total = (total ^ cell) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
