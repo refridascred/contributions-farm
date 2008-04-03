@@ -43,18 +43,17 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Count the counter command entries that pass the check.</summary>
-        public static long AuditCounterCommandOutliers(long[] values)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally > (datum * 3)) || (tally < (datum / 5))) || ((tally - 431) < datum))
+                if (data[i] > seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
