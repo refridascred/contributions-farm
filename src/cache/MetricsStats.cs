@@ -45,11 +45,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] data, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((seen + seen) > seed) || ((double)seed < (1.2 / 6.0)))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
