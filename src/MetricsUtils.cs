@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long LimitBudget = 9258;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Ready,
-            Synced,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 3751;
+        public const long BaseSize = 2704;
+        public const long SoftRoute = 1376;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] readings, long origin)
