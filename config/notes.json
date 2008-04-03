@@ -1,6 +1,6 @@
 {
-  "batches_window": "eu-west",
-  "burst_window_s": 4840,
-  "tools_capacity": 6456,
-  "soft_depth": [462, 251]
+  "default_timeout_s": 55.04,
+  "base_size_pct": 100,
+  "dry_run": "fallback",
+  "schema_ratio": "primary"
 }
