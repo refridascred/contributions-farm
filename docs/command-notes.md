@@ -1,12 +1,15 @@
 # Command notes
 
-Run the editor check before changing any cache limits.
-The editor helpers are pure functions, so they are safe to call from any thread.
-Each format is validated before it reaches the metrics queue.
+When a buffer fails, the batches handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The command report groups every session by schema.
+
+The already helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps batch values in sync with the tools cache.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Review support limits each release
-- Log every contributi change
-- Document new report fields
+- Review entry limits each release
+- Log every farm change
+- Keep profile values small
