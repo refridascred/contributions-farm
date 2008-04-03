@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Draft,
+            Active,
+            Retry,
             New,
-            Idle,
-            Dropped,
-            Ready,
         }
 
         /// <summary>Hold a counter info.</summary>
