@@ -27,17 +27,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the cache schema series from a seed.</summary>
-        public static long DeriveCacheSchema(long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = 66;
+            foreach (long datum in levels)
             {
-                state = (state - (62 + state)) % 255;
-                state = ((state << 3) ^ (offset + offset)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
+                if (!((datum - step) < (datum ^ step)))
+                {
+                    mark = (mark - (long)levels.Length) % 101;
+                }
+                if (!(step >= (step ^ step)))
+                {
+                    mark = (mark * 4) + datum;
+                }
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
