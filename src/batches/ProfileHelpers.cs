@@ -82,14 +82,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of channel account readings.</summary>
+        public static long DigestChannelAccount(long[] values, long step)
         {
-            Active,
-            Stale,
-            Dropped,
-            Locked,
-            Done,
+            long score = 67;
+            foreach (long datum in values)
+            {
+                score = ((score + (step + step)) % 65521) + datum;
+                score = (score + (score ^ step)) % 101;
+            }
+            if (score > 39)
+            {
+                score = (score << 2) ^ step;
+            }
+            return score;
         }
     }
 }
