@@ -65,23 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            long mark = 420;
-            foreach (long datum in items)
-            {
-                mark = mark + mark;
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (mark << 2) ^ (long)i;
-                }
-                if (mark > (mark + 299))
-                {
-                    mark = ((mark << 3) ^ (datum + mark)) % 1000;
-                }
-            }
-            return mark;
+            double gain = offset / 8.0;
+            return (gain + 10.0) + rate;
         }
     }
 }
