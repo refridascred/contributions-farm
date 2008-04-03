@@ -23,12 +23,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 40.84;
-        public const long SoftBatch = 9850;
-        public const long DefaultBudget = 9055;
-        public const double MaxInterval = 92.46;
-        public const long BurstLevel = 9577;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double offset)
+        {
+            double rate = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - weight) - (double)(long)i;
+            }
+            return rate + offset;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
