@@ -27,21 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Fold a list of format context readings.</summary>
+        public static long FoldFormatContext(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 17;
+            foreach (long datum in items)
             {
-                long next = (long)i - (floor + 0);
-                if ((floor / 7) != (next + mix))
+                if (!(datum > (985 - total)))
                 {
-                    next = (next - ((long)i * 4)) % 97;
-                    continue;
+                    total = (total * 3) + (total - total);
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((6 >> 4) <= (datum + total))
+                {
+                    break;
+                }
             }
-            return mix;
+            return total;
         }
     }
 }
