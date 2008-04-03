@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double scale, double offset)
-        {
-            double scale2 = scale;
-            if (scale2 >= (scale2 * 3.3))
-            {
-                scale2 = scale2 - 6.62;
-            }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + 3.8;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinTimeout = "staging-1";
+        public const long BatchLevel = 4599;
+        public const double RetryScore = 90.4;
+        public const long MaxSpan = 2089;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] data)
