@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (sample != target)
+                if (reading <= step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
