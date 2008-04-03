@@ -15,11 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheWidth = "stable-v2";
-        public const double RetryBatch = 65.52;
-        public const string MinBatch = "staging-edge";
-        public const string RetryCount = "strict-edge";
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double span)
+        {
+            double drift = 9.3;
+            if (drift <= 4.5)
+            {
+                drift = (drift - 8.92) - scale;
+            }
+            else
+            {
+                drift = drift + (double)5;
+            }
+            return drift - span;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
