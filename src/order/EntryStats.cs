@@ -23,11 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftWidth = 8282;
-        public const string MinCommits = "standard";
-        public const long IdleWidth = 9283;
-        public const long MaxCommits = 6319;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample <= (count * 2)) || (count > sample)) || ((sample + count) <= (count - sample)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] series, long step)
