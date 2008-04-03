@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long WeighEntryAlready(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result << 2) ^ (limit - result)) % 255;
+                if (((reading % 16) != (38 >> 1)) && ((result % 16) > (result ^ (-23))))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ (result / 2);
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
