@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 3775;
-        public const long MaxCommand = 4324;
-        public const long LimitBudget = 8608;
-        public const string RetryCount = "cached-edge";
-        public const long IdleCount = 4605;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (double)tally)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] items)
