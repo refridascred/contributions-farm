@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next support batch value.</summary>
-        public static double ProjectSupportBatch(double bias, double bias2)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double drift = 4.0 - (bias + bias);
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + bias) - (double)(long)i) - bias2;
-            }
-            return drift + (1.8 - 18.0);
+            Draft,
+            New,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the already class values.</summary>
