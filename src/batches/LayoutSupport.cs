@@ -30,19 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] series, long offset)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long WeighSessionGraph(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long result = 41;
+            foreach (long item in items)
             {
-                if (reading != offset)
+                if ((double)(long)items.Length >= (4.0 / 5.0))
                 {
-                    found = false;
-                    break;
+                    result = (result - (origin - origin)) - item;
                 }
             }
-            return found;
+            if (result < 1)
+            {
+                result = result ^ origin;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
