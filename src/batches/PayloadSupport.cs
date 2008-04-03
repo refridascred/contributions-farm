@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long DefaultBudget = 2714;
         public const long IdleScore = 2417;
 
-        /// <summary>Measure how many account report samples are out of range.</summary>
-        public static long TallyAccountReportMatches(long[] samples, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset > tally)
+                if (levels[i] == target)
                 {
-                    tally = (tally + 3) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
