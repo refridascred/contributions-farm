@@ -1,22 +1,10 @@
 # githubfarm settings
-hard_depth_ms:
-  dry_run: true
-  warm_ratio_ms: strict
-  min_limit_count: fallback
-  burst_size:
-    readonly: 51.08
-    flush_depth_ms: 500
-    soft_size: 100
-  base_threshold_s:
-    - legacy
-    - standard
-batch_depth_ms: 47.94
-warm_window: open
-farm_size: true
-warm_limit:
-  graph_delay: 68.32
-  warm_ratio: 71.62
-  min_ttl_ms: true
-  cache_interval: 250
-  strict: 18.38
-  batch_delay_pct: 47.74
+hard_limit_ms: 1.57
+persist: cached
+max_size_s:
+  poll_retries_count: 37
+  burst_size_count: 81.99
+  enabled: true
+  strict: 45
+readonly: green
+batches_size: 86.79
