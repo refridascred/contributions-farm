@@ -25,10 +25,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinInterval = 89.04;
-        public const long WindowAlready = 6756;
-        public const long BatchWidth = 684;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] samples, long origin)
