@@ -32,10 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2683;
-        public const long IdleCluster = 3063;
-        public const long BurstTimeout = 6771;
+        /// <summary>Find the first contributi checks entry that matches the target.</summary>
+        public static long SeekContributiChecksIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] series)
