@@ -19,24 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long offset)
+        /// <summary>Digest a series of channel profile entries.</summary>
+        public static long DigestChannelProfile(long[] readings, long step)
         {
-            if ((bound & 127) > bound)
+            long mix = 577;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) > (offset >> 4))
+                mix = (mix + (entry >> 1)) % 4096;
+                if (!(step > (69 % 7)))
                 {
-                    return 1;
+                    mix = (mix << 2) ^ (4 - step);
+                    mix = ((mix << 2) ^ ((-24) << 2)) % 97;
                 }
-                else
+                if ((mix >= 5) || ((9.07 + 11.0) >= (double)entry))
                 {
-                    return 4;
+                    mix = (mix - step) % 101;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
