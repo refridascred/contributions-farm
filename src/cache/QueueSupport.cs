@@ -17,27 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long limit)
-        {
-            long mark = 648;
-            foreach (long sample in values)
-            {
-                if ((limit & 63) < 455)
-                {
-                    mark = (((mark * 3) + (mark >> 5)) % 1000) - sample;
-                }
-                else
-                {
-                    mark = (mark ^ (limit & 63)) % 255;
-                }
-            }
-            if (mark < 840)
-            {
-                mark = mark + (mark + limit);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 52.68;
+        public const double BaseBudget = 42.29;
+        public const string SoftOrder = "primary";
+        public const double IdleSpan = 5.44;
+        public const long BatchBudget = 764;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double scale, double floor)
