@@ -1,11 +1,19 @@
 {
-  "persist": true,
-  "base_timeout_count": false,
-  "profile_delay": {
-    "sync_ratio": "strict",
-    "dry_run": true,
-    "batch_ratio": ["eu-west", "eu-west"],
-    "schema_ratio": 1998
+  "idle_limit_s": 4562,
+  "batch_limit_s": {
+    "burst_limit_count": 676,
+    "base_ratio_count": 61,
+    "idle_size": "blue",
+    "compress": 2172,
+    "cache_limit_s": "open"
   },
-  "enabled": 73.05
+  "min_capacity_ms": {
+    "filter_threshold": 250,
+    "dry_run": "green",
+    "layout_delay": 96,
+    "max_capacity_ms": 419
+  },
+  "base_depth_count": 9206,
+  "default_limit": true,
+  "poll_capacity": true
 }
