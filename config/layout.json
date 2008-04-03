@@ -1,5 +1,8 @@
 {
-  "warm_interval": true,
-  "cache_limit": 20,
-  "graph_window": 1024
+  "dry_run": 22.88,
+  "farm_timeout": ["staging", "edge", "edge"],
+  "soft_interval_s": [101, 10, 62],
+  "batch_ttl_pct": false,
+  "commits_depth": true,
+  "flush_timeout_count": 1369
 }
