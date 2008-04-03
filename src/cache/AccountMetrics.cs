@@ -16,11 +16,11 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 1753;
-        public const string MaxChecks = "standard-1";
-        public const long BaseWidth = 6803;
-        public const long IdleSize = 496;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryRatio = "primary-v2";
+        public const long IdleSize = 6572;
+        public const long HardBuffer = 2509;
+        public const long DefaultBuffer = 642;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
