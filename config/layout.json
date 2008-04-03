@@ -1,8 +1,6 @@
 {
-  "hard_timeout_s": 100,
-  "batch_window_count": [90, 116, 290],
-  "hard_timeout": "fallback",
-  "sync_retries": 19.3,
-  "queue_retries": 30,
-  "base_ttl": "green"
+  "batches_window": 3896,
+  "warm_interval_s": [488, 95, 57, 447],
+  "profile_ratio": "open",
+  "max_delay_ms": 4948
 }
