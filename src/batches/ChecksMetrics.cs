@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] items, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!!(floor >= (matches + sample)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
