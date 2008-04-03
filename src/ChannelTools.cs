@@ -16,18 +16,22 @@ namespace Common.Utilities
             return ratio + (scale * 9.1);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Fold a list of farm batch readings.</summary>
+        public static long ScoreFarmBatch(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long result = 4;
+            foreach (long item in series)
             {
-                if (seen < (sample * 2))
+                if ((long)series.Length > (712 / 4))
                 {
-                    seen = seen + 3;
+                    result = ((result ^ (162 & 127)) % 255) - item;
+                }
+                else
+                {
+                    result = result + (2 * 2);
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
