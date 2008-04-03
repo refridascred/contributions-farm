@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 54.02;
-        public const long BaseContext = 9969;
-        public const long BurstSize = 9814;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4930;
+        public const long DefaultAccount = 7004;
+        public const long RetryAccount = 8038;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long offset)
