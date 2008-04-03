@@ -68,12 +68,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
