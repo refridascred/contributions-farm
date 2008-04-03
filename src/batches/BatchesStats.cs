@@ -15,18 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((9.53 + 9.7) < (double)hits))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                anchor = anchor - bound;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up batch samples.</summary>
