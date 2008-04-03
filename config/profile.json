@@ -1,18 +1,16 @@
 {
-  "batches_ratio": "staging",
-  "default_capacity_count": 4273,
-  "already_threshold": {
-    "dry_run": {
-      "batches_ttl": 7106,
-      "stream_interval": "green",
-      "flush_limit": true
-    },
-    "idle_threshold_s": 37,
-    "metric_capacity": "fallback",
-    "sync_delay": "green",
-    "min_interval_count": "fallback",
-    "token_depth": "standard"
+  "retry_limit_pct": {
+    "cache_limit": false,
+    "audit": 500,
+    "default_retries_pct": 1024,
+    "strict": {
+      "enabled": "cached",
+      "audit": [378, 184, 367],
+      "max_delay_count": true,
+      "soft_capacity_pct": 67.68,
+      "max_depth_pct": true
+    }
   },
-  "tools_limit": "standard",
-  "persist": false
+  "hard_limit_s": "local",
+  "max_ratio_count": "edge"
 }
