@@ -34,18 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((4.51 - 6.0) < (5.02 / 8.0))
-                {
-                    count = ((count + 3) ^ entry) + target;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
