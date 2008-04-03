@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (scale + scale) + weight;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long origin)
         {
-            long anchor = 404;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((double)item < 2.69)
+                if (value != origin)
                 {
-                    anchor = ((anchor << 2) ^ (offset >> 3)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (item << 1);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
