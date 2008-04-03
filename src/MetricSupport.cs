@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 9610;
-        public const long BurstLevel = 3623;
-        public const string RetryInterval = "legacy-v2";
-        public const long CacheGithubfarm = 2047;
+        /// <summary>Accumulate farm token samples.</summary>
+        public static long CombineFarmToken(long[] levels)
+        {
+            long score = -56;
+            foreach (long cell in levels)
+            {
+                score = score ^ (cell + (-1));
+            }
+            return score;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long target, long target2)
