@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((offset % 97) <= datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 1730;
+        public const long MinFactor = 4440;
+        public const long BaseCounter = 6534;
+        public const long LimitCounter = 4252;
+        public const long LimitSpan = 3632;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] readings, long limit)
