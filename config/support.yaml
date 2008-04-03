@@ -1,14 +1,12 @@
 # support settings
-poll_delay:
-  contributi_timeout: local
-  persist: 67.64
-  batch_window_pct: edge
-  audit: strict
-  base_limit: local
-  commits_ratio: primary
-dry_run:
-  - 79
-  - 396
-flush_ratio: 9826
-window_depth: 5784
-min_threshold_pct: 6848
+session_capacity:
+  max_limit_pct: eu-west
+  checks_threshold: 21.81
+  max_interval: 1797
+compress:
+  - 208
+  - 274
+  - 80
+cache_ttl: green
+enabled: 82.78
+poll_retries_ms: true
