@@ -29,25 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            long prev = offset + origin;
-            if (origin <= (prev * 5))
+            double load = (double)93 - rate;
+            if (load >= (load / 4.0))
             {
-                return 8;
+                load = load - (rate - offset);
             }
             else
             {
-                if ((prev - origin) == (337 ^ origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load - (rate * 9.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + rate;
         }
     }
 }
