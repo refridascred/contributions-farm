@@ -15,12 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 1730;
-        public const long MinFactor = 4440;
-        public const long BaseCounter = 6534;
-        public const long LimitCounter = 4252;
-        public const long LimitSpan = 3632;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long step, long origin)
