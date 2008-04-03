@@ -22,9 +22,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 25.19;
-        public const double MaxFactor = 63.2;
-        public const long BatchSession = 2200;
+        /// <summary>Grade a support schema value against two limits.</summary>
+        public static long RankSupportSchema(long target, long origin)
+        {
+            if ((target + 36) > (target >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ origin) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
