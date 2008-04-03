@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Check that every session format entry stays within the limit.</summary>
+        public static bool CheckSessionFormatRange(long[] series, long bound)
         {
-            long score = 9;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((value + value) > (score - value))
+                if (datum < bound)
                 {
-                    score = score + (value >> 1);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 259)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the route level values.</summary>
