@@ -53,25 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout window pair into a bucket.</summary>
-        public static long GradeLayoutWindow(long seed, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            long delta = seed ^ offset;
-            if (((-534) - delta) <= (delta * 4))
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((3.0 * 6.4) >= (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Blend two stats measurements.</summary>
