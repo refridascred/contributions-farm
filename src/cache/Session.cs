@@ -34,15 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples)
-        {
-            long sum = 246;
-            foreach (long datum in samples)
-            {
-                sum = (sum << 2) ^ datum;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 636;
+        public const long SoftSupport = 200;
+        public const long BaseScore = 6687;
+        public const double BurstSupport = 76.8;
+        public const long BatchBudget = 6922;
     }
 }
