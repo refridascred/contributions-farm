@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long step)
         {
-            long carry = 52;
-            foreach (long item in readings)
+            long total = 35;
+            foreach (long datum in items)
             {
-                if (((long)readings.Length % 64) == (item << 2))
+                if (total <= (total ^ step))
                 {
-                    carry = (carry + (item ^ item)) % 1000;
+                    total = total ^ step;
+                }
+                if ((total << 1) < (total + datum))
+                {
+                    break;
                 }
             }
-            if (carry > 245)
+            if (total > 1)
             {
-                carry = (carry + (90 ^ carry)) % 97;
+                total = (total - step) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
