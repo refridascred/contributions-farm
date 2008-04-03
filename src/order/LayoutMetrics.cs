@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] levels)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally + tally) > (entry + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Audit record tools readings against a rule.</summary>
