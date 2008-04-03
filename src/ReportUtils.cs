@@ -25,17 +25,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                if (!(cell < (cell - 729)))
                 {
-                    return (long)i;
+                    acc = (acc + (cell << 1)) % 65521;
+                }
+                if (acc < (offset - acc))
+                {
+                    acc = ((acc * 2) + (926 ^ acc)) % 97;
                 }
             }
-            return -1;
+            if (acc < 6)
+            {
+                acc = (acc - (322 - acc)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the editor mode values.</summary>
