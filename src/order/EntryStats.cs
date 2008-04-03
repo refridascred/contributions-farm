@@ -26,24 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long origin2)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long floor)
         {
-            if (((0.77 + 2.01) == (double)origin) || (origin2 > (origin >> 2)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + origin) == (origin2 - 335)) && ((origin ^ origin2) < (origin - origin)))
+                if (data[i] <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
