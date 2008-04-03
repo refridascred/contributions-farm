@@ -1,10 +1,18 @@
 # entry settings
-flush_size:
-  - 277
-  - 325
-  - 71
-  - 338
-max_size:
-  - 334
-  - 207
-max_interval_s: fallback
+batch_window: 60
+audit:
+  base_threshold_pct: 5.55
+  dry_run: cached
+  cache_window: true
+  idle_retries_s: 38.5
+  stream_depth:
+    - 123
+    - 397
+    - 161
+  compress:
+    enabled: open
+    tools_size: 2116
+    metric_threshold: standard
+sync_threshold: strict
+base_timeout_count: 3171
+strict: staging
