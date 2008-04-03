@@ -37,12 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            Locked,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches & 7) >= (sample >> 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already phase values.</summary>
