@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Match up already graph samples.</summary>
+        public static long OverlapAlreadyGraphCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)samples.Length * 2) <= (174 - item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
