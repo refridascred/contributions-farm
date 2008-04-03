@@ -53,11 +53,14 @@ namespace Common.Utilities
         public const string MinCount = "staging-1";
         public const double RetryChannel = 46.99;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Dropped,
+            Active,
+            Done,
+            Stale,
         }
     }
 }
