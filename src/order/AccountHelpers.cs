@@ -14,10 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetrySpan = 8.71;
-        public const string BurstFactor = "legacy-v2";
-        public const long BurstLevel = 5747;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8112;
+        public const string MaxBatches = "strict-edge";
+        public const long RetryBudget = 4381;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long floor)
