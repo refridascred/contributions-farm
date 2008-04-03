@@ -1,11 +1,6 @@
 {
-  "window_limit": 35,
-  "editor_interval": true,
-  "hard_delay_pct": {
-    "audit": [400, 311],
-    "record_size": 25.42,
-    "cache_threshold_count": 75,
-    "idle_threshold": false,
-    "flush_retries": 15.45
-  }
+  "sync_retries": "strict",
+  "warm_retries_ms": ["open", "eu-west"],
+  "verbose": 48.55,
+  "profile_capacity": "open"
 }
