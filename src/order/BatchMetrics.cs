@@ -55,13 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Paused,
-            Queued,
-            Draft,
-            Active,
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
