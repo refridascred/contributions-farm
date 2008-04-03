@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long HardStats = 4983;
         public const string RetryStats = "strict";
 
-        /// <summary>Project the next payload commits value.</summary>
-        public static double AdjustPayloadCommits(double bias, double offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            double mean = offset;
-            if (mean < (double)9)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mean = mean + mean;
+                if ((774 - 3) <= tally)
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return mean + (bias / 7.0);
+            return tally;
         }
     }
 }
