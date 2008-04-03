@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Scale a order command figure with a bias.</summary>
+        public static double BlendOrderCommand(double bias, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            double bias2 = 14.0;
+            if (bias2 <= span)
             {
-                carry = (carry - (limit + (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                bias2 = (bias2 + 8.2) - bias;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (span + 1.0)) - (double)(long)i;
+            }
+            return bias2 - (double)(-49);
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
