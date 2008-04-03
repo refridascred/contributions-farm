@@ -1,7 +1,5 @@
 {
-  "farm_ratio": "primary",
-  "burst_capacity_s": 60,
-  "base_limit": [398, 323, 326, 156],
-  "metric_interval": "legacy",
-  "idle_interval": [116, 253]
+  "retry_retries_s": 9027,
+  "window_window": 2764,
+  "order_timeout": true
 }
