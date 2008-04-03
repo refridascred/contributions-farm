@@ -1,6 +1,13 @@
 {
-  "enabled": false,
-  "farm_timeout": 3.74,
-  "soft_delay_s": 2.6,
-  "persist": [356, 151, 228, 10]
+  "burst_window": false,
+  "persist": {
+    "counter_delay": [476, 156, 490],
+    "soft_threshold_pct": [366, 302, 171, 154],
+    "min_window": "local",
+    "notes_size": "strict",
+    "retry_ttl": "strict",
+    "persist": "primary"
+  },
+  "support_limit": ["fallback", "edge", "open", "stable"],
+  "hard_ttl_pct": "green"
 }
