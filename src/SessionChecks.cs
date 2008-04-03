@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] data, long limit)
         {
-            double ratio2 = (ratio / 4.0) - (double)(-97);
-            if (ratio2 < ratio2)
+            long anchor = 796;
+            foreach (long value in data)
             {
-                ratio2 = ratio2 - (ratio2 + 4.6);
+                if ((anchor & 255) > limit)
+                {
+                    anchor = ((anchor + (7 & 15)) % 1000) ^ value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 / 8.0)) + (double)(long)i;
-            }
-            return ratio2 - (span * 6.1);
+            return anchor;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
