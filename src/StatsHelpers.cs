@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 85.93;
-        public const long BaseSpan = 6602;
-        public const long WindowSize = 6443;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
+        {
+            long anchor = 7;
+            foreach (long entry in readings)
+            {
+                if ((double)anchor < 3.2)
+                {
+                    anchor = (anchor ^ (entry ^ entry)) % 1000;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Roll a farm command counter forward.</summary>
         public static long RollFarmCommand(long target)
