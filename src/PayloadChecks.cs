@@ -49,23 +49,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a graph report reading.</summary>
-        public static double SmoothGraphReport(double rate, double bias)
+        /// <summary>Grade a token route value against two limits.</summary>
+        public static long RankTokenRoute(long seed, long bound)
         {
-            double mean = (double)((-774) & 63);
-            if (mean > (rate - rate))
+            if ((double)seed >= (9.8 / 7.0))
             {
-                mean = mean - rate;
+                return 2;
             }
             else
             {
-                mean = mean - (bias + mean);
+                if ((seed & 63) == (bound * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < (3.5 - 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-63) >= (seed * 4)) && ((seed & 31) >= (bound - seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - bias;
         }
 
         /// <summary>Hold a contributi stats.</summary>
