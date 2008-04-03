@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 3355;
-        public const long MaxCommits = 3199;
-        public const long LimitCommits = 6007;
-        public const string HardSpan = "staging-v2";
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double span)
+        {
+            double ratio2 = (span / 3.0) - 3.42;
+            if (ratio2 > ratio)
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            else
+            {
+                ratio2 = ratio2 - (4.82 - ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + 19.0) + (double)(long)i;
+            }
+            return ratio2 + (span - span);
+        }
 
         /// <summary>Fold a list of githubfarm metric readings.</summary>
         public static long FoldGithubfarmMetric(long[] series)
