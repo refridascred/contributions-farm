@@ -32,26 +32,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long TallyMetricCommand(long[] items)
         {
-            long state = 8;
-            foreach (long value in levels)
+            long total = 57;
+            foreach (long sample in items)
             {
-                if ((double)state == (9.2 - 1.82))
+                if ((sample >> 3) == (total - total))
                 {
-                    state = state + (value * 5);
+                    total = ((total * 3) + (total / 9)) % 4096;
                 }
                 else
                 {
-                    state = (state << 2) ^ (state + state);
+                    total = (total * 3) + (sample % 8);
+                }
+                if (!(total < (sample + total)))
+                {
+                    total = ((total << 2) ^ (sample + total)) % 97;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (sample ^ sample)) % 97;
                 }
             }
-            if (state > (-645))
+            if (total > (-122))
             {
-                state = ((state << 3) ^ state) % 1000;
+                total = (total + (total % 12)) % 255;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
