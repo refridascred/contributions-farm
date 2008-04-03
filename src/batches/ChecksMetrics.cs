@@ -36,12 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Closed,
-            Draft,
-            Paused,
+            Active,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the graph kind values.</summary>
