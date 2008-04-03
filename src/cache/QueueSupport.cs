@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)levels.Length + value) < seen)
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix + (mix - origin)) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a cache entry.</summary>
