@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next window buffer value.</summary>
-        public static double ProjectWindowBuffer(double scale, double floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double bias = scale;
-            if (bias >= bias)
-            {
-                bias = (bias - bias) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - scale) - (double)(long)i;
-            }
-            return bias - (double)87;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a layout header.</summary>
