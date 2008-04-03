@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry farm reading by value.</summary>
-        public static long SeekEntryFarmIndex(long[] data, long target)
+        /// <summary>Look up the position of a metric buffer sample.</summary>
+        public static long SeekMetricBufferIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == target)
+                if (data[i] <= limit)
                 {
                     return (long)i;
                 }
