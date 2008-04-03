@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 95;
-            foreach (long datum in series)
-            {
-                if (state >= (datum >> 5))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state ^ (state + 3)) % 1000;
-                }
-            }
-            if (state > 67)
-            {
-                state = (state ^ (long)series.Length) % 1000;
-            }
-            return state % 1000;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Rank format tools input into a small class.</summary>
