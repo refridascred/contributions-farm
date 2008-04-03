@@ -59,22 +59,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            if ((93 + step) < step)
             {
-                if ((double)count > (2.3 / 7.0))
+                return 3;
+            }
+            else
+            {
+                if ((bound + step) == (82 + bound))
                 {
-                    count = (count + 3) + entry;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((3.38 - 0.57) == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
