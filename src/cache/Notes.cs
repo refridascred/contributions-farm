@@ -27,20 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((long)i + seed) < (4 - seed)) && ((state >> 5) != (state + (long)i)))
-                {
-                    long slot = state % 100;
-                    state = ((state << 3) ^ (slot + state)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
