@@ -56,19 +56,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool GuardSupportSchemaRange(long[] levels, long offset)
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool VerifyBatchBufferLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (cell <= offset)
+                if (datum > floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
