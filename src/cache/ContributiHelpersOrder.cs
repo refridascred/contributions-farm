@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the record cluster entries that pass the check.</summary>
