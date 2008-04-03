@@ -34,13 +34,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Classify a format order pair into a bucket.</summary>
+        public static long BucketFormatOrder(long limit, long seed)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            if ((limit + limit) > (seed / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit / 4) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((996 << 3) == (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
