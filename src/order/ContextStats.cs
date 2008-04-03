@@ -51,13 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long origin)
         {
-            Paused,
-            Idle,
-            New,
-            Pending,
+            long score = 57;
+            foreach (long entry in series)
+            {
+                score = ((((score << 3) ^ (long)series.Length) % 65521) ^ entry) + origin;
+            }
+            return score % 65521;
         }
     }
 }
