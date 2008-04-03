@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many report payload samples are out of range.</summary>
-        public static long MeasureReportPayloadGaps(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((count ^ count) > (item << 2)))
+                long prev = (floor >> 2) + ((long)i * 2);
+                if ((double)acc >= 4.57)
                 {
-                    count = count + 1;
+                    prev = (prev ^ floor) % 101;
                 }
+                else
+                {
+                    acc = acc + (prev & 63);
+                    acc = (acc - (prev + (-98))) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Fold a list of githubfarm metric readings.</summary>
