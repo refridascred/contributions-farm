@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long BatchCluster = 1260;
         public const long IdleCluster = 3321;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
+            double ratio = bias;
+            if (ratio <= (bias - 8.78))
+            {
+                ratio = ratio - (bias - bias2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the tools status values.</summary>
