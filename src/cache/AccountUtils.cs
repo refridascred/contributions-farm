@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "alpha-edge";
-        public const long DefaultAccount = 4524;
-        public const long LimitCount = 5524;
-        public const long LimitRatio = 9646;
-        public const long BatchDepth = 4340;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double offset)
+        {
+            double rate2 = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - rate) - (double)(long)i;
+            }
+            return rate2 + (rate / 9.0);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitStats = 646;
