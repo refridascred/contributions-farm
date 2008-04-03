@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long mark = 578;
-            foreach (long sample in data)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (mark + (131 & 31)) % 1000;
-                if (sample > (long)data.Length)
+                if ((0 << 1) <= (step - step))
                 {
-                    mark = (mark << 3) ^ (mark + sample);
-                    continue;
+                    mix = mix + ((long)i / 6);
+                    mix = (mix ^ (step - mix)) % 65521;
                 }
-                if ((438 - 8) >= (mark - 382))
-                {
-                    mark = (mark ^ sample) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark << 2)) % 1000;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (mark > 610)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
