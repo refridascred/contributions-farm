@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double scale = span / 3.0;
-            if (scale <= scale)
-            {
-                scale = scale + (bias / 8.0);
-            }
-            return scale - span;
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
