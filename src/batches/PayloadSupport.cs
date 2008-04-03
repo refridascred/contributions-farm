@@ -19,17 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token buffer reading by value.</summary>
-        public static long LookupTokenBufferIndex(long[] data, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(5 + 61);
+            if (drift > bias2)
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (drift - bias2)) - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)17;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (8.0 * 1.1);
         }
 
         /// <summary>Hold a editor header.</summary>
