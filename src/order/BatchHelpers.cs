@@ -32,16 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
-        {
-            double drift = scale * 8.9;
-            if (drift <= drift)
-            {
-                drift = drift + (double)1;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleInterval = "cached-edge";
+        public const double SoftScore = 40.15;
+        public const string SoftCount = "latest-1";
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] data, long seed)
