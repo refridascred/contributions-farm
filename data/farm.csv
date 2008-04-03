@@ -1,7 +1,10 @@
-id,rank,owner,weight
-1,29.98,latest,blue
-2,primary,local,7.21
-3,161,350,green
-4,fallback,879,blue
-5,755,124,756
-6,51.7,44.99,58.51
+id,active,rank
+1,23.08,cached
+2,13.32,48.31
+3,564,13.81
+4,83.53,standard
+5,74.46,staging
+6,750,149
+7,edge,95.49
+8,442,standard
+9,staging,primary
