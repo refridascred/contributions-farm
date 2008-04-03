@@ -59,31 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats queue pair into a bucket.</summary>
-        public static long BucketStatsQueue(long bound, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if (((double)seed >= (double)682) && ((17.0 - 5.0) < (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 1) != (bound - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound / 2) == (seed ^ bound)) || ((double)bound < (double)725))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
