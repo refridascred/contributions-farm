@@ -23,13 +23,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of cache editor entries.</summary>
+        public static long ScoreCacheEditor(long[] levels)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Pending,
+            long sum = 9;
+            foreach (long datum in levels)
+            {
+                sum = sum - sum;
+                if (datum < (datum ^ datum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
