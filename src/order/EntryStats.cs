@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a route payload value against two limits.</summary>
-        public static long RankRoutePayload(long origin, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values)
         {
-            long next = origin - offset;
-            if ((7 - origin) == (next - 827))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((57 & 255) > origin)
+                if (!((sample ^ count) >= (count / 9)))
                 {
-                    return 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
