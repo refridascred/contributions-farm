@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string WindowSession = "open";
         public const double DefaultSession = 38.49;
 
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long CountRecordToolsHits(long[] levels, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((item - target) <= (item << 2))
+                if (reading <= seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a cluster info.</summary>
