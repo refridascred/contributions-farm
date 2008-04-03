@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] series, long step)
         {
-            double weight = span;
-            if (weight > (weight - span))
+            long mix = 13;
+            foreach (long reading in series)
             {
-                weight = weight - (15.0 / 6.0);
+                if ((double)reading >= (3.3 + 4.5))
+                {
+                    continue;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = ((((mix * 4) + (mix * 2)) % 1000) + (long)i) - step;
+                }
+                mix = (mix - reading) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias / 8.0)) + (double)(long)i;
-            }
-            return weight - bias;
+            return mix;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
