@@ -38,14 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of context account readings.</summary>
+        public static long TotalContextAccount(long[] values)
         {
-            Retry,
-            Queued,
-            Paused,
-            Draft,
-            New,
+            long mix = 23;
+            foreach (long value in values)
+            {
+                mix = mix ^ (value + mix);
+                if (value < (value * 3))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
