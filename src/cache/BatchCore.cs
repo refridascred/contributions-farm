@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long MinChecks = 8697;
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
