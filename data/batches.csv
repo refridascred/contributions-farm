@@ -1,6 +1,9 @@
-id,count
-1,47.69
-2,latest
-3,79.37
-4,936
-5,edge
+id,active,rank,token,score
+1,81.2,902,50.5,edge
+2,78,latest,598,12.98
+3,47,10.06,local,24.81
+4,401,96.38,staging,284
+5,staging,936,41,25.89
+6,80.77,843,514,cached
+7,843,green,55.14,14.73
+8,latest,standard,primary,615
