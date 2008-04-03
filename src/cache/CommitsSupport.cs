@@ -36,20 +36,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next window githubfarm value from a seed.</summary>
-        public static long SeriesWindowGithubfarm(long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long count = (carry << 1) / 3;
-                if ((((long)i / 7) <= step) && ((step / 5) < (carry * 3)))
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
                 {
-                    carry = carry + (count >> 4);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
