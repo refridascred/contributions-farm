@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (bias + (double)82) + span;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            double rate = weight / 5.0;
+            if (rate < weight)
             {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + (offset / 2.0);
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)3;
         }
 
         /// <summary>Hold a checks stats.</summary>
