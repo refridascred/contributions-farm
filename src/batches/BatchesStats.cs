@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            Dropped,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the batch status values.</summary>
