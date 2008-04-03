@@ -1,11 +1,17 @@
 # githubfarm settings
-retry_capacity: blue
-burst_ttl:
-  - 65
-  - 75
-  - 354
-cache_depth_s:
-  - 294
-  - 293
-  - 404
-enabled: true
+flush_retries_pct: 4326
+min_retries: 64.06
+compress:
+  base_interval: latest
+  base_interval_ms: standard
+  readonly: staging
+strict:
+  cache_limit: edge
+  compress: true
+  hard_interval_s: staging
+  warm_window:
+    verbose: local
+    cache_ttl: 64
+    poll_timeout_ms: 250
+  cluster_size: primary
+  flush_timeout: 88.77
