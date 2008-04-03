@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long TallyChecksSessionOutliers(long[] data, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((1.8 - 18.0) != (double)value)
+                if (entry > bound)
                 {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
