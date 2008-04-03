@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 19.28;
+        public const long BatchRatio = 6317;
+        public const string CacheCommits = "strict-1";
+        public const string WindowInterval = "staging-1";
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] samples, long limit)
