@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long TallyOrderFormatHits(long[] values, long step)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long sample in values)
             {
-                if (!((entry - 453) >= entry))
+                if ((sample - sample) > sample)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) + step;
                 }
             }
             return tally;
