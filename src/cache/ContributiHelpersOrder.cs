@@ -28,11 +28,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5251;
-        public const double DefaultBatch = 31.03;
-        public const long CacheBatch = 163;
-        public const string HardBatch = "local-edge";
-        public const string WindowBatch = "primary";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 2981;
+        public const double CacheStream = 64.4;
+        public const long DefaultCount = 4647;
     }
 }
