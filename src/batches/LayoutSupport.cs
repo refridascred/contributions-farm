@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels, long limit)
+        /// <summary>Count the report already entries that pass the check.</summary>
+        public static long AuditReportAlreadyMatches(long[] data)
         {
-            long score = 2;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (((double)(long)levels.Length != (10.0 - 0.9)) || ((limit / 6) == (score % 64)))
+                if ((datum - 73) == (count ^ 175))
                 {
-                    score = ((score * 4) + (limit + value)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (score - value)) % 101;
-                }
-                if ((double)limit >= (7.0 * 3.7))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
