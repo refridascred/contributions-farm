@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const double DefaultCount = 23.2;
         public const string SoftLevel = "primary";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data, long bound)
+        /// <summary>Grade a stream report value against two limits.</summary>
+        public static long ClassifyStreamReport(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if (origin < (seed & 127))
             {
-                if (!(hits >= (entry % 8)))
+                return 8;
+            }
+            else
+            {
+                if (origin <= 28)
                 {
-                    hits = (hits + 2) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin + seed) <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
