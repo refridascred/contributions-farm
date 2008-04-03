@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Match up cluster channel samples.</summary>
-        public static long PairClusterChannelCount(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin == (7.3 * 6.07))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target + target) != (origin + origin))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of context entries.</summary>
