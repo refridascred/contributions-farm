@@ -49,18 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Validate queue window readings against a bound.</summary>
+        public static bool ValidateQueueWindowLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (88 <= (hits % 24))
+                if (cell > origin)
                 {
-                    hits = (hits + 2) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
