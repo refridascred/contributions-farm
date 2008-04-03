@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long mix = 5;
+            foreach (long value in items)
+            {
+                if ((double)value >= (10.0 - 16.0))
+                {
+                    mix = mix + (mix + 78);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
