@@ -49,12 +49,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long limit2)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            if ((limit2 >> 1) == (limit + limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit <= 79)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
