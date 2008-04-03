@@ -33,12 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Match up farm metrics samples.</summary>
+        public static long CompareFarmMetricsCount(long[] items)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
