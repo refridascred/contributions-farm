@@ -25,26 +25,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] values, long limit)
         {
-            long acc = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(cell < (cell - 729)))
+                if (values[i] >= limit)
                 {
-                    acc = (acc + (cell << 1)) % 65521;
-                }
-                if (acc < (offset - acc))
-                {
-                    acc = ((acc * 2) + (926 ^ acc)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc - (322 - acc)) % 97;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
