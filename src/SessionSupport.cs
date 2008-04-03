@@ -28,19 +28,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((7.2 / 5.0) < (double)seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxDepth = 81.07;
+        public const long MinLayout = 7645;
+        public const long WindowScore = 1780;
+        public const long SoftLevel = 8617;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
