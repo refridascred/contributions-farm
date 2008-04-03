@@ -52,18 +52,23 @@ namespace Common.Utilities
             return bias + 0.91;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long floor)
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long WeighStatsPayload(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 2;
+            foreach (long cell in samples)
             {
-                if ((9 + hits) != (value + floor))
+                if (((double)offset <= (13.0 / 4.0)) && ((sum << 1) <= (offset * 3)))
                 {
-                    hits = hits + 1;
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
+                sum = (sum + (offset * 5)) % 1000;
+                if ((double)cell <= (8.45 * 3.99))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
