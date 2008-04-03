@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = 7;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((double)offset <= (4.9 * 6.39)) || ((13.0 / 2.0) >= (double)mix))
                 {
-                    score = ((score ^ (score + score)) % 255) ^ (long)i2;
+                    mix = mix + (cell * 4);
                 }
-                score = (score + ((long)i - score)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
