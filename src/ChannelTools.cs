@@ -14,18 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - 371) < (259 - tally))
-                {
-                    tally = ((tally + 3) + cell) + step;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
