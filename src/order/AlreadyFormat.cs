@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = 79;
+            foreach (long reading in values)
             {
-                if ((count & 31) <= (count >> 2))
+                if ((16.0 - 6.5) <= (double)mark)
                 {
-                    count = (count + 1) ^ item;
+                    mark = mark ^ (mark + 9);
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark << 3) ^ (mark - reading);
+                }
+                if (mark > limit)
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a layout header.</summary>
