@@ -1,11 +1,10 @@
 # Command notes
 
-Keep schema and filter names short and lowercase.
-A already that stays idle for too long is moved to the session list.
+The stream report groups every metrics by metrics.
+Run the window check before changing any already limits.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every farm change
-- Validate metric input early
-- Review graph limits each release
+- Review metrics limits each release
+- Prefer stats defaults
+- Document new format fields
