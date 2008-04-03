@@ -41,10 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "primary";
-        public const long SoftCache = 40;
-        public const long StepRatio = 9671;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
