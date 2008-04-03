@@ -36,16 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] levels, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - (long)i;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
