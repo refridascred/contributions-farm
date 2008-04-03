@@ -70,32 +70,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long origin)
+        /// <summary>Roll a cache channel counter forward.</summary>
+        public static long RollCacheChannel(long step)
         {
-            long span = bound + origin;
-            if (1.39 >= (double)origin)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)span < (9.0 / 2.0))
+                if (((14.0 / 7.0) >= (double)(long)i) && (((long)i - 3) >= (step << 1)))
                 {
-                    return 3;
+                    state = ((state * 2) + (step + step)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    if (((double)origin >= (20.0 / 4.0)) || ((double)bound <= 3.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Blend two graph measurements.</summary>
