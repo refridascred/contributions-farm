@@ -29,18 +29,31 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Audit notes payload readings against a rule.</summary>
-        public static long CountNotesPayloadGaps(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((double)limit == (0.36 / 5.0))
             {
-                if (((datum % 2) != (datum - datum)) || ((double)count >= 0.8))
+                return 2;
+            }
+            else
+            {
+                if (((double)limit2 <= 4.26) && ((limit2 & 127) != (limit2 >> 4)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit) != (limit2 ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
