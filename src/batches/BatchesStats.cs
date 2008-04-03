@@ -40,19 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] samples, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Failed,
+            Pending,
+            Queued,
         }
     }
 }
