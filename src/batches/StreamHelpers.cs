@@ -20,39 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long step, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] levels, long bound)
         {
-            long delta = step ^ target;
-            if ((step ^ delta) == (target - target))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.73 / 5.0) >= (double)step)
+                if ((item % 8) > (hits - item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((849 >= (target + step)) && ((step * 5) > (target * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (delta > (step / 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 3) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the command status values.</summary>
