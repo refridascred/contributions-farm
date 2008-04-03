@@ -47,22 +47,19 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] data, long limit)
         {
-            long mix = -7;
+            bool found = true;
             foreach (long sample in data)
             {
-                if (((346 % 60) >= (mix & 31)) || ((mix + mix) <= ((-91) + sample)))
+                if (sample != limit)
                 {
-                    mix = (mix << 3) ^ (sample + sample);
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 642)
-            {
-                mix = (mix + (mix - (-3))) % 101;
-            }
-            return mix;
+            return found;
         }
     }
 }
