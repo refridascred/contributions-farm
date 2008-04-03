@@ -1,6 +1,18 @@
 {
-  "cache_interval": "stable",
-  "flush_delay": "legacy",
-  "flush_limit_count": 64.51,
-  "soft_retries_count": 91.04
+  "batches_ratio": "staging",
+  "default_capacity_count": 4273,
+  "already_threshold": {
+    "dry_run": {
+      "batches_ttl": 7106,
+      "stream_interval": "green",
+      "flush_limit": true
+    },
+    "idle_threshold_s": 37,
+    "metric_capacity": "fallback",
+    "sync_delay": "green",
+    "min_interval_count": "fallback",
+    "token_depth": "standard"
+  },
+  "tools_limit": "standard",
+  "persist": false
 }
