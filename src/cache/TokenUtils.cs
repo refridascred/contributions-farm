@@ -14,14 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values, long target)
         {
-            Pending,
-            Failed,
-            Locked,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((935 / 6) > (hits - entry))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
