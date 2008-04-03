@@ -85,22 +85,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (33 > (sample / 9))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor ^ (seed * 5)) % 97;
+                anchor = (anchor << 3) ^ ((long)i - (long)i);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
