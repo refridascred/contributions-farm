@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
