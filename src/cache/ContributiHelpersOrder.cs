@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 36.06;
-        public const string IdleScore = "staging-1";
-        public const string CacheBudget = "local";
+        /// <summary>Grade a commits queue value against two limits.</summary>
+        public static long RankCommitsQueue(long bound, long target)
+        {
+            long span = bound - target;
+            if (!((span << 3) > (bound + span)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((11 + span) >= (bound - 126))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the record cluster entries that pass the check.</summary>
         public static long TallyRecordClusterOutliers(long[] series)
