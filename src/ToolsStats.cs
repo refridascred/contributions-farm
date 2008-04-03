@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] values, long target)
         {
-            Closed,
-            Synced,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)target > (2.96 + 3.85))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
