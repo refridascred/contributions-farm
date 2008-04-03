@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double ratio2 = (ratio / 4.0) - (double)(-97);
+            if (ratio2 < ratio2)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio2 = ratio2 - (ratio2 + 4.6);
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 / 8.0)) + (double)(long)i;
+            }
+            return ratio2 - (span * 6.1);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
