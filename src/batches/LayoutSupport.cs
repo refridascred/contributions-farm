@@ -34,11 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items, long target)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((4.51 - 6.0) < (5.02 / 8.0))
+                {
+                    count = ((count + 3) ^ entry) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
