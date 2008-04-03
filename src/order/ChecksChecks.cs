@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result - bound) != (result & 15))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "stable-edge";
+        public const long BatchInterval = 4277;
+        public const double DefaultCount = 23.2;
+        public const string SoftLevel = "primary";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] series, long bound)
