@@ -57,32 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long offset)
         {
-            long gap = step + offset;
-            if (7.4 < (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + step) > (offset - gap))
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + gap) <= (827 + gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
