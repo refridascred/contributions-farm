@@ -44,22 +44,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long score = 180;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((score << 2) == (entry - entry))
-                {
-                    score = ((score * 3) + 9) % 101;
-                }
-                else
-                {
-                    score = (score * 5) + (score >> 3);
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count context report pairs that satisfy a relation.</summary>
