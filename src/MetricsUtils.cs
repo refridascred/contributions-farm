@@ -34,22 +34,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((seed & 63) < (reading - reading))
+                if (item > origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
