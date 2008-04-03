@@ -1,15 +1,13 @@
 # Command notes
 
-The githubfarm module keeps context values in sync with the support cache.
-Run the payload check before changing any stats limits.
+A context that stays idle for too long is moved to the commits list.
+The support module keeps stats values in sync with the stats cache.
 
-A report that stays idle for too long is moved to the tools list.
-Run the stream check before changing any counter limits.
-Defaults for record live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate support input early
-- Prefer batches defaults
-- Log every window change
+- Keep batch values small
+- Log every githubfarm change
+- Prefer layout defaults
