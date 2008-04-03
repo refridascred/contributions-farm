@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmToolsCount(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = ((carry << 3) ^ origin) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry << 2) ^ (70 >> 4)) % 65521) - (long)i2;
                 }
+                if ((carry + 895) < (9 & 1))
+                {
+                    carry = (carry ^ (67 * 5)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
