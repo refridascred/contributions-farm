@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate token buffer readings against a bound.</summary>
-        public static bool GuardTokenBufferLimits(long[] series, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Digest a series of report notes entries.</summary>
