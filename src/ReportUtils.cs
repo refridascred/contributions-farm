@@ -22,38 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long step)
         {
-            if ((1 >> 1) != (bound * 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 16) >= (seed / 9))
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + bound) >= (seed % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > 18.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
