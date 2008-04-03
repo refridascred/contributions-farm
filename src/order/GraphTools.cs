@@ -56,27 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long TotalMetricsLayout(long[] items, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings, long step)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (((-133) + cell) >= (cell << 1))
                 {
-                    mark = (mark + ((long)i - floor)) % 101;
-                }
-                if ((mark % 10) > 9)
-                {
-                    mark = (mark << 2) ^ floor;
-                    mark = (mark - mark) % 101;
-                }
-                if ((12 - 902) >= value)
-                {
-                    mark = ((mark << 3) ^ (value ^ value)) % 65521;
+                    tally = (tally + 3) - step;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
     }
 }
