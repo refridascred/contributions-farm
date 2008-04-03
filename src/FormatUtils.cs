@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseLevel = 5043;
-        public const long WindowSize = 8256;
-        public const long BatchBudget = 1186;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((step * 5) >= (-46)) || ((count ^ count) == ((long)readings.Length / 6)))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] samples)
