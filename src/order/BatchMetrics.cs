@@ -36,10 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 138;
-        public const long CacheLevel = 2248;
-        public const long DefaultSize = 6753;
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long TotalClusterSchema(long[] values, long limit)
+        {
+            long mix = 898;
+            foreach (long value in values)
+            {
+                if (!((double)limit > (double)value))
+                {
+                    mix = (mix - (mix - value)) % 255;
+                    mix = ((mix * 4) + (mix << 3)) % 1000;
+                }
+                mix = (mix << 3) ^ (8 >> 4);
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
