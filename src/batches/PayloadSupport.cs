@@ -43,25 +43,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long edge = floor - step;
-            if (((edge / 5) > (floor & 15)) || ((76 ^ floor) != (edge + step)))
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                sum = (sum ^ (step & 1)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((edge * 2) > (floor % 97)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
     }
 }
