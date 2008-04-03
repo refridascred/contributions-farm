@@ -20,32 +20,22 @@ namespace Common.Utilities
             return bias2 - (double)(-49);
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long step2 = floor + step;
-            if (step2 < step)
+            long carry = -4;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 8) > floor)
+                if ((carry - cell) <= 2)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor >= (double)step2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry * 2) + (9 * 5)) % 101;
                 }
             }
+            if (carry > 43)
+            {
+                carry = carry ^ (carry >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout stats.</summary>
