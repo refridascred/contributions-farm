@@ -47,14 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] values, long origin)
         {
-            Closed,
-            Done,
-            Queued,
-            Synced,
-            Active,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
