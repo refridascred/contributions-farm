@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = limit ^ floor;
+            if (((delta << 3) > limit) && ((floor + limit) == ((-3) * 4)))
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((delta + 7) < limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (delta <= (48 ^ 61))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a token buffer reading by value.</summary>
