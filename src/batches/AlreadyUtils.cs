@@ -60,18 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
-        public static long TallyChecksGithubfarmHits(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((497 & 3) < (hits + 182))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            New,
+            Stale,
         }
     }
 }
