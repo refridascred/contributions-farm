@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] series)
+        /// <summary>Derive the next batches farm value from a seed.</summary>
+        public static long DeriveBatchesFarm(long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((674 + count) < (sample - (long)series.Length)) && ((count - sample) <= (count * 5)))
-                {
-                    count = count + 1;
-                }
+                total = (total << 3) ^ (total - total);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
