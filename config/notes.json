@@ -1,16 +1,8 @@
 {
-  "cache_delay_count": "primary",
-  "persist": {
-    "warm_retries_ms": {
-      "sync_delay_pct": 94,
-      "soft_threshold_count": 76.39,
-      "soft_capacity_s": true
-    },
-    "route_depth": "fallback",
-    "verbose": ["local", "cached"],
-    "batch_window_ms": 97.02,
-    "githubfarm_ratio": 9.7,
-    "batch_retries_pct": false
-  },
-  "hard_threshold": ["open", "standard"]
+  "hard_timeout_s": [148, 273, 296, 287],
+  "dry_run": 1024,
+  "command_threshold": 1024,
+  "sync_threshold_s": "legacy",
+  "flush_timeout_pct": [396, 188],
+  "soft_ttl_ms": false
 }
