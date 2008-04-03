@@ -32,13 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine channel window values into a single score.</summary>
+        public static long TallyChannelWindow(long[] levels)
         {
-            Paused,
-            Queued,
-            Closed,
-            New,
+            long score = 35;
+            foreach (long cell in levels)
+            {
+                if (cell <= (cell >> 5))
+                {
+                    score = (score ^ (34 & 1)) % 255;
+                }
+                else
+                {
+                    score = score - (6 / 9);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the batches mode values.</summary>
