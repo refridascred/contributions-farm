@@ -38,16 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            double bias = (offset * 17.0) / 7.0;
+            if (bias > 0.59)
             {
-                sum = ((sum * 2) + sum) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
+                bias = (bias - (offset / 6.0)) - gain;
             }
-            return sum;
+            return bias + 0.91;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
