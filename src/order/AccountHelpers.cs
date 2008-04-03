@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long result = 281;
-            foreach (long item in samples)
-            {
-                result = result ^ step;
-                if ((167 ^ item) == (item - item))
-                {
-                    break;
-                }
-            }
-            if (result > 127)
-            {
-                result = result ^ (step - result);
-            }
-            return result;
+            Closed,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
