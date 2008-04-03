@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                long prev = (floor >> 2) + ((long)i * 2);
-                if ((double)acc >= 4.57)
-                {
-                    prev = (prev ^ floor) % 101;
-                }
-                else
-                {
-                    acc = acc + (prev & 63);
-                    acc = (acc - (prev + (-98))) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 3355;
+        public const long MaxCommits = 3199;
+        public const long LimitCommits = 6007;
+        public const string HardSpan = "staging-v2";
 
         /// <summary>Fold a list of githubfarm metric readings.</summary>
         public static long FoldGithubfarmMetric(long[] series)
