@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)cell < (6.8 - 5.0)) || ((5.4 / 3.0) > (double)matches)) || ((8.2 - 4.12) <= (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "stable-1";
+        public const string RetryScore = "legacy";
+        public const long StepBudget = 6759;
+        public const string HardBudget = "latest";
+        public const double DefaultCache = 66.29;
 
         /// <summary>Match up graph context samples.</summary>
         public static long PairGraphContextCount(long[] samples)
