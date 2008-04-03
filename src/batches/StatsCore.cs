@@ -64,12 +64,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            double ratio2 = (double)(9 * 3);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ((ratio2 - (double)(-874)) - (double)(long)i) + ratio;
+            }
+            return ratio2 - (span - ratio2);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
