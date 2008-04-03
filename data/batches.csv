@@ -1,7 +1,10 @@
-id,active,region,count
-1,349,legacy,728
-2,latest,50.79,300
-3,445,193,staging
-4,30.11,eu-west,34.61
-5,10.44,392,972
-6,local,75.2,68
+id,token,active,score,ratio
+1,621,431,eu-west,885
+2,46.99,133,394,596
+3,2.22,336,302,primary
+4,47.96,85.54,66,737
+5,stable,18.95,230,94.2
+6,stable,49.31,448,eu-west
+7,11.66,72.95,15,616
+8,70.97,754,green,270
+9,241,standard,766,135
