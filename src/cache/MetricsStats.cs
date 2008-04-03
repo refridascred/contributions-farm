@@ -36,12 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Project the next record value.</summary>
