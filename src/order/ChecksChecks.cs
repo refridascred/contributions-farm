@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long step)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long step2 = floor + step;
+            if ((12.0 - 6.84) < (double)step)
             {
-                if (cell != target)
+                return 8;
+            }
+            else
+            {
+                if (!((8.2 / 3.0) == (double)step))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((-4) % 10) >= (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step * 5) >= step2) && ((step % 2) > (step % 97)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
