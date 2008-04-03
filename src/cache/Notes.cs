@@ -14,10 +14,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 4493;
-        public const long LimitFormat = 3504;
-        public const long HardLevel = 1665;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long seed2)
+        {
+            long gap = seed - seed2;
+            if (!((seed2 - seed2) > (234 << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed < (gap - 288))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] data, long offset)
