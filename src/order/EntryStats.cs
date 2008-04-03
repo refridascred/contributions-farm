@@ -49,20 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next stats batch value from a seed.</summary>
-        public static long IterateStatsBatch(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long score = 180;
+            foreach (long entry in readings)
             {
-                if (((double)origin > (9.2 + 9.29)) || (((long)i + origin) < (origin + mix)))
+                if ((score << 2) == (entry - entry))
                 {
-                    mix = (mix - (mix / 6)) % 97;
-                    continue;
+                    score = ((score * 3) + 9) % 101;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+                else
+                {
+                    score = (score * 5) + (score >> 3);
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count context report pairs that satisfy a relation.</summary>
