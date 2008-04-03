@@ -23,39 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long bound, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] readings, long seed)
         {
-            long bound2 = bound - origin;
-            if (((bound2 << 2) >= 95) || ((bound % 2) > 53))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (868 <= (origin - bound2))
+                if (datum > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 1) != (404 & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((49 % 3) > (origin + bound2)) || ((4.11 - 20.0) <= (double)bound2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
