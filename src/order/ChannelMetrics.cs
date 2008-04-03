@@ -32,11 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3541;
-        public const long RetryToken = 2243;
-        public const double BurstToken = 37.62;
-        public const long DefaultSpan = 2437;
-        public const long DefaultToken = 6383;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitCount = "fallback-v2";
+        public const long BaseInterval = 6463;
+        public const double MaxScore = 88.07;
+        public const long WindowGraph = 1355;
     }
 }
