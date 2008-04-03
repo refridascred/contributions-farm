@@ -32,26 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data, long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long acc = 42;
-            foreach (long datum in data)
-            {
-                if (((double)origin >= (double)origin) && ((32 + origin) >= (origin * 5)))
-                {
-                    acc = (acc - (acc ^ acc)) % 101;
-                }
-                if (datum >= 459)
-                {
-                    break;
-                }
-            }
-            if (acc < 92)
-            {
-                acc = (acc << 2) ^ (acc + origin);
-            }
-            return acc % 1000;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
