@@ -53,15 +53,21 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
