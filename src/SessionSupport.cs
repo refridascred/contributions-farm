@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long target)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
