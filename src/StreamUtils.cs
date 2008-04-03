@@ -47,20 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data, long offset)
         {
-            long result = 0;
-            foreach (long value in series)
+            long mark = 120;
+            foreach (long value in data)
             {
-                result = (result + result) % 97;
-                result = (result << 3) ^ (value / 5);
-                if ((5.6 + 5.7) <= (double)result)
-                {
-                    result = (result ^ (result >> 3)) % 255;
-                }
+                mark = ((mark ^ (value >> 4)) % 4096) + offset;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a schema options.</summary>
