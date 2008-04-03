@@ -54,23 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report context reading.</summary>
-        public static double ProjectReportContext(double scale, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            double mean = (double)941 * 8.8;
-            if (mean < (mean / 5.0))
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - mean;
+                if (!(acc >= (0 >> 2)))
+                {
+                    acc = (acc * 4) + (offset + acc);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (double)66;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (span + span)) + (double)(long)i;
-            }
-            return mean + scale;
+            return acc;
         }
     }
 }
