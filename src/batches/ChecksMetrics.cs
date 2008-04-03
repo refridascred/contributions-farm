@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long CountBufferGraphOutliers(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((6.24 - 9.8) >= (double)entry)
+                if (!!(floor >= (matches + sample)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
