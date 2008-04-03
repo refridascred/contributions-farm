@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((8.0 - 1.29) >= (double)hits)
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleSpan = 15.47;
+        public const long MinQueue = 5532;
+        public const double StepQueue = 4.65;
+        public const long StepWidth = 8188;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] readings, long seed)
