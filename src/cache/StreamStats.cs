@@ -33,20 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm schema value.</summary>
-        public static double SmoothGithubfarmSchema(double bias, double span)
-        {
-            double scale = (9.03 * 14.0) * 18.0;
-            if (scale > span)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale - (double)796;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 4966;
+        public const long LimitBudget = 4722;
+        public const double SoftPayload = 35.14;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long bound)
