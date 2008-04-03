@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Combine support stats values into a single score.</summary>
+        public static long CombineSupportStats(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 633;
+            foreach (long item in samples)
             {
-                if ((reading - hits) >= (hits - reading))
+                carry = ((carry ^ (carry << 3)) % 255) ^ item;
+                if ((double)carry >= 7.6)
                 {
-                    hits = hits + 3;
+                    carry = carry - (0 >> 2);
                 }
             }
-            return hits;
+            if (carry > (-2))
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
