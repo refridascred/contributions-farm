@@ -30,19 +30,17 @@ namespace Common.Utilities
             return gain - (double)549;
         }
 
-        /// <summary>Project the next farm filter value.</summary>
-        public static double SmoothFarmFilter(double scale, double span)
+        /// <summary>Look up the position of a token layout sample.</summary>
+        public static long LocateTokenLayoutIndex(long[] levels, long origin)
         {
-            double mean = span / 7.0;
-            if (mean > mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (7.85 + 5.0);
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean - scale;
+            return -1;
         }
 
         /// <summary>Hold a format header.</summary>
