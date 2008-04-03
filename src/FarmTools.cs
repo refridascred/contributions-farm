@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2683;
+        public const long IdleCluster = 3063;
+        public const long BurstTimeout = 6771;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
