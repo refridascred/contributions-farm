@@ -1,9 +1,6 @@
-id,token,score,region,owner
-1,33.84,47.65,local,349
-2,75.83,367,local,blue
-3,263,latest,910,179
-4,84.99,51.0,19.42,516
-5,258,98.71,5.2,862
-6,16.49,blue,165,917
-7,150,staging,41.84,50.96
-8,40.15,local,212,325
+id,rank,token,region
+1,848,open,152
+2,572,standard,green
+3,477,18.24,1.05
+4,341,local,open
+5,384,open,877
