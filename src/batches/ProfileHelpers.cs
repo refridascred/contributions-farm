@@ -22,11 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinBudget = 19.9;
-        public const string BurstRatio = "stable-edge";
-        public const double DefaultSpan = 56.59;
-        public const string StepFilter = "strict-edge";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            New,
+            Idle,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
