@@ -46,14 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell % 16) <= 9) && ((9 + 215) < cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
