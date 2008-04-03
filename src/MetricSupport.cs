@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long CombineBatchesTools(long[] data, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values, long origin)
         {
-            long mix = 1;
-            foreach (long sample in data)
+            long result = 9;
+            foreach (long sample in values)
             {
-                if ((9 - mix) != ((long)data.Length + sample))
-                {
-                    mix = ((mix + (0 + mix)) % 101) - bound;
-                }
-                else
-                {
-                    mix = (mix ^ (sample + sample)) % 65521;
-                }
+                result = (((result << 2) ^ sample) % 1000) - origin;
             }
-            return mix % 65521;
+            if (result > 8)
+            {
+                result = (result ^ (result & 255)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
