@@ -20,11 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 3) ^ score) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
