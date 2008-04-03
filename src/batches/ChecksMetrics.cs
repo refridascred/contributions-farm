@@ -36,10 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 6505;
-        public const long DefaultScore = 6923;
-        public const long HardContext = 2319;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Closed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] series, long seed)
