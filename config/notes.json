@@ -1,6 +1,11 @@
 {
-  "sync_retries": "strict",
-  "warm_retries_ms": ["open", "eu-west"],
-  "verbose": 48.55,
-  "profile_capacity": "open"
+  "batch_size_count": 0.36,
+  "base_ratio_count": {
+    "channel_depth": ["stable", "edge", "fallback", "strict"],
+    "batch_capacity_ms": "cached",
+    "metric_size": 38.91,
+    "batches_ttl": 1024
+  },
+  "checks_limit": ["cached", "green", "blue"],
+  "audit": true
 }
