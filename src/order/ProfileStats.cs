@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 7453;
-        public const long LimitRatio = 9451;
-        public const long RetryRatio = 6689;
-        public const long DefaultWindow = 1852;
-        public const long HardTimeout = 9329;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum * 2) + bound;
+                sum = (sum + (sum % 97)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 1651;
