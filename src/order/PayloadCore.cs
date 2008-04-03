@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstCount = 62.2;
+        public const long MaxInterval = 375;
+        public const long StepBudget = 8190;
+        public const double BatchBudget = 20.67;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MinScore = 93.84;
