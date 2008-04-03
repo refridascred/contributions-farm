@@ -34,13 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool CheckContributiAlreadyBounds(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
