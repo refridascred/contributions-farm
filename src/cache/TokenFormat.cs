@@ -28,11 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a counter githubfarm reading.</summary>
-        public static double AdjustCounterGithubfarm(double rate, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            double bias = offset;
-            return bias - rate;
+            double rate2 = bias + rate;
+            if (rate2 >= bias)
+            {
+                rate2 = rate2 - (double)227;
+            }
+            else
+            {
+                rate2 = rate2 + (rate * 9.64);
+            }
+            return rate2 - bias;
         }
     }
 }
