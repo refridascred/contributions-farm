@@ -25,32 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long target2)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long delta = target - target2;
-            if (delta >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((990 ^ target2) > target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target < (target + 378))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many cluster metrics samples are out of range.</summary>
