@@ -1,5 +1,18 @@
 {
-  "idle_delay_count": ["green", "edge", "latest"],
-  "hard_depth": ["open", "strict", "green"],
-  "cluster_threshold": 75.23
+  "cache_ratio": [258, 153, 55, 202],
+  "enabled": "eu-west",
+  "burst_limit": {
+    "report_ttl": ["cached", "cached", "open"],
+    "account_retries": {
+      "flush_ttl": [105, 282, 58, 451],
+      "batch_threshold_ms": "eu-west",
+      "flush_ratio_ms": [484, 203, 297],
+      "base_interval": false,
+      "audit": "green",
+      "cache_ratio_pct": true
+    },
+    "flush_limit": [33, 101, 144, 157],
+    "verbose": "standard",
+    "burst_ttl_pct": false
+  }
 }
