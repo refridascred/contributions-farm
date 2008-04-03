@@ -43,14 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items)
         {
-            Retry,
-            Queued,
-            Dropped,
-            Closed,
-            Active,
+            long anchor = 21;
+            foreach (long item in items)
+            {
+                if (19 < (anchor * 4))
+                {
+                    anchor = ((anchor << 3) ^ (anchor / 5)) - item;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (780 & 63);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
