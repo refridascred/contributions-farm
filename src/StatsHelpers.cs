@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if ((limit - offset) < offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((642 >> 1) < (limit << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
