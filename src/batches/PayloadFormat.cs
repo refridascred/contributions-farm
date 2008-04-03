@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] values)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)hits == (double)56)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
