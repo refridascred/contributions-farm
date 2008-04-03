@@ -1,5 +1,18 @@
 {
-  "strict": ["primary", "fallback", "primary"],
-  "idle_delay_count": "blue",
-  "flush_capacity": false
+  "contributi_window": 79,
+  "verbose": 56.15,
+  "counter_delay": {
+    "idle_window_s": {
+      "min_depth_ms": ["eu-west", "staging", "latest", "blue"],
+      "base_depth_s": 3138,
+      "readonly": [190, 485, 410],
+      "burst_size": "open",
+      "min_threshold_pct": true,
+      "warm_capacity_ms": 30
+    },
+    "min_depth": 62,
+    "buffer_window": 56.32,
+    "idle_retries": 53.97,
+    "max_size_count": "green"
+  }
 }
