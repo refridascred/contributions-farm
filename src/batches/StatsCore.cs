@@ -51,18 +51,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] readings, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value % 64) >= 34)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
