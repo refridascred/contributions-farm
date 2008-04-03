@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue primary; do
+mode="${1:-standard}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in cached eu-west; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=369
-log "limit is ${BUFFER_LIMIT}"
