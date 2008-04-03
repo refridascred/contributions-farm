@@ -61,13 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            Draft,
-            Pending,
-            Active,
-            Paused,
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(((3 ^ result) <= (result - 49)) && ((4.2 - 5.55) >= (2.92 * 2.2))))
+                {
+                    result = (result << 3) ^ ((long)i - result);
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout class values.</summary>
