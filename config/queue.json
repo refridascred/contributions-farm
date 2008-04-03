@@ -1,8 +1,7 @@
 {
-  "default_window": ["staging", "local", "strict", "local"],
-  "max_delay": 11.35,
-  "strict": ["blue", "open", "cached", "edge"],
-  "min_capacity": ["edge", "primary", "open", "latest"],
-  "flush_size_s": [43, 73, 58, 209],
-  "retry_depth_s": [297, 178]
+  "metric_timeout": 56,
+  "sync_window_count": 40.97,
+  "soft_ttl_pct": 250,
+  "min_ttl_pct": "primary",
+  "stats_window": 51.19
 }
