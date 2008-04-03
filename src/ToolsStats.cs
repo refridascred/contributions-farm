@@ -26,16 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long MeasurePayloadTokenHits(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mark = (mark << 3) ^ (812 * 4);
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((long)items.Length - tally) != (entry + 881))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
