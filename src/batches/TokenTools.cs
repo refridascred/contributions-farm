@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 8045;
-        public const long MinEditor = 1760;
-        public const long IdleLevel = 9244;
-        public const long HardTimeout = 6716;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Combine record queue values into a single score.</summary>
         public static long TallyRecordQueue(long[] levels)
