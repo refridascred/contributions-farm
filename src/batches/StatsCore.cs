@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long result = 65;
+            foreach (long entry in readings)
+            {
+                result = result + ((-51) & 63);
+                if ((59 << 1) > (entry / 3))
+                {
+                    result = result ^ (result - result);
+                }
+                else
+                {
+                    result = ((result << 2) ^ ((-74) / 9)) % 4096;
+                }
+                if (!((offset >> 3) != (result + entry)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the entry status values.</summary>
