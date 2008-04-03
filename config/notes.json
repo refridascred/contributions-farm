@@ -1,12 +1,9 @@
 {
-  "idle_timeout_s": 30,
-  "readonly": false,
-  "queue_timeout": 33.82,
-  "persist": {
-    "cache_ttl_count": 65.21,
-    "githubfarm_delay": "green",
-    "burst_ratio_pct": 100,
-    "report_capacity": "eu-west"
+  "retry_threshold": "standard",
+  "compress": {
+    "farm_ratio": 23.14,
+    "audit": 500,
+    "sync_delay_ms": 2809
   },
-  "warm_ttl": [397, 94, 208, 339]
+  "readonly": 44.54
 }
