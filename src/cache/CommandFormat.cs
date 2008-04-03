@@ -5,43 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            if (182 > (target * 4))
             {
-                if ((origin & 63) >= (acc & 7))
-                {
-                    acc = acc - (7 / 9);
-                }
-                else
-                {
-                    acc = (acc ^ origin) % 97;
-                    acc = ((acc * 3) + (acc - origin)) % 1000;
-                }
-                if ((acc + origin) <= (acc + 8))
-                {
-                    acc = (acc * 4) + origin;
-                    acc = (acc - (acc ^ acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc - origin) % 97;
-                    acc = ((acc << 2) ^ origin) % 97;
-                }
-                if ((double)acc == (double)origin)
-                {
-                    acc = (acc + (origin >> 4)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (origin + acc)) % 4096;
-                    acc = (acc << 2) ^ (origin / 9);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (((target / 7) != (target + offset)) || (((-97) - target) <= (target ^ 39)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((204 - target) < (target + 71))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (5.0 <= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
