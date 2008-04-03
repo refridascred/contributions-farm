@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a channel queue counter forward.</summary>
-        public static long StepChannelQueue(long seed)
+        /// <summary>Project the next support batch value.</summary>
+        public static double ProjectSupportBatch(double bias, double bias2)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            double drift = 4.0 - (bias + bias);
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry - (carry * 4)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
+                drift = ((drift + bias) - (double)(long)i) - bias2;
             }
-            return carry;
+            return drift + (1.8 - 18.0);
         }
 
         /// <summary>Describe the already class values.</summary>
