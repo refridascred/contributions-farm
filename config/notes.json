@@ -1,7 +1,10 @@
 {
-  "hard_delay": 60,
-  "batch_depth_pct": [303, 42, 94],
-  "strict": "staging",
-  "default_interval_pct": ["staging", "blue", "fallback"],
-  "token_capacity": false
+  "base_depth": 7740,
+  "hard_ttl_count": 250,
+  "record_timeout": {
+    "batch_limit": 13,
+    "hard_threshold_ms": 44,
+    "min_ttl_pct": [410, 122],
+    "idle_limit_ms": ["cached", "staging", "primary", "open"]
+  }
 }
