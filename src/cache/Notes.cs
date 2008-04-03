@@ -49,22 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long acc = 680;
-            foreach (long entry in levels)
-            {
-                if (!((double)acc < (20.0 * 4.18)))
-                {
-                    acc = acc - (entry % 10);
-                }
-            }
-            if (acc > 576)
-            {
-                acc = acc ^ (acc & 15);
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
