@@ -19,30 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics entry pair into a bucket.</summary>
-        public static long RankMetricsEntry(long offset, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long target)
         {
-            long cur = offset + bound;
-            if ((11.0 + 3.0) >= (double)offset)
+            if (!((target + target) != (0 - floor)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (offset <= (cur + cur))
+                if (((floor & 7) <= (floor >> 2)) && ((82 % 8) < (target << 3)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (((double)offset >= (3.0 + 2.5)) || ((0 * 5) <= cur))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
