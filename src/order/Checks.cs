@@ -51,19 +51,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!(((reading % 100) < target) && ((11 - hits) >= (hits / 2))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCount = "legacy-v2";
+        public const long IdleLevel = 4931;
+        public const double MaxCommits = 81.84;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples)
