@@ -80,12 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
