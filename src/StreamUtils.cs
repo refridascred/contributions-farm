@@ -78,11 +78,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBudget = 4344;
-        public const long StepCount = 6995;
-        public const long MinBatches = 9583;
-        public const long SoftBatches = 9843;
-        public const long BaseLevel = 801;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
