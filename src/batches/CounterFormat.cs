@@ -48,23 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double gain = (3.7 * 3.67) + offset;
-            if (gain >= (gain * 9.7))
-            {
-                gain = gain - (offset + gain);
-            }
-            else
-            {
-                gain = gain - (3.8 + gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain + 6.0)) - (double)(long)i;
-            }
-            return gain + rate;
+            New,
+            Queued,
+            Retry,
+            Draft,
+            Closed,
         }
     }
 }
