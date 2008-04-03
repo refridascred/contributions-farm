@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            Draft,
+            New,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
