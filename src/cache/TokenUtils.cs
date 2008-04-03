@@ -10,14 +10,32 @@ namespace Common.Utilities
         public const long LimitWidth = 7198;
         public const double MaxRoute = 1.09;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Grade a support command value against two limits.</summary>
+        public static long RankSupportCommand(long step, long origin)
         {
-            Ready,
-            Failed,
-            Active,
-            Retry,
-            Queued,
+            long gap = step - origin;
+            if ((origin + 648) <= 894)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap / 3) > (origin / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (gap >= (gap - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
