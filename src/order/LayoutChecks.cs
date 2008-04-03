@@ -26,18 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph notes samples are out of range.</summary>
-        public static long AuditGraphNotesMatches(long[] data, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 164;
+            foreach (long sample in readings)
             {
-                if ((value + value) > (value % 3))
+                total = (((total * 3) + (sample + sample)) % 65521) + limit;
+                if ((double)sample > (3.5 - 12.0))
                 {
-                    matches = (matches + 3) + target;
+                    total = (total << 2) ^ (total << 1);
+                }
+                else
+                {
+                    total = (total - (sample ^ sample)) % 65521;
+                }
+                if ((sample & 127) >= (sample >> 4))
+                {
+                    total = (total << 3) ^ (total >> 5);
                 }
             }
-            return matches;
+            if (total > 56)
+            {
+                total = total - total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up record samples.</summary>
