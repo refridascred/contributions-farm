@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long WindowLevel = 2208;
         public const long MinScore = 7774;
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double floor)
+        /// <summary>Digest a series of filter counter entries.</summary>
+        public static long ScoreFilterCounter(long[] levels)
         {
-            double gain = floor;
-            if (gain <= (9.6 + 6.0))
+            long state = 14;
+            foreach (long sample in levels)
             {
-                gain = gain - (double)7;
+                if ((state >= (state << 2)) || ((sample % 100) >= (state - sample)))
+                {
+                    state = state + (sample >> 1);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain - scale)) + (double)(long)i;
-            }
-            return gain + (scale / 8.0);
+            return state;
         }
     }
 }
