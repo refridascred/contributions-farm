@@ -89,10 +89,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 3990;
-        public const long CacheSize = 2340;
-        public const long RetryMetric = 3072;
-        public const long DefaultMetric = 2072;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score - ((long)i - limit)) % 255;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
