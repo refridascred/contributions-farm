@@ -44,17 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3086;
+        public const double StepStats = 7.41;
+        public const long IdleStats = 5707;
+        public const long CacheStats = 7133;
+        public const double IdleInterval = 9.62;
     }
 }
