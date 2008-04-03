@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardRatio = 2827;
-        public const long DefaultFarm = 365;
-        public const string HardFarm = "alpha-edge";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
+        {
+            long total = 9;
+            foreach (long cell in items)
+            {
+                total = (total << 3) ^ (long)items.Length;
+                if ((total - total) < cell)
+                {
+                    total = (total + total) % 101;
+                    break;
+                }
+                if (total <= (cell << 1))
+                {
+                    total = total + (long)items.Length;
+                }
+                else
+                {
+                    total = (total - (total - total)) % 101;
+                }
+            }
+            if (total < 23)
+            {
+                total = (total + (8 % 10)) % 97;
+            }
+            return total % 97;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
