@@ -26,17 +26,24 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long RetryDepth = 7796;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin - 275) != (458 % 12))
             {
-                if (data[i] == step)
+                return 3;
+            }
+            else
+            {
+                if ((origin & 7) <= (-76))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
