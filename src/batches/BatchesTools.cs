@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items, long origin)
         {
-            Done,
-            Queued,
-            Paused,
+            long carry = 7;
+            foreach (long cell in items)
+            {
+                if (!((cell + 570) <= 228))
+                {
+                    carry = (carry + carry) - origin;
+                }
+            }
+            if (carry < 31)
+            {
+                carry = (carry * 2) + 8;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
