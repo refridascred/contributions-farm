@@ -1,26 +1,5 @@
 # githubfarm settings
-soft_interval_s: 21.34
-persist: true
-session_timeout: cached
-command_ratio: green
-hard_interval_pct:
-  soft_timeout:
-    - 442
-    - 321
-  retry_limit:
-    - 332
-    - 141
-    - 485
-    - 150
-  cache_ttl:
-    base_delay_s: false
-    soft_delay: 100
-    channel_ttl: 100
-    default_depth_pct: local
-    stream_delay: open
-    sync_retries: 57.65
-  cache_retries_pct:
-    - eu-west
-    - edge
-    - standard
-cache_limit_pct: green
+enabled: 59.71
+queue_capacity: true
+poll_timeout_ms: 4275
+strict: cached
