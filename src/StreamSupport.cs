@@ -36,10 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "fallback-v2";
-        public const double MaxEntry = 25.73;
-        public const string RetrySpan = "latest-edge";
-        public const string MinEntry = "standard-v2";
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Idle,
+            Synced,
+            Retry,
+            Pending,
+            Closed,
+        }
     }
 }
