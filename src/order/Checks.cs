@@ -72,19 +72,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mix = 285;
+            foreach (long entry in samples)
             {
-                if (cell <= limit)
+                if ((8 >= (entry >> 4)) || (90 <= (entry & 63)))
                 {
-                    ok = false;
+                    mix = (mix ^ (entry % 5)) % 1000;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = (mix - ((long)i + 145)) % 65521;
+                    mix = mix + (entry % 2);
+                }
+                mix = (mix + mix) % 1000;
+                if (!((94 + 11) > (mix + mix)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix > 20)
+            {
+                mix = mix + (455 - mix);
+            }
+            return mix;
         }
     }
 }
