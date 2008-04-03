@@ -37,26 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 381;
-            foreach (long cell in values)
-            {
-                if ((double)score == (3.61 / 2.0))
-                {
-                    score = ((score << 3) ^ (cell / 8)) % 1000;
-                }
-                else
-                {
-                    score = (score - (cell % 3)) % 65521;
-                }
-            }
-            if (score < 2)
-            {
-                score = ((score * 5) + (score + score)) % 65521;
-            }
-            return score % 65521;
+            Paused,
+            Idle,
+            New,
+            Pending,
         }
     }
 }
