@@ -34,21 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
