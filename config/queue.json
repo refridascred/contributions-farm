@@ -1,6 +1,8 @@
 {
-  "max_ratio_pct": [236, 33, 144],
-  "report_ttl": ["edge", "standard"],
-  "format_capacity": [220, 177, 408],
-  "soft_threshold": "stable"
+  "tools_ratio": "local",
+  "hard_size": "latest",
+  "persist": "staging",
+  "buffer_limit": 7688,
+  "stream_threshold": [162, 126],
+  "poll_window_count": "green"
 }
