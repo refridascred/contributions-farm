@@ -71,17 +71,16 @@ namespace Common.Utilities
         public const string HardScore = "legacy-1";
         public const long SoftTimeout = 2408;
 
-        /// <summary>Look up the position of a route githubfarm sample.</summary>
-        public static long SeekRouteGithubfarmIndex(long[] values, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state + state) % 101;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
