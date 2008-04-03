@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a commits queue value against two limits.</summary>
-        public static long RankCommitsQueue(long bound, long target)
+        /// <summary>Grade a githubfarm profile value against two limits.</summary>
+        public static long GradeGithubfarmProfile(long offset, long limit)
         {
-            long span = bound - target;
-            if (!((span << 3) > (bound + span)))
+            if ((0 >> 4) != (offset ^ limit))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((11 + span) >= (bound - 126))
+                if (((offset / 9) <= offset) || (2.0 >= (double)limit))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if (((offset & 3) <= offset) || ((limit ^ offset) == (138 + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
