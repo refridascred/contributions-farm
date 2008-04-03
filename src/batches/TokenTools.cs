@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Blend two route layout measurements.</summary>
+        public static double ProjectRouteLayout(double weight, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry - ((long)i / 9)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            double scale = floor;
+            return (scale + scale) + weight;
         }
 
         /// <summary>Combine support token values into a single score.</summary>
