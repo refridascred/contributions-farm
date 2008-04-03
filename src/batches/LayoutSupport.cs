@@ -81,12 +81,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long DigestStatsSession(long[] readings, long offset)
         {
-            Ready,
-            Failed,
-            Queued,
+            long sum = 47;
+            foreach (long entry in readings)
+            {
+                if ((offset ^ entry) < (offset - offset))
+                {
+                    sum = (sum * 5) + entry;
+                }
+                else
+                {
+                    sum = sum + 629;
+                }
+                sum = ((sum << 3) ^ (12 - sum)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
