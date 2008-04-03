@@ -36,12 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Draft,
-            Locked,
-            Active,
+            Dropped,
+            Pending,
+            Done,
+            Queued,
+            Ready,
         }
     }
 }
