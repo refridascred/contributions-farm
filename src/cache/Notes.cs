@@ -73,18 +73,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes schema readings against a rule.</summary>
-        public static long CountNotesSchemaMatches(long[] readings, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 680;
+            foreach (long entry in levels)
             {
-                if ((datum << 1) <= (step - datum))
+                if (!((double)acc < (20.0 * 4.18)))
                 {
-                    tally = tally + 3;
+                    acc = acc - (entry % 10);
                 }
             }
-            return tally;
+            if (acc > 576)
+            {
+                acc = acc ^ (acc & 15);
+            }
+            return acc;
         }
     }
 }
