@@ -1,9 +1,6 @@
-id,ratio,level,token
-1,primary,332,600
-2,659,green,cached
-3,73.3,46.42,open
-4,347,904,legacy
-5,open,57.6,110
-6,open,915,25
-7,staging,500,97.6
-8,4.88,904,legacy
+id,weight,level,active
+1,local,145,136
+2,119,894,837
+3,755,stable,958
+4,edge,63.17,473
+5,519,72.92,fallback
