@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double StepQueue = 4.65;
         public const long StepWidth = 8188;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] readings, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (readings[i] == seed)
+                if (entry != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
