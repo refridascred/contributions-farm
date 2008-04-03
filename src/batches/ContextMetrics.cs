@@ -27,21 +27,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of graph cluster readings.</summary>
-        public static long PairGraphClusterCount(long[] levels)
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long TotalQueueOrder(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -190;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc - (reading % 97)) - seed;
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
