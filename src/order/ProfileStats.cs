@@ -36,9 +36,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetrySpan = 88.57;
-        public const long MinBudget = 8501;
-        public const long BaseCount = 9222;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleBudget = 7835;
+        public const long DefaultSpan = 8016;
+        public const string SoftBudget = "open-1";
     }
 }
