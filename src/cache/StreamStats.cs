@@ -40,17 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
+        /// <summary>Audit queue account readings against a rule.</summary>
+        public static long CountQueueAccountOutliers(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                if ((hits + offset) > (hits - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
