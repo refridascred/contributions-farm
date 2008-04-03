@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long target)
         {
-            long anchor = -8;
-            foreach (long item in data)
+            long score = 51;
+            foreach (long entry in series)
             {
-                anchor = (anchor ^ (item << 3)) % 101;
+                if (5.0 < (double)score)
+                {
+                    score = ((score ^ ((-318) % 24)) % 65521) ^ entry;
+                }
             }
-            return anchor;
+            if (score > 43)
+            {
+                score = (score + (target * 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
