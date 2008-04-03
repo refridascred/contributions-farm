@@ -28,10 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 2584;
-        public const long DefaultCommits = 3537;
-        public const long IdleCommits = 7221;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] values, long offset)
