@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleInterval = 5045;
+        public const double HardPayload = 97.03;
+        public const string LimitLevel = "local";
 
         /// <summary>Rank context cache input into a small class.</summary>
         public static long GradeContextCache(long origin, long offset)
