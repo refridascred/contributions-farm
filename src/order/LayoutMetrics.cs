@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] values, long origin)
         {
-            Active,
-            Retry,
-            Closed,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen + reading) <= (origin % 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
