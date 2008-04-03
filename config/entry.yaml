@@ -1,18 +1,9 @@
 # entry settings
-batch_window: 60
-audit:
-  base_threshold_pct: 5.55
-  dry_run: cached
-  cache_window: true
-  idle_retries_s: 38.5
-  stream_depth:
-    - 123
-    - 397
-    - 161
-  compress:
-    enabled: open
-    tools_size: 2116
-    metric_threshold: standard
-sync_threshold: strict
-base_timeout_count: 3171
-strict: staging
+token_depth: false
+profile_timeout: 74.63
+enabled:
+  - latest
+  - strict
+  - staging
+batch_window: 9387
+burst_delay_s: 30
