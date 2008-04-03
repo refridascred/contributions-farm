@@ -1,6 +1,23 @@
 {
-  "poll_interval_pct": "fallback",
-  "readonly": 18,
-  "persist": "fallback",
-  "metric_threshold": "open"
+  "burst_retries_count": {
+    "enabled": "eu-west",
+    "readonly": "open",
+    "channel_depth": true,
+    "base_capacity_ms": "stable"
+  },
+  "filter_interval": {
+    "batches_window": "edge",
+    "warm_ttl_count": 8206,
+    "hard_delay_pct": false
+  },
+  "readonly": "blue",
+  "compress": 442,
+  "default_timeout": 11.12,
+  "flush_ratio_count": {
+    "channel_delay": "local",
+    "readonly": "blue",
+    "metric_depth": 30,
+    "enabled": 5407,
+    "max_depth_ms": [354, 339]
+  }
 }
