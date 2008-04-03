@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 3315;
-        public const long BatchSize = 1671;
-        public const string StepSpan = "open-v2";
-        public const string WindowGraph = "strict";
-        public const double DefaultScore = 7.19;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "staging-edge";
+        public const long WindowScore = 1360;
+        public const string RetryAlready = "strict-v2";
+        public const long CacheLevel = 813;
 
         /// <summary>Fold a list of layout schema readings.</summary>
         public static long FoldLayoutSchema(long[] readings, long bound)
