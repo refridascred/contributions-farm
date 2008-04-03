@@ -72,19 +72,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long CombineQueueOrder(long[] data, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long limit)
         {
-            long sum = 34;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                sum = ((sum << 2) ^ sum) + origin;
-                if ((8.56 + 5.0) > (double)sum)
+                if (cell <= limit)
                 {
-                    sum = (sum << 2) ^ (159 ^ sample);
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
