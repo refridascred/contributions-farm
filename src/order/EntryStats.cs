@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample ^ count) >= (count / 9)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
