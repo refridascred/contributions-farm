@@ -35,14 +35,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long target)
         {
-            Draft,
-            Closed,
-            Failed,
-            Pending,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
