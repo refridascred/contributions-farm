@@ -23,17 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
