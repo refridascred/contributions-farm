@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 4848;
-        public const string DefaultScore = "open-1";
-        public const long SoftScore = 2447;
-        public const string WindowSession = "open";
-        public const double DefaultSession = 38.49;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteRange(long[] levels, long seed)
