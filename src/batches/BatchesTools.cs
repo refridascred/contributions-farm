@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
