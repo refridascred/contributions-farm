@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long WindowAlready = 6756;
         public const long BatchWidth = 684;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples, long seed)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = 285;
+            foreach (long entry in samples)
+            {
+                carry = ((carry - seed) % 255) + entry;
+            }
+            if (carry < 506)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile class values.</summary>
