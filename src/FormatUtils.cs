@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 82.63;
-        public const long BurstDepth = 5915;
-        public const string DefaultInterval = "stable-v2";
+        /// <summary>Look up the position of a format contributi sample.</summary>
+        public static long FindFormatContributiIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of report token readings.</summary>
         public static long DigestReportToken(long[] series)
