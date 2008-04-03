@@ -27,22 +27,18 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Fold a list of format context readings.</summary>
-        public static long FoldFormatContext(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            long total = 17;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!(datum > (985 - total)))
+                if (seen < (seen >> 2))
                 {
-                    total = (total * 3) + (total - total);
-                }
-                if ((6 >> 4) <= (datum + total))
-                {
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
