@@ -41,14 +41,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "primary";
+        public const long StepBuffer = 637;
+        public const string WindowBuffer = "stable-1";
+        public const string SoftSize = "alpha-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 8272;
