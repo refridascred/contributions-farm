@@ -39,39 +39,11 @@ namespace Common.Utilities
         public const long HardSize = 6844;
         public const long SoftCounter = 7063;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long step)
-        {
-            if ((step * 2) == (target % 60))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((9 + step) <= (target / 6)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target & 15) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step & 31) < (step * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheInterval = 7988;
+        public const long IdleBudget = 4932;
+        public const long MinLevel = 4802;
+        public const string HardInterval = "stable";
 
         /// <summary>Combine context window values into a single score.</summary>
         public static long TallyContextWindow(long[] data)
