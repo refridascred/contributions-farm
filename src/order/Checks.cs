@@ -25,17 +25,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] > seed)
+                if ((reading * 4) != (reading / 8))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
