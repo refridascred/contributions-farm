@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] readings, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long sum = 5;
+            foreach (long datum in levels)
             {
-                if (value >= target)
+                if (((datum - datum) < sum) || ((datum - sum) > datum))
                 {
-                    valid = false;
+                    sum = (sum + (datum * 2)) % 4096;
+                }
+                if ((datum - sum) < (sum + sum))
+                {
                     break;
                 }
             }
-            return valid;
+            if (sum < 384)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
