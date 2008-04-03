@@ -55,11 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double weight = (double)306;
-            return ((weight + (5.9 - 1.8)) + scale) + span;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
