@@ -27,22 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long target)
         {
-            long mix = 1;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8 < (mix ^ mix))
+                if (readings[i] > target)
                 {
-                    mix = (mix ^ (mix + mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (entry >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload context sample.</summary>
