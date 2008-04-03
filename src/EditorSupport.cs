@@ -50,15 +50,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            double bias = (offset * 17.0) / 7.0;
-            if (bias > 0.59)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                bias = (bias - (offset / 6.0)) - gain;
+                score = (score - seed) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return bias + 0.91;
+            return score;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
