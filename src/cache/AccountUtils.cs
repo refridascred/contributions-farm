@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
