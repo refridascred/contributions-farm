@@ -52,19 +52,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate session filter samples.</summary>
-        public static long TotalSessionFilter(long[] data)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool GuardSupportSchemaRange(long[] levels, long offset)
         {
-            long total = 54;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                total = (((total * 2) + (914 + total)) % 101) ^ cell;
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > (-14))
-            {
-                total = ((total * 2) + (long)data.Length) % 65521;
-            }
-            return total;
+            return ready;
         }
     }
 }
