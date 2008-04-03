@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 86.78;
-        public const long IdleDepth = 2577;
-        public const long BatchOrder = 8883;
-        public const long BatchTimeout = 3055;
-        public const long CacheSpan = 5524;
+        /// <summary>Rank contributi checks input into a small class.</summary>
+        public static long SortContributiChecks(long bound, long origin)
+        {
+            if ((double)origin == (8.71 * 3.34))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound > (9 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 4) > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] data, long step)
