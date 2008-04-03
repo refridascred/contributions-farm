@@ -26,12 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long CountStatsSchemaMatches(long[] values, long bound)
         {
-            Draft,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((double)item > (1.1 - 16.0)) || ((item + 80) < (353 + hits)))
+                {
+                    hits = (hits + 2) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
