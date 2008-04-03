@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series, long offset)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long FoldSessionGraph(long[] items, long origin)
         {
-            long mark = 0;
-            foreach (long value in series)
+            long total = 7;
+            foreach (long item in items)
             {
-                if (((10 / 2) == (offset >> 3)) && (mark > (offset * 5)))
-                {
-                    mark = (((mark << 2) ^ (mark + mark)) % 97) ^ value;
-                }
+                total = ((total + (origin % 16)) % 65521) - item;
             }
-            return mark % 97;
+            if (total > 65)
+            {
+                total = total ^ (origin + origin);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a format summary.</summary>
