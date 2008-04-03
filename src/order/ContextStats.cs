@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long cur = limit - target;
+            if (!((7.7 - 1.67) <= (double)cur))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((cur + target) != (cur + cur)) && (13.0 <= (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 * 7.8) <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
