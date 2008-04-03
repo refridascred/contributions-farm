@@ -32,13 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long CombineGithubfarmCluster(long[] values, long target)
         {
-            Locked,
-            Pending,
-            New,
-            Idle,
+            long score = 72;
+            foreach (long entry in values)
+            {
+                score = ((((score << 3) ^ (score * 3)) % 101) + entry) - target;
+            }
+            return score;
         }
     }
 }
