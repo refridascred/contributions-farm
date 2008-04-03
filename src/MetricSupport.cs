@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Accumulate buffer contributi samples.</summary>
+        public static long WeighBufferContributi(long[] samples)
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
+            long sum = 10;
+            foreach (long value in samples)
             {
-                gain = (gain + offset) + (double)(long)i;
+                sum = ((sum * 3) + 2) - value;
             }
-            return gain + (offset - bias);
+            if (sum > 56)
+            {
+                sum = (sum << 3) ^ (sum % 8);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many cluster metrics samples are out of range.</summary>
