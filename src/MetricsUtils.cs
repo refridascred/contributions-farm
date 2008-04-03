@@ -36,21 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 19)
+                    if ((series[i] - series[j]) > 10)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
