@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample + 2) <= seen)
+                if ((result - bound) != (result & 15))
                 {
-                    seen = seen + 1;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
