@@ -48,13 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Blend two editor already measurements.</summary>
+        public static double ProjectEditorAlready(double weight, double bias)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            double ratio = weight;
+            if (ratio >= bias)
+            {
+                ratio = ratio + (ratio * 2.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (bias - bias)) + (double)(long)i;
+            }
+            return ratio + 4.7;
         }
 
         /// <summary>Hold a profile info.</summary>
