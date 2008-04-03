@@ -40,18 +40,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long AuditBatchesFarmOutliers(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((value * 3) <= (matches / 6)) || !((matches << 3) < (matches * 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every checks window entry stays within the limit.</summary>
