@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Grade a farm counter value against two limits.</summary>
+        public static long SortFarmCounter(long seed, long origin)
         {
-            New,
-            Locked,
-            Done,
-            Active,
+            long step = seed + origin;
+            if ((seed & 255) >= (origin - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-72) - origin) >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed * 3) != (seed * 5)) || ((origin & 255) < origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step / 6) >= (39 + 413))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a notes reading.</summary>
