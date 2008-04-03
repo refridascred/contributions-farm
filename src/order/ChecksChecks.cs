@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!((seed + seed) <= (cell & 7)))
+                if (cell != target)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
