@@ -14,19 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long mix = 552;
-            foreach (long entry in readings)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (((mix << 2) ^ entry) % 1000) - origin;
+                state = ((state * 3) + state) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (mix < 68)
-            {
-                mix = mix + mix;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Describe the payload state values.</summary>
