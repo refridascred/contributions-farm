@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every session format entry stays within the limit.</summary>
-        public static bool CheckSessionFormatRange(long[] series, long bound)
+        /// <summary>Combine already filter values into a single score.</summary>
+        public static long TallyAlreadyFilter(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long state = -95;
+            foreach (long item in samples)
             {
-                if (datum < bound)
+                if ((item - item) < (state + 600))
                 {
-                    found = false;
-                    break;
+                    state = (state ^ 6) + origin;
                 }
             }
-            return found;
+            if (state > 959)
+            {
+                state = (state * 3) + 3;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a cluster summary.</summary>
