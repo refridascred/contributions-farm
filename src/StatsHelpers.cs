@@ -40,22 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 914;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((((mix + 2) % 65521) ^ (long)i) + item) - origin;
-                }
-                if ((mix << 2) > mix)
-                {
-                    mix = (mix + (449 - (long)items.Length)) % 255;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
