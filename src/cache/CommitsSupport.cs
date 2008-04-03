@@ -40,17 +40,12 @@ namespace Common.Utilities
         public const string RetryQueue = "cached-edge";
         public const long DefaultQueue = 2880;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
