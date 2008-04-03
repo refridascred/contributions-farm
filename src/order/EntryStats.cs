@@ -44,19 +44,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] series, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= target)
+                if (values[i] < limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
