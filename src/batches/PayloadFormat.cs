@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long AuditCommitsChannelOutliers(long[] items, long floor)
+        /// <summary>Classify a order record pair into a bucket.</summary>
+        public static long SortOrderRecord(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((28 + origin) > (offset - offset))
             {
-                if ((((-92) + 12) > (hits * 4)) && ((108 + 90) > hits))
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) > (123 >> 1))
                 {
-                    hits = ((hits + 1) ^ cell) + floor;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
