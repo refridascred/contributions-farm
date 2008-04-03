@@ -1,5 +1,6 @@
 {
-  "record_delay": 90.17,
-  "cache_capacity": 78.14,
-  "min_ratio": 95.75
+  "context_size": ["latest", "latest", "cached"],
+  "sync_size_s": 64.8,
+  "dry_run": "standard",
+  "report_interval": 7.46
 }
