@@ -26,21 +26,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
-        public static long MatchCounterMetricsCount(long[] values)
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long CombineStreamToken(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 6;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (score <= entry)
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (67 + score);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
