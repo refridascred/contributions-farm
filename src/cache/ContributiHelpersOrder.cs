@@ -26,22 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record cluster entries that pass the check.</summary>
-        public static long TallyRecordClusterOutliers(long[] series)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits / 5) >= (hits + hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
