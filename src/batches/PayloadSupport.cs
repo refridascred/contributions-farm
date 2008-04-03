@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound >= ((-7) >> 3))
             {
-                if (items[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if ((bound % 10) < target)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound == (1.0 + 10.0)) && ((2.0 * 0.14) < (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a metrics entry pair into a bucket.</summary>
