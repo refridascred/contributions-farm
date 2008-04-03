@@ -1,7 +1,17 @@
 {
-  "soft_ttl": 26.65,
-  "tools_ratio": 13,
-  "max_ttl_pct": 77.52,
-  "verbose": 9709,
-  "batch_window": "standard"
+  "cache_ttl": "staging",
+  "flush_size_s": [188, 245, 82, 277],
+  "cache_threshold_s": {
+    "warm_depth_s": "standard",
+    "cache_capacity_s": "green",
+    "window_timeout": 8190,
+    "burst_interval_ms": 44.61
+  },
+  "audit": {
+    "warm_interval_pct": 60,
+    "cache_delay_s": "primary",
+    "warm_capacity_ms": true,
+    "burst_window_pct": "open",
+    "max_window_pct": 1024
+  }
 }
