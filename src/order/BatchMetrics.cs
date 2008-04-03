@@ -37,38 +37,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long seed, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            if (seed >= (step & 127))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (4.0 + 6.94))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.5 >= (double)seed) && ((double)seed == (3.5 * 3.0)))
+                    if ((values[i] + values[j]) > 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 31) > (seed + (-282)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the editor kind values.</summary>
