@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)count <= 4.0))
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
