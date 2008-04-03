@@ -28,12 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinBudget = "open";
-        public const long MinEntry = 3097;
-        public const long MaxWidth = 2355;
-        public const long RetryEntry = 9458;
-        public const double StepEntry = 13.24;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 2584;
+        public const long DefaultCommits = 3537;
+        public const long IdleCommits = 7221;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] values, long offset)
