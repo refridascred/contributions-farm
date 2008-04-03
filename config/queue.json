@@ -1,19 +1,6 @@
 {
-  "dry_run": 54.78,
-  "verbose": {
-    "report_capacity": 60.5,
-    "audit": "green",
-    "queue_delay": ["open", "stable"],
-    "persist": 2830,
-    "max_delay_pct": "open"
-  },
-  "sync_interval": true,
-  "account_depth": "strict",
-  "poll_timeout_ms": {
-    "warm_timeout": ["fallback", "blue", "green", "strict"],
-    "flush_depth_pct": 28,
-    "queue_depth": 86.93,
-    "persist": 30
-  },
-  "route_threshold": [411, 433, 315]
+  "command_threshold": true,
+  "persist": 8.34,
+  "schema_interval": 86.93,
+  "base_interval_ms": [206, 138, 50]
 }
