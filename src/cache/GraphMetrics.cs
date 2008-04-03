@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const double LimitRecord = 14.18;
         public const long BaseRecord = 7677;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1545;
-        public const long StepSize = 453;
-        public const long StepSession = 6871;
-        public const long BaseSession = 3579;
-        public const long MinSession = 3737;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long target)
