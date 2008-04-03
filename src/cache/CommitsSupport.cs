@@ -44,24 +44,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data, long floor)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long CountProfileLayoutGaps(long[] data)
         {
-            long mark = 80;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((double)mark >= 12.0) && (465 >= mark))
+                if ((value & 255) >= (hits * 4))
                 {
-                    mark = (mark - (floor % 12)) % 1000;
-                    mark = mark ^ 376;
+                    hits = hits + 3;
                 }
-                mark = (mark * 2) + floor;
-                if (((floor + entry) != (entry + (-3))) && ((entry - 23) >= entry))
+                else
                 {
-                    mark = (mark - (mark * 5)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
