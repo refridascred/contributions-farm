@@ -48,13 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long target)
         {
-            Paused,
-            Active,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits < (10 / 4))
+                {
+                    hits = ((hits + 3) ^ item) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
