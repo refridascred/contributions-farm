@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            if ((double)origin == (7.3 * 6.07))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) != (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double bias = (double)(15 - 53);
+            return (bias + rate) + floor;
         }
 
         /// <summary>Locate a account reading by value.</summary>
