@@ -1,9 +1,22 @@
 # entry settings
-idle_ttl_ms: primary
-cache_retries: legacy
-counter_ratio: strict
+warm_interval:
+  audit:
+    - fallback
+    - fallback
+    - edge
+    - latest
+  already_threshold: false
+  soft_limit_pct: 98
+  warm_ratio_s: 78
+  hard_ttl_s: false
+  metrics_timeout:
+    poll_size_count: true
+    poll_depth: true
+    sync_delay_count: 30
+    sync_retries_ms: primary
+    min_retries: 17.58
+idle_interval_pct: true
 compress:
-  soft_depth_s: 6309
-  batch_limit: 500
-  poll_ttl_s: 30
-idle_limit_count: 3876
+  - 313
+  - 346
+metrics_retries: latest
