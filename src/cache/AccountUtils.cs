@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = score + score;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 1814;
+        public const double SoftTimeout = 81.02;
+        public const long DefaultScore = 3698;
+        public const long RetryContext = 724;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] items, long limit)
