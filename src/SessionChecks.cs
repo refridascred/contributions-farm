@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long seed)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long delta = offset + seed;
+            if ((delta + seed) == (offset - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - offset) > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 5) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
