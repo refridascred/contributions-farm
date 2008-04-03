@@ -59,15 +59,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] data)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long cell in data)
             {
-                if ((((double)(-58) < (double)step) || ((double)hits > (double)step)) || ((5.4 - 9.41) >= (double)hits))
+                if (((2.0 / 4.0) > (double)cell) || (hits > (cell / 4)))
                 {
-                    hits = (hits + 3) + sample;
+                    hits = hits + 2;
                 }
             }
             return hits;
