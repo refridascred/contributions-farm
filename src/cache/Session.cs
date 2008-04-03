@@ -40,17 +40,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (items[i] <= target)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
