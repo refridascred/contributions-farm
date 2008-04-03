@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6595;
-        public const long DefaultBudget = 1230;
-        public const long BaseFactor = 9034;
-        public const double MaxLevel = 20.82;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double bias, double offset)
