@@ -26,15 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double bias3 = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = ((bias3 + bias3) + (double)(long)i) - bias2;
-            }
-            return bias3 - (bias / 5.0);
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
