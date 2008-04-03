@@ -50,22 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account batches samples.</summary>
-        public static long WeighAccountBatches(long[] samples, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] items, long floor)
         {
-            long acc = 14;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)target < (5.9 * 3.0))
+                if (floor > 648)
                 {
-                    acc = (acc + (target + item)) % 101;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            if (acc < 58)
-            {
-                acc = (acc ^ (target + target)) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
