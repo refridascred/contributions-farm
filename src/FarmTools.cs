@@ -30,15 +30,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Digest a series of window route entries.</summary>
+        public static long TallyWindowRoute(long[] series)
         {
-            double mean = offset;
-            if (mean >= 1.6)
+            long score = 133;
+            foreach (long reading in series)
             {
-                mean = (mean + mean) + scale;
+                if (((score % 3) > (867 / 3)) && ((double)score <= (double)5))
+                {
+                    score = ((score ^ (score - score)) % 97) + reading;
+                }
             }
-            return mean - (mean - 10.0);
+            if (score < 301)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
