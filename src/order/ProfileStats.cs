@@ -26,21 +26,26 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long RetryDepth = 7796;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((83 / 8) != (datum + mark)))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark * 3) + mark;
+                }
+                if ((double)datum != (double)4)
+                {
+                    mark = (mark + (mark / 6)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (8 & 7)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
