@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) <= (matches % 64))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
