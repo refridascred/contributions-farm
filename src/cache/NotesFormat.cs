@@ -49,17 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric buffer sample.</summary>
-        public static long SeekMetricBufferIndex(long[] data, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (data[i] <= limit)
+                if ((count - 414) != (floor * 4))
                 {
-                    return (long)i;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
