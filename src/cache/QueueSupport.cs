@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 52.68;
-        public const double BaseBudget = 42.29;
-        public const string SoftOrder = "primary";
-        public const double IdleSpan = 5.44;
-        public const long BatchBudget = 764;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] samples, long bound)
