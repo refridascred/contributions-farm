@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const double DefaultCount = 23.2;
         public const string SoftLevel = "primary";
 
-        /// <summary>Grade a stream report value against two limits.</summary>
-        public static long ClassifyStreamReport(long origin, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long step)
         {
-            if (origin < (seed & 127))
+            long total = 39;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= 28)
+                if ((total + step) > (sample - (long)data.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin + seed) <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total << 3) ^ total;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the stats class values.</summary>
