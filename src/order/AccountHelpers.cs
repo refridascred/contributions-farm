@@ -71,11 +71,14 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7089;
-        public const double RetryWindow = 84.78;
-        public const long BurstWindow = 545;
-        public const string StepWindow = "latest-v2";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long bound, long floor)
