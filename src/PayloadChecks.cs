@@ -72,15 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long reading in readings)
             {
-                if ((((count * 4) == (count & 3)) && (cell >= (cell - cell))) && ((9 / 3) < (count + count)))
+                if ((double)count != (2.47 / 3.0))
                 {
-                    count = count + 1;
+                    count = ((count + 2) ^ reading) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
