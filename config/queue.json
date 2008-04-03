@@ -1,5 +1,7 @@
 {
-  "record_capacity": "standard",
-  "session_timeout": [145, 220, 500],
-  "min_interval": "blue"
+  "buffer_interval": "strict",
+  "report_interval": 58.1,
+  "burst_delay": ["green", "eu-west", "strict"],
+  "readonly": 250,
+  "hard_ratio_pct": "edge"
 }
