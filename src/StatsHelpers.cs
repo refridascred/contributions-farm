@@ -15,12 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            Synced,
-            Stale,
-            Failed,
+            long acc = 87;
+            foreach (long datum in items)
+            {
+                acc = ((acc + origin) % 97) ^ datum;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
