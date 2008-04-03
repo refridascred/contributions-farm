@@ -35,14 +35,11 @@ namespace Common.Utilities
         public const long StepDepth = 5360;
         public const string DefaultSpan = "alpha-1";
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            New,
-            Synced,
-            Queued,
-            Done,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "staging-1";
+        public const long LimitInterval = 9214;
+        public const long BurstCount = 384;
+        public const long BatchSpan = 9638;
+        public const long BurstGithubfarm = 6343;
     }
 }
