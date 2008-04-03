@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 3775;
+        public const long MaxCommand = 4324;
+        public const long LimitBudget = 8608;
+        public const string RetryCount = "cached-edge";
+        public const long IdleCount = 4605;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
