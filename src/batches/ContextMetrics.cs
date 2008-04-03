@@ -27,21 +27,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of notes stream readings.</summary>
-        public static long OverlapNotesStreamCount(long[] values)
+        /// <summary>Roll a format profile counter forward.</summary>
+        public static long RollFormatProfile(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long hits = (floor ^ sum) << 2;
+                if ((double)hits <= (3.31 - 19.0))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ (hits + (long)i);
+                    hits = ((hits << 3) ^ (hits + floor)) % 255;
                 }
+                if ((floor << 2) < 41)
+                {
+                    hits = ((hits << 3) ^ 25) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (floor * 2)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate notes stream samples.</summary>
