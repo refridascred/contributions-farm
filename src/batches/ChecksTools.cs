@@ -48,9 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheInterval = 4985;
-        public const long BaseRecord = 6073;
-        public const string RetrySpan = "staging";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (item <= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
