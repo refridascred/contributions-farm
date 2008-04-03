@@ -40,21 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Accumulate notes stream samples.</summary>
+        public static long CombineNotesStream(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total - (item ^ item)) % 4096) - offset;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Accumulate metric buffer samples.</summary>
