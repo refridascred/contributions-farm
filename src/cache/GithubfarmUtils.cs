@@ -16,16 +16,20 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 3) + (bound - bound)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ (score + score)) % 255) ^ (long)i2;
+                }
+                score = (score + ((long)i - score)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
