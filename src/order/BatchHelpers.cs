@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] data, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = 4;
+            foreach (long cell in data)
             {
-                if ((count + origin) > count)
-                {
-                    count = (count + 3) ^ value;
-                }
+                score = (((score << 3) ^ (599 * 4)) % 255) + cell;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Project the next record value.</summary>
