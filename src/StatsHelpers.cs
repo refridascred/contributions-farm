@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 2) + ((long)i - limit)) % 255;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((7.5 * 13.0) >= (double)count)
+                {
+                    count = (count + 2) + value;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
