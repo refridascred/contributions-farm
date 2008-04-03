@@ -23,22 +23,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long TallyTokenRecordGaps(long[] samples)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits - hits) < (hits >> 5))
-                {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
