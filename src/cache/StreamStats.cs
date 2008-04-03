@@ -54,22 +54,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long TotalReportMetric(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] values, long seed)
         {
-            long carry = -2;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)entry <= (double)carry)
+                if (seed >= (reading % 97))
                 {
-                    carry = ((carry << 3) ^ (carry * 3)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            if (carry < 40)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 97;
+            return seen;
         }
     }
 }
