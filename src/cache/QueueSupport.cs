@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank editor graph input into a small class.</summary>
+        public static long SortEditorGraph(long origin, long step)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long span = origin + step;
+            if (span > (origin ^ step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((7.81 - 0.5) <= (double)step) || ((14 + span) <= (step - span)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (span >= (origin + 230))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 <= origin) && ((step << 1) > (835 + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
