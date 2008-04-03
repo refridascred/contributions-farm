@@ -1,6 +1,9 @@
-id,region
-1,green
-2,315
-3,750
-4,238
-5,blue
+id,weight,owner
+1,cached,staging
+2,latest,668
+3,322,91.4
+4,7.8,33.89
+5,open,551
+6,469,76.75
+7,19,3
+8,2.08,local
