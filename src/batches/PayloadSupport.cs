@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ready = false;
-                    break;
+                    state = ((state + (state + origin)) % 1000) - (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
