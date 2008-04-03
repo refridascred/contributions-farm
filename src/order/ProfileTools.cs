@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
