@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Look up the position of a contributi order sample.</summary>
+        public static long SeekContributiOrderIndex(long[] items, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(total <= (total & 1)))
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    total = (total - 78) % 255;
+                    return (long)i;
                 }
-                if (!((total >> 1) == (3 + 12)))
-                {
-                    total = total ^ (2 + bound);
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
