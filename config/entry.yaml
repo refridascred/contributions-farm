@@ -1,5 +1,6 @@
 # entry settings
-idle_window_ms: false
-retry_limit: cached
-readonly: 30
-verbose: legacy
+sync_threshold_s: blue
+soft_ttl_ms: blue
+warm_window_count: false
+strict: 20.62
+dry_run: 77.92
