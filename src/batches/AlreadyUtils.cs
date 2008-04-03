@@ -6,19 +6,26 @@ namespace Common.Utilities
     public static class AlreadyUtils
     {
         /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
+        public static long StepSchema(long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                result = result ^ offset;
-                if ((offset - (-45)) != (result + result))
+                if ((floor / 3) >= (floor >> 1))
                 {
-                    result = ((result * 3) + (offset << 2)) % 1000;
+                    carry = ((carry << 2) ^ (floor * 3)) % 97;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    carry = (carry - carry) % 4096;
+                }
+                if ((floor - 468) != (floor - 461))
+                {
+                    carry = carry ^ (600 ^ carry);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Accumulate format samples.</summary>
