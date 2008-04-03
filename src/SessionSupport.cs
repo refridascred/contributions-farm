@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order channel value.</summary>
-        public static double AdjustOrderChannel(double scale, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] readings)
         {
-            double load = span;
-            if (load < (load / 2.0))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                load = load - (scale + load);
+                if (9 <= (count * 4))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            else
-            {
-                load = load + 9.58;
-            }
-            return load + 9.3;
+            return count;
         }
 
         /// <summary>Measure how many report buffer samples are out of range.</summary>
