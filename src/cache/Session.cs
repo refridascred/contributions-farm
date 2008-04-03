@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long AuditStatsChecksGaps(long[] levels, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((target + reading) > reading) && ((count >> 4) <= (target >> 5)))
                 {
-                    score = score + (long)i2;
+                    count = count + 3;
                 }
-                score = score + (24 - score);
-                score = (score + ((long)i + 778)) % 255;
-                score = ((score * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a graph options.</summary>
