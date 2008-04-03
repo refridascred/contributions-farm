@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long bound)
+        /// <summary>Project the next window buffer value.</summary>
+        public static double ProjectWindowBuffer(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = scale;
+            if (bias >= bias)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) - floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - scale) - (double)(long)i;
+            }
+            return bias - (double)87;
         }
 
         /// <summary>Hold a layout header.</summary>
