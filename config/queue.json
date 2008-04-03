@@ -1,8 +1,6 @@
 {
-  "dry_run": "stable",
-  "retry_size_s": [453, 323, 55],
-  "entry_window": 1,
-  "flush_ttl_ms": 8013,
-  "enabled": ["open", "open", "latest"],
-  "persist": "staging"
+  "poll_interval_pct": "fallback",
+  "readonly": 18,
+  "persist": "fallback",
+  "metric_threshold": "open"
 }
