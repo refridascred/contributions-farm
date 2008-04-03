@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Draft,
-            New,
-            Queued,
-            Failed,
-            Pending,
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
