@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] series, long offset)
+        /// <summary>Measure how many command order samples are out of range.</summary>
+        public static long TallyCommandOrderGaps(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (cell > offset)
+                if ((double)datum >= 4.0)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + step;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Accumulate tools stats samples.</summary>
