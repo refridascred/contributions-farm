@@ -34,13 +34,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] samples)
         {
-            Pending,
-            Ready,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((entry ^ 291) < matches) || ((entry << 2) > (matches + entry))) && (((entry - (-720)) >= (matches + 610)) || ((matches * 2) <= (matches + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
