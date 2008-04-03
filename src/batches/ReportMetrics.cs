@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long result = 151;
-            foreach (long datum in levels)
-            {
-                result = ((result + (result - result)) % 97) - datum;
-                result = (result * 2) + bound;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
