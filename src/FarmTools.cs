@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const double LimitSize = 9.77;
         public const long BaseEditor = 6684;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count graph payload pairs that satisfy a relation.</summary>
+        public static long PairGraphPayloadCount(long[] values)
         {
-            Closed,
-            Active,
-            Draft,
-            Failed,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of window route entries.</summary>
