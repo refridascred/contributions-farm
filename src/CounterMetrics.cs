@@ -36,20 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order report readings against a bound.</summary>
-        public static bool GuardOrderReportLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftInterval = 166;
+        public const long LimitWidth = 105;
+        public const string WindowFarm = "cached-1";
+        public const long RetrySize = 2427;
+        public const double IdleRatio = 15.45;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
