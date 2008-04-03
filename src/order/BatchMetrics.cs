@@ -22,12 +22,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "cached-1";
-        public const long WindowSpan = 7024;
-        public const double WindowDepth = 33.99;
-        public const string LimitFactor = "local-1";
-        public const string LimitLevel = "local-v2";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long seed, long step)
