@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes metric samples.</summary>
-        public static long CombineNotesMetric(long[] samples, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items, long seed)
         {
-            long mix = 289;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((seed + seed) <= (cell & 7)))
                 {
-                    mix = (((mix << 3) ^ bound) % 4096) ^ (long)i;
-                }
-                if (((mix * 3) > item) || ((item % 60) != (bound ^ 6)))
-                {
-                    mix = (mix * 5) + (bound >> 2);
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
