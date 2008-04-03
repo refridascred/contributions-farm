@@ -28,21 +28,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 1130;
+        public const long IdleRecord = 3986;
+        public const long BurstRecord = 4908;
     }
 }
