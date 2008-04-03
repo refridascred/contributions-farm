@@ -85,20 +85,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((acc - acc) != (seed * 3)) || ((double)seed <= 15.0))
+                if (33 > (sample / 9))
                 {
-                    acc = acc ^ seed;
+                    hits = hits + 2;
                 }
-                acc = acc + (93 + acc);
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
