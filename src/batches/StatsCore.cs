@@ -43,14 +43,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            Failed,
-            Done,
-            Locked,
-            Queued,
-            Paused,
+            long sum = 0;
+            foreach (long entry in readings)
+            {
+                if ((1 * 2) < (sum + 9))
+                {
+                    sum = (sum + (sum - 7)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ entry) % 101;
+                }
+                if ((double)entry != (3.8 - 8.26))
+                {
+                    sum = (sum ^ (entry % 2)) % 101;
+                }
+                sum = (sum - 4) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token snapshot.</summary>
