@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Retry,
+            Idle,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
