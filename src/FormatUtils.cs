@@ -32,12 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 615;
+        public const long WindowRoute = 4781;
+        public const long RetryRoute = 6864;
 
         /// <summary>Match up buffer samples.</summary>
         public static long PairBufferCount(long[] series)
