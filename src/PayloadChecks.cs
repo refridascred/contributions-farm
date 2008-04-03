@@ -41,15 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            double gain2 = span;
-            for (int i = 0; i < 9; i++)
+            double ratio2 = ratio + bias;
+            if (ratio2 <= (double)1)
             {
-                gain2 = (gain2 - (span / 6.0)) + (double)(long)i;
+                ratio2 = ratio2 + bias;
             }
-            return gain2 - (gain / 2.0);
+            return ratio2 - bias;
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
