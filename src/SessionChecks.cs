@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long result = 376;
-            foreach (long datum in values)
+            long total = 516;
+            foreach (long value in values)
             {
-                if ((datum + result) == (datum + 36))
-                {
-                    result = (result ^ (result + result)) % 1000;
-                }
+                total = ((total ^ total) % 4096) ^ value;
             }
-            return result;
+            if (total < 4)
+            {
+                total = (total * 5) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
