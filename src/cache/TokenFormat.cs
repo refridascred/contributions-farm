@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up already graph samples.</summary>
-        public static long OverlapAlreadyGraphCount(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
