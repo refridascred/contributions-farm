@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 93.62;
-        public const double BatchSpan = 66.58;
-        public const long SoftStats = 5015;
-        public const long CacheInterval = 1298;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Queued,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] readings)
