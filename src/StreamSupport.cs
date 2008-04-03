@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Audit cache format readings against a rule.</summary>
+        public static long AuditCacheFormatHits(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long reading in values)
             {
-                if (!((tally + 63) < (tally & 255)))
+                if (!!((long)values.Length < tally))
                 {
-                    tally = (tally + 2) - reading;
+                    tally = ((tally + 3) + reading) + limit;
                 }
             }
             return tally;
