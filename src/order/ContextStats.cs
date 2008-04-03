@@ -63,17 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long step)
+        /// <summary>Validate profile session readings against a bound.</summary>
+        public static bool CheckProfileSessionRange(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (series[i] < step)
+                if (value <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
