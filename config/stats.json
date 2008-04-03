@@ -1,23 +1,6 @@
 {
-  "sync_interval_s": 31,
-  "profile_capacity": false,
-  "metrics_timeout": "standard",
-  "persist": {
-    "dry_run": false,
-    "notes_ratio": false,
-    "sync_ttl": {
-      "burst_ttl_pct": 3.63,
-      "buffer_size": ["edge", "green", "blue", "green"],
-      "cache_depth_pct": true,
-      "min_ratio_s": 35.28,
-      "compress": "blue"
-    },
-    "burst_limit_s": {
-      "readonly": "staging",
-      "retry_timeout_s": "open",
-      "strict": [88, 50, 219]
-    },
-    "schema_timeout": ["strict", "stable", "fallback"],
-    "poll_depth_s": 500
-  }
+  "idle_window_ms": 5596,
+  "batch_timeout_pct": ["open", "fallback", "eu-west", "stable"],
+  "enabled": 37,
+  "record_timeout": true
 }
