@@ -26,18 +26,18 @@ namespace Common.Utilities
             return scale - (double)408;
         }
 
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long MeasureReportFarmGaps(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = 268;
+            foreach (long value in values)
             {
-                if ((hits - item) >= hits)
+                if ((value >> 5) <= floor)
                 {
-                    hits = hits + 1;
+                    carry = (carry * 4) + carry;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
