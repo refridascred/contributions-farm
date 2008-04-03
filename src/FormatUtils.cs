@@ -77,11 +77,11 @@ namespace Common.Utilities
         public const long BaseToken = 3674;
         public const long CacheCount = 2303;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 49.72;
+        public const long MinCommand = 6169;
+        public const double HardFactor = 49.75;
+        public const long WindowInterval = 5097;
+        public const double WindowCommand = 59.01;
     }
 }
