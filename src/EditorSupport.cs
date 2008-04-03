@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine farm context values into a single score.</summary>
-        public static long TotalFarmContext(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long score = 756;
-            foreach (long reading in readings)
-            {
-                if (score < reading)
-                {
-                    score = (score * 2) + (reading - reading);
-                }
-            }
-            if (score > 85)
-            {
-                score = score + (score >> 4);
-            }
-            return score % 97;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
