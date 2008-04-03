@@ -53,21 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] <= seed)
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
