@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] series, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((53 ^ 25) <= (seed + reading))
+                result = result ^ offset;
+                if ((offset - (-45)) != (result + result))
                 {
-                    seen = seen + 3;
+                    result = ((result * 3) + (offset << 2)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate format samples.</summary>
