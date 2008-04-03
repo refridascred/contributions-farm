@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const double LimitRecord = 14.18;
         public const long BaseRecord = 7677;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Retry,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1545;
+        public const long StepSize = 453;
+        public const long StepSession = 6871;
+        public const long BaseSession = 3579;
+        public const long MinSession = 3737;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long target)
