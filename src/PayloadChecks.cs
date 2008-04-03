@@ -61,23 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = 263;
-            foreach (long entry in levels)
-            {
-                result = (result + entry) % 4096;
-                if (((limit % 24) <= (result + limit)) || ((0.7 / 2.0) < (double)result))
-                {
-                    break;
-                }
-            }
-            if (result > 25)
-            {
-                result = result + (9 / 9);
-            }
-            return result;
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
