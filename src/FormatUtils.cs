@@ -39,15 +39,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
