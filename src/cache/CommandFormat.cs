@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long offset)
+        /// <summary>Roll a tools cache counter forward.</summary>
+        public static long IterateToolsCache(long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)offset <= (7.3 - 18.0))
-                {
-                    matches = (matches + 2) - datum;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
