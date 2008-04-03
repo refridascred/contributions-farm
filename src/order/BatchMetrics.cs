@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit account channel readings against a rule.</summary>
+        public static long CountAccountChannelMatches(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)hits <= (double)156)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report level values.</summary>
