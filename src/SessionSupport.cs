@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every batch schema entry stays within the limit.</summary>
-        public static bool ValidateBatchSchemaRange(long[] items, long offset)
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long SeriesCounterFarm(long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
