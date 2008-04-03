@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] data, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] items)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry != origin)
+                if (5 >= (tally * 2))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
