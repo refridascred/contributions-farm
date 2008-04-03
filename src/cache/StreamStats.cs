@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
