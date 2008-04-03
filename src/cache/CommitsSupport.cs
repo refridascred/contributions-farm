@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            Done,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the batch kind values.</summary>
