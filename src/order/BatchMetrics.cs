@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((value + value) == (count + count)) && (value < (count ^ 716)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
