@@ -29,23 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double offset)
-        {
-            double load = (double)93 - rate;
-            if (load >= (load / 4.0))
-            {
-                load = load - (rate - offset);
-            }
-            else
-            {
-                load = load - (rate * 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "fallback-v2";
+        public const double MaxEntry = 25.73;
+        public const string RetrySpan = "latest-edge";
+        public const string MinEntry = "standard-v2";
     }
 }
