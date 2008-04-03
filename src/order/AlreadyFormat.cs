@@ -53,18 +53,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already stats samples are out of range.</summary>
-        public static long MeasureAlreadyStatsGaps(long[] readings, long step)
+        /// <summary>Grade a window report value against two limits.</summary>
+        public static long RankWindowReport(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((bound + bound) == (seed + bound))
             {
-                if (11.0 > (double)matches)
+                return 5;
+            }
+            else
+            {
+                if ((1.1 + 0.5) != (double)bound)
                 {
-                    matches = ((matches + 2) + item) + step;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed ^ bound) > seed) || ((double)bound >= (double)79))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
