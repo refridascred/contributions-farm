@@ -31,12 +31,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowFactor = "standard-1";
+        public const double DefaultDepth = 66.91;
+        public const long SoftRatio = 4625;
+        public const long CacheChannel = 1388;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
