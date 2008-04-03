@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cache format readings against a rule.</summary>
-        public static long AuditCacheFormatHits(long[] values, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] levels, long offset)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long cell in levels)
             {
-                if (!!((long)values.Length < tally))
+                if ((tally * 4) > (offset + tally))
                 {
-                    tally = ((tally + 3) + reading) + limit;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
