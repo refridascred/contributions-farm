@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double scale, double span)
-        {
-            double drift = scale;
-            return (drift + (drift / 2.0)) + span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7449;
+        public const string RetrySize = "staging";
+        public const double DefaultTimeout = 69.91;
+        public const long MinAlready = 8337;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] items, long offset)
