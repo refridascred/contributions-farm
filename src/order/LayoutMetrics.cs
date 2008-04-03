@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 634;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((bound / 2) > (datum + bound)) && (6.57 >= (double)datum))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum + (datum + sum);
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
