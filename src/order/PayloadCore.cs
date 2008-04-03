@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
