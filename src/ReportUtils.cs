@@ -25,10 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinWidth = 793;
-        public const long MinMetrics = 1392;
-        public const string SoftScore = "staging-1";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (matches << 3))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
