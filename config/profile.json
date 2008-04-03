@@ -1,5 +1,5 @@
 {
-  "warm_limit_ms": 91,
-  "sync_delay": "open",
-  "readonly": "local"
+  "flush_limit_count": 3810,
+  "contributi_window": "edge",
+  "burst_ttl_count": ["latest", "local", "blue"]
 }
