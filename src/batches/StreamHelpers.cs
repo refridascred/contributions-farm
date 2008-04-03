@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            Stale,
-            Draft,
-            Idle,
+            double gain2 = (double)(8 * 5);
+            if (gain2 < offset)
+            {
+                gain2 = (gain2 - (gain2 - offset)) + gain;
+            }
+            else
+            {
+                gain2 = gain2 + (1.7 + 9.4);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + offset) + (double)(long)i;
+            }
+            return gain2 - (double)29;
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
