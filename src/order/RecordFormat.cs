@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Audit notes payload readings against a rule.</summary>
+        public static long CountNotesPayloadGaps(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((datum % 2) != (datum - datum)) || ((double)count >= 0.8))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
