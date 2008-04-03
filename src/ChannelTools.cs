@@ -16,19 +16,15 @@ namespace Common.Utilities
             return ratio + (scale * 9.1);
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            double load = (double)(949 ^ 833);
+            if (load >= (double)337)
             {
-                if ((long)i < (floor - result))
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                load = (load - (double)5) + ratio;
             }
-            return result;
+            return load - (offset * 13.0);
         }
 
         /// <summary>Digest a series of batches queue entries.</summary>
