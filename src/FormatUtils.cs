@@ -48,31 +48,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long origin, long bound)
+        /// <summary>Accumulate schema record samples.</summary>
+        public static long ScoreSchemaRecord(long[] series)
         {
-            if ((7.5 / 5.0) >= (double)bound)
+            long state = 94;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (69 <= bound)
+                if ((double)entry == (7.8 * 1.7))
                 {
-                    return 4;
+                    state = (state + ((long)series.Length << 1)) % 65521;
                 }
-                else
+                if (((entry + state) >= (52 % 7)) && ((5.62 + 3.0) != (double)entry))
                 {
-                    if (((706 - bound) < ((-12) - origin)) || ((0.17 / 5.0) >= (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (state < 343)
+            {
+                state = (state ^ (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
