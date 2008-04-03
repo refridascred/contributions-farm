@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((double)datum >= (double)tally)
+                if (entry != floor)
                 {
-                    tally = (tally + 3) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
