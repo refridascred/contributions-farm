@@ -23,22 +23,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinInterval = 89.04;
+        public const long WindowAlready = 6756;
+        public const long BatchWidth = 684;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
