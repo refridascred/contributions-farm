@@ -46,31 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context editor value against two limits.</summary>
-        public static long GradeContextEditor(long origin, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long floor)
         {
-            if (origin < (origin * 2))
+            long carry = 0;
+            foreach (long reading in data)
             {
-                return 7;
+                carry = ((carry ^ (-6)) ^ reading) - floor;
             }
-            else
-            {
-                if (((origin / 5) != (origin >> 5)) && (origin < 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - 934) > floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
