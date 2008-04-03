@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            long result = 9;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                result = (((result << 2) ^ sample) % 1000) - origin;
+                if ((double)cell >= 9.2)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (result > 8)
-            {
-                result = (result ^ (result & 255)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
