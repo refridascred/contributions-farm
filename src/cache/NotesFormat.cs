@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4930;
-        public const long DefaultAccount = 7004;
-        public const long RetryAccount = 8038;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long offset)
