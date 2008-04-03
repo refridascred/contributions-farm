@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long MeasureChecksFilterMatches(long[] series, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((bound ^ reading) < (reading * 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the commits level values.</summary>
