@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long TallyOrderFormatHits(long[] values, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - sample) > sample)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the session state values.</summary>
