@@ -41,18 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((cell % 16) <= 9) && ((9 + 215) < cell))
+                if (datum > limit)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
