@@ -65,15 +65,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache schema entries.</summary>
-        public static long FoldCacheSchema(long[] readings, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long sum = 844;
-            foreach (long sample in readings)
+            long mark = 420;
+            foreach (long datum in items)
             {
-                sum = (((sum ^ (sum >> 5)) % 97) + sample) + step;
+                mark = mark + mark;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (mark << 2) ^ (long)i;
+                }
+                if (mark > (mark + 299))
+                {
+                    mark = ((mark << 3) ^ (datum + mark)) % 1000;
+                }
             }
-            return sum;
+            return mark;
         }
     }
 }
