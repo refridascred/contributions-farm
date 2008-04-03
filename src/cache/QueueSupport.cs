@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = step + origin;
+            if (step > (bound * 3))
             {
-                if (items[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if ((89 >= (bound + step)) || ((origin - 9) < origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin << 2) > bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every already cache entry stays within the limit.</summary>
