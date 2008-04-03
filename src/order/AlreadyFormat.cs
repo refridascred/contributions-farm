@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long bound)
         {
-            long mark = 79;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((16.0 - 6.5) <= (double)mark)
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
                 {
-                    mark = mark ^ (mark + 9);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark - reading);
-                }
-                if (mark > limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
