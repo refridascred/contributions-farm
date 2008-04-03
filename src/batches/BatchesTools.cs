@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long target)
+        /// <summary>Rank notes channel input into a small class.</summary>
+        public static long RankNotesChannel(long origin, long bound)
         {
-            if (!((double)target >= (5.7 / 5.0)))
+            if ((origin > (bound + origin)) && ((bound >> 5) >= (bound + 90)))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((target + floor) <= (32 + target)))
+                if (((bound + origin) <= (origin % 64)) || (origin < (bound & 1)))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound < origin) && ((origin * 2) >= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
