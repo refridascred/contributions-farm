@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long CountFilterContextMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 6) != (count / 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardWidth = "primary-1";
+        public const long BaseFormat = 3804;
+        public const long MinScore = 1775;
+        public const long CacheFormat = 4521;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
