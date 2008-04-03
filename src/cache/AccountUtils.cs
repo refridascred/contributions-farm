@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit ^ origin;
+            if (!((double)origin > 3.35))
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((lane >> 1) < (lane >> 4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + origin) <= 8) || (lane >= (origin - lane)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane >> 2) >= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
