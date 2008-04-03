@@ -57,13 +57,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
-            Paused,
-            Done,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((6.9 + 7.02) < (double)entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
