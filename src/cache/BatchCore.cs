@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long bound, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values, long seed)
         {
-            long bound2 = bound + origin;
-            if (bound2 < (6 >> 2))
+            long anchor = 2;
+            foreach (long value in values)
             {
-                return 1;
+                anchor = ((anchor * 2) + (anchor ^ seed)) - value;
             }
-            else
-            {
-                if ((origin % 3) < (bound * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 & 127) == (bound >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
