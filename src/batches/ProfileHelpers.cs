@@ -35,11 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinWidth = 60.07;
-        public const long MaxChannel = 1166;
-        public const long BatchChannel = 7513;
-        public const long DefaultChannel = 3945;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] values, long bound)
