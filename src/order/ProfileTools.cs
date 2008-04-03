@@ -14,13 +14,31 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long bound)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            if ((double)bound < (8.5 - 8.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound <= (79 + limit)) || ((limit >> 3) > bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.19 - 6.71) <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
