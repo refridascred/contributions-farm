@@ -40,18 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data, long target)
+        /// <summary>Count the contributi stats entries that pass the check.</summary>
+        public static long MeasureContributiStatsOutliers(long[] readings)
         {
-            long state = 5;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((sample - sample) != (target - target))
+                if ((cell * 4) >= (tally >> 1))
                 {
-                    state = (state * 4) + (target / 3);
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many editor payload samples are out of range.</summary>
