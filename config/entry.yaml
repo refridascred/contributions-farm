@@ -1,8 +1,5 @@
 # entry settings
-notes_capacity: true
-hard_interval:
-  - 201
-  - 355
-  - 132
-  - 209
-flush_ttl: 82
+idle_window_ms: false
+retry_limit: cached
+readonly: 30
+verbose: legacy
