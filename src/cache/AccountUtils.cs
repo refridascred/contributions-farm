@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultLevel = "staging";
+        public const long SoftCount = 1396;
+        public const long IdleFilter = 2669;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] readings)
