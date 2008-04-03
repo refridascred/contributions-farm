@@ -45,11 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items)
         {
-            double scale2 = (scale + scale) + scale;
-            return (scale2 + (17.0 + scale)) + bias;
+            long acc = 897;
+            foreach (long sample in items)
+            {
+                if (((sample % 97) > acc) || ((acc - acc) < (acc % 24)))
+                {
+                    acc = (acc << 3) ^ (acc & 255);
+                }
+            }
+            if (acc < 795)
+            {
+                acc = ((acc << 3) ^ 772) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
