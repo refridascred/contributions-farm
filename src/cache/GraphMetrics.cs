@@ -54,17 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long target)
+        /// <summary>Audit commits already readings against a rule.</summary>
+        public static long TallyCommitsAlreadyOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] <= target)
+                if ((datum % 3) >= tally)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up graph stats samples.</summary>
