@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            Draft,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
