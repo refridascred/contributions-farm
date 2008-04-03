@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools token entries that pass the check.</summary>
-        public static long MeasureToolsTokenHits(long[] series, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((((-6) - entry) >= offset) || (((offset & 7) < entry) && ((offset - entry) != (745 + entry))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
