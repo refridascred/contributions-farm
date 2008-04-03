@@ -20,31 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank counter batches input into a small class.</summary>
-        public static long ClassifyCounterBatches(long seed, long seed2)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (!(seed2 > (56 / 9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 % 100) <= (seed2 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.85 - 6.76) < (double)3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
