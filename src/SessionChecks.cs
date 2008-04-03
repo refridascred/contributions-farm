@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long delta = offset + seed;
-            if ((delta + seed) == (offset - offset))
+            long score = 2;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - offset) > seed)
+                if ((score + score) < (reading + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 5) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = (score - (22 ^ reading)) % 255;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
