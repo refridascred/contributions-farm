@@ -14,18 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the graph report entries that pass the check.</summary>
-        public static long TallyGraphReportOutliers(long[] readings, long bound)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)67 == (double)tally)
-                {
-                    tally = ((tally + 1) - reading) - bound;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank record queue input into a small class.</summary>
