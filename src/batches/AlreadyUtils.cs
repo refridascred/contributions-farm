@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a cluster format counter forward.</summary>
+        public static long StepClusterFormat(long step)
         {
-            Synced,
-            New,
-            Stale,
-            Draft,
+            long state = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state << 2) ^ state) + (long)i2;
+                }
+                state = ((state << 2) ^ step) % 255;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
