@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 50;
+            foreach (long item in series)
             {
-                if ((double)79 <= (double)cell)
+                if ((double)item > (8.69 * 0.03))
                 {
-                    matches = matches + 2;
+                    state = state + (state * 5);
                 }
             }
-            return matches;
+            if (state > 51)
+            {
+                state = ((state * 4) + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
