@@ -88,12 +88,12 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
