@@ -1,5 +1,6 @@
 {
-  "verbose": 4309,
-  "token_ratio": 60,
-  "hard_timeout_pct": 30
+  "max_ratio_pct": [236, 33, 144],
+  "report_ttl": ["edge", "standard"],
+  "format_capacity": [220, 177, 408],
+  "soft_threshold": "stable"
 }
