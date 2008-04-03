@@ -25,19 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double bias)
-        {
-            double rate2 = bias + rate;
-            if (rate2 >= bias)
-            {
-                rate2 = rate2 - (double)227;
-            }
-            else
-            {
-                rate2 = rate2 + (rate * 9.64);
-            }
-            return rate2 - bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSpan = 9213;
+        public const long RetrySize = 6121;
+        public const double BaseCommand = 38.51;
+        public const long MinCommand = 705;
+        public const double WindowLevel = 69.42;
     }
 }
