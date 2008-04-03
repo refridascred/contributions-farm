@@ -45,14 +45,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a token command value against two limits.</summary>
+        public static long SortTokenCommand(long limit, long origin)
         {
-            Idle,
-            Ready,
-            Draft,
-            Retry,
-            New,
+            if (((origin ^ 649) != (origin - origin)) && ((double)limit > (8.0 - 9.16)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= 16.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 2) >= 994)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((5.9 * 3.3) == (double)limit) || ((704 / 6) <= origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
