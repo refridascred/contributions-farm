@@ -1,29 +1,5 @@
 # entry settings
-idle_interval:
-  hard_window:
-    soft_ratio: 6422
-    max_depth_pct: eu-west
-    flush_capacity_ms: 29
-  batch_ttl: open
-  default_delay_s: 3315
-  warm_threshold_s:
-    strict: standard
-    poll_ttl_s: true
-    default_interval_pct: 2328
-  session_timeout: eu-west
-  flush_timeout_pct:
-    flush_depth:
-      - 355
-      - 328
-      - 442
-    sync_window:
-      - 172
-      - 465
-      - 342
-      - 36
-    graph_threshold: blue
-    sync_size_pct: 7950
-default_ttl_ms:
-  - 181
-  - 273
-route_ttl: 60
+warm_delay: false
+default_depth_count: 84
+flush_limit_s: local
+retry_ttl_ms: edge
