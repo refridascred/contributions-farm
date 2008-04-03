@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long MaxDepth = 9330;
         public const long BaseWidth = 7404;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Pending,
-            Queued,
-            Done,
-            Stale,
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
