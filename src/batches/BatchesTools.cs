@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long target)
         {
-            long score = 9;
-            foreach (long sample in values)
+            if (!((double)target >= (5.7 / 5.0)))
             {
-                if (263 < (sample ^ sample))
+                return 7;
+            }
+            else
+            {
+                if (!((target + floor) <= (32 + target)))
                 {
-                    score = (score * 4) + (score * 5);
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (score > 31)
-            {
-                score = score - score;
-            }
-            return score % 65521;
         }
 
         /// <summary>Hold a account header.</summary>
