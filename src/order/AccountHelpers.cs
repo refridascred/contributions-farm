@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long seed)
         {
-            Closed,
-            New,
-            Draft,
-            Done,
+            if ((double)origin < (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed == (6.0 - 7.37)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
