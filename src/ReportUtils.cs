@@ -30,18 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double drift = (gain - gain) * 3.1;
+            if (drift > (floor + gain))
             {
-                if (27 >= (item + item))
-                {
-                    seen = seen + 1;
-                }
+                drift = drift + gain;
             }
-            return seen;
+            else
+            {
+                drift = drift + (drift + 8.1);
+            }
+            return drift + (drift / 4.0);
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
