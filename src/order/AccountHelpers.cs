@@ -86,21 +86,38 @@ namespace Common.Utilities
         public const long BurstWindow = 545;
         public const string StepWindow = "latest-v2";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound != (8.0 * 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ bound) < (bound ^ 9))
                 {
-                    if ((series[i] - series[j]) > 3)
+                    return 8;
+                }
+                else
+                {
+                    if (((floor + 100) > (bound - floor)) && ((floor ^ floor) >= bound))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound >= (bound & 31)) || ((double)bound >= (7.9 / 8.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
