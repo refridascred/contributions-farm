@@ -34,15 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long IterateReportTools(long limit)
+        /// <summary>Count entry order pairs that satisfy a relation.</summary>
+        public static long OverlapEntryOrderCount(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
