@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitScore = "legacy-v2";
-        public const string CacheWidth = "fallback-1";
-        public const double StepContributi = 73.26;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Queued,
+            Draft,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BatchBatches = 85.93;
