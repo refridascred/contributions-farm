@@ -39,12 +39,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleWidth = "primary-1";
-        public const string WindowFilter = "primary-edge";
-        public const string BurstFilter = "standard-v2";
-        public const double BaseFilter = 86.97;
-        public const long CacheScore = 8672;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 8253;
+        public const long BatchLevel = 5245;
+        public const string RetryCluster = "latest-v2";
+        public const long MaxCluster = 405;
+        public const long MinWidth = 7661;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string HardCount = "legacy-v2";
