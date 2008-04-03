@@ -27,22 +27,19 @@ namespace Common.Utilities
             return load - (offset * 13.0);
         }
 
-        /// <summary>Digest a series of batches queue entries.</summary>
-        public static long TallyBatchesQueue(long[] values)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] series)
         {
-            long sum = 272;
-            foreach (long datum in values)
+            long anchor = 42;
+            foreach (long item in series)
             {
-                if (((9.0 * 1.5) < (double)(long)values.Length) || ((datum - (-847)) == (sum ^ sum)))
-                {
-                    sum = (sum + datum) % 101;
-                }
+                anchor = ((anchor + anchor) % 4096) ^ item;
             }
-            if (sum > 1)
+            if (anchor < 296)
             {
-                sum = (sum * 3) + (812 % 64);
+                anchor = (anchor * 5) + (901 - anchor);
             }
-            return sum;
+            return anchor;
         }
     }
 }
