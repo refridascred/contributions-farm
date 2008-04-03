@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long offset)
+        /// <summary>Fold a list of stream metric readings.</summary>
+        public static long CombineStreamMetric(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long item in series)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = (((total << 2) ^ (total - total)) % 1000) + item;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
