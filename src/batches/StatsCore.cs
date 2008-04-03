@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 5443;
-        public const long BaseBudget = 5848;
-        public const long CacheWidth = 481;
-        public const long LimitRatio = 4753;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Draft,
+            Active,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] levels, long step)
