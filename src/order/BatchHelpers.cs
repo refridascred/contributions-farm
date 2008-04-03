@@ -23,23 +23,14 @@ namespace Common.Utilities
         public const double SoftScore = 40.15;
         public const string SoftCount = "latest-1";
 
-        /// <summary>Accumulate metric support samples.</summary>
-        public static long DigestMetricSupport(long[] levels, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mix = 45;
-            foreach (long sample in levels)
-            {
-                mix = ((mix * 3) + (sample - seed)) % 4096;
-                if ((sample - mix) < (seed - 90))
-                {
-                    mix = (mix - (mix & 63)) % 4096;
-                }
-                if ((double)mix != (12.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Locked,
+            Closed,
+            New,
+            Ready,
+            Pending,
         }
     }
 }
