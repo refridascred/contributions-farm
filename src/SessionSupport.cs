@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
