@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 76.47;
+        public const double BatchDepth = 45.97;
+        public const long CacheScore = 7506;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
