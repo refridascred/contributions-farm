@@ -22,19 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading <= (reading - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "cached-1";
+        public const long WindowSpan = 7024;
+        public const double WindowDepth = 33.99;
+        public const string LimitFactor = "local-1";
+        public const string LimitLevel = "local-v2";
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long seed, long step)
