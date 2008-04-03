@@ -38,12 +38,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            Locked,
-            Ready,
-            Active,
+            long carry = 884;
+            foreach (long sample in readings)
+            {
+                if (((double)sample <= (double)carry) && (((-6) - sample) > (carry >> 2)))
+                {
+                    carry = ((carry * 4) + (99 << 2)) % 4096;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
