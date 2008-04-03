@@ -33,11 +33,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowFactor = "standard-1";
-        public const double DefaultDepth = 66.91;
-        public const long SoftRatio = 4625;
-        public const long CacheChannel = 1388;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Synced,
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchRatio = 3683;
