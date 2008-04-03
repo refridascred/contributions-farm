@@ -1,7 +1,8 @@
-id,rank,state,region
-1,515,722,latest
-2,42.77,387,9.99
-3,484,57.37,edge
-4,8.03,3.72,standard
-5,421,237,open
-6,strict,primary,849
+id,token,active,state
+1,207,453,734
+2,blue,305,34.93
+3,staging,blue,93.65
+4,10.83,920,340
+5,328,49.32,staging
+6,128,433,733
+7,61.42,latest,380
