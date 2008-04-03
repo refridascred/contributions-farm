@@ -62,11 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            long mark = 3;
+            foreach (long sample in samples)
+            {
+                mark = (mark + ((long)samples.Length * 5)) + sample;
+            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
