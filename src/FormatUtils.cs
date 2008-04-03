@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] values, long offset)
         {
-            Dropped,
-            Locked,
-            Done,
-            Idle,
-            New,
+            long anchor = 61;
+            foreach (long datum in values)
+            {
+                if (((8.79 * 0.82) != (double)offset) && ((7.49 / 2.0) <= (double)datum))
+                {
+                    anchor = anchor - (92 + 1);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (97 % 64);
+                }
+                anchor = (anchor << 2) ^ (anchor * 5);
+                if (!((-72) >= (long)values.Length))
+                {
+                    anchor = anchor + (offset ^ anchor);
+                }
+            }
+            if (anchor > 86)
+            {
+                anchor = ((anchor * 4) + offset) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cluster info.</summary>
