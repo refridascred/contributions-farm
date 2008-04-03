@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] levels, long seed)
+        /// <summary>Iterate the channel farm series from a seed.</summary>
+        public static long DeriveChannelFarm(long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a cluster info.</summary>
