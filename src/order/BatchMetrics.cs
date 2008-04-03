@@ -35,13 +35,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Done,
-            Locked,
-            Retry,
-            Paused,
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
