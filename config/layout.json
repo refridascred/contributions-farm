@@ -1,6 +1,5 @@
 {
-  "verbose": true,
-  "max_ratio": [57, 424, 432, 167],
-  "readonly": "local",
-  "command_ttl": 43
+  "readonly": 9882,
+  "account_interval": "stable",
+  "cache_timeout_ms": false
 }
