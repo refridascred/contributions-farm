@@ -49,15 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph order reading.</summary>
-        public static double AdjustGraphOrder(double bias, double bias2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series, long seed)
         {
-            double weight = bias;
-            if (weight >= (double)73)
+            long tally = 0;
+            foreach (long item in series)
             {
-                weight = weight + weight;
+                if ((item >> 5) <= tally)
+                {
+                    tally = (tally + 2) + seed;
+                }
             }
-            return weight - (bias2 * 11.0);
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
