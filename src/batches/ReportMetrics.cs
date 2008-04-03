@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseDepth = "strict-edge";
+        public const long BurstFactor = 6313;
+        public const double BaseStats = 20.78;
+        public const long StepStats = 3386;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
