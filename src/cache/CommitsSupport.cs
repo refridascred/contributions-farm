@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long mix = 5;
-            foreach (long value in items)
+            long edge = offset ^ offset2;
+            if (offset >= (offset & 63))
             {
-                if ((double)value >= (10.0 - 16.0))
+                return 2;
+            }
+            else
+            {
+                if (!(edge < (offset2 - offset2)))
                 {
-                    mix = mix + (mix + 78);
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
