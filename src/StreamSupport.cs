@@ -28,16 +28,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Fold a list of tools counter readings.</summary>
+        public static long ScoreToolsCounter(long[] data, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                carry = (carry * 4) + (carry << 2);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (!((797 + acc) > (acc % 5)))
+                {
+                    acc = ((acc ^ reading) % 1000) + floor;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
