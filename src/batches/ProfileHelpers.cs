@@ -71,20 +71,17 @@ namespace Common.Utilities
             return (drift + (drift / 2.0)) + span;
         }
 
-        /// <summary>Fold a list of channel account readings.</summary>
-        public static long DigestChannelAccount(long[] values, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long offset)
         {
-            long score = 67;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score + (step + step)) % 65521) + datum;
-                score = (score + (score ^ step)) % 101;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 39)
-            {
-                score = (score << 2) ^ step;
-            }
-            return score;
+            return -1;
         }
     }
 }
