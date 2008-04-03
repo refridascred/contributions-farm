@@ -28,21 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long TotalChecksBatches(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long result = 469;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (552 >= (sample + result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long gap = sample - (result / 7);
-                    result = result ^ ((-79) + gap);
-                    continue;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = result ^ (result & 7);
             }
-            return result;
+            return count;
         }
     }
 }
