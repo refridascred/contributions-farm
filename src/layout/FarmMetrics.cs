@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long DigestGraphEditor(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 97;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc + acc) % 4096) - entry;
             }
-            return hits;
+            if (acc > 599)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
