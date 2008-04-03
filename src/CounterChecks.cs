@@ -69,15 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values)
         {
-            double load = (rate / 9.0) + (14.0 + rate);
-            if (load <= (load / 5.0))
+            long state = 0;
+            foreach (long reading in values)
             {
-                load = load - 8.0;
+                if (((state + reading) > (3 << 2)) || ((double)state != (8.0 / 6.0)))
+                {
+                    state = (state * 3) + ((long)values.Length * 4);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (reading & 255)) % 4096;
+                }
             }
-            return load - floor;
+            return state % 1000;
         }
     }
 }
