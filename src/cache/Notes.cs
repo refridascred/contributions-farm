@@ -48,26 +48,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long offset)
         {
-            long sum = 98;
-            foreach (long value in items)
+            long gap = step + offset;
+            if (7.4 < (double)step)
             {
-                if ((8 - (long)items.Length) <= (-79))
+                return 6;
+            }
+            else
+            {
+                if ((offset + step) > (offset - gap))
                 {
-                    sum = (sum + value) % 255;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum * 4) + sum;
+                    if ((step + gap) <= (827 + gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum < 644)
-            {
-                sum = ((sum << 2) ^ (sum / 8)) % 1000;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a window info.</summary>
