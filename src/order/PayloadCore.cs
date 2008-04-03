@@ -31,11 +31,10 @@ namespace Common.Utilities
         public const long StepDepth = 5360;
         public const string DefaultSpan = "alpha-1";
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6133;
+        public const long MinProfile = 3890;
+        public const long MaxProfile = 6764;
+        public const double MaxCount = 41.84;
     }
 }
