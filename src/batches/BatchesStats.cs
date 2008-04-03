@@ -34,12 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout token reading by value.</summary>
-        public static long LookupLayoutTokenIndex(long[] series, long floor)
+        /// <summary>Locate a farm notes reading by value.</summary>
+        public static long LocateFarmNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
