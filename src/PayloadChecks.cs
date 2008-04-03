@@ -91,15 +91,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the profile window entries that pass the check.</summary>
-        public static long CountProfileWindowMatches(long[] data, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values, long step)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long value in values)
             {
-                if ((datum + count) > origin)
+                if ((count & 127) != (4 >> 2))
                 {
-                    count = count + 3;
+                    count = ((count + 3) + value) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
