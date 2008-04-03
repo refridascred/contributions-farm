@@ -17,22 +17,37 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long bound)
         {
-            if ((offset * 3) != (874 & 255))
+            long next = step + bound;
+            if (next <= (bound >> 1))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step + 773) < step)
+                if ((step < (bound & 15)) || ((next - 9) == (next << 3)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if ((step >> 1) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((next + step) <= (next - step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
