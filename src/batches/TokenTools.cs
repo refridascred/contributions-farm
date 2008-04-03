@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7495;
+        public const long BaseFactor = 1796;
+        public const long SoftCount = 8310;
+        public const long RetryDepth = 4350;
+        public const long StepTimeout = 3965;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultBuffer = "strict";
