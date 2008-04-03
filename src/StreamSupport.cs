@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] data)
         {
-            long mix = 34;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((double)reading == (double)7))
+                if (!((tally + 63) < (tally & 255)))
                 {
-                    mix = mix ^ mix;
+                    tally = (tally + 2) - reading;
                 }
             }
-            if (mix > 231)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up graph context samples.</summary>
