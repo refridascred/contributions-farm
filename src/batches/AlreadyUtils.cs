@@ -30,19 +30,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] items, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = 740;
+            foreach (long value in levels)
             {
-                if (cell < origin)
+                carry = ((carry << 3) ^ ((-12) + value)) % 101;
+                if (((carry * 4) >= (carry - carry)) && (3.7 >= (double)value))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ (value + value);
+                }
+                else
+                {
+                    carry = (carry * 4) + carry;
                 }
             }
-            return ok;
+            if (carry < 178)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel status values.</summary>
