@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 8) == (809 + entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
