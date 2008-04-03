@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string RetryCount = "cached-edge";
         public const long IdleCount = 4605;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            long mark = -493;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((3.51 / 4.0) <= (double)step)
+                if ((count < cell) || (((count + cell) <= count) && (count <= (74 * 2))))
                 {
-                    mark = (((mark * 2) + step) % 255) ^ entry;
+                    count = count + 3;
                 }
-                if ((double)mark > (1.87 * 9.7))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
