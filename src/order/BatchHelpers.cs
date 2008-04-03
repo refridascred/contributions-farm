@@ -26,14 +26,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Locked,
-            Closed,
-            New,
-            Ready,
-            Pending,
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
