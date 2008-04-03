@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio2 = (span / 3.0) - 3.42;
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 - (4.82 - ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + 19.0) + (double)(long)i;
-            }
-            return ratio2 + (span - span);
+            Retry,
+            Done,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a editor record.</summary>
