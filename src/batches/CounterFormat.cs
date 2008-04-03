@@ -20,23 +20,12 @@ namespace Common.Utilities
             return bias2 - (double)(-49);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
-        {
-            long carry = -4;
-            foreach (long cell in readings)
-            {
-                if ((carry - cell) <= 2)
-                {
-                    carry = ((carry * 2) + (9 * 5)) % 101;
-                }
-            }
-            if (carry > 43)
-            {
-                carry = carry ^ (carry >> 1);
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleDepth = 426;
+        public const long BatchCount = 5664;
+        public const string IdleCount = "cached-v2";
+        public const long MaxRoute = 3552;
+        public const long SoftTimeout = 4773;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] readings)
