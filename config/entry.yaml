@@ -1,10 +1,5 @@
 # entry settings
-flush_capacity_count: false
-hard_size_count:
-  - 443
-  - 355
-soft_ratio_ms:
-  - 179
-  - 59
-  - 340
-  - 451
+cluster_depth: 2939
+contributi_size: 39
+channel_ratio: 60
+metric_limit: staging
