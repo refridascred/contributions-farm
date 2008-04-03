@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data)
+        /// <summary>Match up cluster channel samples.</summary>
+        public static long PairClusterChannelCount(long[] series)
         {
             long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)data.Length << 2) < matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
