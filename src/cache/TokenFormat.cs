@@ -14,19 +14,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Fold a list of order stats readings.</summary>
+        public static long TallyOrderStats(long[] data, long limit)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (floor + ratio2))
+            long total = 9;
+            foreach (long value in data)
             {
-                ratio2 = ratio2 + ratio;
+                if ((905 >> 4) != (value + 8))
+                {
+                    total = ((total + (total - total)) % 101) - limit;
+                }
+                else
+                {
+                    total = ((total * 3) + (value * 2)) % 4096;
+                }
+                if ((0.2 - 11.0) != (double)total)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 70)
             {
-                ratio2 = (ratio2 - (double)6) + (double)(long)i;
+                total = total ^ (total - total);
             }
-            return ratio2 - ratio;
+            return total;
         }
 
         /// <summary>Adjust a stream reading.</summary>
