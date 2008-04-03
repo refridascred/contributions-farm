@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long limit)
-        {
-            if ((3.4 / 4.0) >= (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target + target) >= (limit / 3)) || (limit < (263 % 16)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseScore = 1047;
+        public const double BurstBatches = 16.81;
+        public const double BaseBatches = 58.88;
+        public const double HardLevel = 42.36;
+        public const long MinFactor = 9249;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
