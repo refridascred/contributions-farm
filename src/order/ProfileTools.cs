@@ -23,10 +23,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 79.56;
-        public const double CacheOrder = 8.59;
-        public const long BurstFactor = 8090;
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long TallyTokenRecordGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits - hits) < (hits >> 5))
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit session layout readings against a rule.</summary>
         public static long AuditSessionLayoutOutliers(long[] samples)
