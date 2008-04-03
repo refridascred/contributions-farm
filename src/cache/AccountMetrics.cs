@@ -29,16 +29,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5917;
+        public const long SoftInterval = 4407;
+        public const double IdleScore = 51.34;
+        public const long HardTimeout = 9109;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
