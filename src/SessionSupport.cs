@@ -39,18 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report buffer samples are out of range.</summary>
-        public static long AuditReportBufferMatches(long[] data, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seen / 4) < offset))
+                if (levels[i] >= step)
                 {
-                    seen = (seen + 2) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
