@@ -19,16 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double bias, double span)
-        {
-            double gain = bias;
-            if (gain >= (double)32)
-            {
-                gain = (gain - (5.64 / 7.0)) - span;
-            }
-            return gain - (double)549;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 6304;
+        public const string BatchContributi = "primary-v2";
+        public const long HardRatio = 8592;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
