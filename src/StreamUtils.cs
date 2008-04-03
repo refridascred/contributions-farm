@@ -78,13 +78,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((acc - acc) != (seed * 3)) || ((double)seed <= 15.0))
+                {
+                    acc = acc ^ seed;
+                }
+                acc = acc + (93 + acc);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
