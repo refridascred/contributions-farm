@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stream metric readings.</summary>
-        public static long CombineStreamMetric(long[] series)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            long total = 6;
-            foreach (long item in series)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                total = (((total << 2) ^ (total - total)) % 1000) + item;
+                if (((3 + (long)i) == (3 % 64)) && ((5.8 - 18.0) == (double)target))
+                {
+                    sum = (sum << 3) ^ (long)i;
+                    sum = (sum ^ (target * 5)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (target + sum);
+                    sum = (sum - (96 >> 3)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
