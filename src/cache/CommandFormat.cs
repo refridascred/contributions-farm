@@ -19,15 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools cache counter forward.</summary>
-        public static long IterateToolsCache(long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = (sum - sum) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum + 534) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
