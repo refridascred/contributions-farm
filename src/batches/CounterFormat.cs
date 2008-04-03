@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a order command figure with a bias.</summary>
-        public static double BlendOrderCommand(double bias, double span)
+        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmToolsCount(long[] samples)
         {
-            double bias2 = 14.0;
-            if (bias2 <= span)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + 8.2) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (span + 1.0)) - (double)(long)i;
-            }
-            return bias2 - (double)(-49);
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
