@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample < floor)
+                if ((matches - entry) == (matches & 255))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
