@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (sample >= seed)
+                if ((8.0 - 1.29) >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
