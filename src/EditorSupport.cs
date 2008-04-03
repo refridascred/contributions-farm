@@ -50,16 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] series, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                score = (score - seed) % 255;
-                score = ((score * 4) + (long)i) % 101;
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
