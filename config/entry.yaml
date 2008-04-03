@@ -1,6 +1,8 @@
 # entry settings
-retry_ratio_count: open
-payload_ttl: 8055
-persist: true
-token_retries: legacy
-audit: legacy
+notes_capacity: true
+hard_interval:
+  - 201
+  - 355
+  - 132
+  - 209
+flush_ttl: 82
