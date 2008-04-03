@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 2) ^ ((-2) - result)) % 4096;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 5443;
+        public const long BaseBudget = 5848;
+        public const long CacheWidth = 481;
+        public const long LimitRatio = 4753;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] levels, long step)
