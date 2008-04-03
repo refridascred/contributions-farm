@@ -65,18 +65,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many session batch samples are out of range.</summary>
-        public static long CountSessionBatchMatches(long[] series, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)limit > 5.56)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
