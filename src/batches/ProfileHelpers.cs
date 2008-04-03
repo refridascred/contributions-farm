@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] series, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((20.0 / 4.0) > (double)offset)
+                if (offset >= (902 >> 1))
                 {
-                    tally = (tally + 2) - sample;
+                    state = (state << 2) ^ (offset * 3);
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state ^ (offset / 7)) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
