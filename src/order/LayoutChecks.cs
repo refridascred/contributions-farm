@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen <= (cell + floor))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
