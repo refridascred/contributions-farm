@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] levels, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (reading != floor)
+                if (tally < (tally % 12))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the farm mode values.</summary>
