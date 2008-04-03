@@ -45,38 +45,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if ((offset >= (offset + offset)) && ((offset & 3) != (offset & 255)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) == (target - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 1) > (5 + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-876) & 7) > (target - target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Pending,
         }
     }
 }
