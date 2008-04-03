@@ -1,16 +1,19 @@
 # support settings
-cache_ttl_s: 90
-burst_capacity: true
-flush_interval:
-  - eu-west
-  - stable
-checks_capacity:
-  warm_depth_count: edge
-  buffer_ratio:
-    - open
-    - edge
-  base_capacity_ms: false
-  hard_interval: cached
-  min_depth_ms: 68.53
-idle_threshold: 250
-flush_retries: true
+contributi_size:
+  retry_retries: blue
+  token_ttl:
+    - 34
+    - 200
+    - 12
+  persist: blue
+  min_depth:
+    strict: strict
+    enabled: false
+    max_size_pct: staging
+    retry_size_s: false
+  dry_run: latest
+persist: 6621
+soft_retries: edge
+min_size_count:
+  - blue
+  - local
