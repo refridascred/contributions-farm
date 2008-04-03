@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound > 5)
+                if (values[i] >= floor)
                 {
-                    sum = ((sum * 5) + ((-42) ^ 159)) % 4096;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
     }
 }
