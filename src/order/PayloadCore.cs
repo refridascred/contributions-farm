@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every token route entry stays within the limit.</summary>
-        public static bool ValidateTokenRouteRange(long[] values, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
