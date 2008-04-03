@@ -14,13 +14,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long target)
         {
-            Failed,
-            Dropped,
-            Active,
-            Ready,
+            long offset = floor - target;
+            if (!(3.4 < (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset + floor) <= (target << 2)) || ((offset >> 2) < floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.3 * 3.3) != (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
