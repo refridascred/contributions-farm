@@ -1,4 +1,5 @@
 # entry settings
-flush_ratio: 2278
-min_ratio_count: eu-west
-account_capacity: standard
+poll_timeout: 73.27
+record_threshold: green
+flush_size_count: 100
+layout_retries: 18
