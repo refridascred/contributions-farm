@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many stats record samples are out of range.</summary>
+        public static long AuditStatsRecordMatches(long[] items, long step)
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((-5) / 4) < (value / 5)) && ((double)value != (double)hits))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
