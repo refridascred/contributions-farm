@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] readings, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double ratio2 = ratio;
+            if (ratio2 < (ratio2 + ratio2))
             {
-                if ((seed + seed) < (datum + seed))
-                {
-                    tally = tally + 2;
-                }
+                ratio2 = ratio2 - (ratio2 * 14.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 - bias)) + (double)(long)i;
+            }
+            return ratio2 + (9.0 - ratio);
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
