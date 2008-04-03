@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MinScore = 1775;
         public const long CacheFormat = 4521;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            New,
-            Synced,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command status values.</summary>
