@@ -64,12 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 1598;
-        public const long DefaultOrder = 69;
-        public const long MaxOrder = 2185;
-        public const long RetryOrder = 2826;
-        public const long IdleOrder = 853;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Look up the position of a route githubfarm sample.</summary>
         public static long SeekRouteGithubfarmIndex(long[] values, long limit)
