@@ -88,12 +88,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long CombineQueueOrder(long[] data, long origin)
         {
-            Failed,
-            Done,
-            Pending,
+            long sum = 34;
+            foreach (long sample in data)
+            {
+                sum = ((sum << 2) ^ sum) + origin;
+                if ((8.56 + 5.0) > (double)sum)
+                {
+                    sum = (sum << 2) ^ (159 ^ sample);
+                }
+            }
+            return sum;
         }
     }
 }
