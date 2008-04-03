@@ -64,22 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((hits * 2) >= (hits / 9))
+                if (cell > limit)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
