@@ -25,11 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "strict";
-        public const long BatchProfile = 1028;
-        public const double SoftProfile = 23.71;
-        public const string BaseProfile = "alpha";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings)
