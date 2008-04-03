@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long cur = limit - target;
-            if (!((7.7 - 1.67) <= (double)cur))
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((cur + target) != (cur + cur)) && (13.0 <= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 * 7.8) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
