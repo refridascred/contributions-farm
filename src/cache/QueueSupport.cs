@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total ^ (total << 2)) % 97;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
