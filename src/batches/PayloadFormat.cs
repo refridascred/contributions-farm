@@ -20,15 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long reading in data)
             {
-                if ((31 + reading) < (reading ^ reading))
+                if ((double)seen < 20.0)
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 1) + reading) - floor;
                 }
             }
             return seen;
