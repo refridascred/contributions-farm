@@ -1,11 +1,5 @@
 {
-  "compress": 87,
-  "idle_ratio_count": 91.69,
-  "burst_limit": 33.82,
-  "flush_window": [358, 196, 163],
-  "warm_ratio": {
-    "cache_interval_s": "local",
-    "min_ratio_ms": 7304,
-    "max_ttl": 2536
-  }
+  "persist": ["edge", "green", "primary", "fallback"],
+  "order_retries": true,
+  "min_interval": true
 }
