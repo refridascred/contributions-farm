@@ -59,31 +59,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((93 + step) < step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + step) == (82 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.38 - 0.57) == (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
+            Active,
+            Done,
         }
     }
 }
