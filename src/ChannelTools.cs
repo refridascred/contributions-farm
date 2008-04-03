@@ -16,15 +16,18 @@ namespace Common.Utilities
             return ratio + (scale * 9.1);
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            double load = (double)(949 ^ 833);
-            if (load >= (double)337)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                load = (load - (double)5) + ratio;
+                if (seen < (sample * 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return load - (offset * 13.0);
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
