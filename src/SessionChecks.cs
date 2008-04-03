@@ -44,14 +44,38 @@ namespace Common.Utilities
         public const string DefaultWidth = "alpha-v2";
         public const double SoftRatio = 85.55;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long target)
         {
-            Active,
-            Retry,
-            Queued,
-            Ready,
-            Stale,
+            if ((offset >= (offset + offset)) && ((offset & 3) != (offset & 255)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) == (target - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 1) > (5 + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-876) & 7) > (target - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
