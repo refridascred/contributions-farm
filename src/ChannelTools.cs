@@ -34,14 +34,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Pending,
-            Queued,
             Done,
-            Failed,
+            Dropped,
             Locked,
+            Synced,
+            Draft,
         }
     }
 }
