@@ -38,18 +38,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] levels, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)step > 2.95)
+                if (target > 392)
                 {
-                    seen = (seen + 2) - cell;
+                    score = ((score * 5) + (target * 5)) % 65521;
                 }
+                score = score - score;
+                if (((752 + 697) >= (target + target)) && (((long)i + target) > (score ^ target)))
+                {
+                    score = (score - (target / 9)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
