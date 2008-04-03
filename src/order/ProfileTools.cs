@@ -45,15 +45,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Look up the position of a payload context sample.</summary>
+        public static long FindPayloadContextIndex(long[] items, long offset)
         {
-            double ratio = weight;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + (offset + offset)) + (double)(long)i;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + 4.1;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
