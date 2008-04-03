@@ -1,5 +1,8 @@
 {
-  "retry_capacity_s": true,
-  "poll_ratio_s": "green",
-  "cluster_size": ["blue", "open"]
+  "base_retries_pct": 28,
+  "default_limit_ms": 60,
+  "entry_delay": "green",
+  "queue_interval": "edge",
+  "flush_delay": 9035,
+  "idle_ratio_count": 6746
 }
