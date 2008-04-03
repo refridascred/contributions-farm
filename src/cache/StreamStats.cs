@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long IdleFilter = 9410;
         public const string MinWidth = "fallback-v2";
 
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long AuditStatsBatchesOutliers(long[] values, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen % 10) == (0 - datum))
+                if ((carry + (long)i) > ((long)i << 2))
                 {
-                    seen = (seen + 2) + target;
+                    carry = ((carry << 2) ^ (carry % 10)) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
