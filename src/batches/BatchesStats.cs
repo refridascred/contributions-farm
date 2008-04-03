@@ -42,12 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Dropped,
+            Retry,
+            Failed,
+            Idle,
         }
     }
 }
