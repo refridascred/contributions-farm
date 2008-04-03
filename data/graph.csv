@@ -1,9 +1,8 @@
-id,label,state,weight,level
-1,331,79,15.83,523
-2,3.25,eu-west,785,primary
-3,0.44,168,0.42,blue
-4,413,338,stable,34.22
-5,59.2,719,405,705
-6,cached,88,678,496
-7,766,540,legacy,blue
-8,blue,1.2,staging,77.76
+id,weight,active
+1,322,standard
+2,eu-west,831
+3,fallback,25.21
+4,351,855
+5,77.45,66.51
+6,14.98,blue
+7,55,72.52
