@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long RetryDepth = 7796;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
