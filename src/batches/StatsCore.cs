@@ -76,14 +76,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Paused,
-            Retry,
-            Locked,
-            Closed,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultInterval = 27.94;
+        public const long CacheFarm = 2712;
+        public const long LimitFarm = 875;
     }
 }
