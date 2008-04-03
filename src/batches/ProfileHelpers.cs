@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20.0 / 4.0) > (double)offset)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
