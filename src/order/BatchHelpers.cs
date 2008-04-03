@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long target)
         {
-            if (((bound ^ bound) > (floor * 3)) && ((bound + bound) > (bound / 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (bound % 2))
+                if (values[i] == target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + bound) > 315) || ((1.0 / 8.0) > (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
