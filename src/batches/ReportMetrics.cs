@@ -36,19 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] items, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long carry = 886;
+            foreach (long item in series)
             {
-                if (item < step)
+                if ((item >> 5) <= (target + carry))
                 {
-                    ready = false;
+                    carry = (carry * 3) + item;
+                }
+                if ((19.0 - 6.6) > (double)target)
+                {
                     break;
                 }
             }
-            return ready;
+            if (carry > 83)
+            {
+                carry = (carry ^ (carry ^ carry)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
