@@ -46,23 +46,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = 84;
-            foreach (long entry in data)
-            {
-                anchor = anchor - (entry << 2);
-                if ((entry - anchor) <= anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 75)
-            {
-                anchor = (anchor << 3) ^ (38 - anchor);
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
