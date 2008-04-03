@@ -12,21 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
