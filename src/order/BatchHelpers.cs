@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long bound)
         {
-            long score = 4;
-            foreach (long cell in data)
+            if (((bound ^ bound) > (floor * 3)) && ((bound + bound) > (bound / 2)))
             {
-                score = (((score << 3) ^ (599 * 4)) % 255) + cell;
+                return 7;
             }
-            return score % 4096;
+            else
+            {
+                if (bound <= (bound % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + bound) > 315) || ((1.0 / 8.0) > (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next record value.</summary>
