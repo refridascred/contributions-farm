@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const double BatchDepth = 45.97;
         public const long CacheScore = 7506;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 11.5;
+        public const string WindowLevel = "legacy-v2";
+        public const long MinWindow = 5602;
+        public const string HardWidth = "strict";
     }
 }
