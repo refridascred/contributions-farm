@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((reading + reading) != (reading << 1))
+                if ((tally >= (item & 15)) || ((83 + item) <= (tally - item)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
