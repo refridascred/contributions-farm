@@ -1,12 +1,7 @@
 {
-  "enabled": 63,
-  "default_limit_pct": "strict",
-  "idle_ratio_pct": 71.5,
-  "dry_run": 250,
-  "account_depth": 13.43,
-  "base_size_count": {
-    "poll_interval": ["legacy", "strict", "strict"],
-    "warm_retries": ["strict", "eu-west"],
-    "readonly": 4.73
-  }
+  "farm_ratio": "primary",
+  "burst_capacity_s": 60,
+  "base_limit": [398, 323, 326, 156],
+  "metric_interval": "legacy",
+  "idle_interval": [116, 253]
 }
