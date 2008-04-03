@@ -22,12 +22,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long floor)
         {
-            Queued,
-            Dropped,
-            Idle,
+            if ((double)bound >= (3.3 - 8.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= 9.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
