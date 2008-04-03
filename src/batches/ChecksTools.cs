@@ -35,21 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
