@@ -37,12 +37,11 @@ namespace Common.Utilities
         public const string RetryQueue = "cached-edge";
         public const long DefaultQueue = 2880;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Done,
-            Stale,
-            Failed,
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
