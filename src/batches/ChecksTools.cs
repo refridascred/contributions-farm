@@ -50,25 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank record account input into a small class.</summary>
-        public static long BucketRecordAccount(long floor, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] readings, long offset)
         {
-            long bound = floor ^ step;
-            if (((29 + step) < (bound ^ bound)) && ((19.0 + 10.0) >= (double)bound))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >= floor) && (2.0 < (double)floor))
+                if (reading > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
