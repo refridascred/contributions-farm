@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] readings, long target)
         {
-            double gain = offset;
-            if (gain < (double)(-7))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                gain = (gain - gain) + rate;
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain * 0.3)) - (double)(long)i;
-            }
-            return gain + offset;
+            return ready;
         }
 
         /// <summary>Rank context cache input into a small class.</summary>
