@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "staging-1";
+        public const long LimitProfile = 4721;
+        public const long WindowProfile = 3373;
 
         /// <summary>Combine support token values into a single score.</summary>
         public static long CombineSupportToken(long[] levels, long step)
