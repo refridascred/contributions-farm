@@ -24,17 +24,25 @@ namespace Common.Utilities
         public const long DefaultBudget = 2714;
         public const long IdleScore = 2417;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = floor - step;
+            if (((edge / 5) > (floor & 15)) || ((76 ^ floor) != (edge + step)))
             {
-                if (levels[i] == target)
+                return 8;
+            }
+            else
+            {
+                if (!((edge * 2) > (floor % 97)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
