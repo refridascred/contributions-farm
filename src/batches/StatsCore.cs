@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseTimeout = 8231;
-        public const long WindowPayload = 9032;
-        public const long WindowInterval = 6073;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstCount = 72.58;
+        public const long BatchLevel = 4155;
+        public const double BatchBatches = 58.57;
+        public const long StepDepth = 6200;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] levels, long step)
