@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 879;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state ^ (value >> 5)) % 97) - floor;
             }
-            return matches;
+            if (state < 725)
+            {
+                state = ((state * 4) + (state ^ 5)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate cluster batches samples.</summary>
