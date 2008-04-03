@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const double CacheOrder = 8.59;
         public const long BurstFactor = 8090;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long AuditSessionLayoutOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < (seen + item))
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
