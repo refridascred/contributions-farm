@@ -49,15 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = 3;
-            foreach (long entry in values)
-            {
-                sum = sum ^ entry;
-            }
-            return sum;
+            Paused,
+            Ready,
+            Closed,
+            Retry,
         }
     }
 }
