@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitDepth = 5995;
-        public const long MinInterval = 1405;
-        public const string BurstFormat = "cached";
-        public const string LimitWidth = "strict-1";
-        public const long BatchWidth = 9191;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] samples, long limit)
