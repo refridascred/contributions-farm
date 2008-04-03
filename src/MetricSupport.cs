@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3086;
-        public const double StepStats = 7.41;
-        public const long IdleStats = 5707;
-        public const long CacheStats = 7133;
-        public const double IdleInterval = 9.62;
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long TallyClusterMetricsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < 1.9)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
