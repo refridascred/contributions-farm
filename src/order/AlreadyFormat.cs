@@ -44,20 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 8324;
+        public const long CacheLevel = 8377;
+        public const double DefaultSession = 17.51;
+        public const double BurstRatio = 72.99;
+        public const string RetrySession = "strict-v2";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels)
