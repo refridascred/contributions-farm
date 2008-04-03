@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] samples, long offset)
         {
-            long anchor = 977;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor - (29 >> 2)) % 255) ^ sample;
+                if ((offset + value) > (matches ^ offset))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
