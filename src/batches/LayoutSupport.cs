@@ -63,22 +63,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = 79;
-            foreach (long value in readings)
-            {
-                if ((limit > value) && ((9.35 + 1.12) != (double)limit))
-                {
-                    mix = ((mix << 3) ^ (value << 3)) % 1000;
-                }
-                if ((56 + 8) >= (mix - limit))
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Ready,
+            Paused,
+            Active,
+            Pending,
         }
     }
 }
