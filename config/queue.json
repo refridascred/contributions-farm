@@ -1,8 +1,5 @@
 {
-  "tools_ratio": "local",
-  "hard_size": "latest",
-  "persist": "staging",
-  "buffer_limit": 7688,
-  "stream_threshold": [162, 126],
-  "poll_window_count": "green"
+  "record_capacity": "standard",
+  "session_timeout": [145, 220, 500],
+  "min_interval": "blue"
 }
