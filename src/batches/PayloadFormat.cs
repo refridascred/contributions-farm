@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] series, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)origin == (5.4 - 8.3))
+                if ((matches / 8) > (origin & 31))
                 {
-                    count = (count + 2) + entry;
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up metrics samples.</summary>
