@@ -73,12 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry ^ tally) <= (tally * 5)) || (((tally - tally) >= (131 / 8)) || ((entry & 7) <= 34)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
