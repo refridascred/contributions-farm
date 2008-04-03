@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
