@@ -1,13 +1,12 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the metrics list.
-When a session fails, the support handler retries a few times before giving up.
-
-Keep metric and metric names short and lowercase.
-A stats that stays idle for too long is moved to the record list.
+When a format fails, the stats handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+A batches that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Log every metrics change
-- Prefer commits defaults
-- Validate report input early
+- Review graph limits each release
+- Document new layout fields
+- Validate support input early
+- Prefer queue defaults
