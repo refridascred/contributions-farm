@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in strict standard blue; do
+for item in cached fallback local; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=451
+log "limit is ${RECORD_LIMIT}"
