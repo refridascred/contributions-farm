@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi cluster entries that pass the check.</summary>
-        public static long AuditContributiClusterHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((286 + (long)series.Length) >= (limit - limit))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultWidth = 37.09;
+        public const double SoftCount = 39.12;
+        public const long HardBudget = 2095;
+        public const double SoftSpan = 79.2;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string SoftInterval = "legacy-v2";
