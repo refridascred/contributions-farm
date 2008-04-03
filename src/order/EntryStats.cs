@@ -39,31 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long offset, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long step)
         {
-            if ((offset / 8) != (offset % 10))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6 + offset) < offset)
+                if (reading >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target ^ target) > (target / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
