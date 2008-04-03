@@ -51,39 +51,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long target, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] values, long target)
         {
-            long edge = target + floor;
-            if ((edge * 4) < floor)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge / 2) >= edge)
+                if (!(((reading % 100) < target) && ((11 - hits) >= (hits / 2))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (edge / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)edge == (7.0 + 4.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
