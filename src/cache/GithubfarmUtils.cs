@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank entry route input into a small class.</summary>
-        public static long ClassifyEntryRoute(long target, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (((target + target) >= (target - target)) && ((208 << 2) == (target >> 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((25 + floor) == (floor * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - target) > target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((34 * 5) > (floor & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
