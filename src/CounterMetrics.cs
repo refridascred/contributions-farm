@@ -30,17 +30,13 @@ namespace Common.Utilities
             return gain - (double)549;
         }
 
-        /// <summary>Look up the position of a token layout sample.</summary>
-        public static long LocateTokenLayoutIndex(long[] levels, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a format header.</summary>
