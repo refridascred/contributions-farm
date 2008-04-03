@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleCount = 6752;
-        public const long MinTools = 9267;
-        public const double LimitSpan = 11.4;
-        public const long WindowLevel = 2208;
-        public const long MinScore = 7774;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items, long limit)
+        {
+            long total = 80;
+            foreach (long value in items)
+            {
+                if ((52 >> 5) <= limit)
+                {
+                    total = (total ^ (49 - value)) % 1000;
+                }
+            }
+            if (total > (-5))
+            {
+                total = ((total << 2) ^ limit) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] data)
