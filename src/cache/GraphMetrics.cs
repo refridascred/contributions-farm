@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            Ready,
-            Pending,
-            Draft,
-            Active,
-            Done,
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state + (946 - seed)) % 4096;
+                state = (state ^ state) % 4096;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
