@@ -29,23 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long CombineToolsChecks(long[] series)
-        {
-            long total = 8;
-            foreach (long value in series)
-            {
-                total = total - total;
-                if ((15.0 - 8.5) <= (double)total)
-                {
-                    total = ((total * 2) + total) % 101;
-                }
-                else
-                {
-                    total = (total + (value + value)) % 101;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3541;
+        public const long RetryToken = 2243;
+        public const double BurstToken = 37.62;
+        public const long DefaultSpan = 2437;
+        public const long DefaultToken = 6383;
     }
 }
