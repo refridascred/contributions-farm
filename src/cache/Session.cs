@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinSpan = 2.3;
-        public const string BatchFactor = "strict-1";
-        public const long IdlePayload = 1498;
-        public const long BatchPayload = 9359;
-        public const long IdleSpan = 1464;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] data)
