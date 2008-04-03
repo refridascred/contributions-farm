@@ -35,31 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format order pair into a bucket.</summary>
-        public static long BucketFormatOrder(long limit, long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if ((limit + limit) > (seed / 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 4) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((996 << 3) == (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
