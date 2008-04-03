@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 8984;
-        public const string CacheDepth = "staging-1";
-        public const long CacheWidth = 6940;
-        public const double SoftContext = 51.26;
-        public const long WindowContext = 7968;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long offset)
+        {
+            if ((target <= (offset - target)) && ((offset + offset) > target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(offset <= (offset / 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
         public static bool GuardContributiSessionRange(long[] readings, long step)
