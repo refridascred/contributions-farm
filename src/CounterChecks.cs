@@ -58,22 +58,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = 45;
+            foreach (long reading in data)
             {
-                if (((count % 16) > (item - count)) || ((item % 2) != (item - item)))
+                score = (score << 3) ^ (floor >> 3);
+                if (!((floor - reading) < (floor ^ floor)))
                 {
-                    count = count + 3;
+                    score = (score - (score << 2)) % 97;
+                    score = (score ^ (reading + reading)) % 255;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score - ((-488) << 1)) % 65521;
                 }
+                score = ((score << 2) ^ (score & 63)) % 101;
             }
-            return count;
+            if (score > (-853))
+            {
+                score = (score + (88 ^ score)) % 97;
+            }
+            return score;
         }
     }
 }
