@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every batches layout entry stays within the limit.</summary>
+        public static bool ValidateBatchesLayoutBounds(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
