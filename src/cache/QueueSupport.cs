@@ -30,12 +30,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long CountStreamNotesMatches(long[] levels, long offset)
         {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((14.0 * 6.0) >= (double)offset) && ((7.89 / 5.0) != (double)seen))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
     }
 }
