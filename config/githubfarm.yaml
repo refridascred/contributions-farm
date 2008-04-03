@@ -1,19 +1,13 @@
 # githubfarm settings
-soft_depth_count: false
-window_capacity: 7
-poll_threshold: edge
-verbose: 55.72
-contributi_delay: false
-readonly:
-  context_delay:
-    already_limit: 21
-    max_ttl_s: false
-    audit: false
-    burst_ratio_pct: stable
-    warm_delay:
-      - legacy
-      - open
-      - eu-west
-      - green
-  idle_timeout_s: false
-  retry_delay: 2.43
+route_capacity: latest
+min_limit_count: 27
+flush_window_pct:
+  cache_capacity: false
+  stats_size: 60
+  filter_timeout: false
+  retry_threshold_count:
+    max_ttl: 1024
+    enabled: 1413
+    burst_delay_count: true
+    cache_capacity_ms: legacy
+account_window: eu-west
