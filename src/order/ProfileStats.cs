@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long limit)
-        {
-            long span = floor + limit;
-            if (619 > (span >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)span == (2.8 * 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ floor) <= (span - 843))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 7453;
+        public const long LimitRatio = 9451;
+        public const long RetryRatio = 6689;
+        public const long DefaultWindow = 1852;
+        public const long HardTimeout = 9329;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 3238;
