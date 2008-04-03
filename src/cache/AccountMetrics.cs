@@ -46,20 +46,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series, long offset)
+        /// <summary>Look up the position of a window stream sample.</summary>
+        public static long SeekWindowStreamIndex(long[] data, long origin)
         {
-            long score = 8;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ (offset * 5)) % 1000;
-                score = (score - (item + score)) % 1000;
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 23)
-            {
-                score = (score - (score - (-31))) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
