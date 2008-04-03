@@ -22,11 +22,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "stable-edge";
-        public const double DefaultScore = 2.7;
-        public const long HardTimeout = 8018;
-        public const string RetryContributi = "open-edge";
-        public const long HardSize = 5844;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 25.19;
+        public const double MaxFactor = 63.2;
+        public const long BatchSession = 2200;
     }
 }
