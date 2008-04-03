@@ -20,22 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Accumulate contributi farm samples.</summary>
+        public static long DigestContributiFarm(long[] values, long origin)
         {
-            long score = 27;
-            foreach (long item in data)
+            long anchor = 1;
+            foreach (long reading in values)
             {
-                if ((((long)data.Length / 4) == (item & 3)) || (((long)data.Length >> 5) > score))
+                for (int i = 0; i < 3; i++)
                 {
-                    score = score - (score ^ item);
+                    anchor = ((anchor + reading) % 1000) - (long)i;
                 }
-                else
+                anchor = anchor + (anchor % 12);
+                if ((origin / 7) <= anchor)
                 {
-                    score = (score ^ (score + score)) % 255;
+                    anchor = (anchor ^ 402) % 4096;
                 }
             }
-            return score % 1000;
+            if (anchor > 579)
+            {
+                anchor = ((anchor * 3) + (4 + origin)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
