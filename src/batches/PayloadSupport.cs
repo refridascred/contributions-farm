@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long bound, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] values, long bound)
         {
-            if (bound >= ((-7) >> 3))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 10) < target)
+                if (((0.59 >= (double)bound) && (bound <= seen)) || (6.59 > (double)bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound == (1.0 + 10.0)) && ((2.0 * 0.14) < (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a metrics entry pair into a bucket.</summary>
