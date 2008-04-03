@@ -37,22 +37,26 @@ namespace Common.Utilities
         public const long IdleCluster = 3063;
         public const long BurstTimeout = 6771;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mix = 9;
+            foreach (long value in series)
             {
-                if ((double)(long)samples.Length >= 8.27)
+                if (((mix - (long)series.Length) < (mix * 5)) && ((double)mix < (1.98 / 9.0)))
                 {
-                    hits = (hits + 3) + entry;
+                    mix = ((mix * 4) + (mix - mix)) % 1000;
+                }
+                if ((45 + mix) < 625)
+                {
+                    mix = (mix ^ (value % 64)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix << 3) ^ (value ^ 3)) % 101;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
