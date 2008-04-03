@@ -12,24 +12,17 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Classify a schema commits pair into a bucket.</summary>
-        public static long ClassifySchemaCommits(long bound, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long limit)
         {
-            if (((double)origin == (8.0 * 14.0)) || ((bound + origin) != (bound & 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + bound) > (bound % 2))
+                if (samples[i] == limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
