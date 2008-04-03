@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const double BaseNotes = 80.0;
         public const string IdleSize = "staging-edge";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double rate2 = (double)(247 - 648);
+            for (int i = 0; i < 3; i++)
             {
-                if ((value & 255) > (value * 4))
-                {
-                    seen = seen + 2;
-                }
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            return seen;
+            return rate2 + (bias + rate);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
