@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio2 = ratio;
+            if (ratio2 < (floor + ratio2))
             {
-                if (((hits & 15) > hits) || ((double)reading < (5.04 + 5.7)))
-                {
-                    hits = hits + 3;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (double)6) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Adjust a stream reading.</summary>
