@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] values, long target)
+        /// <summary>Audit metrics stream readings against a rule.</summary>
+        public static long MeasureMetricsStreamHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (entry > target)
+                if ((matches - item) < (item / 7))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate contributi farm samples.</summary>
