@@ -64,18 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((limit % 16) >= (value / 7)) || !(3 < limit))
+                if (datum >= limit)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
