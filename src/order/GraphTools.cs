@@ -44,16 +44,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 41.91;
+        public const double LimitFarm = 8.51;
+        public const long SoftFactor = 7377;
+        public const long BatchFarm = 7483;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ScaleStats(double scale, double span)
