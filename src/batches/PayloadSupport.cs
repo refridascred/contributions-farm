@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a metrics entry pair into a bucket.</summary>
+        public static long RankMetricsEntry(long offset, long bound)
         {
-            Queued,
-            Locked,
-            Ready,
+            long cur = offset + bound;
+            if ((11.0 + 3.0) >= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset <= (cur + cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset >= (3.0 + 2.5)) || ((0 * 5) <= cur))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many account report samples are out of range.</summary>
