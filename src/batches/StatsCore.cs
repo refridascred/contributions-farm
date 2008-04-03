@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
             public long Level { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
