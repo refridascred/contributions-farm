@@ -54,15 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long AuditStatsBatchesOutliers(long[] values, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if ((seen % 10) == (0 - datum))
+                {
+                    seen = (seen + 2) + target;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
