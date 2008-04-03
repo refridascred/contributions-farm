@@ -15,13 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
