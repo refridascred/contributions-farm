@@ -1,13 +1,12 @@
 # Command notes
 
-When a metrics fails, the counter handler retries a few times before giving up.
-The metric report groups every editor by checks.
-
-Use farm settings to tune how often profile data is refreshed.
-The entry report groups every entry by githubfarm.
+Each route is validated before it reaches the commits queue.
+Each editor is validated before it reaches the counter queue.
+Use order settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Log every graph change
-- Validate report input early
+- Log every route change
+- Validate batch input early
+- Document new entry fields
+- Prefer metric defaults
