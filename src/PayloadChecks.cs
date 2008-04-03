@@ -67,13 +67,18 @@ namespace Common.Utilities
             return drift - (floor * 4.0);
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the profile window entries that pass the check.</summary>
+        public static long CountProfileWindowMatches(long[] data, long origin)
         {
-            Ready,
-            Retry,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + count) > origin)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
