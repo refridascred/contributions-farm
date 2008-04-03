@@ -1,9 +1,9 @@
 # entry settings
-token_depth: false
-profile_timeout: 74.63
-enabled:
-  - latest
-  - strict
-  - staging
-batch_window: 9387
-burst_delay_s: 30
+batch_retries: 61.89
+flush_delay:
+  order_delay: 60
+  sync_size_count: 60
+  support_threshold: false
+hard_ratio: 75.22
+command_capacity: 46.88
+base_timeout_ms: 81.54
