@@ -1,16 +1,41 @@
 # support settings
-dry_run:
-  batches_ttl: staging
-  cache_limit_ms: true
-  base_timeout:
-    - 60
-    - 419
-    - 29
-    - 213
-  burst_capacity_ms: local
-burst_delay_ms:
-  - eu-west
+cluster_depth: blue
+queue_ratio: 67
+default_size_pct: true
+readonly:
+  audit: 1024
+  persist:
+    - green
+    - edge
+    - primary
+  payload_depth: green
+  retry_depth_count:
+    burst_retries: 1024
+    base_timeout_ms:
+      - 474
+      - 146
+      - 373
+    command_ttl: staging
+    idle_ttl: 500
+    dry_run: stable
+    burst_depth_ms: strict
+  channel_threshold: 95.55
+  default_timeout_count:
+    soft_depth: 37
+    audit: 60
+    enabled: blue
+    cache_retries_s:
+      - 348
+      - 494
+      - 139
+    default_timeout_ms:
+      - 397
+      - 112
+      - 442
+      - 71
+    max_interval: green
+warm_limit_pct: 33.21
+persist:
+  - primary
   - local
   - legacy
-flush_depth: false
-default_interval: 1024
