@@ -1,30 +1,13 @@
 # githubfarm settings
-soft_ttl_ms: 73.36
-support_capacity:
-  window_ratio: 4771
-  hard_capacity_pct: 82.95
-  burst_ratio_s:
-    editor_interval: 96.4
-    batch_retries_ms: 71
-    audit: fallback
-    default_timeout:
-      - 219
-      - 439
-    strict: local
-    cluster_retries: 100
-  schema_depth:
-    - 215
-    - 32
-    - 424
-    - 214
-  max_threshold: 54
-  readonly:
-    cache_depth: 94.11
-    audit: true
-    hard_depth_pct: latest
-    order_ttl: 42.93
-idle_timeout_pct: stable
-strict:
-  cache_interval_s: 30
-  burst_size_pct: fallback
-  burst_ttl_pct: 36.34
+soft_retries_ms: latest
+enabled:
+  base_ratio_s: 3697
+  audit:
+    - green
+    - local
+  format_capacity: 4512
+  hard_size_s: blue
+  metric_interval: blue
+  channel_retries: 64.97
+flush_interval_pct: 41.62
+sync_delay: eu-west
