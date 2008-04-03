@@ -62,21 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
