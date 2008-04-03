@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] series)
         {
-            long anchor = 796;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((anchor & 255) > limit)
+                if ((count / 6) <= (count + 9))
                 {
-                    anchor = ((anchor + (7 & 15)) % 1000) ^ value;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
