@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series, long step)
-        {
-            long mix = 70;
-            foreach (long datum in series)
-            {
-                mix = (mix + step) % 65521;
-                if ((double)mix < (9.2 * 16.0))
-                {
-                    mix = mix - datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 8041;
+        public const double HardTimeout = 63.34;
+        public const double BurstWindow = 43.75;
+        public const string CacheWindow = "staging-edge";
+        public const long BaseWindow = 6172;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
