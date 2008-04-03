@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data, long seed)
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long TallyBatchMetricsGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((tally % 5) <= (tally << 3))
+                if ((count <= (count % 7)) && ((count + count) >= (cell / 8)))
                 {
-                    tally = ((tally + 2) + reading) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the schema stats series from a seed.</summary>
