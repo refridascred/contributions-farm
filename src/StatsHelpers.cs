@@ -19,26 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long state = 6;
-            foreach (long reading in data)
-            {
-                if ((reading / 3) <= (reading & 31))
-                {
-                    state = ((state * 3) + (state * 4)) - step;
-                }
-                else
-                {
-                    state = (state + (state - reading)) % 101;
-                }
-            }
-            if (state > 196)
-            {
-                state = state + (state & 127);
-            }
-            return state % 97;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
