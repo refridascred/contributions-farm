@@ -1,14 +1,21 @@
 # githubfarm settings
-cache_ratio: false
-burst_delay: blue
-strict:
-  enabled: 1024
-  tools_delay: strict
-  max_interval_pct: 50.85
-  max_limit_pct: 9
-default_size_pct:
-  flush_ratio: 18
-  githubfarm_delay: 1115
-  warm_retries_ms: 1024
-flush_threshold_count: 67
-farm_delay: standard
+audit:
+  - 372
+  - 134
+  - 276
+default_capacity_pct: 82.66
+soft_threshold_count:
+  soft_capacity_ms: true
+  verbose: 96
+  hard_depth: 72.05
+  batch_ratio_pct:
+    support_ttl: latest
+    retry_window: 100
+    sync_limit_pct:
+      - 231
+      - 190
+    idle_size_pct: true
+  tools_threshold: 81.21
+default_timeout:
+  - green
+  - blue
