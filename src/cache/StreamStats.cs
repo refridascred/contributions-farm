@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine support stats values into a single score.</summary>
-        public static long CombineSupportStats(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long target)
         {
-            long carry = 633;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                carry = ((carry ^ (carry << 3)) % 255) ^ item;
-                if ((double)carry >= 7.6)
+                if (datum > target)
                 {
-                    carry = carry - (0 >> 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > (-2))
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
