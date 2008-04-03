@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit checks farm readings against a rule.</summary>
+        public static long MeasureChecksFarmMatches(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (4.3 - 2.0))
+                {
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
