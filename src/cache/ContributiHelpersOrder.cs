@@ -34,9 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 2981;
-        public const double CacheStream = 64.4;
-        public const long DefaultCount = 4647;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
+        {
+            long acc = -24;
+            foreach (long entry in series)
+            {
+                if ((double)acc != (9.3 - 8.6))
+                {
+                    acc = acc - (8 - entry);
+                }
+                else
+                {
+                    acc = (acc - entry) % 255;
+                }
+            }
+            return acc;
+        }
     }
 }
