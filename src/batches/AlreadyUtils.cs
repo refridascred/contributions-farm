@@ -50,13 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Done,
-            Ready,
-            New,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 87.32;
+        public const string LimitSupport = "strict";
+        public const string HardFactor = "open-1";
+        public const long RetrySupport = 5534;
+        public const double DefaultLevel = 13.34;
     }
 }
