@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool CheckBatchesFormatLimits(long[] levels, long seed)
         {
-            double weight = bias / 4.0;
-            if (weight < bias)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                weight = (weight + (bias - bias)) + bias2;
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + (double)7;
+            return ready;
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
