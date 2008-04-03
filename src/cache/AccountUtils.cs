@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long score = 5;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score << 3) ^ (score + score)) - sample;
+                score = score + score;
+                score = ((score * 5) + (long)i) % 97;
             }
             return score;
         }
