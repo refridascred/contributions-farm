@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long offset)
         {
-            double weight = (floor / 6.0) + (ratio / 4.0);
-            if (weight >= weight)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                weight = weight + weight;
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + ratio) - (double)(long)i;
-            }
-            return weight - (floor + ratio);
+            return flag;
         }
 
         /// <summary>Hold a support record.</summary>
