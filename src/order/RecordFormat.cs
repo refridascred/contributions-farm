@@ -28,14 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 6917;
+        public const double WindowSize = 4.81;
+        public const double LimitCluster = 40.63;
+        public const long IdleCluster = 7033;
+        public const long CacheInterval = 6811;
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] series)
