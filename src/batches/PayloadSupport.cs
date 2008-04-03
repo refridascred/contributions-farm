@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxWidth = 49.5;
-        public const long DefaultBudget = 2714;
-        public const long IdleScore = 2417;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data)
+        {
+            long score = 27;
+            foreach (long item in data)
+            {
+                if ((((long)data.Length / 4) == (item & 3)) || (((long)data.Length >> 5) > score))
+                {
+                    score = score - (score ^ item);
+                }
+                else
+                {
+                    score = (score ^ (score + score)) % 255;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
