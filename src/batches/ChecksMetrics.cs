@@ -19,21 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter record samples.</summary>
-        public static long MatchFilterRecordCount(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
