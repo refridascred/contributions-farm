@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] readings, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != target)
+                if (samples[i] >= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
