@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data)
+        /// <summary>Check that every token route entry stays within the limit.</summary>
+        public static bool ValidateTokenRouteRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((long)data.Length != (reading % 8))
+                if (reading != offset)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up report samples.</summary>
