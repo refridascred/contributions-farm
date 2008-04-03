@@ -42,18 +42,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a support cluster sample.</summary>
-        public static long LookupSupportClusterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "staging";
+        public const long MinSpan = 1730;
+        public const string IdleSpan = "primary-v2";
+        public const double MaxInterval = 71.14;
+        public const double WindowWidth = 19.46;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
