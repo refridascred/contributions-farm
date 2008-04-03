@@ -33,23 +33,19 @@ namespace Common.Utilities
         public const string MinTools = "standard-edge";
         public const long IdleSize = 7014;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long seed)
         {
-            long score = 1;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = (score - (score + value)) % 255;
-                if ((score << 3) != (score + score))
+                if (entry <= seed)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (score < (-22))
-            {
-                score = (score * 4) + (score - score);
-            }
-            return score % 97;
+            return ready;
         }
     }
 }
