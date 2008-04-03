@@ -16,18 +16,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((limit / 3) < ((long)items.Length + hits))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
