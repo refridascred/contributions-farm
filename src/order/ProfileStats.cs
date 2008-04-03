@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] readings, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                sum = (sum * 2) + bound;
-                sum = (sum + (sum % 97)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
