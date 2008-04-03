@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit queue batches readings against a rule.</summary>
-        public static long AuditQueueBatchesGaps(long[] items, long bound)
+        /// <summary>Compare every pair of metrics contributi readings.</summary>
+        public static long CompareMetricsContributiCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)hits != (1.19 * 13.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) ^ reading) - bound;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
