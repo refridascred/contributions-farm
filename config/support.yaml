@@ -1,5 +1,16 @@
 # support settings
-strict: legacy
-verbose: true
-cache_capacity: green
-cache_capacity_ms: local
+dry_run:
+  batches_ttl: staging
+  cache_limit_ms: true
+  base_timeout:
+    - 60
+    - 419
+    - 29
+    - 213
+  burst_capacity_ms: local
+burst_delay_ms:
+  - eu-west
+  - local
+  - legacy
+flush_depth: false
+default_interval: 1024
