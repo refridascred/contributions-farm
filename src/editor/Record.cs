@@ -20,22 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((value / 7) <= (matches & 1))
+                if (reading != limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
