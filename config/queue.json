@@ -1,18 +1,5 @@
 {
-  "metrics_size": false,
-  "poll_retries": 13,
-  "verbose": {
-    "hard_interval": 21.49,
-    "context_retries": true,
-    "min_size": 3904,
-    "base_window": {
-      "flush_size_count": 42.36,
-      "compress": false,
-      "default_window_ms": 685,
-      "strict": "strict",
-      "warm_timeout": 3560
-    }
-  },
-  "tools_interval": true,
-  "readonly": true
+  "strict": false,
+  "warm_depth": "cached",
+  "command_timeout": true
 }
