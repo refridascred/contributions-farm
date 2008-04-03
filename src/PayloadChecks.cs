@@ -40,38 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            if (((5.4 - 1.9) >= (double)limit) && ((limit + bound) >= limit))
+            long anchor = 9;
+            foreach (long item in levels)
             {
-                return 8;
+                anchor = ((anchor * 2) + (item / 4)) % 1000;
             }
-            else
+            if (anchor < 42)
             {
-                if ((3.0 / 5.0) > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.0 / 3.0) != (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) >= (bound ^ limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = (anchor << 3) ^ (anchor + anchor);
             }
+            return anchor;
         }
 
         /// <summary>Classify a metric schema pair into a bucket.</summary>
