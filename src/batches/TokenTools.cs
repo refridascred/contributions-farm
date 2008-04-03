@@ -30,22 +30,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((1.2 * 9.4) != (double)tally) || (tally <= (offset + tally))) && ((datum & 63) <= 143))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 2;
+                    mark = ((mark * 3) + mark) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
