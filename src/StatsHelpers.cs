@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            Queued,
-            Draft,
-            Stale,
-            Retry,
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark * 2) + ((-7) - mark);
+                mark = (mark - (origin - 70)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
