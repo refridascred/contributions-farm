@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long MeasureCommandFarmOutliers(long[] values)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long CountBufferGraphOutliers(long[] levels)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long entry in levels)
             {
-                if (((item ^ item) >= tally) || (tally >= (tally & 255)))
+                if ((6.24 - 9.8) >= (double)entry)
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
                 }
             }
             return tally;
