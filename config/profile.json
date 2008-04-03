@@ -1,5 +1,6 @@
 {
-  "hard_timeout_pct": "staging",
-  "flush_delay_count": "green",
-  "window_depth": 61
+  "commits_depth": "green",
+  "stats_interval": "cached",
+  "batches_ttl": 21.09,
+  "enabled": 66.23
 }
