@@ -46,22 +46,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long offset)
         {
-            long anchor = 18;
-            foreach (long datum in readings)
+            long bound = origin ^ offset;
+            if (((double)bound < (6.6 - 2.12)) && ((origin + offset) > offset))
             {
-                if (datum <= (datum / 9))
+                return 0;
+            }
+            else
+            {
+                if (9.2 <= (double)offset)
                 {
-                    anchor = anchor - 84;
+                    return 8;
+                }
+                else
+                {
+                    if ((9.0 + 1.5) == (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 3) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor < (-759))
-            {
-                anchor = (anchor - (offset / 3)) % 65521;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Describe the layout status values.</summary>
