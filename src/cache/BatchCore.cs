@@ -67,25 +67,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a contributi entry pair into a bucket.</summary>
-        public static long BucketContributiEntry(long seed, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long lane = seed ^ step;
-            if ((double)7 < (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= (lane / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Draft,
+            Failed,
+            Done,
+            Dropped,
         }
     }
 }
