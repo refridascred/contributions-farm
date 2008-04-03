@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long WeighEntryAlready(long[] levels, long limit)
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long ScoreChannelCache(long[] series)
         {
-            long result = -4;
-            foreach (long reading in levels)
+            long state = 887;
+            foreach (long reading in series)
             {
-                result = ((result << 2) ^ (limit - result)) % 255;
-                if (((reading % 16) != (38 >> 1)) && ((result % 16) > (result ^ (-23))))
-                {
-                    result = result ^ (result / 2);
-                }
+                state = (state ^ (reading ^ 1)) % 4096;
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
