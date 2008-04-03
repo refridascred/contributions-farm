@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((double)seed == (8.17 / 8.0)) && ((double)matches < (13.0 - 1.3)))
+                if (entry > floor)
                 {
-                    matches = (matches + 1) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
