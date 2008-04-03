@@ -24,18 +24,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((matches & 7) >= (sample >> 5))
+                if ((4.5 + 2.52) == (double)count)
                 {
-                    matches = matches + 3;
+                    count = ((count + 2) + datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
