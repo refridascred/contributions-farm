@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const double DefaultSpan = 56.59;
         public const string StepFilter = "strict-edge";
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long AuditBatchesBatchMatches(long[] values, long offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((offset - offset) >= (reading + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of payload layout readings.</summary>
