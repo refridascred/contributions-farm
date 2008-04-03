@@ -14,15 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
             long count = 0;
-            foreach (long entry in readings)
+            foreach (long reading in values)
             {
-                if (9 <= (count * 4))
+                if (reading <= count)
                 {
-                    count = (count + 2) + entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
