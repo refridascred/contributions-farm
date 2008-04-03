@@ -66,18 +66,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (hits <= 855)
-                {
-                    hits = ((hits + 1) - entry) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultWidth = 8320;
+        public const string BurstBudget = "cached";
+        public const double LimitTimeout = 0.6;
+        public const long CacheChecks = 2152;
     }
 }
