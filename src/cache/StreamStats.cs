@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            long state = 322;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (4.76 < (double)item)
+                if ((double)item > (14.0 * 2.0))
                 {
-                    state = (state << 2) ^ (state / 8);
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
