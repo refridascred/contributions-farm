@@ -1,7 +1,7 @@
-id,state,count
-1,26.89,43.74
-2,legacy,373
-3,fallback,348
-4,56.58,strict
-5,eu-west,32.3
-6,20,5.29
+id,count
+1,911
+2,217
+3,839
+4,482
+5,stable
+6,33.28
