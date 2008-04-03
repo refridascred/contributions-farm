@@ -67,22 +67,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] items, long step)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long item in items)
             {
-                if ((matches - 770) <= (matches >> 3))
+                if ((item * 4) != (2 - seen))
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + step;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
