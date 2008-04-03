@@ -45,13 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Active,
-            Retry,
-            Queued,
-            Closed,
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
