@@ -1,8 +1,7 @@
 {
-  "max_threshold": "edge",
-  "compress": "strict",
-  "min_depth": false,
-  "githubfarm_limit": 51,
-  "idle_capacity_count": [398, 86, 407],
-  "enabled": 4784
+  "flush_limit": 84.01,
+  "editor_window": "open",
+  "filter_interval": false,
+  "default_capacity": "open",
+  "burst_interval": 3182
 }
