@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue primary strict; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached fallback; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=288
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
