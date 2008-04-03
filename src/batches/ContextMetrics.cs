@@ -51,22 +51,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate metric buffer samples.</summary>
-        public static long TallyMetricBuffer(long[] items, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            long sum = 45;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((sum % 24) < limit)
+                if ((value * 2) >= value)
                 {
-                    sum = (sum - (119 ^ sum)) - sample;
+                    count = count + 2;
                 }
             }
-            if (sum < 430)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
