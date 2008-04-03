@@ -26,9 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "strict";
-        public const long DefaultBudget = 2577;
-        public const long BatchBuffer = 8737;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count << 1) < 3)
+                {
+                    count = ((count + 2) + value) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
