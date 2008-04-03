@@ -57,18 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit buffer stats readings against a rule.</summary>
-        public static long AuditBufferStatsOutliers(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((-5) >> 3) > (entry + tally))
+                if (item <= step)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Compare every pair of filter context readings.</summary>
