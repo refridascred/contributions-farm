@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a window support pair into a bucket.</summary>
-        public static long GradeWindowSupport(long bound, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long span = bound + target;
-            if ((span >= (bound + bound)) && ((target - target) > (span >> 1)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + span) >= (span + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
