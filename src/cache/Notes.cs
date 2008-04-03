@@ -50,12 +50,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit notes schema readings against a rule.</summary>
+        public static long CountNotesSchemaMatches(long[] readings, long step)
         {
-            Draft,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 1) <= (step - datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
