@@ -33,19 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches buffer readings against a bound.</summary>
-        public static bool ValidateBatchesBufferLimits(long[] levels, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > offset)
+                if (data[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
