@@ -53,31 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a window report value against two limits.</summary>
-        public static long RankWindowReport(long seed, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            if ((bound + bound) == (seed + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.1 + 0.5) != (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed ^ bound) > seed) || ((double)bound >= (double)79))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
