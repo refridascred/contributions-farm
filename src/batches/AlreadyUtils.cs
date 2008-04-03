@@ -61,22 +61,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = 5;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length + limit) >= (565 - 45))
-                {
-                    acc = (acc + (entry - entry)) % 1000;
-                }
-            }
-            if (acc < (-399))
-            {
-                acc = ((acc << 2) ^ (limit + 191)) % 65521;
-            }
-            return acc;
+            Active,
+            Closed,
+            New,
+            Idle,
         }
     }
 }
