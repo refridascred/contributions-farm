@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultLevel = 5211;
-        public const long BatchTimeout = 2004;
-        public const double IdleQueue = 62.45;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Active,
+            Retry,
+            Dropped,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] data)
