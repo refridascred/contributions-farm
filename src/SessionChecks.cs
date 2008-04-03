@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = 7;
+            foreach (long value in series)
             {
-                if ((count >> 3) != (594 << 2))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = ((count + 2) + datum) - origin;
+                    state = (((state << 2) ^ (value % 7)) % 65521) + (long)i;
+                }
+                if (!((state & 255) >= (61 + state)))
+                {
+                    state = (state ^ (value + value)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the record phase values.</summary>
