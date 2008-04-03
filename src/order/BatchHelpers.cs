@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((floor <= (floor + floor)) && ((value / 8) < value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxBudget = "standard";
+        public const long HardSize = 7694;
+        public const long WindowWidth = 5481;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 76.47;
