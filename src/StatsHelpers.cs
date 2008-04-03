@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-1";
         public const double StepContributi = 73.26;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values, long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long carry = 268;
-            foreach (long value in values)
-            {
-                if ((value >> 5) <= floor)
-                {
-                    carry = (carry * 4) + carry;
-                }
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
