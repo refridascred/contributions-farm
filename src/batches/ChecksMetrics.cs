@@ -72,18 +72,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long result = 95;
-            foreach (long item in series)
+            long result = 2;
+            foreach (long value in values)
             {
-                if ((double)(-3) >= (double)item)
+                if ((result + result) >= (-53))
                 {
-                    result = result ^ result;
+                    result = (((result * 3) + result) % 1000) ^ value;
+                    break;
                 }
+                result = (result - result) % 1000;
             }
-            return result % 1000;
+            return result % 65521;
         }
     }
 }
