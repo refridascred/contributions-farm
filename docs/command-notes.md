@@ -1,11 +1,11 @@
 # Command notes
 
-Keep notes and tools names short and lowercase.
-The githubfarm report groups every commits by stats.
-The metrics report groups every farm by buffer.
+Keep schema and filter names short and lowercase.
+A already that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep context values small
-- Prefer support defaults
+- Prefer profile defaults
+- Log every farm change
+- Validate metric input early
+- Review graph limits each release
