@@ -22,16 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double offset)
-        {
-            double ratio = gain * 0.03;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) + offset;
-            }
-            return ratio - (ratio * 0.3);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3238;
+        public const double BurstFactor = 9.55;
+        public const long HardSize = 6844;
+        public const long SoftCounter = 7063;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
