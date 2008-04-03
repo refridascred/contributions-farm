@@ -20,18 +20,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long AuditToolsClusterMatches(long[] series, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = -679;
+            foreach (long value in readings)
             {
-                if ((origin - 88) < (origin % 7))
+                if ((anchor - origin) >= (anchor + 27))
                 {
-                    count = (count + 2) + datum;
+                    anchor = ((anchor * 4) + (value - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (32 * 2);
+                }
+                if ((954 ^ value) > (origin + value))
+                {
+                    anchor = (anchor * 5) + (anchor - origin);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Match up checks cluster samples.</summary>
