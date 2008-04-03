@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long FoldStreamToken(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long offset)
         {
-            long state = 55;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                state = (state + (state ^ state)) % 65521;
-                state = ((state << 3) ^ state) % 97;
-                if ((state < (state << 1)) || ((value / 6) <= (state << 3)))
+                if (entry > offset)
                 {
-                    state = (state ^ value) % 4096;
-                }
-                else
-                {
-                    state = (state << 3) ^ (value << 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (state > 350)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
