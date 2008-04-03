@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count window metric pairs that satisfy a relation.</summary>
-        public static long PairWindowMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchRatio = 65.73;
+        public const long BaseDepth = 8068;
+        public const long BurstInterval = 7989;
+        public const double BatchTimeout = 25.52;
+        public const long BurstToken = 3038;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
