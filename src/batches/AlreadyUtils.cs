@@ -61,12 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long limit)
         {
-            Dropped,
-            Failed,
-            Draft,
+            long acc = 5;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length + limit) >= (565 - 45))
+                {
+                    acc = (acc + (entry - entry)) % 1000;
+                }
+            }
+            if (acc < (-399))
+            {
+                acc = ((acc << 2) ^ (limit + 191)) % 65521;
+            }
+            return acc;
         }
     }
 }
