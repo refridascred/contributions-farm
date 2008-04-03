@@ -53,19 +53,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
-        public static bool GuardGithubfarmSessionRange(long[] items, long limit)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long TotalChecksBatches(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long result = 469;
+            foreach (long sample in readings)
             {
-                if (datum != limit)
+                if (552 >= (sample + result))
                 {
-                    found = false;
-                    break;
+                    long gap = sample - (result / 7);
+                    result = result ^ ((-79) + gap);
+                    continue;
                 }
+                result = result ^ (result & 7);
             }
-            return found;
+            return result;
         }
     }
 }
