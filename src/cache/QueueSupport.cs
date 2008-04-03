@@ -16,22 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings, long limit)
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long FoldLayoutSchema(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = 36;
+            foreach (long entry in readings)
             {
-                if (count < (limit ^ 4))
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum ^ (entry & 3)) + bound;
+                sum = (sum << 2) ^ (0 / 2);
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
