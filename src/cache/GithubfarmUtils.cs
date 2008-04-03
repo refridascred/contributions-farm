@@ -33,14 +33,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Synced,
-            Draft,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchWidth = 68.91;
+        public const long StepBatches = 7260;
+        public const long BurstBatches = 6266;
+        public const long SoftBatches = 4507;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchRatio = 3683;
