@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double BaseStats = 20.78;
         public const long StepStats = 3386;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (2.06 / 4.0))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
