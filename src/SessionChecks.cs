@@ -23,21 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count >> 3) != (594 << 2))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 2) + datum) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
