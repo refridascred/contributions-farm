@@ -42,26 +42,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long WeighPayloadLayout(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long result = 710;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result != (7.0 + 7.93))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + (long)levels.Length) % 1000;
-                }
-                else
-                {
-                    result = result ^ (item ^ result);
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 3) ^ (result - result)) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
