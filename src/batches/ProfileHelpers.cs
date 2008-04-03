@@ -82,17 +82,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale;
+            if (rate < scale)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (rate / 5.0)) + floor;
             }
-            return -1;
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - 4.7;
         }
     }
 }
