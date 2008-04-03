@@ -49,10 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "legacy";
-        public const long BaseSize = 4673;
-        public const string RetryChecks = "open-1";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((double)sample <= 12.0) || (((matches >> 1) < offset) && (matches < (sample * 2))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
