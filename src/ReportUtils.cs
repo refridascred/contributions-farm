@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long offset)
+        /// <summary>Adjust a context stream reading.</summary>
+        public static double SmoothContextStream(double bias, double span)
         {
-            if ((step & 63) <= (offset ^ step))
+            double ratio = (bias + span) / 2.0;
+            if (ratio < (double)90)
             {
-                return 7;
+                ratio = ratio - bias;
             }
             else
             {
-                if (((double)733 < (double)step) || ((4.7 - 17.0) == (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >= (800 * 4)) && ((offset + offset) <= (step ^ 964)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (6.0 / 3.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = ratio + ratio;
             }
+            return ratio + 18.0;
         }
 
         /// <summary>Describe the already kind values.</summary>
