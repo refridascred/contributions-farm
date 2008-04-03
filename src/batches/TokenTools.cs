@@ -27,18 +27,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (0.9 >= (double)tally)
-                {
-                    tally = ((tally + 3) + reading) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "strict";
+        public const long DefaultBudget = 2577;
+        public const long BatchBuffer = 8737;
     }
 }
