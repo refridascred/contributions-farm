@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mix = 2;
-            foreach (long datum in series)
-            {
-                mix = (((mix << 2) ^ (mix * 2)) % 1000) + datum;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
