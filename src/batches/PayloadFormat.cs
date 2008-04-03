@@ -34,12 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < bound)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
