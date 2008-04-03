@@ -31,22 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Digest a series of batches queue entries.</summary>
+        public static long TallyBatchesQueue(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 272;
+            foreach (long datum in values)
             {
-                if (sample > (sample & 63))
+                if (((9.0 * 1.5) < (double)(long)values.Length) || ((datum - (-847)) == (sum ^ sum)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum + datum) % 101;
                 }
             }
-            return count;
+            if (sum > 1)
+            {
+                sum = (sum * 3) + (812 % 64);
+            }
+            return sum;
         }
     }
 }
