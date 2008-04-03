@@ -1,10 +1,12 @@
 {
-  "base_depth": 7740,
-  "hard_ttl_count": 250,
-  "record_timeout": {
-    "batch_limit": 13,
-    "hard_threshold_ms": 44,
-    "min_ttl_pct": [410, 122],
-    "idle_limit_ms": ["cached", "staging", "primary", "open"]
-  }
+  "idle_timeout_s": 30,
+  "readonly": false,
+  "queue_timeout": 33.82,
+  "persist": {
+    "cache_ttl_count": 65.21,
+    "githubfarm_delay": "green",
+    "burst_ratio_pct": 100,
+    "report_capacity": "eu-west"
+  },
+  "warm_ttl": [397, 94, 208, 339]
 }
