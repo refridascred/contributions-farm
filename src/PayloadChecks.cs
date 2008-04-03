@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
-        public static long OverlapAccountMetricsCount(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc - 7) % 1000;
+                acc = acc + (origin & 127);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
