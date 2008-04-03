@@ -23,18 +23,26 @@ namespace Common.Utilities
         public const long WindowLevel = 2208;
         public const long MinScore = 7774;
 
-        /// <summary>Digest a series of filter counter entries.</summary>
-        public static long ScoreFilterCounter(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long state = 14;
-            foreach (long sample in levels)
+            long anchor = -62;
+            foreach (long sample in data)
             {
-                if ((state >= (state << 2)) || ((sample % 100) >= (state - sample)))
+                if ((double)anchor != (12.0 - 4.37))
                 {
-                    state = state + (sample >> 1);
+                    anchor = (((anchor << 3) ^ (anchor * 4)) % 255) + sample;
+                }
+                else
+                {
+                    anchor = anchor + (1 % 97);
                 }
             }
-            return state;
+            if (anchor > 4)
+            {
+                anchor = (anchor ^ (anchor % 24)) % 97;
+            }
+            return anchor;
         }
     }
 }
