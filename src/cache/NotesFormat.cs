@@ -15,18 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long MeasureLayoutAlreadyOutliers(long[] series, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)series.Length / 5) > (matches * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 2) - item) + seed;
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
