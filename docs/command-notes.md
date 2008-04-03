@@ -1,14 +1,11 @@
 # Command notes
 
-Keep format and metric names short and lowercase.
-Run the notes check before changing any buffer limits.
-
-Run the window check before changing any githubfarm limits.
-Run the cache check before changing any graph limits.
+Run the checks check before changing any entry limits.
+Use format settings to tune how often contributi data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every support change
-- Prefer editor defaults
-- Keep context values small
+- Prefer account defaults
+- Keep cache values small
+- Document new cache fields
