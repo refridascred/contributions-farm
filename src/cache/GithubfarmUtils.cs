@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Rank entry route input into a small class.</summary>
+        public static long ClassifyEntryRoute(long target, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (((target + target) >= (target - target)) && ((208 << 2) == (target >> 1)))
             {
-                if ((double)matches > (1.0 + 9.93))
+                return 7;
+            }
+            else
+            {
+                if ((25 + floor) == (floor * 4))
                 {
-                    matches = (matches + 1) - value;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - target) > target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((34 * 5) > (floor & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
