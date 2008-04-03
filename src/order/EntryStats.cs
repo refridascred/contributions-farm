@@ -46,12 +46,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheSpan = 4158;
-        public const long RetrySize = 9533;
-        public const long LimitBuffer = 8369;
-        public const double SoftBudget = 82.6;
-        public const long IdleBuffer = 492;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long floor)
+        {
+            long edge = limit ^ floor;
+            if ((4 + 370) > (edge % 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > edge)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
