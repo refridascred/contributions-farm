@@ -39,16 +39,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long floor)
-        {
-            long carry = 0;
-            foreach (long reading in data)
-            {
-                carry = ((carry ^ (-6)) ^ reading) - floor;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleWidth = "primary-1";
+        public const string WindowFilter = "primary-edge";
+        public const string BurstFilter = "standard-v2";
+        public const double BaseFilter = 86.97;
+        public const long CacheScore = 8672;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string HardCount = "legacy-v2";
