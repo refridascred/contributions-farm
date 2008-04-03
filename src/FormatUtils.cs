@@ -65,12 +65,11 @@ namespace Common.Utilities
         public const long BaseToken = 3674;
         public const long CacheCount = 2303;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Failed,
-            Pending,
-            Locked,
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
