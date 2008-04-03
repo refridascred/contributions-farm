@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long score = 647;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score - score) <= (score / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ item) % 255;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
