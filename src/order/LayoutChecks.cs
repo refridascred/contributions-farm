@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 25.52;
         public const long BurstToken = 3038;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series, long offset)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
+            long mark = 0;
+            foreach (long value in series)
+            {
+                if (((10 / 2) == (offset >> 3)) && (mark > (offset * 5)))
+                {
+                    mark = (((mark << 2) ^ (mark + mark)) % 97) ^ value;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
