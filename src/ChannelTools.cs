@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Paused,
-            Queued,
-            Failed,
+            Draft,
+            Synced,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
