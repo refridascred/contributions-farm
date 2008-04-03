@@ -81,17 +81,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Count the filter counter entries that pass the check.</summary>
+        public static long CountFilterCounterGaps(long[] values, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor ^ (seed * 5)) % 97;
-                anchor = (anchor << 3) ^ ((long)i - (long)i);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((37 * 5) >= (limit - count))
+                {
+                    count = (count + 2) - value;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
