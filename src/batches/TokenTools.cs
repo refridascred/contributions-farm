@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value % 8) >= (seen % 8))
+                if (items[i] > limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
