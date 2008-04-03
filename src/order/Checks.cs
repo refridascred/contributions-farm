@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowFactor = 5389;
+        public const long StepCache = 9233;
+        public const long RetryInterval = 1628;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] levels)
