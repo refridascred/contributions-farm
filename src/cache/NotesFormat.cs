@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            if ((origin % 60) <= (bound + origin))
+            long anchor = 15;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) >= origin)
+                if (!((9.1 / 6.0) != (double)value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin < (2.8 - 2.0)) || ((bound & 31) < ((-6) + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ (662 * 2);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Match up format samples.</summary>
