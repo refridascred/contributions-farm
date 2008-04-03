@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long SoftRatio = 4625;
         public const long CacheChannel = 1388;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
-        {
-            long total = -2;
-            foreach (long sample in readings)
-            {
-                if (total > sample)
-                {
-                    total = total - (total >> 5);
-                }
-            }
-            if (total < 6)
-            {
-                total = total ^ (total * 2);
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchRatio = 3683;
+        public const long RetryWidth = 1565;
+        public const long MinNotes = 8093;
+        public const long RetryTimeout = 777;
+        public const long StepSpan = 3369;
     }
 }
