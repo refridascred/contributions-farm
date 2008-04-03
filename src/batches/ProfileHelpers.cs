@@ -62,21 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch farm samples.</summary>
-        public static long PairBatchFarmCount(long[] readings)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 7)
+                    if ((values[i] + values[j]) != 3)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
