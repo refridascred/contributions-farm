@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two counter payload measurements.</summary>
-        public static double AdjustCounterPayload(double scale, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] series)
         {
-            double load = (double)((-99) + 20);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                load = ((load + scale) - (double)(long)i) + bias;
+                if (!((entry - 453) >= entry))
+                {
+                    tally = tally + 1;
+                }
             }
-            return load + (double)3;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
