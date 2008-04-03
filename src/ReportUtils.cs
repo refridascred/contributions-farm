@@ -25,18 +25,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 5183;
+        public const long MaxScore = 3460;
+        public const long MaxWindow = 4856;
+        public const long BaseRatio = 182;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
