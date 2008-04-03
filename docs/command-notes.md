@@ -1,12 +1,16 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep payload and order names short and lowercase.
+The metric module keeps metrics values in sync with the window cache.
+The context helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the channel queue.
+
+The window module keeps payload values in sync with the stats cache.
+Run the command check before changing any order limits.
+The schema report groups every channel by order.
 
 ## Guidelines
 
-- Review order limits each release
-- Document new context fields
-- Log every account change
-- Validate batches input early
+- Prefer window defaults
+- Keep commits values small
+- Document new command fields
+- Log every token change
