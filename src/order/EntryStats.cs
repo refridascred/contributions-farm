@@ -54,17 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                if (cell != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
