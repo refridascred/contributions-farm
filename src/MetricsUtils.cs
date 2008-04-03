@@ -30,11 +30,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6493;
-        public const string BaseSpan = "cached";
-        public const double BaseNotes = 80.0;
-        public const string IdleSize = "staging-edge";
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double SmoothStream(double rate, double bias)
