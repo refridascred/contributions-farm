@@ -64,15 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Locked,
-            Idle,
-            Closed,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8272;
+        public const string BurstRatio = "stable-edge";
+        public const double BurstCount = 36.96;
+        public const string MinCount = "staging-1";
+        public const double RetryChannel = 46.99;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultWidth = 8320;
