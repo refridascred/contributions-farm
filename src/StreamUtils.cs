@@ -68,12 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long TallyEditorFormatGaps(long[] values)
         {
-            Ready,
-            Active,
-            Failed,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (datum >= (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
