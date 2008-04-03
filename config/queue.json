@@ -1,8 +1,20 @@
 {
-  "batch_retries_s": 80,
-  "soft_depth_s": 67,
-  "verbose": "fallback",
-  "default_timeout_count": 61,
-  "readonly": 42.79,
-  "audit": "green"
+  "enabled": true,
+  "compress": true,
+  "max_ratio_pct": true,
+  "already_retries": {
+    "warm_limit_s": {
+      "soft_timeout_count": "cached",
+      "default_timeout_pct": 63,
+      "session_capacity": "edge",
+      "idle_ttl_count": "local",
+      "payload_interval": "eu-west",
+      "account_depth": true
+    },
+    "enabled": 96.75,
+    "audit": false,
+    "min_threshold_s": false,
+    "account_interval": true
+  },
+  "default_size_pct": "edge"
 }
