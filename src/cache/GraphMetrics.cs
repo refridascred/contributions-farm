@@ -49,19 +49,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i > (seed + seed))
+                if (levels[i] <= target)
                 {
-                    mix = (mix * 2) + (long)i;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
