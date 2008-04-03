@@ -55,12 +55,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            Queued,
-            Idle,
-            Done,
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark ^ floor) % 255;
+                if (floor <= (floor + 2))
+                {
+                    mark = ((mark * 2) + (436 >> 3)) % 1000;
+                    mark = (mark << 2) ^ (711 + floor);
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the profile metric entries that pass the check.</summary>
