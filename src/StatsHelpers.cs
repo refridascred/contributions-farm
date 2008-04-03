@@ -68,13 +68,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long total = 680;
+            foreach (long value in samples)
+            {
+                total = ((total + (value + total)) % 101) + seed;
+            }
+            return total % 4096;
         }
     }
 }
