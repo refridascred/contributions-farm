@@ -60,21 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long MatchFilterContextCount(long[] samples)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
