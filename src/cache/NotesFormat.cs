@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] levels, long floor)
         {
-            Queued,
-            Retry,
-            Idle,
-            Synced,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the farm mode values.</summary>
