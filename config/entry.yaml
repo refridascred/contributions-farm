@@ -1,20 +1,4 @@
 # entry settings
-persist: 98.07
-soft_delay: 1486
-notes_ratio: 5568
-sync_window_ms: 30
-account_ttl:
-  batch_ratio_pct:
-    min_size_s: primary
-    readonly:
-      - standard
-      - fallback
-    retry_window: 3378
-    verbose: 24
-    cache_window:
-      - 76
-      - 330
-      - 20
-  compress: 85.38
-  warm_ratio: local
-enabled: 51.0
+flush_ratio: 2278
+min_ratio_count: eu-west
+account_capacity: standard
