@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload metric readings against a rule.</summary>
-        public static long CountPayloadMetricOutliers(long[] items, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((78 - limit) <= (tally + tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
