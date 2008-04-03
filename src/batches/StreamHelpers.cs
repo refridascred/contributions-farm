@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up buffer samples.</summary>
