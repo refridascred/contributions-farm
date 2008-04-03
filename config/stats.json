@@ -1,14 +1,5 @@
 {
-  "retry_ttl": 61.34,
-  "batch_depth_s": true,
-  "readonly": ["strict", "strict", "cached", "stable"],
-  "audit": {
-    "idle_retries_s": "stable",
-    "max_window_pct": 9651,
-    "warm_retries": 43.14,
-    "githubfarm_delay": 45,
-    "soft_ttl_pct": 250
-  },
-  "contributi_size": 84,
-  "already_delay": 60
+  "persist": true,
+  "burst_delay_pct": 28.02,
+  "batch_ratio": "latest"
 }
