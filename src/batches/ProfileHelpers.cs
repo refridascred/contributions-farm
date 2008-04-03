@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((0 << 1) <= (step - step))
-                {
-                    mix = mix + ((long)i / 6);
-                    mix = (mix ^ (step - mix)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = anchor ^ (anchor - anchor);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
