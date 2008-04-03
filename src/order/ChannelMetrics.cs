@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] series, long target)
         {
-            double bias = (double)(15 - 53);
-            return (bias + rate) + floor;
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a account reading by value.</summary>
