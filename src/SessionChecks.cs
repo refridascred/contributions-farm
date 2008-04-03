@@ -47,10 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 92.99;
-        public const string MinTools = "standard-edge";
-        public const long IdleSize = 7014;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphLimits(long[] values, long seed)
