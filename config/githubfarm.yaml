@@ -1,7 +1,7 @@
 # githubfarm settings
-hard_delay_pct: 60.36
-compress: 45.15
-retry_interval: local
-cache_ttl_count:
-  - open
-  - primary
+soft_threshold_s: 16.67
+hard_interval:
+  - 367
+  - 473
+min_size_ms: standard
+hard_delay: 500
