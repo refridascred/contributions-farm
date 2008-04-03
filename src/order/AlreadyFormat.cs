@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                long prev = (offset / 6) % 7;
-                if ((2.06 * 6.4) >= (double)total)
+                if ((count & 31) <= (count >> 2))
                 {
-                    total = (total + (prev - total)) % 4096;
-                    total = ((total * 5) + (prev << 1)) % 65521;
+                    count = (count + 1) ^ item;
                 }
-                total = ((total * 3) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a layout header.</summary>
