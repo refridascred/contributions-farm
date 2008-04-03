@@ -55,38 +55,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metric schema pair into a bucket.</summary>
-        public static long SortMetricSchema(long target, long limit)
+        /// <summary>Adjust a graph report reading.</summary>
+        public static double SmoothGraphReport(double rate, double bias)
         {
-            if ((double)limit <= (double)target)
+            double mean = (double)((-774) & 63);
+            if (mean > (rate - rate))
             {
-                return 7;
+                mean = mean - rate;
             }
             else
             {
-                if ((limit + 8) <= (target >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + limit) == (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target > (limit >> 4)) || ((5.09 / 8.0) >= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = mean - (bias + mean);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a contributi stats.</summary>
