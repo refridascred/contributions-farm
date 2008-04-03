@@ -40,18 +40,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context counter samples are out of range.</summary>
-        public static long AuditContextCounterMatches(long[] samples, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= (matches + sample))
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
                 {
-                    matches = (matches + 2) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
