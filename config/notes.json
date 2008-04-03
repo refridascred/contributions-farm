@@ -1,6 +1,12 @@
 {
-  "batch_threshold_ms": "eu-west",
-  "retry_capacity_ms": "green",
-  "sync_size_ms": [108, 482, 212, 55],
-  "verbose": 68
+  "enabled": 63,
+  "default_limit_pct": "strict",
+  "idle_ratio_pct": 71.5,
+  "dry_run": 250,
+  "account_depth": 13.43,
+  "base_size_count": {
+    "poll_interval": ["legacy", "strict", "strict"],
+    "warm_retries": ["strict", "eu-west"],
+    "readonly": 4.73
+  }
 }
