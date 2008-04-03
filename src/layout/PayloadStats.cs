@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (reading >= target)
+                if (cell < step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
