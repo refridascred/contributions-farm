@@ -26,15 +26,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
+        public static long MatchCounterMetricsCount(long[] values)
         {
-            double load = 2.0;
-            if (load < (double)4)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - 5.6) + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - (offset - load);
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
