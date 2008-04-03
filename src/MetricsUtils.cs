@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long LimitBudget = 9258;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Paused,
-            Stale,
-            Retry,
-            Idle,
-            Active,
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
