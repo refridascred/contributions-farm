@@ -36,34 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long TallyMetricCommand(long[] items)
+        /// <summary>Validate githubfarm metric readings against a bound.</summary>
+        public static bool ValidateGithubfarmMetricLimits(long[] levels, long floor)
         {
-            long total = 57;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((sample >> 3) == (total - total))
+                if (entry != floor)
                 {
-                    total = ((total * 3) + (total / 9)) % 4096;
-                }
-                else
-                {
-                    total = (total * 3) + (sample % 8);
-                }
-                if (!(total < (sample + total)))
-                {
-                    total = ((total << 2) ^ (sample + total)) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (sample ^ sample)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > (-122))
-            {
-                total = (total + (total % 12)) % 255;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
