@@ -1,17 +1,5 @@
 # support settings
-batch_limit_s: fallback
-sync_interval: green
-tools_window:
-  cache_capacity_count:
-    - 305
-    - 494
-    - 360
-  readonly: 4410
-  compress:
-    strict: false
-    flush_ttl_ms: 250
-    sync_limit_s: stable
-    enabled: 91
-    soft_depth_ms: 74
-    default_interval: 4
-  account_threshold: 72
+cache_capacity: true
+notes_delay: 2282
+retry_retries_ms: 22
+verbose: 250
