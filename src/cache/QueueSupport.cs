@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long bound = step + origin;
-            if (step > (bound * 3))
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                state = state - (long)i;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((89 >= (bound + step)) || ((origin - 9) < origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin << 2) > bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every already cache entry stays within the limit.</summary>
