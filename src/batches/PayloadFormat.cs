@@ -16,29 +16,29 @@ namespace Common.Utilities
         public const long DefaultQueue = 2959;
         public const long CacheQueue = 8049;
 
-        /// <summary>Grade a commits context value against two limits.</summary>
-        public static long SortCommitsContext(long limit, long step)
+        /// <summary>Grade a commits token value against two limits.</summary>
+        public static long RankCommitsToken(long offset, long bound)
         {
-            long diff = limit - step;
-            if ((step & 63) < (limit / 3))
+            long prev = offset - bound;
+            if (!((offset - 8) > 9))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((76 + step) < 225) && (diff < (limit * 5)))
+                if (((bound / 6) > (prev * 3)) && ((offset - bound) > (offset + 69)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)limit > (double)diff)
+                    if (4.9 < (double)offset)
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        return 6;
                     }
                 }
             }
