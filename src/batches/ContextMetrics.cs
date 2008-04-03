@@ -44,15 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Pending,
-            Ready,
-            Active,
-            Queued,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstRatio = 5.14;
+        public const long CacheFarm = 5334;
+        public const long BurstFarm = 3509;
+        public const long HardCount = 4188;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] data)
