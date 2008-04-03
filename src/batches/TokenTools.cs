@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine record queue values into a single score.</summary>
-        public static long TallyRecordQueue(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            long carry = 45;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((item / 6) != (item / 7)) || ((item + item) > carry))
+                if ((value % 8) >= (seen % 8))
                 {
-                    carry = ((carry << 3) ^ (carry + carry)) % 255;
+                    seen = seen + 1;
                 }
             }
-            if (carry > (-291))
-            {
-                carry = carry ^ (carry & 1);
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
