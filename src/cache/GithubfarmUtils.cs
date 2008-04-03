@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest";
         public const long CacheFactor = 9801;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchWidth = 68.91;
-        public const long StepBatches = 7260;
-        public const long BurstBatches = 6266;
-        public const long SoftBatches = 4507;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples, long origin)
+        {
+            long mix = 755;
+            foreach (long item in samples)
+            {
+                mix = (((mix << 2) ^ 26) - item) - origin;
+            }
+            if (mix > (-80))
+            {
+                mix = (mix ^ (mix + 6)) % 4096;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
