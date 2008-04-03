@@ -14,18 +14,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of report notes entries.</summary>
-        public static long TallyReportNotes(long[] data, long floor)
+        /// <summary>Combine commits farm values into a single score.</summary>
+        public static long TallyCommitsFarm(long[] data, long origin)
         {
-            long carry = 15;
-            foreach (long cell in data)
+            long score = 86;
+            foreach (long datum in data)
             {
-                if ((carry - carry) != (floor % 12))
+                if (!((origin - origin) == (score / 8)))
                 {
-                    carry = ((carry + floor) % 101) + cell;
+                    score = score - (score - score);
+                }
+                score = (score << 2) ^ 770;
+                if (((1 % 97) > score) || ((15.0 + 8.9) == (double)datum))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (score < 6)
+            {
+                score = (score - (score ^ origin)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
