@@ -14,27 +14,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of format graph entries.</summary>
-        public static long TotalFormatGraph(long[] data)
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long MeasureChecksFilterMatches(long[] series, long bound)
         {
-            long sum = 8;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!(value < (value - value)))
+                if ((bound ^ reading) < (reading * 2))
                 {
-                    sum = sum ^ ((long)data.Length % 3);
-                    sum = (sum + (sum & 1)) % 4096;
+                    count = count + 1;
                 }
-                if ((11 + sum) != (value - value))
+                else
                 {
-                    sum = ((sum * 5) + (sum + value)) % 101;
-                }
-                if (((sum - value) > (value / 3)) && (sum <= (67 ^ sum)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
