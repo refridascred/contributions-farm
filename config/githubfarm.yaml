@@ -1,12 +1,40 @@
 # githubfarm settings
-entry_depth: 6434
-cache_threshold_s:
-  hard_interval_pct: staging
-  sync_window: 0.36
-  cache_retries_pct: true
-  max_ratio_count: 625
-  already_delay:
-    - eu-west
+max_capacity:
+  metrics_depth: 6604
+  sync_capacity: 97.18
+  githubfarm_limit:
+    - 73
+    - 483
+    - 129
+  warm_depth:
     - standard
-    - local
-layout_retries: fallback
+    - primary
+    - latest
+    - standard
+  soft_delay_pct: false
+  batch_timeout_count: 500
+checks_limit: false
+stats_capacity:
+  enabled:
+    readonly: true
+    report_size: local
+    audit: 2.79
+    poll_window: 0.82
+    filter_threshold: false
+    layout_interval: 919
+  hard_limit:
+    - fallback
+    - staging
+    - open
+  strict:
+    persist: standard
+    max_size: 63
+    cache_timeout_count: standard
+    checks_interval: 9.68
+    commits_limit: 476
+    report_size: 500
+  persist: false
+  cache_capacity_count: legacy
+readonly: 50.05
+hard_depth_s: 4984
+persist: 1024
