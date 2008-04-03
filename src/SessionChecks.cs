@@ -40,12 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Dropped,
-            Idle,
-            Pending,
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stats phase values.</summary>
