@@ -29,12 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long bound)
         {
-            Failed,
-            Ready,
-            Stale,
+            long state = 71;
+            foreach (long entry in data)
+            {
+                if ((1.7 * 8.0) >= (double)entry)
+                {
+                    state = (state + entry) % 1000;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state ^ (bound * 5)) % 101;
+            }
+            return state % 4096;
         }
     }
 }
