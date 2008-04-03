@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long AuditBatchesFarmOutliers(long[] values)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value * 3) <= (matches / 6)) || !((matches << 3) < (matches * 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks window entry stays within the limit.</summary>
