@@ -45,24 +45,17 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long target2)
+        /// <summary>Find the first report command entry that matches the target.</summary>
+        public static long FindReportCommandIndex(long[] levels, long origin)
         {
-            if ((double)target2 > 5.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) <= 30)
+                if (levels[i] > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
