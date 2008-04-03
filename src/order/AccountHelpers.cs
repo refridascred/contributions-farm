@@ -54,31 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support farm pair into a bucket.</summary>
-        public static long SortSupportFarm(long limit, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            if ((8.42 <= (double)bound) && ((double)limit > (4.0 * 7.0)))
+            long state = 59;
+            foreach (long datum in levels)
             {
-                return 3;
+                if ((datum % 100) > state)
+                {
+                    state = state - state;
+                }
+                state = (state - datum) % 101;
             }
-            else
+            if (state < 1)
             {
-                if (((double)bound == (1.0 * 7.9)) || (limit >= (883 & 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit ^ bound) >= (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = ((state * 3) + state) % 4096;
             }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
