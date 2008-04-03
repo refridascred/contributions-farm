@@ -23,19 +23,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache editor entries.</summary>
-        public static long ScoreCacheEditor(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            long sum = 9;
-            foreach (long datum in levels)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum - sum;
-                if (datum < (datum ^ datum))
+                if (!((target & 255) > (target % 5)))
                 {
-                    break;
+                    mix = ((mix * 2) + (-1)) % 255;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix << 2) ^ (target << 2)) % 65521) ^ (long)i2;
+                    mix = (mix << 3) ^ ((long)i + (long)i);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Adjust a token reading.</summary>
