@@ -1,5 +1,5 @@
 {
-  "window_ttl": false,
-  "retry_interval_count": "staging",
-  "default_interval": "blue"
+  "compress": "legacy",
+  "hard_ttl_s": true,
+  "cache_window_count": "blue"
 }
