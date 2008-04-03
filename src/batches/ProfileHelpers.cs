@@ -22,13 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of report notes entries.</summary>
+        public static long TallyReportNotes(long[] data, long floor)
         {
-            New,
-            Idle,
-            Dropped,
-            Paused,
+            long carry = 15;
+            foreach (long cell in data)
+            {
+                if ((carry - carry) != (floor % 12))
+                {
+                    carry = ((carry + floor) % 101) + cell;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a context info.</summary>
