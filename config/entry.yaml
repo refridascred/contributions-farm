@@ -1,5 +1,12 @@
 # entry settings
-cluster_depth: 2939
-contributi_size: 39
-channel_ratio: 60
-metric_limit: staging
+max_capacity: 23
+cache_ttl_ms:
+  - eu-west
+  - open
+  - strict
+  - standard
+strict: 7159
+burst_ratio_count:
+  - local
+  - green
+enabled: 59
