@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Blend two command layout measurements.</summary>
+        public static double SmoothCommandLayout(double ratio, double floor)
         {
-            double bias2 = (double)(444 - 1);
-            for (int i = 0; i < 8; i++)
+            double bias = floor * 5.4;
+            if (bias > (floor + floor))
             {
-                bias2 = ((bias2 + (double)(long)i) - ratio) - bias;
+                bias = (bias - (floor + floor)) + ratio;
             }
-            return bias2 - (double)(-1);
+            return bias - (2.4 + 9.3);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
