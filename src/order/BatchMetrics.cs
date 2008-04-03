@@ -56,9 +56,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheRatio = 482;
-        public const long MinTools = 5528;
-        public const long BatchLevel = 1337;
+        /// <summary>Audit order stats readings against a rule.</summary>
+        public static long AuditOrderStatsOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((tally + tally) < (reading % 12)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
