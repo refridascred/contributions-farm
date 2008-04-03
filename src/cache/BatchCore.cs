@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = 52;
-            foreach (long reading in values)
-            {
-                if ((reading + sum) != (81 % 12))
-                {
-                    sum = (sum * 3) + (sum - sum);
-                }
-            }
-            return sum;
+            New,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the command kind values.</summary>
