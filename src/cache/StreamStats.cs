@@ -55,19 +55,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Accumulate session filter samples.</summary>
+        public static long TotalSessionFilter(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long total = 54;
+            foreach (long cell in data)
             {
-                if ((carry + (long)i) > ((long)i << 2))
-                {
-                    carry = ((carry << 2) ^ (carry % 10)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                total = (((total * 2) + (914 + total)) % 101) ^ cell;
             }
-            return carry;
+            if (total > (-14))
+            {
+                total = ((total * 2) + (long)data.Length) % 65521;
+            }
+            return total;
         }
     }
 }
