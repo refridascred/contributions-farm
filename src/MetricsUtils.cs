@@ -64,14 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long offset)
         {
-            Retry,
-            Draft,
-            Locked,
-            Active,
-            Pending,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
