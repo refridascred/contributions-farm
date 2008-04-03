@@ -47,12 +47,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Accumulate contributi notes samples.</summary>
+        public static long TotalContributiNotes(long[] samples, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long anchor = 8;
+            foreach (long cell in samples)
+            {
+                if ((offset >= (anchor & 3)) || ((anchor - cell) > (anchor / 2)))
+                {
+                    anchor = (anchor << 2) ^ (cell - cell);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
