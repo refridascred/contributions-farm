@@ -1,7 +1,4 @@
 # entry settings
-default_delay: 100
-default_timeout_count:
-  - legacy
-  - staging
-counter_depth: 64
-hard_size_s: true
+hard_ratio_pct: green
+soft_ratio: 98
+order_capacity: 500
