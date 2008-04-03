@@ -27,19 +27,14 @@ namespace Common.Utilities
             return load - (offset * 13.0);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 42;
-            foreach (long item in series)
-            {
-                anchor = ((anchor + anchor) % 4096) ^ item;
-            }
-            if (anchor < 296)
-            {
-                anchor = (anchor * 5) + (901 - anchor);
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
