@@ -33,13 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Ready,
-            Draft,
-            Done,
-            Stale,
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
