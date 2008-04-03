@@ -1,18 +1,17 @@
 # support settings
-account_timeout: latest
-idle_retries_s:
-  cache_capacity_pct: staging
+batch_limit_s: fallback
+sync_interval: green
+tools_window:
+  cache_capacity_count:
+    - 305
+    - 494
+    - 360
+  readonly: 4410
   compress:
-    persist: cached
-    base_threshold_pct:
-      - green
-      - green
-      - latest
-      - open
-    poll_interval: open
-  soft_timeout_count: false
-  hard_depth_ms: latest
-  min_interval_ms: 4954
-  filter_ratio: 17
-default_size_s: cached
-batch_ttl_ms: true
+    strict: false
+    flush_ttl_ms: 250
+    sync_limit_s: stable
+    enabled: 91
+    soft_depth_ms: 74
+    default_interval: 4
+  account_threshold: 72
