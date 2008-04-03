@@ -20,39 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long step = target + seed;
-            if ((step - step) != (step + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (16.0 * 0.8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.4 * 1.3) <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target - seed) <= (seed + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
