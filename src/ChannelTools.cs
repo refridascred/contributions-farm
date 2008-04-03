@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate payload commits samples.</summary>
-        public static long TotalPayloadCommits(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 982;
-            foreach (long value in items)
-            {
-                mix = ((mix << 3) ^ (value + mix)) % 4096;
-            }
-            return mix % 1000;
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
