@@ -1,8 +1,9 @@
 # entry settings
+idle_ttl_ms: primary
+cache_retries: legacy
+counter_ratio: strict
 compress:
-  - 464
-  - 319
-  - 328
-min_timeout_ms: 70
-checks_retries: true
-batches_size: 7072
+  soft_depth_s: 6309
+  batch_limit: 500
+  poll_ttl_s: 30
+idle_limit_count: 3876
