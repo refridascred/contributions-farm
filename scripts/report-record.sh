@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=174
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+RECORD_LIMIT=188
 log "limit is ${RECORD_LIMIT}"
