@@ -63,14 +63,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Roll a editor support counter forward.</summary>
+        public static long IterateEditorSupport(long target)
         {
-            New,
-            Ready,
-            Paused,
-            Active,
-            Pending,
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
