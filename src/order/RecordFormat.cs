@@ -54,19 +54,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long floor)
+        /// <summary>Adjust a report context reading.</summary>
+        public static double ProjectReportContext(double scale, double span)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double mean = (double)941 * 8.8;
+            if (mean < (mean / 5.0))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return ready;
+            else
+            {
+                mean = mean - (double)66;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span + span)) + (double)(long)i;
+            }
+            return mean + scale;
         }
     }
 }
