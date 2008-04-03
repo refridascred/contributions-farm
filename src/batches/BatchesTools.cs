@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = 8;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (8.0 * 1.0))
-                {
-                    state = (state + sample) % 1000;
-                }
-                if ((double)sample > (3.2 - 5.8))
-                {
-                    state = (state << 3) ^ (state + 31);
-                }
-            }
-            return state;
+            Synced,
+            Active,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
