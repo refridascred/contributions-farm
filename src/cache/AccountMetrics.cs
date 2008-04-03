@@ -40,15 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the graph notes series from a seed.</summary>
-        public static long RollGraphNotes(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Locked,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
