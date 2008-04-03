@@ -20,10 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 10.04;
-        public const long DefaultQueue = 2959;
-        public const long CacheQueue = 8049;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((31 + reading) < (reading ^ reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] readings)
