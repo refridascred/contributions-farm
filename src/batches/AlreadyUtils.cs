@@ -53,18 +53,15 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)sample <= 12.0) || (((matches >> 1) < offset) && (matches < (sample * 2))))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
