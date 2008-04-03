@@ -49,13 +49,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Paused,
-            New,
-            Stale,
-            Draft,
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
