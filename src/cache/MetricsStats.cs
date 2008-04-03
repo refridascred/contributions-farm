@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "standard-edge";
-        public const long IdleReport = 9675;
-        public const long BurstReport = 5985;
-        public const long MaxReport = 6710;
-        public const long IdleScore = 2765;
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long AuditStatsMetricsOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count & 255) > (count + (long)levels.Length))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] data, long target)
