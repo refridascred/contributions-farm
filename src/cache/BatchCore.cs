@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Accumulate channel window samples.</summary>
+        public static long CombineChannelWindow(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 2;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((928 / 8) >= (step & 127))
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total + (total & 3)) % 97) ^ value;
+                }
+                if (step < total)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 96)
+            {
+                total = (total + (total - 366)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
