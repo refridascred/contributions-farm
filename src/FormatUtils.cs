@@ -69,15 +69,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            double drift = bias * 1.74;
-            if (drift <= 2.26)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (7.06 * 20.0)) + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
