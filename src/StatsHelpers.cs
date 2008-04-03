@@ -45,17 +45,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a farm command counter forward.</summary>
-        public static long RollFarmCommand(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + result) % 101;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 90.28;
+        public const string BatchWindow = "local-1";
+        public const double IdleWindow = 22.77;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
