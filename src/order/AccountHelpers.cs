@@ -49,15 +49,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long AuditGithubfarmEntryOutliers(long[] items, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long sample in items)
+            foreach (long sample in samples)
             {
-                if (((-61) + target) >= hits)
+                if ((((double)(-58) < (double)step) || ((double)hits > (double)step)) || ((5.4 - 9.41) >= (double)hits))
                 {
-                    hits = (hits + 2) - sample;
+                    hits = (hits + 3) + sample;
                 }
             }
             return hits;
