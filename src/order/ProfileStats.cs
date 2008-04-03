@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const string BurstQueue = "stable";
         public const string BatchTimeout = "primary-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "stable-v2";
-        public const long LimitQueue = 2482;
-        public const long IdleSpan = 1634;
-        public const long DefaultLevel = 5002;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            New,
+            Locked,
+            Draft,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Combine context window values into a single score.</summary>
         public static long TallyContextWindow(long[] data)
