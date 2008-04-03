@@ -43,24 +43,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long limit2)
+        /// <summary>Count the counter command entries that pass the check.</summary>
+        public static long AuditCounterCommandOutliers(long[] values)
         {
-            if (limit < (limit2 % 8))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((15.0 / 9.0) < (double)limit2)
+                if (((tally > (datum * 3)) || (tally < (datum / 5))) || ((tally - 431) < datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
