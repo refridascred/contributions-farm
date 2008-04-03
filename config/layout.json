@@ -1,16 +1,5 @@
 {
-  "strict": "eu-west",
-  "readonly": {
-    "flush_limit_ms": [412, 170],
-    "batch_window_pct": ["fallback", "open", "primary"],
-    "batch_window_ms": 4003,
-    "soft_delay": false,
-    "flush_delay_s": {
-      "idle_limit_count": true,
-      "dry_run": 80.71,
-      "enabled": false,
-      "readonly": 4428
-    }
-  },
-  "sync_depth": false
+  "warm_interval": true,
+  "cache_limit": 20,
+  "graph_window": 1024
 }
