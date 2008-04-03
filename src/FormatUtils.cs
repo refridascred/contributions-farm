@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((step * 5) >= (-46)) || ((count ^ count) == ((long)readings.Length / 6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
