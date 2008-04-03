@@ -49,19 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((matches << 1) > (long)items.Length) || (matches >= (reading % 16)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "legacy";
+        public const long BaseSize = 4673;
+        public const string RetryChecks = "open-1";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
