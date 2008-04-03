@@ -34,17 +34,22 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long limit)
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long AuditSchemaFilterHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= limit)
+                if (datum <= (-970))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
