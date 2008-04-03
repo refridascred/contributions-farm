@@ -16,23 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items, long floor)
-        {
-            long sum = 9;
-            foreach (long sample in items)
-            {
-                if (!(floor <= (228 ^ sum)))
-                {
-                    sum = ((sum * 4) + sum) % 101;
-                }
-                else
-                {
-                    sum = (sum - (sample % 24)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4561;
+        public const double MaxCommits = 56.8;
+        public const long WindowWidth = 7089;
+        public const long BurstCommits = 5891;
+        public const long MinLevel = 4537;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] values)
