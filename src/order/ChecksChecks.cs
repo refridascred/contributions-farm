@@ -13,14 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Synced,
-            Dropped,
-            Closed,
-            Done,
-            Locked,
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
