@@ -67,11 +67,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Classify a contributi entry pair into a bucket.</summary>
+        public static long BucketContributiEntry(long seed, long step)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long lane = seed ^ step;
+            if ((double)7 < (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step >= (lane / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
