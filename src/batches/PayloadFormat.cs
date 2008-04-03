@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const double RetryScore = 90.4;
         public const long MaxSpan = 2089;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 10.04;
+        public const long DefaultQueue = 2959;
+        public const long CacheQueue = 8049;
 
         /// <summary>Validate githubfarm metric readings against a bound.</summary>
         public static bool ValidateGithubfarmMetricLimits(long[] levels, long floor)
