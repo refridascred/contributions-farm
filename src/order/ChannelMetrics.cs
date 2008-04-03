@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((step >> 4) < (mix - mix))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ step) % 101;
-                    mix = ((mix << 3) ^ step) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowWidth = 50.62;
+        public const long WindowCache = 2585;
+        public const long IdleSpan = 658;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] data, long bound)
