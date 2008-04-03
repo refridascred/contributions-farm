@@ -71,12 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = (((anchor * 4) + (limit % 8)) % 101) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
