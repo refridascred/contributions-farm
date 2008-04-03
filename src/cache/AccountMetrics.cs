@@ -16,13 +16,11 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Dropped,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftRatio = 1753;
+        public const string MaxChecks = "standard-1";
+        public const long BaseWidth = 6803;
+        public const long IdleSize = 496;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
