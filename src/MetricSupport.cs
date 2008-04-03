@@ -16,22 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] data, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] data, long origin)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long datum in data)
             {
-                if ((datum * 5) < (origin - 72))
+                if ((752 % 12) < (datum + datum))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
