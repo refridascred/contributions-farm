@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] == target)
+                if (matches <= bound)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
