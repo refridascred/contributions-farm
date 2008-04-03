@@ -1,22 +1,13 @@
 # githubfarm settings
-retry_timeout:
-  idle_ratio_s: green
-  metrics_delay: cached
-  burst_ttl_count: blue
-  max_size: 4
-  max_retries_ms:
-    warm_threshold_s: 9272
-    min_threshold: 15
-    base_ttl: 100
-    account_delay: fallback
-    base_size_ms: strict
-    poll_depth_ms: green
-  burst_ttl: 9561
-max_retries_s:
-  - 96
-  - 5
-strict:
-  - green
-  - fallback
-  - fallback
+tools_retries: true
+profile_depth: fallback
+window_timeout: cached
+idle_window: blue
+soft_threshold:
+  - 239
+  - 332
+  - 431
+tools_limit:
   - local
+  - latest
+  - primary
