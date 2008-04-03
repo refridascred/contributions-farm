@@ -61,19 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] readings, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
