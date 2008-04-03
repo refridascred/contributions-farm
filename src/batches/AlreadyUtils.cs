@@ -29,19 +29,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!(value <= (offset << 2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 7569;
+        public const double DefaultWidth = 56.21;
+        public const long RetryInterval = 3122;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] series)
