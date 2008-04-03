@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] values, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((0.59 >= (double)bound) && (bound <= seen)) || (6.59 > (double)bound))
+                if (entry > target)
                 {
-                    seen = (seen + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
