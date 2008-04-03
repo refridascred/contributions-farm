@@ -48,14 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheCount = "alpha-1";
+        public const long BaseBudget = 9305;
+        public const string DefaultQueue = "primary-1";
+        public const double WindowQueue = 94.36;
 
         /// <summary>Project the next context value.</summary>
         public static double ScaleContext(double ratio, double offset)
