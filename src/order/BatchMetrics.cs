@@ -28,13 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleWidth = 78.67;
+        public const long SoftSchema = 8892;
+        public const long IdleSpan = 7888;
+        public const string MaxSchema = "standard-edge";
+        public const long DefaultSpan = 445;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long seed, long step)
