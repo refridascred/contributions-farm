@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 6474;
+        public const double HardDepth = 4.15;
+        public const long BaseToken = 2095;
+        public const long HardToken = 1689;
+        public const long MinInterval = 9411;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string CacheReport = "standard-edge";
