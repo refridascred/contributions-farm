@@ -1,10 +1,30 @@
 # githubfarm settings
-hard_limit_ms: 1.57
-persist: cached
-max_size_s:
-  poll_retries_count: 37
-  burst_size_count: 81.99
-  enabled: true
-  strict: 45
-readonly: green
-batches_size: 86.79
+soft_ttl_ms: 73.36
+support_capacity:
+  window_ratio: 4771
+  hard_capacity_pct: 82.95
+  burst_ratio_s:
+    editor_interval: 96.4
+    batch_retries_ms: 71
+    audit: fallback
+    default_timeout:
+      - 219
+      - 439
+    strict: local
+    cluster_retries: 100
+  schema_depth:
+    - 215
+    - 32
+    - 424
+    - 214
+  max_threshold: 54
+  readonly:
+    cache_depth: 94.11
+    audit: true
+    hard_depth_pct: latest
+    order_ttl: 42.93
+idle_timeout_pct: stable
+strict:
+  cache_interval_s: 30
+  burst_size_pct: fallback
+  burst_ttl_pct: 36.34
