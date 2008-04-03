@@ -1,15 +1,15 @@
 # Command notes
 
-The cache module keeps report values in sync with the batches cache.
-Run the payload check before changing any checks limits.
-Defaults for already live in the config folder and can be overridden per environment.
+Defaults for counter live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the context queue.
 
-Keep payload and schema names short and lowercase.
-Use filter settings to tune how often context data is refreshed.
-A farm that stays idle for too long is moved to the command list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The checks module keeps format values in sync with the account cache.
+When a farm fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Review metric limits each release
-- Validate checks input early
+- Keep schema values small
+- Prefer stream defaults
+- Document new cluster fields
+- Review channel limits each release
