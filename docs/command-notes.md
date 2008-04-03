@@ -1,11 +1,13 @@
 # Command notes
 
-The githubfarm report groups every report by stream.
-Each tools is validated before it reaches the report queue.
+Use filter settings to tune how often buffer data is refreshed.
+Run the already check before changing any session limits.
+
+Defaults for report live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep githubfarm values small
-- Validate route input early
-- Log every format change
+- Validate farm input early
+- Prefer session defaults
+- Document new checks fields
