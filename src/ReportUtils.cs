@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Failed,
-            Queued,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 2248;
+        public const long BurstFactor = 4622;
+        public const long StepAccount = 2918;
+        public const long CacheAccount = 6936;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultLevel = 5211;
