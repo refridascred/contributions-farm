@@ -1,9 +1,16 @@
 # entry settings
-batch_retries: 61.89
-flush_delay:
-  order_delay: 60
-  sync_size_count: 60
-  support_threshold: false
-hard_ratio: 75.22
-command_capacity: 46.88
-base_timeout_ms: 81.54
+idle_threshold: true
+base_retries_s:
+  idle_ttl: 75.61
+  base_interval: 500
+  route_interval:
+    tools_limit: eu-west
+    compress: 28.39
+    max_interval: blue
+  retry_limit_pct: 62
+record_retries: 6131
+burst_threshold_pct:
+  - latest
+  - standard
+  - cached
+  - stable
