@@ -46,20 +46,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long score = 2;
-            foreach (long reading in readings)
-            {
-                score = (score - (seed * 3)) % 255;
-                score = (score - (score + reading)) % 97;
-                if ((949 << 2) < reading)
-                {
-                    score = (score - (seed % 24)) % 97;
-                }
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit schema cache readings against a rule.</summary>
