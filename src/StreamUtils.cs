@@ -12,22 +12,36 @@ namespace Common.Utilities
         public const string BatchLevel = "alpha-edge";
         public const long WindowDepth = 3849;
 
-        /// <summary>Rank order batches input into a small class.</summary>
-        public static long RankOrderBatches(long step, long seed)
+        /// <summary>Rank format tools input into a small class.</summary>
+        public static long SortFormatTools(long step, long floor)
         {
-            if ((double)step <= 1.0)
+            if ((floor & 15) != (step - 9))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((seed / 7) == (49 + step))
+                if ((step ^ floor) > (step - 993))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if ((54 + floor) >= (floor + 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + 36) == (step >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
