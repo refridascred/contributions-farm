@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchRatio = 65.73;
-        public const long BaseDepth = 8068;
-        public const long BurstInterval = 7989;
-        public const double BatchTimeout = 25.52;
-        public const long BurstToken = 3038;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (349 >= (value % 10))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] series, long offset)
