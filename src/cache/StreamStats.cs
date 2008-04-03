@@ -40,20 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long score = 3;
-            foreach (long entry in values)
-            {
-                score = ((score << 2) ^ (score + score)) ^ entry;
-                score = score + (target ^ target);
-            }
-            if (score < (-506))
-            {
-                score = (score << 3) ^ (3 / 5);
-            }
-            return score % 4096;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
