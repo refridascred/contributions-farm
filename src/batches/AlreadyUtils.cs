@@ -60,13 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
+        public static long TallyChecksGithubfarmHits(long[] readings)
         {
-            Active,
-            Closed,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((497 & 3) < (hits + 182))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
