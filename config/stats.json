@@ -1,12 +1,24 @@
 {
-  "dry_run": [462, 491],
-  "payload_interval": {
-    "cache_retries": 8859,
-    "max_size": 89,
-    "min_size": 85,
-    "idle_limit_count": 71
+  "default_window_pct": {
+    "record_timeout": 5065,
+    "hard_ratio_count": [294, 449, 72, 334],
+    "default_timeout_s": 59.71,
+    "sync_size_s": true
   },
-  "profile_ratio": "fallback",
-  "context_limit": [176, 23, 109, 79],
-  "compress": 67.18
+  "payload_window": 2593,
+  "retry_limit_count": {
+    "batch_size_count": {
+      "audit": 4323,
+      "sync_delay_s": 0.45,
+      "cache_window": "blue",
+      "cache_interval": false
+    },
+    "persist": 58.66,
+    "max_threshold_count": false,
+    "record_capacity": "edge",
+    "base_threshold": "latest",
+    "checks_size": "edge"
+  },
+  "order_ttl": true,
+  "persist": 10.42
 }
