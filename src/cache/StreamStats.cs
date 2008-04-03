@@ -37,12 +37,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((seed - floor) > (floor + 671)) || ((3.0 - 6.43) <= (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) < (240 & 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9 & 255) <= (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) == (floor / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
