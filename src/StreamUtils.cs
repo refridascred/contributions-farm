@@ -97,24 +97,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context commits series from a seed.</summary>
-        public static long StepContextCommits(long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            double weight = 7.1;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor ^ anchor) ^ (long)i2;
-                }
-                if ((((-393) - anchor) < anchor) && ((double)anchor >= (7.0 + 4.9)))
-                {
-                    anchor = ((anchor * 5) + target) % 101;
-                }
-                anchor = (anchor - ((long)i + anchor)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                weight = (((weight - (4.51 / 8.0)) - (double)(long)i) - scale) + span;
             }
-            return anchor;
+            return weight - 1.0;
         }
     }
 }
