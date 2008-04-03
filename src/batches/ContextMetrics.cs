@@ -33,13 +33,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Closed,
-            Pending,
-            Stale,
-            Done,
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine format editor values into a single score.</summary>
