@@ -1,8 +1,10 @@
 {
-  "route_interval": 53.28,
-  "persist": 17.93,
-  "retry_delay_count": "strict",
-  "stream_depth": "legacy",
-  "hard_timeout_ms": 98.96,
-  "retry_threshold_s": 500
+  "max_size_ms": {
+    "retry_interval_pct": "green",
+    "compress": 8210,
+    "readonly": "green"
+  },
+  "soft_size": 8,
+  "audit": true,
+  "enabled": 51.79
 }
