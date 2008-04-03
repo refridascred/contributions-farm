@@ -69,12 +69,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 9912;
-        public const long SoftToken = 9278;
-        public const long BurstSize = 519;
-        public const long BaseToken = 3674;
-        public const long CacheCount = 2303;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double bias)
+        {
+            double drift = bias * 1.74;
+            if (drift <= 2.26)
+            {
+                drift = (drift - (7.06 * 20.0)) + gain;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] levels, long step)
