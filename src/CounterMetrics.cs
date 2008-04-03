@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "standard";
-        public const double WindowRoute = 3.85;
-        public const string HardRoute = "legacy-edge";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits >= 3) && ((double)seed == (13.0 / 6.0)))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double bias, double span)
