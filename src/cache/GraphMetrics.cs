@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels, long offset)
         {
-            double ratio = 11.0;
-            if (ratio <= (double)(-2))
+            long acc = 209;
+            foreach (long reading in levels)
             {
-                ratio = ((ratio - (double)(-9)) + weight) + floor;
+                acc = ((acc * 5) + (reading & 15)) - offset;
             }
-            return ratio - (ratio / 7.0);
+            if (acc < 248)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Locate a context reading by value.</summary>
