@@ -63,20 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Match up graph stats samples.</summary>
+        public static long MatchGraphStatsCount(long[] items)
         {
-            long total = 997;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= (datum - datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 5) + total) % 101;
-                    total = total + total;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total ^ (71 - datum)) % 255;
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
