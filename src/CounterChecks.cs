@@ -49,11 +49,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of session window readings.</summary>
+        public static long FoldSessionWindow(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long state = 4;
+            foreach (long sample in samples)
+            {
+                if (((9.35 * 5.0) < (double)state) && ((5 ^ limit) >= (limit << 1)))
+                {
+                    state = (state ^ (sample - sample)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate payload samples.</summary>
