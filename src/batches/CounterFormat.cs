@@ -17,21 +17,19 @@ namespace Common.Utilities
         public const long MaxRoute = 3552;
         public const long SoftTimeout = 4773;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Digest a series of metrics record entries.</summary>
+        public static long DigestMetricsRecord(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 30;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix & 1) > (limit + mix))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                mix = (mix - (entry % 2)) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
