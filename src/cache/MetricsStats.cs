@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsOutliers(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 153;
+            foreach (long datum in items)
             {
-                if ((count & 255) > (count + (long)levels.Length))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                score = (score ^ (datum - 16)) % 65521;
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
