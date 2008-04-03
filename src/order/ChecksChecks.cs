@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the batches command series from a seed.</summary>
+        public static long RollBatchesCommand(long target)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum ^ (sum + sum)) % 1000) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
