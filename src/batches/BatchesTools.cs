@@ -32,25 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long offset2)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long bound)
         {
-            long gap = offset - offset2;
-            if ((offset - offset2) < (gap % 24))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap <= ((-684) & 255))
+                if (samples[i] <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
