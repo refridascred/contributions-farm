@@ -1,6 +1,7 @@
-id,active,count,rank
-1,233,751,829
-2,485,primary,19.47
-3,85.11,71.99,legacy
-4,222,646,264
-5,339,65.35,39.44
+id,active,region,count
+1,349,legacy,728
+2,latest,50.79,300
+3,445,193,staging
+4,30.11,eu-west,34.61
+5,10.44,392,972
+6,local,75.2,68
