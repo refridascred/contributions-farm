@@ -48,15 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxScore = 4377;
+        public const long IdleContributi = 5146;
+        public const long DefaultContributi = 8199;
+        public const long BaseContributi = 2673;
+        public const double WindowRatio = 63.39;
     }
 }
