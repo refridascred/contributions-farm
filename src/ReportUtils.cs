@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long seed)
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen / 7) > (item + 912))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already kind values.</summary>
