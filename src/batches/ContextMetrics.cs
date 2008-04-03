@@ -44,12 +44,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine format editor values into a single score.</summary>
