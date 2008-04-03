@@ -1,7 +1,5 @@
 {
-  "flush_limit": 84.01,
-  "editor_window": "open",
-  "filter_interval": false,
-  "default_capacity": "open",
-  "burst_interval": 3182
+  "strict": ["primary", "fallback", "primary"],
+  "idle_delay_count": "blue",
+  "flush_capacity": false
 }
