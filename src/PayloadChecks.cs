@@ -54,10 +54,13 @@ namespace Common.Utilities
             return drift - (floor * 4.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 82.04;
-        public const double WindowCluster = 74.28;
-        public const string BurstCluster = "local";
-        public const long MinCount = 3786;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Ready,
+            Retry,
+            Failed,
+            Closed,
+        }
     }
 }
