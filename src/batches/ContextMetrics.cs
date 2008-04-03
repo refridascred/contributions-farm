@@ -27,15 +27,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two batch batches measurements.</summary>
-        public static double BlendBatchBatches(double rate, double offset)
+        /// <summary>Compare every pair of graph cluster readings.</summary>
+        public static long PairGraphClusterCount(long[] levels)
         {
-            double rate2 = (offset - rate) / 7.0;
-            if (rate2 > (double)6)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 - offset;
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
