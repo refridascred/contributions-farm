@@ -53,27 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long WeighMetricsTools(long[] samples, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 44;
-            foreach (long value in samples)
-            {
-                carry = (carry ^ carry) % 65521;
-                if ((266 << 2) > (origin * 2))
-                {
-                    carry = ((carry * 4) + (carry >> 4)) % 1000;
-                }
-                if ((value + value) <= (origin % 24))
-                {
-                    carry = ((carry << 3) ^ (carry << 2)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (value - 3)) % 101;
-                }
-            }
-            return carry;
+            Ready,
+            Failed,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
