@@ -47,13 +47,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            long result = 0;
+            foreach (long value in series)
+            {
+                result = (result + result) % 97;
+                result = (result << 3) ^ (value / 5);
+                if ((5.6 + 5.7) <= (double)result)
+                {
+                    result = (result ^ (result >> 3)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate metrics stream samples.</summary>
