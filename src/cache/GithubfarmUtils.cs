@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((644 + reading) < 264)
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
