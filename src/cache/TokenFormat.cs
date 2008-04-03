@@ -22,24 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank metrics cache input into a small class.</summary>
-        public static long BucketMetricsCache(long limit, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((bound % 24) <= (bound + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((limit + limit) != (bound + bound)) && (limit <= (limit - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
