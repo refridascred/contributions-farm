@@ -1,8 +1,5 @@
 {
-  "tools_size": "legacy",
-  "retry_threshold_s": "primary",
-  "retry_retries": ["cached", "primary"],
-  "default_capacity": "edge",
-  "compress": 3.29,
-  "verbose": 4296
+  "warm_limit_ms": 91,
+  "sync_delay": "open",
+  "readonly": "local"
 }
