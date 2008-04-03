@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseDepth = "strict-edge";
-        public const long BurstFactor = 6313;
-        public const double BaseStats = 20.78;
-        public const long StepStats = 3386;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits / 9) <= 0)
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] samples, long floor)
