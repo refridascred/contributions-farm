@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultLevel = "staging";
-        public const long SoftCount = 1396;
-        public const long IdleFilter = 2669;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitStats = 646;
