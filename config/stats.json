@@ -1,6 +1,14 @@
 {
-  "audit": [361, 232, 20],
-  "idle_depth_ms": 30,
-  "burst_capacity": ["legacy", "standard", "fallback"],
-  "compress": 30
+  "max_capacity_ms": "blue",
+  "session_interval": {
+    "sync_window_s": 80,
+    "burst_retries": false,
+    "min_capacity": [172, 251, 58, 175],
+    "poll_depth_count": ["eu-west", "standard"],
+    "enabled": "legacy",
+    "idle_threshold_pct": "edge"
+  },
+  "dry_run": 44.66,
+  "contributi_retries": 250,
+  "commits_ttl": 57
 }
