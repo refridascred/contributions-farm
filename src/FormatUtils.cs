@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstDepth = 5915;
         public const string DefaultInterval = "stable-v2";
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Fold a list of report token readings.</summary>
+        public static long DigestReportToken(long[] series)
         {
-            long carry = 5;
-            foreach (long sample in samples)
+            long anchor = 3;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((anchor * 3) <= (9 + item))
                 {
-                    carry = ((carry ^ (sample % 2)) % 101) ^ (long)i;
+                    anchor = anchor + (anchor - 5);
                 }
-                carry = (carry ^ sample) % 97;
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor - anchor);
+                }
             }
-            return carry % 97;
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate batches samples.</summary>
