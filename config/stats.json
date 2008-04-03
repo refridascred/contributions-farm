@@ -1,5 +1,8 @@
 {
-  "sync_ratio": 3555,
-  "enabled": 30,
-  "dry_run": 11.83
+  "route_interval": 53.28,
+  "persist": 17.93,
+  "retry_delay_count": "strict",
+  "stream_depth": "legacy",
+  "hard_timeout_ms": 98.96,
+  "retry_threshold_s": 500
 }
