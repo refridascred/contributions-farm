@@ -35,22 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark ^ floor) % 255;
-                if (floor <= (floor + 2))
-                {
-                    mark = ((mark * 2) + (436 >> 3)) % 1000;
-                    mark = (mark << 2) ^ (711 + floor);
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
