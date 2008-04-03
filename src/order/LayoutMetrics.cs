@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of cluster profile entries.</summary>
-        public static long DigestClusterProfile(long[] items, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mix = 25;
-            foreach (long sample in items)
-            {
-                if ((mix * 4) > (seed << 2))
-                {
-                    mix = mix ^ (sample % 97);
-                }
-                mix = ((mix * 2) + mix) % 97;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
