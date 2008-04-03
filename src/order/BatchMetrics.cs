@@ -70,13 +70,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
             public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
