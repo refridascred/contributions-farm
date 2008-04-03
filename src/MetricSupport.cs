@@ -20,18 +20,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] items, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)reading > (double)origin)
-                {
-                    matches = matches + 3;
-                }
+                anchor = anchor + ((long)i * 4);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
