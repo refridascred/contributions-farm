@@ -1,13 +1,6 @@
 {
-  "readonly": "latest",
-  "graph_depth": 6173,
-  "graph_capacity": {
-    "idle_limit_s": 9040,
-    "retry_ratio_s": "cached",
-    "compress": 86,
-    "warm_delay": 4303,
-    "filter_capacity": "open",
-    "warm_timeout": [336, 176]
-  },
-  "burst_window": 51
+  "verbose": true,
+  "max_ratio": [57, 424, 432, 167],
+  "readonly": "local",
+  "command_ttl": 43
 }
