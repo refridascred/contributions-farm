@@ -28,11 +28,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxDepth = 81.07;
-        public const long MinLayout = 7645;
-        public const long WindowScore = 1780;
-        public const long SoftLevel = 8617;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
