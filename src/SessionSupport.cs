@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if (((bound - step) > (step << 1)) && ((6.88 - 3.46) >= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + bound) < 48) || (step < (step + (-421))))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
