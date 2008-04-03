@@ -33,12 +33,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long offset)
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            if (38 < (offset + (-96)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target <= 1.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset < (9.8 / 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
