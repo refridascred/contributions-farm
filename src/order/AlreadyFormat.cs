@@ -61,24 +61,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long acc = 8;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (cell < (cell - cell))
                 {
-                    result = ((result ^ (step / 7)) % 255) ^ (long)i2;
+                    acc = ((acc * 4) + (cell + acc)) + offset;
                 }
-                if (!!((266 / 7) > (step << 1)))
-                {
-                    result = (result - (result % 60)) % 101;
-                    result = (result - (long)i) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                acc = acc ^ cell;
             }
-            return result;
+            return acc % 1000;
         }
     }
 }
