@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
