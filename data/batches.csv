@@ -1,6 +1,6 @@
-id,count,label,weight
-1,619,3.54,cached
-2,eu-west,945,89.02
-3,95.33,standard,240
-4,897,13.11,stable
-5,812,3.87,fallback
+id,active,count,rank
+1,233,751,829
+2,485,primary,19.47
+3,85.11,71.99,legacy
+4,222,646,264
+5,339,65.35,39.44
