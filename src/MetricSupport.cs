@@ -38,18 +38,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long TallyClusterMetricsGaps(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading < 1.9)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Paused,
+            Draft,
+            New,
         }
     }
 }
