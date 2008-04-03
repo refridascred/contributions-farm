@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7628;
-        public const long WindowGithubfarm = 6960;
-        public const long MaxDepth = 9330;
-        public const long BaseWidth = 7404;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((floor <= (floor + floor)) && ((value / 8) < value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
