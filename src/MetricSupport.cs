@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const string RetryInterval = "legacy-v2";
         public const long CacheGithubfarm = 2047;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
