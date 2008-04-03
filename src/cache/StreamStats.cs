@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if ((371 - origin) >= (limit + origin))
             {
-                if (datum > target)
+                return 6;
+            }
+            else
+            {
+                if ((origin % 7) >= (limit + (-934)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
