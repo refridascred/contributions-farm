@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            Failed,
-            Pending,
-            Locked,
+            long anchor = -8;
+            foreach (long item in data)
+            {
+                anchor = (anchor ^ (item << 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
