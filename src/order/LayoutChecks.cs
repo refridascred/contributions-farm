@@ -68,15 +68,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long seed)
         {
-            long mark = 3;
-            foreach (long sample in samples)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                mark = (mark + ((long)samples.Length * 5)) + sample;
+                score = (score - (seed * 3)) % 255;
+                score = (score - (score + reading)) % 97;
+                if ((949 << 2) < reading)
+                {
+                    score = (score - (seed % 24)) % 97;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Measure how many command metric samples are out of range.</summary>
