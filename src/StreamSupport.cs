@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            long score = 9;
+            foreach (long value in items)
+            {
+                if ((value + value) > (score - value))
+                {
+                    score = score + (value >> 1);
+                }
+            }
+            if (score < 259)
+            {
+                score = (score + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
