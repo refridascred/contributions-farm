@@ -23,15 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples, long floor)
+        /// <summary>Iterate the schema stats series from a seed.</summary>
+        public static long DeriveSchemaStats(long origin)
         {
-            long score = 3;
-            foreach (long value in samples)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                score = ((((score * 5) + (score + 6)) % 1000) ^ value) - floor;
+                result = (result * 2) + (origin + (long)i);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Classify a format order pair into a bucket.</summary>
