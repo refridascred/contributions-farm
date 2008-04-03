@@ -51,14 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a graph order reading.</summary>
+        public static double AdjustGraphOrder(double bias, double bias2)
         {
-            New,
-            Locked,
-            Paused,
-            Idle,
-            Ready,
+            double weight = bias;
+            if (weight >= (double)73)
+            {
+                weight = weight + weight;
+            }
+            return weight - (bias2 * 11.0);
         }
 
         /// <summary>Project the next order value.</summary>
