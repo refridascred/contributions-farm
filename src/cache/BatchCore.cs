@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 7008;
+        public const long IdleSize = 651;
+        public const string BatchMetric = "alpha";
+        public const string BaseMetric = "fallback-1";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
