@@ -45,26 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            long mix = 9;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((mix - (long)series.Length) < (mix * 5)) && ((double)mix < (1.98 / 9.0)))
+                if ((cell * 4) > cell)
                 {
-                    mix = ((mix * 4) + (mix - mix)) % 1000;
-                }
-                if ((45 + mix) < 625)
-                {
-                    mix = (mix ^ (value % 64)) % 255;
+                    count = count + 3;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (value ^ 3)) % 101;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
