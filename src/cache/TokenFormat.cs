@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long FoldStreamCommits(long[] levels, long bound)
         {
-            long state = 50;
-            foreach (long item in series)
+            long mark = -47;
+            foreach (long entry in levels)
             {
-                if ((double)item > (8.69 * 0.03))
+                if (9.0 > (double)(long)levels.Length)
                 {
-                    state = state + (state * 5);
+                    mark = ((mark ^ (mark * 2)) % 1000) + bound;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (entry >> 3);
                 }
             }
-            if (state > 51)
-            {
-                state = ((state * 4) + state) % 65521;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
