@@ -76,22 +76,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long state = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((state + reading) > (3 << 2)) || ((double)state != (8.0 / 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state * 3) + ((long)values.Length * 4);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (reading & 255)) % 4096;
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return count;
         }
     }
 }
