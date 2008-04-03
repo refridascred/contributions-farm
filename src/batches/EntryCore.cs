@@ -51,18 +51,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long MeasureFormatReportHits(long[] data, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)reading >= (11.0 - 1.8)))
-                {
-                    matches = (matches + 1) + bound;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
