@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values)
         {
-            long acc = 209;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc * 5) + (reading & 15)) - offset;
+                if ((double)datum == (double)67)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc < 248)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit commits already readings against a rule.</summary>
