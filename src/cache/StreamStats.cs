@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
-            Draft,
-            Synced,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - hits) >= (hits - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
