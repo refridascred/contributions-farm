@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a contributi order sample.</summary>
-        public static long SeekContributiOrderIndex(long[] items, long target)
+        /// <summary>Match up notes schema samples.</summary>
+        public static long PairNotesSchemaCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
