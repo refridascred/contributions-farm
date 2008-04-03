@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitWidth = 1933;
-        public const long BatchSession = 2957;
-        public const long CacheSession = 8963;
-        public const long RetrySession = 7443;
-        public const long MaxDepth = 6868;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(((2 / 5) < (hits + hits)) && ((hits + hits) == (cell + hits))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
