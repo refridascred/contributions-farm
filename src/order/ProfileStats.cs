@@ -39,12 +39,38 @@ namespace Common.Utilities
         public const long HardSize = 6844;
         public const long SoftCounter = 7063;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long step)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            if ((step * 2) == (target % 60))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((9 + step) <= (target / 6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 15) < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step & 31) < (step * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context window values into a single score.</summary>
