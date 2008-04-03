@@ -15,16 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double floor)
-        {
-            double scale = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (ratio + scale)) - (double)(long)i;
-            }
-            return scale - (double)408;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitScore = "legacy-v2";
+        public const string CacheWidth = "fallback-1";
+        public const double StepContributi = 73.26;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] values, long floor)
