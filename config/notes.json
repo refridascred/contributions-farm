@@ -1,13 +1,7 @@
 {
-  "sync_delay_pct": 8040,
-  "batch_threshold": 30,
-  "batch_timeout_s": "latest",
-  "default_capacity_pct": {
-    "format_ttl": false,
-    "tools_size": "standard",
-    "route_ratio": "green",
-    "compress": ["fallback", "stable", "primary", "strict"],
-    "idle_limit_s": "cached"
-  },
-  "default_delay": 1923
+  "hard_delay": 60,
+  "batch_depth_pct": [303, 42, 94],
+  "strict": "staging",
+  "default_interval_pct": ["staging", "blue", "fallback"],
+  "token_capacity": false
 }
