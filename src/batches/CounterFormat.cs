@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the commits graph series from a seed.</summary>
-        public static long StepCommitsGraph(long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                carry = (carry - (limit + (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Fold a list of record readings.</summary>
