@@ -48,18 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double gain = (3.7 * 3.67) + offset;
+            if (gain >= (gain * 9.7))
             {
-                if (seen < (seen >> 2))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                gain = gain - (offset + gain);
             }
-            return seen;
+            else
+            {
+                gain = gain - (3.8 + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain + 6.0)) - (double)(long)i;
+            }
+            return gain + rate;
         }
     }
 }
