@@ -27,11 +27,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate context batch samples.</summary>
+        public static long DigestContextBatch(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            long result = 23;
+            foreach (long item in series)
+            {
+                if (step >= item)
+                {
+                    result = ((result * 2) + 687) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item + result)) % 65521;
+                }
+                result = (result * 3) + result;
+                result = result ^ (result + result);
+            }
+            if (result > 73)
+            {
+                result = (result + ((-5) + 649)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
