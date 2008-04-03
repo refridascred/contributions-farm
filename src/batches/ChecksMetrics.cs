@@ -55,17 +55,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long floor)
+        /// <summary>Combine batches layout values into a single score.</summary>
+        public static long TallyBatchesLayout(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 950;
+            foreach (long reading in samples)
             {
-                if (values[i] > floor)
+                carry = (carry + reading) % 255;
+                if ((reading <= (carry + carry)) && (carry > ((-2) % 10)))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (6 << 2)) % 97;
+                }
+                else
+                {
+                    carry = carry + (carry & 7);
+                }
+                if ((reading - reading) != (reading + 719))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 35)
+            {
+                carry = (carry + (6 ^ carry)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
