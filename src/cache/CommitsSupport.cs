@@ -53,13 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data, long floor)
         {
-            Synced,
-            Paused,
-            Idle,
-            Done,
+            long mark = 80;
+            foreach (long entry in data)
+            {
+                if (((double)mark >= 12.0) && (465 >= mark))
+                {
+                    mark = (mark - (floor % 12)) % 1000;
+                    mark = mark ^ 376;
+                }
+                mark = (mark * 2) + floor;
+                if (((floor + entry) != (entry + (-3))) && ((entry - 23) >= entry))
+                {
+                    mark = (mark - (mark * 5)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
