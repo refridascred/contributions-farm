@@ -24,17 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 3) ^ score) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetrySpan = 8.71;
+        public const string BurstFactor = "legacy-v2";
+        public const long BurstLevel = 5747;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long floor)
