@@ -19,18 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = 827;
+            foreach (long entry in readings)
             {
-                if ((seen / 4) <= (610 + seen))
+                anchor = (anchor - (anchor >> 2)) % 101;
+                if (!((entry % 60) >= (443 << 2)))
                 {
-                    seen = (seen + 3) + datum;
+                    anchor = (anchor + entry) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Adjust a context editor reading.</summary>
