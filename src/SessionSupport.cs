@@ -34,22 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings, long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long acc = 4;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((14.0 / 6.0) <= (double)acc) && ((bound / 7) <= bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ (acc >> 5);
-                }
-                if ((acc ^ value) > (value + acc))
-                {
-                    break;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
