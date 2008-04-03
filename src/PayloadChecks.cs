@@ -51,38 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a token route value against two limits.</summary>
-        public static long RankTokenRoute(long seed, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if ((double)seed >= (9.8 / 7.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 63) == (bound * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < (3.5 - 14.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-63) >= (seed * 4)) && ((seed & 31) >= (bound - seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
