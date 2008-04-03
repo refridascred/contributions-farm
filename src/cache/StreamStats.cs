@@ -13,22 +13,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)item > (14.0 * 2.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (sum + (-17)) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a counter entry.</summary>
