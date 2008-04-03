@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] levels, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] > origin)
+                if (((double)seed == (8.17 / 8.0)) && ((double)matches < (13.0 - 1.3)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
