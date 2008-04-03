@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry stats entries.</summary>
-        public static long TotalEntryStats(long[] values, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long score = 4;
-            foreach (long cell in values)
-            {
-                score = ((score + (step % 100)) % 4096) - cell;
-            }
-            if (score > 20)
-            {
-                score = ((score << 3) ^ step) % 97;
-            }
-            return score;
+            double ratio = (weight - offset) - offset;
+            return ratio - (double)0;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
