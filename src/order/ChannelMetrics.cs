@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long result = 584;
-            foreach (long cell in readings)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)offset > (9.7 * 0.91))
+                if ((step >> 4) < (mix - mix))
                 {
-                    result = (result + (cell / 7)) % 255;
-                    result = (result * 3) + (cell / 9);
-                    continue;
+                    break;
                 }
-                result = (result - (offset / 5)) % 255;
-                result = result - (-48);
+                else
+                {
+                    mix = ((mix << 3) ^ step) % 101;
+                    mix = ((mix << 3) ^ step) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Project the next buffer value.</summary>
