@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] items, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Retry,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
