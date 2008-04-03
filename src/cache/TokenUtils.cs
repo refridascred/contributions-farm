@@ -38,11 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Dropped,
+            Ready,
+            Retry,
+            Locked,
         }
     }
 }
