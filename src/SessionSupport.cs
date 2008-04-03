@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long SeriesCounterFarm(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long limit, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            long lane = limit ^ origin;
+            if (limit > (limit << 1))
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((limit / 8) >= (90 + lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
