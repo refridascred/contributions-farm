@@ -35,15 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context record readings.</summary>
-        public static long DigestContextRecord(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] values, long limit)
         {
-            long mark = 4;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark + mark) % 4096) - value;
+                if (19.0 >= (double)entry)
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Rank record account input into a small class.</summary>
