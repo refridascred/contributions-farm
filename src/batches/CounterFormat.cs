@@ -48,14 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            New,
-            Queued,
-            Retry,
-            Draft,
-            Closed,
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
