@@ -23,12 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Stale,
-            Closed,
-            Retry,
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
