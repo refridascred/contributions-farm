@@ -14,10 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8112;
-        public const string MaxBatches = "strict-edge";
-        public const long RetryBudget = 4381;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long limit)
+        {
+            if ((limit % 5) > (limit % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 2) <= (limit & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long floor)
