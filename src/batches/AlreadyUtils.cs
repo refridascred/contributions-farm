@@ -35,18 +35,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] values, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double rate = (9.3 + 3.0) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((sample - seed) != (tally / 4))
-                {
-                    tally = tally + 2;
-                }
+                rate = ((rate - rate) + (double)(long)i) - offset;
             }
-            return tally;
+            return rate + weight;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
