@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((3 + (long)i) == (3 % 64)) && ((5.8 - 18.0) == (double)target))
-                {
-                    sum = (sum << 3) ^ (long)i;
-                    sum = (sum ^ (target * 5)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (target + sum);
-                    sum = (sum - (96 >> 3)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Closed,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
