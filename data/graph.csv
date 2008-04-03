@@ -1,6 +1,8 @@
-id,rank,token,region
-1,848,open,152
-2,572,standard,green
-3,477,18.24,1.05
-4,341,local,open
-5,384,open,877
+id,owner,active
+1,45.76,610
+2,76.01,92.43
+3,865,90.81
+4,58.38,26.38
+5,576,740
+6,607,latest
+7,edge,744
