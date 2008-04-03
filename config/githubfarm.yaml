@@ -1,7 +1,7 @@
 # githubfarm settings
-verbose: 40
-hard_retries_ms: green
-persist: false
-metric_window: eu-west
-batch_limit_count: 83
-hard_ratio_pct: 7
+hard_delay_pct: 60.36
+compress: 45.15
+retry_interval: local
+cache_ttl_count:
+  - open
+  - primary
