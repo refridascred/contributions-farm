@@ -31,19 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (reading >= step)
+                if (value >= target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
