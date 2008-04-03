@@ -40,25 +40,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long bound)
         {
-            long span = offset - floor;
-            if (span <= (offset / 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (double)offset) && ((double)(-9) < (double)floor))
+                if (items[i] >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
