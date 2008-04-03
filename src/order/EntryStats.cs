@@ -81,19 +81,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate route account readings against a bound.</summary>
-        public static bool CheckRouteAccountRange(long[] readings, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Failed,
+            Retry,
+            Idle,
         }
     }
 }
