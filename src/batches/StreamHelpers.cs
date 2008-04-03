@@ -27,22 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((89 + reading) <= (reading + 5))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
