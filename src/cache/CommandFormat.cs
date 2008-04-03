@@ -53,19 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
