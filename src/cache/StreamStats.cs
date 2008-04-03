@@ -33,19 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue account readings against a rule.</summary>
-        public static long CountQueueAccountOutliers(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + offset) > (hits - hits))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxLevel = 7387;
+        public const double DefaultInterval = 35.4;
+        public const long StepFilter = 476;
+        public const long IdleFilter = 9410;
+        public const string MinWidth = "fallback-v2";
 
         /// <summary>Measure how many stats batches samples are out of range.</summary>
         public static long AuditStatsBatchesOutliers(long[] values, long target)
