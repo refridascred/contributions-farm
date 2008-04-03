@@ -28,18 +28,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the support format entries that pass the check.</summary>
-        public static long AuditSupportFormatHits(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(reading <= (count % 8)) && (count < (long)items.Length))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
