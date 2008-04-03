@@ -27,17 +27,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a stats window sample.</summary>
-        public static long LookupStatsWindowIndex(long[] series, long limit)
+        /// <summary>Iterate the cache schema series from a seed.</summary>
+        public static long DeriveCacheSchema(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                state = (state - (62 + state)) % 255;
+                state = ((state << 3) ^ (offset + offset)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
