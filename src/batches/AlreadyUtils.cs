@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Idle,
-            Dropped,
+            Synced,
             New,
-            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate format samples.</summary>
