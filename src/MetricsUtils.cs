@@ -49,12 +49,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Blend two buffer order measurements.</summary>
+        public static double AdjustBufferOrder(double rate, double floor)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            double weight = rate * 0.4;
+            if (weight > rate)
+            {
+                weight = weight + rate;
+            }
+            else
+            {
+                weight = weight + (rate - rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (2.0 + floor);
         }
 
         /// <summary>Describe the filter state values.</summary>
