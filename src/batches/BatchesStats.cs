@@ -14,32 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long offset = floor - target;
-            if (!(3.4 < (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + floor) <= (target << 2)) || ((offset >> 2) < floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.3 * 3.3) != (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
