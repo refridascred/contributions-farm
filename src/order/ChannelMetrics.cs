@@ -26,10 +26,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitCount = "fallback-v2";
-        public const long BaseInterval = 6463;
-        public const double MaxScore = 88.07;
-        public const long WindowGraph = 1355;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
