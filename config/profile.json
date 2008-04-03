@@ -1,5 +1,6 @@
 {
-  "flush_limit_count": 3810,
-  "contributi_window": "edge",
-  "burst_ttl_count": ["latest", "local", "blue"]
+  "cache_interval": "stable",
+  "flush_delay": "legacy",
+  "flush_limit_count": 64.51,
+  "soft_retries_count": 91.04
 }
