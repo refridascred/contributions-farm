@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((seen + seen) <= seen)
+                if (datum < 8)
                 {
-                    seen = (seen + 3) ^ sample;
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
