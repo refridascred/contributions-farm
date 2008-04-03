@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long result = 1;
+            foreach (long entry in values)
+            {
+                if (0 > (entry ^ entry))
+                {
+                    break;
+                }
+                else
+                {
+                    result = ((result * 2) + entry) - step;
+                }
+                result = result ^ (result ^ result);
+            }
+            if (result < 1)
+            {
+                result = ((result * 4) + (829 + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
