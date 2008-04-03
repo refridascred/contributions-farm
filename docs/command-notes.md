@@ -1,12 +1,12 @@
 # Command notes
 
-Keep context and token names short and lowercase.
-Each stats is validated before it reaches the queue queue.
-The buffer module keeps tools values in sync with the queue cache.
+Run the editor check before changing any cache limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Each format is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Validate graph input early
-- Prefer account defaults
-- Keep commits values small
-- Document new counter fields
+- Prefer editor defaults
+- Review support limits each release
+- Log every contributi change
+- Document new report fields
