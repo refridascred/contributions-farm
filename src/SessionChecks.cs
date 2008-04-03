@@ -52,9 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultLevel = 54.14;
-        public const long BaseSpan = 6776;
-        public const double BatchRoute = 25.89;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Paused,
+            Active,
+            Draft,
+            Closed,
+        }
     }
 }
