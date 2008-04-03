@@ -51,13 +51,39 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long target)
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long span = origin ^ target;
+            if ((7.0 / 3.0) == (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span / 3) != (origin / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >> 3) > (origin & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin < 575)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
