@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            Active,
-            Ready,
-            Idle,
-            Done,
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
