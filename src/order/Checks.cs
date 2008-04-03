@@ -73,11 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] items, long origin)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support kind values.</summary>
