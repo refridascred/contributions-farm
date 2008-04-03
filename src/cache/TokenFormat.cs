@@ -59,24 +59,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long floor)
-        {
-            if ((12.0 + 5.2) < (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((97 + floor) <= (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstRatio = 8862;
+        public const double LimitPayload = 53.44;
+        public const double CacheDepth = 49.43;
+        public const double RetryDepth = 77.17;
     }
 }
