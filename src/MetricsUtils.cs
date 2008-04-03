@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const double BaseNotes = 80.0;
         public const string IdleSize = "staging-edge";
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value & 255) > (value * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
