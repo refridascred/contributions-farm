@@ -27,18 +27,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] levels, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if (((bound % 8) > (step << 1)) || ((bound << 1) == (54 + step)))
             {
-                if (((matches - (long)levels.Length) <= matches) && (((4.53 / 5.0) < (double)matches) || ((matches - matches) < reading)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)66 >= (double)bound))
                 {
-                    matches = (matches + 2) - origin;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound << 3) <= step) && ((step + bound) != (bound - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= (step & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
