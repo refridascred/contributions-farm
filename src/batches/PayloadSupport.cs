@@ -43,19 +43,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long seed)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long ScoreBufferStream(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long sum = 2;
+            foreach (long reading in data)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (((sum ^ 90) % 65521) ^ reading) + target;
             }
-            return stale;
+            return sum % 1000;
         }
     }
 }
