@@ -48,19 +48,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 66.24;
+        public const double BatchMetric = 26.89;
+        public const long BaseScore = 6480;
     }
 }
