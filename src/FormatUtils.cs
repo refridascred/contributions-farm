@@ -39,13 +39,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long floor)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally - value) != (33 - floor))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream record.</summary>
