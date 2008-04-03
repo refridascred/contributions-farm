@@ -1,5 +1,12 @@
 {
-  "readonly": 3757,
-  "retry_ratio_pct": "open",
-  "base_window_pct": 14
+  "dry_run": [462, 491],
+  "payload_interval": {
+    "cache_retries": 8859,
+    "max_size": 89,
+    "min_size": 85,
+    "idle_limit_count": 71
+  },
+  "profile_ratio": "fallback",
+  "context_limit": [176, 23, 109, 79],
+  "compress": 67.18
 }
