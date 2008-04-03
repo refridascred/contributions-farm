@@ -26,22 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window route entries.</summary>
-        public static long TallyWindowRoute(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long score = 133;
-            foreach (long reading in series)
-            {
-                if (((score % 3) > (867 / 3)) && ((double)score <= (double)5))
-                {
-                    score = ((score ^ (score - score)) % 97) + reading;
-                }
-            }
-            if (score < 301)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score % 1000;
+            Draft,
+            Dropped,
+            Closed,
         }
     }
 }
