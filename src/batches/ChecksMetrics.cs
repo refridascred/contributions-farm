@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const long DefaultScore = 6923;
         public const long HardContext = 2319;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (5 < (hits + hits))
+                if (value < seed)
                 {
-                    hits = ((hits + 3) + entry) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the entry kind values.</summary>
