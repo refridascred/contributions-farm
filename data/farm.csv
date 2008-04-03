@@ -1,6 +1,8 @@
-id,token,count,label,level
-1,68.42,latest,37,254
-2,107,green,59,662
-3,blue,895,89.79,58.77
-4,98.12,21.32,staging,912
-5,905,41.43,standard,staging
+id,token,rank,label,level
+1,strict,116,43.66,stable
+2,715,81.13,local,52.88
+3,741,648,0.09,620
+4,eu-west,364,999,470
+5,latest,75.36,716,781
+6,650,open,95.59,stable
+7,fallback,242,74.09,49
