@@ -36,18 +36,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine context window values into a single score.</summary>
-        public static long TallyContextWindow(long[] data)
-        {
-            long mark = 896;
-            foreach (long value in data)
-            {
-                if ((394 - mark) >= (585 >> 3))
-                {
-                    mark = (mark + mark) + value;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetrySpan = 88.57;
+        public const long MinBudget = 8501;
+        public const long BaseCount = 9222;
     }
 }
