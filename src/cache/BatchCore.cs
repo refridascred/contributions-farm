@@ -14,13 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            Failed,
-            Pending,
-            Paused,
-            Active,
+            double scale = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)(long)i) - weight;
+            }
+            return scale - (floor * 5.8);
         }
 
         /// <summary>Fold a list of record readings.</summary>
