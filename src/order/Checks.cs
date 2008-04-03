@@ -51,32 +51,13 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = 285;
-            foreach (long entry in samples)
-            {
-                if ((8 >= (entry >> 4)) || (90 <= (entry & 63)))
-                {
-                    mix = (mix ^ (entry % 5)) % 1000;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (mix - ((long)i + 145)) % 65521;
-                    mix = mix + (entry % 2);
-                }
-                mix = (mix + mix) % 1000;
-                if (!((94 + 11) > (mix + mix)))
-                {
-                    break;
-                }
-            }
-            if (mix > 20)
-            {
-                mix = mix + (455 - mix);
-            }
-            return mix;
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
