@@ -1,6 +1,6 @@
-id,label,region,token
-1,0.94,94.12,fallback
-2,stable,standard,eu-west
-3,707,820,staging
-4,989,999,530
-5,119,15.02,open
+id,level,state,label
+1,793,edge,30.09
+2,52.35,516,0.75
+3,860,267,77.27
+4,806,72.45,819
+5,local,primary,stable
