@@ -63,13 +63,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Idle,
-            Done,
-            Closed,
-            Ready,
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
