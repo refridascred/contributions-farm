@@ -1,5 +1,5 @@
 {
-  "persist": ["edge", "green", "primary", "fallback"],
-  "order_retries": true,
-  "min_interval": true
+  "retry_size_pct": 73.38,
+  "batch_retries_count": "eu-west",
+  "dry_run": true
 }
