@@ -1,18 +1,19 @@
 {
-  "cache_ratio": [258, 153, 55, 202],
-  "enabled": "eu-west",
-  "burst_limit": {
-    "report_ttl": ["cached", "cached", "open"],
-    "account_retries": {
-      "flush_ttl": [105, 282, 58, 451],
-      "batch_threshold_ms": "eu-west",
-      "flush_ratio_ms": [484, 203, 297],
-      "base_interval": false,
-      "audit": "green",
-      "cache_ratio_pct": true
-    },
-    "flush_limit": [33, 101, 144, 157],
-    "verbose": "standard",
-    "burst_ttl_pct": false
-  }
+  "dry_run": 54.78,
+  "verbose": {
+    "report_capacity": 60.5,
+    "audit": "green",
+    "queue_delay": ["open", "stable"],
+    "persist": 2830,
+    "max_delay_pct": "open"
+  },
+  "sync_interval": true,
+  "account_depth": "strict",
+  "poll_timeout_ms": {
+    "warm_timeout": ["fallback", "blue", "green", "strict"],
+    "flush_depth_pct": 28,
+    "queue_depth": 86.93,
+    "persist": 30
+  },
+  "route_threshold": [411, 433, 315]
 }
