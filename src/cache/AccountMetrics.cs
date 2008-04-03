@@ -34,10 +34,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSpan = 5478;
-        public const long MinCluster = 3094;
-        public const string LimitScore = "latest-edge";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
