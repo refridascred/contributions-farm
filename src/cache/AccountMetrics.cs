@@ -40,39 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long target)
+        /// <summary>Iterate the graph notes series from a seed.</summary>
+        public static long RollGraphNotes(long bound)
         {
-            long lane = origin ^ target;
-            if ((origin * 3) >= lane)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((950 * 2) < (origin >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)lane < (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (12.0 > (double)lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
