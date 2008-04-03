@@ -49,22 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((count - 414) != (floor * 4))
+                if (sample != origin)
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
