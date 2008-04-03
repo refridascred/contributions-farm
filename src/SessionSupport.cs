@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long bound)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - gain;
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)21;
-            }
-            return ratio - (1.1 / 3.0);
+            return -1;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
