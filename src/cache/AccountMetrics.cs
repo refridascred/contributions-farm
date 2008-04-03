@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings, long origin)
+        /// <summary>Count command cache pairs that satisfy a relation.</summary>
+        public static long CompareCommandCacheCount(long[] items)
         {
-            long anchor = 69;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((((anchor << 3) ^ 9) % 101) ^ reading) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
