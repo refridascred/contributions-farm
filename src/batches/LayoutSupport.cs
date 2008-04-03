@@ -41,18 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long offset)
         {
-            long carry = -13;
+            long anchor = 18;
             foreach (long datum in readings)
             {
-                if ((4.8 - 3.53) >= (double)carry)
+                if (datum <= (datum / 9))
                 {
-                    carry = (((carry << 3) ^ (carry >> 5)) % 65521) - datum;
+                    anchor = anchor - 84;
                 }
             }
-            return carry;
+            if (anchor < (-759))
+            {
+                anchor = (anchor - (offset / 3)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Roll a editor support counter forward.</summary>
