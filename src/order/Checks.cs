@@ -45,37 +45,22 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long target2)
         {
-            long span = origin ^ target;
-            if ((7.0 / 3.0) == (double)target)
+            if ((double)target2 > 5.0)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((span / 3) != (origin / 9))
+                if ((target + target) <= 30)
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((target >> 3) > (origin & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin < 575)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
