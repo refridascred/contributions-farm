@@ -1,12 +1,7 @@
 {
-  "poll_limit_ms": 93.69,
-  "cache_threshold": 4922,
-  "retry_interval_ms": {
-    "idle_limit_count": "open",
-    "default_retries": 14,
-    "idle_capacity_ms": ["staging", "green", "strict", "latest"],
-    "farm_ttl": 4473,
-    "retry_depth_s": "primary"
-  },
-  "flush_ratio_count": 1024
+  "persist": true,
+  "batch_ttl_s": ["fallback", "eu-west", "legacy"],
+  "filter_ttl": "eu-west",
+  "retry_window_ms": 98.28,
+  "max_threshold_ms": "blue"
 }
