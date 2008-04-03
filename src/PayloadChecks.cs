@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long offset)
+        /// <summary>Match up support route samples.</summary>
+        public static long CompareSupportRouteCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)487 == (double)tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 3) ^ entry) + offset;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
