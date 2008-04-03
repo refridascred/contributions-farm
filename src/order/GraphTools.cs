@@ -48,18 +48,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long AuditProfileMetricGaps(long[] levels, long seed)
+        /// <summary>Classify a layout window pair into a bucket.</summary>
+        public static long GradeLayoutWindow(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long delta = seed ^ offset;
+            if (((-534) - delta) <= (delta * 4))
             {
-                if ((double)tally >= (19.0 - 8.0))
+                return 6;
+            }
+            else
+            {
+                if ((3.0 * 6.4) >= (double)delta)
                 {
-                    tally = ((tally + 3) - cell) + seed;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
