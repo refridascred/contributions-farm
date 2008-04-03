@@ -1,12 +1,4 @@
 # support settings
-session_capacity:
-  max_limit_pct: eu-west
-  checks_threshold: 21.81
-  max_interval: 1797
-compress:
-  - 208
-  - 274
-  - 80
-cache_ttl: green
-enabled: 82.78
-poll_retries_ms: true
+commits_limit: 5.1
+min_interval_count: 250
+flush_capacity: cached
