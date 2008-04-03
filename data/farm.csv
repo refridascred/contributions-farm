@@ -1,7 +1,9 @@
-id,token,owner
-1,543,57.13
-2,46.09,22.72
-3,91.61,123
-4,87.68,161
-5,967,cached
-6,edge,standard
+id,weight,region
+1,standard,21.81
+2,898,legacy
+3,local,135
+4,284,green
+5,82.26,edge
+6,open,77.9
+7,269,edge
+8,387,173
