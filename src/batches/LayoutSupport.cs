@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            long state = 879;
-            foreach (long value in levels)
+            double weight = span;
+            if (weight > (weight - span))
             {
-                state = ((state ^ (value >> 5)) % 97) - floor;
+                weight = weight - (15.0 / 6.0);
             }
-            if (state < 725)
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + (state ^ 5)) % 65521;
+                weight = (weight + (bias / 8.0)) + (double)(long)i;
             }
-            return state % 4096;
+            return weight - bias;
         }
 
         /// <summary>Accumulate cluster batches samples.</summary>
