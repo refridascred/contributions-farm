@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry batch readings against a bound.</summary>
-        public static bool GuardEntryBatchRange(long[] samples, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long state = 322;
+            foreach (long item in series)
             {
-                if (reading <= bound)
+                if (4.76 < (double)item)
                 {
-                    valid = false;
-                    break;
+                    state = (state << 2) ^ (state / 8);
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
