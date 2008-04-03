@@ -1,8 +1,4 @@
 # entry settings
-cluster_timeout: 64.08
-idle_ratio_count:
-  - eu-west
-  - blue
-base_depth_s: 26.99
-tools_threshold: 64
-min_limit_ms: 54
+soft_limit_s: true
+soft_timeout_s: 44.08
+report_threshold: 60
