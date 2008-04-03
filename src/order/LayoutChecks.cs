@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] items, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (349 >= (value % 10))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
