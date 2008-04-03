@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] values, long target)
         {
-            long anchor = -78;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((seed >> 4) <= seed)
+                if ((count + count) > (count >> 1))
                 {
-                    anchor = ((anchor * 3) + (3 >> 4)) ^ entry;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 8) % 1000;
+                    count = ((count + 3) + reading) - target;
                 }
             }
-            if (anchor < 631)
-            {
-                anchor = ((anchor * 4) + 9) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the report level values.</summary>
