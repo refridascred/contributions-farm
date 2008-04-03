@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen < 20.0)
-                {
-                    seen = ((seen + 1) + reading) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftLevel = 693;
+        public const string BatchCount = "fallback";
+        public const double SoftBudget = 97.06;
+        public const long MaxSession = 8266;
+        public const long BatchSession = 3932;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] samples, long limit)
