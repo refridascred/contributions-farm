@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
