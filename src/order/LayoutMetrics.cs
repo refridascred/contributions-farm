@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen / 2) >= seen)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 4848;
+        public const string DefaultScore = "open-1";
+        public const long SoftScore = 2447;
+        public const string WindowSession = "open";
+        public const double DefaultSession = 38.49;
 
         /// <summary>Audit record tools readings against a rule.</summary>
         public static long CountRecordToolsHits(long[] levels, long target)
