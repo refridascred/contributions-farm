@@ -1,9 +1,7 @@
-id,weight,owner
-1,cached,staging
-2,latest,668
-3,322,91.4
-4,7.8,33.89
-5,open,551
-6,469,76.75
-7,19,3
-8,2.08,local
+id,state,count,token,active
+1,94.08,stable,626,497
+2,standard,975,433,open
+3,83.23,86.59,eu-west,790
+4,554,cached,95.4,64.61
+5,4.87,88.15,legacy,45.87
+6,standard,215,96,81.9
