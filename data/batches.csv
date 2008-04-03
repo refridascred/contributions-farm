@@ -1,10 +1,7 @@
-id,label,rank,ratio,region
-1,stable,910,18.73,868
-2,eu-west,701,520,287
-3,latest,269,eu-west,168
-4,blue,legacy,90.23,local
-5,859,424,42.44,222
-6,blue,standard,local,latest
-7,499,staging,primary,37.35
-8,769,598,blue,17.03
-9,33.5,769,275,573
+id,state,token
+1,29,83.94
+2,strict,82
+3,400,531
+4,54.18,299
+5,strict,125
+6,eu-west,38
