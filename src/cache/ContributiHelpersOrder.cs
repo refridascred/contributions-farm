@@ -32,13 +32,21 @@ namespace Common.Utilities
         public const long BaseFactor = 9034;
         public const double MaxLevel = 20.82;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
