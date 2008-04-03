@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items, long target)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long item in items)
             {
-                if ((7.84 * 7.06) != (double)reading)
+                if ((seen >> 1) >= target)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
