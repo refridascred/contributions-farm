@@ -1,14 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the metrics list.
-The queue module keeps cluster values in sync with the context cache.
-
-Run the counter check before changing any payload limits.
-The githubfarm report groups every schema by githubfarm.
+When a payload fails, the layout handler retries a few times before giving up.
+Each order is validated before it reaches the schema queue.
+The graph module keeps contributi values in sync with the queue cache.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate token input early
-- Prefer route defaults
-- Review commits limits each release
+- Prefer session defaults
+- Document new payload fields
+- Review checks limits each release
