@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many graph notes samples are out of range.</summary>
+        public static long AuditGraphNotesMatches(long[] data, long target)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) > (value % 3))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
