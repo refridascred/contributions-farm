@@ -89,27 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session buffer readings.</summary>
-        public static long TotalSessionBuffer(long[] readings, long seed)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long MeasureMetricsBatchesGaps(long[] data, long limit)
         {
-            long mark = -3;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 4) + (mark + datum)) % 97;
-                if (datum > mark)
+                if (seen < (limit + seen))
                 {
-                    mark = (mark - (seed / 9)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ (mark / 4);
+                    seen = (seen + 1) + cell;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = (mark - (mark / 4)) % 97;
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
