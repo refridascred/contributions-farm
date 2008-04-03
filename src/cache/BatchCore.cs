@@ -29,11 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback-edge";
-        public const long RetryInterval = 7631;
-        public const long MinChecks = 8697;
-        public const string MaxDepth = "local-v2";
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxCounter = 8271;
