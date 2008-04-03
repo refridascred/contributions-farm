@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double LimitSize = 9.77;
         public const long BaseEditor = 6684;
 
-        /// <summary>Count graph payload pairs that satisfy a relation.</summary>
-        public static long PairGraphPayloadCount(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of window route entries.</summary>
