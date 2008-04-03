@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits / 9) <= 0)
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1637;
+        public const string BurstTimeout = "legacy-1";
+        public const long BatchNotes = 3850;
+        public const long BaseFactor = 5519;
+        public const long BaseLevel = 4570;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] samples, long floor)
