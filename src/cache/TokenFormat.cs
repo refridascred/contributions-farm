@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = bound - limit;
+            if (!(limit >= (limit + bound)))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ limit) <= limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((slot - slot) == (limit + limit)) || ((slot - limit) < (limit - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit & 15) == (bound % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
