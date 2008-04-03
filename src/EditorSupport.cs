@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            Retry,
+            Stale,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a route info.</summary>
