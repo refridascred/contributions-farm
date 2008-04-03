@@ -14,27 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine commits farm values into a single score.</summary>
-        public static long TallyCommitsFarm(long[] data, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            long score = 86;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!((origin - origin) == (score / 8)))
+                if ((7.5 - 7.7) != (double)hits)
                 {
-                    score = score - (score - score);
-                }
-                score = (score << 2) ^ 770;
-                if (((1 % 97) > score) || ((15.0 + 8.9) == (double)datum))
-                {
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            if (score < 6)
-            {
-                score = (score - (score ^ origin)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
