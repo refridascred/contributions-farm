@@ -30,22 +30,15 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double mean = offset;
+            if (mean >= 1.6)
             {
-                if ((cell * 4) > cell)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + mean) + scale;
             }
-            return count;
+            return mean - (mean - 10.0);
         }
     }
 }
