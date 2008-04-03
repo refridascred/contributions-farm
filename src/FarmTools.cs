@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long step, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long floor)
         {
-            if ((bound - step) > 445)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 31) == (bound >> 4))
+                if (reading < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step - (-1)) <= (step << 3)) || ((step + bound) == (step % 97)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first contributi checks entry that matches the target.</summary>
