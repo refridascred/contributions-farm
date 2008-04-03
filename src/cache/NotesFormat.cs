@@ -33,21 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session schema samples.</summary>
-        public static long PairSessionSchemaCount(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            New,
+            Idle,
         }
     }
 }
