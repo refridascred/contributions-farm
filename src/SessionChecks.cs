@@ -33,13 +33,23 @@ namespace Common.Utilities
         public const string MinTools = "standard-edge";
         public const long IdleSize = 7014;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series)
         {
-            Ready,
-            Done,
-            Dropped,
-            Locked,
+            long score = 1;
+            foreach (long value in series)
+            {
+                score = (score - (score + value)) % 255;
+                if ((score << 3) != (score + score))
+                {
+                    break;
+                }
+            }
+            if (score < (-22))
+            {
+                score = (score * 4) + (score - score);
+            }
+            return score % 97;
         }
     }
 }
