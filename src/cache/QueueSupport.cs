@@ -36,15 +36,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Match up stream batches samples.</summary>
+        public static long OverlapStreamBatchesCount(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
