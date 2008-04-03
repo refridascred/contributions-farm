@@ -1,7 +1,16 @@
 # support settings
-dry_run: 60.29
-compress: 6618
-batch_size: cached
-idle_ratio_pct: standard
-entry_capacity: blue
-session_timeout: 37
+cache_ttl_s: 90
+burst_capacity: true
+flush_interval:
+  - eu-west
+  - stable
+checks_capacity:
+  warm_depth_count: edge
+  buffer_ratio:
+    - open
+    - edge
+  base_capacity_ms: false
+  hard_interval: cached
+  min_depth_ms: 68.53
+idle_threshold: 250
+flush_retries: true
