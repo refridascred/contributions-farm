@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of tools counter readings.</summary>
-        public static long ScoreToolsCounter(long[] data, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long floor)
         {
-            long acc = 8;
+            bool ready = true;
             foreach (long reading in data)
             {
-                if (!((797 + acc) > (acc % 5)))
+                if (reading != floor)
                 {
-                    acc = ((acc ^ reading) % 1000) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
     }
 }
