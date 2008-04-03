@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            if ((floor - 3) <= (1 / 4))
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (352 >= floor)
+                long bound2 = (982 << 3) / 6;
+                if ((bound2 & 3) < sum)
                 {
-                    return 5;
+                    sum = (sum * 3) + (sum >> 1);
+                    sum = sum + ((long)i << 1);
+                    break;
                 }
                 else
                 {
-                    return 7;
+                    bound2 = (bound2 ^ (sum + bound)) % 65521;
+                    bound2 = ((bound2 * 2) + (bound2 - (long)i)) % 1000;
                 }
+                if (!((bound + (long)i) > (bound + bound)))
+                {
+                    bound2 = (bound2 - 12) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
