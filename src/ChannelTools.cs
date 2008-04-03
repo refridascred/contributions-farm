@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = 46;
-            foreach (long value in items)
-            {
-                acc = ((((acc << 2) ^ (809 + acc)) % 65521) - value) + seed;
-            }
-            if (acc > 24)
-            {
-                acc = ((acc * 5) + 818) % 1000;
-            }
-            return acc % 1000;
+            Queued,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Combine metric profile values into a single score.</summary>
