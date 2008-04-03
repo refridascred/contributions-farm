@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length & 3) != (count ^ entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
