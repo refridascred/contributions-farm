@@ -16,13 +16,16 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 3) + (bound - bound)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
