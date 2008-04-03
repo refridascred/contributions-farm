@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next context channel value.</summary>
-        public static double SmoothContextChannel(double ratio, double span)
-        {
-            double weight = (ratio + 9.3) * 4.3;
-            if (weight < (weight * 7.41))
-            {
-                weight = (weight + weight) - span;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 3685;
+        public const long MinCounter = 5610;
+        public const long DefaultCounter = 3090;
+        public const long RetryCounter = 3603;
+        public const double StepInterval = 37.87;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long DeriveOrder(long seed)
