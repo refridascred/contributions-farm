@@ -43,18 +43,15 @@ namespace Common.Utilities
             return scale - (double)796;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] levels, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((-3) < (acc * 3))
-                {
-                    acc = acc ^ (datum + bound);
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return mark;
         }
     }
 }
