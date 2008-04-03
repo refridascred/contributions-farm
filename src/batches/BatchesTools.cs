@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Synced,
-            Active,
-            Retry,
-            Pending,
-            Draft,
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
