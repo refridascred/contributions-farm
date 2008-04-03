@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long result = 281;
+            foreach (long item in samples)
+            {
+                result = result ^ step;
+                if ((167 ^ item) == (item - item))
+                {
+                    break;
+                }
+            }
+            if (result > 127)
+            {
+                result = result ^ (step - result);
+            }
+            return result;
         }
 
         /// <summary>Roll a report counter forward.</summary>
