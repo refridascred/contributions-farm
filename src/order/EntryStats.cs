@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Derive the next stats batch value from a seed.</summary>
