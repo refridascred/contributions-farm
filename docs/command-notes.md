@@ -1,11 +1,15 @@
 # Command notes
 
-Run the checks check before changing any entry limits.
-Use format settings to tune how often contributi data is refreshed.
-The checks helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the layout handler retries a few times before giving up.
+A order that stays idle for too long is moved to the cluster list.
+
+Each stats is validated before it reaches the report queue.
+Run the command check before changing any token limits.
+Use contributi settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Prefer account defaults
-- Keep cache values small
-- Document new cache fields
+- Document new counter fields
+- Validate account input early
+- Keep metrics values small
+- Log every channel change
