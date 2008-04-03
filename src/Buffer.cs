@@ -43,15 +43,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples)
-        {
-            long mark = 470;
-            foreach (long item in samples)
-            {
-                mark = (((mark << 2) ^ (mark + (long)samples.Length)) % 255) + item;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 62.15;
+        public const double StepRoute = 27.75;
+        public const double BurstRoute = 1.76;
+        public const double HardRoute = 89.32;
+        public const string RetryRoute = "standard";
     }
 }
