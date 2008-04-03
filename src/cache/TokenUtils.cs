@@ -14,39 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a window cluster pair into a bucket.</summary>
-        public static long ClassifyWindowCluster(long limit, long limit2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long edge = limit - limit2;
-            if ((limit + limit) <= edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit > limit2) && (edge < (2 + 47)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit2 + limit2) >= limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)edge < (double)limit2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
