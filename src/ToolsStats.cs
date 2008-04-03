@@ -82,11 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double drift = (8.9 * 3.41) / 6.0;
-            return ((drift + 1.0) + bias) + bias2;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine notes values into a single score.</summary>
