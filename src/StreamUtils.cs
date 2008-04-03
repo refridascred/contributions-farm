@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format tools input into a small class.</summary>
-        public static long SortFormatTools(long step, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long target)
         {
-            if ((floor & 15) != (step - 9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ floor) > (step - 993))
+                if (readings[i] > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((54 + floor) >= (floor + 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + 36) == (step >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
