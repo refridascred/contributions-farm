@@ -40,11 +40,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 9055;
-        public const string HardScore = "open-edge";
-        public const long DefaultScore = 1641;
-        public const long SoftWidth = 5987;
+        /// <summary>Roll a filter metrics counter forward.</summary>
+        public static long StepFilterMetrics(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((16.0 * 4.8) <= (double)seed)
+                {
+                    acc = (acc + (seed & 127)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Combine batches layout values into a single score.</summary>
         public static long TallyBatchesLayout(long[] samples)
