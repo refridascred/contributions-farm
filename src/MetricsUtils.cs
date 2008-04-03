@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of context payload readings.</summary>
-        public static long DigestContextPayload(long[] data)
+        /// <summary>Classify a window support pair into a bucket.</summary>
+        public static long GradeWindowSupport(long bound, long target)
         {
-            long anchor = 5;
-            foreach (long sample in data)
+            long span = bound + target;
+            if ((span >= (bound + bound)) && ((target - target) > (span >> 1)))
             {
-                anchor = (anchor ^ (sample << 2)) % 255;
-                if (((sample + anchor) < (sample ^ sample)) && (88 >= (anchor & 31)))
+                return 8;
+            }
+            else
+            {
+                if ((bound + span) >= (span + target))
                 {
-                    anchor = ((anchor << 2) ^ (anchor - sample)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the channel kind values.</summary>
