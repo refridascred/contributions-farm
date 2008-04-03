@@ -37,13 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Retry,
-            Synced,
-            Done,
+            Pending,
+            Ready,
             New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Fold a list of token readings.</summary>
