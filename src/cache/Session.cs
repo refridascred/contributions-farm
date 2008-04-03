@@ -48,24 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long state = 3;
+            foreach (long datum in values)
             {
-                if ((8.95 - 6.1) != (double)bound)
+                if (((long)values.Length >> 3) < (state ^ state))
                 {
-                    mark = (mark - (bound - (long)i)) % 97;
-                    continue;
+                    state = state - (state + datum);
                 }
                 else
                 {
-                    mark = ((mark * 2) + (bound + bound)) % 65521;
+                    state = (state + ((-397) / 2)) % 1000;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
     }
 }
