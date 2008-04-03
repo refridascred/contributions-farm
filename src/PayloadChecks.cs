@@ -72,9 +72,10 @@ namespace Common.Utilities
             return drift - (floor * 4.0);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 1391;
-        public const double DefaultCount = 64.45;
-        public const string MinFormat = "primary-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 82.04;
+        public const double WindowCluster = 74.28;
+        public const string BurstCluster = "local";
+        public const long MinCount = 3786;
     }
 }
