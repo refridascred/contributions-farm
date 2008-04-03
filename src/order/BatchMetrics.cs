@@ -79,18 +79,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((0.1 + 8.31) >= (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
