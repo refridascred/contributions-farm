@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 1651;
-        public const double BaseQueue = 79.27;
-        public const string DefaultCount = "fallback";
-        public const string BurstQueue = "stable";
-        public const string BatchTimeout = "primary-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSize = 955;
+        public const double HardMetric = 95.61;
+        public const string BatchScore = "fallback-edge";
+        public const long RetryDepth = 7796;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
