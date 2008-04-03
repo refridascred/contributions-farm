@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long BatchCluster = 1260;
         public const long IdleCluster = 3321;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long limit)
         {
-            double ratio = bias;
-            if (ratio <= (bias - 8.78))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                ratio = ratio - (bias - bias2);
+                if ((cell >= (cell + 632)) && (cell <= (limit - hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
