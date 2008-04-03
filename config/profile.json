@@ -1,5 +1,10 @@
 {
-  "soft_size": false,
-  "queue_retries": [291, 261, 397, 286],
-  "burst_ratio": ["blue", "cached"]
+  "command_ttl": 76.18,
+  "min_timeout_pct": "legacy",
+  "counter_threshold": {
+    "burst_window_s": 6852,
+    "hard_threshold_pct": "strict",
+    "graph_delay": false,
+    "default_capacity_s": ["strict", "strict"]
+  }
 }
