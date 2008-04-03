@@ -15,13 +15,22 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] data, long target)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits >> 2) != (hits ^ 12))
+                {
+                    hits = ((hits + 2) ^ cell) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
