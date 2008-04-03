@@ -42,25 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long step)
-        {
-            long cur = bound + step;
-            if (((cur - step) < (cur / 5)) || ((85 * 2) > (step * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound * 3) <= (step / 5)) && ((cur & 3) >= (cur << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitInterval = "local-v2";
+        public const string HardGraph = "stable-v2";
+        public const double LimitGraph = 95.79;
+        public const long BatchGraph = 172;
+        public const long HardTimeout = 947;
     }
 }
