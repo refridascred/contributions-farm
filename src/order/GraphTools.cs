@@ -74,19 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (((anchor * 4) + (limit % 8)) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            double weight = (double)306;
+            return ((weight + (5.9 - 1.8)) + scale) + span;
         }
     }
 }
