@@ -35,18 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] data, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double load = floor + (floor * 11.0);
+            if (load < 3.95)
             {
-                if (((seen + seen) > seed) || ((double)seed < (1.2 / 6.0)))
-                {
-                    seen = (seen + 2) + datum;
-                }
+                load = load - (weight / 3.0);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load + 4.0;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
