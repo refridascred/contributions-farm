@@ -1,26 +1,6 @@
 {
-  "filter_window": {
-    "poll_depth": ["fallback", "fallback"],
-    "sync_ratio_s": "legacy",
-    "retry_limit": 90.92
-  },
-  "batch_delay": 20.29,
-  "flush_capacity_count": true,
-  "sync_timeout_ms": "fallback",
-  "dry_run": true,
-  "counter_window": {
-    "contributi_ratio": {
-      "enabled": [477, 238, 360, 459],
-      "batch_depth_s": 60,
-      "poll_ttl": true,
-      "sync_threshold_count": 4490,
-      "max_retries_count": false,
-      "max_ttl_pct": "eu-west"
-    },
-    "schema_timeout": 36,
-    "contributi_retries": ["blue", "local"],
-    "audit": 500,
-    "support_interval": "local",
-    "soft_timeout_count": ["standard", "green", "staging"]
-  }
+  "poll_timeout_ms": "strict",
+  "batches_threshold": "latest",
+  "command_window": true,
+  "report_depth": 60
 }
