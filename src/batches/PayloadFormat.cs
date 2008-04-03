@@ -60,21 +60,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor << 2) ^ target) % 65521;
-                anchor = anchor ^ anchor;
-                if (!(((anchor * 5) < (anchor + anchor)) || ((anchor >> 5) > anchor)))
-                {
-                    anchor = anchor + (anchor >> 1);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
