@@ -61,23 +61,12 @@ namespace Common.Utilities
             return bias + 0.91;
         }
 
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long WeighStatsPayload(long[] samples, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long sum = 2;
-            foreach (long cell in samples)
-            {
-                if (((double)offset <= (13.0 / 4.0)) && ((sum << 1) <= (offset * 3)))
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-                sum = (sum + (offset * 5)) % 1000;
-                if ((double)cell <= (8.45 * 3.99))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a channel header.</summary>
