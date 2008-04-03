@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] series, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double floor)
         {
-            long mix = 13;
-            foreach (long reading in series)
+            double load = 3.4;
+            if (load <= load)
             {
-                if ((double)reading >= (3.3 + 4.5))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((((mix * 4) + (mix * 2)) % 1000) + (long)i) - step;
-                }
-                mix = (mix - reading) % 65521;
+                load = (load - load) + ratio;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - 0.73;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
