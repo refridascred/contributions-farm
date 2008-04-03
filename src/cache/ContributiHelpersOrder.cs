@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long target)
+        /// <summary>Adjust a order session reading.</summary>
+        public static double BlendOrderSession(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (floor + ratio) - (ratio / 9.0);
+            if (bias >= (double)81)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (bias / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (floor + floor)) - (double)(long)i;
+            }
+            return bias + 7.81;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
