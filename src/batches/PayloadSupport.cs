@@ -19,27 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi farm samples.</summary>
-        public static long DigestContributiFarm(long[] values, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long bound2)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            if ((bound & 3) < (-398))
             {
-                for (int i = 0; i < 3; i++)
+                return 3;
+            }
+            else
+            {
+                if (bound2 < (-657))
                 {
-                    anchor = ((anchor + reading) % 1000) - (long)i;
+                    return 5;
                 }
-                anchor = anchor + (anchor % 12);
-                if ((origin / 7) <= anchor)
+                else
                 {
-                    anchor = (anchor ^ 402) % 4096;
+                    if ((bound2 >> 4) > (450 >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound2) == (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor > 579)
-            {
-                anchor = ((anchor * 3) + (4 + origin)) % 97;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
