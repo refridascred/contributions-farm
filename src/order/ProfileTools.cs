@@ -14,31 +14,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if ((double)bound < (8.5 - 8.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound <= (79 + limit)) || ((limit >> 3) > bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.19 - 6.71) <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
