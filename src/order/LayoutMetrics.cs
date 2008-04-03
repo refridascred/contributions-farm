@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long floor)
         {
-            long carry = 415;
-            foreach (long cell in series)
+            if ((floor - 3) <= (1 / 4))
             {
-                carry = (carry - cell) % 4096;
-                if (!((cell * 2) <= (cell >> 2)))
+                return 8;
+            }
+            else
+            {
+                if (352 >= floor)
                 {
-                    carry = ((carry << 2) ^ (carry - floor)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (carry < (-787))
-            {
-                carry = (carry * 2) + (carry + 4);
-            }
-            return carry;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
