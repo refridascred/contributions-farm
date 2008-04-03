@@ -53,19 +53,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long floor)
+        /// <summary>Classify a schema cluster pair into a bucket.</summary>
+        public static long GradeSchemaCluster(long target, long origin)
         {
-            long sum = 7;
-            foreach (long sample in samples)
+            if ((target + origin) == (target - target))
             {
-                sum = ((sum * 3) + 1) ^ sample;
+                return 1;
             }
-            if (sum < 50)
+            else
             {
-                sum = (sum << 3) ^ (sum + floor);
+                if (((origin % 10) < (origin + origin)) && ((origin & 127) != (origin / 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ origin) > (-1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= (target >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
