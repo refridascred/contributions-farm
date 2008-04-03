@@ -52,38 +52,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long seed, long target)
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long AuditGithubfarmEntryOutliers(long[] items, long target)
         {
-            if ((seed + seed) == (target + seed))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target & 31) < target)
+                if (((-61) + target) >= hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed << 1) > (seed >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed & 127) == (seed << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 2) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
