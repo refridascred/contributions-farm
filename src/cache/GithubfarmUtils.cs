@@ -34,31 +34,13 @@ namespace Common.Utilities
         public const long SoftRatio = 4625;
         public const long CacheChannel = 1388;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long anchor = 749;
-            foreach (long value in data)
-            {
-                if (!((double)value < 2.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor << 3);
-                    anchor = anchor - (0 + anchor);
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor - anchor) % 255) - (long)i;
-                }
-                if ((value + 72) >= (0 ^ anchor))
-                {
-                    anchor = ((anchor * 2) + (0 + 187)) % 4096;
-                }
-            }
-            return anchor;
+            Paused,
+            New,
+            Pending,
+            Synced,
         }
     }
 }
