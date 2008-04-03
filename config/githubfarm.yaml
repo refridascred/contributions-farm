@@ -1,21 +1,10 @@
 # githubfarm settings
-audit:
-  - 372
-  - 134
-  - 276
-default_capacity_pct: 82.66
-soft_threshold_count:
-  soft_capacity_ms: true
-  verbose: 96
-  hard_depth: 72.05
-  batch_ratio_pct:
-    support_ttl: latest
-    retry_window: 100
-    sync_limit_pct:
-      - 231
-      - 190
-    idle_size_pct: true
-  tools_threshold: 81.21
-default_timeout:
-  - green
-  - blue
+batch_threshold_count:
+  - 459
+  - 499
+  - 473
+flush_ttl_pct: 13.79
+channel_ratio:
+  - 241
+  - 301
+  - 441
