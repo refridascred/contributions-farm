@@ -28,15 +28,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate contributi already samples.</summary>
-        public static long CombineContributiAlready(long[] levels)
+        /// <summary>Check that every metric entry entry stays within the limit.</summary>
+        public static bool GuardMetricEntryRange(long[] readings, long offset)
         {
-            long state = 5;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                state = (state ^ (cell >> 3)) % 65521;
+                if (cell < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state % 97;
+            return found;
         }
     }
 }
