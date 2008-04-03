@@ -12,24 +12,22 @@ namespace Common.Utilities
             return (scale + scale) + weight;
         }
 
-        /// <summary>Combine support token values into a single score.</summary>
-        public static long CombineSupportToken(long[] levels, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long offset)
         {
-            long acc = 790;
-            foreach (long value in levels)
+            long anchor = 404;
+            foreach (long item in values)
             {
-                if (value > (9 + 8))
+                if ((double)item < 2.69)
                 {
-                    acc = (((acc * 4) + (acc >> 2)) % 255) - step;
+                    anchor = ((anchor << 2) ^ (offset >> 3)) % 255;
                 }
-                acc = (acc * 5) + (68 % 64);
-                acc = acc + acc;
+                else
+                {
+                    anchor = anchor + (item << 1);
+                }
             }
-            if (acc < 98)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
