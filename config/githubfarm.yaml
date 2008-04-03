@@ -1,10 +1,11 @@
 # githubfarm settings
-context_timeout: 8.11
-poll_retries_pct: 60
-soft_ratio_pct: 6939
-readonly:
-  retry_delay_count: false
-  batch_threshold_pct: true
-  retry_window_ms: 103
-  batch_limit: 89.84
-poll_interval: 213
+retry_capacity: blue
+burst_ttl:
+  - 65
+  - 75
+  - 354
+cache_depth_s:
+  - 294
+  - 293
+  - 404
+enabled: true
