@@ -27,22 +27,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long floor)
         {
-            long mark = 83;
-            foreach (long cell in readings)
+            long result = 72;
+            foreach (long reading in data)
             {
-                if ((cell - mark) != (726 / 7))
-                {
-                    mark = ((mark - (mark << 1)) % 97) - floor;
-                }
+                result = (result ^ floor) + reading;
             }
-            if (mark < 25)
-            {
-                mark = ((mark * 3) + (1 >> 2)) % 65521;
-            }
-            return mark % 4096;
+            return result % 4096;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
