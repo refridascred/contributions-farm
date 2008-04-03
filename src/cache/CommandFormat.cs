@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] levels, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Rank window layout input into a small class.</summary>
