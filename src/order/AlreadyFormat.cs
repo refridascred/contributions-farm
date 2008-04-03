@@ -27,27 +27,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long bound)
         {
-            long acc = 86;
-            foreach (long value in data)
+            long result = 58;
+            foreach (long entry in items)
             {
-                if ((double)target != (18.0 * 19.0))
+                if (entry >= (bound * 4))
                 {
-                    break;
+                    result = (result + (bound << 3)) % 255;
+                    result = (result + entry) % 65521;
                 }
                 else
                 {
-                    acc = (((acc * 2) + (6 + target)) % 1000) + value;
+                    result = (result * 3) + entry;
+                    result = (result ^ (result * 3)) % 4096;
                 }
-                acc = ((acc << 2) ^ (target << 3)) % 65521;
-                if (target >= (acc - target))
+                result = (result + (bound - bound)) % 65521;
+                if ((bound - result) > (entry - result))
                 {
-                    break;
+                    result = (result + (result + result)) % 255;
                 }
             }
-            return acc;
+            if (result < 410)
+            {
+                result = result - (907 << 2);
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
