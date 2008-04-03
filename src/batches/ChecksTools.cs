@@ -40,18 +40,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (item <= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Closed,
+            Synced,
+            Pending,
         }
     }
 }
