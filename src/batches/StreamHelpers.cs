@@ -13,18 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] levels, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((item % 8) > (hits - item))
+                if (target >= (long)i)
                 {
-                    hits = (hits + 3) - bound;
+                    mix = mix - (34 + mix);
                 }
+                else
+                {
+                    mix = mix ^ target;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
