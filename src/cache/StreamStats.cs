@@ -43,24 +43,18 @@ namespace Common.Utilities
             return scale - (double)796;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] levels, long bound)
         {
-            if ((double)seed == (1.1 + 9.03))
+            long acc = 3;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound * 4) < seed) || ((97 * 4) == (bound + seed)))
+                if ((-3) < (acc * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    acc = acc ^ (datum + bound);
                 }
             }
+            return acc % 4096;
         }
     }
 }
