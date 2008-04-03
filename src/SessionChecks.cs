@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Grade a tools format value against two limits.</summary>
+        public static long ClassifyToolsFormat(long bound, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long slot = bound + offset;
+            if ((double)bound != (4.09 / 5.0))
             {
-                if ((count / 6) <= (count + 9))
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound > (1.5 / 8.0)))
                 {
-                    count = (count + 3) ^ datum;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((slot & 1) >= (slot - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
