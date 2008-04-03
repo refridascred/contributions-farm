@@ -33,10 +33,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstDepth = 2.61;
-        public const long IdleEntry = 499;
-        public const long RetryEntry = 8699;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
