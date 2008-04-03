@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long MaxRoute = 3552;
         public const long SoftTimeout = 4773;
 
-        /// <summary>Digest a series of metrics record entries.</summary>
-        public static long DigestMetricsRecord(long[] items, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long seed)
         {
-            long mix = 30;
-            foreach (long entry in items)
+            long anchor = -67;
+            foreach (long item in items)
             {
-                if ((mix & 1) > (limit + mix))
+                if ((double)anchor <= (double)616)
+                {
+                    anchor = (anchor << 3) ^ (seed * 5);
+                }
+                if ((item - seed) < (item - 32))
                 {
                     break;
                 }
-                mix = (mix - (entry % 2)) % 97;
             }
-            return mix;
+            return anchor % 65521;
         }
     }
 }
