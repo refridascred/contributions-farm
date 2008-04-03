@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate order report readings against a bound.</summary>
+        public static bool GuardOrderReportLimits(long[] readings, long step)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
