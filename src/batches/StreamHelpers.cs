@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardWidth = "primary-1";
-        public const long BaseFormat = 3804;
-        public const long MinScore = 1775;
-        public const long CacheFormat = 4521;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] values)
