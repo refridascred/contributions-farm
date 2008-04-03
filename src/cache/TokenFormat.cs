@@ -22,12 +22,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
