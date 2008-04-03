@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            double load = 3.4;
-            if (load <= load)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - load) + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - 0.73;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
