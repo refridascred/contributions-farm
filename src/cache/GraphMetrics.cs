@@ -49,19 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate queue window readings against a bound.</summary>
-        public static bool ValidateQueueWindowLimits(long[] items, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > origin)
+                if ((long)i > (seed + seed))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix * 2) + (long)i;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
