@@ -13,11 +13,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = 20;
+            foreach (long item in values)
+            {
+                long count = (mark / 9) >> 5;
+                if ((count / 7) <= (count % 97))
+                {
+                    mark = ((mark << 3) ^ (count / 8)) % 101;
+                    mark = (mark ^ count) % 4096;
+                }
+                if ((1.66 * 3.7) > (double)item)
+                {
+                    mark = mark ^ (mark + item);
+                }
+                else
+                {
+                    mark = (mark * 3) + (item / 9);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
