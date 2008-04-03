@@ -28,14 +28,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values, long offset)
         {
-            Draft,
-            Pending,
-            Retry,
-            Dropped,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry <= (hits % 16))
+                {
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
