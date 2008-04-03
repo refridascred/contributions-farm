@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long target, long floor)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((double)target >= 20.0) && ((863 ^ 8) >= (floor >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor * 2) >= 7) && ((target * 4) > (floor - floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 4) != (floor * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target <= 9.7)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
