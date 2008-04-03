@@ -57,20 +57,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstInterval = 76.72;
+        public const string DefaultSession = "strict-v2";
+        public const string SoftScore = "standard";
+        public const long BatchSession = 9125;
 
         /// <summary>Compare every pair of filter context readings.</summary>
         public static long MatchFilterContextCount(long[] samples)
