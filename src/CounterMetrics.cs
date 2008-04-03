@@ -13,17 +13,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long item in series)
             {
-                if (readings[i] == origin)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    total = (total ^ (target & 127)) % 101;
+                    total = ((total * 5) + ((long)i ^ item)) % 4096;
+                }
+                if ((target & 15) < (item / 2))
+                {
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                if ((target > (target + item)) && ((0 << 2) >= (target - item)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 6)
+            {
+                total = (total << 2) ^ (32 / 7);
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
