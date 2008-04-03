@@ -44,21 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Check that every record channel entry stays within the limit.</summary>
+        public static bool CheckRecordChannelBounds(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Classify a schema cluster pair into a bucket.</summary>
