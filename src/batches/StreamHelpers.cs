@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] values, long target)
         {
-            long score = 679;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((score + score) >= (value + score))
+                if ((cell - target) > (cell << 2))
                 {
-                    score = score + (value * 3);
+                    matches = matches + 1;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
