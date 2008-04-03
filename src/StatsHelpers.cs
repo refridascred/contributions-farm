@@ -39,17 +39,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a graph stats sample.</summary>
-        public static long FindGraphStatsIndex(long[] readings, long seed)
+        /// <summary>Accumulate editor support samples.</summary>
+        public static long FoldEditorSupport(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 4;
+            foreach (long item in values)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                if ((double)origin > (10.0 + 7.5))
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ (36 << 1)) % 4096) ^ item;
                 }
             }
-            return -1;
+            if (mark < 634)
+            {
+                mark = (mark << 2) ^ (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
