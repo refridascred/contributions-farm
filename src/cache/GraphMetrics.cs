@@ -23,13 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (88 <= (hits % 24))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
