@@ -26,14 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinBudget = "open";
+        public const long MinEntry = 3097;
+        public const long MaxWidth = 2355;
+        public const long RetryEntry = 9458;
+        public const double StepEntry = 13.24;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] values, long offset)
