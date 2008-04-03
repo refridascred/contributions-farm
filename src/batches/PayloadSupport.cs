@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if (413 > (offset + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) <= 57)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)offset == (5.01 - 9.9)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Measure how many account report samples are out of range.</summary>
