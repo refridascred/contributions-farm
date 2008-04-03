@@ -33,11 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "staging-edge";
-        public const long HardDepth = 4772;
-        public const long RetryScore = 314;
-        public const long MinCounter = 429;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long bound)
+        {
+            if (((5.4 - 1.9) >= (double)limit) && ((limit + bound) >= limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.0 / 5.0) > (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.0 / 3.0) != (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) >= (bound ^ limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a metric schema pair into a bucket.</summary>
         public static long SortMetricSchema(long target, long limit)
