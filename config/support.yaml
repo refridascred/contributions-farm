@@ -1,16 +1,13 @@
 # support settings
-base_capacity: 500
-graph_interval:
-  poll_threshold: green
-  window_capacity: open
-  poll_capacity_ms:
-    - 216
-    - 121
-  default_window_ms:
-    - local
-    - primary
-    - fallback
-  verbose: 1324
-audit: stable
-cache_window_pct: false
-dry_run: 297
+audit:
+  batch_limit_s: 33
+  flush_size_pct: true
+  cache_capacity: 53
+  soft_size_ms: 5987
+  githubfarm_ratio: 30
+batch_window: false
+max_retries_ms: strict
+buffer_capacity:
+  route_limit: 30
+  warm_retries: strict
+  contributi_ratio: 30
