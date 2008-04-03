@@ -53,15 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a record record.</summary>
