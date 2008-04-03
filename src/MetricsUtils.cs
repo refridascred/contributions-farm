@@ -34,19 +34,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] series, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
