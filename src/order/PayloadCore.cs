@@ -33,13 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long origin)
         {
-            Ready,
-            New,
-            Paused,
-            Failed,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
