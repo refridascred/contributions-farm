@@ -50,21 +50,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 5)
+                    if ((levels[i] - levels[j]) > 11)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a token command value against two limits.</summary>
