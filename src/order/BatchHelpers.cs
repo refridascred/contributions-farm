@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values, long origin)
-        {
-            long score = 13;
-            foreach (long reading in values)
-            {
-                if ((reading >> 5) == (origin + reading))
-                {
-                    score = (score << 2) ^ ((long)values.Length + 43);
-                }
-            }
-            if (score > 7)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 6692;
+        public const string LimitToken = "standard-v2";
+        public const long DefaultToken = 5826;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
