@@ -54,23 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = 59;
-            foreach (long datum in levels)
-            {
-                if ((datum % 100) > state)
-                {
-                    state = state - state;
-                }
-                state = (state - datum) % 101;
-            }
-            if (state < 1)
-            {
-                state = ((state * 3) + state) % 4096;
-            }
-            return state;
+            New,
+            Active,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
