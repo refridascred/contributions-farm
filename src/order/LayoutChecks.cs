@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (13.0 < (double)(long)data.Length)
-                {
-                    seen = ((seen + 1) + cell) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitCount = 574;
+        public const double DefaultBudget = 85.18;
+        public const long CacheRoute = 3043;
+        public const long SoftRoute = 540;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] samples, long offset)
