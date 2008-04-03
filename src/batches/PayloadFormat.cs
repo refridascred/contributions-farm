@@ -37,27 +37,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long CombineEditorWindow(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long floor)
         {
-            long score = 5;
-            foreach (long sample in items)
+            long carry = -8;
+            foreach (long item in levels)
             {
-                score = ((score ^ (507 + 872)) % 65521) - sample;
-                if ((4.0 - 3.42) < (double)score)
-                {
-                    score = (score + (score / 8)) % 97;
-                }
-                else
-                {
-                    score = (score + score) % 4096;
-                }
+                carry = ((carry << 2) ^ (floor + 9)) - item;
             }
-            if (score < 68)
+            if (carry < 63)
             {
-                score = (score ^ score) % 255;
+                carry = (carry ^ floor) % 101;
             }
-            return score % 97;
+            return carry % 4096;
         }
 
         /// <summary>Describe the stats phase values.</summary>
