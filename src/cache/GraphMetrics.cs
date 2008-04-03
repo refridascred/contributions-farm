@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long TallyCommitsAlreadyOutliers(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 3) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
