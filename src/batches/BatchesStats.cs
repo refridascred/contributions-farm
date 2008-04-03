@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Idle,
-            Failed,
             Pending,
-            Queued,
+            Closed,
+            Synced,
         }
     }
 }
