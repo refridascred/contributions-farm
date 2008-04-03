@@ -15,22 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheWidth = "stable-v2";
+        public const double RetryBatch = 65.52;
+        public const string MinBatch = "staging-edge";
+        public const string RetryCount = "strict-edge";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
