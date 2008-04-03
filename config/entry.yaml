@@ -1,5 +1,7 @@
 # entry settings
-poll_timeout: 73.27
-record_threshold: green
-flush_size_count: 100
-layout_retries: 18
+default_delay: 100
+default_timeout_count:
+  - legacy
+  - staging
+counter_depth: 64
+hard_size_s: true
