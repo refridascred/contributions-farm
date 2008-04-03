@@ -69,11 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 7449;
-        public const string RetrySize = "staging";
-        public const double DefaultTimeout = 69.91;
-        public const long MinAlready = 8337;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] items, long offset)
