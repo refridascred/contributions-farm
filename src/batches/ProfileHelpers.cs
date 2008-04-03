@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Validate token buffer readings against a bound.</summary>
+        public static bool GuardTokenBufferLimits(long[] series, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (offset >= (902 >> 1))
+                if (item >= seed)
                 {
-                    state = (state << 2) ^ (offset * 3);
+                    stale = false;
                     break;
                 }
-                state = (state ^ (offset / 7)) % 101;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Digest a series of report notes entries.</summary>
