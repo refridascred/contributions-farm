@@ -37,13 +37,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a window stream sample.</summary>
