@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values, long offset)
+        /// <summary>Scale a editor profile figure with a bias.</summary>
+        public static double BlendEditorProfile(double bias, double offset)
         {
-            long anchor = 61;
-            foreach (long datum in values)
+            double drift = (double)(6 >> 3);
+            if (drift > offset)
             {
-                if (((8.79 * 0.82) != (double)offset) && ((7.49 / 2.0) <= (double)datum))
-                {
-                    anchor = anchor - (92 + 1);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (97 % 64);
-                }
-                anchor = (anchor << 2) ^ (anchor * 5);
-                if (!((-72) >= (long)values.Length))
-                {
-                    anchor = anchor + (offset ^ anchor);
-                }
+                drift = drift - (drift - bias);
             }
-            if (anchor > 86)
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 4) + offset) % 255;
+                drift = (drift - 9.8) + (double)(long)i;
             }
-            return anchor;
+            return drift + bias;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
