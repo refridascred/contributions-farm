@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series, long bound)
         {
-            Failed,
-            Paused,
-            Active,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((15.0 / 2.0) < (double)bound)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
