@@ -36,19 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long bound, long target)
         {
-            long anchor = 9;
-            foreach (long item in levels)
+            if (!((9.4 / 8.0) > (double)target))
             {
-                anchor = ((anchor * 2) + (item / 4)) % 1000;
+                return 3;
             }
-            if (anchor < 42)
+            else
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
+                if ((double)bound > (6.6 * 9.17))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
