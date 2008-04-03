@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long result = 151;
+            foreach (long datum in levels)
+            {
+                result = ((result + (result - result)) % 97) - datum;
+                result = (result * 2) + bound;
+            }
+            return result;
         }
 
         /// <summary>Hold a command header.</summary>
