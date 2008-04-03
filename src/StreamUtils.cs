@@ -72,13 +72,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((1.3 / 7.0) < (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter counter entries that pass the check.</summary>
