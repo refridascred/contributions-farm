@@ -29,13 +29,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long seed)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 3;
+            foreach (long reading in readings)
+            {
+                state = ((state << 2) ^ ((-5) % 10)) % 97;
+                if ((state ^ reading) != (seed % 12))
+                {
+                    state = ((state * 4) + reading) % 65521;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+            }
+            if (state > (-1))
+            {
+                state = ((state << 2) ^ seed) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
