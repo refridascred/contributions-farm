@@ -54,19 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels, long limit)
         {
-            double rate = bias * 9.6;
-            if (rate <= (2.0 - 4.5))
+            long result = 263;
+            foreach (long entry in levels)
             {
-                rate = (rate + (double)78) + offset;
+                result = (result + entry) % 4096;
+                if (((limit % 24) <= (result + limit)) || ((0.7 / 2.0) < (double)result))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (result > 25)
             {
-                rate = (rate + (bias * 6.6)) + (double)(long)i;
+                result = result + (9 / 9);
             }
-            return rate + (double)2;
+            return result;
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
