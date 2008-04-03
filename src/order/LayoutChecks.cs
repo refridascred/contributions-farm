@@ -22,31 +22,31 @@ namespace Common.Utilities
         public const long LimitCounter = 4252;
         public const long LimitSpan = 3632;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long origin)
         {
-            long total = 164;
-            foreach (long sample in readings)
+            if (step < (origin + origin))
             {
-                total = (((total * 3) + (sample + sample)) % 65521) + limit;
-                if ((double)sample > (3.5 - 12.0))
+                return 3;
+            }
+            else
+            {
+                if (((step - step) <= origin) && (step <= (step + step)))
                 {
-                    total = (total << 2) ^ (total << 1);
+                    return 6;
                 }
                 else
                 {
-                    total = (total - (sample ^ sample)) % 65521;
-                }
-                if ((sample & 127) >= (sample >> 4))
-                {
-                    total = (total << 3) ^ (total >> 5);
+                    if (!(step > ((-5) ^ 9)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total > 56)
-            {
-                total = total - total;
-            }
-            return total % 1000;
         }
 
         /// <summary>Roll a batch token counter forward.</summary>
