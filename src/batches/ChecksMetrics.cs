@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
