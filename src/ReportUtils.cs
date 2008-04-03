@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 2248;
-        public const long BurstFactor = 4622;
-        public const long StepAccount = 2918;
-        public const long CacheAccount = 6936;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long offset)
+        {
+            if ((step & 63) <= (offset ^ step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)733 < (double)step) || ((4.7 - 17.0) == (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >= (800 * 4)) && ((offset + offset) <= (step ^ 964)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (6.0 / 3.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultLevel = 5211;
