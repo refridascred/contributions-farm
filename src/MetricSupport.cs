@@ -20,16 +20,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor + ((long)i * 4);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Draft,
+            Active,
+            Closed,
+            Stale,
+            New,
         }
     }
 }
