@@ -59,38 +59,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a schema cluster pair into a bucket.</summary>
-        public static long GradeSchemaCluster(long target, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if ((target + origin) == (target - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin % 10) < (origin + origin)) && ((origin & 127) != (origin / 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (-1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= (target >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
