@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] items)
+        /// <summary>Fold a list of githubfarm metric readings.</summary>
+        public static long FoldGithubfarmMetric(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 326;
+            foreach (long entry in series)
             {
-                if (5 >= (tally * 2))
+                if (result >= (result - result))
                 {
-                    tally = (tally + 2) - item;
+                    result = (result * 3) + (result % 100);
+                }
+                if (entry <= result)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
