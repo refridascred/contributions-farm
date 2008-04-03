@@ -19,21 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue record readings.</summary>
-        public static long PairQueueRecordCount(long[] readings)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long hits = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 6)
+                    if ((readings[i] - readings[j]) < 9)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every already commits entry stays within the limit.</summary>
