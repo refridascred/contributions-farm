@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + (mix - origin)) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
