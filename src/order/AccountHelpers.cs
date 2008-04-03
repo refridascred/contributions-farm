@@ -65,12 +65,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 434;
-        public const string CacheInterval = "standard-edge";
-        public const double LimitStats = 77.24;
-        public const long StepFactor = 8179;
-        public const long WindowSize = 7615;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Pending,
+            Draft,
+            Done,
+            Queued,
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
