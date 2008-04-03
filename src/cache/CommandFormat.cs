@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset <= (7.3 - 18.0))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
