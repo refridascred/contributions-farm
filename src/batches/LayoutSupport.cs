@@ -41,11 +41,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Iterate the context window series from a seed.</summary>
+        public static long IterateContextWindow(long step)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum << 3) ^ (long)i;
+                sum = (sum * 4) + step;
+                if ((step >= sum) && ((sum & 3) <= (sum / 7)))
+                {
+                    sum = (sum - (26 * 2)) % 101;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a notes payload pair into a bucket.</summary>
