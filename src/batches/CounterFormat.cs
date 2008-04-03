@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] readings, long offset)
+        /// <summary>Adjust a record filter reading.</summary>
+        public static double ScaleRecordFilter(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(96 * 4);
+            if (load < (weight * 0.08))
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (5.7 + bias);
             }
-            return -1;
+            return load - bias;
         }
 
         /// <summary>Fold a list of format context readings.</summary>
