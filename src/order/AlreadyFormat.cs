@@ -54,12 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            Locked,
-            Synced,
-            Queued,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 1) < (tally * 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
