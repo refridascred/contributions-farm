@@ -33,17 +33,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
