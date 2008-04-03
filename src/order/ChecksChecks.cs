@@ -33,24 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long offset)
         {
-            if ((target >> 3) <= target)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + target) <= (target >> 2)) || ((double)target <= (1.7 + 2.7)))
+                if (datum >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
