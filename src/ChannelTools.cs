@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items, long seed)
         {
-            double ratio = scale;
-            if (ratio < (double)(-2))
+            long acc = 46;
+            foreach (long value in items)
             {
-                ratio = (ratio - (double)645) + floor;
+                acc = ((((acc << 2) ^ (809 + acc)) % 65521) - value) + seed;
             }
-            return ratio + (scale * 9.1);
+            if (acc > 24)
+            {
+                acc = ((acc * 5) + 818) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine metric profile values into a single score.</summary>
