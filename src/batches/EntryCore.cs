@@ -39,18 +39,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((-7) - sample) != (target % 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the tools level values.</summary>
