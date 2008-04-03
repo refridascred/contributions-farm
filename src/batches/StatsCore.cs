@@ -51,27 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] readings, long origin)
         {
-            long sum = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((1 * 2) < (sum + 9))
+                if ((value % 64) >= 34)
                 {
-                    sum = (sum + (sum - 7)) % 4096;
+                    hits = (hits + 2) - origin;
                 }
-                else
-                {
-                    sum = (sum ^ entry) % 101;
-                }
-                if ((double)entry != (3.8 - 8.26))
-                {
-                    sum = (sum ^ (entry % 2)) % 101;
-                }
-                sum = (sum - 4) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
