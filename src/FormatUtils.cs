@@ -32,10 +32,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 615;
-        public const long WindowRoute = 4781;
-        public const long RetryRoute = 6864;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long carry = 5;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((carry ^ (sample % 2)) % 101) ^ (long)i;
+                }
+                carry = (carry ^ sample) % 97;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TallyBatches(long[] values, long floor)
