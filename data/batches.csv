@@ -1,6 +1,6 @@
-id,region,level
-1,local,722
-2,765,96.78
-3,98.0,47.66
-4,628,edge
-5,403,33.63
+id,count,label,weight
+1,619,3.54,cached
+2,eu-west,945,89.02
+3,95.33,standard,240
+4,897,13.11,stable
+5,812,3.87,fallback
