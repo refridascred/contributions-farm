@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings, long limit)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (count < (limit ^ 4))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stream notes samples are out of range.</summary>
