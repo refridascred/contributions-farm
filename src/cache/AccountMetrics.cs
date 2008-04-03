@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Adjust a farm context reading.</summary>
+        public static double AdjustFarmContext(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = rate + rate;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + 15.0) + (double)(long)i;
             }
-            return hits;
+            return load + floor;
         }
 
         /// <summary>Count command cache pairs that satisfy a relation.</summary>
