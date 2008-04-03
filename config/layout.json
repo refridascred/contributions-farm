@@ -1,8 +1,11 @@
 {
-  "enabled": true,
-  "payload_ttl": 1024,
-  "audit": "open",
-  "batch_timeout_s": true,
-  "order_depth": 83.72,
-  "session_interval": [487, 410, 247]
+  "verbose": 80.46,
+  "sync_limit_count": "fallback",
+  "audit": {
+    "stats_interval": 6361,
+    "base_retries_ms": 64,
+    "soft_limit_s": 7518,
+    "soft_window_pct": 12.2,
+    "enabled": 37
+  }
 }
