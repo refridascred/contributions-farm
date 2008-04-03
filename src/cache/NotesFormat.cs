@@ -32,34 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)origin != (1.6 + 3.0))
-                {
-                    total = (total - total) % 1000;
-                }
-                else
-                {
-                    total = (total + ((long)i & 1)) % 1000;
-                    total = total + total;
-                }
-                total = ((total * 5) + (18 ^ origin)) % 255;
-                if (!((double)origin > (double)total))
-                {
-                    total = (total - (total - total)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = (total * 2) + (97 + origin);
-                }
-                total = ((total * 4) + (long)i) % 101;
+                sum = ((sum << 2) ^ sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
