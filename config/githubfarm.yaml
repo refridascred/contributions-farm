@@ -1,40 +1,22 @@
 # githubfarm settings
-max_capacity:
-  metrics_depth: 6604
-  sync_capacity: 97.18
-  githubfarm_limit:
-    - 73
-    - 483
-    - 129
-  warm_depth:
+hard_depth_ms:
+  dry_run: true
+  warm_ratio_ms: strict
+  min_limit_count: fallback
+  burst_size:
+    readonly: 51.08
+    flush_depth_ms: 500
+    soft_size: 100
+  base_threshold_s:
+    - legacy
     - standard
-    - primary
-    - latest
-    - standard
-  soft_delay_pct: false
-  batch_timeout_count: 500
-checks_limit: false
-stats_capacity:
-  enabled:
-    readonly: true
-    report_size: local
-    audit: 2.79
-    poll_window: 0.82
-    filter_threshold: false
-    layout_interval: 919
-  hard_limit:
-    - fallback
-    - staging
-    - open
-  strict:
-    persist: standard
-    max_size: 63
-    cache_timeout_count: standard
-    checks_interval: 9.68
-    commits_limit: 476
-    report_size: 500
-  persist: false
-  cache_capacity_count: legacy
-readonly: 50.05
-hard_depth_s: 4984
-persist: 1024
+batch_depth_ms: 47.94
+warm_window: open
+farm_size: true
+warm_limit:
+  graph_delay: 68.32
+  warm_ratio: 71.62
+  min_ttl_ms: true
+  cache_interval: 250
+  strict: 18.38
+  batch_delay_pct: 47.74
