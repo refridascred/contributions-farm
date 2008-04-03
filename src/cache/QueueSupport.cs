@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const double IdleSpan = 5.44;
         public const long BatchBudget = 764;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading != bound)
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
