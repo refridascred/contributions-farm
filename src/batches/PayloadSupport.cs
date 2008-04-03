@@ -20,38 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items)
         {
-            if (!((15.0 * 1.37) == (double)bound))
+            long sum = 454;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor <= (double)9)
+                sum = sum + sample;
+                if (sample >= (4 & 127))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor <= 2.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((4.0 - 6.6) >= (double)floor) && ((bound + floor) < bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = ((sum * 4) + (sum + sum)) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
