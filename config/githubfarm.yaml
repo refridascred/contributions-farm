@@ -1,22 +1,13 @@
 # githubfarm settings
-audit:
-  batch_interval: primary
-  entry_ratio: staging
-  base_timeout: 35.47
-  default_capacity_ms:
-    batch_threshold: open
-    default_limit_count: 19
-    audit: 100
-  poll_depth_ms:
-    - 415
-    - 409
-    - 192
-burst_ratio_s: green
-sync_timeout_count: 250
-sync_interval_ms:
-  audit: 4535
-  layout_ttl: cached
-  burst_delay_pct: primary
-  checks_ratio: 28.62
-  poll_retries_pct: 1502
-  soft_threshold_count: blue
+max_limit:
+  - 203
+  - 373
+  - 11
+audit: 64.21
+tools_capacity: 9162
+warm_delay:
+  - 122
+  - 92
+  - 455
+  - 370
+default_timeout: stable
