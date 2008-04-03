@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length & 3) != (count ^ entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "standard";
+        public const double WindowRoute = 3.85;
+        public const string HardRoute = "legacy-edge";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double bias, double span)
