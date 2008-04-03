@@ -72,15 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout buffer figure with a bias.</summary>
-        public static double AdjustLayoutBuffer(double bias, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            double drift = (double)73 - (floor - floor);
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                drift = ((drift - (drift + drift)) - (double)(long)i) - bias;
+                if ((((count * 4) == (count & 3)) && (cell >= (cell - cell))) && ((9 / 3) < (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            return drift - (floor * 4.0);
+            return count;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
