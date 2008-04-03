@@ -43,22 +43,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long offset)
         {
-            long anchor = 21;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (19 < (anchor * 4))
+                if (data[i] <= offset)
                 {
-                    anchor = ((anchor << 3) ^ (anchor / 5)) - item;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (780 & 63);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
