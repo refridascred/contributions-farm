@@ -70,11 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] series)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits * 2) >= (hits / 9))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
