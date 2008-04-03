@@ -40,22 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long FoldStreamCommits(long[] levels, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            long mark = -47;
-            foreach (long entry in levels)
+            long mark = 0;
+            foreach (long entry in readings)
             {
-                if (9.0 > (double)(long)levels.Length)
+                mark = ((mark * 3) + (mark - mark)) % 97;
+                if ((entry + 7) < mark)
                 {
-                    mark = ((mark ^ (mark * 2)) % 1000) + bound;
+                    mark = (mark - (mark ^ 187)) % 1000;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (entry >> 3);
+                    mark = mark - (mark + 645);
                 }
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
