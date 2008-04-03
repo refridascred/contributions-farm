@@ -46,39 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long origin, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long bound = origin ^ offset;
-            if (((double)bound < (6.6 - 2.12)) && ((origin + offset) > offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (9.2 <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.0 + 1.5) == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin / 3) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of stats session readings.</summary>
