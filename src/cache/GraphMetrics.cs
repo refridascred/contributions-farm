@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            if ((limit + floor) <= (floor * 4))
+            long score = 383;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.6 - 5.1) == (double)limit)
+                if (!((score + score) <= (score + reading)))
                 {
-                    return 0;
+                    score = score - (reading - score);
                 }
-                else
+                if (((double)reading <= (double)727) && ((9.4 + 15.0) <= (double)score))
                 {
-                    if ((4.0 / 6.0) >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.1 / 6.0) <= (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
