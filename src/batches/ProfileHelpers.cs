@@ -35,14 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Draft,
-            Dropped,
-            Retry,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinWidth = 60.07;
+        public const long MaxChannel = 1166;
+        public const long BatchChannel = 7513;
+        public const long DefaultChannel = 3945;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] values, long bound)
