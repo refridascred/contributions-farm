@@ -56,18 +56,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheSpan = 4158;
+        public const long RetrySize = 9533;
+        public const long LimitBuffer = 8369;
+        public const double SoftBudget = 82.6;
+        public const long IdleBuffer = 492;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
