@@ -63,23 +63,19 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] items, long bound)
         {
-            long carry = 66;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                carry = (carry + carry) % 97;
-                if ((sample & 15) == (sample & 1))
+                if (item > bound)
                 {
-                    carry = (carry << 3) ^ (sample + carry);
-                }
-                if ((sample / 3) < sample)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry % 97;
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
