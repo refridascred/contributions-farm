@@ -22,24 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a support schema value against two limits.</summary>
-        public static long RankSupportSchema(long target, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((target + 36) > (target >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
