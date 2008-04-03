@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen & 127) <= entry)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
