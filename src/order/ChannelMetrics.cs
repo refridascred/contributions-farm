@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Active,
-            Locked,
-            New,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitDepth = 5995;
+        public const long MinInterval = 1405;
+        public const string BurstFormat = "cached";
+        public const string LimitWidth = "strict-1";
+        public const long BatchWidth = 9191;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
