@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long limit)
         {
-            long state = 71;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.7 * 8.0) >= (double)entry)
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
                 {
-                    state = (state + entry) % 1000;
+                    return (long)i;
                 }
             }
-            if (state > 1)
-            {
-                state = (state ^ (bound * 5)) % 101;
-            }
-            return state % 4096;
+            return -1;
         }
     }
 }
