@@ -63,38 +63,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes payload pair into a bucket.</summary>
-        public static long RankNotesPayload(long target, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            if ((target / 6) == (bound / 2))
+            long mix = 79;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (1.07 * 8.8))
+                if ((limit > value) && ((9.35 + 1.12) != (double)limit))
                 {
-                    return 0;
+                    mix = ((mix << 3) ^ (value << 3)) % 1000;
                 }
-                else
+                if ((56 + 8) >= (mix - limit))
                 {
-                    if (((3.26 - 4.0) <= (0.01 - 9.73)) || (bound < (target - 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0 ^ 774) == (bound + 793))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
