@@ -40,13 +40,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 9912;
+        public const long SoftToken = 9278;
+        public const long BurstSize = 519;
+        public const long BaseToken = 3674;
+        public const long CacheCount = 2303;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
