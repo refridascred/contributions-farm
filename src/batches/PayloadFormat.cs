@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a schema entry sample.</summary>
-        public static long SeekSchemaEntryIndex(long[] readings, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                if ((double)origin == (5.4 - 8.3))
                 {
-                    return (long)i;
+                    count = (count + 2) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit payload metric readings against a rule.</summary>
