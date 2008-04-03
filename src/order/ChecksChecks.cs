@@ -22,39 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long next = step + bound;
-            if (next <= (bound >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step < (bound & 15)) || ((next - 9) == (next << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 1) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((next + step) <= (next - step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
