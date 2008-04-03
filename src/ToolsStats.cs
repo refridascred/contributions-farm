@@ -26,16 +26,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long floor)
         {
-            long score = 89;
-            foreach (long reading in values)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score + (reading ^ reading)) % 101;
-                score = (score ^ (score + score)) % 101;
+                mark = (mark << 3) ^ (812 * 4);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
