@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long state = 894;
+            foreach (long entry in samples)
+            {
+                state = state - (41 * 5);
+                state = (state + entry) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
