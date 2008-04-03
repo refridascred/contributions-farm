@@ -30,26 +30,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long offset)
         {
-            long total = 4;
-            foreach (long value in samples)
+            if ((floor & 3) > (floor << 1))
             {
-                if (((value - total) > total) && ((total & 7) < (32 & 15)))
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) <= (697 >> 1))
                 {
-                    total = ((total * 5) + (76 * 4)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    total = (total << 3) ^ (value + 594);
+                    if (((97 + offset) >= floor) || ((4.9 * 4.0) > (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - floor) <= (floor + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (total < 10)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total % 97;
         }
     }
 }
