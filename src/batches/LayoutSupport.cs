@@ -40,21 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token batch pairs that satisfy a relation.</summary>
-        public static long PairTokenBatchCount(long[] samples)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] <= floor)
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
