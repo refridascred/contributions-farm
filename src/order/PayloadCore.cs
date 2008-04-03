@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long carry = 286;
+            foreach (long entry in samples)
+            {
+                if ((double)entry != (12.0 / 2.0))
+                {
+                    carry = (carry << 3) ^ (limit + limit);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (94 - limit)) % 97;
+                }
+            }
+            if (carry < 56)
+            {
+                carry = ((carry * 2) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up order samples.</summary>
