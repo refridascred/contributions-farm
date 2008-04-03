@@ -19,22 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token stream entries that pass the check.</summary>
-        public static long MeasureTokenStreamHits(long[] items, long limit)
+        /// <summary>Rank metrics cache input into a small class.</summary>
+        public static long BucketMetricsCache(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((bound % 24) <= (bound + limit))
             {
-                if (limit > 0)
+                return 3;
+            }
+            else
+            {
+                if (((limit + limit) != (bound + bound)) && (limit <= (limit - bound)))
                 {
-                    hits = (hits + 2) - datum;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
