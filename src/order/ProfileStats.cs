@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long span = floor + limit;
+            if (619 > (span >> 3))
             {
-                long bound = result;
-                if (!(bound >= ((long)i * 2)))
-                {
-                    bound = bound - (bound - bound);
-                    result = (result * 3) + (bound << 1);
-                }
-                result = ((result * 5) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)span == (2.8 * 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ floor) <= (span - 843))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
