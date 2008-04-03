@@ -1,10 +1,22 @@
 # githubfarm settings
-batch_threshold_count:
-  - 459
-  - 499
-  - 473
-flush_ttl_pct: 13.79
-channel_ratio:
-  - 241
-  - 301
-  - 441
+audit:
+  batch_interval: primary
+  entry_ratio: staging
+  base_timeout: 35.47
+  default_capacity_ms:
+    batch_threshold: open
+    default_limit_count: 19
+    audit: 100
+  poll_depth_ms:
+    - 415
+    - 409
+    - 192
+burst_ratio_s: green
+sync_timeout_count: 250
+sync_interval_ms:
+  audit: 4535
+  layout_ttl: cached
+  burst_delay_pct: primary
+  checks_ratio: 28.62
+  poll_retries_pct: 1502
+  soft_threshold_count: blue
