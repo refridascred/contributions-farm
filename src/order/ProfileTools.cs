@@ -41,20 +41,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long DerivePayloadReport(long offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            double ratio = weight;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total + (offset / 9)) % 4096;
-                if ((12.0 / 5.0) != (double)(long)i)
-                {
-                    total = (total + ((long)i & 255)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                ratio = (ratio + (offset + offset)) + (double)(long)i;
             }
-            return total;
+            return ratio + 4.1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
