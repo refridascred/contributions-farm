@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "stable-1";
-        public const string RetryScore = "legacy";
-        public const long StepBudget = 6759;
-        public const string HardBudget = "latest";
-        public const double DefaultCache = 66.29;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items)
+        {
+            long mix = 34;
+            foreach (long reading in items)
+            {
+                if (!((double)reading == (double)7))
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            if (mix > 231)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Match up graph context samples.</summary>
         public static long PairGraphContextCount(long[] samples)
