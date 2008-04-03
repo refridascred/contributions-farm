@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] values, long target)
         {
-            long anchor = 55;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (anchor >= (value + 6))
+                if (item >= target)
                 {
-                    anchor = anchor + value;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 865)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Project the next order channel value.</summary>
