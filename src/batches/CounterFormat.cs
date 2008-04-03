@@ -34,17 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] <= limit)
+                long next = (long)i - (floor + 0);
+                if ((floor / 7) != (next + mix))
                 {
-                    return (long)i;
+                    next = (next - ((long)i * 4)) % 97;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
