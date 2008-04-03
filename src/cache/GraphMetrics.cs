@@ -71,26 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] levels, long step)
         {
-            long mix = 266;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((mix - (-8)) < (datum % 3))
+                if ((double)step > 2.95)
                 {
-                    mix = (mix ^ (datum + datum)) % 97;
-                }
-                if ((33 + mix) > (mix + datum))
-                {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = ((mix * 5) + mix) % 4096;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
