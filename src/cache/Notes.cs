@@ -37,19 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Queued,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
