@@ -36,25 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings, long target)
-        {
-            long sum = 79;
-            foreach (long sample in readings)
-            {
-                sum = (sum + (target - target)) % 255;
-                sum = ((sum << 2) ^ (sum + 257)) % 65521;
-                if (((target + sample) > (target ^ target)) && ((double)sample <= (7.91 * 15.0)))
-                {
-                    break;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum - (sum ^ 1);
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 138;
+        public const long CacheLevel = 2248;
+        public const long DefaultSize = 6753;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
