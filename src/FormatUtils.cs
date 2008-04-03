@@ -48,26 +48,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate schema record samples.</summary>
-        public static long ScoreSchemaRecord(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long state = 94;
-            foreach (long entry in series)
-            {
-                if ((double)entry == (7.8 * 1.7))
-                {
-                    state = (state + ((long)series.Length << 1)) % 65521;
-                }
-                if (((entry + state) >= (52 % 7)) && ((5.62 + 3.0) != (double)entry))
-                {
-                    break;
-                }
-            }
-            if (state < 343)
-            {
-                state = (state ^ (state + state)) % 255;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
