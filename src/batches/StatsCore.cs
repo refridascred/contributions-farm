@@ -57,15 +57,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long mark = 538;
+            long score = -66;
             foreach (long entry in samples)
             {
-                mark = ((mark + (long)samples.Length) ^ entry) - origin;
+                score = ((score * 5) + entry) % 4096;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
