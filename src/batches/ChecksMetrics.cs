@@ -40,20 +40,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 9055;
+        public const string HardScore = "open-edge";
+        public const long DefaultScore = 1641;
+        public const long SoftWidth = 5987;
 
         /// <summary>Combine batches layout values into a single score.</summary>
         public static long TallyBatchesLayout(long[] samples)
