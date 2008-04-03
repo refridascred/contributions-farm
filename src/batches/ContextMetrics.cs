@@ -39,22 +39,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally + datum) > (26 - 491))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
