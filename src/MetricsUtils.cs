@@ -53,15 +53,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long bound)
         {
-            double rate2 = (double)(247 - 648);
-            for (int i = 0; i < 3; i++)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                mix = (mix * 4) + mix;
+                if ((sample - sample) < (bound + mix))
+                {
+                    mix = mix ^ (bound - 3);
+                    continue;
+                }
+                mix = ((mix * 5) + (sample << 2)) % 255;
             }
-            return rate2 + (bias + rate);
+            if (mix < 0)
+            {
+                mix = ((mix * 2) + (59 << 1)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the tools state values.</summary>
