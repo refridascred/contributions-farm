@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series)
         {
-            double rate2 = offset;
-            for (int i = 0; i < 2; i++)
+            long score = 5;
+            foreach (long sample in series)
             {
-                rate2 = (rate2 - rate) - (double)(long)i;
+                score = ((score << 3) ^ (score + score)) - sample;
             }
-            return rate2 + (rate / 9.0);
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
