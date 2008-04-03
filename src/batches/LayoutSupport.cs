@@ -59,15 +59,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a editor support counter forward.</summary>
-        public static long IterateEditorSupport(long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Ready,
+            Failed,
+            Queued,
         }
     }
 }
