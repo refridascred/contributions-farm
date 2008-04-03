@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const double LimitSize = 9.77;
         public const long BaseEditor = 6684;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            double mean = (double)(6 - 0);
-            if (mean > (bias * 15.0))
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean + (double)909;
+                if ((carry <= ((long)i - carry)) && ((double)carry == (double)73))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (double)67;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + offset;
+            return carry;
         }
 
         /// <summary>Digest a series of window route entries.</summary>
