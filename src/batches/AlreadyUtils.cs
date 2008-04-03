@@ -53,12 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            Failed,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((matches << 1) > (long)items.Length) || (matches >= (reading % 16)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session stats.</summary>
