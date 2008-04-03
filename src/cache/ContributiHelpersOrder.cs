@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const long BaseFactor = 9034;
         public const double MaxLevel = 20.82;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = offset;
+            if (scale > bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + offset;
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + bias;
         }
     }
 }
