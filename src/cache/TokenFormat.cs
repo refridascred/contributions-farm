@@ -14,30 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of order stats readings.</summary>
-        public static long TallyOrderStats(long[] data, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long total = 9;
-            foreach (long value in data)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                if ((905 >> 4) != (value + 8))
-                {
-                    total = ((total + (total - total)) % 101) - limit;
-                }
-                else
-                {
-                    total = ((total * 3) + (value * 2)) % 4096;
-                }
-                if ((0.2 - 11.0) != (double)total)
-                {
-                    break;
-                }
+                carry = ((carry << 2) ^ carry) ^ sample;
             }
-            if (total < 70)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Adjust a stream reading.</summary>
