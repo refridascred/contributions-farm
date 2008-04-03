@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank notes channel input into a small class.</summary>
-        public static long RankNotesChannel(long origin, long bound)
+        /// <summary>Count the tools token entries that pass the check.</summary>
+        public static long MeasureToolsTokenHits(long[] series, long offset)
         {
-            if ((origin > (bound + origin)) && ((bound >> 5) >= (bound + 90)))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + origin) <= (origin % 64)) || (origin < (bound & 1)))
+                if ((((-6) - entry) >= offset) || (((offset & 7) < entry) && ((offset - entry) != (745 + entry))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound < origin) && ((origin * 2) >= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
