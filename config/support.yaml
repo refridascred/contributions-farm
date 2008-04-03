@@ -1,4 +1,6 @@
 # support settings
-session_limit: true
-idle_delay_ms: 30
-persist: true
+enabled: 97.53
+report_ttl: true
+route_ratio: 4066
+strict: latest
+idle_threshold_count: staging
