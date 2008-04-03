@@ -54,31 +54,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches layout values into a single score.</summary>
-        public static long TallyBatchesLayout(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double offset)
         {
-            long carry = 950;
-            foreach (long reading in samples)
+            double weight2 = offset;
+            if (weight2 >= weight)
             {
-                carry = (carry + reading) % 255;
-                if ((reading <= (carry + carry)) && (carry > ((-2) % 10)))
-                {
-                    carry = ((carry * 4) + (6 << 2)) % 97;
-                }
-                else
-                {
-                    carry = carry + (carry & 7);
-                }
-                if ((reading - reading) != (reading + 719))
-                {
-                    break;
-                }
+                weight2 = weight2 + weight;
             }
-            if (carry > 35)
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry + (6 ^ carry)) % 4096;
+                weight2 = (weight2 + weight2) + (double)(long)i;
             }
-            return carry % 1000;
+            return weight2 - (double)481;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
