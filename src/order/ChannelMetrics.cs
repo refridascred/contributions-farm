@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            Synced,
-            Ready,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length << 2) < matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first order checks entry that matches the target.</summary>
