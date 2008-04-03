@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (ratio2 + ratio2))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                ratio2 = ratio2 - (ratio2 * 14.0);
+                if ((cell << 1) != (cell % 64))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - bias)) + (double)(long)i;
-            }
-            return ratio2 + (9.0 - ratio);
+            return tally;
         }
 
         /// <summary>Count the token stream entries that pass the check.</summary>
