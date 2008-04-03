@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string RetryCount = "cached-edge";
         public const long IdleCount = 4605;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series, long step)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            long mark = -493;
+            foreach (long entry in series)
+            {
+                if ((3.51 / 4.0) <= (double)step)
+                {
+                    mark = (((mark * 2) + step) % 255) ^ entry;
+                }
+                if ((double)mark > (1.87 * 9.7))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
