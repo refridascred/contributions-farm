@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value <= seed)
+                if (((947 - matches) >= value) || !(838 > (matches - matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
