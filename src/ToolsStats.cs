@@ -19,27 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 7;
-            foreach (long sample in items)
-            {
-                score = score ^ (sample ^ sample);
-                if ((double)sample == (4.06 * 14.0))
-                {
-                    score = ((score * 3) + (15 & 7)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + (8 + score)) % 4096;
-                }
-            }
-            if (score > 342)
-            {
-                score = (score * 2) + score;
-            }
-            return score % 4096;
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Accumulate stats samples.</summary>
