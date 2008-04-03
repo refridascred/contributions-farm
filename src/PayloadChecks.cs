@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "staging-edge";
+        public const long HardDepth = 4772;
+        public const long RetryScore = 314;
+        public const long MinCounter = 429;
 
         /// <summary>Classify a metric schema pair into a bucket.</summary>
         public static long SortMetricSchema(long target, long limit)
