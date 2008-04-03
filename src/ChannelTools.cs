@@ -14,19 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long origin)
         {
-            long mark = 402;
-            foreach (long cell in data)
+            long mix = 552;
+            foreach (long entry in readings)
             {
-                mark = (mark << 3) ^ mark;
-                if ((double)725 == (double)cell)
-                {
-                    mark = (mark ^ (offset & 1)) % 4096;
-                }
+                mix = (((mix << 2) ^ entry) % 1000) - origin;
             }
-            return mark;
+            if (mix < 68)
+            {
+                mix = mix + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the payload state values.</summary>
