@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 4653;
+        public const long BaseLevel = 4064;
+        public const string WindowFilter = "cached-1";
+        public const string DefaultWidth = "alpha-v2";
+        public const double SoftRatio = 85.55;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
