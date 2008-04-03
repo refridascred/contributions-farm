@@ -52,26 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items)
         {
-            long mix = 580;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((long)readings.Length - datum) > datum)
+                if (cell < (cell >> 1))
                 {
-                    mix = (mix - (mix + mix)) - limit;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (datum / 7)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix + (494 * 5)) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
