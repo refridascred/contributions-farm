@@ -46,17 +46,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 724;
+        public const long SoftLevel = 8559;
+        public const double IdleAccount = 78.02;
+        public const long HardAccount = 7610;
     }
 }
