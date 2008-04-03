@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowWidth = 50.62;
-        public const long WindowCache = 2585;
-        public const long IdleSpan = 658;
+        /// <summary>Blend two counter payload measurements.</summary>
+        public static double AdjustCounterPayload(double scale, double bias)
+        {
+            double load = (double)((-99) + 20);
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + scale) - (double)(long)i) + bias;
+            }
+            return load + (double)3;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] data, long bound)
