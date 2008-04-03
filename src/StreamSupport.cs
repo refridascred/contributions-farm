@@ -31,13 +31,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound <= (carry << 1))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
