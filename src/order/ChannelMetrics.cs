@@ -25,12 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double rate, double offset)
-        {
-            double bias = 16.0;
-            return (bias + rate) + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "strict";
+        public const long BatchProfile = 1028;
+        public const double SoftProfile = 23.71;
+        public const string BaseProfile = "alpha";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings)
