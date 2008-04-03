@@ -48,19 +48,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Find the first commits batch entry that matches the target.</summary>
+        public static long LocateCommitsBatchIndex(long[] samples, long seed)
         {
-            double scale = bias;
-            if (scale <= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (scale * 8.0);
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale + rate)) + (double)(long)i;
-            }
-            return scale + 6.9;
+            return -1;
         }
     }
 }
