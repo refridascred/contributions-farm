@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Check that every batch schema entry stays within the limit.</summary>
+        public static bool ValidateBatchSchemaRange(long[] items, long offset)
         {
-            double mean = offset;
-            if (mean < rate)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mean = mean + (double)7;
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (offset / 8.0)) + (double)(long)i;
-            }
-            return mean + rate;
+            return valid;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
