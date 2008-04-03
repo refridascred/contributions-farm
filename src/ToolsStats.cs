@@ -14,18 +14,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long MeasurePayloadTokenHits(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long sample in items)
             {
-                if (((long)items.Length - tally) != (entry + 881))
+                score = score ^ (sample ^ sample);
+                if ((double)sample == (4.06 * 14.0))
                 {
-                    tally = tally + 2;
+                    score = ((score * 3) + (15 & 7)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + (8 + score)) % 4096;
                 }
             }
-            return tally;
+            if (score > 342)
+            {
+                score = (score * 2) + score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
