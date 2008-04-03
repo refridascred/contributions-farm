@@ -37,21 +37,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Fold a list of stats commits readings.</summary>
+        public static long FoldStatsCommits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 993;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((977 ^ 53) == (floor - anchor))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor + (3 + anchor)) % 255) + entry;
                 }
             }
-            return count;
+            if (anchor > 35)
+            {
+                anchor = anchor ^ 62;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor kind values.</summary>
