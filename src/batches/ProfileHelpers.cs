@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            Active,
-            Pending,
-            Ready,
-            Synced,
+            long mark = 578;
+            foreach (long sample in data)
+            {
+                mark = (mark + (131 & 31)) % 1000;
+                if (sample > (long)data.Length)
+                {
+                    mark = (mark << 3) ^ (mark + sample);
+                    continue;
+                }
+                if ((438 - 8) >= (mark - 382))
+                {
+                    mark = (mark ^ sample) % 101;
+                }
+                else
+                {
+                    mark = (mark + (mark << 2)) % 1000;
+                }
+            }
+            if (mark > 610)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
