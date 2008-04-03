@@ -1,13 +1,5 @@
 {
-  "profile_delay": {
-    "persist": ["local", "stable"],
-    "poll_interval": 9367,
-    "stats_interval": "standard",
-    "soft_size_s": false,
-    "context_interval": true
-  },
-  "warm_ratio": "cached",
-  "warm_depth_count": [305, 334, 164, 265],
-  "poll_size_pct": 250,
-  "batch_depth_ms": "open"
+  "verbose": 4309,
+  "token_ratio": 60,
+  "hard_timeout_pct": 30
 }
