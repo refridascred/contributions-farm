@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const double IdleScore = 51.34;
         public const long HardTimeout = 9109;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Locked,
-            Synced,
-            Paused,
-            Failed,
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
