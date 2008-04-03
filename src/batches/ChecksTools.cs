@@ -35,18 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] values, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (19.0 >= (double)entry)
+                if (reading > step)
                 {
-                    count = (count + 3) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank record account input into a small class.</summary>
