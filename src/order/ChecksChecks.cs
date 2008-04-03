@@ -52,13 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 7;
+            foreach (long reading in values)
+            {
+                if ((reading >> 2) < (reading & 63))
+                {
+                    carry = (carry * 2) + reading;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
