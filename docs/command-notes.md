@@ -1,14 +1,12 @@
 # Command notes
 
-Each commits is validated before it reaches the report queue.
-Run the metric check before changing any cache limits.
-When a farm fails, the checks handler retries a few times before giving up.
-
-The token report groups every contributi by commits.
-Use stats settings to tune how often command data is refreshed.
+Keep graph and window names short and lowercase.
+Each checks is validated before it reaches the support queue.
+Use account settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Keep layout values small
-- Validate layout input early
-- Document new command fields
+- Log every githubfarm change
+- Document new stream fields
+- Keep stats values small
+- Prefer notes defaults
