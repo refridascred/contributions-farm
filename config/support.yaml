@@ -1,16 +1,27 @@
 # support settings
-dry_run: fallback
-cache_limit_ms:
-  - 486
-  - 276
-default_limit_s: 1024
-max_window: fallback
-base_ratio_s:
-  burst_timeout_count: false
-  base_window_s: true
-  already_threshold:
-    - open
-    - stable
-    - fallback
-  readonly: strict
-soft_size: latest
+retry_interval_pct: latest
+order_interval: 5167
+max_limit_s: true
+poll_timeout_count:
+  - 70
+  - 466
+  - 282
+  - 209
+soft_retries:
+  metric_threshold: false
+  max_depth_ms:
+    batch_window_ms: open
+    counter_ttl: 1099
+    githubfarm_ratio: 1024
+    strict: 49.61
+    burst_threshold_count: 31
+    batch_limit: 1024
+  compress:
+    checks_interval: 56.03
+    flush_ttl: 18.45
+    hard_capacity_s: true
+    batch_capacity: strict
+    compress: latest
+    sync_window_ms: 460
+  soft_retries: 30
+  strict: 30
