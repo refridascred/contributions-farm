@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank editor graph input into a small class.</summary>
-        public static long SortEditorGraph(long origin, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            long span = origin + step;
-            if (span > (origin ^ step))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7.81 - 0.5) <= (double)step) || ((14 + span) <= (step - span)))
+                if ((seen + seen) <= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (span >= (origin + 230))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 <= origin) && ((step << 1) > (835 + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
