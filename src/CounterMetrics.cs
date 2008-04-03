@@ -46,18 +46,32 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] series, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long diff = target ^ floor;
+            if ((diff * 3) == (diff & 1))
             {
-                if (tally > (87 & 255))
+                return 8;
+            }
+            else
+            {
+                if (floor >= target)
                 {
-                    tally = ((tally + 1) ^ item) - bound;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)diff > 1.0) || ((8.4 / 7.0) < (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
