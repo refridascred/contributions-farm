@@ -50,18 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleLevel = 8683;
+        public const string IdleBudget = "fallback-v2";
+        public const long IdleMetric = 2817;
+        public const long CacheCount = 3172;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
