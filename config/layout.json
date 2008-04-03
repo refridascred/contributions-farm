@@ -1,8 +1,8 @@
 {
-  "base_retries_pct": 28,
-  "default_limit_ms": 60,
-  "entry_delay": "green",
-  "queue_interval": "edge",
-  "flush_delay": 9035,
-  "idle_ratio_count": 6746
+  "max_threshold": "edge",
+  "compress": "strict",
+  "min_depth": false,
+  "githubfarm_limit": 51,
+  "idle_capacity_count": [398, 86, 407],
+  "enabled": 4784
 }
