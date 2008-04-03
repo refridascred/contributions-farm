@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 8041;
-        public const double HardTimeout = 63.34;
-        public const double BurstWindow = 43.75;
-        public const string CacheWindow = "staging-edge";
-        public const long BaseWindow = 6172;
+        /// <summary>Combine order buffer values into a single score.</summary>
+        public static long WeighOrderBuffer(long[] items)
+        {
+            long mix = 9;
+            foreach (long entry in items)
+            {
+                if ((entry - entry) >= 3)
+                {
+                    mix = ((mix << 2) ^ entry) % 65521;
+                }
+                if ((entry / 2) == (33 + entry))
+                {
+                    break;
+                }
+            }
+            if (mix < 11)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
