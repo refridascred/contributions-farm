@@ -19,17 +19,11 @@ namespace Common.Utilities
         public const long BatchCluster = 1260;
         public const long IdleCluster = 3321;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
