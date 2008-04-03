@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] values, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (values[i] >= offset)
+                if ((seen / 4) <= (610 + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
