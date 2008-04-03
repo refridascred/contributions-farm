@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long SoftCount = 1396;
         public const long IdleFilter = 2669;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (bound <= (reading + bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 646;
+        public const double MaxStats = 67.67;
+        public const long HardStats = 4983;
+        public const string RetryStats = "strict";
 
         /// <summary>Project the next payload commits value.</summary>
         public static double AdjustPayloadCommits(double bias, double offset)
