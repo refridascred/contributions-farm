@@ -13,16 +13,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (-17)) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
