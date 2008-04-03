@@ -65,11 +65,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate contributi queue samples.</summary>
+        public static long TotalContributiQueue(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long score = 786;
+            foreach (long datum in levels)
+            {
+                score = score ^ (score + score);
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score + (score % 100)) % 101) ^ (long)i;
+                }
+                if (!((score - score) < datum))
+                {
+                    score = ((score << 3) ^ (score - score)) % 101;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (datum + score)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
