@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long TotalQueueOrder(long[] readings, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long acc = -190;
-            foreach (long reading in readings)
-            {
-                acc = (acc - (reading % 97)) - seed;
-            }
-            return acc % 97;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
