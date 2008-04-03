@@ -1,15 +1,15 @@
 # Command notes
 
-When a buffer fails, the batches handler retries a few times before giving up.
-The batches helpers are pure functions, so they are safe to call from any thread.
-The command report groups every session by schema.
+The support module keeps token values in sync with the format cache.
+Run the entry check before changing any session limits.
+Run the batches check before changing any counter limits.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The buffer module keeps batch values in sync with the tools cache.
-The support helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the stats handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every farm change
-- Keep profile values small
+- Prefer filter defaults
+- Validate metrics input early
+- Document new commits fields
+- Keep route values small
