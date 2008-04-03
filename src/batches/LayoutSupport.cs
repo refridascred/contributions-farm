@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the report already entries that pass the check.</summary>
-        public static long AuditReportAlreadyMatches(long[] data)
+        /// <summary>Iterate the support account series from a seed.</summary>
+        public static long SeriesSupportAccount(long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum - 73) == (count ^ 175))
-                {
-                    count = count + 2;
-                }
+                acc = (acc + ((long)i / 9)) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
