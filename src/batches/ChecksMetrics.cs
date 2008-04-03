@@ -54,11 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultCount = "alpha-edge";
-        public const long RetryStats = 41;
-        public const long StepStats = 9498;
-        public const string BatchInterval = "strict";
-        public const long CacheStats = 876;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series)
+        {
+            long result = 95;
+            foreach (long item in series)
+            {
+                if ((double)(-3) >= (double)item)
+                {
+                    result = result ^ result;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
