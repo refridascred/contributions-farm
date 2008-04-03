@@ -54,11 +54,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((8.95 - 6.1) != (double)bound)
+                {
+                    mark = (mark - (bound - (long)i)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (bound + bound)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
