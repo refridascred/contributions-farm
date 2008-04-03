@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "stable-edge";
-        public const long BatchInterval = 4277;
-        public const double DefaultCount = 23.2;
-        public const string SoftLevel = "primary";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 86.78;
+        public const long IdleDepth = 2577;
+        public const long BatchOrder = 8883;
+        public const long BatchTimeout = 3055;
+        public const long CacheSpan = 5524;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] data, long step)
