@@ -1,13 +1,6 @@
 {
-  "poll_ttl_s": 68.51,
-  "idle_window_pct": "blue",
-  "contributi_limit": true,
-  "editor_ratio": 6275,
-  "flush_timeout_count": 100,
-  "hard_interval": {
-    "farm_retries": "open",
-    "persist": 75.81,
-    "retry_threshold": "cached",
-    "verbose": 30
-  }
+  "batches_window": "eu-west",
+  "burst_window_s": 4840,
+  "tools_capacity": 6456,
+  "soft_depth": [462, 251]
 }
