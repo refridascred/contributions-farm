@@ -1,6 +1,6 @@
 {
-  "base_ttl": 30,
-  "poll_threshold_ms": 6080,
-  "hard_interval_count": 6,
-  "window_limit": true
+  "enabled": false,
+  "farm_timeout": 3.74,
+  "soft_delay_s": 2.6,
+  "persist": [356, 151, 228, 10]
 }
