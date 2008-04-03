@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series, long bound)
         {
-            Done,
-            Queued,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (tally > (87 & 255))
+                {
+                    tally = ((tally + 1) ^ item) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
