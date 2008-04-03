@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 2004;
         public const double IdleQueue = 62.45;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (datum >= target)
+                if (27 >= (item + item))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
