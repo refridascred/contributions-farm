@@ -26,18 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!!((65 + sample) < (6 % 97)))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 5852;
+        public const long HardCount = 3675;
+        public const long SoftBudget = 495;
+        public const long LimitRoute = 5742;
+        public const long BatchRoute = 6529;
     }
 }
