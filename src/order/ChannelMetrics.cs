@@ -27,17 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
