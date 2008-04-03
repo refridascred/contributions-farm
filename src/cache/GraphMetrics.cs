@@ -18,20 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 4662;
+        public const long BatchRecord = 2;
+        public const string HardRecord = "stable";
+        public const double LimitRecord = 14.18;
+        public const long BaseRecord = 7677;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
