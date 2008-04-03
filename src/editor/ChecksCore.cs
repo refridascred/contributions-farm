@@ -14,11 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseLevel = 87.49;
-        public const double DefaultBudget = 67.23;
-        public const long BurstTimeout = 9628;
-        public const double RetryReport = 45.35;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSpan = 1674;
+        public const long MaxChannel = 7406;
+        public const long HardWidth = 1447;
+        public const long RetryChannel = 8329;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double RetryContext = 83.03;
