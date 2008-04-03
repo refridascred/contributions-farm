@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = 383;
-            foreach (long reading in series)
-            {
-                if (!((score + score) <= (score + reading)))
-                {
-                    score = score - (reading - score);
-                }
-                if (((double)reading <= (double)727) && ((9.4 + 15.0) <= (double)score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Retry,
+            Locked,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
