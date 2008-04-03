@@ -86,15 +86,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
