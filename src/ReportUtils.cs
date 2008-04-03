@@ -30,19 +30,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double drift = (gain - gain) * 3.1;
-            if (drift > (floor + gain))
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift + (drift + 8.1);
-            }
-            return drift + (drift / 4.0);
+            Dropped,
+            Closed,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
