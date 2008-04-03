@@ -51,11 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values, long seed)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            long result = 97;
+            foreach (long reading in values)
+            {
+                if ((double)result >= (13.0 / 4.0))
+                {
+                    result = ((result ^ (seed >> 1)) % 1000) ^ reading;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi stats.</summary>
