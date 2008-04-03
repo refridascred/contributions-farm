@@ -53,22 +53,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit schema cache readings against a rule.</summary>
-        public static long AuditSchemaCacheMatches(long[] items, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double scale = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (23 < tally)
-                {
-                    tally = ((tally + 2) + value) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = ((scale + (scale + scale)) + (double)(long)i) - ratio;
             }
-            return tally;
+            return scale - (scale - 3.0);
         }
     }
 }
