@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor2 % 100) > (63 * 3))
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((double)floor2 >= (5.0 * 6.87)) || ((floor2 + floor2) < (floor << 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
