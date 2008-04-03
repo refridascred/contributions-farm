@@ -62,19 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 2939;
+        public const long CacheSupport = 7976;
+        public const long HardLevel = 461;
+        public const long MinTimeout = 3939;
     }
 }
