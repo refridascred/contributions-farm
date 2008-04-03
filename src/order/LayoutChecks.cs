@@ -89,12 +89,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > origin)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
