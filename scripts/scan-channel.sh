@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable open; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in eu-west standard; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=26
-log "limit is ${CHANNEL_LIMIT}"
