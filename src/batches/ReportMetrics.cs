@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples, long floor)
+        /// <summary>Count the graph report entries that pass the check.</summary>
+        public static long TallyGraphReportOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((double)item <= (2.06 / 4.0))
+                if ((double)67 == (double)tally)
                 {
-                    matches = (matches + 3) + floor;
+                    tally = ((tally + 1) - reading) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank record queue input into a small class.</summary>
