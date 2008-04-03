@@ -23,11 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Paused,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the stats class values.</summary>
