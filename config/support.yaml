@@ -1,4 +1,6 @@
 # support settings
-buffer_ttl: staging
-batch_delay: 88
-hard_depth_ms: 6329
+record_window: 57
+default_size_ms: true
+persist: 95.56
+audit: latest
+idle_delay_ms: 681
