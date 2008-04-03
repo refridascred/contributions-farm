@@ -57,18 +57,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 27;
+            foreach (long entry in values)
             {
-                if ((6.9 + 7.02) < (double)entry)
-                {
-                    matches = matches + 1;
-                }
+                total = ((total + (total * 4)) + entry) + origin;
             }
-            return matches;
+            if (total > 667)
+            {
+                total = total - total;
+            }
+            return total;
         }
     }
 }
