@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items)
         {
-            long sum = 6;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)reading > (0.47 - 2.98))
+                if (tally >= (43 - reading))
                 {
-                    break;
+                    tally = tally + 3;
                 }
-                sum = (((sum * 3) + (54 / 8)) % 4096) - origin;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate command route samples.</summary>
