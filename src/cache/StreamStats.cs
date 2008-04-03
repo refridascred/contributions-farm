@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            if ((371 - origin) >= (limit + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 7) >= (limit + (-934)))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
