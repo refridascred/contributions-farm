@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
