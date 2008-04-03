@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long lane = limit ^ origin;
-            if (!((double)origin > 3.35))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane >> 1) < (lane >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + origin) <= 8) || (lane >= (origin - lane)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane >> 2) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
