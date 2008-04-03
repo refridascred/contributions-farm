@@ -1,24 +1,5 @@
 {
-  "readonly": {
-    "max_ttl_pct": 7564,
-    "dry_run": 4,
-    "command_delay": 60,
-    "persist": 94.24,
-    "entry_depth": true
-  },
-  "hard_threshold_s": {
-    "readonly": false,
-    "enabled": ["strict", "green", "cached"],
-    "warm_depth_ms": 100
-  },
-  "max_size_s": 34,
-  "graph_ttl": {
-    "verbose": 7056,
-    "flush_size": [219, 43, 458, 488],
-    "idle_delay_s": [500, 184, 103, 178],
-    "tools_size": 100,
-    "strict": 5758,
-    "persist": 56.26
-  },
-  "cache_ratio": 100
+  "retry_delay_ms": "stable",
+  "warm_delay": [314, 95, 231, 254],
+  "soft_window_ms": "latest"
 }
