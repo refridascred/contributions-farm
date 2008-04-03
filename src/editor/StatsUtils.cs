@@ -31,20 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetrySpan = "local-edge";
+        public const long HardEntry = 8177;
+        public const double BaseSpan = 82.71;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
