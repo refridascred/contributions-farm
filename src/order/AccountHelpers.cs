@@ -46,13 +46,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long target)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            if ((seed + seed) == (target + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 31) < target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed << 1) > (seed >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed & 127) == (seed << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
