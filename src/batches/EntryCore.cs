@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long floor)
         {
-            Failed,
-            Retry,
-            Paused,
+            if ((floor % 7) > floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (4.0 + 9.65))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor % 10) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
