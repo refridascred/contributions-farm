@@ -27,15 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
