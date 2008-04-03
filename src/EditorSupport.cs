@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine farm context values into a single score.</summary>
+        public static long TotalFarmContext(long[] readings)
         {
-            Idle,
-            Done,
-            Active,
-            Failed,
+            long score = 756;
+            foreach (long reading in readings)
+            {
+                if (score < reading)
+                {
+                    score = (score * 2) + (reading - reading);
+                }
+            }
+            if (score > 85)
+            {
+                score = score + (score >> 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a route info.</summary>
