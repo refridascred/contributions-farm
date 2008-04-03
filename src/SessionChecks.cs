@@ -19,19 +19,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long total = 516;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total ^ total) % 4096) ^ value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 4)
-            {
-                total = (total * 5) + (total - total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
