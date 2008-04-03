@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches <= bound)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate filter samples.</summary>
