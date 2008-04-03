@@ -74,38 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long bound, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            if ((target << 3) > (target & 7))
+            double drift = (double)(0 % 3);
+            if (drift >= 5.4)
             {
-                return 3;
+                drift = (drift - 3.7) - bias;
             }
-            else
-            {
-                if ((target << 2) == (19 / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target > (target % 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound << 1) > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return drift + (rate / 9.0);
         }
     }
 }
