@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 14.04;
-        public const long SoftDepth = 5468;
-        public const long WindowScore = 6323;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Locked,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Look up the position of a stats window sample.</summary>
         public static long LookupStatsWindowIndex(long[] series, long limit)
