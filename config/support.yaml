@@ -1,4 +1,16 @@
 # support settings
-persist: 79
-min_delay_ms: true
-command_interval: 25.39
+dry_run: fallback
+cache_limit_ms:
+  - 486
+  - 276
+default_limit_s: 1024
+max_window: fallback
+base_ratio_s:
+  burst_timeout_count: false
+  base_window_s: true
+  already_threshold:
+    - open
+    - stable
+    - fallback
+  readonly: strict
+soft_size: latest
