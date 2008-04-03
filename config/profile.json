@@ -1,5 +1,5 @@
 {
-  "default_ttl_ms": 40.48,
-  "audit": ["legacy", "cached", "latest"],
-  "min_timeout": "stable"
+  "verbose": "latest",
+  "idle_ratio_pct": ["standard", "latest", "eu-west", "local"],
+  "retry_retries": 250
 }
