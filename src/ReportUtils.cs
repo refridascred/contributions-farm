@@ -25,11 +25,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepCount = 5183;
-        public const long MaxScore = 3460;
-        public const long MaxWindow = 4856;
-        public const long BaseRatio = 182;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinWidth = 793;
+        public const long MinMetrics = 1392;
+        public const string SoftScore = "staging-1";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
