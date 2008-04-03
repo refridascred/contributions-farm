@@ -66,13 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] values, long limit)
         {
             bool ready = true;
-            foreach (long entry in levels)
+            foreach (long sample in values)
             {
-                if (entry < offset)
+                if (sample > limit)
                 {
                     ready = false;
                     break;
