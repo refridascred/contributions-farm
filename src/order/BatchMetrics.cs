@@ -44,18 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seed > (seen + seed))
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
