@@ -1,7 +1,8 @@
 {
-  "persist": true,
-  "batch_ttl_s": ["fallback", "eu-west", "legacy"],
-  "filter_ttl": "eu-west",
-  "retry_window_ms": 98.28,
-  "max_threshold_ms": "blue"
+  "command_ratio": 94,
+  "metrics_ttl": "primary",
+  "report_threshold": 2395,
+  "already_limit": 39.06,
+  "hard_timeout_count": true,
+  "already_delay": 94
 }
