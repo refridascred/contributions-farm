@@ -14,17 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values, long step)
         {
-            long anchor = 1;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor ^ (entry - anchor)) % 4096;
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = (anchor + (entry ^ anchor)) % 101;
+                if ((tally - 371) < (259 - tally))
+                {
+                    tally = ((tally + 3) + cell) + step;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the payload state values.</summary>
