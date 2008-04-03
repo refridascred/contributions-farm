@@ -27,21 +27,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i + seed) < (4 - seed)) && ((state >> 5) != (state + (long)i)))
                 {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    long slot = state % 100;
+                    state = ((state << 3) ^ (slot + state)) % 101;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
