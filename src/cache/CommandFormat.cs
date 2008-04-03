@@ -35,18 +35,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (0 >= (matches << 3))
+                state = ((state << 3) ^ (state << 3)) % 4096;
+                if ((state << 3) <= step)
                 {
-                    matches = ((matches + 2) + entry) - step;
+                    state = state - (long)i;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
