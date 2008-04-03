@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a context stream reading.</summary>
-        public static double SmoothContextStream(double bias, double span)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double ratio = (bias + span) / 2.0;
-            if (ratio < (double)90)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + 18.0;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
