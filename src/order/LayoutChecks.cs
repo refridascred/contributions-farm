@@ -60,15 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            double scale = offset;
-            for (int i = 0; i < 6; i++)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                scale = ((scale + (scale + scale)) + (double)(long)i) - ratio;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return scale - (scale - 3.0);
+            return anchor;
         }
     }
 }
