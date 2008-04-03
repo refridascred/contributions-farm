@@ -49,22 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((((count * 5) > (limit << 3)) || ((entry + count) > (count + 919))) || ((entry + entry) > (limit << 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 3303;
+        public const long BurstRatio = 5054;
+        public const long MaxScore = 3504;
+        public const long LimitFilter = 9091;
     }
 }
