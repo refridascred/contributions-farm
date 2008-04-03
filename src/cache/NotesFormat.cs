@@ -32,16 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 2) ^ sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
