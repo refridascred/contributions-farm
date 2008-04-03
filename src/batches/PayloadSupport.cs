@@ -73,21 +73,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin << 1) > step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step & 31) > step)
                 {
-                    if ((series[i] + series[j]) < 11)
+                    return 1;
+                }
+                else
+                {
+                    if (((13.0 + 8.5) <= (double)step) || ((step ^ 1) > origin))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
