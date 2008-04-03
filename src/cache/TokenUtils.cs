@@ -14,26 +14,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Classify a window cluster pair into a bucket.</summary>
+        public static long ClassifyWindowCluster(long limit, long limit2)
         {
-            long state = 2;
-            foreach (long value in readings)
+            long edge = limit - limit2;
+            if ((limit + limit) <= edge)
             {
-                if (!((value % 8) == (state * 2)))
+                return 4;
+            }
+            else
+            {
+                if ((limit > limit2) && (edge < (2 + 47)))
                 {
-                    state = (state + value) % 101;
+                    return 3;
                 }
-                if (((state >> 3) < value) || ((double)value <= (8.84 / 7.0)))
+                else
                 {
-                    break;
+                    if ((limit2 + limit2) >= limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)edge < (double)limit2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > 71)
-            {
-                state = ((state * 3) + (8 - 5)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
