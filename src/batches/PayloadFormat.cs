@@ -37,22 +37,27 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long AuditSchemaFilterHits(long[] levels)
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long CombineEditorWindow(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long score = 5;
+            foreach (long sample in items)
             {
-                if (datum <= (-970))
+                score = ((score ^ (507 + 872)) % 65521) - sample;
+                if ((4.0 - 3.42) < (double)score)
                 {
-                    count = count + 1;
+                    score = (score + (score / 8)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score + score) % 4096;
                 }
             }
-            return count;
+            if (score < 68)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
