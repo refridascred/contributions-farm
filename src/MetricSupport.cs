@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstSize = "cached-edge";
-        public const long BurstFilter = 8828;
-        public const string BaseFilter = "latest-1";
-        public const string MinFilter = "latest-v2";
-        public const long SoftLevel = 2340;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] data, long origin)
