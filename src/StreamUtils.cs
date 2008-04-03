@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 6571;
+        public const long SoftLayout = 2660;
+        public const long HardRatio = 6227;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] readings, long target)
