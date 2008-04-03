@@ -80,16 +80,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] data, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                state = (state + state) % 101;
-                state = ((state * 4) + (long)i) % 4093;
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
