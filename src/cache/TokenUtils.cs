@@ -10,16 +10,14 @@ namespace Common.Utilities
         public const long LimitWidth = 7198;
         public const double MaxRoute = 1.09;
 
-        /// <summary>Iterate the cache schema series from a seed.</summary>
-        public static long SeriesCacheSchema(long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (sum / 7)) % 101;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Failed,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a notes stats.</summary>
