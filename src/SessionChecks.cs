@@ -20,19 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count < (value ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9584;
+        public const double StepTimeout = 68.41;
+        public const long RetryCommits = 3060;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] items, long seed)
