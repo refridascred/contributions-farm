@@ -14,10 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 4446;
-        public const string LimitRoute = "strict-v2";
-        public const long StepRoute = 6520;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double rate, double offset)
