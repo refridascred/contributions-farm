@@ -54,11 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleLevel = 8683;
-        public const string IdleBudget = "fallback-v2";
-        public const long IdleMetric = 2817;
-        public const long CacheCount = 3172;
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long DerivePayloadReport(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total + (offset / 9)) % 4096;
+                if ((12.0 / 5.0) != (double)(long)i)
+                {
+                    total = (total + ((long)i & 255)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
