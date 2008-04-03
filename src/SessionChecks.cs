@@ -36,17 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] readings, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = acc - (long)i;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the command level values.</summary>
