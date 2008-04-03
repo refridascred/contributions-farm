@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const long BatchCluster = 1260;
         public const long IdleCluster = 3321;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine support payload values into a single score.</summary>
+        public static long WeighSupportPayload(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long score = 62;
+            foreach (long cell in series)
+            {
+                long step = offset * 3;
+                if (((195 + score) != (cell - score)) || ((step + 54) <= (score + step)))
+                {
+                    continue;
+                }
+                score = score + cell;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools status values.</summary>
