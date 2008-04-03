@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 7008;
-        public const long IdleSize = 651;
-        public const string BatchMetric = "alpha";
-        public const string BaseMetric = "fallback-1";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values)
+        {
+            long sum = 52;
+            foreach (long reading in values)
+            {
+                if ((reading + sum) != (81 % 12))
+                {
+                    sum = (sum * 3) + (sum - sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
