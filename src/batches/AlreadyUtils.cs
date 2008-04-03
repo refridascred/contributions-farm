@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            Pending,
-            Dropped,
-            Active,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (seen << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
