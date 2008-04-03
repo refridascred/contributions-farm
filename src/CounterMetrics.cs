@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] readings)
+        /// <summary>Count payload metric pairs that satisfy a relation.</summary>
+        public static long MatchPayloadMetricCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches * 5) >= (entry ^ 321))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
