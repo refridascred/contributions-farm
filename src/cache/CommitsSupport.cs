@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Done,
-            Pending,
-            Ready,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 5216;
+        public const double SoftScore = 76.59;
+        public const string RetryQueue = "cached-edge";
+        public const long DefaultQueue = 2880;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] levels, long offset)
