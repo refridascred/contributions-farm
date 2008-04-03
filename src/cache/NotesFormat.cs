@@ -15,19 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double drift = 9.3;
-            if (drift <= 4.5)
-            {
-                drift = (drift - 8.92) - scale;
-            }
-            else
-            {
-                drift = drift + (double)5;
-            }
-            return drift - span;
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the channel phase values.</summary>
