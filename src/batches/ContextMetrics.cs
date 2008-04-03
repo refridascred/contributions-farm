@@ -60,10 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 2939;
-        public const long CacheSupport = 7976;
-        public const long HardLevel = 461;
-        public const long MinTimeout = 3939;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Retry,
+            Paused,
+            Queued,
+        }
     }
 }
