@@ -37,12 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8326;
-        public const double IdleWidth = 47.83;
-        public const string StepDepth = "strict-1";
-        public const string BatchSpan = "fallback-1";
-        public const long IdleFactor = 1853;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Draft,
+            Dropped,
+            Retry,
+            Done,
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] items)
