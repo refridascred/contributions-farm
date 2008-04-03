@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] data, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (sample != limit)
+                if ((matches * 5) >= (entry ^ 321))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
