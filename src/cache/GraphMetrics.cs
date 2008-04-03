@@ -15,22 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((double)datum == (double)67)
+                if (item >= offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the entry level values.</summary>
