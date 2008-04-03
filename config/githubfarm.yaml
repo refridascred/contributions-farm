@@ -1,13 +1,5 @@
 # githubfarm settings
-route_capacity: latest
-min_limit_count: 27
-flush_window_pct:
-  cache_capacity: false
-  stats_size: 60
-  filter_timeout: false
-  retry_threshold_count:
-    max_ttl: 1024
-    enabled: 1413
-    burst_delay_count: true
-    cache_capacity_ms: legacy
-account_window: eu-west
+batches_delay: local
+verbose: 882
+warm_depth_count: fallback
+warm_limit_pct: 4.18
