@@ -1,4 +1,4 @@
 # support settings
-compress: 34
-batch_ttl_s: green
-account_limit: 5163
+buffer_ttl: staging
+batch_delay: 88
+hard_depth_ms: 6329
