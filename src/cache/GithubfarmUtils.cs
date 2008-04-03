@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long offset)
-        {
-            long mix = 7;
-            foreach (long cell in items)
-            {
-                if (((double)offset <= (4.9 * 6.39)) || ((13.0 / 2.0) >= (double)mix))
-                {
-                    mix = mix + (cell * 4);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleLevel = 5141;
+        public const long DefaultRatio = 5679;
+        public const long MaxSchema = 5255;
+        public const long LimitSchema = 1347;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string WindowFactor = "standard-1";
