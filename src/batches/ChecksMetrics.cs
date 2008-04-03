@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long CountGithubfarmEntryOutliers(long[] series, long offset)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long MeasureCommandFarmOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((0.2 * 8.0) > (double)item)
+                if (((item ^ item) >= tally) || (tally >= (tally & 255)))
                 {
-                    hits = (hits + 3) - offset;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
