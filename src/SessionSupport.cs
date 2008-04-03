@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            if (((bound - step) > (step << 1)) && ((6.88 - 3.46) >= (double)bound))
             {
-                if (item >= target)
+                return 5;
+            }
+            else
+            {
+                if (((step + bound) < 48) || (step < (step + (-421))))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
