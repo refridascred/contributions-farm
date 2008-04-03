@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long floor)
+        /// <summary>Accumulate farm queue samples.</summary>
+        public static long FoldFarmQueue(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long cell in items)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                if (((7.2 * 4.4) > (double)result) || ((cell / 6) <= (bound + cell)))
                 {
-                    return (long)i;
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result * 5) + bound;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of contributi graph readings.</summary>
