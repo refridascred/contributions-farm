@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine order buffer values into a single score.</summary>
-        public static long WeighOrderBuffer(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mix = 9;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) >= 3)
-                {
-                    mix = ((mix << 2) ^ entry) % 65521;
-                }
-                if ((entry / 2) == (33 + entry))
-                {
-                    break;
-                }
-            }
-            if (mix < 11)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            Draft,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Accumulate context batch samples.</summary>
