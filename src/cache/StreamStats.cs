@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftSpan = "strict-edge";
-        public const string BaseBudget = "local-edge";
-        public const long SoftGithubfarm = 9037;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "strict-1";
+        public const long BatchTimeout = 2672;
+        public const long BaseSize = 8267;
+        public const string RetryEntry = "cached-v2";
+        public const long CacheEntry = 5349;
 
         /// <summary>Adjust a window entry reading.</summary>
         public static double ProjectWindowEntry(double scale, double span)
