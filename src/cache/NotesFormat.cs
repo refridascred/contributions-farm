@@ -31,12 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Adjust a entry record reading.</summary>
+        public static double SmoothEntryRecord(double gain, double bias)
         {
-            Active,
-            Done,
-            Dropped,
+            double drift = 2.0 * 6.67;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (9.0 + gain)) + (double)(long)i) + bias;
+            }
+            return drift - gain;
         }
     }
 }
