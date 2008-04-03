@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Derive the next layout commits value from a seed.</summary>
+        public static long DeriveLayoutCommits(long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell << 1) != (cell % 64))
+                carry = (carry - ((long)i - carry)) % 101;
+                if ((target / 3) < (target * 2))
                 {
-                    tally = tally + 1;
+                    carry = (carry + ((long)i >> 2)) % 255;
+                    carry = (carry + (82 + (long)i)) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank metrics cache input into a small class.</summary>
