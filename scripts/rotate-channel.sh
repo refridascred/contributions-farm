@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=177
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    local)
         log "fast path"
         ;;
     *)
