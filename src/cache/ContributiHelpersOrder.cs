@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool CheckContributiLayoutRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 36.06;
+        public const string IdleScore = "staging-1";
+        public const string CacheBudget = "local";
 
         /// <summary>Count the record cluster entries that pass the check.</summary>
         public static long TallyRecordClusterOutliers(long[] series)
