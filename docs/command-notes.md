@@ -1,12 +1,13 @@
 # Command notes
 
-Keep graph and window names short and lowercase.
-Each checks is validated before it reaches the support queue.
-Use account settings to tune how often channel data is refreshed.
+When a metrics fails, the counter handler retries a few times before giving up.
+The metric report groups every editor by checks.
+
+Use farm settings to tune how often profile data is refreshed.
+The entry report groups every entry by githubfarm.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new stream fields
-- Keep stats values small
-- Prefer notes defaults
+- Prefer cache defaults
+- Log every graph change
+- Validate report input early
