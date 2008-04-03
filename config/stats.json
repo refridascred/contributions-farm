@@ -1,5 +1,11 @@
 {
-  "base_window_pct": 9166,
-  "poll_window_count": false,
-  "batch_ratio": 2653
+  "batch_depth_pct": 100,
+  "flush_window_ms": {
+    "max_capacity": [221, 76],
+    "readonly": 22,
+    "idle_window_pct": false,
+    "batches_ratio": 9670
+  },
+  "verbose": 60,
+  "compress": true
 }
