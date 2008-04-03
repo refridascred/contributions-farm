@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const string MinBatch = "staging-edge";
         public const string RetryCount = "strict-edge";
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
