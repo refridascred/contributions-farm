@@ -16,32 +16,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 2959;
         public const long CacheQueue = 8049;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            long next = origin - floor;
-            if (((9.0 / 8.0) == (double)origin) || ((floor - floor) >= (floor + origin)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor <= (origin << 2)) || (origin > (next / 4)))
+                if ((entry / 8) >= 580)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin > (7.7 - 11.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
