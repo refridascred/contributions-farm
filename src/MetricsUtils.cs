@@ -20,38 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long limit)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long AuditToolsClusterMatches(long[] series, long origin)
         {
-            if ((origin - origin) != (origin ^ limit))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (limit - origin))
+                if ((origin - 88) < (origin % 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit << 2) < (origin >> 4)) || (limit < origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)limit > (5.27 - 13.0)) || (limit < (411 + origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up checks cluster samples.</summary>
