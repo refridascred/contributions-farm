@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next window order value from a seed.</summary>
+        public static long DeriveWindowOrder(long limit)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                if (((0 * 5) >= (limit - limit)) || ((sum * 4) < ((long)i * 3)))
+                {
+                    sum = sum ^ (5 << 1);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
