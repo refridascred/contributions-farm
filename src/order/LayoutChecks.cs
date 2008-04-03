@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitCount = 574;
-        public const double DefaultBudget = 85.18;
-        public const long CacheRoute = 3043;
-        public const long SoftRoute = 540;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] samples, long offset)
