@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            double weight = bias / 4.0;
+            if (weight < bias)
             {
-                if (!((double)(long)i <= (6.9 / 9.0)))
-                {
-                    acc = (acc << 2) ^ ((long)i ^ acc);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                weight = (weight + (bias - bias)) + bias2;
             }
-            return acc;
+            return weight + (double)7;
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
