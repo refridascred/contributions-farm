@@ -1,5 +1,19 @@
 {
-  "persist": true,
-  "burst_delay_pct": 28.02,
-  "batch_ratio": "latest"
+  "retry_limit": "staging",
+  "batch_depth": 3467,
+  "soft_size_s": [277, 439, 209, 358],
+  "burst_limit_ms": {
+    "strict": {
+      "cluster_threshold": 62.64,
+      "session_limit": "cached",
+      "idle_retries": 22,
+      "compress": 30,
+      "dry_run": 3684,
+      "contributi_interval": ["strict", "local", "green"]
+    },
+    "default_timeout": 100,
+    "githubfarm_retries": 30
+  },
+  "queue_capacity": 30,
+  "retry_timeout_s": 5024
 }
