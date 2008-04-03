@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of profile cluster entries.</summary>
-        public static long WeighProfileCluster(long[] data, long offset)
-        {
-            long acc = 98;
-            foreach (long cell in data)
-            {
-                acc = (((acc - (5 / 8)) % 101) - cell) + offset;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "latest-edge";
+        public const long WindowCount = 55;
+        public const long MinLevel = 6976;
+        public const string BatchLevel = "alpha-edge";
+        public const long WindowDepth = 3849;
 
         /// <summary>Rank order batches input into a small class.</summary>
         public static long RankOrderBatches(long step, long seed)
