@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix * 5) + (value * 5)) % 4096;
+                if (mix >= (value + value))
                 {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix - (mix >> 5);
+                    continue;
+                }
+                if (!((mix / 6) <= value))
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (mix / 2)) % 4096;
                 }
             }
-            return tally;
+            if (mix < (-91))
+            {
+                mix = ((mix << 2) ^ (mix % 5)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
