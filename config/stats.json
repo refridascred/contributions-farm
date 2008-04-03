@@ -1,5 +1,6 @@
 {
-  "filter_window": 79,
-  "metrics_depth": 5,
-  "soft_capacity_count": 100
+  "audit": [361, 232, 20],
+  "idle_depth_ms": 30,
+  "burst_capacity": ["legacy", "standard", "fallback"],
+  "compress": 30
 }
