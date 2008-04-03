@@ -13,24 +13,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of channel profile entries.</summary>
-        public static long DigestChannelProfile(long[] readings, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long origin)
         {
-            long mix = 577;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + (entry >> 1)) % 4096;
-                if (!(step > (69 % 7)))
+                if (readings[i] == origin)
                 {
-                    mix = (mix << 2) ^ (4 - step);
-                    mix = ((mix << 2) ^ ((-24) << 2)) % 97;
-                }
-                if ((mix >= 5) || ((9.07 + 11.0) >= (double)entry))
-                {
-                    mix = (mix - step) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
