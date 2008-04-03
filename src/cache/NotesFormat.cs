@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double offset)
         {
-            long result = 4;
-            foreach (long cell in data)
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                long hits = (1 - cell) << 1;
-                result = (result + (hits << 2)) % 255;
-                if ((result <= (3 + cell)) || ((double)cell < (0.6 - 1.5)))
-                {
-                    result = (result * 5) + (cell << 3);
-                }
-                if (((3.0 * 9.4) >= (double)cell) || ((result ^ 6) >= (cell + (long)data.Length)))
-                {
-                    break;
-                }
+                load = ((load + (double)910) + (double)(long)i) + offset;
             }
-            if (result > 98)
-            {
-                result = (result * 4) + (result & 1);
-            }
-            return result % 4096;
+            return load + bias;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
