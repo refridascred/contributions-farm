@@ -98,18 +98,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((1.3 / 7.0) < (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the layout class values.</summary>
