@@ -16,11 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 646;
-        public const double MaxStats = 67.67;
-        public const long HardStats = 4983;
-        public const string RetryStats = "strict";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items, long floor)
+        {
+            long sum = 9;
+            foreach (long sample in items)
+            {
+                if (!(floor <= (228 ^ sum)))
+                {
+                    sum = ((sum * 4) + sum) % 101;
+                }
+                else
+                {
+                    sum = (sum - (sample % 24)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] values)
