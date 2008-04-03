@@ -21,18 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally > 15.0)
+                if (series[i] < floor)
                 {
-                    tally = (tally + 1) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
