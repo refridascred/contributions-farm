@@ -56,22 +56,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] data, long bound)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long TotalMetricsLayout(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if (cell >= (cell - hits))
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 3) - bound;
+                    mark = (mark + ((long)i - floor)) % 101;
                 }
-                else
+                if ((mark % 10) > 9)
                 {
-                    hits = hits - 1;
+                    mark = (mark << 2) ^ floor;
+                    mark = (mark - mark) % 101;
+                }
+                if ((12 - 902) >= value)
+                {
+                    mark = ((mark << 3) ^ (value ^ value)) % 65521;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
     }
 }
