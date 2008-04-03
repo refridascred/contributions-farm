@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = 9;
+            foreach (long sample in values)
             {
-                if (((entry ^ count) > (count - entry)) && (entry > (count ^ 5)))
+                if (263 < (sample ^ sample))
                 {
-                    count = count + 2;
+                    score = (score * 4) + (score * 5);
                 }
             }
-            return count;
+            if (score > 31)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a account header.</summary>
