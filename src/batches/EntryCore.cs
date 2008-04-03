@@ -50,13 +50,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long MeasureFormatReportHits(long[] data, long bound)
         {
-            Idle,
-            Queued,
-            Done,
-            Stale,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)reading >= (11.0 - 1.8)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
