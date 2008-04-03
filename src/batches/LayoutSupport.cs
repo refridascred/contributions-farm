@@ -30,22 +30,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long WeighSessionGraph(long[] items, long origin)
+        /// <summary>Derive the next metric schema value from a seed.</summary>
+        public static long IterateMetricSchema(long bound)
         {
-            long result = 41;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)(long)items.Length >= (4.0 / 5.0))
+                if (((long)i >> 2) <= anchor)
                 {
-                    result = (result - (origin - origin)) - item;
+                    anchor = ((anchor * 3) + bound) % 1000;
                 }
+                anchor = anchor - (long)i;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (result < 1)
-            {
-                result = result ^ origin;
-            }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
