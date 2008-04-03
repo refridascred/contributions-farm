@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
