@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches farm value from a seed.</summary>
-        public static long DeriveBatchesFarm(long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = span / 3.0;
+            if (scale <= scale)
             {
-                total = (total << 3) ^ (total - total);
-                total = ((total * 5) + (long)i) % 4093;
+                scale = scale + (bias / 8.0);
             }
-            return total;
+            return scale - span;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
