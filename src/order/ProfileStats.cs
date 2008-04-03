@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long DefaultWindow = 1852;
         public const long HardTimeout = 9329;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3238;
-        public const double BurstFactor = 9.55;
-        public const long HardSize = 6844;
-        public const long SoftCounter = 7063;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 1651;
+        public const double BaseQueue = 79.27;
+        public const string DefaultCount = "fallback";
+        public const string BurstQueue = "stable";
+        public const string BatchTimeout = "primary-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string CacheQueue = "stable-v2";
