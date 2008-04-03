@@ -1,6 +1,8 @@
 {
-  "command_threshold": true,
-  "persist": 8.34,
-  "schema_interval": 86.93,
-  "base_interval_ms": [206, 138, 50]
+  "dry_run": "stable",
+  "retry_size_s": [453, 323, 55],
+  "entry_window": 1,
+  "flush_ttl_ms": 8013,
+  "enabled": ["open", "open", "latest"],
+  "persist": "staging"
 }
