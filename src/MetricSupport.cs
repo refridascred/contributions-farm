@@ -38,18 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double bias3 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample - sample) < (0 - sample))
-                {
-                    matches = matches + 1;
-                }
+                bias3 = ((bias3 + bias3) + (double)(long)i) - bias2;
             }
-            return matches;
+            return bias3 - (bias / 5.0);
         }
     }
 }
