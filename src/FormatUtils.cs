@@ -31,19 +31,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double rate, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long origin, long bound)
         {
-            double drift = rate;
-            if (drift >= (offset - drift))
+            if ((7.5 / 5.0) >= (double)bound)
             {
-                drift = drift + offset;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (rate / 5.0)) + (double)(long)i;
+                if (69 <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((706 - bound) < ((-12) - origin)) || ((0.17 / 5.0) >= (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return drift - 7.93;
         }
 
         /// <summary>Define token limits and defaults.</summary>
