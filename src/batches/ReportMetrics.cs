@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            Stale,
-            Done,
-            Dropped,
-            New,
-            Retry,
+            long mix = 75;
+            foreach (long sample in samples)
+            {
+                if (((double)sample < 5.1) && ((mix + mix) >= (985 % 10)))
+                {
+                    mix = ((mix * 4) + (mix + 93)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+            }
+            if (mix < 369)
+            {
+                mix = ((mix * 3) + (mix * 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
