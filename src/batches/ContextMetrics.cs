@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -78;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed >> 4) <= seed)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 3) + (3 >> 4)) ^ entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 8) % 1000;
                 }
             }
-            return hits;
+            if (anchor < 631)
+            {
+                anchor = ((anchor * 4) + 9) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
