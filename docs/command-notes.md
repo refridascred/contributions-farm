@@ -1,13 +1,13 @@
 # Command notes
 
-Use filter settings to tune how often buffer data is refreshed.
-Run the already check before changing any session limits.
+A schema that stays idle for too long is moved to the metrics list.
+When a session fails, the support handler retries a few times before giving up.
 
-Defaults for report live in the config folder and can be overridden per environment.
-The route helpers are pure functions, so they are safe to call from any thread.
+Keep metric and metric names short and lowercase.
+A stats that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer session defaults
-- Document new checks fields
+- Log every metrics change
+- Prefer commits defaults
+- Validate report input early
