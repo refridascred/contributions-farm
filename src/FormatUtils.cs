@@ -39,18 +39,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally - value) != (33 - floor))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a stream record.</summary>
