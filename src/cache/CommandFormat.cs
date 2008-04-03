@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (182 > (target * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target / 7) != (target + offset)) || (((-97) - target) <= (target ^ 39)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((204 - target) < (target + 71))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (5.0 <= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate support readings against a bound.</summary>
