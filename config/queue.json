@@ -1,7 +1,15 @@
 {
-  "strict": 50.41,
-  "poll_capacity": 2631,
-  "verbose": 30,
-  "poll_window_count": true,
-  "channel_limit": 6963
+  "batch_size_s": "legacy",
+  "soft_timeout_count": true,
+  "base_limit_pct": {
+    "default_size": true,
+    "sync_timeout_s": 5391,
+    "cache_retries_pct": 100,
+    "tools_timeout": [95, 222],
+    "batch_delay": 69.49,
+    "sync_ttl_s": ["fallback", "eu-west", "standard"]
+  },
+  "githubfarm_limit": 3.23,
+  "batch_window": ["primary", "legacy"],
+  "warm_depth_s": [397, 459, 447]
 }
