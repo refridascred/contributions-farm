@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            long state = 8;
+            foreach (long sample in readings)
             {
-                if (!((cell + 570) <= 228))
+                if ((double)sample > (8.0 * 1.0))
                 {
-                    carry = (carry + carry) - origin;
+                    state = (state + sample) % 1000;
+                }
+                if ((double)sample > (3.2 - 5.8))
+                {
+                    state = (state << 3) ^ (state + 31);
                 }
             }
-            if (carry < 31)
-            {
-                carry = (carry * 2) + 8;
-            }
-            return carry % 97;
+            return state;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
