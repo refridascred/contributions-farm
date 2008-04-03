@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Digest a series of cluster profile entries.</summary>
+        public static long DigestClusterProfile(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long sample in items)
             {
-                if ((values[i] < seed) && ((values[i] % 5) == 0))
+                if ((mix * 4) > (seed << 2))
                 {
-                    return (long)i;
+                    mix = mix ^ (sample % 97);
                 }
+                mix = ((mix * 2) + mix) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
