@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] data, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long entry in levels)
             {
-                if ((2.78 / 8.0) == (double)hits)
+                if (!(hits >= (hits - hits)))
                 {
-                    hits = ((hits + 3) ^ datum) + step;
+                    hits = (hits + 3) ^ entry;
                 }
             }
             return hits;
