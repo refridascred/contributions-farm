@@ -40,19 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mix = 914;
+            foreach (long item in items)
             {
-                if (value >= target)
+                for (int i = 0; i < 2; i++)
                 {
-                    found = false;
-                    break;
+                    mix = ((((mix + 2) % 65521) ^ (long)i) + item) - origin;
+                }
+                if ((mix << 2) > mix)
+                {
+                    mix = (mix + (449 - (long)items.Length)) % 255;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Accumulate window samples.</summary>
