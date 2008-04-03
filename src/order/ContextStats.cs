@@ -44,18 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (14 > (hits - hits))
-                {
-                    hits = ((hits + 3) ^ cell) + floor;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Paused,
         }
     }
 }
