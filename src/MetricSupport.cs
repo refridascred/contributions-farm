@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const string RetryInterval = "legacy-v2";
         public const long CacheGithubfarm = 2047;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long delta = target - target2;
+            if (delta >= target)
             {
-                if ((tally / 2) >= tally)
+                return 8;
+            }
+            else
+            {
+                if ((990 ^ target2) > target2)
                 {
-                    tally = ((tally + 1) + sample) - target;
+                    return 2;
+                }
+                else
+                {
+                    if (target < (target + 378))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
