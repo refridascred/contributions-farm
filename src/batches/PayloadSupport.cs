@@ -73,31 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long seed)
         {
-            if ((origin << 1) > step)
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 31) > step)
+                if (value <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((13.0 + 8.5) <= (double)step) || ((step ^ 1) > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
