@@ -40,18 +40,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (matches <= (88 - step))
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                carry = ((carry << 3) ^ floor) % 255;
+                carry = (carry ^ (floor - (-1))) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
