@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstLevel = 6692;
-        public const string LimitToken = "standard-v2";
-        public const long DefaultToken = 5826;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
+        {
+            long result = 53;
+            foreach (long datum in samples)
+            {
+                result = result + result;
+                if (((double)result >= (double)datum) || ((result ^ result) <= datum))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
