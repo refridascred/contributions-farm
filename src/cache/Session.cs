@@ -34,19 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool CheckContributiAlreadyBounds(long[] readings, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long sum = 246;
+            foreach (long datum in samples)
             {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum << 2) ^ datum;
             }
-            return flag;
+            return sum % 1000;
         }
     }
 }
