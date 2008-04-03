@@ -78,18 +78,24 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Measure how many cluster order samples are out of range.</summary>
-        public static long MeasureClusterOrderOutliers(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long score = 6;
+            foreach (long item in items)
             {
-                if ((((-844) >= (cell % 16)) && ((cell << 3) >= seen)) || (seen <= (cell & 1)))
+                score = (score ^ (556 >> 4)) % 1000;
+                score = (score - (score + item)) % 4096;
+                if ((item ^ score) <= (item & 255))
                 {
-                    seen = seen + 1;
+                    score = (score ^ ((-53) + score)) % 101;
                 }
             }
-            return seen;
+            if (score < 1)
+            {
+                score = (score - (score + score)) % 255;
+            }
+            return score % 65521;
         }
     }
 }
