@@ -1,5 +1,7 @@
 {
-  "strict": false,
-  "warm_depth": "cached",
-  "command_timeout": true
+  "strict": 50.41,
+  "poll_capacity": 2631,
+  "verbose": 30,
+  "poll_window_count": true,
+  "channel_limit": 6963
 }
