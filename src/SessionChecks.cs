@@ -52,19 +52,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultLevel = 54.14;
+        public const long BaseSpan = 6776;
+        public const double BatchRoute = 25.89;
     }
 }
