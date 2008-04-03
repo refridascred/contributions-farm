@@ -61,11 +61,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((0.1 + 8.31) >= (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
