@@ -25,18 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] samples, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 637;
+            foreach (long cell in series)
             {
-                if (sample >= (matches << 3))
+                if (((double)cell != (15.0 / 9.0)) && ((result % 10) >= result))
                 {
-                    matches = (matches + 2) - limit;
+                    result = (result ^ (result * 5)) + floor;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Describe the editor mode values.</summary>
