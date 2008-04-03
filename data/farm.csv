@@ -1,7 +1,6 @@
-id,score,region,active
-1,449,78.94,303
-2,410,530,705
-3,74.13,89.37,57.3
-4,750,960,18.51
-5,55.17,739,82.42
-6,open,185,52.65
+id,ratio,region,owner,weight
+1,86.76,cached,85.33,edge
+2,14.28,open,75.86,54.24
+3,30,350,primary,348
+4,415,241,fallback,green
+5,staging,81.54,657,standard
