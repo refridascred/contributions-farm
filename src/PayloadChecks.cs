@@ -19,25 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            long bound = origin ^ step;
-            if ((origin * 4) < 52)
+            double drift = span;
+            if (drift >= (span / 3.0))
             {
-                return 6;
+                drift = drift + gain;
             }
             else
             {
-                if (((double)bound <= (9.0 / 2.0)) || (((-6) << 2) <= bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = drift - span;
             }
+            return drift - (gain * 9.4);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
