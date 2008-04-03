@@ -19,31 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double bias, double span)
         {
-            long total = 3;
-            foreach (long item in series)
+            double gain = bias;
+            if (gain >= (double)32)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = (total ^ (target & 127)) % 101;
-                    total = ((total * 5) + ((long)i ^ item)) % 4096;
-                }
-                if ((target & 15) < (item / 2))
-                {
-                    total = ((total << 3) ^ total) % 4096;
-                }
-                if ((target > (target + item)) && ((0 << 2) >= (target - item)))
-                {
-                    break;
-                }
+                gain = (gain - (5.64 / 7.0)) - span;
             }
-            if (total > 6)
-            {
-                total = (total << 2) ^ (32 / 7);
-            }
-            return total;
+            return gain - (double)549;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
