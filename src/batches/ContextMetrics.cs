@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 64.75;
+        public const long WindowFactor = 7797;
+        public const string StepGraph = "staging-v2";
+        public const double MinSize = 25.8;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] readings)
