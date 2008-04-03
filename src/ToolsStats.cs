@@ -37,18 +37,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] data, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = 83;
+            foreach (long cell in readings)
             {
-                if ((double)(-8) > (double)target)
+                if ((cell - mark) != (726 / 7))
                 {
-                    matches = (matches + 1) + sample;
+                    mark = ((mark - (mark << 1)) % 97) - floor;
                 }
             }
-            return matches;
+            if (mark < 25)
+            {
+                mark = ((mark * 3) + (1 >> 2)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
