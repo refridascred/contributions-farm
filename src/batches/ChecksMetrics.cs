@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long step)
+        /// <summary>Match up filter record samples.</summary>
+        public static long MatchFilterRecordCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
