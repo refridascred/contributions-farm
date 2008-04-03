@@ -56,13 +56,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a token snapshot.</summary>
