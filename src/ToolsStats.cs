@@ -77,18 +77,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((seed * 2) <= (490 >> 4))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 8893;
+        public const long LimitScore = 1797;
+        public const long CacheMetrics = 5789;
+        public const long SoftScore = 4165;
     }
 }
