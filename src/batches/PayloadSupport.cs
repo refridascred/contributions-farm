@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] samples, long offset)
+        /// <summary>Adjust a context editor reading.</summary>
+        public static double SmoothContextEditor(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double mean = (8.6 * 9.0) * 5.23;
+            if (mean < mean)
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (double)1;
             }
-            return valid;
+            else
+            {
+                mean = mean - (floor * 4.35);
+            }
+            return mean + (ratio / 7.0);
         }
     }
 }
