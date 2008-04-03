@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading * 2) > (reading + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
