@@ -51,38 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            if (!((limit * 4) < (limit / 4)))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit >> 5) == (5 % 3)) && ((floor + floor) > floor))
+                if ((double)hits >= 3.0)
                 {
-                    return 4;
+                    hits = (hits + 1) ^ item;
                 }
                 else
                 {
-                    if ((floor + 6) != (floor - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit <= floor) && ((limit - floor) < (floor - limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
