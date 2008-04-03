@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long target)
+        /// <summary>Measure how many format payload samples are out of range.</summary>
+        public static long CountFormatPayloadHits(long[] samples, long step)
         {
-            long mark = 5;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = ((((mark << 3) ^ (-9)) % 4096) - datum) - target;
+                if ((double)entry <= (12.0 / 4.0))
+                {
+                    tally = (tally + 1) - step;
+                }
             }
-            if (mark > 3)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many editor payload samples are out of range.</summary>
