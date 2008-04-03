@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
