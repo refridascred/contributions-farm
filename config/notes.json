@@ -1,9 +1,13 @@
 {
-  "retry_threshold": "standard",
-  "compress": {
-    "farm_ratio": 23.14,
-    "audit": 500,
-    "sync_delay_ms": 2809
-  },
-  "readonly": 44.54
+  "poll_ttl_s": 68.51,
+  "idle_window_pct": "blue",
+  "contributi_limit": true,
+  "editor_ratio": 6275,
+  "flush_timeout_count": 100,
+  "hard_interval": {
+    "farm_retries": "open",
+    "persist": 75.81,
+    "retry_threshold": "cached",
+    "verbose": 30
+  }
 }
