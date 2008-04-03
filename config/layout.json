@@ -1,6 +1,16 @@
 {
-  "batches_window": 3896,
-  "warm_interval_s": [488, 95, 57, 447],
-  "profile_ratio": "open",
-  "max_delay_ms": 4948
+  "githubfarm_interval": {
+    "burst_retries_s": false,
+    "window_size": "open",
+    "min_size_s": {
+      "sync_capacity": "edge",
+      "entry_interval": [34, 389, 115],
+      "cache_delay": true
+    }
+  },
+  "default_ratio": 500,
+  "verbose": ["blue", "standard", "cached", "primary"],
+  "order_threshold": 22.61,
+  "min_window": 100,
+  "poll_depth": false
 }
