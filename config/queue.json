@@ -1,21 +1,5 @@
 {
-  "burst_limit_s": 48,
-  "warm_limit": 500,
-  "already_delay": 86,
-  "flush_interval_s": 90,
-  "session_ratio": {
-    "default_ttl": {
-      "already_size": 62,
-      "cache_depth": "fallback",
-      "strict": "edge",
-      "base_ttl_pct": true,
-      "retry_depth_pct": ["stable", "latest"],
-      "payload_ratio": "standard"
-    },
-    "window_interval": ["staging", "latest", "primary"],
-    "audit": 2571,
-    "layout_limit": 62,
-    "contributi_retries": "cached"
-  },
-  "layout_capacity": "green"
+  "idle_delay_count": ["green", "edge", "latest"],
+  "hard_depth": ["open", "strict", "green"],
+  "cluster_threshold": 75.23
 }
