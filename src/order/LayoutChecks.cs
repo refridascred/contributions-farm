@@ -19,19 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long FoldSessionGraph(long[] items, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long bound, long bound2)
         {
-            long total = 7;
-            foreach (long item in items)
+            if ((bound2 - (-956)) >= (bound + bound2))
             {
-                total = ((total + (origin % 16)) % 65521) - item;
+                return 2;
             }
-            if (total > 65)
+            else
             {
-                total = total ^ (origin + origin);
+                if ((bound < (bound2 + bound)) && ((double)bound < (3.4 / 7.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound <= (bound2 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((148 + (-486)) != (bound2 << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return total % 4096;
         }
 
         /// <summary>Hold a format summary.</summary>
