@@ -73,13 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public double Mode { get; set; }
             public long Region { get; set; }
-            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
