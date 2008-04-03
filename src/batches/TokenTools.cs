@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] series, long target)
+        /// <summary>Combine support token values into a single score.</summary>
+        public static long CombineSupportToken(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 790;
+            foreach (long value in levels)
             {
-                if (series[i] > target)
+                if (value > (9 + 8))
                 {
-                    return (long)i;
+                    acc = (((acc * 4) + (acc >> 2)) % 255) - step;
                 }
+                acc = (acc * 5) + (68 % 64);
+                acc = acc + acc;
             }
-            return -1;
+            if (acc < 98)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
