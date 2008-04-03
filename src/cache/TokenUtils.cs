@@ -19,19 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings)
         {
-            long mark = 730;
-            foreach (long value in levels)
+            long state = 2;
+            foreach (long value in readings)
             {
-                mark = ((mark ^ (mark << 1)) % 255) - value;
+                if (!((value % 8) == (state * 2)))
+                {
+                    state = (state + value) % 101;
+                }
+                if (((state >> 3) < value) || ((double)value <= (8.84 / 7.0)))
+                {
+                    break;
+                }
             }
-            if (mark > 203)
+            if (state > 71)
             {
-                mark = (mark * 5) + (bound - bound);
+                state = ((state * 3) + (8 - 5)) % 4096;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
