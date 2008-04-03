@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster counter values into a single score.</summary>
-        public static long DigestClusterCounter(long[] samples, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
         {
-            long acc = 69;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((floor ^ floor) != (963 + acc))
+                if (((674 + count) < (sample - (long)series.Length)) && ((count - sample) <= (count * 5)))
                 {
-                    acc = (((acc * 2) + floor) % 97) ^ cell;
+                    count = count + 1;
                 }
             }
-            if (acc > 84)
-            {
-                acc = (acc - floor) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
