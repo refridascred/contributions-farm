@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long LimitWidth = 7198;
         public const double MaxRoute = 1.09;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] readings, long step)
+        /// <summary>Iterate the cache schema series from a seed.</summary>
+        public static long SeriesCacheSchema(long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (step >= count)
-                {
-                    count = (count + 1) + entry;
-                }
+                sum = ((sum * 4) + (sum / 7)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a profile stats.</summary>
