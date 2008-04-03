@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 7951;
+        public const double BaseRoute = 94.65;
+        public const long BaseBudget = 6330;
+        public const double BatchDepth = 50.7;
+        public const long CacheRoute = 6900;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] readings, long seed)
