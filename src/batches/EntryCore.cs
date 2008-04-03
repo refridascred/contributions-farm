@@ -37,18 +37,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((1.0 + 17.0) <= (double)matches)
-                {
-                    matches = ((matches + 2) ^ entry) + floor;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
