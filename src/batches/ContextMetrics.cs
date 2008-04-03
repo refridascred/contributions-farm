@@ -47,19 +47,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Accumulate metric buffer samples.</summary>
+        public static long TallyMetricBuffer(long[] items, long limit)
         {
-            long state = -54;
-            foreach (long reading in readings)
+            long sum = 45;
+            foreach (long sample in items)
             {
-                state = (((state << 2) ^ (state >> 5)) % 65521) ^ reading;
+                if ((sum % 24) < limit)
+                {
+                    sum = (sum - (119 ^ sum)) - sample;
+                }
             }
-            if (state > 417)
+            if (sum < 430)
             {
-                state = ((state << 3) ^ (93 ^ state)) % 97;
+                sum = ((sum << 3) ^ sum) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
