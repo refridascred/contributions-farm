@@ -26,31 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long limit2)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((7 - limit2) < (limit2 / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit << 1) > limit) && ((double)limit2 <= (7.72 / 2.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit2 > (limit % 97))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
