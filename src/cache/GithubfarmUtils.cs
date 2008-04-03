@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 3685;
-        public const long MinCounter = 5610;
-        public const long DefaultCounter = 3090;
-        public const long RetryCounter = 3603;
-        public const double StepInterval = 37.87;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)matches > (1.0 + 9.93))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long DeriveOrder(long seed)
