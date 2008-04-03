@@ -1,6 +1,7 @@
 {
-  "poll_timeout_ms": "strict",
-  "batches_threshold": "latest",
-  "command_window": true,
-  "report_depth": 60
+  "warm_depth": 500,
+  "support_interval": [405, 135],
+  "min_depth_pct": 44.93,
+  "githubfarm_ttl": "blue",
+  "account_capacity": "stable"
 }
