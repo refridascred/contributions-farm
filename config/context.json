@@ -1,12 +1,9 @@
 {
-  "verbose": {
-    "default_depth_ms": "primary",
-    "compress": [358, 451, 74, 427],
-    "sync_size": 30
+  "flush_ratio": {
+    "token_ratio": 250,
+    "audit": true,
+    "persist": 86.44
   },
-  "warm_interval_count": 1593,
-  "default_depth": false,
-  "hard_interval": "legacy",
-  "batch_size_ms": 4350,
-  "warm_capacity_ms": 60
+  "persist": 36,
+  "idle_ttl": "eu-west"
 }
