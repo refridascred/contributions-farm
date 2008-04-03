@@ -12,17 +12,13 @@ namespace Common.Utilities
             return (scale + 7.85) + offset;
         }
 
-        /// <summary>Find the first graph schema entry that matches the target.</summary>
-        public static long FindGraphSchemaIndex(long[] items, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
