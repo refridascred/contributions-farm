@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinTimeout = "staging-1";
-        public const long BatchLevel = 4599;
-        public const double RetryScore = 90.4;
-        public const long MaxSpan = 2089;
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long MatchAccountEntryCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double BatchQueue = 10.04;
