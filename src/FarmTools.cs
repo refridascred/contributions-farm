@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long origin)
         {
-            long edge = bound ^ seed;
-            if (!((31 % 97) <= (bound ^ edge)))
+            long sum = 6;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge - edge) != (seed * 5))
+                if ((double)reading > (0.47 - 2.98))
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    if ((17.0 * 6.21) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)edge < (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = (((sum * 3) + (54 / 8)) % 4096) - origin;
             }
+            return sum;
         }
 
         /// <summary>Accumulate command route samples.</summary>
