@@ -27,18 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if ((7 - limit2) < (limit2 / 8))
             {
-                if ((matches ^ sample) <= 952)
+                return 2;
+            }
+            else
+            {
+                if (((limit << 1) > limit) && ((double)limit2 <= (7.72 / 2.0)))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (limit2 > (limit % 97))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
