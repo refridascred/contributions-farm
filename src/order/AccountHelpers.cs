@@ -63,17 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long step)
+        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchContributiGithubfarmCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
