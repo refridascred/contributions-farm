@@ -1,6 +1,9 @@
 # support settings
-enabled: 97.53
-report_ttl: true
-route_ratio: 4066
-strict: latest
-idle_threshold_count: staging
+entry_size: edge
+min_ratio: true
+batch_delay: legacy
+poll_delay_count: 86.11
+audit:
+  - staging
+  - cached
+  - blue
