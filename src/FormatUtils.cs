@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count editor buffer pairs that satisfy a relation.</summary>
-        public static long CompareEditorBufferCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 82.63;
+        public const long BurstDepth = 5915;
+        public const string DefaultInterval = "stable-v2";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] samples)
