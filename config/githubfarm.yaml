@@ -1,16 +1,6 @@
 # githubfarm settings
-channel_limit:
-  cache_size: 1742
-  cache_timeout: true
-  hard_ratio_s: green
-  verbose: false
-  schema_limit: 347
-warm_capacity_count: 1013
-token_window: false
-hard_threshold:
-  min_ratio_ms: 2409
-  warm_timeout:
-    - open
-    - primary
-  min_interval_s: open
-  poll_window_s: true
+flush_interval: 90.61
+min_capacity_pct: true
+persist: false
+retry_ratio_ms: 69.65
+retry_window_s: 50.39
