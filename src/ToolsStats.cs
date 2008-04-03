@@ -89,24 +89,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long score = 6;
-            foreach (long item in items)
-            {
-                score = (score ^ (556 >> 4)) % 1000;
-                score = (score - (score + item)) % 4096;
-                if ((item ^ score) <= (item & 255))
-                {
-                    score = (score ^ ((-53) + score)) % 101;
-                }
-            }
-            if (score < 1)
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 3990;
+        public const long CacheSize = 2340;
+        public const long RetryMetric = 3072;
+        public const long DefaultMetric = 2072;
     }
 }
