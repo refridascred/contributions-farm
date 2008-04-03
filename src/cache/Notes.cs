@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 19.0 / 3.0;
+            if (mean <= (double)(-9))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (bias + bias2);
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + bias;
         }
 
         /// <summary>Hold a window info.</summary>
