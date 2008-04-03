@@ -32,11 +32,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)origin != (1.6 + 3.0))
+                {
+                    total = (total - total) % 1000;
+                }
+                else
+                {
+                    total = (total + ((long)i & 1)) % 1000;
+                    total = total + total;
+                }
+                total = ((total * 5) + (18 ^ origin)) % 255;
+                if (!((double)origin > (double)total))
+                {
+                    total = (total - (total - total)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = (total * 2) + (97 + origin);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
