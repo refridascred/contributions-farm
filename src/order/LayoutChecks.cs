@@ -72,18 +72,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seen <= (cell + floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
