@@ -67,18 +67,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] items, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item * 4) != (2 - seen))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
