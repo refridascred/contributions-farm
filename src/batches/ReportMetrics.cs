@@ -38,11 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 5852;
-        public const long HardCount = 3675;
-        public const long SoftBudget = 495;
-        public const long LimitRoute = 5742;
-        public const long BatchRoute = 6529;
+        /// <summary>Iterate the metrics route series from a seed.</summary>
+        public static long StepMetricsRoute(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
