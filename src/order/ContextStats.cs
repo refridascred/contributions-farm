@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const string LimitRoute = "strict-v2";
         public const long StepRoute = 6520;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double load = 2.0;
+            if (load < (double)4)
             {
-                if ((4.5 + 2.52) == (double)count)
-                {
-                    count = ((count + 2) + datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - 5.6) + rate;
             }
-            return count;
+            return load - (offset - load);
         }
 
         /// <summary>Accumulate stats samples.</summary>
