@@ -40,12 +40,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxLevel = 7387;
-        public const double DefaultInterval = 35.4;
-        public const long StepFilter = 476;
-        public const long IdleFilter = 9410;
-        public const string MinWidth = "fallback-v2";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long target)
+        {
+            long score = 3;
+            foreach (long entry in values)
+            {
+                score = ((score << 2) ^ (score + score)) ^ entry;
+                score = score + (target ^ target);
+            }
+            if (score < (-506))
+            {
+                score = (score << 3) ^ (3 / 5);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long target)
