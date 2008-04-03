@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values, long seed)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long anchor = 2;
-            foreach (long value in values)
-            {
-                anchor = ((anchor * 2) + (anchor ^ seed)) - value;
-            }
-            return anchor % 1000;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
