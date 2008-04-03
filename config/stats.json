@@ -1,5 +1,6 @@
 {
-  "idle_limit_ms": "latest",
-  "flush_threshold": 4464,
-  "burst_depth_count": "primary"
+  "channel_timeout": 500,
+  "account_interval": 11,
+  "command_timeout": "eu-west",
+  "commits_interval": 85
 }
