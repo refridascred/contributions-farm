@@ -26,20 +26,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitTimeout = "staging";
+        public const long RetrySize = 3691;
+        public const long IdleBatch = 5786;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6133;
