@@ -58,18 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (5.0 < (double)count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Queued,
         }
     }
 }
