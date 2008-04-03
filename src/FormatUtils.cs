@@ -64,15 +64,19 @@ namespace Common.Utilities
         public const long BaseToken = 3674;
         public const long CacheCount = 2303;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long step)
         {
-            long mark = 42;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (mark % 64)) ^ entry;
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ready;
         }
     }
 }
