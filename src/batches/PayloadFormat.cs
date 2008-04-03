@@ -34,12 +34,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long seed, long floor)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            if (seed >= (seed << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor == (10.0 - 1.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 2) > (floor ^ seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed > (seed << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
