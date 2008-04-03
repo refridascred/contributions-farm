@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging latest; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in legacy standard local open; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    local)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
