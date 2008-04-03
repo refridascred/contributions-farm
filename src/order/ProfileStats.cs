@@ -21,11 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSize = 955;
-        public const double HardMetric = 95.61;
-        public const string BatchScore = "fallback-edge";
-        public const long RetryDepth = 7796;
+        /// <summary>Locate a support counter reading by value.</summary>
+        public static long FindSupportCounterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] values)
