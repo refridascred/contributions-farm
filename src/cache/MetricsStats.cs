@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long MaxReport = 6710;
         public const long IdleScore = 2765;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] values, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((double)hits >= (17.0 / 2.0))
+                if (reading <= target)
                 {
-                    hits = ((hits + 1) ^ value) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
