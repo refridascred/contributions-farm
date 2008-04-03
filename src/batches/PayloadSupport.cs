@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Locate a token buffer reading by value.</summary>
+        public static long LookupTokenBufferIndex(long[] data, long floor)
         {
-            long anchor = 827;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (anchor >> 2)) % 101;
-                if (!((entry % 60) >= (443 << 2)))
+                if ((data[i] > floor) && ((data[i] % 5) != 0))
                 {
-                    anchor = (anchor + entry) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a context editor reading.</summary>
