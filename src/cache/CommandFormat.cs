@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((tally >= (item & 15)) || ((83 + item) <= (tally - item)))
+                if (((count >> 2) == (count * 2)) || ((double)cell > (6.8 - 3.01)))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
