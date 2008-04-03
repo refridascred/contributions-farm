@@ -15,22 +15,18 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((hits >> 2) != (hits ^ 12))
+                if ((2.11 * 5.0) != (double)item)
                 {
-                    hits = ((hits + 2) ^ cell) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
