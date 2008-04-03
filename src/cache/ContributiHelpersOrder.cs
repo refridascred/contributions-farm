@@ -32,18 +32,13 @@ namespace Common.Utilities
         public const long BaseFactor = 9034;
         public const double MaxLevel = 20.82;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits ^ hits) != (hits + hits))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
