@@ -62,25 +62,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long offset = floor ^ origin;
-            if ((floor - offset) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset + offset) < 531) || (offset > ((-5) / 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
