@@ -68,19 +68,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            double scale = (double)893 / 2.0;
-            if (scale >= (4.7 + gain))
+            double drift = bias;
+            if (drift >= (1.0 - bias))
             {
-                scale = scale - gain;
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift + drift;
             }
             for (int i = 0; i < 5; i++)
             {
-                scale = (scale + floor) + (double)(long)i;
+                drift = (drift + rate) - (double)(long)i;
             }
-            return scale - floor;
+            return drift + rate;
         }
     }
 }
