@@ -1,17 +1,10 @@
 {
-  "idle_timeout_count": [221, 71, 365],
-  "context_retries": "edge",
-  "min_size_pct": true,
-  "burst_limit_pct": 5206,
-  "cluster_ratio": {
-    "base_size_ms": false,
-    "min_ratio": [254, 302],
-    "layout_depth": {
-      "strict": 87.72,
-      "verbose": "cached",
-      "notes_threshold": 100,
-      "persist": "primary"
-    }
+  "sync_interval_count": "edge",
+  "soft_capacity_count": {
+    "dry_run": "fallback",
+    "poll_depth_ms": "edge",
+    "default_interval_s": "stable",
+    "soft_retries_s": 0.55
   },
-  "enabled": "staging"
+  "poll_window_ms": "open"
 }
