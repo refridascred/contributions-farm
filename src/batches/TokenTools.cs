@@ -58,20 +58,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the command buffer series from a seed.</summary>
-        public static long SeriesCommandBuffer(long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((carry % 64) > (carry + carry))
-                {
-                    carry = (carry * 3) + ((-49) >> 3);
-                    carry = (carry << 2) ^ carry;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Retry,
+            Pending,
+            Closed,
+            Synced,
+            New,
         }
     }
 }
