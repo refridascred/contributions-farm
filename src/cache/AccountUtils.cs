@@ -33,14 +33,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            Closed,
-            Active,
-            Dropped,
-            Stale,
-            Draft,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!(((cell & 1) == (5 + cell)) || ((tally % 3) <= (tally + cell))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
