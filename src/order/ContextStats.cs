@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 7790;
-        public const string LimitMetric = "standard-edge";
-        public const long HardMetric = 6645;
-        public const double SoftSize = 89.12;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Locked,
+            Queued,
+            Idle,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long step)
