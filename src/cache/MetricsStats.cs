@@ -47,19 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Match up command cluster samples.</summary>
+        public static long PairCommandClusterCount(long[] series)
         {
-            double drift = (double)548 - (bias * 8.0);
-            if (drift <= (double)971)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + 8.66;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (weight * 11.0);
+            return matches;
         }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
