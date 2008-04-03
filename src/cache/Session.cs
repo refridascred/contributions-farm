@@ -46,19 +46,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long target)
+        /// <summary>Locate a notes graph reading by value.</summary>
+        public static long LocateNotesGraphIndex(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= target)
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
