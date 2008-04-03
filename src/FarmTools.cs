@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] samples, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= limit)
+                if (((6.4 + 13.0) <= (double)count) || (((double)cell != (2.11 / 8.0)) && ((60 << 2) > count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
