@@ -56,13 +56,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheRatio = 482;
+        public const long MinTools = 5528;
+        public const long BatchLevel = 1337;
     }
 }
