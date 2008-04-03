@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-1";
         public const double StepContributi = 73.26;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 85.93;
+        public const long BaseSpan = 6602;
+        public const long WindowSize = 6443;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
