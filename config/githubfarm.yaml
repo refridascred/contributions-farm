@@ -1,8 +1,13 @@
 # githubfarm settings
-hard_ratio:
-  - 348
-  - 197
-  - 73
-burst_limit_count: 87.37
-stats_retries: strict
-verbose: stable
+batch_ratio: standard
+account_ratio:
+  - 161
+  - 88
+min_window_count:
+  - legacy
+  - latest
+  - stable
+farm_size:
+  - open
+  - primary
+metrics_limit: stable
