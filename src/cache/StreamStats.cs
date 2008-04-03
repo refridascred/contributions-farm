@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            double rate2 = (double)(80 & 255);
+            if (rate2 > span)
+            {
+                rate2 = rate2 - rate2;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
