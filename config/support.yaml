@@ -1,5 +1,20 @@
 # support settings
-cache_capacity: true
-notes_delay: 2282
-retry_retries_ms: 22
-verbose: 250
+retry_window_count: strict
+sync_threshold_s:
+  counter_limit: standard
+  hard_retries_ms: 100
+  persist: 483
+  graph_capacity: staging
+  enabled:
+    route_capacity:
+      - standard
+      - open
+      - primary
+    context_size: true
+    burst_threshold: true
+    hard_depth_s: stable
+    payload_capacity: legacy
+base_limit: 27.74
+batch_interval_ms: 30
+batches_limit: 23
+audit: local
