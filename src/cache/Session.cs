@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 3;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((((score * 5) + (score + 6)) % 1000) ^ value) - floor;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
