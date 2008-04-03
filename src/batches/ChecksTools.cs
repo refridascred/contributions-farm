@@ -48,19 +48,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheInterval = 4985;
+        public const long BaseRecord = 6073;
+        public const string RetrySpan = "staging";
     }
 }
