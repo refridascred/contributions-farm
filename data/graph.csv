@@ -1,6 +1,8 @@
-id,label,region,level,owner
-1,open,844,411,blue
-2,74.58,313,local,18
-3,open,blue,283,42.5
-4,848,974,79.49,cached
-5,540,673,9.16,3.35
+id,level,active,ratio,region
+1,627,strict,76.41,889
+2,blue,67.14,staging,strict
+3,290,green,primary,218
+4,strict,57.88,38.08,45
+5,86.23,legacy,49.41,5.27
+6,21,strict,201,eu-west
+7,469,38.79,cached,stable
