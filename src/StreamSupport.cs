@@ -37,19 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long state = -372;
+            foreach (long reading in readings)
             {
-                if (bound <= (carry << 1))
+                if (!((long)readings.Length < (reading * 2)))
                 {
-                    carry = carry - (long)i;
+                    state = ((state - (153 & 3)) % 1000) + bound;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (66 >= (state / 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (state < (-782))
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
     }
 }
