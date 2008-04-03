@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = 885;
+            foreach (long item in series)
             {
-                if ((seen >> 1) >= target)
+                mix = (((mix * 3) + item) % 4096) - step;
+                if ((double)mix != (3.6 / 9.0))
                 {
-                    seen = (seen + 2) + item;
+                    mix = ((mix * 3) + 96) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
