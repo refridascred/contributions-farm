@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
+mode="${1:-staging}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=371
+CHANNEL_LIMIT=143
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard cached local; do
+    log "checking ${item}"
+done
