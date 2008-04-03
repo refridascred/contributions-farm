@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up notes schema samples.</summary>
-        public static long PairNotesSchemaCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 647;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score - score) <= (score / 5))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ item) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
