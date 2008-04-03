@@ -27,29 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a format profile counter forward.</summary>
-        public static long RollFormatProfile(long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                long hits = (floor ^ sum) << 2;
-                if ((double)hits <= (3.31 - 19.0))
-                {
-                    sum = (sum << 3) ^ (hits + (long)i);
-                    hits = ((hits << 3) ^ (hits + floor)) % 255;
-                }
-                if ((floor << 2) < 41)
-                {
-                    hits = ((hits << 3) ^ 25) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (floor * 2)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Synced,
+            Ready,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate notes stream samples.</summary>
