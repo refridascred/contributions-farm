@@ -40,17 +40,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window stream sample.</summary>
-        public static long SeekWindowStreamIndex(long[] data, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = origin ^ target;
+            if ((origin * 3) >= lane)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((950 * 2) < (origin >> 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane < (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (12.0 > (double)lane)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
