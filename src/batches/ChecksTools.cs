@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool CheckBatchesFormatLimits(long[] levels, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double bias2 = (double)(444 - 1);
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = ((bias2 + (double)(long)i) - ratio) - bias;
             }
-            return ready;
+            return bias2 - (double)(-1);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
