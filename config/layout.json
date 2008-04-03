@@ -1,16 +1,5 @@
 {
-  "githubfarm_interval": {
-    "burst_retries_s": false,
-    "window_size": "open",
-    "min_size_s": {
-      "sync_capacity": "edge",
-      "entry_interval": [34, 389, 115],
-      "cache_delay": true
-    }
-  },
-  "default_ratio": 500,
-  "verbose": ["blue", "standard", "cached", "primary"],
-  "order_threshold": 22.61,
-  "min_window": 100,
-  "poll_depth": false
+  "verbose": [361, 104, 188],
+  "cache_limit": [219, 248],
+  "min_delay_count": 8935
 }
