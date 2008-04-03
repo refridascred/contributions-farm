@@ -97,15 +97,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double weight = 7.1;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (((weight - (4.51 / 8.0)) - (double)(long)i) - scale) + span;
-            }
-            return weight - 1.0;
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
