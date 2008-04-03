@@ -28,18 +28,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data, long step)
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long RankReportCommits(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (bound >= (origin - origin))
             {
-                if ((long)data.Length <= (step + 29))
+                return 8;
+            }
+            else
+            {
+                if (((-327) & 127) != (origin - bound))
                 {
-                    hits = (hits + 3) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound * 5) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
