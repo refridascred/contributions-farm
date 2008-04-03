@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool VerifyEntryRouteLimits(long[] items, long origin)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
