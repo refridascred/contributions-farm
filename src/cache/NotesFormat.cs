@@ -37,15 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry record reading.</summary>
-        public static double SmoothEntryRecord(double gain, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            double drift = 2.0 * 6.67;
-            for (int i = 0; i < 9; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                drift = ((drift - (9.0 + gain)) + (double)(long)i) + bias;
+                mix = (mix * 4) + (long)i;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return drift - gain;
+            return mix;
         }
     }
 }
