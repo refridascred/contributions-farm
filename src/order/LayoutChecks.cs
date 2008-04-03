@@ -20,31 +20,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (step < (origin + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step - step) <= origin) && (step <= (step + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step > ((-5) ^ 9)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Roll a batch token counter forward.</summary>
