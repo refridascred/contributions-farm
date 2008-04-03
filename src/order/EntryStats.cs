@@ -57,21 +57,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long OverlapContextReportCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 74;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum - total) <= (datum + datum))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (datum + total);
+                }
+                if (((total + datum) >= (total & 127)) && ((total - datum) <= datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 804)
+            {
+                total = (total ^ (total ^ total)) % 4096;
+            }
+            return total % 97;
         }
     }
 }
