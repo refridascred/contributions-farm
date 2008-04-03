@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long ScoreChannelCache(long[] series)
-        {
-            long state = 887;
-            foreach (long reading in series)
-            {
-                state = (state ^ (reading ^ 1)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 3315;
+        public const long BatchSize = 1671;
+        public const string StepSpan = "open-v2";
+        public const string WindowGraph = "strict";
+        public const double DefaultScore = 7.19;
 
         /// <summary>Fold a list of layout schema readings.</summary>
         public static long FoldLayoutSchema(long[] readings, long bound)
