@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool GuardContributiSessionRange(long[] readings, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < step)
+                if (data[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
