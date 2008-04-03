@@ -49,13 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a entry farm reading by value.</summary>
+        public static long SeekEntryFarmIndex(long[] data, long target)
         {
-            Paused,
-            Ready,
-            Closed,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
