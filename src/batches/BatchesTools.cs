@@ -25,17 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Done,
+            Retry,
         }
     }
 }
