@@ -1,7 +1,8 @@
-id,count
-1,911
-2,217
-3,839
-4,482
-5,stable
-6,33.28
+id,state,weight,region
+1,549,fallback,167
+2,stable,199,171
+3,409,strict,71.36
+4,466,latest,cached
+5,2.06,242,eu-west
+6,34.08,27.53,blue
+7,58.26,668,947
