@@ -34,11 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Offset { get; set; }
             public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
