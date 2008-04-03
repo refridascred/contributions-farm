@@ -1,15 +1,8 @@
 {
-  "warm_ratio_ms": 2.08,
-  "cache_limit_count": {
-    "default_capacity": "green",
-    "session_size": 74,
-    "base_size": {
-      "editor_limit": "blue",
-      "max_capacity_ms": ["local", "blue", "standard"],
-      "stats_size": 72.61,
-      "burst_interval_s": 7547
-    }
-  },
-  "entry_ttl": [476, 95, 463],
-  "contributi_limit": "staging"
+  "sync_window": 27.03,
+  "sync_size_count": 8829,
+  "enabled": 100,
+  "warm_interval": "strict",
+  "sync_size_ms": [478, 240, 301],
+  "hard_depth": true
 }
