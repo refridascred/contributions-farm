@@ -64,16 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a report session reading.</summary>
-        public static double AdjustReportSession(double weight, double offset)
-        {
-            double gain = (double)((-3) + 970);
-            if (gain >= (double)4)
-            {
-                gain = (gain + (gain + weight)) - offset;
-            }
-            return gain + (gain + gain);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitDepth = 38.38;
+        public const double DefaultTimeout = 39.73;
+        public const string IdleRatio = "local-edge";
+        public const string HardScore = "legacy-1";
+        public const long SoftTimeout = 2408;
 
         /// <summary>Look up the position of a route githubfarm sample.</summary>
         public static long SeekRouteGithubfarmIndex(long[] values, long limit)
