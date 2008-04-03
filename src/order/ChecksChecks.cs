@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            Idle,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + 2) <= seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter record.</summary>
