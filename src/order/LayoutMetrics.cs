@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            Retry,
-            Queued,
-            Draft,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen / 2) >= seen)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record tools readings against a rule.</summary>
