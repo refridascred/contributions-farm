@@ -36,20 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster schema readings.</summary>
-        public static long TotalClusterSchema(long[] values, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long step)
         {
-            long mix = 898;
-            foreach (long value in values)
+            if (seed >= (step & 127))
             {
-                if (!((double)limit > (double)value))
-                {
-                    mix = (mix - (mix - value)) % 255;
-                    mix = ((mix * 4) + (mix << 3)) % 1000;
-                }
-                mix = (mix << 3) ^ (8 >> 4);
+                return 7;
             }
-            return mix % 65521;
+            else
+            {
+                if ((double)seed != (4.0 + 6.94))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.5 >= (double)seed) && ((double)seed == (3.5 * 3.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 31) > (seed + (-282)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor kind values.</summary>
