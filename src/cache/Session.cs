@@ -33,19 +33,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] items, long bound)
+        /// <summary>Classify a counter cache pair into a bucket.</summary>
+        public static long GradeCounterCache(long bound, long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long bound2 = bound - step;
+            if ((4 >= (step * 2)) || (bound2 <= (step - bound2)))
             {
-                if (entry <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound2) != (293 - bound2))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.1 * 4.78) == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
