@@ -40,22 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi stats entries that pass the check.</summary>
-        public static long MeasureContributiStatsOutliers(long[] readings)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 4) >= (tally >> 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many editor payload samples are out of range.</summary>
