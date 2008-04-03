@@ -1,13 +1,8 @@
 # githubfarm settings
-max_limit:
-  - 203
-  - 373
-  - 11
-audit: 64.21
-tools_capacity: 9162
-warm_delay:
-  - 122
-  - 92
-  - 455
-  - 370
-default_timeout: stable
+hard_ratio:
+  - 348
+  - 197
+  - 73
+burst_limit_count: 87.37
+stats_retries: strict
+verbose: stable
