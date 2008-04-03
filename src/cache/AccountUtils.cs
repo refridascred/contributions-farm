@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long DefaultFarm = 365;
         public const string HardFarm = "alpha-edge";
 
-        /// <summary>Compare every pair of route entry readings.</summary>
-        public static long CompareRouteEntryCount(long[] series)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
