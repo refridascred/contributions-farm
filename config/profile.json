@@ -1,11 +1,11 @@
 {
-  "stream_delay": 17,
-  "audit": [190, 192],
-  "support_window": {
-    "flush_delay_count": 51,
-    "verbose": "blue",
-    "flush_delay_ms": true
+  "persist": true,
+  "base_timeout_count": false,
+  "profile_delay": {
+    "sync_ratio": "strict",
+    "dry_run": true,
+    "batch_ratio": ["eu-west", "eu-west"],
+    "schema_ratio": 1998
   },
-  "idle_retries": "fallback",
-  "queue_retries": true
+  "enabled": 73.05
 }
