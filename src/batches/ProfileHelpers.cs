@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const double DefaultSpan = 56.59;
         public const string StepFilter = "strict-edge";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long AuditBatchesBatchMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!(((5 - matches) < (6 / 9)) && ((matches ^ item) > (matches - item))))
+                if ((offset - offset) >= (reading + tally))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
