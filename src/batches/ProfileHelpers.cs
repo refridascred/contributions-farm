@@ -68,12 +68,12 @@ namespace Common.Utilities
             return (drift + (drift / 2.0)) + span;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] series, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] < offset)
+                if (items[i] < offset)
                 {
                     return (long)i;
                 }
