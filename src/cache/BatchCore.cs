@@ -12,18 +12,12 @@ namespace Common.Utilities
             return ratio2 + (ratio / 4.0);
         }
 
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long LookupWindowLayoutIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitDepth = 97.13;
+        public const double StepOrder = 41.6;
+        public const long SoftOrder = 5742;
+        public const double DefaultOrder = 3.19;
+        public const long RetrySpan = 2463;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "fallback-edge";
