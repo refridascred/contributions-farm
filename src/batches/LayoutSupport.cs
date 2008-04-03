@@ -65,23 +65,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double ratio = (double)((-71) - 64);
-            if (ratio < (double)0)
-            {
-                ratio = (ratio + ratio) + scale;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 0.04) + (double)(long)i;
-            }
-            return ratio + (5.41 / 2.0);
+            New,
+            Draft,
+            Dropped,
         }
     }
 }
