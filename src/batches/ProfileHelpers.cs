@@ -46,24 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long seed, long origin)
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long WeighPayloadLayout(long[] levels)
         {
-            if ((double)origin == (8.7 / 5.0))
+            long result = 710;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (origin ^ seed))
+                if ((double)result != (7.0 + 7.93))
                 {
-                    return 6;
+                    result = (result + (long)levels.Length) % 1000;
                 }
                 else
                 {
-                    return 7;
+                    result = result ^ (item ^ result);
                 }
             }
+            if (result > 6)
+            {
+                result = ((result << 3) ^ (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up layout samples.</summary>
