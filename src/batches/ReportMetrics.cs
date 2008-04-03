@@ -36,14 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] items, long step)
         {
-            Dropped,
-            Pending,
-            Done,
-            Queued,
-            Ready,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
