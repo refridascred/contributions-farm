@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((644 + reading) < 264)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepFactor = 9068;
+        public const string IdleGraph = "local-1";
+        public const long WindowGraph = 681;
+        public const string DefaultDepth = "latest";
+        public const long CacheFactor = 9801;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BatchWidth = 68.91;
