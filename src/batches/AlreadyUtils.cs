@@ -79,11 +79,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 87.32;
-        public const string LimitSupport = "strict";
-        public const string HardFactor = "open-1";
-        public const long RetrySupport = 5534;
-        public const double DefaultLevel = 13.34;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Pending,
+            Paused,
+            Stale,
+        }
     }
 }
