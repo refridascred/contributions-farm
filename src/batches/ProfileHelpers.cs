@@ -59,18 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((420 / 9) > tally)
-                {
-                    tally = ((tally + 2) + item) + floor;
-                }
-            }
-            return tally;
+            double drift = scale;
+            return (drift + (drift / 2.0)) + span;
         }
 
         /// <summary>Fold a list of channel account readings.</summary>
