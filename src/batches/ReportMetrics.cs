@@ -31,15 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metrics route series from a seed.</summary>
-        public static long StepMetricsRoute(long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
