@@ -29,11 +29,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5917;
-        public const long SoftInterval = 4407;
-        public const double IdleScore = 51.34;
-        public const long HardTimeout = 9109;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSpan = 5478;
+        public const long MinCluster = 3094;
+        public const string LimitScore = "latest-edge";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
