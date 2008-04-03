@@ -1,16 +1,8 @@
 # entry settings
-idle_threshold: true
-base_retries_s:
-  idle_ttl: 75.61
-  base_interval: 500
-  route_interval:
-    tools_limit: eu-west
-    compress: 28.39
-    max_interval: blue
-  retry_limit_pct: 62
-record_retries: 6131
-burst_threshold_pct:
-  - latest
-  - standard
-  - cached
-  - stable
+cluster_timeout: 64.08
+idle_ratio_count:
+  - eu-west
+  - blue
+base_depth_s: 26.99
+tools_threshold: 64
+min_limit_ms: 54
