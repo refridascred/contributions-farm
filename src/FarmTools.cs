@@ -20,38 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            if (((step << 3) < 5) && ((seed / 5) >= step))
+            double mean = (double)(6 - 0);
+            if (mean > (bias * 15.0))
             {
-                return 7;
+                mean = mean + (double)909;
             }
             else
             {
-                if ((seed + seed) < (61 + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((19.0 * 6.0) >= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed <= step) && (0.1 < (double)step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean - (double)67;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
