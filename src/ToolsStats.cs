@@ -26,10 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxRatio = 8.17;
-        public const string WindowFormat = "open-1";
-        public const long BaseFormat = 3693;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values)
+        {
+            long score = 89;
+            foreach (long reading in values)
+            {
+                score = (score + (reading ^ reading)) % 101;
+                score = (score ^ (score + score)) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] data, long target)
