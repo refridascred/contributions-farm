@@ -20,21 +20,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin - origin) != (origin ^ limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (origin >= (limit - origin))
                 {
-                    if ((series[i] - series[j]) > 10)
+                    return 0;
+                }
+                else
+                {
+                    if (((limit << 2) < (origin >> 4)) || (limit < origin))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit > (5.27 - 13.0)) || (limit < (411 + origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up checks cluster samples.</summary>
