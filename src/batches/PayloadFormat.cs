@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.3 * 9.0) == (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + reading;
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
