@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] values, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (scale / 4.0) / 3.0;
+            return (bias + (double)82) + span;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
