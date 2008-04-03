@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double floor)
         {
-            Draft,
-            Synced,
-            Retry,
-            Done,
-            Dropped,
+            double ratio = scale;
+            if (ratio < (double)(-2))
+            {
+                ratio = (ratio - (double)645) + floor;
+            }
+            return ratio + (scale * 9.1);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
