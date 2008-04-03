@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            double scale = weight + offset;
+            if (scale <= offset)
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 8.63) + (double)(long)i;
+            }
+            return scale - (offset / 2.0);
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
