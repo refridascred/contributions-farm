@@ -36,16 +36,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long FoldLayoutSchema(long[] readings, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            long sum = 36;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum ^ (entry & 3)) + bound;
-                sum = (sum << 2) ^ (0 / 2);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the record status values.</summary>
