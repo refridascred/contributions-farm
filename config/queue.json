@@ -1,6 +1,5 @@
 {
-  "context_size": ["latest", "latest", "cached"],
-  "sync_size_s": 64.8,
-  "dry_run": "standard",
-  "report_interval": 7.46
+  "strict": "cached",
+  "base_retries_ms": [406, 330, 127, 271],
+  "batches_ttl": [326, 425, 139, 390]
 }
