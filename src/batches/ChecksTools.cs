@@ -27,21 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Combine profile counter values into a single score.</summary>
+        public static long TallyProfileCounter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 7;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score - datum) % 65521;
+                if ((score ^ datum) <= (datum % 60))
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
