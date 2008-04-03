@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long limit)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a schema info.</summary>
