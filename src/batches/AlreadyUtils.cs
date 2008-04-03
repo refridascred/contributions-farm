@@ -28,10 +28,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 7569;
-        public const double DefaultWidth = 56.21;
-        public const long RetryInterval = 3122;
+        /// <summary>Classify a cache token pair into a bucket.</summary>
+        public static long BucketCacheToken(long limit, long offset)
+        {
+            if ((double)limit > 8.3)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((180 ^ limit) == (offset >> 1)) || ((limit * 3) != (limit + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (1.1 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= 20.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] series)
