@@ -83,11 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] series)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 713;
+            foreach (long entry in series)
+            {
+                mark = (mark + (mark << 1)) + entry;
+            }
+            if (mark > 792)
+            {
+                mark = ((mark * 5) + (mark & 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a queue contributi value against two limits.</summary>
