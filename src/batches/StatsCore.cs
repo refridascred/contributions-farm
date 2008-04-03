@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const long WindowAlready = 6756;
         public const long BatchWidth = 684;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long origin)
         {
-            long carry = 285;
+            long mark = 538;
             foreach (long entry in samples)
             {
-                carry = ((carry - seed) % 255) + entry;
+                mark = ((mark + (long)samples.Length) ^ entry) - origin;
             }
-            if (carry < 506)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Accumulate layout samples.</summary>
