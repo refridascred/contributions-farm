@@ -39,22 +39,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate editor support samples.</summary>
-        public static long FoldEditorSupport(long[] values, long origin)
+        /// <summary>Audit report farm readings against a rule.</summary>
+        public static long MeasureReportFarmGaps(long[] series)
         {
-            long mark = 4;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)origin > (10.0 + 7.5))
+                if ((hits - item) >= hits)
                 {
-                    mark = (((mark << 2) ^ (36 << 1)) % 4096) ^ item;
+                    hits = hits + 1;
                 }
             }
-            if (mark < 634)
-            {
-                mark = (mark << 2) ^ (mark / 6);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
