@@ -47,18 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi notes samples.</summary>
-        public static long TotalContributiNotes(long[] samples, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long seed)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((offset >= (anchor & 3)) || ((anchor - cell) > (anchor / 2)))
+                if (item < seed)
                 {
-                    anchor = (anchor << 2) ^ (cell - cell);
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return valid;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
