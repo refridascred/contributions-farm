@@ -34,13 +34,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count token batch pairs that satisfy a relation.</summary>
+        public static long PairTokenBatchCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
