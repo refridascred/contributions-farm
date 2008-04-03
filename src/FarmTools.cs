@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Accumulate command route samples.</summary>
+        public static long TallyCommandRoute(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long item in data)
             {
-                if (((6.4 + 13.0) <= (double)count) || (((double)cell != (2.11 / 8.0)) && ((60 << 2) > count)))
+                if (((5 + (-6)) < (item - item)) || (2.0 >= (double)item))
                 {
-                    count = count + 3;
+                    acc = (acc ^ acc) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = acc ^ item;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
