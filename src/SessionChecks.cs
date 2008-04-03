@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long step)
         {
-            long score = 2;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((score + score) < (reading + reading))
+                if (sample != step)
                 {
-                    score = (score - (22 ^ reading)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
