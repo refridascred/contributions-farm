@@ -1,4 +1,32 @@
 # support settings
-commits_limit: 5.1
-min_interval_count: 250
-flush_capacity: cached
+idle_retries: latest
+soft_depth_s:
+  idle_retries:
+    - eu-west
+    - legacy
+    - legacy
+    - latest
+  cache_threshold:
+    - 269
+    - 129
+    - 474
+  min_depth: blue
+  burst_threshold_ms: primary
+  verbose: 7
+entry_ttl: 88.51
+cache_delay: 93.07
+already_timeout:
+  notes_interval:
+    max_interval: 100
+    verbose: local
+    strict: legacy
+    audit: 1443
+    idle_depth_ms: green
+    poll_delay_pct: green
+  min_limit_ms: 1.35
+  readonly:
+    - 317
+    - 291
+    - 149
+    - 112
+  poll_ttl: 72.65
