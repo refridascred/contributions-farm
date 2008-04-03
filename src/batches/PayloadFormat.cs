@@ -52,12 +52,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long limit)
         {
-            Idle,
-            Retry,
-            Locked,
+            long mix = 580;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length - datum) > datum)
+                {
+                    mix = (mix - (mix + mix)) - limit;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (datum / 7)) % 65521;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + (494 * 5)) % 65521;
+            }
+            return mix;
         }
     }
 }
