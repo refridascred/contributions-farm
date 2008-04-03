@@ -46,17 +46,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a notes graph reading by value.</summary>
-        public static long LocateNotesGraphIndex(long[] readings, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            return -1;
+            return rate - (ratio - rate);
         }
     }
 }
