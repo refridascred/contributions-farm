@@ -64,12 +64,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitDepth = 38.38;
-        public const double DefaultTimeout = 39.73;
-        public const string IdleRatio = "local-edge";
-        public const string HardScore = "legacy-1";
-        public const long SoftTimeout = 2408;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
+        {
+            long total = 997;
+            foreach (long datum in readings)
+            {
+                if (datum <= (datum - datum))
+                {
+                    total = ((total * 5) + total) % 101;
+                    total = total + total;
+                }
+                total = (total ^ (71 - datum)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long seed)
