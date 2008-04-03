@@ -1,8 +1,9 @@
-id,active,weight,token,owner
-1,standard,green,568,644
-2,staging,legacy,53.17,44.42
-3,22.75,471,208,38.43
-4,51.19,353,96.29,67.55
-5,57.52,45.87,215,cached
-6,908,legacy,edge,latest
-7,329,55.87,latest,7.04
+id,score,ratio,active
+1,489,1.41,369
+2,standard,643,394
+3,119,204,primary
+4,118,402,956
+5,978,blue,37
+6,993,302,27.15
+7,639,latest,48.16
+8,green,stable,797
