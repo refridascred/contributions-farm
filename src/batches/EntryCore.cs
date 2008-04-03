@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((6.75 - 3.0) <= (double)datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
