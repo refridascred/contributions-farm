@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long floor)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long carry = 415;
+            foreach (long cell in series)
+            {
+                carry = (carry - cell) % 4096;
+                if (!((cell * 2) <= (cell >> 2)))
+                {
+                    carry = ((carry << 2) ^ (carry - floor)) % 97;
+                }
+            }
+            if (carry < (-787))
+            {
+                carry = (carry * 2) + (carry + 4);
+            }
+            return carry;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
