@@ -37,21 +37,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
