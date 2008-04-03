@@ -1,16 +1,12 @@
 # Command notes
 
-Each contributi is validated before it reaches the commits queue.
-Run the metrics check before changing any queue limits.
-A graph that stays idle for too long is moved to the channel list.
-
-The stats report groups every stream by entry.
-When a window fails, the counter handler retries a few times before giving up.
-Keep format and record names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep payload and order names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
-- Document new metrics fields
-- Prefer channel defaults
-- Keep order values small
+- Review order limits each release
+- Document new context fields
+- Log every account change
+- Validate batches input early
