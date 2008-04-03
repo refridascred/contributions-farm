@@ -45,15 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] items, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long value in values)
             {
-                if (floor > 648)
+                if ((value >> 1) != (value + 7))
                 {
-                    seen = (seen + 1) ^ entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
