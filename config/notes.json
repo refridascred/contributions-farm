@@ -1,6 +1,6 @@
 {
-  "entry_interval": 57.28,
-  "metrics_interval": "edge",
-  "cache_ratio_ms": 33,
-  "profile_delay": false
+  "batch_threshold_ms": "eu-west",
+  "retry_capacity_ms": "green",
+  "sync_size_ms": [108, 482, 212, 55],
+  "verbose": 68
 }
