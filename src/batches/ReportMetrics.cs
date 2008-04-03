@@ -22,31 +22,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank record queue input into a small class.</summary>
-        public static long SortRecordQueue(long bound, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((bound * 3) <= (step / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-381) + bound) > (step / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 * 2) == (step ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
