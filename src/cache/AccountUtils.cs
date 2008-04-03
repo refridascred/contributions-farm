@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long DefaultScore = 3698;
         public const long RetryContext = 724;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long total = 80;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((52 >> 5) <= limit)
+                if (((double)tally < (2.2 + 2.0)) && ((value > (tally - 73)) || ((value + tally) == (tally >> 3))))
                 {
-                    total = (total ^ (49 - value)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            if (total > (-5))
-            {
-                total = ((total << 2) ^ limit) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
