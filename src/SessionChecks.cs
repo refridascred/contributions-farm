@@ -48,22 +48,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits < (10 / 4))
-                {
-                    hits = ((hits + 3) ^ item) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
