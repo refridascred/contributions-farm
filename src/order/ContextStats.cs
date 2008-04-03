@@ -24,17 +24,13 @@ namespace Common.Utilities
             return ratio2 + (span - span);
         }
 
-        /// <summary>Locate a editor context reading by value.</summary>
-        public static long SeekEditorContextIndex(long[] samples, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
