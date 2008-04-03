@@ -28,19 +28,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
