@@ -42,15 +42,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels, long offset)
         {
-            double rate = (9.3 + 3.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                rate = ((rate - rate) + (double)(long)i) - offset;
+                if (!(value <= (offset << 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + weight;
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
