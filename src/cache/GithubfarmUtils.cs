@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long BurstBatches = 6266;
         public const long SoftBatches = 4507;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchRatio = 3683;
-        public const long RetryWidth = 1565;
-        public const long MinNotes = 8093;
-        public const long RetryTimeout = 777;
-        public const long StepSpan = 3369;
+        /// <summary>Measure how many entry tools samples are out of range.</summary>
+        public static long TallyEntryToolsGaps(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((offset ^ hits) >= 19)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
