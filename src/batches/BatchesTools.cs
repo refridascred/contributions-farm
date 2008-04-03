@@ -36,12 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Idle,
-            Done,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitWidth = 1933;
+        public const long BatchSession = 2957;
+        public const long CacheSession = 8963;
+        public const long RetrySession = 7443;
+        public const long MaxDepth = 6868;
     }
 }
