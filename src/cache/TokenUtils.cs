@@ -14,19 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((935 / 6) > (hits - entry))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftLevel = "local-1";
+        public const string IdleFormat = "cached-v2";
+        public const double WindowScore = 86.73;
+        public const long BaseDepth = 3995;
 
         /// <summary>Rank report commits input into a small class.</summary>
         public static long RankReportCommits(long bound, long origin)
