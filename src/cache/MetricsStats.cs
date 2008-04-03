@@ -60,19 +60,19 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((acc * 5) < 4)
+                if (entry >= bound)
                 {
-                    acc = (acc << 2) ^ ((long)i - (long)i);
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return valid;
         }
     }
 }
