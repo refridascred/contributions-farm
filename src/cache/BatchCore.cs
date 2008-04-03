@@ -52,10 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8271;
-        public const double DefaultCounter = 28.48;
-        public const long HardCounter = 6700;
-        public const long BatchCounter = 7292;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches - 770) <= (matches >> 3))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
