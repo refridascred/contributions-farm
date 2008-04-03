@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long RetryDepth = 7796;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long step)
         {
-            New,
-            Locked,
-            Draft,
-            Queued,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
