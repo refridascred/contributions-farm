@@ -37,16 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long sum = 3;
+            foreach (long entry in values)
             {
-                mix = (mix * 4) + (long)i;
-                mix = ((mix * 3) + (long)i) % 97;
+                sum = sum ^ entry;
             }
-            return mix;
+            return sum;
         }
     }
 }
