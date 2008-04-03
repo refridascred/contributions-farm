@@ -1,9 +1,7 @@
 # support settings
-entry_size: edge
-min_ratio: true
-batch_delay: legacy
-poll_delay_count: 86.11
-audit:
-  - staging
-  - cached
-  - blue
+dry_run: 60.29
+compress: 6618
+batch_size: cached
+idle_ratio_pct: standard
+entry_capacity: blue
+session_timeout: 37
