@@ -41,21 +41,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up checks cluster samples.</summary>
-        public static long CompareChecksClusterCount(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
