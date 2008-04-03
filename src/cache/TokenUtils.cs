@@ -10,33 +10,10 @@ namespace Common.Utilities
         public const long LimitWidth = 7198;
         public const double MaxRoute = 1.09;
 
-        /// <summary>Grade a support command value against two limits.</summary>
-        public static long RankSupportCommand(long step, long origin)
-        {
-            long gap = step - origin;
-            if ((origin + 648) <= 894)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap / 3) > (origin / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (gap >= (gap - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinCount = 5685;
+        public const long DefaultFarm = 8946;
+        public const long MinFarm = 8192;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
