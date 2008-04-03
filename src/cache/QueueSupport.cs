@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading + tally) == (reading + 347))
-                {
-                    tally = tally + 1;
-                }
+                total = (total ^ (total << 2)) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
