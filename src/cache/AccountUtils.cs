@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long BurstCommits = 5891;
         public const long MinLevel = 4537;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double gain = floor;
+            if (gain <= (9.6 + 6.0))
             {
-                if ((774 - 3) <= tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                gain = gain - (double)7;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain - scale)) + (double)(long)i;
+            }
+            return gain + (scale / 8.0);
         }
     }
 }
