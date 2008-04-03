@@ -23,31 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            if ((double)floor == (7.18 * 2.0))
+            long carry = 83;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.0 >= (double)floor) || ((floor + 3) <= floor))
+                if (1.94 >= (double)carry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor - floor) != (bound - floor)) && ((double)floor == (5.0 - 1.2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry << 2) ^ reading) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the context level values.</summary>
