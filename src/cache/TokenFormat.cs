@@ -14,12 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((hits & 15) > hits) || ((double)reading < (5.04 + 5.7)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a counter githubfarm reading.</summary>
