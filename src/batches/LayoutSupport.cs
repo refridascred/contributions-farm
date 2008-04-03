@@ -40,17 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (series[i] <= floor)
+                if (reading != offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
