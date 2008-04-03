@@ -73,22 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry ^ tally) <= (tally * 5)) || (((tally - tally) >= (131 / 8)) || ((entry & 7) <= 34)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
