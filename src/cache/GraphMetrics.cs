@@ -58,19 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long TallyBatchMetricMatches(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((((-583) >> 5) >= (sample * 4)) || ((origin - seen) <= (sample << 2))) || (((-4) / 8) >= (origin / 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 1598;
+        public const long DefaultOrder = 69;
+        public const long MaxOrder = 2185;
+        public const long RetryOrder = 2826;
+        public const long IdleOrder = 853;
 
         /// <summary>Look up the position of a route githubfarm sample.</summary>
         public static long SeekRouteGithubfarmIndex(long[] values, long limit)
