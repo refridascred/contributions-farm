@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const long BatchCluster = 1260;
         public const long IdleCluster = 3321;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long limit)
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long DigestSchemaFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 856;
+            foreach (long datum in levels)
             {
-                if ((cell >= (cell + 632)) && (cell <= (limit - hits)))
-                {
-                    hits = hits + 3;
-                }
+                total = (total << 2) ^ datum;
+                total = ((total << 2) ^ (datum & 7)) % 4096;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
