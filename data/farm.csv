@@ -1,9 +1,6 @@
-id,state
-1,293
-2,325
-3,153
-4,87.07
-5,52
-6,828
-7,green
-8,58.99
+id,token,count,label,level
+1,68.42,latest,37,254
+2,107,green,59,662
+3,blue,895,89.79,58.77
+4,98.12,21.32,staging,912
+5,905,41.43,standard,staging
