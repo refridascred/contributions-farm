@@ -33,32 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter cache pair into a bucket.</summary>
-        public static long GradeCounterCache(long bound, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long bound2 = bound - step;
-            if ((4 >= (step * 2)) || (bound2 <= (step - bound2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound2) != (293 - bound2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.1 * 4.78) == (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
