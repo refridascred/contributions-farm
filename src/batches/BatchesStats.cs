@@ -40,12 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Pending,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 2125;
+        public const double RetryScore = 55.88;
+        public const long BatchSpan = 5043;
+        public const long DefaultTools = 5680;
+        public const long WindowFactor = 9378;
     }
 }
