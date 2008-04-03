@@ -47,24 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((total <= (total ^ offset)) || ((total / 5) <= total))
-                {
-                    long offset2 = (long)i;
-                    total = ((total * 3) + (offset2 << 3)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (total << 1)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            Done,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit buffer stats readings against a rule.</summary>
