@@ -1,5 +1,30 @@
 {
-  "hard_timeout_ms": 7187,
-  "hard_capacity_s": "cached",
-  "channel_size": 16
+  "persist": 75,
+  "enabled": {
+    "base_delay_s": "legacy",
+    "verbose": false,
+    "buffer_retries": true,
+    "profile_timeout": 1732
+  },
+  "profile_window": {
+    "profile_limit": ["primary", "strict", "eu-west", "fallback"],
+    "order_capacity": 500,
+    "readonly": 76.34,
+    "dry_run": 95,
+    "persist": 15.84
+  },
+  "sync_delay_pct": {
+    "profile_ttl": ["latest", "latest"],
+    "persist": false,
+    "sync_depth": 1254
+  },
+  "idle_ttl": {
+    "window_limit": "local",
+    "base_capacity_count": ["edge", "cached"],
+    "enabled": [278, 235, 433],
+    "poll_timeout_pct": 8877,
+    "account_delay": "blue",
+    "githubfarm_interval": 87
+  },
+  "strict": 49
 }
