@@ -51,19 +51,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine format editor values into a single score.</summary>
-        public static long TallyFormatEditor(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = 9;
-            foreach (long value in series)
-            {
-                if ((7.1 + 20.0) == (double)value)
-                {
-                    result = (result - result) % 101;
-                }
-                result = (result - result) % 255;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
