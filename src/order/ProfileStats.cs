@@ -22,12 +22,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 41.61;
-        public const long MinLevel = 3915;
-        public const long HardFactor = 1595;
-        public const double HardScore = 66.36;
-        public const long IdleFarm = 8837;
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double offset)
+        {
+            double ratio = gain * 0.03;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + offset;
+            }
+            return ratio - (ratio * 0.3);
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
