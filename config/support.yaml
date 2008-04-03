@@ -1,13 +1,4 @@
 # support settings
-audit:
-  batch_limit_s: 33
-  flush_size_pct: true
-  cache_capacity: 53
-  soft_size_ms: 5987
-  githubfarm_ratio: 30
-batch_window: false
-max_retries_ms: strict
-buffer_capacity:
-  route_limit: 30
-  warm_retries: strict
-  contributi_ratio: 30
+compress: 34
+batch_ttl_s: green
+account_limit: 5163
