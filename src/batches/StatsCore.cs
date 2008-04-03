@@ -33,14 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Draft,
-            Active,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseTimeout = 8231;
+        public const long WindowPayload = 9032;
+        public const long WindowInterval = 6073;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] levels, long step)
