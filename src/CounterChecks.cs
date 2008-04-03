@@ -49,18 +49,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of session window readings.</summary>
-        public static long FoldSessionWindow(long[] samples, long limit)
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long CountEditorPayloadGaps(long[] values)
         {
-            long state = 4;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((9.35 * 5.0) < (double)state) && ((5 ^ limit) >= (limit << 1)))
+                if ((double)entry >= (1.0 * 19.0))
                 {
-                    state = (state ^ (sample - sample)) % 101;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
