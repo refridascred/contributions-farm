@@ -31,12 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((((0 << 3) > (hits + hits)) || ((hits + datum) < datum)) && ((double)hits > (6.0 / 9.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
