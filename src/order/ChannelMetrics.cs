@@ -28,17 +28,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long limit)
+        /// <summary>Rank buffer metrics input into a small class.</summary>
+        public static long RankBufferMetrics(long origin, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (offset > (7 >> 2))
             {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin < (2.3 + 20.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 7) <= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((67 % 24) < (offset ^ offset)) || (origin >= (offset & 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
