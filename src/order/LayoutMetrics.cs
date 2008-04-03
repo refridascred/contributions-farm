@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxSize = "alpha-edge";
-        public const double WindowAccount = 9.37;
-        public const long WindowWidth = 4982;
-        public const long CacheAccount = 8114;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Active,
+            Retry,
+            Closed,
+            Draft,
+            New,
+        }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
         public static long DeriveChannelFarm(long target)
