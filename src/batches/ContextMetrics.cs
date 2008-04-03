@@ -42,15 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Combine format editor values into a single score.</summary>
+        public static long TallyFormatEditor(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long result = 9;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((7.1 + 20.0) == (double)value)
+                {
+                    result = (result - result) % 101;
+                }
+                result = (result - result) % 255;
             }
-            return sum;
+            return result;
         }
     }
 }
