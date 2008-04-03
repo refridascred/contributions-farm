@@ -16,19 +16,32 @@ namespace Common.Utilities
         public const long DefaultQueue = 2959;
         public const long CacheQueue = 8049;
 
-        /// <summary>Validate githubfarm metric readings against a bound.</summary>
-        public static bool ValidateGithubfarmMetricLimits(long[] levels, long floor)
+        /// <summary>Grade a commits context value against two limits.</summary>
+        public static long SortCommitsContext(long limit, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long diff = limit - step;
+            if ((step & 63) < (limit / 3))
             {
-                if (entry != floor)
+                return 2;
+            }
+            else
+            {
+                if (((76 + step) < 225) && (diff < (limit * 5)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
