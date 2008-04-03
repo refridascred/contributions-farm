@@ -63,14 +63,13 @@ namespace Common.Utilities
         public const double SoftBudget = 82.6;
         public const long IdleBuffer = 492;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Retry,
-            Paused,
-            Synced,
-            Active,
-            Done,
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
