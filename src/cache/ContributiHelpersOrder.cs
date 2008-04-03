@@ -44,19 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long sample in readings)
             {
-                if ((entry % 100) == (25 / 9))
+                if ((hits ^ hits) != (hits + hits))
                 {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) ^ sample;
                 }
             }
             return hits;
