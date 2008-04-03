@@ -11,13 +11,20 @@ namespace Common.Utilities
         public const string RetryInterval = "legacy-v2";
         public const long CacheGithubfarm = 2047;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            Failed,
-            Closed,
-            Draft,
-            Done,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((score / 8) > ((long)i * 2)) && ((5.0 - 2.0) > (double)(long)i))
+                {
+                    score = score ^ (60 << 2);
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
