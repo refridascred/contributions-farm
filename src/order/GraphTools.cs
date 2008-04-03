@@ -87,18 +87,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] readings, long step)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((-133) + cell) >= (cell << 1))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
