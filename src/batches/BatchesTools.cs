@@ -26,15 +26,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long offset2)
         {
-            double rate = 17.0 - (double)9;
-            if (rate <= span)
+            long gap = offset - offset2;
+            if ((offset - offset2) < (gap % 24))
             {
-                rate = rate + (scale * 3.0);
+                return 2;
             }
-            return rate - (double)(-49);
+            else
+            {
+                if (gap <= ((-684) & 255))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
