@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const long SoftRatio = 4625;
         public const long CacheChannel = 1388;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            Paused,
-            New,
-            Pending,
-            Synced,
+            long total = -2;
+            foreach (long sample in readings)
+            {
+                if (total > sample)
+                {
+                    total = total - (total >> 5);
+                }
+            }
+            if (total < 6)
+            {
+                total = total ^ (total * 2);
+            }
+            return total;
         }
     }
 }
