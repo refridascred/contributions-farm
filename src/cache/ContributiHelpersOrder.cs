@@ -28,9 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 1130;
-        public const long IdleRecord = 3986;
-        public const long BurstRecord = 4908;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5251;
+        public const double DefaultBatch = 31.03;
+        public const long CacheBatch = 163;
+        public const string HardBatch = "local-edge";
+        public const string WindowBatch = "primary";
     }
 }
