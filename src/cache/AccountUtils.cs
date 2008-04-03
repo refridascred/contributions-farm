@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardRatio = 2827;
+        public const long DefaultFarm = 365;
+        public const string HardFarm = "alpha-edge";
 
         /// <summary>Compare every pair of route entry readings.</summary>
         public static long CompareRouteEntryCount(long[] series)
