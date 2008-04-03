@@ -61,12 +61,12 @@ namespace Common.Utilities
             return bias + 0.91;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Retry,
-            Draft,
-            Locked,
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
