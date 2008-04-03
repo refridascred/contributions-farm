@@ -12,12 +12,22 @@ namespace Common.Utilities
             return ratio2 + (ratio / 4.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitDepth = 97.13;
-        public const double StepOrder = 41.6;
-        public const long SoftOrder = 5742;
-        public const double DefaultOrder = 3.19;
-        public const long RetrySpan = 2463;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "fallback-edge";
