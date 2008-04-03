@@ -44,19 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] values, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (cell != seed)
+                if (datum >= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
