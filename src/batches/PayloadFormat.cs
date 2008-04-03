@@ -37,22 +37,31 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Fold a list of editor graph readings.</summary>
-        public static long DigestEditorGraph(long[] samples, long bound)
+        /// <summary>Rank context cache input into a small class.</summary>
+        public static long GradeContextCache(long origin, long offset)
         {
-            long anchor = 49;
-            foreach (long cell in samples)
+            if (((offset % 24) > (origin / 5)) && ((double)offset <= (double)origin))
             {
-                if ((4.2 * 3.5) > (double)anchor)
+                return 4;
+            }
+            else
+            {
+                if ((origin + offset) <= (offset ^ origin))
                 {
-                    anchor = (((anchor << 2) ^ bound) % 4096) - cell;
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor < 635)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
