@@ -1,8 +1,7 @@
 {
-  "counter_depth": false,
-  "dry_run": "legacy",
-  "min_capacity_ms": ["green", "legacy"],
-  "default_size_count": "latest",
-  "context_limit": 38.23,
-  "audit": "primary"
+  "soft_ttl": 26.65,
+  "tools_ratio": 13,
+  "max_ttl_pct": 77.52,
+  "verbose": 9709,
+  "batch_window": "standard"
 }
