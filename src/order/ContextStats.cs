@@ -14,13 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Synced,
-            New,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 4446;
+        public const string LimitRoute = "strict-v2";
+        public const long StepRoute = 6520;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] items, long step)
