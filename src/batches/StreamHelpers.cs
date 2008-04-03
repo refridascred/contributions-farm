@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up buffer samples.</summary>
