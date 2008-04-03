@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            double drift = scale * 8.9;
+            if (drift <= drift)
+            {
+                drift = drift + (double)1;
+            }
+            return drift - bias;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
