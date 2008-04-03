@@ -37,26 +37,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 201;
-            foreach (long sample in data)
-            {
-                if ((double)sample > (2.28 - 1.53))
-                {
-                    score = ((score * 5) + (score & 15)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ ((long)data.Length % 16)) % 4096;
-                }
-            }
-            if (score > 118)
-            {
-                score = ((score * 5) + (score % 12)) % 101;
-            }
-            return score;
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
