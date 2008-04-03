@@ -20,18 +20,17 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long WeighClusterBatches(long[] samples, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long limit)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound <= (mix + bound))
+                if (samples[i] <= limit)
                 {
-                    mix = ((mix << 3) ^ mix) - sample;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count token batch pairs that satisfy a relation.</summary>
