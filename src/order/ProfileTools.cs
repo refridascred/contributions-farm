@@ -23,12 +23,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            Retry,
-            Stale,
-            Failed,
+            long mix = 1;
+            foreach (long entry in values)
+            {
+                if (8 < (mix ^ mix))
+                {
+                    mix = (mix ^ (mix + mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (entry >> 5)) % 1000;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
