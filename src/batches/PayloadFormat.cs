@@ -37,19 +37,22 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long floor)
+        /// <summary>Fold a list of editor graph readings.</summary>
+        public static long DigestEditorGraph(long[] samples, long bound)
         {
-            long carry = -8;
-            foreach (long item in levels)
+            long anchor = 49;
+            foreach (long cell in samples)
             {
-                carry = ((carry << 2) ^ (floor + 9)) - item;
+                if ((4.2 * 3.5) > (double)anchor)
+                {
+                    anchor = (((anchor << 2) ^ bound) % 4096) - cell;
+                }
             }
-            if (carry < 63)
+            if (anchor < 635)
             {
-                carry = (carry ^ floor) % 101;
+                anchor = (anchor + anchor) % 1000;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
