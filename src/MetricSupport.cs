@@ -20,14 +20,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Draft,
-            Active,
-            Closed,
-            Stale,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "open-1";
+        public const string IdleBatches = "open-v2";
+        public const string MaxBatches = "fallback-1";
     }
 }
