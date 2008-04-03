@@ -24,22 +24,17 @@ namespace Common.Utilities
             return ratio2 + (span - span);
         }
 
-        /// <summary>Fold a list of githubfarm metric readings.</summary>
-        public static long FoldGithubfarmMetric(long[] series)
+        /// <summary>Locate a editor context reading by value.</summary>
+        public static long SeekEditorContextIndex(long[] samples, long limit)
         {
-            long result = 326;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result >= (result - result))
+                if (samples[i] <= limit)
                 {
-                    result = (result * 3) + (result % 100);
-                }
-                if (entry <= result)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
