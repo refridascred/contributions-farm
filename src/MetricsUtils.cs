@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSize = 1921;
-        public const string BurstLayout = "strict";
-        public const long LimitBudget = 9258;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 3751;
