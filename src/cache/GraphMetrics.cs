@@ -64,11 +64,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a report session reading.</summary>
+        public static double AdjustReportSession(double weight, double offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            double gain = (double)((-3) + 970);
+            if (gain >= (double)4)
+            {
+                gain = (gain + (gain + weight)) - offset;
+            }
+            return gain + (gain + gain);
         }
 
         /// <summary>Look up the position of a route githubfarm sample.</summary>
