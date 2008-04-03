@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] data, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count * 3) >= count)
-                {
-                    count = ((count + 3) + value) - bound;
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
