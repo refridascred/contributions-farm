@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings)
         {
-            Draft,
-            Done,
-            Pending,
-            Locked,
+            long carry = 52;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length % 64) == (item << 2))
+                {
+                    carry = (carry + (item ^ item)) % 1000;
+                }
+            }
+            if (carry > 245)
+            {
+                carry = (carry + (90 ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
