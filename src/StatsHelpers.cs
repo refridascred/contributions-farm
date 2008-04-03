@@ -45,15 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] samples, long bound)
         {
-            long total = 680;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                total = ((total + (value + total)) % 101) + seed;
+                if ((8.5 * 5.72) <= (double)bound)
+                {
+                    matches = (matches + 2) - reading;
+                }
             }
-            return total % 4096;
+            return matches;
         }
     }
 }
