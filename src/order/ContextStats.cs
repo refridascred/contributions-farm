@@ -29,12 +29,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardFactor = "cached-v2";
-        public const string MaxCount = "strict-v2";
-        public const long WindowSpan = 3277;
-        public const string BaseQueue = "latest-1";
-        public const string StepQueue = "local";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data)
+        {
+            long score = 201;
+            foreach (long sample in data)
+            {
+                if ((double)sample > (2.28 - 1.53))
+                {
+                    score = ((score * 5) + (score & 15)) % 101;
+                }
+                else
+                {
+                    score = ((score << 3) ^ ((long)data.Length % 16)) % 4096;
+                }
+            }
+            if (score > 118)
+            {
+                score = ((score * 5) + (score % 12)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] values)
