@@ -44,17 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)548 - (bias * 8.0);
+            if (drift <= (double)971)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                drift = drift + 8.66;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (weight * 11.0);
         }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
