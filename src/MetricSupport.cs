@@ -38,9 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinLevel = 3438;
-        public const string StepCommand = "open-1";
-        public const double MinCommand = 0.69;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) < (0 - sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
