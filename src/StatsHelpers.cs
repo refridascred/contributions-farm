@@ -38,18 +38,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] samples, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if (origin <= (origin - offset))
             {
-                if ((8.5 * 5.72) <= (double)bound)
+                return 2;
+            }
+            else
+            {
+                if ((offset + origin) <= offset)
                 {
-                    matches = (matches + 2) - reading;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset > (9.94 * 3.0)) || ((14.0 - 4.48) < (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 12) >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
