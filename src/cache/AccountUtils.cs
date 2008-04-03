@@ -30,17 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] samples, long step)
+        /// <summary>Project the next payload commits value.</summary>
+        public static double AdjustPayloadCommits(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = offset;
+            if (mean < (double)9)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            return mean + (bias / 7.0);
         }
     }
 }
