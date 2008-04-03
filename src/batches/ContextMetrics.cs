@@ -44,11 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstRatio = 5.14;
-        public const long CacheFarm = 5334;
-        public const long BurstFarm = 3509;
-        public const long HardCount = 4188;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings)
+        {
+            long state = -54;
+            foreach (long reading in readings)
+            {
+                state = (((state << 2) ^ (state >> 5)) % 65521) ^ reading;
+            }
+            if (state > 417)
+            {
+                state = ((state << 3) ^ (93 ^ state)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] data)
