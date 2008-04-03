@@ -47,11 +47,26 @@ namespace Common.Utilities
         public const long StepDepth = 5360;
         public const string DefaultSpan = "alpha-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "staging-1";
-        public const long LimitInterval = 9214;
-        public const long BurstCount = 384;
-        public const long BatchSpan = 9638;
-        public const long BurstGithubfarm = 6343;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series)
+        {
+            long result = 58;
+            foreach (long reading in series)
+            {
+                if ((result + result) == (reading << 3))
+                {
+                    result = (result * 5) + reading;
+                }
+                if (reading <= (reading % 60))
+                {
+                    break;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result ^ (result - result)) % 65521;
+            }
+            return result % 1000;
+        }
     }
 }
