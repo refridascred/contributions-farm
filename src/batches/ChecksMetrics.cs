@@ -80,20 +80,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long step)
         {
-            long result = 2;
-            foreach (long value in values)
+            long bound2 = bound ^ step;
+            if ((double)bound != (double)step)
             {
-                if ((result + result) >= (-53))
-                {
-                    result = (((result * 3) + result) % 1000) ^ value;
-                    break;
-                }
-                result = (result - result) % 1000;
+                return 2;
             }
-            return result % 65521;
+            else
+            {
+                if (((bound2 << 2) >= (bound2 ^ bound2)) || ((step / 2) > 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
