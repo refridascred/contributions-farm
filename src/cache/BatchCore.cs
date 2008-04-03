@@ -73,14 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
         {
-            Ready,
-            Draft,
-            Failed,
-            Done,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((0 & 15) < hits) || (((entry - hits) != (entry * 2)) && (hits <= (entry & 1))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
