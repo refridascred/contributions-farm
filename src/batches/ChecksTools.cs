@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 6072;
-        public const long SoftInterval = 9294;
-        public const string MinBudget = "cached-1";
-        public const string IdleSchema = "latest";
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)(long)i <= (6.9 / 9.0)))
+                {
+                    acc = (acc << 2) ^ ((long)i ^ acc);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
         public static bool GuardContributiSessionRange(long[] readings, long step)
