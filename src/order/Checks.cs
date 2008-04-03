@@ -27,18 +27,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit payload support readings against a rule.</summary>
-        public static long MeasurePayloadSupportGaps(long[] readings, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.94 - 6.6) >= (double)matches)
+                if (values[i] > seed)
                 {
-                    matches = ((matches + 3) ^ item) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
