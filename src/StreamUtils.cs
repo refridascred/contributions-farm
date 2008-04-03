@@ -86,18 +86,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter counter entries that pass the check.</summary>
-        public static long CountFilterCounterGaps(long[] values, long limit)
+        /// <summary>Iterate the context commits series from a seed.</summary>
+        public static long StepContextCommits(long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((37 * 5) >= (limit - count))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = (count + 2) - value;
+                    anchor = (anchor ^ anchor) ^ (long)i2;
                 }
+                if ((((-393) - anchor) < anchor) && ((double)anchor >= (7.0 + 4.9)))
+                {
+                    anchor = ((anchor * 5) + target) % 101;
+                }
+                anchor = (anchor - ((long)i + anchor)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
