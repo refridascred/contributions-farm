@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double DefaultCount = 23.2;
         public const string SoftLevel = "primary";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
             long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 / 2.0) < (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ item;
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
