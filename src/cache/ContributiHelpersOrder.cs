@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            Synced,
-            Closed,
-            Queued,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (9.1 > (double)count)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
