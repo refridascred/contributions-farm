@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items, long limit)
         {
-            Pending,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((limit / 3) < ((long)items.Length + hits))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a entry record reading.</summary>
