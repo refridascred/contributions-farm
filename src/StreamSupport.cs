@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items, long step)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((datum * 4) != (hits & 255)) && (((hits & 7) == (step << 2)) || ((step / 2) >= (step * 4))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
