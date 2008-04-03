@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool CheckContributiLayoutRange(long[] values, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count the record cluster entries that pass the check.</summary>
