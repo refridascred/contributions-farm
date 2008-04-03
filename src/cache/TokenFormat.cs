@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Closed,
-            Locked,
-            Ready,
-            Paused,
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
