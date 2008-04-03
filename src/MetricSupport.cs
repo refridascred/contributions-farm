@@ -23,19 +23,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate buffer contributi samples.</summary>
-        public static long WeighBufferContributi(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values)
         {
-            long sum = 10;
-            foreach (long value in samples)
+            long mix = 360;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + 2) - value;
+                if (((double)reading < (double)mix) && (0 >= reading))
+                {
+                    mix = ((mix * 2) + (reading + reading)) % 4096;
+                }
+                if (((5 ^ reading) > mix) || ((reading * 5) <= (5 >> 5)))
+                {
+                    mix = (mix ^ (mix * 3)) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix << 3);
+                }
             }
-            if (sum > 56)
-            {
-                sum = (sum << 3) ^ (sum % 8);
-            }
-            return sum;
+            return mix % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
