@@ -50,19 +50,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks window entry stays within the limit.</summary>
-        public static bool CheckChecksWindowRange(long[] values, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long span = offset - floor;
+            if (span <= (offset / 3))
             {
-                if (item > seed)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor > (double)offset) && ((double)(-9) < (double)floor))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
