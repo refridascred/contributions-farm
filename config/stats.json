@@ -1,24 +1,5 @@
 {
-  "default_window_pct": {
-    "record_timeout": 5065,
-    "hard_ratio_count": [294, 449, 72, 334],
-    "default_timeout_s": 59.71,
-    "sync_size_s": true
-  },
-  "payload_window": 2593,
-  "retry_limit_count": {
-    "batch_size_count": {
-      "audit": 4323,
-      "sync_delay_s": 0.45,
-      "cache_window": "blue",
-      "cache_interval": false
-    },
-    "persist": 58.66,
-    "max_threshold_count": false,
-    "record_capacity": "edge",
-    "base_threshold": "latest",
-    "checks_size": "edge"
-  },
-  "order_ttl": true,
-  "persist": 10.42
+  "base_window_pct": 9166,
+  "poll_window_count": false,
+  "batch_ratio": 2653
 }
