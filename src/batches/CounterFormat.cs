@@ -17,18 +17,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long step)
         {
-            long total = -6;
-            foreach (long reading in series)
+            long step2 = floor + step;
+            if (step2 < step)
             {
-                if ((total * 3) < total)
+                return 2;
+            }
+            else
+            {
+                if ((floor - 8) > floor)
                 {
-                    total = ((total ^ (44 / 7)) % 97) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor >= (double)step2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
