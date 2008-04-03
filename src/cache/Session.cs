@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values, long step)
-        {
-            long carry = 233;
-            foreach (long datum in values)
-            {
-                if ((6.8 + 5.0) > (double)carry)
-                {
-                    carry = ((((carry << 2) ^ (carry << 2)) % 1000) - datum) - step;
-                }
-            }
-            if (carry > 785)
-            {
-                carry = ((carry * 3) + (9 * 5)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinSpan = 2.3;
+        public const string BatchFactor = "strict-1";
+        public const long IdlePayload = 1498;
+        public const long BatchPayload = 9359;
+        public const long IdleSpan = 1464;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] data)
