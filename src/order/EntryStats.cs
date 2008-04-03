@@ -34,14 +34,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series)
         {
-            Pending,
-            Ready,
-            New,
-            Stale,
-            Failed,
+            long anchor = 3;
+            foreach (long sample in series)
+            {
+                if (anchor > (sample % 2))
+                {
+                    anchor = anchor - ((long)series.Length & 7);
+                }
+                if ((sample * 4) <= sample)
+                {
+                    anchor = (anchor - (sample >> 3)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
