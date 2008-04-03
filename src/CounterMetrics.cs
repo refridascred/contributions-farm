@@ -40,32 +40,22 @@ namespace Common.Utilities
         public const long RetrySize = 2427;
         public const double IdleRatio = 15.45;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long diff = target ^ floor;
-            if ((diff * 3) == (diff & 1))
+            long mix = -7;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor >= target)
+                if (((346 % 60) >= (mix & 31)) || ((mix + mix) <= ((-91) + sample)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)diff > 1.0) || ((8.4 / 7.0) < (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix << 3) ^ (sample + sample);
                 }
             }
+            if (mix > 642)
+            {
+                mix = (mix + (mix - (-3))) % 101;
+            }
+            return mix;
         }
     }
 }
