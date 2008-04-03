@@ -35,22 +35,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] values, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + 160) >= seen)
-                {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a support record.</summary>
