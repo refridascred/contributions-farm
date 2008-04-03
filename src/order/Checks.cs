@@ -39,11 +39,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchInterval = "stable-1";
-        public const long WindowFactor = 7651;
-        public const string BaseLevel = "latest-edge";
-        public const long BurstScore = 8666;
+        /// <summary>Audit payload support readings against a rule.</summary>
+        public static long MeasurePayloadSupportGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((7.94 - 6.6) >= (double)matches)
+                {
+                    matches = ((matches + 3) ^ item) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string HardCount = "legacy-v2";
