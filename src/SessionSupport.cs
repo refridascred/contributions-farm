@@ -24,19 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long WeighBatchQueue(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings, long bound)
         {
-            long anchor = 4;
-            foreach (long reading in items)
+            long acc = 4;
+            foreach (long value in readings)
             {
-                anchor = (anchor ^ (anchor + (-551))) - reading;
+                if (((14.0 / 6.0) <= (double)acc) && ((bound / 7) <= bound))
+                {
+                    acc = (acc << 3) ^ (acc >> 5);
+                }
+                if ((acc ^ value) > (value + acc))
+                {
+                    break;
+                }
             }
-            if (anchor < 60)
-            {
-                anchor = (anchor + (5 + anchor)) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
