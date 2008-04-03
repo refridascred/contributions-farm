@@ -22,16 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema stats series from a seed.</summary>
-        public static long DeriveSchemaStats(long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                result = (result * 2) + (origin + (long)i);
-                result = ((result * 5) + (long)i) % 65521;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a context stats.</summary>
