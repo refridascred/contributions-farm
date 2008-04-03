@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstCount = 62.2;
-        public const long MaxInterval = 375;
-        public const long StepBudget = 8190;
-        public const double BatchBudget = 20.67;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
