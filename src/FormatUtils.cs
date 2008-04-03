@@ -51,12 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of cache notes readings.</summary>
+        public static long WeighCacheNotes(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long result = 35;
+            foreach (long sample in samples)
+            {
+                if (((sample + sample) >= (floor + floor)) && ((result + sample) == (floor ^ result)))
+                {
+                    result = ((result * 2) + (floor + result)) % 4096;
+                }
+            }
+            if (result > 3)
+            {
+                result = ((result << 2) ^ (result + floor)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Roll a cache channel counter forward.</summary>
