@@ -24,15 +24,21 @@ namespace Common.Utilities
         public const double IdleSpan = 5.44;
         public const long BatchBudget = 764;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            double bias = (double)33 - 14.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + (floor - 4.61)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias + scale;
+            return count;
         }
     }
 }
