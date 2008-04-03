@@ -1,10 +1,5 @@
 {
-  "max_size_ms": {
-    "retry_interval_pct": "green",
-    "compress": 8210,
-    "readonly": "green"
-  },
-  "soft_size": 8,
-  "audit": true,
-  "enabled": 51.79
+  "readonly": 3757,
+  "retry_ratio_pct": "open",
+  "base_window_pct": 14
 }
