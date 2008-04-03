@@ -28,13 +28,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next order channel value.</summary>
+        public static double AdjustOrderChannel(double scale, double span)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            double load = span;
+            if (load < (load / 2.0))
+            {
+                load = load - (scale + load);
+            }
+            else
+            {
+                load = load + 9.58;
+            }
+            return load + 9.3;
         }
 
         /// <summary>Describe the command class values.</summary>
