@@ -1,5 +1,11 @@
 {
-  "retry_delay_ms": "stable",
-  "warm_delay": [314, 95, 231, 254],
-  "soft_window_ms": "latest"
+  "stream_delay": 17,
+  "audit": [190, 192],
+  "support_window": {
+    "flush_delay_count": 51,
+    "verbose": "blue",
+    "flush_delay_ms": true
+  },
+  "idle_retries": "fallback",
+  "queue_retries": true
 }
