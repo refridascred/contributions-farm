@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = 39;
-            foreach (long sample in data)
-            {
-                if ((total + step) > (sample - (long)data.Length))
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            return total;
+            Synced,
+            Failed,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the account status values.</summary>
