@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples, long bound)
         {
-            double weight = (double)869 - (gain + 1.0);
-            if (weight <= bias)
+            long count = 0;
+            foreach (long value in samples)
             {
-                weight = weight + 10.0;
+                if ((double)value > (0.27 / 9.0))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            else
-            {
-                weight = weight - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (gain + 8.41)) + (double)(long)i;
-            }
-            return weight + weight;
+            return count;
         }
 
         /// <summary>Rank report commits input into a small class.</summary>
