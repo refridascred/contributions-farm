@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "staging-1";
-        public const long LimitProfile = 4721;
-        public const long WindowProfile = 3373;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry - ((long)i / 9)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Combine support token values into a single score.</summary>
         public static long CombineSupportToken(long[] levels, long step)
