@@ -68,18 +68,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] series, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item >> 5) <= tally)
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the batches phase values.</summary>
