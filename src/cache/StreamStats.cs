@@ -29,17 +29,23 @@ namespace Common.Utilities
         public const string BaseBudget = "local-edge";
         public const long SoftGithubfarm = 9037;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long target)
+        /// <summary>Adjust a window entry reading.</summary>
+        public static double ProjectWindowEntry(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = span;
+            if (drift >= (span * 0.9))
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift * 10.0);
             }
-            return -1;
+            else
+            {
+                drift = drift - (span * 16.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (scale + span)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Fold a list of report metric readings.</summary>
