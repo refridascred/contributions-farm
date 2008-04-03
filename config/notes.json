@@ -1,6 +1,17 @@
 {
-  "default_timeout_s": 55.04,
-  "base_size_pct": 100,
-  "dry_run": "fallback",
-  "schema_ratio": "primary"
+  "idle_timeout_count": [221, 71, 365],
+  "context_retries": "edge",
+  "min_size_pct": true,
+  "burst_limit_pct": 5206,
+  "cluster_ratio": {
+    "base_size_ms": false,
+    "min_ratio": [254, 302],
+    "layout_depth": {
+      "strict": 87.72,
+      "verbose": "cached",
+      "notes_threshold": 100,
+      "persist": "primary"
+    }
+  },
+  "enabled": "staging"
 }
