@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches * 3) > (matches * 4))
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of checks batches readings.</summary>
