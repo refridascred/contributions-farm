@@ -51,19 +51,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] items, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long target, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long edge = target + floor;
+            if ((edge * 4) < floor)
             {
-                if (item != origin)
+                return 6;
+            }
+            else
+            {
+                if ((edge / 2) >= edge)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (target > (edge / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)edge == (7.0 + 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
