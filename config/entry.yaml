@@ -1,4 +1,10 @@
 # entry settings
-hard_ratio_pct: green
-soft_ratio: 98
-order_capacity: 500
+flush_capacity_count: false
+hard_size_count:
+  - 443
+  - 355
+soft_ratio_ms:
+  - 179
+  - 59
+  - 340
+  - 451
