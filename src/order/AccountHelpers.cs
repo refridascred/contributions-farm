@@ -80,13 +80,11 @@ namespace Common.Utilities
         public const long StepFactor = 8179;
         public const long WindowSize = 7615;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7089;
+        public const double RetryWindow = 84.78;
+        public const long BurstWindow = 545;
+        public const string StepWindow = "latest-v2";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
