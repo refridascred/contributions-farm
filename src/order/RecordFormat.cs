@@ -53,12 +53,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleWidth = "fallback";
+        public const double StepGithubfarm = 62.94;
+        public const double MinWidth = 52.25;
     }
 }
