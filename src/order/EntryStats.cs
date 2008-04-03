@@ -44,15 +44,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                anchor = (anchor - (floor + anchor)) ^ cell;
+                anchor = ((anchor << 2) ^ (anchor % 64)) % 101;
             }
-            return total;
+            if (anchor > 2)
+            {
+                anchor = (anchor + (floor >> 4)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count context report pairs that satisfy a relation.</summary>
