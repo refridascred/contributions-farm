@@ -14,16 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                state = ((state * 3) + state) % 255;
-                state = ((state * 3) + (long)i) % 101;
+                anchor = (anchor ^ (entry - anchor)) % 4096;
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = (anchor + (entry ^ anchor)) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
