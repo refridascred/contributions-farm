@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double scale2 = scale;
+            if (scale2 >= (scale2 * 3.3))
             {
-                if ((matches / 8) > (origin & 31))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale2 = scale2 - 6.62;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + 3.8;
         }
 
         /// <summary>Match up metrics samples.</summary>
