@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate already metrics readings against a bound.</summary>
+        public static bool GuardAlreadyMetricsBounds(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank format tools input into a small class.</summary>
