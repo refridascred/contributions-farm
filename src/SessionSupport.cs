@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long limit, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long target)
         {
-            long lane = limit ^ origin;
-            if (limit > (limit << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 8) >= (90 + lane))
+                if ((values[i] == target) && ((values[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
