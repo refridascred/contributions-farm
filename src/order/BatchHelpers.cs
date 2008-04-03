@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double ratio = (weight - offset) - offset;
-            return ratio - (double)0;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
