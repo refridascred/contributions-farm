@@ -27,14 +27,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            New,
-            Active,
-            Dropped,
-            Closed,
-            Paused,
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the report level values.</summary>
