@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 2926;
+        public const double BurstCluster = 88.02;
+        public const long SoftCluster = 4285;
 
         /// <summary>Count the route metric entries that pass the check.</summary>
         public static long AuditRouteMetricOutliers(long[] data, long step)
