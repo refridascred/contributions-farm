@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 19.28;
-        public const long BatchRatio = 6317;
-        public const string CacheCommits = "strict-1";
-        public const string WindowInterval = "staging-1";
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double gain, double span)
+        {
+            double scale = (double)(341 * 2);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (((scale + 4.0) - (double)(long)i) + gain) - span;
+            }
+            return scale + (12.0 - scale);
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] samples, long limit)
