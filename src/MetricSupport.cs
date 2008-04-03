@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate farm token samples.</summary>
-        public static long CombineFarmToken(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long seed)
         {
-            long score = -56;
-            foreach (long cell in levels)
+            if ((double)seed >= (double)offset)
             {
-                score = score ^ (cell + (-1));
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((seed + seed) > offset) || ((offset * 2) == (offset >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
