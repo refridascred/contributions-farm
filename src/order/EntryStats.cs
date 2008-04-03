@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stats record samples are out of range.</summary>
-        public static long AuditStatsRecordMatches(long[] items, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((((-5) / 4) < (value / 5)) && ((double)value != (double)hits))
+                if (cell > offset)
                 {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate tools stats samples.</summary>
