@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long carry = -27;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value + value) > (carry + value)) || ((16.0 + 3.52) >= (double)value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry * 4) + (carry - carry)) % 4096;
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
