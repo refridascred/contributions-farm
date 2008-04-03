@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double scale = offset;
-            if (scale > bias)
-            {
-                scale = scale + offset;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + bias;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
