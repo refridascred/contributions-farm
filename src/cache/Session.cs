@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long AuditStatsChecksGaps(long[] levels, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 233;
+            foreach (long datum in values)
             {
-                if (((target + reading) > reading) && ((count >> 4) <= (target >> 5)))
+                if ((6.8 + 5.0) > (double)carry)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((((carry << 2) ^ (carry << 2)) % 1000) - datum) - step;
                 }
             }
-            return count;
+            if (carry > 785)
+            {
+                carry = ((carry * 3) + (9 * 5)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph options.</summary>
