@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const double LimitSize = 9.77;
         public const long BaseEditor = 6684;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((carry <= ((long)i - carry)) && ((double)carry == (double)73))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Closed,
+            Active,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Digest a series of window route entries.</summary>
