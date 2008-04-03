@@ -42,11 +42,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheCount = "alpha-1";
-        public const long BaseBudget = 9305;
-        public const string DefaultQueue = "primary-1";
-        public const double WindowQueue = 94.36;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings)
+        {
+            long anchor = 977;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - (29 >> 2)) % 255) ^ sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double ScaleContext(double ratio, double offset)
