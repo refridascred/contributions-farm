@@ -67,17 +67,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    result = ((result ^ (step / 7)) % 255) ^ (long)i2;
                 }
+                if (!!((266 / 7) > (step << 1)))
+                {
+                    result = (result - (result % 60)) % 101;
+                    result = (result - (long)i) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
