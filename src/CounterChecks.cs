@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (scale + 7.85) + offset;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            New,
-            Queued,
-            Closed,
-            Retry,
+            long score = 906;
+            foreach (long entry in samples)
+            {
+                if (((6.9 / 8.0) == (double)score) || ((3.86 - 17.0) <= (double)score))
+                {
+                    score = score ^ entry;
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
