@@ -44,18 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((-88) < (tally - 68)) && ((9.8 + 8.0) >= (double)tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ cell;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
