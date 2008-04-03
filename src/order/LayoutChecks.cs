@@ -56,18 +56,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many command metric samples are out of range.</summary>
-        public static long TallyCommandMetricGaps(long[] data)
+        /// <summary>Audit schema cache readings against a rule.</summary>
+        public static long AuditSchemaCacheMatches(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((value + (long)data.Length) > (count >> 1)) || ((value - count) > value))
+                if (23 < tally)
                 {
-                    count = count + 2;
+                    tally = ((tally + 2) + value) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
