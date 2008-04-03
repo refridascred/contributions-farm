@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 82.33;
-        public const string HardWidth = "standard";
-        public const double LimitSize = 9.77;
-        public const long BaseEditor = 6684;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstSpan = "cached-edge";
+        public const double CacheDepth = 33.25;
+        public const string CacheAccount = "strict-edge";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] samples, long limit)
