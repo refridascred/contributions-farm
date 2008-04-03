@@ -24,22 +24,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (entry <= (hits % 16))
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
