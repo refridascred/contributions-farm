@@ -1,19 +1,5 @@
 # entry settings
-profile_limit: 100
-idle_ttl_pct:
-  - standard
-  - strict
-  - green
-  - blue
-compress: 59
-metrics_limit: stable
-flush_ratio_ms:
-  persist: 63
-  context_ratio: 500
-  cache_interval_ms:
-    - eu-west
-    - strict
-    - strict
-  default_timeout_ms: cached
-  readonly: edge
-  flush_timeout: 6039
+sync_ratio: standard
+batches_retries: 250
+min_size: 65.46
+batch_ratio: green
