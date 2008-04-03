@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long TallyChecksSessionOutliers(long[] data, long origin)
         {
-            long sum = 5;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((datum - datum) < sum) || ((datum - sum) > datum))
+                if ((1.8 - 18.0) != (double)value)
                 {
-                    sum = (sum + (datum * 2)) % 4096;
+                    tally = (tally + 1) - origin;
                 }
-                if ((datum - sum) < (sum + sum))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (sum < 384)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
