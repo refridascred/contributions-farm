@@ -1,11 +1,29 @@
 {
-  "batch_size_count": 0.36,
-  "base_ratio_count": {
-    "channel_depth": ["stable", "edge", "fallback", "strict"],
-    "batch_capacity_ms": "cached",
-    "metric_size": 38.91,
-    "batches_ttl": 1024
+  "payload_interval": {
+    "verbose": {
+      "record_depth": "stable",
+      "strict": "open",
+      "flush_depth": "staging",
+      "idle_ttl_ms": 16,
+      "contributi_retries": "green",
+      "max_window_ms": ["strict", "staging", "eu-west"]
+    },
+    "metrics_ratio": 42.81,
+    "enabled": 5648,
+    "warm_ttl_count": {
+      "commits_delay": ["standard", "eu-west", "green", "eu-west"],
+      "compress": ["legacy", "primary", "stable", "strict"],
+      "audit": "eu-west",
+      "flush_ttl_s": 3919,
+      "warm_threshold": 500,
+      "max_size_count": [9, 265, 99, 493]
+    }
   },
-  "checks_limit": ["cached", "green", "blue"],
-  "audit": true
+  "tools_window": {
+    "max_size_count": 13.92,
+    "min_retries": "local",
+    "enabled": [222, 355, 318, 160],
+    "readonly": false
+  },
+  "cache_depth_s": 43
 }
