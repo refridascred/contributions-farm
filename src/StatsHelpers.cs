@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const long BaseSpan = 6602;
         public const long WindowSize = 6443;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Roll a farm command counter forward.</summary>
+        public static long RollFarmCommand(long target)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 5) + result) % 101;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the record status values.</summary>
