@@ -31,22 +31,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long mark = 66;
-            foreach (long datum in levels)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((datum - step) < (datum ^ step)))
-                {
-                    mark = (mark - (long)levels.Length) % 101;
-                }
-                if (!(step >= (step ^ step)))
-                {
-                    mark = (mark * 4) + datum;
-                }
+                carry = (carry * 4) + (carry << 2);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark % 1000;
+            return carry;
         }
     }
 }
