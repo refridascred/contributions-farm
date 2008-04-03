@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinScore = 93.84;
+        public const long DefaultCount = 3341;
+        public const long StepDepth = 5360;
+        public const string DefaultSpan = "alpha-1";
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
