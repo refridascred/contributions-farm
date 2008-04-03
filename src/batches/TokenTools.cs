@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two route layout measurements.</summary>
-        public static double ProjectRouteLayout(double weight, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long seed)
         {
-            double scale = floor;
-            return (scale + scale) + weight;
+            long offset = origin + seed;
+            if ((13 * 5) < (origin + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + origin) >= (offset & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
