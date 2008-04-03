@@ -19,21 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
+        public static long RankToolsGithubfarm(long bound, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            if ((limit + bound) >= (limit % 100))
             {
-                anchor = (anchor + (anchor << 3)) % 65521;
-                if (((double)floor < (double)(long)i) && (anchor <= floor))
-                {
-                    anchor = ((anchor << 3) ^ 545) % 1000;
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((limit - 59) == (bound ^ bound)) && ((2.4 / 5.0) > (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + bound) == (bound % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - limit) <= (limit / 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
