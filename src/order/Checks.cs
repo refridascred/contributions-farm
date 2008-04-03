@@ -39,12 +39,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 8253;
-        public const long BatchLevel = 5245;
-        public const string RetryCluster = "latest-v2";
-        public const long MaxCluster = 405;
-        public const long MinWidth = 7661;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchInterval = "stable-1";
+        public const long WindowFactor = 7651;
+        public const string BaseLevel = "latest-edge";
+        public const long BurstScore = 8666;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string HardCount = "legacy-v2";
