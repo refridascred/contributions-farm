@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            if ((target <= (offset - target)) && ((offset + offset) > target))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(offset <= (offset / 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
