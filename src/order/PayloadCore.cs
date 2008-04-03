@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            long carry = 286;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry != (12.0 / 2.0))
+                if (!(total <= (total & 1)))
                 {
-                    carry = (carry << 3) ^ (limit + limit);
+                    total = (total - 78) % 255;
                 }
-                else
+                if (!((total >> 1) == (3 + 12)))
                 {
-                    carry = ((carry * 4) + (94 - limit)) % 97;
+                    total = total ^ (2 + bound);
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (carry < 56)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Match up order samples.</summary>
