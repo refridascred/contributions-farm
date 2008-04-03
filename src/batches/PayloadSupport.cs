@@ -19,38 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long bound2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long offset)
         {
-            if ((bound & 3) < (-398))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound2 < (-657))
+                if (values[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 >> 4) > (450 >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound2) == (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
