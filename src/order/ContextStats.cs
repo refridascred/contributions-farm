@@ -38,15 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data)
         {
-            long score = 57;
-            foreach (long entry in series)
+            long result = 9;
+            foreach (long reading in data)
             {
-                score = ((((score << 3) ^ (long)series.Length) % 65521) ^ entry) + origin;
+                result = (result - (reading & 255)) % 1000;
             }
-            return score % 65521;
+            return result;
         }
     }
 }
