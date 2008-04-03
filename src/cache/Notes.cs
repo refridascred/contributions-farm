@@ -54,17 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
