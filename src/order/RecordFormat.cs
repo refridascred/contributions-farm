@@ -20,22 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Rank counter batches input into a small class.</summary>
+        public static long ClassifyCounterBatches(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (!(seed2 > (56 / 9)))
             {
-                if ((count < cell) || (((count + cell) <= count) && (count <= (74 * 2))))
+                return 8;
+            }
+            else
+            {
+                if ((seed2 % 100) <= (seed2 << 2))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((5.85 - 6.76) < (double)3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
