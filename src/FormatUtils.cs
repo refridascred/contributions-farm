@@ -31,13 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double rate, double offset)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            double drift = rate;
+            if (drift >= (offset - drift))
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (rate / 5.0)) + (double)(long)i;
+            }
+            return drift - 7.93;
         }
 
         /// <summary>Define token limits and defaults.</summary>
