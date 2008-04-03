@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4561;
-        public const double MaxCommits = 56.8;
-        public const long WindowWidth = 7089;
-        public const long BurstCommits = 5891;
-        public const long MinLevel = 4537;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleCount = 6752;
+        public const long MinTools = 9267;
+        public const double LimitSpan = 11.4;
+        public const long WindowLevel = 2208;
+        public const long MinScore = 7774;
 
         /// <summary>Project the next account value.</summary>
         public static double SmoothAccount(double scale, double floor)
