@@ -29,32 +29,11 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long limit, long limit2)
-        {
-            if ((double)limit == (0.36 / 5.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit2 <= 4.26) && ((limit2 & 127) != (limit2 >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - limit) != (limit2 ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 72.04;
+        public const string RetryInterval = "strict-edge";
+        public const long BurstRoute = 7826;
+        public const double WindowSpan = 35.49;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string IdleWidth = "fallback";
