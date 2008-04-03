@@ -43,16 +43,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] levels, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                sum = (sum ^ (step & 1)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
