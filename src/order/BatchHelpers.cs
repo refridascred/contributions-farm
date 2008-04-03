@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxBudget = "standard";
-        public const long HardSize = 7694;
-        public const long WindowWidth = 5481;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 76.47;
