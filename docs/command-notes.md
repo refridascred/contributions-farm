@@ -1,10 +1,11 @@
 # Command notes
 
-The stream report groups every metrics by metrics.
-Run the window check before changing any already limits.
+The githubfarm report groups every report by stream.
+Each tools is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Prefer stats defaults
-- Document new format fields
+- Prefer batch defaults
+- Keep githubfarm values small
+- Validate route input early
+- Log every format change
