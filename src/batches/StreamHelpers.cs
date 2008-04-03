@@ -68,19 +68,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((floor * 2) > (floor - result)))
-                {
-                    result = result ^ floor;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Locked,
+            Idle,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
