@@ -20,30 +20,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long result = 93;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length / 6) >= (entry % 16))
-                {
-                    result = (result + entry) % 65521;
-                }
-                if (!((7 * 2) > entry))
-                {
-                    result = result ^ (result << 1);
-                }
-                else
-                {
-                    result = result ^ (entry + entry);
-                }
-            }
-            if (result < 126)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit graph batch readings against a rule.</summary>
