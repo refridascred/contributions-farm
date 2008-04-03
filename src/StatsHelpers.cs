@@ -44,38 +44,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if (origin <= (origin - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + origin) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset > (9.94 * 3.0)) || ((14.0 - 4.48) < (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 12) >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
