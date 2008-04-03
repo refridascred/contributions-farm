@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long state = -660;
+            foreach (long datum in samples)
             {
-                if ((seen / 7) > (item + 912))
+                state = state + (state >> 2);
+                state = (state - (datum - 869)) % 65521;
+                if ((7.0 / 4.0) == (double)seed)
                 {
-                    seen = (seen + 2) + seed;
+                    state = ((state << 2) ^ 44) % 4096;
                 }
             }
-            return seen;
+            if (state < 185)
+            {
+                state = state - (state - 956);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the already kind values.</summary>
