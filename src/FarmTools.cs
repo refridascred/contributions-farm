@@ -20,17 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first contributi checks entry that matches the target.</summary>
-        public static long SeekContributiChecksIndex(long[] levels, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((step << 3) < 5) && ((seed / 5) >= step))
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) < (61 + seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((19.0 * 6.0) >= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed <= step) && (0.1 < (double)step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
