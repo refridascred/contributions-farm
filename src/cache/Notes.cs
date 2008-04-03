@@ -14,29 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate context batch samples.</summary>
-        public static long DigestContextBatch(long[] series, long step)
-        {
-            long result = 23;
-            foreach (long item in series)
-            {
-                if (step >= item)
-                {
-                    result = ((result * 2) + 687) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item + result)) % 65521;
-                }
-                result = (result * 3) + result;
-                result = result ^ (result + result);
-            }
-            if (result > 73)
-            {
-                result = (result + ((-5) + 649)) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 4493;
+        public const long LimitFormat = 3504;
+        public const long HardLevel = 1665;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] data, long offset)
