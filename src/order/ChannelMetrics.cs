@@ -21,19 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Find the first order checks entry that matches the target.</summary>
+        public static long LocateOrderChecksIndex(long[] levels, long target)
         {
-            long acc = 74;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc + cell) > cell)
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
                 {
-                    acc = acc + (cell % 60);
+                    return (long)i;
                 }
-                acc = (acc ^ ((-41) % 2)) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
