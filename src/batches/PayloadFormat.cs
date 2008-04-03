@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count account entry pairs that satisfy a relation.</summary>
-        public static long MatchAccountEntryCount(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 741;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor * 2) + (sample / 4);
             }
-            return hits;
+            if (anchor > 41)
+            {
+                anchor = anchor ^ (anchor % 3);
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
