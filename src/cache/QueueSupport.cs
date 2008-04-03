@@ -28,19 +28,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] items, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Pending,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
