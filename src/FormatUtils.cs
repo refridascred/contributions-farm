@@ -50,13 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] readings, long floor)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
