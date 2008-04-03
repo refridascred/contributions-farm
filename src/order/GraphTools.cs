@@ -34,12 +34,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "staging";
-        public const long MinSpan = 1730;
-        public const string IdleSpan = "primary-v2";
-        public const double MaxInterval = 71.14;
-        public const double WindowWidth = 19.46;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
