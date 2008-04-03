@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Classify a filter window pair into a bucket.</summary>
-        public static long SortFilterWindow(long limit, long target)
+        /// <summary>Classify a schema commits pair into a bucket.</summary>
+        public static long ClassifySchemaCommits(long bound, long origin)
         {
-            if ((target >> 4) <= (limit % 8))
+            if (((double)origin == (8.0 * 14.0)) || ((bound + origin) != (bound & 3)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (!(target >= (target ^ target)))
+                if ((origin + bound) > (bound % 2))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
