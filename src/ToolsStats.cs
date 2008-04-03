@@ -44,13 +44,19 @@ namespace Common.Utilities
             return (scale2 + (17.0 + scale)) + bias;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            Idle,
-            Locked,
-            Closed,
-            Draft,
+            double mean = (span - span) * 18.0;
+            if (mean < (double)20)
+            {
+                mean = mean - weight;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - weight;
         }
 
         /// <summary>Measure how many cluster order samples are out of range.</summary>
