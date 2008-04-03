@@ -45,22 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 99;
+            foreach (long entry in series)
             {
-                if ((value >> 1) != (value + 7))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score ^ (score * 3)) - entry) - origin;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the batches mode values.</summary>
