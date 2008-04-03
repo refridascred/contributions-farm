@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7495;
-        public const long BaseFactor = 1796;
-        public const long SoftCount = 8310;
-        public const long RetryDepth = 4350;
-        public const long StepTimeout = 3965;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultBuffer = "strict";
