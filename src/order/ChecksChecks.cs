@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Draft,
-            Active,
+            Synced,
+            Dropped,
+            Closed,
+            Done,
             Locked,
-            Idle,
-            Paused,
         }
 
         /// <summary>Describe the stats class values.</summary>
