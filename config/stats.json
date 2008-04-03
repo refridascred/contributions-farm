@@ -1,11 +1,8 @@
 {
-  "batch_depth_pct": 100,
-  "flush_window_ms": {
-    "max_capacity": [221, 76],
-    "readonly": 22,
-    "idle_window_pct": false,
-    "batches_ratio": 9670
-  },
-  "verbose": 60,
-  "compress": true
+  "burst_window": "open",
+  "sync_limit": 9214,
+  "default_ratio_s": 2671,
+  "readonly": 250,
+  "audit": 38.95,
+  "route_capacity": 47.76
 }
