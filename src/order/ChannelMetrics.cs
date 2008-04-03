@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-1";
         public const long BatchWidth = 9191;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] series, long target)
+        /// <summary>Classify a filter window pair into a bucket.</summary>
+        public static long SortFilterWindow(long limit, long target)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            if ((target >> 4) <= (limit % 8))
             {
-                if (entry < target)
+                return 2;
+            }
+            else
+            {
+                if (!(target >= (target ^ target)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
