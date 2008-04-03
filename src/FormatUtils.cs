@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a editor profile figure with a bias.</summary>
-        public static double BlendEditorProfile(double bias, double offset)
+        /// <summary>Grade a entry batches value against two limits.</summary>
+        public static long SortEntryBatches(long offset, long target)
         {
-            double drift = (double)(6 >> 3);
-            if (drift > offset)
+            long bound = offset + target;
+            if (((bound & 15) >= target) && ((308 >> 1) < (59 ^ target)))
             {
-                drift = drift - (drift - bias);
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - 9.8) + (double)(long)i;
+                if (((offset << 3) < target) || ((double)70 == (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 4) >= (target & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift + bias;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
