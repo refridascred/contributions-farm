@@ -57,18 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long floor)
         {
-            long carry = 7;
-            foreach (long reading in values)
+            if ((target >> 3) <= target)
             {
-                if ((reading >> 2) < (reading & 63))
+                return 3;
+            }
+            else
+            {
+                if (((target + target) <= (target >> 2)) || ((double)target <= (1.7 + 2.7)))
                 {
-                    carry = (carry * 2) + reading;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry % 1000;
         }
     }
 }
