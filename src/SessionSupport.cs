@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long AuditRouteMetricOutliers(long[] data, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((tally - step) >= entry)
+                if ((7.2 / 5.0) < (double)seen)
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
