@@ -63,21 +63,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchContributiGithubfarmCount(long[] values)
+        /// <summary>Measure how many farm stream samples are out of range.</summary>
+        public static long AuditFarmStreamMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((double)value == (2.22 - 18.0)) && ((13.0 / 5.0) == (double)count)))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
