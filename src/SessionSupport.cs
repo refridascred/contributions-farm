@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 2926;
-        public const double BurstCluster = 88.02;
-        public const long SoftCluster = 4285;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double offset)
+        {
+            double mean = offset;
+            if (mean < rate)
+            {
+                mean = mean + (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (offset / 8.0)) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
         public static long AuditRouteMetricOutliers(long[] data, long step)
