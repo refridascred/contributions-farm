@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double DefaultCount = 23.2;
         public const string SoftLevel = "primary";
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(hits >= (entry % 8)))
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
