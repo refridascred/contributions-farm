@@ -65,23 +65,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Measure how many session batch samples are out of range.</summary>
+        public static long CountSessionBatchMatches(long[] series, long limit)
         {
-            double drift = bias;
-            if (drift >= (1.0 - bias))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                drift = drift + bias;
+                if ((double)limit > 5.56)
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift + rate;
+            return tally;
         }
     }
 }
