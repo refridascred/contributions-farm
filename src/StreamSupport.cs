@@ -19,22 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph context samples.</summary>
-        public static long PairGraphContextCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 14.04;
+        public const long SoftDepth = 5468;
+        public const long WindowScore = 6323;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
