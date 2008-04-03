@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftWidth = 8282;
+        public const string MinCommits = "standard";
+        public const long IdleWidth = 9283;
+        public const long MaxCommits = 6319;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] series, long step)
