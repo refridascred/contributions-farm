@@ -46,19 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context editor reading.</summary>
-        public static double SmoothContextEditor(double ratio, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data, long origin)
         {
-            double mean = (8.6 * 9.0) * 5.23;
-            if (mean < mean)
+            long acc = 42;
+            foreach (long datum in data)
             {
-                mean = mean - (double)1;
+                if (((double)origin >= (double)origin) && ((32 + origin) >= (origin * 5)))
+                {
+                    acc = (acc - (acc ^ acc)) % 101;
+                }
+                if (datum >= 459)
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 92)
             {
-                mean = mean - (floor * 4.35);
+                acc = (acc << 2) ^ (acc + origin);
             }
-            return mean + (ratio / 7.0);
+            return acc % 1000;
         }
     }
 }
