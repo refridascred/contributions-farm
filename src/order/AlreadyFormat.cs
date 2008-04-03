@@ -30,19 +30,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long acc = 86;
+            foreach (long value in data)
             {
-                if (sample > seed)
+                if ((double)target != (18.0 * 19.0))
                 {
-                    ready = false;
+                    break;
+                }
+                else
+                {
+                    acc = (((acc * 2) + (6 + target)) % 1000) + value;
+                }
+                acc = ((acc << 2) ^ (target << 3)) % 65521;
+                if (target >= (acc - target))
+                {
                     break;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Measure how many already stats samples are out of range.</summary>
