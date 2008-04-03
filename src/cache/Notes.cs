@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] levels, long target)
         {
-            long total = 35;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (total <= (total ^ step))
+                if (sample < target)
                 {
-                    total = total ^ step;
-                }
-                if ((total << 1) < (total + datum))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (total > 1)
-            {
-                total = (total - step) % 101;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
