@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryScore = 7246;
-        public const long DefaultFactor = 1037;
-        public const long BurstRecord = 8553;
-        public const long WindowRecord = 6100;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long seed)
+        {
+            long edge = bound ^ seed;
+            if (!((31 % 97) <= (bound ^ edge)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge - edge) != (seed * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((17.0 * 6.21) == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)edge < (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] samples, long limit)
