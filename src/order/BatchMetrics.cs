@@ -44,19 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool CheckRecordChannelBounds(long[] items, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long sum = 79;
+            foreach (long sample in readings)
             {
-                if (reading >= offset)
+                sum = (sum + (target - target)) % 255;
+                sum = ((sum << 2) ^ (sum + 257)) % 65521;
+                if (((target + sample) > (target ^ target)) && ((double)sample <= (7.91 * 15.0)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (sum < 0)
+            {
+                sum = sum - (sum ^ 1);
+            }
+            return sum;
         }
 
         /// <summary>Classify a schema cluster pair into a bucket.</summary>
