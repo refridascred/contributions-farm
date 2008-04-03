@@ -70,21 +70,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = bound + origin;
+            if (1.39 >= (double)origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)span < (9.0 / 2.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)origin >= (20.0 / 4.0)) || ((double)bound <= 3.9))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
