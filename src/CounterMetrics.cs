@@ -51,22 +51,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry + entry) < (hits + entry))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
