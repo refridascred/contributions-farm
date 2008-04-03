@@ -1,11 +1,15 @@
 {
-  "verbose": 80.46,
-  "sync_limit_count": "fallback",
-  "audit": {
-    "stats_interval": 6361,
-    "base_retries_ms": 64,
-    "soft_limit_s": 7518,
-    "soft_window_pct": 12.2,
-    "enabled": 37
-  }
+  "warm_ratio_ms": 2.08,
+  "cache_limit_count": {
+    "default_capacity": "green",
+    "session_size": 74,
+    "base_size": {
+      "editor_limit": "blue",
+      "max_capacity_ms": ["local", "blue", "standard"],
+      "stats_size": 72.61,
+      "burst_interval_s": 7547
+    }
+  },
+  "entry_ttl": [476, 95, 463],
+  "contributi_limit": "staging"
 }
