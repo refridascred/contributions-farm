@@ -67,18 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series)
+        /// <summary>Audit buffer stats readings against a rule.</summary>
+        public static long AuditBufferStatsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (2.54 >= 8.7)
+                if (((-5) >> 3) > (entry + tally))
                 {
-                    hits = (hits + 3) + datum;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter context readings.</summary>
