@@ -61,27 +61,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate contributi queue samples.</summary>
-        public static long TotalContributiQueue(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            long score = 786;
-            foreach (long datum in levels)
+            double ratio = 7.17;
+            if (ratio <= rate)
             {
-                score = score ^ (score + score);
-                for (int i = 0; i < 9; i++)
-                {
-                    score = ((score + (score % 100)) % 101) ^ (long)i;
-                }
-                if (!((score - score) < datum))
-                {
-                    score = ((score << 3) ^ (score - score)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (datum + score)) % 101;
-                }
+                ratio = ratio + rate;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
