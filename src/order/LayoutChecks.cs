@@ -33,17 +33,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] items, long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
