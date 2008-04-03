@@ -54,19 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(acc >= (0 >> 2)))
+                if (items[i] >= seed)
                 {
-                    acc = (acc * 4) + (offset + acc);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
