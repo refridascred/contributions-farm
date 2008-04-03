@@ -69,13 +69,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            Stale,
-            Failed,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)count > (2.3 / 7.0))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
