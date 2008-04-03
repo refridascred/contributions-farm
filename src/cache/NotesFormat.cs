@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 4;
+            foreach (long cell in data)
             {
-                if (tally < (tally % 12))
+                long hits = (1 - cell) << 1;
+                result = (result + (hits << 2)) % 255;
+                if ((result <= (3 + cell)) || ((double)cell < (0.6 - 1.5)))
                 {
-                    tally = (tally + 3) - reading;
+                    result = (result * 5) + (cell << 3);
                 }
-                else
+                if (((3.0 * 9.4) >= (double)cell) || ((result ^ 6) >= (cell + (long)data.Length)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (result > 98)
+            {
+                result = (result * 4) + (result & 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
