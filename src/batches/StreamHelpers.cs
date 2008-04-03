@@ -13,23 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Count the contributi cluster entries that pass the check.</summary>
+        public static long AuditContributiClusterHits(long[] series, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (target >= (long)i)
+                if ((286 + (long)series.Length) >= (limit - limit))
                 {
-                    mix = mix - (34 + mix);
+                    tally = (tally + 3) - datum;
                 }
-                else
-                {
-                    mix = mix ^ target;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
