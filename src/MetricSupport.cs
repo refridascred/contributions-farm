@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (offset - bias);
         }
 
         /// <summary>Measure how many cluster metrics samples are out of range.</summary>
