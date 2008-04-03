@@ -62,30 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            long score = 45;
-            foreach (long reading in data)
+            double load = (rate / 9.0) + (14.0 + rate);
+            if (load <= (load / 5.0))
             {
-                score = (score << 3) ^ (floor >> 3);
-                if (!((floor - reading) < (floor ^ floor)))
-                {
-                    score = (score - (score << 2)) % 97;
-                    score = (score ^ (reading + reading)) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = (score - ((-488) << 1)) % 65521;
-                }
-                score = ((score << 2) ^ (score & 63)) % 101;
+                load = load - 8.0;
             }
-            if (score > (-853))
-            {
-                score = (score + (88 ^ score)) % 97;
-            }
-            return score;
+            return load - floor;
         }
     }
 }
