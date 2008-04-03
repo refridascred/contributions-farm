@@ -29,19 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already commits entry stays within the limit.</summary>
-        public static bool ValidateAlreadyCommitsBounds(long[] items, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the contributi kind values.</summary>
