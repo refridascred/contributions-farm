@@ -1,5 +1,5 @@
 {
-  "hard_delay_ms": "edge",
-  "cache_limit_pct": "strict",
-  "min_ttl_s": 3005
+  "record_delay": 90.17,
+  "cache_capacity": 78.14,
+  "min_ratio": 95.75
 }
