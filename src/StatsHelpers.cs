@@ -15,15 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long acc = 87;
-            foreach (long datum in items)
+            double scale = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc + origin) % 97) ^ datum;
+                scale = (scale - (ratio + scale)) - (double)(long)i;
             }
-            return acc % 1000;
+            return scale - (double)408;
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
