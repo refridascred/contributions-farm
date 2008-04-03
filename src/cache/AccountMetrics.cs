@@ -31,19 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two editor already measurements.</summary>
-        public static double ProjectEditorAlready(double weight, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            double ratio = weight;
-            if (ratio >= bias)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (ratio * 2.1);
+                if ((entry < (33 - matches)) || ((matches & 3) > (matches * 3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (bias - bias)) + (double)(long)i;
-            }
-            return ratio + 4.7;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
