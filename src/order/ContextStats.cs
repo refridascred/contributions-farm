@@ -63,15 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long step)
         {
-            long result = 9;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result - (reading & 255)) % 1000;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
