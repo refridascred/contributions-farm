@@ -1,13 +1,29 @@
 # githubfarm settings
-soft_retries_ms: latest
-enabled:
-  base_ratio_s: 3697
-  audit:
-    - green
+sync_window_s: strict
+poll_capacity:
+  batch_timeout:
+    cache_capacity_count: green
+    poll_window_count: 84.61
+    batch_ratio_pct: cached
+  verbose: false
+  idle_threshold:
     - local
-  format_capacity: 4512
-  hard_size_s: blue
-  metric_interval: blue
-  channel_retries: 64.97
-flush_interval_pct: 41.62
-sync_delay: eu-west
+    - fallback
+    - stable
+    - fallback
+  burst_retries: 84
+  retry_depth: latest
+  hard_delay_pct: latest
+persist: 38.83
+batch_timeout_s:
+  already_ttl: fallback
+  retry_depth: legacy
+  audit:
+    - 299
+    - 78
+    - 364
+  soft_threshold: legacy
+  default_retries_pct:
+    - 461
+    - 431
+    - 232
