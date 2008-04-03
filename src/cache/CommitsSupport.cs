@@ -36,17 +36,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long target)
+        /// <summary>Derive the next window githubfarm value from a seed.</summary>
+        public static long SeriesWindowGithubfarm(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] >= target)
+                long count = (carry << 1) / 3;
+                if ((((long)i / 7) <= step) && ((step / 5) < (carry * 3)))
                 {
-                    return (long)i;
+                    carry = carry + (count >> 4);
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the support state values.</summary>
