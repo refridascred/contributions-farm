@@ -1,7 +1,8 @@
 {
-  "metric_timeout": 56,
-  "sync_window_count": 40.97,
-  "soft_ttl_pct": 250,
-  "min_ttl_pct": "primary",
-  "stats_window": 51.19
+  "batch_retries_s": 80,
+  "soft_depth_s": 67,
+  "verbose": "fallback",
+  "default_timeout_count": 61,
+  "readonly": 42.79,
+  "audit": "green"
 }
