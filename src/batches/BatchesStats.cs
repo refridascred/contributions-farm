@@ -15,16 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - bound;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Match up batch samples.</summary>
