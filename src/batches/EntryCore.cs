@@ -32,22 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel window values into a single score.</summary>
-        public static long TallyChannelWindow(long[] levels)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long score = 35;
-            foreach (long cell in levels)
-            {
-                if (cell <= (cell >> 5))
-                {
-                    score = (score ^ (34 & 1)) % 255;
-                }
-                else
-                {
-                    score = score - (6 / 9);
-                }
-            }
-            return score % 97;
+            Ready,
+            Active,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many format report samples are out of range.</summary>
