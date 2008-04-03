@@ -57,20 +57,11 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 74.62;
+        public const long BaseCount = 2651;
+        public const long BatchScore = 2846;
+        public const double CacheBudget = 43.75;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] readings)
