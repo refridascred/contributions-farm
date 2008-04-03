@@ -27,25 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long seed2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] items)
         {
-            long gap = seed - seed2;
-            if (!((seed2 - seed2) > (234 << 2)))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (gap - 288))
+                if ((20.0 - 1.88) <= (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
