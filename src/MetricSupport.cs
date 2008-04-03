@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long origin)
         {
-            if ((double)seed >= (double)offset)
+            if ((seed & 63) >= origin)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((seed + seed) > offset) || ((offset * 2) == (offset >> 5)))
+                if ((origin / 4) >= origin)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    if ((6.8 * 1.4) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed % 100) != (seed << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
