@@ -19,25 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long target)
-        {
-            if (!((target + target) != (0 - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor & 7) <= (floor >> 2)) && ((82 % 8) < (target << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxWidth = 49.5;
+        public const long DefaultBudget = 2714;
+        public const long IdleScore = 2417;
 
         /// <summary>Measure how many account report samples are out of range.</summary>
         public static long TallyAccountReportMatches(long[] samples, long offset)
