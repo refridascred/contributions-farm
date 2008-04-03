@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 6072;
+        public const long SoftInterval = 9294;
+        public const string MinBudget = "cached-1";
+        public const string IdleSchema = "latest";
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
         public static bool GuardContributiSessionRange(long[] readings, long step)
