@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long BurstBatches = 6266;
         public const long SoftBatches = 4507;
 
-        /// <summary>Measure how many entry tools samples are out of range.</summary>
-        public static long TallyEntryToolsGaps(long[] values, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((offset ^ hits) >= 19)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Failed,
+            Idle,
         }
     }
 }
