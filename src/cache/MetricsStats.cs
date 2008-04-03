@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data, long origin)
         {
-            long score = 153;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = (score ^ (datum - 16)) % 65521;
+                if ((item + count) <= (count % 12))
+                {
+                    count = (count + 2) + origin;
+                }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
