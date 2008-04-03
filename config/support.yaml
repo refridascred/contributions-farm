@@ -1,6 +1,12 @@
 # support settings
-flush_delay_count: staging
-sync_ttl:
-  - fallback
-  - fallback
-layout_ttl: 75.96
+warm_timeout_count: 77.37
+verbose:
+  stats_threshold: latest
+  enabled: 80.32
+  queue_delay: standard
+  burst_size_count: 84
+poll_window_s: 250
+retry_window_pct: blue
+min_retries_count:
+  - legacy
+  - cached
