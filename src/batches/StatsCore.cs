@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long limit, long limit2)
-        {
-            long next = limit + limit2;
-            if (((limit2 + limit2) < limit) || ((next >> 2) <= (limit / 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit - limit) <= (next >> 4)) && ((limit % 60) >= (limit * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next < (limit + limit2)) && ((limit2 % 60) >= 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "local-edge";
+        public const long StepFactor = 3016;
+        public const string BurstBudget = "open-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstCount = 72.58;
