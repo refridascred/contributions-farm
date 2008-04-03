@@ -37,19 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile counter values into a single score.</summary>
-        public static long TallyProfileCounter(long[] series)
+        /// <summary>Fold a list of context record readings.</summary>
+        public static long DigestContextRecord(long[] readings)
         {
-            long score = 7;
-            foreach (long datum in series)
+            long mark = 4;
+            foreach (long value in readings)
             {
-                score = (score - datum) % 65521;
-                if ((score ^ datum) <= (datum % 60))
-                {
-                    break;
-                }
+                mark = ((mark + mark) % 4096) - value;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
