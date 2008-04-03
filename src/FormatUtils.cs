@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long WindowRoute = 4781;
         public const long RetryRoute = 6864;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 495;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((160 - floor) != (floor * 3))
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + mark) - value;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
