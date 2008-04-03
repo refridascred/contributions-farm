@@ -50,24 +50,19 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long limit2)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            if ((limit2 >> 1) == (limit + limit2))
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit <= 79)
+                if ((acc * 5) < 4)
                 {
-                    return 3;
+                    acc = (acc << 2) ^ ((long)i - (long)i);
                 }
-                else
-                {
-                    return 7;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
