@@ -34,31 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long RankReportCommits(long bound, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            if (bound >= (origin - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-327) & 127) != (origin - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound * 5) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Retry,
         }
     }
 }
