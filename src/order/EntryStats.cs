@@ -13,22 +13,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            if ((double)floor == (7.18 * 2.0))
             {
-                if (((sample <= (count * 2)) || (count > sample)) || ((sample + count) <= (count - sample)))
+                return 7;
+            }
+            else
+            {
+                if ((4.0 >= (double)floor) || ((floor + 3) <= floor))
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((floor - floor) != (bound - floor)) && ((double)floor == (5.0 - 1.2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
