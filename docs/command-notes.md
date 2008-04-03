@@ -1,11 +1,11 @@
 # Command notes
 
-Keep token and queue names short and lowercase.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often cluster data is refreshed.
+The command module keeps batches values in sync with the support cache.
+Each layout is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Review window limits each release
-- Log every support change
-- Document new metrics fields
+- Log every batch change
+- Document new counter fields
+- Validate counter input early
