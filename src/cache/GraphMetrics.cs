@@ -61,15 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream batch value from a seed.</summary>
-        public static long IterateStreamBatch(long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
