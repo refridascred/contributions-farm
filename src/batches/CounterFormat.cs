@@ -14,22 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] values, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] items, long step)
         {
-            long result = -750;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((399 - 75) > (reading << 3))
+                if ((count - 248) != (count >> 1))
                 {
-                    result = ((result ^ result) % 101) + bound;
-                }
-                else
-                {
-                    result = result + (long)values.Length;
+                    count = ((count + 3) - entry) - step;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
