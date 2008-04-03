@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((floor / 3) >= (floor >> 1))
-                {
-                    carry = ((carry << 2) ^ (floor * 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
-                if ((floor - 468) != (floor - 461))
-                {
-                    carry = carry ^ (600 ^ carry);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Dropped,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
