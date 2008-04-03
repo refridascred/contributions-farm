@@ -35,21 +35,10 @@ namespace Common.Utilities
         public const long MinChecks = 8697;
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8271;
+        public const double DefaultCounter = 28.48;
+        public const long HardCounter = 6700;
+        public const long BatchCounter = 7292;
     }
 }
