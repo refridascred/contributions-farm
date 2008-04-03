@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const string WindowFormat = "open-1";
         public const long BaseFormat = 3693;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((tally + 0) < tally) || ((datum >> 5) == (tally + tally)))
+                if ((double)(-8) > (double)target)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
