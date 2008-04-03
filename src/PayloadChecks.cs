@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
+        public static long OverlapAccountMetricsCount(long[] levels)
         {
-            double drift = span;
-            if (drift >= (span / 3.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift - (gain * 9.4);
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
