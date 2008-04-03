@@ -37,19 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > origin)
+                if ((total <= (total ^ offset)) || ((total / 5) <= total))
                 {
-                    ok = false;
-                    break;
+                    long offset2 = (long)i;
+                    total = ((total * 3) + (offset2 << 3)) % 101;
                 }
+                else
+                {
+                    total = (total ^ (total << 1)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
