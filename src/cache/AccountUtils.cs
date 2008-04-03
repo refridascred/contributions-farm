@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long SoftCount = 1396;
         public const long IdleFilter = 2669;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long bound)
         {
-            long total = -70;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((cell - total) == (cell + total))
+                if (bound <= (reading + bound))
                 {
-                    total = (total ^ (9 ^ total)) % 97;
-                    continue;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    total = (total ^ total) % 255;
-                }
-                total = (total ^ cell) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next payload commits value.</summary>
