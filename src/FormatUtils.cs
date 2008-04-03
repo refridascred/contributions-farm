@@ -64,11 +64,15 @@ namespace Common.Utilities
         public const long BaseToken = 3674;
         public const long CacheCount = 2303;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 49.72;
-        public const long MinCommand = 6169;
-        public const double HardFactor = 49.75;
-        public const long WindowInterval = 5097;
-        public const double WindowCommand = 59.01;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data)
+        {
+            long mark = 42;
+            foreach (long entry in data)
+            {
+                mark = (mark ^ (mark % 64)) ^ entry;
+            }
+            return mark % 1000;
+        }
     }
 }
