@@ -34,21 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry order pairs that satisfy a relation.</summary>
-        public static long OverlapEntryOrderCount(long[] items)
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long WeighBatchQueue(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor ^ (anchor + (-551))) - reading;
             }
-            return tally;
+            if (anchor < 60)
+            {
+                anchor = (anchor + (5 + anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
