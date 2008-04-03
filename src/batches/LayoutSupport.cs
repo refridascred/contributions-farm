@@ -43,26 +43,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the context window series from a seed.</summary>
-        public static long IterateContextWindow(long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long carry = -13;
+            foreach (long datum in readings)
             {
-                sum = (sum << 3) ^ (long)i;
-                sum = (sum * 4) + step;
-                if ((step >= sum) && ((sum & 3) <= (sum / 7)))
+                if ((4.8 - 3.53) >= (double)carry)
                 {
-                    sum = (sum - (26 * 2)) % 101;
-                    continue;
+                    carry = (((carry << 3) ^ (carry >> 5)) % 65521) - datum;
                 }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Roll a editor support counter forward.</summary>
