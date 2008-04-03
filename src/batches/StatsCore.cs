@@ -13,14 +13,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            Done,
-            Retry,
-            Closed,
-            Dropped,
-            Stale,
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 2) ^ ((-2) - result)) % 4096;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
