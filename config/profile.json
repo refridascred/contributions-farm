@@ -1,14 +1,5 @@
 {
-  "retry_size_s": false,
-  "soft_size": {
-    "hard_ttl_ms": false,
-    "retry_delay": 76,
-    "format_timeout": 90.67,
-    "context_delay": 500,
-    "order_retries": "cached"
-  },
-  "metric_timeout": 9599,
-  "idle_capacity": 1024,
-  "default_timeout": "open",
-  "batch_interval": 37.68
+  "default_ttl_ms": 40.48,
+  "audit": ["legacy", "cached", "latest"],
+  "min_timeout": "stable"
 }
