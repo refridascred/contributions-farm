@@ -49,19 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Active,
+            Retry,
+            Idle,
+            Paused,
         }
     }
 }
