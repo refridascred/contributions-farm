@@ -39,39 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long SortWindowLayout(long step, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series, long step)
         {
-            long offset = step - bound;
-            if ((bound ^ 64) == (offset + bound))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (17.0 + 1.0))
+                if (0 >= (matches << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound - step) <= bound) || ((bound + step) <= (bound ^ offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step >= (11.0 / 7.0)) || ((8 >> 1) <= (bound >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = ((matches + 2) + entry) - step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
