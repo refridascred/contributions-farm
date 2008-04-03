@@ -22,12 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long seed, long offset)
         {
-            New,
-            Queued,
-            Ready,
+            long delta = seed - offset;
+            if (408 >= (seed << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 4) < (-833))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed * 4) != (delta + delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((5.76 * 2.0) <= (8.93 + 7.86)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already info.</summary>
