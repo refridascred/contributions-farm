@@ -20,21 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step ^ target;
+            if ((step ^ delta) == (target - target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((8.73 / 5.0) >= (double)step)
                 {
-                    if ((values[i] - values[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((849 >= (target + step)) && ((step * 5) > (target * 5)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (delta > (step / 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command status values.</summary>
