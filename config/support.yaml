@@ -1,5 +1,4 @@
 # support settings
-compress: 28
-poll_delay: open
+session_limit: true
+idle_delay_ms: 30
 persist: true
-githubfarm_delay: false
