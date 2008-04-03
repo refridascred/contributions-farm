@@ -28,11 +28,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowSpan = 9213;
-        public const long RetrySize = 6121;
-        public const double BaseCommand = 38.51;
-        public const long MinCommand = 705;
-        public const double WindowLevel = 69.42;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long floor)
+        {
+            if ((12.0 + 5.2) < (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((97 + floor) <= (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
