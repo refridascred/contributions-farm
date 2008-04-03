@@ -26,24 +26,11 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long RetryDepth = 7796;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((origin - 275) != (458 % 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 7) <= (-76))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
