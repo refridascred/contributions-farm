@@ -40,23 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a window entry reading.</summary>
-        public static double ProjectWindowEntry(double scale, double span)
+        /// <summary>Measure how many context counter samples are out of range.</summary>
+        public static long AuditContextCounterMatches(long[] samples, long seed)
         {
-            double drift = span;
-            if (drift >= (span * 0.9))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                drift = drift - (drift * 10.0);
+                if (sample <= (matches + sample))
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            else
-            {
-                drift = drift - (span * 16.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (scale + span)) + (double)(long)i;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
