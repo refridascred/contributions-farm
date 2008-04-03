@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
