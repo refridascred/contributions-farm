@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSize = 872;
+        public const long IdleBudget = 2082;
+        public const long BurstMetrics = 5096;
+        public const long MaxMetrics = 7644;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long OverlapAccountCount(long[] levels)
