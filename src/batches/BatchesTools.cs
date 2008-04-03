@@ -26,13 +26,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            Draft,
-            Pending,
-            Retry,
-            Active,
+            double rate = 17.0 - (double)9;
+            if (rate <= span)
+            {
+                rate = rate + (scale * 3.0);
+            }
+            return rate - (double)(-49);
         }
     }
 }
