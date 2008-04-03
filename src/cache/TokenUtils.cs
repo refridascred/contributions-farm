@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate stats contributi readings against a bound.</summary>
+        public static bool GuardStatsContributiLimits(long[] data, long step)
         {
-            Draft,
-            Queued,
-            Closed,
-            Locked,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
