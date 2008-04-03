@@ -1,16 +1,5 @@
 {
-  "enabled": {
-    "context_delay": "edge",
-    "warm_timeout_count": [335, 377],
-    "poll_interval_pct": "staging"
-  },
-  "flush_ttl_ms": 13.72,
-  "cache_depth": ["primary", "open", "local"],
-  "min_ratio_count": 11,
-  "warm_depth_count": {
-    "batch_depth": 6678,
-    "warm_window_ms": 60,
-    "soft_window": "fallback"
-  },
-  "batch_window_s": "blue"
+  "idle_limit_ms": "latest",
+  "flush_threshold": 4464,
+  "burst_depth_count": "primary"
 }
