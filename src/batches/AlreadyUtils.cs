@@ -61,11 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Failed,
+            Draft,
         }
     }
 }
