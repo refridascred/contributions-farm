@@ -43,15 +43,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long ScoreBufferStream(long[] data, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] samples, long offset)
         {
-            long sum = 2;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                sum = (((sum ^ 90) % 65521) ^ reading) + target;
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return valid;
         }
     }
 }
