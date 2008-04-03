@@ -22,38 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
-        public static long RankToolsGithubfarm(long bound, long limit)
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long AuditTokenBufferGaps(long[] levels, long floor)
         {
-            if ((limit + bound) >= (limit % 100))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit - 59) == (bound ^ bound)) && ((2.4 / 5.0) > (double)limit))
+                if ((double)entry < 7.9)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + bound) == (bound % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - limit) <= (limit / 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 1) + floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
