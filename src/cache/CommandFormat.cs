@@ -59,12 +59,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long SortWindowLayout(long step, long bound)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
+            long offset = step - bound;
+            if ((bound ^ 64) == (offset + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (17.0 + 1.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound - step) <= bound) || ((bound + step) <= (bound ^ offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step >= (11.0 / 7.0)) || ((8 >> 1) <= (bound >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session buffer readings.</summary>
