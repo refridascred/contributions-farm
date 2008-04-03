@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            long state = 64;
-            foreach (long value in data)
+            double ratio = floor;
+            if (ratio < floor)
             {
-                if (((994 - value) != (value - state)) || (state > (state - state)))
-                {
-                    state = state - (state + state);
-                }
+                ratio = ratio - gain;
             }
-            if (state < 59)
+            else
             {
-                state = (state << 3) ^ state;
+                ratio = ratio + (double)21;
             }
-            return state % 65521;
+            return ratio - (1.1 / 3.0);
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
