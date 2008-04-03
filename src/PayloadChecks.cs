@@ -38,22 +38,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Classify a metric schema pair into a bucket.</summary>
+        public static long SortMetricSchema(long target, long limit)
         {
-            long carry = 884;
-            foreach (long sample in readings)
+            if ((double)limit <= (double)target)
             {
-                if (((double)sample <= (double)carry) && (((-6) - sample) > (carry >> 2)))
+                return 7;
+            }
+            else
+            {
+                if ((limit + 8) <= (target >> 4))
                 {
-                    carry = ((carry * 4) + (99 << 2)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((target + limit) == (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target > (limit >> 4)) || ((5.09 / 8.0) >= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
         }
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
