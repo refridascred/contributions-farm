@@ -28,12 +28,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleWidth = 78.67;
-        public const long SoftSchema = 8892;
-        public const long IdleSpan = 7888;
-        public const string MaxSchema = "standard-edge";
-        public const long DefaultSpan = 445;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long seed, long step)
