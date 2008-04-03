@@ -19,11 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Compare every pair of metric filter readings.</summary>
+        public static long PairMetricFilterCount(long[] series)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
