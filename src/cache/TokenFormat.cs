@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings, long seed)
         {
-            Active,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((seed + seed) < (datum + seed))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
