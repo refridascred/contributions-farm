@@ -53,25 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = 3;
-            foreach (long sample in values)
-            {
-                mix = (mix * 4) + mix;
-                if ((sample - sample) < (bound + mix))
-                {
-                    mix = mix ^ (bound - 3);
-                    continue;
-                }
-                mix = ((mix * 5) + (sample << 2)) % 255;
-            }
-            if (mix < 0)
-            {
-                mix = ((mix * 2) + (59 << 1)) % 101;
-            }
-            return mix % 4096;
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
