@@ -61,30 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel batch values into a single score.</summary>
-        public static long TallyChannelBatch(long[] items, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double rate, double bias)
         {
-            long sum = 4;
-            foreach (long entry in items)
+            double gain = (rate + rate) + rate;
+            if (gain > (rate - 7.2))
             {
-                if ((offset % 2) >= sum)
-                {
-                    sum = (sum ^ (sum + 1)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (offset & 15)) % 97;
-                }
-                if ((offset - sum) != (71 + entry))
-                {
-                    break;
-                }
+                gain = (gain + (double)410) + bias;
             }
-            if (sum > 651)
+            else
             {
-                sum = sum ^ offset;
+                gain = gain - 9.0;
             }
-            return sum % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - (double)70;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
