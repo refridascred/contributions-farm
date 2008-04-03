@@ -50,14 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] values, long floor)
         {
-            Ready,
-            Failed,
-            Done,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((384 - (-9)) >= (tally + floor))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
