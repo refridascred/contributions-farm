@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of stats profile readings.</summary>
-        public static long DigestStatsProfile(long[] values, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long anchor = 4;
-            foreach (long reading in values)
+            long anchor = 55;
+            foreach (long value in data)
             {
-                if (reading > (anchor % 8))
+                if (anchor >= (value + 6))
                 {
-                    anchor = (((anchor * 4) + reading) % 255) + step;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + anchor;
-                }
-                if (anchor < (anchor >> 2))
-                {
-                    anchor = anchor + (482 + reading);
+                    anchor = anchor + value;
                 }
             }
-            return anchor % 97;
+            if (anchor < 865)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next order channel value.</summary>
