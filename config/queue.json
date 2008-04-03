@@ -1,15 +1,13 @@
 {
-  "batch_size_s": "legacy",
-  "soft_timeout_count": true,
-  "base_limit_pct": {
-    "default_size": true,
-    "sync_timeout_s": 5391,
-    "cache_retries_pct": 100,
-    "tools_timeout": [95, 222],
-    "batch_delay": 69.49,
-    "sync_ttl_s": ["fallback", "eu-west", "standard"]
+  "profile_delay": {
+    "persist": ["local", "stable"],
+    "poll_interval": 9367,
+    "stats_interval": "standard",
+    "soft_size_s": false,
+    "context_interval": true
   },
-  "githubfarm_limit": 3.23,
-  "batch_window": ["primary", "legacy"],
-  "warm_depth_s": [397, 459, 447]
+  "warm_ratio": "cached",
+  "warm_depth_count": [305, 334, 164, 265],
+  "poll_size_pct": 250,
+  "batch_depth_ms": "open"
 }
