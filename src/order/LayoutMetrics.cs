@@ -28,18 +28,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Count the support format entries that pass the check.</summary>
+        public static long AuditSupportFormatHits(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(reading <= (count % 8)) && (count < (long)items.Length))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
