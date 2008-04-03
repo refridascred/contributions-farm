@@ -1,7 +1,5 @@
 {
-  "warm_depth": 500,
-  "support_interval": [405, 135],
-  "min_depth_pct": 44.93,
-  "githubfarm_ttl": "blue",
-  "account_capacity": "stable"
+  "soft_size": false,
+  "queue_retries": [291, 261, 397, 286],
+  "burst_ratio": ["blue", "cached"]
 }
