@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long target, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] values, long seed)
         {
-            if (((double)target >= 20.0) && ((863 ^ 8) >= (floor >> 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor * 2) >= 7) && ((target * 4) > (floor - floor)))
+                if ((values[i] < seed) && ((values[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target * 4) != (floor * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target <= 9.7)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
