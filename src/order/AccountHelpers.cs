@@ -80,38 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            if ((double)bound != (8.0 * 2.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ bound) < (bound ^ 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor + 100) > (bound - floor)) && ((floor ^ floor) >= bound))
+                    if ((items[i] - items[j]) == 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound >= (bound & 31)) || ((double)bound >= (7.9 / 8.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
