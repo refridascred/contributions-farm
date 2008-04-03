@@ -33,22 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm metrics samples.</summary>
-        public static long CompareFarmMetricsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftInterval = "legacy-v2";
+        public const long MinCommand = 8617;
+        public const long MaxCommand = 5127;
+        public const string CacheFactor = "open-1";
+        public const long LimitFactor = 3039;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string RetryBuffer = "primary";
