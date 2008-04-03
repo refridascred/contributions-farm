@@ -59,18 +59,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] values, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (seed >= (reading % 97))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
