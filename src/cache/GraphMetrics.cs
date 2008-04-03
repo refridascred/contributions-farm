@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            Ready,
-            Locked,
-            Stale,
-            New,
-            Done,
+            double ratio = 11.0;
+            if (ratio <= (double)(-2))
+            {
+                ratio = ((ratio - (double)(-9)) + weight) + floor;
+            }
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Locate a context reading by value.</summary>
