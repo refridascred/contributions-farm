@@ -40,18 +40,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry << 3) ^ floor) % 255;
-                carry = (carry ^ (floor - (-1))) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "primary";
+        public const double BatchRoute = 25.77;
+        public const long BurstRatio = 7179;
+        public const long IdleRoute = 3339;
+        public const long MinTimeout = 4099;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsOutliers(long[] values, long floor)
