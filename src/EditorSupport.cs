@@ -80,15 +80,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
