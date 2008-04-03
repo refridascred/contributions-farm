@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double bias)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double ratio2 = bias;
-            return ratio2 + (ratio / 4.0);
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
