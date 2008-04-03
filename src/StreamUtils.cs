@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "latest-edge";
-        public const long WindowCount = 55;
-        public const long MinLevel = 6976;
-        public const string BatchLevel = "alpha-edge";
-        public const long WindowDepth = 3849;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 3) != (sample << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank format tools input into a small class.</summary>
         public static long SortFormatTools(long step, long floor)
