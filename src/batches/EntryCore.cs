@@ -14,12 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            Stale,
-            Failed,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+                if (!((double)mark < (double)origin))
+                {
+                    mark = (mark * 3) + origin;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits level values.</summary>
