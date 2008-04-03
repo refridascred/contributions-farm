@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ratio2 + (9.0 - ratio);
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long AuditTokenBufferGaps(long[] levels, long floor)
+        /// <summary>Count the token stream entries that pass the check.</summary>
+        public static long MeasureTokenStreamHits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)entry < 7.9)
+                if (limit > 0)
                 {
-                    seen = (seen + 1) + floor;
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
