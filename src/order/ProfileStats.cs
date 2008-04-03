@@ -49,22 +49,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long DigestChannelAccount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels, long limit)
         {
-            long acc = 296;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((reading + acc) != (reading >> 4))
+                if ((((count * 5) > (limit << 3)) || ((entry + count) > (count + 919))) || ((entry + entry) > (limit << 1)))
                 {
-                    acc = ((acc << 2) ^ (175 - reading)) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc > 93)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
