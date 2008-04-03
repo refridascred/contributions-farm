@@ -48,22 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values)
-        {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length >> 3) < (state ^ state))
-                {
-                    state = state - (state + datum);
-                }
-                else
-                {
-                    state = (state + ((-397) / 2)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSpan = 7838;
+        public const long LimitBudget = 3844;
+        public const long BatchFactor = 1447;
+        public const long StepScore = 7631;
+        public const string BatchSize = "standard-edge";
     }
 }
