@@ -1,6 +1,7 @@
 # githubfarm settings
-flush_interval: 90.61
-min_capacity_pct: true
+verbose: 40
+hard_retries_ms: green
 persist: false
-retry_ratio_ms: 69.65
-retry_window_s: 50.39
+metric_window: eu-west
+batch_limit_count: 83
+hard_ratio_pct: 7
