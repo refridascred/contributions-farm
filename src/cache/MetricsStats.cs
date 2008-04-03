@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long score = 51;
-            foreach (long entry in series)
-            {
-                if (5.0 < (double)score)
-                {
-                    score = ((score ^ ((-318) % 24)) % 65521) ^ entry;
-                }
-            }
-            if (score > 43)
-            {
-                score = (score + (target * 2)) % 255;
-            }
-            return score;
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
