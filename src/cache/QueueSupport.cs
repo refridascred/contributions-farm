@@ -30,19 +30,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] samples, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
