@@ -1,5 +1,7 @@
 {
-  "poll_timeout_ms": "green",
-  "entry_depth": true,
-  "audit": ["cached", "eu-west", "open"]
+  "min_size_pct": "staging",
+  "audit": "latest",
+  "strict": "local",
+  "contributi_timeout": 4,
+  "record_interval": 40.4
 }
