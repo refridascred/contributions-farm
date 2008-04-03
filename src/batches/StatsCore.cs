@@ -68,12 +68,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Paused,
-            Locked,
-            Pending,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
