@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream batches samples.</summary>
-        public static long OverlapStreamBatchesCount(long[] readings)
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCacheBounds(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > limit)
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the record status values.</summary>
