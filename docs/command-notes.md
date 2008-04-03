@@ -1,16 +1,14 @@
 # Command notes
 
-The metric module keeps metrics values in sync with the window cache.
-The context helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the channel queue.
+Keep format and metric names short and lowercase.
+Run the notes check before changing any buffer limits.
 
-The window module keeps payload values in sync with the stats cache.
-Run the command check before changing any order limits.
-The schema report groups every channel by order.
+Run the window check before changing any githubfarm limits.
+Run the cache check before changing any graph limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep commits values small
-- Document new command fields
-- Log every token change
+- Validate channel input early
+- Log every support change
+- Prefer editor defaults
+- Keep context values small
