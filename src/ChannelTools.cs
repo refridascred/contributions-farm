@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values)
         {
-            Queued,
-            Draft,
-            Active,
-            Idle,
+            long result = 589;
+            foreach (long reading in values)
+            {
+                if (((reading - result) <= (575 % 24)) || ((reading + result) <= (result + result)))
+                {
+                    result = ((result * 2) + result) % 1000;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a cluster header.</summary>
