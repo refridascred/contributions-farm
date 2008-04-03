@@ -40,19 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a filter metrics counter forward.</summary>
-        public static long StepFilterMetrics(long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((16.0 * 4.8) <= (double)seed)
-                {
-                    acc = (acc + (seed & 127)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Ready,
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Combine batches layout values into a single score.</summary>
