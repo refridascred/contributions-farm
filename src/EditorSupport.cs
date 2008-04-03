@@ -80,11 +80,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double gain = offset / 8.0;
-            return (gain + 10.0) + rate;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
