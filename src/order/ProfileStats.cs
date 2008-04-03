@@ -48,9 +48,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleBudget = 7835;
-        public const long DefaultSpan = 8016;
-        public const string SoftBudget = "open-1";
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long DigestChannelAccount(long[] levels)
+        {
+            long acc = 296;
+            foreach (long reading in levels)
+            {
+                if ((reading + acc) != (reading >> 4))
+                {
+                    acc = ((acc << 2) ^ (175 - reading)) % 97;
+                }
+            }
+            if (acc > 93)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 97;
+        }
     }
 }
