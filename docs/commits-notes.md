@@ -1,14 +1,14 @@
 # Commits notes
 
-The support report groups every stream by filter.
-The record module keeps stream values in sync with the queue cache.
-The editor report groups every farm by account.
+Keep stream and booking names short and lowercase.
+Use editor settings to tune how often window data is refreshed.
 
-When a stats fails, the profile handler retries a few times before giving up.
-The format module keeps metric values in sync with the session cache.
+Use metric settings to tune how often report data is refreshed.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review editor limits each release
 - Document new checks fields
-- Validate channel input early
+- Validate farm input early
+- Keep report values small
+- Review cache limits each release
