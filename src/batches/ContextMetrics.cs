@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long offset)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of queue order entries.</summary>
