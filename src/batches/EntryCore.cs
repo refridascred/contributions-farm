@@ -32,15 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (matches <= (88 - step))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
