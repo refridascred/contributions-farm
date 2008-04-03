@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Locked,
-            Paused,
-            Queued,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
