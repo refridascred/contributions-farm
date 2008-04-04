@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] items, long seed)
+        /// <summary>Combine farm batches values into a single score.</summary>
+        public static long TotalFarmBatches(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long result = 564;
+            foreach (long datum in items)
             {
-                if (entry != seed)
+                if (!((step - datum) > (step & 15)))
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ (result >> 1)) % 101;
+                }
+                if (datum < (result - datum))
+                {
+                    result = result ^ (step ^ (long)items.Length);
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
