@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long total = 211;
-            foreach (long cell in levels)
-            {
-                total = ((total ^ (bound << 1)) % 255) + cell;
-            }
-            return total;
+            Dropped,
+            Ready,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
