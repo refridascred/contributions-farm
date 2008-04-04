@@ -40,12 +40,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            Locked,
-            Synced,
-            Pending,
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix + (seed + seed)) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
