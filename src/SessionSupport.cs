@@ -21,15 +21,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            New,
+            Stale,
+            Failed,
+            Draft,
         }
     }
 }
