@@ -65,22 +65,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long CountSupportPayloadOutliers(long[] values, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((272 >> 5) < (count + 53))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 3) + reading) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
