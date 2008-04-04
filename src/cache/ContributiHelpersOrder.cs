@@ -20,12 +20,13 @@ namespace Common.Utilities
             return bias + 7.81;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
