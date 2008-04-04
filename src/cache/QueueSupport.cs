@@ -27,14 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Retry,
-            Queued,
-            Stale,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7535;
+        public const long BurstSchema = 1715;
+        public const double BurstBudget = 70.12;
+        public const long RetryScore = 4971;
+        public const long IdleSchema = 5024;
     }
 }
