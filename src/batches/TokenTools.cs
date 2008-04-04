@@ -19,39 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels, long origin)
         {
-            long next = target ^ bound;
-            if (!(next <= (target << 1)))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6 + target) >= (18 + target))
+                if ((origin ^ matches) != (entry / 2))
                 {
-                    return 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((bound / 7) < (next << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= next)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the route level values.</summary>
