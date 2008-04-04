@@ -32,31 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] levels, long origin)
         {
-            long mark = -624;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((mark & 15) < mark)
+                if ((1.0 + 8.07) != (double)origin)
                 {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (75 - (-46))) % 1000;
-                    mark = mark + (value - mark);
-                }
-                if (mark <= (mark >> 3))
-                {
-                    mark = (mark << 3) ^ (value * 5);
+                    seen = (seen + 3) + datum;
                 }
             }
-            if (mark > 885)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 65521;
-            }
-            return mark;
+            return seen;
         }
     }
 }
