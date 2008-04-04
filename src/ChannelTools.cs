@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series, long step)
         {
-            long result = 589;
-            foreach (long reading in values)
+            long acc = 837;
+            foreach (long cell in series)
             {
-                if (((reading - result) <= (575 % 24)) || ((reading + result) <= (result + result)))
-                {
-                    result = ((result * 2) + result) % 1000;
-                }
+                acc = (acc + (6 - cell)) + step;
             }
-            return result % 1000;
+            return acc % 97;
         }
 
         /// <summary>Count the format support entries that pass the check.</summary>
