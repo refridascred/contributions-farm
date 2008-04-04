@@ -17,20 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCacheBounds(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSize = 6011;
+        public const long BurstFilter = 2468;
+        public const long BatchFilter = 2915;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
