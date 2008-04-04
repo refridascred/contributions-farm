@@ -31,23 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stream checks figure with a bias.</summary>
-        public static double ScaleStreamChecks(double gain, double offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long step)
         {
-            double load = gain;
-            if (load >= 6.32)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (offset * 9.99);
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (offset / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - gain) - (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
     }
 }
