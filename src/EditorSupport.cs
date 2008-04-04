@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] values, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (sample != origin)
                 {
-                    sum = (sum + origin) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                if (!((sum * 3) >= origin))
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Describe the metric class values.</summary>
