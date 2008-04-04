@@ -1,22 +1,35 @@
 # entry settings
-notes_size:
-  - blue
-  - edge
-  - green
-strict:
-  - local
-  - latest
-  - blue
-dry_run: standard
-audit:
-  poll_limit_s: 35.92
-  cache_delay_ms:
-    - local
-    - latest
-    - fallback
-  schema_ratio: false
-  poll_retries_count: 500
-  flush_size_count: 5.27
-  hard_depth: local
-notes_timeout: 6363
-cache_delay: 4.58
+hard_ttl_s:
+  flush_interval:
+    cache_capacity: 7324
+    enabled: 9903
+    flush_size: green
+    stats_depth: 100
+  channel_timeout: 59.99
+  retry_depth:
+    - 191
+    - 248
+  default_ttl_ms: staging
+base_size_pct: local
+persist: 78.74
+cache_window_ms:
+  batch_window_s:
+    schema_ttl: 2147
+    readonly: primary
+    base_capacity: 19.04
+  strict:
+    - 216
+    - 140
+  payload_window: stable
+  warm_interval_ms:
+    hard_ratio_ms: 1372
+    poll_interval_s: fallback
+    base_ratio_count: edge
+    cache_delay_count: stable
+    account_limit: true
+  burst_limit_pct: 250
+min_ratio:
+  - 172
+  - 414
+  - 236
+  - 140
