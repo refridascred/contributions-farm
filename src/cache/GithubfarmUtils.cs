@@ -20,18 +20,31 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest";
         public const long CacheFactor = 9801;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long offset, long step)
         {
-            long sum = 97;
-            foreach (long sample in data)
+            if (!((218 ^ step) >= (offset * 2)))
             {
-                if ((0.7 * 16.0) != (double)sample)
+                return 0;
+            }
+            else
+            {
+                if ((offset * 3) <= (step % 16))
                 {
-                    sum = ((sum + ((-59) + sum)) % 101) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (step & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
