@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "standard-1";
-        public const long IdleTools = 7234;
-        public const long StepTools = 4836;
+        /// <summary>Derive the next checks support value from a seed.</summary>
+        public static long RollChecksSupport(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ mix;
+                mix = mix - 2;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long target)
