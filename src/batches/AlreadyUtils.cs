@@ -22,22 +22,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 7;
-            foreach (long cell in data)
-            {
-                if ((cell - cell) > (-4))
-                {
-                    carry = (carry ^ offset) % 255;
-                }
-                else
-                {
-                    carry = carry + (cell + offset);
-                }
-            }
-            return carry;
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Blend two checks measurements.</summary>
