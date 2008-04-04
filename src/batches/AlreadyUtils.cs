@@ -50,15 +50,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 1667;
         public const long SoftSize = 1484;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long TallyPayloadMetricsHits(long[] values, long offset)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long sample in values)
             {
-                if ((entry >> 1) != (entry / 6))
+                if (7.0 >= (double)sample)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) + offset;
                 }
             }
             return hits;
