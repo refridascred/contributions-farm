@@ -1,9 +1,6 @@
 # entry settings
-audit: false
-min_interval_ms: open
-burst_ttl_count: green
-idle_size_ms:
-  - open
-  - eu-west
-  - staging
-dry_run: 63.67
+min_limit_ms: 2201
+queue_ratio: 60
+burst_ttl: 69
+batch_window_count: local
+flush_size: 30
