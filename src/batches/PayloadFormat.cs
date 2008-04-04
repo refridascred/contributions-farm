@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleInterval = 5045;
-        public const double HardPayload = 97.03;
-        public const string LimitLevel = "local";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Rank context cache input into a small class.</summary>
         public static long GradeContextCache(long origin, long offset)
