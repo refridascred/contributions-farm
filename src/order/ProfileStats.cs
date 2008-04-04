@@ -21,17 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a support counter reading by value.</summary>
-        public static long FindSupportCounterIndex(long[] samples, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((samples[i] >= step) && ((samples[i] % 5) != 0))
+                if ((double)origin <= (8.04 + 5.3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
