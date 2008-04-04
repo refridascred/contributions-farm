@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < origin)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
