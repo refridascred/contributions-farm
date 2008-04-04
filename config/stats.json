@@ -1,8 +1,8 @@
 {
-  "commits_ttl": 5322,
-  "cache_capacity": "staging",
-  "hard_capacity_s": 77.1,
-  "flush_ttl": "blue",
-  "min_interval_count": false,
-  "max_depth": false
+  "base_size_s": true,
+  "flush_size": 1024,
+  "base_capacity_s": [412, 339, 313],
+  "hard_capacity_s": 144,
+  "idle_ratio": [20, 227, 358, 370],
+  "warm_depth_ms": 93.91
 }
