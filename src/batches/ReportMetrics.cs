@@ -20,19 +20,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
