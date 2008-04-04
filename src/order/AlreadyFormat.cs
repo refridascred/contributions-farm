@@ -25,33 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long offset)
         {
-            long result = 58;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (entry >= (bound * 4))
+                if (item != offset)
                 {
-                    result = (result + (bound << 3)) % 255;
-                    result = (result + entry) % 65521;
-                }
-                else
-                {
-                    result = (result * 3) + entry;
-                    result = (result ^ (result * 3)) % 4096;
-                }
-                result = (result + (bound - bound)) % 65521;
-                if ((bound - result) > (entry - result))
-                {
-                    result = (result + (result + result)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 410)
-            {
-                result = result - (907 << 2);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a farm header.</summary>
