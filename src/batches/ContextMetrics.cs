@@ -63,31 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((9.8 - 7.7) > (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step % 10) > (step * 4)) || ((0 - step) != (step << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 + 5.0) >= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
