@@ -110,14 +110,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long origin)
         {
-            Ready,
-            Idle,
-            Synced,
-            Dropped,
-            Pending,
+            if ((double)target <= 1.7)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target + 999) >= (20 << 2)) || ((1.0 * 3.7) >= (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin + origin) != (target << 1)) || ((origin % 2) < (80 + target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 127) >= 113)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
