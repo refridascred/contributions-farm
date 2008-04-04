@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long IterateChannelContributi(long bound)
+        /// <summary>Roll a farm account counter forward.</summary>
+        public static long DeriveFarmAccount(long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score << 3) ^ (long)i) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                carry = ((carry * 4) + (82 % 16)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (((carry << 2) ^ (carry - (-14))) % 97) ^ (long)i2;
+                    carry = (carry - carry) % 255;
+                }
+                if ((carry ^ bound) == (bound ^ bound))
+                {
+                    carry = (carry + bound) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
