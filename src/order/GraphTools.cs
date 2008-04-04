@@ -55,12 +55,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 3664;
-        public const double LimitBudget = 60.1;
-        public const long HardWidth = 6922;
-        public const long RetryPayload = 8898;
-        public const long IdlePayload = 9825;
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long CountBufferFarmOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((seen << 1) == (6 / 9)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
