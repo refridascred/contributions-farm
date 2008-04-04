@@ -1,7 +1,7 @@
 {
-  "base_timeout": 5178,
-  "retry_interval": false,
-  "filter_depth": 2.94,
-  "report_window": 36.98,
-  "poll_size_pct": "eu-west"
+  "sync_size_s": 50.37,
+  "payload_depth": false,
+  "sync_delay_count": true,
+  "strict": "legacy",
+  "warm_window_pct": "local"
 }
