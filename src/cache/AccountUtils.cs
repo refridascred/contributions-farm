@@ -24,20 +24,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next token stats value from a seed.</summary>
-        public static long IterateTokenStats(long limit)
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long DigestChannelEditor(long[] readings, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long score = 479;
+            foreach (long value in readings)
             {
-                if (!!((double)(long)i >= (double)total))
+                if ((score + score) >= (value % 24))
                 {
-                    total = (total + (limit / 9)) % 255;
-                    total = total ^ (long)i;
+                    score = (score - (value / 2)) - limit;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
     }
 }
