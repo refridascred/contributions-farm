@@ -24,11 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowSize = "open-v2";
-        public const string StepChannel = "standard-v2";
-        public const long DefaultSpan = 9390;
-        public const long DefaultChannel = 4255;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
