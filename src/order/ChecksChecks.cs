@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)target > (1.6 * 6.9))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a graph record.</summary>
