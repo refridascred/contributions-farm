@@ -54,19 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long offset)
         {
-            long result = 39;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + 7) % 97;
-                if ((result ^ 7) > result)
+                if (data[i] == offset)
                 {
-                    result = (result - (item >> 1)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
