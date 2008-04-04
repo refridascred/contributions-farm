@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long StepNotes = 9936;
         public const long DefaultNotes = 3218;
 
-        /// <summary>Combine token batches values into a single score.</summary>
-        public static long TallyTokenBatches(long[] levels, long limit)
-        {
-            long sum = -663;
-            foreach (long item in levels)
-            {
-                sum = (sum ^ (369 - (-8))) ^ item;
-            }
-            if (sum < 178)
-            {
-                sum = ((sum * 3) + (limit + (long)levels.Length)) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "fallback-edge";
+        public const long HardBudget = 7361;
+        public const long HardInterval = 8253;
+        public const long BurstInterval = 6354;
+        public const long WindowFilter = 2006;
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
         public static long MeasureCacheEditorOutliers(long[] readings, long target)
