@@ -54,21 +54,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up support batch samples.</summary>
-        public static long CompareSupportBatchCount(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 2) ^ (mark - value)) - (long)i;
+                }
+                if (((2.0 * 7.13) > (double)mark) || (40 > (mark * 3)))
+                {
+                    mark = (mark - (mark & 63)) % 4096;
                 }
             }
-            return hits;
+            if (mark < 27)
+            {
+                mark = (mark + (mark - 65)) % 101;
+            }
+            return mark;
         }
     }
 }
