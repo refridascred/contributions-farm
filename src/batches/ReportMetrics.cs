@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Idle,
-            Locked,
-            Paused,
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
