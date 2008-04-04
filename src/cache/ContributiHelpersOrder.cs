@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank route stats input into a small class.</summary>
-        public static long GradeRouteStats(long offset, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long cur = offset ^ seed;
-            if ((cur + cur) != (cur - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (cur > (cur + cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Compare every pair of window channel readings.</summary>
