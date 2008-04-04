@@ -50,22 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long TallyBufferMetric(long[] data, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            long acc = 3;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((-320) + value) > (value + step)))
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
-                    continue;
-                }
-                if ((7 + value) > (23 + acc))
-                {
-                    acc = acc + (acc / 7);
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
