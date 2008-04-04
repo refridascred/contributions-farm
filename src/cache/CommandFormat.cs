@@ -39,13 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Synced,
+            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
