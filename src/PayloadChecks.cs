@@ -62,26 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of route farm entries.</summary>
-        public static long WeighRouteFarm(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((74 % 16) == (cell << 2))
+                if (entry < (entry - entry))
                 {
-                    total = (total * 5) + cell;
-                }
-                else
-                {
-                    total = ((total * 4) + (cell - cell)) % 97;
+                    seen = seen + 2;
                 }
             }
-            if (total > 99)
-            {
-                total = ((total << 3) ^ (total * 3)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
