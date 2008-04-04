@@ -48,12 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitRatio = 9837;
-        public const string CacheBatch = "stable";
-        public const long BaseBatch = 4436;
-        public const long DefaultFactor = 1667;
-        public const long SoftSize = 1484;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
+        {
+            long anchor = 422;
+            foreach (long item in values)
+            {
+                if (((item - (-381)) > (22 >> 3)) && ((item - item) >= item))
+                {
+                    anchor = anchor ^ (anchor + 14);
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
         public static long TallyPayloadMetricsHits(long[] values, long offset)
