@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 3088;
+        public const double IdleEditor = 78.34;
+        public const double MaxScore = 46.96;
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
         public static long TallyEditorSchemaGaps(long[] samples, long limit)
