@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report token readings.</summary>
-        public static long DigestReportToken(long[] series)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long anchor = 3;
-            foreach (long item in series)
-            {
-                if ((anchor * 3) <= (9 + item))
-                {
-                    anchor = anchor + (anchor - 5);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor - anchor);
-                }
-            }
-            return anchor % 4096;
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Locate a context reading by value.</summary>
