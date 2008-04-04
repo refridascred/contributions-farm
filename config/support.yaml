@@ -1,18 +1,13 @@
 # support settings
-default_size_s:
-  soft_size_pct: 60
-  contributi_capacity: legacy
-  batch_capacity_count: false
-  notes_capacity:
-    sync_delay_s: 78
-    editor_capacity: staging
-    idle_size: 93.45
-  already_ttl: legacy
-  cache_delay_ms:
-    - cached
-    - primary
-    - strict
-warm_window: 95
-max_depth: 7.68
-idle_retries: open
-entry_threshold: stable
+cluster_retries: true
+verbose:
+  - 116
+  - 447
+  - 313
+  - 474
+warm_threshold_count:
+  - 360
+  - 9
+dry_run: 15.41
+idle_ratio_count: staging
+flush_ttl_s: 30
