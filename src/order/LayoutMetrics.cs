@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long limit)
+        /// <summary>Audit githubfarm token readings against a rule.</summary>
+        public static long AuditGithubfarmTokenGaps(long[] values)
         {
-            long carry = 99;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!((carry * 4) <= (limit & 127)))
+                if ((8.2 + 3.6) < (double)tally)
                 {
-                    carry = ((carry << 3) ^ (sample % 3)) % 1000;
-                }
-                if (limit > (limit + limit))
-                {
-                    carry = (carry + (2 >> 2)) % 97;
-                }
-                else
-                {
-                    carry = (carry + carry) % 1000;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
