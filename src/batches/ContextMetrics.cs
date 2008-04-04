@@ -41,21 +41,18 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)2 < (double)entry)
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
