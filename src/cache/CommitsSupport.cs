@@ -83,14 +83,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every channel editor entry stays within the limit.</summary>
+        public static bool GuardChannelEditorLimits(long[] series, long floor)
         {
-            Queued,
-            Synced,
-            Active,
-            Done,
-            Closed,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
