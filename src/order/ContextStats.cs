@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= step)
+                if (data[i] == bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
