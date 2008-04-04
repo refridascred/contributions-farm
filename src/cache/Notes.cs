@@ -76,22 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] items, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((bound & 1) <= (bound + seen))
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double weight = floor;
+            return weight + (gain - floor);
         }
     }
 }
