@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                if ((double)entry != (1.0 / 7.0))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 2) + ((-611) - cell)) % 101;
             }
-            return tally;
+            if (sum < 0)
+            {
+                sum = (sum - (sum % 5)) % 255;
+            }
+            return sum;
         }
     }
 }
