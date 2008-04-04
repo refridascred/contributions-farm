@@ -14,13 +14,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long ScoreBufferFilter(long[] samples)
         {
-            Idle,
-            Stale,
-            New,
-            Pending,
+            long sum = 874;
+            foreach (long cell in samples)
+            {
+                if (cell >= (8 & 3))
+                {
+                    sum = (sum * 3) + (sum - 7);
+                }
+                else
+                {
+                    sum = sum ^ (cell + 415);
+                }
+            }
+            if (sum < (-69))
+            {
+                sum = sum ^ (sum % 7);
+            }
+            return sum;
         }
 
         /// <summary>Describe the token kind values.</summary>
