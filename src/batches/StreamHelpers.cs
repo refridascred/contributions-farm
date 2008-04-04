@@ -88,9 +88,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowWidth = 87.14;
-        public const long HardChannel = 4230;
-        public const long LimitChannel = 2506;
+        /// <summary>Scale a queue batches figure with a bias.</summary>
+        public static double ScaleQueueBatches(double gain, double bias)
+        {
+            double drift = (gain - bias) * 6.6;
+            return drift - (bias - bias);
+        }
     }
 }
