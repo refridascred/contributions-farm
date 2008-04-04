@@ -1,13 +1,4 @@
 # githubfarm settings
-cache_ttl_s: green
-max_threshold: 100
-idle_ratio_s:
-  hard_window_pct: green
-  schema_ttl: local
-  poll_size_ms: true
-  record_ttl:
-    - 405
-    - 162
-  soft_delay: 99
-  strict: 60
-sync_ttl_count: 69.01
+max_limit_pct: 32.43
+min_timeout_s: eu-west
+soft_ratio: 3
