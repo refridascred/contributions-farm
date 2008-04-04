@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Retry,
-            Done,
-            Draft,
-            Stale,
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
