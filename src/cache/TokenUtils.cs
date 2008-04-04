@@ -28,9 +28,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9615;
-        public const long BurstStats = 8288;
-        public const double MinStats = 73.89;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 2502;
+        public const string HardWidth = "strict-1";
+        public const long CacheFarm = 2199;
     }
 }
