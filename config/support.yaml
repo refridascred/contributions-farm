@@ -1,7 +1,13 @@
 # support settings
-base_threshold: 4403
-batch_threshold: cached
-burst_ratio_pct: 10.61
-warm_window_pct: 90.13
-audit: false
-burst_timeout_pct: open
+verbose: true
+counter_depth:
+  - 478
+  - 247
+  - 36
+  - 235
+hard_size_ms: open
+max_size_count:
+  - 169
+  - 86
+  - 396
+  - 380
