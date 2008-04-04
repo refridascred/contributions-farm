@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a tools format value against two limits.</summary>
-        public static long ClassifyToolsFormat(long bound, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long slot = bound + offset;
-            if ((double)bound != (4.09 / 5.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound > (1.5 / 8.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot & 1) >= (slot - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next tools schema value.</summary>
