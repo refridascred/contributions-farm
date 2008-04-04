@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 58.88;
-        public const long BurstInterval = 8721;
-        public const string SoftFarm = "legacy-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 3628;
+        public const long HardWidth = 9920;
+        public const long HardMetric = 5963;
+        public const long BurstSpan = 6232;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
