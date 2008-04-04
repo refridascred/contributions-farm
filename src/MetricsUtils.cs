@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] values, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((seed << 3) < (seed - sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
