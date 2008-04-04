@@ -47,21 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up profile filter samples.</summary>
-        public static long PairProfileFilterCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target + datum) < seen)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
