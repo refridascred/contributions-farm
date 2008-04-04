@@ -20,12 +20,16 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleDepth = 426;
-        public const long BatchCount = 5664;
-        public const string IdleCount = "cached-v2";
-        public const long MaxRoute = 3552;
-        public const long SoftTimeout = 4773;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings)
+        {
+            long mix = -810;
+            foreach (long cell in readings)
+            {
+                mix = (mix << 3) ^ (mix + cell);
+            }
+            return mix;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchRatio = 54.81;
