@@ -67,13 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Done,
-            Failed,
-            Closed,
-            Queued,
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
