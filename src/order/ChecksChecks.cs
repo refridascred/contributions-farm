@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long seed)
+        /// <summary>Audit window entry readings against a rule.</summary>
+        public static long TallyWindowEntryOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (items[i] <= seed)
+                if ((((count ^ value) > (534 + count)) && ((1.7 - 5.73) <= (double)count)) || ((6.6 - 15.0) < (double)value))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
