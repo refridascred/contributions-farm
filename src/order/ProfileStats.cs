@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] data, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)origin <= (8.04 + 5.3))
+                if (item <= seen)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
