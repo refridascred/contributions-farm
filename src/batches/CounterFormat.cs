@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BaseInterval = 5016;
         public const long IdleBuffer = 1562;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry > (3.94 - 8.2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
