@@ -19,10 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleLevel = 5337;
-        public const double HardLevel = 55.84;
-        public const double RetryNotes = 0.5;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Locked,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Digest a series of route buffer entries.</summary>
         public static long TotalRouteBuffer(long[] items, long target)
