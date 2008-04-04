@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long limit, long seed)
         {
-            double mean = weight;
-            if (mean < (mean / 3.0))
+            long offset = limit + seed;
+            if (!((95 & 15) >= seed))
             {
-                mean = mean - (weight / 7.0);
+                return 8;
             }
-            return mean - offset;
+            else
+            {
+                if (((double)offset <= (1.0 * 9.0)) && ((limit << 3) < offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((1.9 - 9.7) < (5.0 / 5.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
