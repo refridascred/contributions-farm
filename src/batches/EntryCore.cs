@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Digest a series of already entry entries.</summary>
+        public static long TallyAlreadyEntry(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 6;
+            foreach (long item in data)
             {
-                acc = (acc + (acc >> 4)) % 1000;
-                acc = (acc ^ acc) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (!(carry <= item))
+                {
+                    carry = carry ^ (carry & 31);
+                }
             }
-            return acc;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
