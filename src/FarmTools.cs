@@ -28,12 +28,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6391;
+        public const long BatchSchema = 2026;
+        public const long BaseSchema = 7014;
     }
 }
