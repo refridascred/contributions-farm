@@ -51,33 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long AuditFarmStreamGaps(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((cell + (-5)) < (18 - 102)) && ((double)cell < (double)56))
                 {
-                    acc = (((acc * 4) + acc) % 255) ^ (long)i2;
-                    acc = acc + (floor >> 5);
+                    count = count + 3;
                 }
-                if (acc < (acc >> 2))
-                {
-                    acc = (acc - (floor * 3)) % 97;
-                }
-                if (!((floor / 8) >= acc))
-                {
-                    acc = (acc + (floor << 2)) % 4096;
-                }
-                else
-                {
-                    long diff = (long)i;
-                    acc = ((acc << 2) ^ (acc + diff)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
