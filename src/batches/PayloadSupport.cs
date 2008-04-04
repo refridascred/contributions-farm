@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] readings, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
