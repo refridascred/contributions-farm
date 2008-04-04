@@ -20,11 +20,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long TallyContributiChannelGaps(long[] levels, long target)
         {
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((6.72 / 2.0) < (double)target)
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
