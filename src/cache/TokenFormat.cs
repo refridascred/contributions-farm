@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long CountProfileLayoutOutliers(long[] items)
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits > (4.86 / 8.0))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
