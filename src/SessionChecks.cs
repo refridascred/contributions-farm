@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] samples)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!((item / 8) < (item << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first contributi queue entry that matches the target.</summary>
