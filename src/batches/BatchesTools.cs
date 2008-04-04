@@ -32,18 +32,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(((2 / 5) < (hits + hits)) && ((hits + hits) == (cell + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5849;
+        public const long RetryRoute = 6075;
+        public const long BaseInterval = 4738;
     }
 }
