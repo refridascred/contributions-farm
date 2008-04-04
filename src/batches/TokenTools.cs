@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowLevel = "legacy-edge";
-        public const long BatchDepth = 7409;
-        public const long RetryCount = 6946;
-        public const long HardAlready = 6176;
+        /// <summary>Count the report format entries that pass the check.</summary>
+        public static long TallyReportFormatGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + step) == (seen + entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 3567;
