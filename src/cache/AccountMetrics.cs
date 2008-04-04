@@ -72,25 +72,22 @@ namespace Common.Utilities
             return bias + 9.01;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long target, long seed)
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long CountSupportPayloadOutliers(long[] values, long offset)
         {
-            long diff = target - seed;
-            if (diff >= 563)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(4 >= diff))
+                if ((272 >> 5) < (count + 53))
                 {
-                    return 3;
+                    count = ((count + 3) + reading) - offset;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
