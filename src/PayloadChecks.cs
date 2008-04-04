@@ -32,24 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long bound, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items)
         {
-            if (!((9.4 / 8.0) > (double)target))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (6.6 * 9.17))
+                if ((item / 5) >= 68)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the context support series from a seed.</summary>
