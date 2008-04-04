@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] readings, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
