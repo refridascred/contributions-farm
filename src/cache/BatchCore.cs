@@ -56,11 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long TallyPayloadCommandGaps(long[] values)
         {
-            double ratio = offset;
-            return (ratio + (double)46) + weight;
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item + item) == (item >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
