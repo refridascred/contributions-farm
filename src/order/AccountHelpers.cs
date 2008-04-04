@@ -46,18 +46,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((2.0 / 4.0) > (double)cell) || (hits > (cell / 4)))
+                if (levels[i] > floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
