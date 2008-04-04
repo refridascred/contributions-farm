@@ -37,12 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftFactor = 8880;
-        public const double IdleAlready = 45.41;
-        public const long RetryAlready = 4359;
-        public const long CacheDepth = 8945;
-        public const long DefaultFactor = 8893;
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double offset)
+        {
+            double load = offset;
+            if (load >= (load / 9.0))
+            {
+                load = (load - (double)(-246)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load * 3.38)) - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] levels, long origin)
