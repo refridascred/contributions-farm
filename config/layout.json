@@ -1,11 +1,8 @@
 {
-  "poll_threshold_count": 94.7,
-  "burst_interval": {
-    "cache_window": [83, 441, 88],
-    "burst_threshold_pct": "latest",
-    "batch_capacity_ms": 19
-  },
-  "dry_run": ["strict", "primary"],
-  "default_depth_pct": 24,
-  "poll_ttl": 4239
+  "payload_timeout": 30,
+  "max_window": 84.0,
+  "persist": [449, 415],
+  "soft_ttl_count": "latest",
+  "base_delay": 73.32,
+  "hard_limit": "cached"
 }
