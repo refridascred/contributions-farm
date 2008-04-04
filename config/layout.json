@@ -1,5 +1,5 @@
 {
-  "compress": "legacy",
-  "hard_ttl_s": true,
-  "cache_window_count": "blue"
+  "audit": 52,
+  "batches_interval": ["local", "open", "staging", "standard"],
+  "flush_interval_ms": 1721
 }
