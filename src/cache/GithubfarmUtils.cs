@@ -14,38 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a metric report value against two limits.</summary>
-        public static long SortMetricReport(long limit, long offset)
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long TallyEditorSchemaGaps(long[] samples, long limit)
         {
-            if ((double)limit > (10.0 + 0.2))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset ^ 17) > (-8)) || ((double)offset != (double)limit))
+                if (!(((-58) << 2) <= (matches & 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ 87) != (7 % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit <= (offset + limit)) && ((48 & 127) >= (offset + offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 3) + sample) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
