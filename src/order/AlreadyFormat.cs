@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const string LimitSpan = "staging-v2";
         public const long BurstLevel = 978;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long limit)
         {
-            long result = -448;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + 20) >= (result % 2))
+                if (readings[i] > limit)
                 {
-                    result = (result + (13 & 63)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
