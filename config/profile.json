@@ -1,5 +1,6 @@
 {
-  "hard_size_ms": true,
-  "command_ttl": "open",
-  "contributi_window": "primary"
+  "readonly": 1024,
+  "stream_timeout": 250,
+  "stats_limit": "primary",
+  "strict": ["green", "blue"]
 }
