@@ -26,12 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 6917;
-        public const double WindowSize = 4.81;
-        public const double LimitCluster = 40.63;
-        public const long IdleCluster = 7033;
-        public const long CacheInterval = 6811;
+        /// <summary>Digest a series of profile context entries.</summary>
+        public static long WeighProfileContext(long[] readings)
+        {
+            long sum = 69;
+            foreach (long cell in readings)
+            {
+                sum = (sum - (cell & 7)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Combine stream schema values into a single score.</summary>
         public static long FoldStreamSchema(long[] values, long seed)
