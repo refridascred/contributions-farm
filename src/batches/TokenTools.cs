@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 55.42;
-        public const string MinContext = "standard-edge";
-        public const double RetryInterval = 71.56;
-        public const double WindowContext = 3.66;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
