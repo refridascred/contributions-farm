@@ -40,12 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
+            Locked,
+            Dropped,
+            Paused,
+            Synced,
             Retry,
-            New,
-            Done,
         }
     }
 }
