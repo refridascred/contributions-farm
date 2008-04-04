@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge standard cached; do
+for item in strict cached local; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=182
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
