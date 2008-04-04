@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 56.55;
-        public const string HardScore = "primary-v2";
-        public const string CacheRatio = "strict";
-        public const long RetryWidth = 9081;
-        public const double WindowLayout = 15.8;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Done,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Project the next format payload value.</summary>
         public static double BlendFormatPayload(double scale, double span)
