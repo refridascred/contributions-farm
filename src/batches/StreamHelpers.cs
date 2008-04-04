@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 5839;
-        public const long SoftCount = 2689;
-        public const string MaxWidth = "latest";
-        public const double SoftMetrics = 60.65;
-        public const string StepMetrics = "local-edge";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)matches < (7.0 - 4.28))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] levels, long offset)
