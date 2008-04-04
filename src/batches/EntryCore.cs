@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading >= (4.0 + 2.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc + (acc >> 4)) % 1000;
+                acc = (acc ^ acc) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
