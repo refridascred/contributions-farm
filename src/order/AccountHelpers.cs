@@ -64,11 +64,28 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long carry = 69;
+            foreach (long entry in samples)
+            {
+                if ((double)carry <= 13.0)
+                {
+                    carry = ((carry ^ 8) % 1000) + step;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - entry)) % 97;
+                }
+                carry = carry + (carry - carry);
+                carry = (carry - (carry + carry)) % 97;
+                if (!((double)entry >= (double)24))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
