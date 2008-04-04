@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const double IdleSpan = 31.88;
         public const double HardChecks = 26.51;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Derive the next stats metrics value from a seed.</summary>
+        public static long DeriveStatsMetrics(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)reading > (9.3 * 1.67))
+                if ((12.0 / 3.0) > (double)limit)
                 {
-                    count = count + 3;
+                    acc = (acc ^ (-60)) % 97;
                 }
+                acc = (acc << 2) ^ (5 * 4);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
