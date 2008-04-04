@@ -1,6 +1,7 @@
 {
-  "verbose": "strict",
-  "retry_threshold_pct": "fallback",
-  "schema_ttl": 30,
-  "persist": 9434
+  "base_window_s": [485, 113],
+  "hard_retries_ms": false,
+  "base_ratio": 250,
+  "context_capacity": false,
+  "idle_ratio_pct": true
 }
