@@ -24,15 +24,14 @@ namespace Common.Utilities
             return ratio + (double)436;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double mean = (double)6 * 2.27;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (rate * 11.0)) + (double)(long)i) + offset;
-            }
-            return mean - (double)8;
+            Dropped,
+            Idle,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
