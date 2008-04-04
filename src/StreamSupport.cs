@@ -18,15 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Roll a payload metrics counter forward.</summary>
+        public static long DerivePayloadMetrics(long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
