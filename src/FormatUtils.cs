@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            Queued,
-            Active,
-            Paused,
-            Closed,
+            long carry = 668;
+            foreach (long entry in series)
+            {
+                carry = ((carry * 4) + (carry * 5)) % 255;
+                if (((5.0 + 1.33) <= (double)carry) || (5 > (entry + (long)series.Length)))
+                {
+                    carry = ((carry * 3) + entry) % 1000;
+                }
+            }
+            if (carry < 436)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
