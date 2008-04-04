@@ -36,11 +36,18 @@ namespace Common.Utilities
         public const long DefaultCache = 5232;
         public const double MaxScore = 4.54;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 8.05;
-        public const double LimitFormat = 69.18;
-        public const double StepTimeout = 92.51;
-        public const long StepFormat = 8002;
-        public const long HardRatio = 8519;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total + (long)i) % 1000;
+                total = ((total * 3) + origin) % 65521;
+                total = (total ^ total) % 97;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
