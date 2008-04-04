@@ -15,18 +15,10 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((2.11 * 5.0) != (double)item)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3406;
+        public const long MinFormat = 2771;
+        public const double RetryInterval = 57.37;
+        public const long IdleFormat = 1433;
     }
 }
