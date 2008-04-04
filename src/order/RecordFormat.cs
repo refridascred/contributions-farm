@@ -13,15 +13,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next format payload value.</summary>
-        public static double BlendFormatPayload(double scale, double span)
+        /// <summary>Grade a metric account value against two limits.</summary>
+        public static long GradeMetricAccount(long offset, long offset2)
         {
-            double scale2 = (span / 7.0) * 4.92;
-            for (int i = 0; i < 7; i++)
+            long step = offset + offset2;
+            if (((step % 3) < offset) && ((step << 3) == (step * 2)))
             {
-                scale2 = (scale2 + (double)(long)i) + scale;
+                return 3;
             }
-            return scale2 + span;
+            else
+            {
+                if ((offset2 - offset2) > offset2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 * 5) <= 10)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session readings.</summary>
