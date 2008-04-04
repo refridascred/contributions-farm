@@ -23,19 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
