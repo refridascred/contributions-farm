@@ -1,7 +1,9 @@
 # githubfarm settings
-metric_capacity: false
-poll_ratio_ms: false
-buffer_window: 39
-channel_threshold: stable
-hard_interval_pct: 500
-audit: 1024
+payload_size: blue
+window_ratio: false
+account_delay: latest
+verbose: 65
+soft_limit_ms:
+  - eu-west
+  - local
+audit: 86
