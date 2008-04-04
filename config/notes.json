@@ -1,5 +1,6 @@
 {
-  "retry_delay_count": 3832,
-  "burst_threshold_count": 87,
-  "dry_run": ["primary", "local", "eu-west"]
+  "verbose": "strict",
+  "retry_threshold_pct": "fallback",
+  "schema_ttl": 30,
+  "persist": 9434
 }
