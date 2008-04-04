@@ -1,27 +1,35 @@
 # entry settings
-enabled:
-  - standard
-  - latest
-warm_depth: 1024
-sync_limit:
-  base_retries_ms: 56
-  poll_depth_s:
-    - 495
-    - 118
-    - 204
-  verbose: stable
-  poll_threshold_ms:
-    readonly: 1024
-    max_size_count:
-      - 481
-      - 271
-      - 28
-    burst_window_ms: 9614
-    burst_ttl_pct: 84.39
-    record_ttl:
-      - 456
-      - 347
-      - 268
-      - 267
-  compress: 2
-sync_timeout: 60
+default_ttl_count:
+  hard_size_s:
+    idle_threshold: 72.78
+    token_depth:
+      - open
+      - green
+      - open
+    base_delay: 1024
+    soft_retries_count: 23.64
+  base_window_count:
+    - 86
+    - 146
+    - 304
+    - 101
+  verbose:
+    hard_timeout_ms: 1024
+    order_threshold:
+      - local
+      - edge
+    batch_limit_s: 1024
+    readonly: 100
+    enabled: cached
+    profile_size: true
+  soft_size_ms: true
+dry_run:
+  readonly: 58.11
+  stats_threshold: primary
+  persist: 22
+  retry_capacity_pct: 500
+  flush_timeout_count:
+    - 359
+    - 24
+  retry_delay: 4498
+poll_size_ms: 93
