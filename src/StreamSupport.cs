@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long bound)
         {
-            long acc = 12;
-            foreach (long reading in series)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((6 ^ reading) < acc)
-                {
-                    acc = acc ^ (37 * 3);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ offset) % 97;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
