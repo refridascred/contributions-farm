@@ -1,7 +1,14 @@
 {
-  "retry_retries_count": false,
-  "enabled": false,
-  "poll_ttl_count": false,
-  "min_retries": ["staging", "blue", "staging", "open"],
-  "farm_ttl": "standard"
+  "cache_threshold_s": "legacy",
+  "default_capacity": 500,
+  "soft_size": [310, 63, 253, 42],
+  "batches_interval": "strict",
+  "editor_window": {
+    "retry_retries": false,
+    "hard_delay": "primary",
+    "base_ratio_ms": 8824,
+    "retry_limit_pct": true,
+    "record_ttl": "primary"
+  },
+  "tools_capacity": 33
 }
