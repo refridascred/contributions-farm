@@ -14,12 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long result = 1;
+            foreach (long item in samples)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result ^ item) % 255) - (long)i2;
+                }
+                if ((item / 4) >= (item / 5))
+                {
+                    result = (result + (result + 77)) % 4096;
+                }
+                if ((19 > result) && ((double)result != (6.17 / 2.0)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
