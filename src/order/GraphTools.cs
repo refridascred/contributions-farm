@@ -27,19 +27,10 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen & 7) == (6 + item))
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 4328;
+        public const long LimitBudget = 9688;
+        public const double RetryContext = 22.9;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long step)
