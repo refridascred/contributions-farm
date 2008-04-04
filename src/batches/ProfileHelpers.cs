@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = anchor ^ (anchor - anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
