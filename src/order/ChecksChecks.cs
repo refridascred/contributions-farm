@@ -19,16 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long CombineQueueOrder(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = 45;
+            foreach (long cell in readings)
             {
-                result = (result - (result + 897)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                if (((double)cell >= (double)65) && ((585 + cell) <= 11))
+                {
+                    break;
+                }
+                acc = acc ^ cell;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
