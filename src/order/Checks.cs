@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long target)
+        /// <summary>Iterate the profile layout series from a seed.</summary>
+        public static long IterateProfileLayout(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] >= target)
+                if ((mark <= (475 / 6)) && ((double)floor == (double)190))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (long)i;
+                    mark = (mark * 2) + floor;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
