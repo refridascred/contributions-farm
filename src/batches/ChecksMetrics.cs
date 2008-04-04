@@ -66,12 +66,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long floor)
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            long span = bound - floor;
+            if (((span << 3) >= floor) && ((bound ^ 2) < (span << 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (57 >= (bound - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 5) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
