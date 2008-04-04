@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary stable staging green; do
+for item in green eu-west primary fallback; do
     log "checking ${item}"
 done
