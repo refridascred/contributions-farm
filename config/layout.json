@@ -1,7 +1,8 @@
 {
-  "stats_window": 81.0,
-  "already_limit": ["fallback", "green"],
-  "min_window": 250,
-  "min_depth": 3603,
-  "window_ratio": 1024
+  "profile_depth": 51.96,
+  "retry_size_count": 100,
+  "batch_delay": 1024,
+  "githubfarm_interval": "legacy",
+  "account_ratio": true,
+  "warm_threshold": 6836
 }
