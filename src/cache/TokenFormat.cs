@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples, long floor)
+        /// <summary>Count the entry context entries that pass the check.</summary>
+        public static long CountEntryContextMatches(long[] samples)
         {
-            long sum = 22;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sum - sum) >= (datum % 100))
+                if (((-30) / 5) <= (seen ^ 3))
                 {
-                    sum = (((sum * 3) + (datum & 1)) % 4096) + floor;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
