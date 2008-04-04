@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen & 3) < ((long)levels.Length >> 4))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
