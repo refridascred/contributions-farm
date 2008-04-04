@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema filter readings against a bound.</summary>
-        public static bool CheckSchemaFilterRange(long[] series, long seed)
+        /// <summary>Match up support batch samples.</summary>
+        public static long CompareSupportBatchCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
