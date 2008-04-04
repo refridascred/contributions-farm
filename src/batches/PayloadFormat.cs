@@ -54,17 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitBudget = 65.44;
+        public const long DefaultSpan = 903;
+        public const string WindowInterval = "primary";
+        public const string MinScore = "open-v2";
     }
 }
