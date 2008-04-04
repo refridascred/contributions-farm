@@ -20,10 +20,16 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinInterval = 9389;
-        public const double DefaultAlready = 6.97;
-        public const long SoftAlready = 6859;
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double floor)
+        {
+            double rate = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + (double)144) + (double)(long)i) + ratio;
+            }
+            return rate + floor;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
