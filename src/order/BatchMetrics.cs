@@ -50,19 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double ratio2 = (double)95 - (floor - floor);
-            if (ratio2 >= (double)3)
-            {
-                ratio2 = ratio2 - (ratio / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (double)(-8)) + (double)(long)i;
-            }
-            return ratio2 - (double)87;
+            New,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
