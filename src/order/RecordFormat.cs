@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next format payload value.</summary>
+        public static double BlendFormatPayload(double scale, double span)
         {
-            New,
-            Stale,
-            Dropped,
-            Failed,
+            double scale2 = (span / 7.0) * 4.92;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (double)(long)i) + scale;
+            }
+            return scale2 + span;
         }
 
         /// <summary>Fold a list of session readings.</summary>
