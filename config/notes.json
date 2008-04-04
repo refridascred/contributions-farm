@@ -1,9 +1,5 @@
 {
-  "cache_timeout_ms": {
-    "verbose": "primary",
-    "strict": [184, 346],
-    "readonly": ["fallback", "strict"]
-  },
-  "min_ratio": "fallback",
-  "persist": false
+  "max_ttl_ms": "latest",
+  "audit": 61,
+  "enabled": 8032
 }
