@@ -16,11 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "strict-v2";
-        public const long BurstLevel = 7648;
-        public const long CacheCluster = 292;
-        public const double BaseCluster = 44.01;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
