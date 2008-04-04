@@ -31,17 +31,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer session reading by value.</summary>
-        public static long LocateBufferSessionIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 8728;
+        public const long DefaultMetric = 4248;
+        public const string LimitMetric = "stable-1";
+        public const double LimitInterval = 86.04;
+        public const long DefaultSpan = 7578;
     }
 }
