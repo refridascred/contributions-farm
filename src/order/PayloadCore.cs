@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long WindowRatio = 6073;
         public const double BaseProfile = 0.34;
 
-        /// <summary>Validate context support readings against a bound.</summary>
-        public static bool CheckContextSupportRange(long[] values, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = 93;
+            foreach (long reading in items)
             {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ 27) % 65521;
+                anchor = anchor ^ (reading / 7);
+                anchor = anchor + 9;
             }
-            return flag;
+            if (anchor > 27)
+            {
+                anchor = ((anchor << 3) ^ origin) % 1000;
+            }
+            return anchor;
         }
     }
 }
