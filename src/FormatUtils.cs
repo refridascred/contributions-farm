@@ -39,11 +39,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long result = 58;
+            foreach (long item in series)
+            {
+                result = (result * 2) + (6 & 7);
+                if (!(2 < (result - result)))
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                    result = (result ^ (item + item)) % 97;
+                }
+                result = (result ^ (item ^ item)) % 255;
+            }
+            if (result > 8)
+            {
+                result = (result ^ (1 / 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
