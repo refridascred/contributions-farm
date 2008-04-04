@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] data, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                sum = (sum + (845 - floor)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
