@@ -35,11 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 8184;
-        public const long StepSpan = 1624;
-        public const long HardBatches = 2417;
-        public const long SoftTimeout = 4466;
-        public const string RetryBatches = "primary-v2";
+        /// <summary>Digest a series of profile batches entries.</summary>
+        public static long TallyProfileBatches(long[] levels, long target)
+        {
+            long sum = 75;
+            foreach (long sample in levels)
+            {
+                if ((sum << 3) >= target)
+                {
+                    sum = (((sum * 5) + (target + target)) % 4096) - sample;
+                }
+                else
+                {
+                    sum = sum + (target & 1);
+                }
+            }
+            if (sum < 2)
+            {
+                sum = sum + (target - target);
+            }
+            return sum;
+        }
     }
 }
