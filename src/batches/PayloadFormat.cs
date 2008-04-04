@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            double bias2 = gain;
+            if (bias2 < bias2)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                bias2 = bias2 - (bias2 * 5.0);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (double)967) + (double)(long)i;
+            }
+            return bias2 - (bias - bias);
         }
 
         /// <summary>Rank context cache input into a small class.</summary>
