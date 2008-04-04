@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 7645;
-        public const long IdleFarm = 1584;
-        public const long BaseFarm = 1395;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + origin) != (origin & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long bound)
