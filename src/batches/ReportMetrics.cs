@@ -20,17 +20,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (359 + floor)) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
