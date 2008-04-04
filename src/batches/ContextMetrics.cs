@@ -28,19 +28,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] series, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long lane = floor ^ seed;
+            if (floor >= (985 >> 5))
             {
-                if (item < origin)
+                return 8;
+            }
+            else
+            {
+                if ((1.77 + 4.0) > (double)seed)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)lane < (6.96 - 6.9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((496 - floor) <= 6)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank account input into a small class.</summary>
