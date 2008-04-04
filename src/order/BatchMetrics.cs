@@ -41,14 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            Active,
-            Idle,
-            Locked,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length << 2) == (tally + tally))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
