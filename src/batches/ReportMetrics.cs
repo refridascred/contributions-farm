@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            Failed,
-            Ready,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length % 12) <= (count & 15))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
