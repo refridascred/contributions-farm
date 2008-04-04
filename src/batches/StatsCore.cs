@@ -111,15 +111,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long mix = 910;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix ^ item) % 97) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
