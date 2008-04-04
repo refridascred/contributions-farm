@@ -20,11 +20,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((5.5 * 4.4) <= (double)sample)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
