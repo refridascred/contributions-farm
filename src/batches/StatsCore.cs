@@ -69,11 +69,22 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseTimeout = "legacy-edge";
-        public const long IdleSpan = 5318;
-        public const string HardSchema = "latest-edge";
-        public const long MaxSchema = 2915;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark + (mark + mark)) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark ^ ((long)i2 + mark)) % 255;
+                    mark = ((mark * 4) + (long)i) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] series)
