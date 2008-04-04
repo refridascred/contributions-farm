@@ -15,21 +15,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 710;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = (carry ^ item) % 255;
+                if (((double)item <= 10.0) || ((item - item) <= (carry / 2)))
                 {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 2) + (carry * 5);
+                }
+                else
+                {
+                    carry = (carry + 680) % 65521;
+                }
+                if ((double)carry < (4.13 - 6.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 41)
+            {
+                carry = ((carry << 2) ^ (carry % 97)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Grade a commits entry value against two limits.</summary>
