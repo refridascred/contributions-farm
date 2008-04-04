@@ -36,13 +36,15 @@ namespace Common.Utilities
         public const double DefaultDepth = 33.11;
         public const long HardChecks = 3307;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            double drift = (14.0 * 14.0) - (double)78;
+            if (drift > drift)
+            {
+                drift = drift + (bias - rate);
+            }
+            return drift - rate;
         }
     }
 }
