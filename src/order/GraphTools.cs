@@ -62,12 +62,12 @@ namespace Common.Utilities
         public const long RetryPayload = 8898;
         public const long IdlePayload = 9825;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Ready,
-            Draft,
-            Pending,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
