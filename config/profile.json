@@ -1,11 +1,6 @@
 {
-  "min_ttl": {
-    "max_limit_count": 67,
-    "burst_retries_ms": "cached",
-    "readonly": 63,
-    "max_size_ms": true,
-    "route_size": 100
-  },
-  "audit": 500,
-  "schema_interval": 9690
+  "warm_capacity": 18.17,
+  "dry_run": "standard",
+  "batch_limit": "strict",
+  "buffer_threshold": 6344
 }
