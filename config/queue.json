@@ -1,17 +1,7 @@
 {
-  "min_delay_count": {
-    "max_limit_count": {
-      "context_threshold": "primary",
-      "metric_limit": 49,
-      "retry_limit": "fallback",
-      "command_ttl": 4320
-    },
-    "account_timeout": 9976,
-    "max_ttl": [254, 136, 257, 451],
-    "idle_limit_count": "cached",
-    "compress": true
-  },
-  "command_limit": 35.42,
-  "min_delay_s": 60,
-  "flush_interval_count": 37.73
+  "already_retries": "staging",
+  "enabled": "legacy",
+  "burst_threshold": "cached",
+  "base_ratio_ms": "cached",
+  "idle_size_ms": ["latest", "strict", "strict", "primary"]
 }
