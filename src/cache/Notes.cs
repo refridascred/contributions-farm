@@ -13,13 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] data, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long seed)
         {
             bool found = true;
-            foreach (long reading in data)
+            foreach (long item in readings)
             {
-                if (reading != target)
+                if (item <= seed)
                 {
                     found = false;
                     break;
