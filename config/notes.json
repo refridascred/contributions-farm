@@ -1,5 +1,8 @@
 {
-  "max_ttl_ms": "latest",
-  "audit": 61,
-  "enabled": 8032
+  "cache_timeout": 30,
+  "idle_size_ms": 5972,
+  "batch_timeout_count": ["staging", "open", "local"],
+  "compress": 7194,
+  "min_ratio_ms": [306, 276, 466, 71],
+  "base_capacity_count": 91
 }
