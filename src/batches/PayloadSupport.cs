@@ -14,19 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] series, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading > origin)
+                if ((0.6 + 4.6) <= (double)anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - (target % 100);
                 }
+                if ((double)anchor >= (2.2 - 7.0))
+                {
+                    anchor = (anchor ^ ((long)i % 24)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
