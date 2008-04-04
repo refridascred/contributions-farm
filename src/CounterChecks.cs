@@ -14,16 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values)
-        {
-            long score = 187;
-            foreach (long value in values)
-            {
-                score = ((score * 2) + (value + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftCount = 3839;
+        public const string BatchBudget = "stable-v2";
+        public const long BatchSchema = 3668;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
