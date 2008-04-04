@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine farm batches values into a single score.</summary>
-        public static long TotalFarmBatches(long[] items, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long result = 564;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((step - datum) > (step & 15)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result << 2) ^ (result >> 1)) % 101;
-                }
-                if (datum < (result - datum))
-                {
-                    result = result ^ (step ^ (long)items.Length);
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
