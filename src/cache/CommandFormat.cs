@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 12) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
