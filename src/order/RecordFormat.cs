@@ -13,17 +13,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = floor ^ bound;
+            if (bound < (floor - floor))
             {
-                if (data[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((cur << 2) != (floor ^ 18))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of profile context entries.</summary>
