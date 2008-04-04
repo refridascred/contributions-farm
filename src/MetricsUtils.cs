@@ -43,11 +43,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 3917;
-        public const long BaseBatches = 5071;
-        public const long BatchBatches = 7669;
-        public const long BurstRatio = 1109;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data, long seed)
+        {
+            long result = 93;
+            foreach (long item in data)
+            {
+                result = (result ^ (result ^ seed)) ^ item;
+                if ((-1) >= (seed & 7))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long step, long step2)
