@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue layout readings.</summary>
-        public static long OverlapQueueLayoutCount(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target < (target & 255))
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every tools queue entry stays within the limit.</summary>
