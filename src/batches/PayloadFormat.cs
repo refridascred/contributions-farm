@@ -64,11 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 7829;
-        public const long LimitTimeout = 6263;
-        public const double IdleScore = 77.5;
-        public const long WindowLevel = 134;
-        public const double BatchProfile = 53.19;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
