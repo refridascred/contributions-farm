@@ -30,24 +30,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Count report record pairs that satisfy a relation.</summary>
+        public static long CompareReportRecordCount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((target & 255) > (target % 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix * 2) + (-1)) % 255;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix << 2) ^ (target << 2)) % 65521) ^ (long)i2;
-                    mix = (mix << 3) ^ ((long)i + (long)i);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
