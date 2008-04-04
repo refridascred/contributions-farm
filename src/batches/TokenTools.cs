@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const string HardFactor = "legacy";
         public const long MinEntry = 9306;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 6366;
-        public const long CacheRecord = 3885;
-        public const long BaseTimeout = 3272;
-        public const long SoftRecord = 9695;
-        public const long WindowLevel = 6843;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] readings, long origin)
+        {
+            long total = 695;
+            foreach (long value in readings)
+            {
+                if ((double)total <= (3.4 + 18.0))
+                {
+                    total = (total - (origin + total)) ^ value;
+                }
+            }
+            if (total > 356)
+            {
+                total = (total - (origin - total)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] values, long target)
