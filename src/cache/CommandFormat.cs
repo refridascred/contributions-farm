@@ -49,19 +49,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Adjust a githubfarm contributi reading.</summary>
+        public static double ProjectGithubfarmContributi(double rate, double offset)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            double bias = offset;
+            if (bias > (rate / 3.0))
             {
-                sum = ((sum * 2) + ((-611) - cell)) % 101;
+                bias = bias - (offset - 6.7);
             }
-            if (sum < 0)
+            else
             {
-                sum = (sum - (sum % 5)) % 255;
+                bias = bias - (double)8;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (rate - offset)) - (double)(long)i;
+            }
+            return bias + (offset - offset);
         }
     }
 }
