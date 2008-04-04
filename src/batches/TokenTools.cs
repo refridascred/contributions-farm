@@ -18,24 +18,11 @@ namespace Common.Utilities
         public const long SoftRecord = 9695;
         public const long WindowLevel = 6843;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if (!((target / 8) <= (target - origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target << 2) < target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
