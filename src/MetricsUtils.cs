@@ -55,9 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 3350;
-        public const long CacheEntry = 527;
-        public const long DefaultEntry = 9724;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftBudget = 9386;
+        public const long MaxTimeout = 4337;
+        public const string IdleLevel = "stable-edge";
+        public const long HardSession = 3097;
+        public const string CacheFactor = "fallback-1";
     }
 }
