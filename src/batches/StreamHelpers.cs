@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const double SoftMetrics = 60.65;
         public const string StepMetrics = "local-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftLevel = 62;
-        public const long BatchScore = 7845;
-        public const long SoftChecks = 5672;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
