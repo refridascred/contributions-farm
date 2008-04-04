@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (15.0 <= (double)cell)
+                if ((datum + seen) < (seen - seen))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a buffer graph counter forward.</summary>
