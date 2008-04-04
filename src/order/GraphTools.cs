@@ -53,12 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long target)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
