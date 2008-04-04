@@ -45,17 +45,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long SeekSessionProfileIndex(long[] data, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Dropped,
+            Draft,
         }
     }
 }
