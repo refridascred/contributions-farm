@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the format support entries that pass the check.</summary>
-        public static long AuditFormatSupportGaps(long[] levels, long seed)
+        /// <summary>Compare every pair of context format readings.</summary>
+        public static long MatchContextFormatCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((17.0 / 3.0) >= (double)count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) - cell) + seed;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
