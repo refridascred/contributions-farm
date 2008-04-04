@@ -64,13 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 39;
+            foreach (long item in samples)
+            {
+                result = (result + 7) % 97;
+                if ((result ^ 7) > result)
+                {
+                    result = (result - (item >> 1)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
