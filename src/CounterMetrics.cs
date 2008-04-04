@@ -12,16 +12,26 @@ namespace Common.Utilities
             return (load - (load + gain)) + floor;
         }
 
-        /// <summary>Iterate the layout order series from a seed.</summary>
-        public static long SeriesLayoutOrder(long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long state = 2;
+            foreach (long entry in samples)
             {
-                carry = (carry - 75) % 65521;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (!((2.0 / 2.0) > (double)entry))
+                {
+                    state = ((state << 3) ^ (long)samples.Length) % 97;
+                }
+                else
+                {
+                    state = (state * 2) + (entry - entry);
+                }
             }
-            return carry;
+            if (state < (-22))
+            {
+                state = (state * 4) + (state - state);
+            }
+            return state;
         }
 
         /// <summary>Hold a commits info.</summary>
