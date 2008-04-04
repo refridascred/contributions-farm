@@ -1,6 +1,14 @@
 # support settings
-window_ratio:
-  - primary
-  - edge
-default_retries_pct: primary
-dry_run: true
+notes_timeout: green
+payload_window: latest
+warm_threshold:
+  warm_capacity_s: false
+  poll_size_ms: cached
+  audit: 35
+  soft_size_count: 271
+  sync_ttl_s:
+    - 125
+    - 267
+    - 130
+layout_retries: 83
+cache_limit_s: 63.56
