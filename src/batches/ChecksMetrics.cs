@@ -41,15 +41,15 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            double ratio = weight;
+            if (ratio <= ratio)
             {
-                mix = (((mix - 969) % 4096) + datum) + floor;
+                ratio = (ratio + (8.1 * 4.57)) - span;
             }
-            return mix;
+            return ratio + (ratio - 19.0);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
