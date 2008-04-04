@@ -26,18 +26,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a contributi support counter forward.</summary>
-        public static long RollContributiSupport(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] samples, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                mix = (mix * 5) + (origin ^ origin);
-                mix = mix ^ (long)i;
-                mix = ((mix << 2) ^ mix) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
