@@ -35,18 +35,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many format payload samples are out of range.</summary>
-        public static long CountFormatPayloadHits(long[] samples, long step)
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool CheckFormatCommitsLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)entry <= (12.0 / 4.0))
+                if (sample <= seed)
                 {
-                    tally = (tally + 1) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Match up token samples.</summary>
