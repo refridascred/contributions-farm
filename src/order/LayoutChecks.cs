@@ -39,38 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long bound, long bound2)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if ((bound2 - (-956)) >= (bound + bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound < (bound2 + bound)) && ((double)bound < (3.4 / 7.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound <= (bound2 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((148 + (-486)) != (bound2 << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
