@@ -30,40 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long offset, long offset2)
-        {
-            long gap = offset - offset2;
-            if (6.0 > (double)gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 3) < (gap - (-162)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 + 718) > (offset >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > (offset2 + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 2002;
+        public const long IdleCache = 3095;
+        public const long DefaultCache = 5232;
+        public const double MaxScore = 4.54;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] items, long origin)
