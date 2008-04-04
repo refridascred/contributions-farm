@@ -12,15 +12,22 @@ namespace Common.Utilities
             return (bias + (double)82) + span;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] items)
         {
-            double bias = floor * 8.86;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                bias = (bias - (double)(long)i) - rate;
+                if ((double)entry < (7.49 * 8.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias - (double)0;
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
