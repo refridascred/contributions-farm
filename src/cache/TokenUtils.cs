@@ -12,38 +12,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            if ((bound / 5) < 514)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 2) == (floor << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (20 >= (floor - bound))
+                    if ((data[i] ^ data[j]) < 6)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (7 > (floor - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the payload session entries that pass the check.</summary>
