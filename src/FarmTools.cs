@@ -37,15 +37,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            double mean = (double)(44 + 989);
-            if (mean <= (double)19)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - offset;
+                sum = sum - sum;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mean + (weight * 7.3);
+            return sum;
         }
     }
 }
