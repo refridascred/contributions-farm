@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first filter channel entry that matches the target.</summary>
-        public static long FindFilterChannelIndex(long[] items, long step)
+        /// <summary>Count token notes pairs that satisfy a relation.</summary>
+        public static long PairTokenNotesCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
