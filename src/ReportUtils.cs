@@ -55,15 +55,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] values, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] values, long step)
         {
-            long state = 85;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state << 3) ^ ((long)values.Length + state)) + cell) + seed;
+                if ((values[i] == step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
