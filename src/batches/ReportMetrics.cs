@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit contributi channel readings against a rule.</summary>
