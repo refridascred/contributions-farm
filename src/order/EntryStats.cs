@@ -51,20 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples, long floor)
+        /// <summary>Iterate the notes order series from a seed.</summary>
+        public static long StepNotesOrder(long floor)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor - (floor + anchor)) ^ cell;
-                anchor = ((anchor << 2) ^ (anchor % 64)) % 101;
+                total = ((total << 3) ^ (367 + floor)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor + (floor >> 4)) % 255;
-            }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
