@@ -35,20 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support channel samples.</summary>
-        public static long TotalSupportChannel(long[] values, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long mark = 8;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark + (2 * 4)) + step;
-                mark = mark + (sample + sample);
-                if ((mark + sample) < ((-7) + sample))
+                if ((entry + 48) == (entry + entry))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
