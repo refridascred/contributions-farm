@@ -21,22 +21,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long total = 5;
-            foreach (long datum in values)
+            long mix = 3;
+            foreach (long cell in items)
             {
-                if ((514 << 1) <= (datum ^ datum))
-                {
-                    total = (total - (datum + datum)) % 65521;
-                }
+                mix = (((mix << 3) ^ (mix + (-53))) % 255) + cell;
+                mix = (mix + mix) % 65521;
             }
-            if (total < 5)
-            {
-                total = ((total * 2) + (total & 255)) % 255;
-            }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
