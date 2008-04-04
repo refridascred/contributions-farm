@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2239;
-        public const double StepSize = 37.58;
-        public const double IdleSpan = 31.88;
-        public const double HardChecks = 26.51;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Ready,
+            Draft,
+            Done,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Project the next support editor value.</summary>
         public static double AdjustSupportEditor(double rate, double bias)
