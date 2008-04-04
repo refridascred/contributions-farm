@@ -1,9 +1,6 @@
-id,active,count,label,weight
-1,43.58,822,19.73,94
-2,fallback,strict,729,eu-west
-3,eu-west,746,legacy,407
-4,771,433,cached,standard
-5,407,eu-west,local,82.27
-6,standard,168,68.09,local
-7,standard,40.82,primary,cached
-8,588,802,22.82,814
+id,level,label,region,score
+1,874,618,257,primary
+2,894,green,939,412
+3,141,13.39,196,70.89
+4,288,485,42.37,85.3
+5,543,491,70.35,93.66
