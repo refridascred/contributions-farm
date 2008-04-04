@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Combine metrics record values into a single score.</summary>
+        public static long WeighMetricsRecord(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = 2;
+            foreach (long sample in items)
             {
-                if ((double)matches < (7.0 - 4.28))
+                if (((sample - score) >= score) && ((sample + sample) != (score % 2)))
                 {
-                    matches = (matches + 1) - value;
+                    score = ((score << 2) ^ (sample - score)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
