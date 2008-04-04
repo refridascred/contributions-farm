@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback primary staging; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=45
+CHANNEL_LIMIT=44
 log "limit is ${CHANNEL_LIMIT}"
