@@ -49,10 +49,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 84.49;
-        public const long BatchGraph = 955;
-        public const string BatchCount = "fallback";
+        /// <summary>Count the filter buffer entries that pass the check.</summary>
+        public static long AuditFilterBufferHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)reading == (7.61 / 7.0)) || ((double)reading < (9.8 + 20.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
