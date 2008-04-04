@@ -34,15 +34,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinRatio = 1.13;
+        public const long WindowDepth = 9845;
+        public const long BaseCount = 9942;
     }
 }
