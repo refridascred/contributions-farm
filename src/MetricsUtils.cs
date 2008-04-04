@@ -14,10 +14,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 3751;
-        public const long BaseSize = 2704;
-        public const long SoftRoute = 1376;
+        /// <summary>Derive the next metrics session value from a seed.</summary>
+        public static long IterateMetricsSession(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] readings, long origin)
