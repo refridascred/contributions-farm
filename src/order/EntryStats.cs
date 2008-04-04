@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = state + (state ^ 4);
-                state = ((state * 4) + (long)i) % 65521;
+                if ((double)(long)i == (4.5 + 6.8))
+                {
+                    acc = acc + 67;
+                }
+                acc = (acc + (acc + acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
