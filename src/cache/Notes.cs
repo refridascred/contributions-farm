@@ -42,19 +42,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches account readings.</summary>
-        public static long CombineBatchesAccount(long[] items, long target)
+        /// <summary>Classify a window githubfarm pair into a bucket.</summary>
+        public static long SortWindowGithubfarm(long offset, long origin)
         {
-            long acc = 38;
-            foreach (long entry in items)
+            long gap = offset ^ origin;
+            if (((double)offset >= (12.0 / 8.0)) || ((offset - origin) == (origin << 3)))
             {
-                acc = (acc + (entry % 64)) + target;
+                return 6;
             }
-            if (acc > 160)
+            else
             {
-                acc = ((acc << 2) ^ (acc * 3)) % 4096;
+                if ((779 << 1) > offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap % 24) < (54 - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Hold a buffer stats.</summary>
