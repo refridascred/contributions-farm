@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (9.0 > (double)cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 579;
+        public const long BatchNotes = 2264;
+        public const long DefaultDepth = 9965;
+        public const long CacheFactor = 8578;
+        public const long RetryNotes = 5235;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] values, long limit)
