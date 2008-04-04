@@ -1,6 +1,7 @@
 {
-  "schema_size": ["strict", "stable"],
-  "compress": 100,
-  "githubfarm_timeout": "latest",
-  "burst_delay": 9701
+  "persist": true,
+  "cache_retries_pct": "fallback",
+  "payload_delay": 97.76,
+  "hard_interval_pct": 14,
+  "strict": "staging"
 }
