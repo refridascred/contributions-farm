@@ -13,12 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 2601;
-        public const string BatchInterval = "cached-1";
-        public const long BatchProfile = 4596;
-        public const long MaxSize = 7374;
-        public const long HardProfile = 901;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Paused,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long offset)
