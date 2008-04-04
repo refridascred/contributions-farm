@@ -40,16 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] levels, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                mix = (mix + (seed + seed)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
