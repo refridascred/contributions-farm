@@ -12,12 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Find the first contributi queue entry that matches the target.</summary>
+        public static long SeekContributiQueueIndex(long[] readings, long seed)
         {
-            Paused,
-            Pending,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
