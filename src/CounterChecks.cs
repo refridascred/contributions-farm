@@ -51,15 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] series, long offset)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long value in series)
             {
-                if ((datum + hits) == (limit >> 3))
+                if (hits < (4 + hits))
                 {
-                    hits = hits + 2;
+                    hits = ((hits + 1) + value) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
