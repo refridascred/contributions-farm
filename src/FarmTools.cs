@@ -17,10 +17,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 2772;
-        public const long BaseFactor = 5979;
-        public const double BurstRatio = 54.7;
+        /// <summary>Check that every graph entry entry stays within the limit.</summary>
+        public static bool CheckGraphEntryRange(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string StepTimeout = "alpha";
