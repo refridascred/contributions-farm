@@ -18,21 +18,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset > (15.0 / 4.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a session options.</summary>
