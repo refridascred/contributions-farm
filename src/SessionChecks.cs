@@ -30,16 +30,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the counter entry series from a seed.</summary>
-        public static long DeriveCounterEntry(long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long offset, long offset2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long gap = offset - offset2;
+            if (6.0 > (double)gap)
             {
-                anchor = anchor + floor;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((offset * 3) < (gap - (-162)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 + 718) > (offset >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > (offset2 + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
