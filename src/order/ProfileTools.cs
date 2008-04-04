@@ -45,12 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepScore = 8879;
-        public const long WindowBuffer = 1580;
-        public const long SoftBuffer = 2615;
-        public const string BaseWidth = "fallback-edge";
-        public const long MaxInterval = 8586;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleTimeout = "latest";
+        public const double BurstScore = 53.16;
+        public const double MinSize = 10.98;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
