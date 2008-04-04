@@ -27,12 +27,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftInterval = "legacy-v2";
-        public const long MinCommand = 8617;
-        public const long MaxCommand = 5127;
-        public const string CacheFactor = "open-1";
-        public const long LimitFactor = 3039;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double span)
+        {
+            double weight = (span + span) - 19.0;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (ratio / 5.0)) + (double)(long)i;
+            }
+            return weight + (ratio * 7.2);
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string RetryBuffer = "primary";
