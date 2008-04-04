@@ -35,13 +35,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            Synced,
-            Stale,
-            Failed,
-            Idle,
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry * 3) + ((long)i * 4);
+                if (carry >= ((long)i % 16))
+                {
+                    carry = (carry - 3) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
