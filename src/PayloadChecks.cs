@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] data, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] <= limit)
+                if ((double)mark >= (double)(long)i)
                 {
-                    return (long)i;
+                    mark = mark - (floor >> 2);
+                    continue;
                 }
+                mark = (mark + ((long)i + 51)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
