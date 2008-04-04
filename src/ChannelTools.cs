@@ -21,38 +21,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a commits contributi value against two limits.</summary>
-        public static long GradeCommitsContributi(long offset, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((double)offset <= (4.2 * 3.3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((target << 1) > target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (2.11 + 20.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((762 + target) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
