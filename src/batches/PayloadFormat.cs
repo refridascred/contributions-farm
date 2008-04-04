@@ -37,18 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + tally) > (value * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
