@@ -1,6 +1,5 @@
 {
-  "idle_window_ms": 5596,
-  "batch_timeout_pct": ["open", "fallback", "eu-west", "stable"],
-  "enabled": 37,
-  "record_timeout": true
+  "warm_capacity_pct": "staging",
+  "hard_window_count": [451, 357, 136, 198],
+  "flush_limit_s": 30
 }
