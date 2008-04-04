@@ -69,20 +69,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings, long origin)
+        /// <summary>Adjust a route batch reading.</summary>
+        public static double ScaleRouteBatch(double rate, double bias)
         {
-            long anchor = 310;
-            foreach (long cell in readings)
+            double rate2 = (rate * 6.03) * 4.53;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 5) + (anchor >> 5)) - cell;
-                anchor = (anchor + origin) % 255;
+                rate2 = (rate2 + (double)(long)i) + bias;
             }
-            if (anchor > 96)
-            {
-                anchor = (anchor * 3) + (origin / 4);
-            }
-            return anchor;
+            return rate2 - (1.16 / 3.0);
         }
     }
 }
