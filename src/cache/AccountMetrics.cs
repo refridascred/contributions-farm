@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score - (floor + score)) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "legacy-edge";
+        public const string SoftRecord = "primary";
+        public const long RetryTimeout = 3539;
 
         /// <summary>Match up route buffer samples.</summary>
         public static long CompareRouteBufferCount(long[] data)
