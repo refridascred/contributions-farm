@@ -77,12 +77,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = offset;
+            return (drift + (double)97) + gain;
         }
 
         /// <summary>Roll a already counter forward.</summary>
