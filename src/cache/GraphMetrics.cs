@@ -51,17 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] <= limit)
+                if ((17.0 + 8.4) <= (double)(long)i)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + anchor) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
