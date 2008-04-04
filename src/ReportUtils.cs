@@ -59,12 +59,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long offset)
         {
-            Queued,
-            Draft,
-            Failed,
+            long slot = target ^ offset;
+            if ((76 + offset) < (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((95 / 5) != (slot << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
