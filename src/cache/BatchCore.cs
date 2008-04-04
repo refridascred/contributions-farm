@@ -36,21 +36,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)bound == (0.07 - 9.9)) && ((bound + bound) >= (16 - 372)))
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
