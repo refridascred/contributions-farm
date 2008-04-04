@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "staging-edge";
+        public const long HardLevel = 146;
+        public const long HardSchema = 8467;
+        public const long SoftSchema = 2205;
+        public const double CacheBudget = 1.92;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] data, long bound)
