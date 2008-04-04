@@ -16,17 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 3;
+            foreach (long entry in series)
             {
-                if (readings[i] >= target)
+                if (((1.81 * 6.0) >= (double)entry) || ((mix >> 1) < mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (entry << 2)) % 101;
+                }
+                if (((double)entry >= (4.25 * 1.3)) && (12.0 > (double)mix))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > (-4))
+            {
+                mix = mix + (mix - 338);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the metric mode values.</summary>
