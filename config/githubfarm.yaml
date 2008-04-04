@@ -1,11 +1,13 @@
 # githubfarm settings
-compress: 939
-retry_depth_ms:
-  max_retries_count: eu-west
-  persist: 5948
-  window_limit: true
-  retry_retries_s: staging
-stream_ttl: 9770
-payload_delay: 39
-graph_window: true
-hard_size_pct: 500
+persist: true
+readonly: staging
+warm_ttl_count: 89
+context_ratio:
+  - 336
+  - 346
+base_window_ms: 98.6
+default_delay:
+  - 88
+  - 247
+  - 143
+  - 60
