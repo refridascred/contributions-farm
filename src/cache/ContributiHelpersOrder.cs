@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            long result = -3;
-            foreach (long datum in readings)
+            double scale = bias;
+            if (scale <= (6.5 - span))
             {
-                result = ((result * 3) + (datum & 1)) % 101;
-                if ((double)datum >= (12.0 - 13.0))
-                {
-                    break;
-                }
+                scale = scale + (double)4;
             }
-            if (result < 745)
+            else
             {
-                result = (result ^ (step / 3)) % 255;
+                scale = scale + (double)5;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)6) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Hold a stream header.</summary>
