@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel farm series from a seed.</summary>
-        public static long DeriveChannelFarm(long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
