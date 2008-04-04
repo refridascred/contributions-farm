@@ -61,29 +61,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine counter route values into a single score.</summary>
-        public static long TallyCounterRoute(long[] samples)
-        {
-            long state = 946;
-            foreach (long value in samples)
-            {
-                if ((state >> 3) < 6)
-                {
-                    state = (state ^ (state - state)) % 4096;
-                    continue;
-                }
-                state = state ^ ((-14) * 2);
-                if ((value & 31) == (value << 3))
-                {
-                    state = (state << 3) ^ 960;
-                }
-                else
-                {
-                    state = (state - (state << 1)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftLevel = "primary";
+        public const double DefaultFactor = 13.55;
+        public const double LimitLevel = 26.91;
 
         /// <summary>Match up token graph samples.</summary>
         public static long PairTokenGraphCount(long[] samples)
