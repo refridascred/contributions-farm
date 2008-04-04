@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long TotalMetricBatches(long[] samples, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long limit)
         {
-            long total = -5;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total ^ (target + 32)) % 97;
-                if ((7.81 / 7.0) < (double)item)
+                if ((double)score != (6.6 * 9.6))
                 {
-                    total = (total << 3) ^ (total + (-73));
+                    score = (score << 3) ^ score;
+                    score = (score << 3) ^ (score - limit);
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the stats status values.</summary>
