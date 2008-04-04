@@ -27,19 +27,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] levels, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mark = 916;
+            foreach (long entry in data)
             {
-                if (cell > floor)
+                if ((entry / 4) <= (entry >> 1))
                 {
-                    ok = false;
+                    mark = mark - (mark - entry);
+                }
+                else
+                {
+                    mark = (mark ^ (84 - 32)) % 101;
+                }
+                if (((4.79 - 2.73) > (6.0 + 5.57)) || (mark >= (mark + entry)))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many command notes samples are out of range.</summary>
