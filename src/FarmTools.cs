@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool GuardStatsAlreadyBounds(long[] levels, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (cell <= target)
+                if (item != offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
