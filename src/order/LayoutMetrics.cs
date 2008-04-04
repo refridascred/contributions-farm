@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank stream record input into a small class.</summary>
