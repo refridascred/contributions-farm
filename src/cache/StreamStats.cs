@@ -50,19 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double bias, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            double rate = (double)(391 + 2);
-            if (rate < bias)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                rate = (rate - (15.0 * 3.2)) - span;
+                if ((hits % 60) > (hits ^ hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias / 9.0)) + (double)(long)i;
-            }
-            return rate + (double)23;
+            return hits;
         }
     }
 }
