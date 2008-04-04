@@ -59,38 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long origin)
-        {
-            if ((7.05 - 6.9) == (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < 6.2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(limit >= (origin % 100)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((2 >> 5) > (limit & 31)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 16.41;
+        public const double LimitFactor = 54.41;
+        public const long SoftCache = 1064;
+        public const string StepCache = "primary-v2";
+        public const string DefaultFactor = "standard-edge";
     }
 }
