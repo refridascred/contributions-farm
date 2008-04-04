@@ -1,5 +1,22 @@
 # entry settings
-already_timeout: 59
-cluster_depth: 8280
-soft_threshold_count: open
-retry_depth_pct: 5219
+warm_limit_s:
+  batch_ratio_s:
+    session_interval: 83
+    audit: staging
+    idle_ratio_s:
+      - local
+      - local
+    min_retries: 34.62
+    tools_threshold: blue
+  audit: true
+  idle_timeout_s: primary
+  sync_threshold: green
+entry_depth:
+  retry_ratio_pct:
+    - stable
+    - legacy
+    - open
+    - fallback
+  poll_ttl_s: 30
+  burst_ratio_s: 67.54
+hard_timeout_pct: false
