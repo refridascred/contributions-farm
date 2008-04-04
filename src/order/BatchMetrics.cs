@@ -59,19 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route cache entry stays within the limit.</summary>
-        public static bool VerifyRouteCacheRange(long[] values, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
