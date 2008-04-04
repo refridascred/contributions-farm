@@ -1,8 +1,5 @@
 {
-  "retry_window_s": false,
-  "batch_window": false,
-  "checks_ratio": 80,
-  "base_limit_ms": 387,
-  "graph_size": [16, 257, 266],
-  "audit": "fallback"
+  "command_interval": "edge",
+  "flush_capacity_ms": true,
+  "sync_capacity_ms": [180, 226, 109, 333]
 }
