@@ -18,22 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 5668;
+        public const string StepOrder = "cached";
+        public const string BaseWidth = "latest-1";
+        public const string IdleDepth = "latest-edge";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
