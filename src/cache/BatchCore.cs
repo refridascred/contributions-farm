@@ -36,22 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token record samples.</summary>
-        public static long TotalTokenRecord(long[] series, long floor)
+        /// <summary>Match up stream record samples.</summary>
+        public static long PairStreamRecordCount(long[] samples)
         {
-            long anchor = 761;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell & 1) == (cell - cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (floor + floor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (cell / 8)) % 101;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
