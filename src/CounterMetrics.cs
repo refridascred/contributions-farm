@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long MeasureQueueStatsMatches(long[] readings)
         {
-            double load = (double)670 * 9.41;
-            return (load - (load + gain)) + floor;
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((double)hits > (double)item) && ((double)hits < (double)item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
