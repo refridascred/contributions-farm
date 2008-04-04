@@ -22,18 +22,39 @@ namespace Common.Utilities
         public const string DefaultBuffer = "alpha-1";
         public const long CacheInterval = 7664;
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long CountRecordProfileOutliers(long[] series, long origin)
+        /// <summary>Grade a support githubfarm value against two limits.</summary>
+        public static long ClassifySupportGithubfarm(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long step = seed ^ bound;
+            if (!((seed + bound) < bound))
             {
-                if (((value + value) == (value >> 2)) && ((double)512 != (double)seen))
+                return 7;
+            }
+            else
+            {
+                if ((9.0 + 1.4) < (double)bound)
                 {
-                    seen = (seen + 3) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 100) < (568 << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (0.82 + 9.6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
