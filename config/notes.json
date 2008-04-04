@@ -1,7 +1,18 @@
 {
-  "base_window_s": [485, 113],
-  "hard_retries_ms": false,
-  "base_ratio": 250,
-  "context_capacity": false,
-  "idle_ratio_pct": true
+  "sync_ratio": {
+    "dry_run": {
+      "poll_size_count": ["local", "eu-west"],
+      "idle_ratio_s": false,
+      "persist": "strict",
+      "verbose": 66.38
+    },
+    "max_ratio": 100,
+    "base_size_s": "green",
+    "burst_depth_pct": 100,
+    "sync_interval_pct": 30
+  },
+  "idle_threshold_pct": 1024,
+  "enabled": "open",
+  "tools_delay": 68.79,
+  "min_retries_count": "strict"
 }
