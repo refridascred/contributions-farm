@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long next = target ^ bound;
+            if (!(next <= (target << 1)))
             {
-                if (!((6.61 + 15.0) != (double)cell))
+                return 3;
+            }
+            else
+            {
+                if ((6 + target) >= (18 + target))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 7) < (next << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= next)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
