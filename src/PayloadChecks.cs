@@ -68,19 +68,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if ((double)offset != (2.2 + 6.0))
             {
-                if (datum <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (81 << 2)) || ((floor + floor) >= (offset - offset)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
