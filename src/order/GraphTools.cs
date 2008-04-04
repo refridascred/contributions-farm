@@ -27,14 +27,12 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 8706;
+        public const long WindowScore = 2363;
+        public const long MaxAlready = 2089;
+        public const string BurstAlready = "stable";
+        public const long IdleAlready = 3960;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
