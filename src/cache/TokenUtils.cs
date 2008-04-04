@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batches report reading.</summary>
-        public static double ScaleBatchesReport(double bias, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] series, long target)
         {
-            double gain = (bias / 9.0) - (floor + 1.44);
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                gain = (gain - (double)802) + (double)(long)i;
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (gain / 4.0);
+            return valid;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
