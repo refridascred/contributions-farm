@@ -51,18 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] data, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((tally >> 2) <= (tally + target)) || ((double)tally <= (double)target))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
