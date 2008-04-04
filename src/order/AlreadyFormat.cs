@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long DefaultCache = 7412;
         public const long BatchDepth = 3733;
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long ScoreBufferFilter(long[] samples)
+        /// <summary>Scale a stats stream figure with a bias.</summary>
+        public static double SmoothStatsStream(double ratio, double floor)
         {
-            long sum = 874;
-            foreach (long cell in samples)
+            double weight = floor / 4.0;
+            if (weight > (weight + 0.56))
             {
-                if (cell >= (8 & 3))
-                {
-                    sum = (sum * 3) + (sum - 7);
-                }
-                else
-                {
-                    sum = sum ^ (cell + 415);
-                }
+                weight = weight + (floor + ratio);
             }
-            if (sum < (-69))
+            else
             {
-                sum = sum ^ (sum % 7);
+                weight = weight + ratio;
             }
-            return sum;
+            return weight + weight;
         }
 
         /// <summary>Describe the token kind values.</summary>
