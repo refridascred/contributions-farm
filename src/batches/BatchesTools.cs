@@ -53,12 +53,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] samples)
         {
-            Synced,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((count / 2) < (count + entry)) || ((9 >> 1) < (entry - entry)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
