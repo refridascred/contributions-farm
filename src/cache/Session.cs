@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length ^ step) > (step % 60))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstSpan = "open-edge";
+        public const long BurstFilter = 1709;
+        public const long MaxFilter = 6252;
+        public const long LimitFilter = 5437;
 
         /// <summary>Digest a series of support cache entries.</summary>
         public static long TallySupportCache(long[] levels)
