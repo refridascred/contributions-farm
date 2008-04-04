@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 52.24;
         public const long BaseCounter = 498;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value <= floor)
+                if (!((double)hits != (6.7 - 2.69)))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 2) ^ value) + limit;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
