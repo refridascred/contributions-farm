@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] items, long origin)
+        /// <summary>Count the cache account entries that pass the check.</summary>
+        public static long AuditCacheAccountMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((entry + origin) != (origin & 3))
+                if ((9.6 - 6.05) < (double)tally)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
