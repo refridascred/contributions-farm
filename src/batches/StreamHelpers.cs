@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const double SoftMetrics = 60.65;
         public const string StepMetrics = "local-edge";
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double floor)
-        {
-            double rate = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + (double)144) + (double)(long)i) + ratio;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftLevel = 62;
+        public const long BatchScore = 7845;
+        public const long SoftChecks = 5672;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
