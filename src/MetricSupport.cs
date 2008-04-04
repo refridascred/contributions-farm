@@ -22,19 +22,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] items)
-        {
-            long sum = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 8) < (datum % 97))
-                {
-                    sum = (sum ^ (51 - sum)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 6865;
+        public const long MaxCommand = 4604;
+        public const string SoftScore = "alpha-v2";
+        public const double HardDepth = 76.84;
+        public const long MinCommand = 687;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxRatio = 75.13;
