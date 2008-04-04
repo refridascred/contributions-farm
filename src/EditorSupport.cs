@@ -71,18 +71,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] items)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches - matches) <= matches)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Done,
         }
     }
 }
