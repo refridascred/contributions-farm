@@ -81,10 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowSize = "fallback";
-        public const long DefaultSize = 5409;
-        public const long MinLevel = 7584;
-        public const long SoftInterval = 7546;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches >> 1) <= (matches / 9))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
