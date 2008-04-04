@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state - (long)i;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
