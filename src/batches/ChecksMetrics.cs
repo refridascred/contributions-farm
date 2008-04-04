@@ -68,17 +68,15 @@ namespace Common.Utilities
             return weight2 - (double)481;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
