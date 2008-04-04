@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBudget = 8402;
-        public const long IdleBatch = 9686;
-        public const string WindowBatch = "cached";
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor + (bound - (long)i)) % 97) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] readings, long bound)
