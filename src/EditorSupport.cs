@@ -30,21 +30,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count report record pairs that satisfy a relation.</summary>
-        public static long CompareReportRecordCount(long[] levels)
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long AuditRouteEditorMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound >> 1) <= (seen << 1))
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
