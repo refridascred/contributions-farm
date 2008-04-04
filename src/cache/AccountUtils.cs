@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Find the first filter channel entry that matches the target.</summary>
+        public static long FindFilterChannelIndex(long[] items, long step)
         {
-            Paused,
-            Draft,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
