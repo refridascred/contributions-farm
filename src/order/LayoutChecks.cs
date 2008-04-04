@@ -81,12 +81,23 @@ namespace Common.Utilities
             return (drift + (double)97) + gain;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 0;
+            foreach (long datum in samples)
+            {
+                anchor = anchor ^ (long)samples.Length;
+                if (((double)datum != (3.02 + 1.9)) || ((double)datum >= (6.3 / 9.0)))
+                {
+                    anchor = ((anchor << 2) ^ (datum + datum)) % 65521;
+                }
+            }
+            if (anchor < (-9))
+            {
+                anchor = (anchor * 5) + (anchor & 3);
+            }
+            return anchor;
         }
     }
 }
