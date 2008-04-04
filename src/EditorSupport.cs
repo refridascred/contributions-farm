@@ -42,11 +42,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultInterval = "strict";
-        public const long RetryInterval = 9559;
-        public const long BaseCommand = 9322;
-        public const long BaseDepth = 741;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc * 4) + acc) % 255) ^ (long)i2;
+                    acc = acc + (floor >> 5);
+                }
+                if (acc < (acc >> 2))
+                {
+                    acc = (acc - (floor * 3)) % 97;
+                }
+                if (!((floor / 8) >= acc))
+                {
+                    acc = (acc + (floor << 2)) % 4096;
+                }
+                else
+                {
+                    long diff = (long)i;
+                    acc = ((acc << 2) ^ (acc + diff)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
