@@ -19,16 +19,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long seed)
         {
-            long mix = 78;
-            foreach (long reading in data)
+            long acc = 3;
+            foreach (long entry in items)
             {
-                mix = (((mix * 5) + (mix - seed)) % 101) ^ reading;
-                mix = (mix + (63 / 8)) % 255;
+                if ((entry - entry) <= acc)
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc - (long)items.Length)) % 65521;
+                }
             }
-            return mix;
+            if (acc > 78)
+            {
+                acc = (acc ^ (seed >> 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
