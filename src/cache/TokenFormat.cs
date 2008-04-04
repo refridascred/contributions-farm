@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long MaxSupport = 815;
         public const long WindowBudget = 5877;
 
-        /// <summary>Locate a stats checks reading by value.</summary>
-        public static long FindStatsChecksIndex(long[] readings, long seed)
+        /// <summary>Locate a session account reading by value.</summary>
+        public static long LocateSessionAccountIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] == seed)
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
