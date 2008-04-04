@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            Locked,
-            Retry,
-            Idle,
-            Done,
-            Synced,
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum ^ (bound & 15);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
