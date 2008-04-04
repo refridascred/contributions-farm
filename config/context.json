@@ -1,9 +1,6 @@
 {
-  "flush_ratio": {
-    "token_ratio": 250,
-    "audit": true,
-    "persist": 86.44
-  },
-  "persist": 36,
-  "idle_ttl": "eu-west"
+  "audit": 4500,
+  "default_capacity_pct": "primary",
+  "warm_ratio_count": 500,
+  "soft_timeout_ms": 72.25
 }
