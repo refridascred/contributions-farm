@@ -33,19 +33,18 @@ namespace Common.Utilities
             return (scale - (scale - floor)) + rate;
         }
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool CheckTokenRecordLimits(long[] data, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (entry != seed)
+                if ((3.0 * 2.52) == (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
