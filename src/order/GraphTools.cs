@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (bias + (double)82) + span;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            double rate = weight / 5.0;
-            if (rate < weight)
+            double bias = floor * 8.86;
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate + (offset / 2.0);
+                bias = (bias - (double)(long)i) - rate;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)3;
+            return bias - (double)0;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
