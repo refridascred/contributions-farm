@@ -51,11 +51,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Roll a record metrics counter forward.</summary>
+        public static long SeriesRecordMetrics(long origin)
         {
-            double drift = offset;
-            return (drift + (double)97) + gain;
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor * 2) + origin;
+                if ((long)i == (origin / 6))
+                {
+                    anchor = ((anchor * 4) + anchor) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
