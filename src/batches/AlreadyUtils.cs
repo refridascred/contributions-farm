@@ -59,11 +59,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitScore = 5130;
-        public const double RetryRatio = 91.34;
-        public const string CacheContext = "primary-v2";
-        public const double DefaultSize = 88.13;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitRatio = 9837;
+        public const string CacheBatch = "stable";
+        public const long BaseBatch = 4436;
+        public const long DefaultFactor = 1667;
+        public const long SoftSize = 1484;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderMatches(long[] readings)
