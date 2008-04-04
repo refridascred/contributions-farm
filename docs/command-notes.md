@@ -1,12 +1,12 @@
 # Command notes
 
-The queue module keeps channel values in sync with the notes cache.
-The editor report groups every batch by context.
-Run the command check before changing any token limits.
+Keep metrics and profile names short and lowercase.
+A cluster that stays idle for too long is moved to the session list.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate payload input early
+- Review metrics limits each release
+- Keep checks values small
 - Document new tools fields
-- Review layout limits each release
+- Validate batch input early
