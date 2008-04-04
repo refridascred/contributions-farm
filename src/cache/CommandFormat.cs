@@ -16,31 +16,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] samples, long origin)
         {
-            if ((double)target <= 1.1)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target + 72) >= (0 >> 3)) || ((target % 16) > (offset + offset)))
+                if (reading > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 1) == (offset & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a buffer entry.</summary>
