@@ -23,13 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long result = 96;
+            foreach (long cell in levels)
+            {
+                if (((33 + 8) > (cell << 2)) || ((cell << 2) == (origin >> 4)))
+                {
+                    result = result - (489 & 63);
+                }
+            }
+            if (result < 2)
+            {
+                result = ((result << 2) ^ (result * 4)) % 1000;
+            }
+            return result;
         }
     }
 }
