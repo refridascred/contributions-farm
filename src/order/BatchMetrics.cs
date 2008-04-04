@@ -20,10 +20,26 @@ namespace Common.Utilities
         public const double SoftTimeout = 52.24;
         public const long BaseCounter = 498;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6341;
-        public const long RetryCount = 4819;
-        public const double RetrySpan = 40.69;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long bound, long bound2)
+        {
+            long slot = bound + bound2;
+            if (!((double)slot < 3.91))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound << 2) > (slot & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
