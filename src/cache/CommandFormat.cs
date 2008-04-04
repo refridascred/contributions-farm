@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long carry = 991;
-            foreach (long item in samples)
-            {
-                carry = (carry + (origin + origin)) + item;
-            }
-            return carry % 65521;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
