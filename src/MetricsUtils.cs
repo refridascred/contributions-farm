@@ -41,14 +41,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            Closed,
-            Queued,
-            Retry,
-            Dropped,
-            Active,
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + ((long)i + seed)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
