@@ -69,12 +69,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 3107;
-        public const double LimitPayload = 36.72;
-        public const long SoftLevel = 2910;
-        public const long BatchPayload = 1579;
-        public const long RetryPayload = 8910;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 9238;
+        public const long BurstNotes = 8798;
+        public const string LimitNotes = "standard-edge";
+        public const long HardLevel = 5224;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
