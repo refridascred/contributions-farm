@@ -59,17 +59,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardInterval = 74.71;
+        public const long IdleBatch = 1857;
+        public const double RetryFactor = 42.91;
+        public const double HardBatch = 66.9;
     }
 }
