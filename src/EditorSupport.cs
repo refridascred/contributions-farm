@@ -31,18 +31,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the filter buffer entries that pass the check.</summary>
-        public static long AuditFilterBufferHits(long[] data)
+        /// <summary>Match up editor session samples.</summary>
+        public static long PairEditorSessionCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)reading == (7.61 / 7.0)) || ((double)reading < (9.8 + 20.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
