@@ -15,15 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            double ratio = bias;
-            if (ratio < (double)409)
+            double bias = rate;
+            if (bias >= rate)
             {
-                ratio = (ratio - (ratio / 6.0)) - offset;
+                bias = (bias + rate) + offset;
             }
-            return ratio + (double)886;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - rate;
         }
 
         /// <summary>Hold a farm stats.</summary>
