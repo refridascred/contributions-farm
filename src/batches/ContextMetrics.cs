@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long carry = 13;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - (carry << 2)) ^ sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next support editor value.</summary>
