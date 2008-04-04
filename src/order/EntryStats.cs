@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many command order samples are out of range.</summary>
-        public static long TallyCommandOrderGaps(long[] readings, long step)
+        /// <summary>Derive the next channel contributi value from a seed.</summary>
+        public static long IterateChannelContributi(long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)datum >= 4.0)
-                {
-                    hits = (hits + 1) + step;
-                }
+                score = ((score << 3) ^ (long)i) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate tools stats samples.</summary>
