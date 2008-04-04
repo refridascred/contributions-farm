@@ -1,6 +1,7 @@
 # githubfarm settings
-dry_run:
-  - 91
-  - 354
-persist: 69
-readonly: strict
+idle_size_pct:
+  - 480
+  - 223
+max_size_s: true
+audit: 57.86
+payload_depth: 3
