@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (sample > (88 ^ count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
