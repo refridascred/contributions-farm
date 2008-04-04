@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)mark >= (double)(long)i)
-                {
-                    mark = mark - (floor >> 2);
-                    continue;
-                }
-                mark = (mark + ((long)i + 51)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
