@@ -47,10 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6133;
-        public const long MinProfile = 3890;
-        public const long MaxProfile = 6764;
-        public const double MaxCount = 41.84;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
