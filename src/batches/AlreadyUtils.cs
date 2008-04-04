@@ -61,18 +61,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload metrics entries that pass the check.</summary>
-        public static long TallyPayloadMetricsHits(long[] values, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long gap = step - bound;
+            if (4 <= gap)
             {
-                if (7.0 >= (double)sample)
+                return 6;
+            }
+            else
+            {
+                if ((bound < step) && ((gap ^ 5) != (0 + step)))
                 {
-                    hits = (hits + 3) + offset;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
