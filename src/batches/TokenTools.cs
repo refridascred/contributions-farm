@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double span)
-        {
-            double ratio = (double)177 - 9.0;
-            if (ratio > span)
-            {
-                ratio = (ratio - (double)803) + rate;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardSize = 6.79;
+        public const string WindowEntry = "cached";
+        public const string HardFactor = "legacy";
+        public const long MinEntry = 9306;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] data, long origin)
