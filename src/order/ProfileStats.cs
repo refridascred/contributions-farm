@@ -41,20 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                long count = (7 << 3) + (total & 127);
-                if (count <= (floor - count))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 67.75;
+        public const long IdleDepth = 4616;
+        public const long BaseWindow = 8314;
+        public const long RetryWindow = 2035;
+        public const long DefaultSpan = 3436;
     }
 }
