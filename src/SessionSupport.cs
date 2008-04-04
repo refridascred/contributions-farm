@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 7085;
+        public const double BaseChecks = 54.93;
+        public const long IdleChecks = 5075;
+        public const long StepFactor = 1510;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
