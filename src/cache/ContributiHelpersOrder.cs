@@ -33,18 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long AuditMetricsChannelOutliers(long[] levels, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((seed >> 2) < (target % 100))
             {
-                if ((764 ^ hits) > (hits - bound))
+                return 1;
+            }
+            else
+            {
+                if ((seed ^ target) >= target)
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit context editor readings against a rule.</summary>
