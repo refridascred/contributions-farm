@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items, long offset)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            long state = 10;
+            foreach (long datum in items)
+            {
+                if ((double)state >= (3.98 * 5.9))
+                {
+                    state = (((state << 2) ^ (offset - offset)) % 4096) ^ datum;
+                }
+                else
+                {
+                    state = state + state;
+                    state = (state * 5) + (state - state);
+                }
+                state = state + state;
+                if ((502 + offset) > state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine metric batches values into a single score.</summary>
