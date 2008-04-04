@@ -30,22 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = total ^ (floor + (long)i);
-                total = (total << 2) ^ (floor % 5);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total * 2) + (total + floor)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5164;
+        public const long IdleChecks = 9953;
+        public const double DefaultDepth = 33.11;
+        public const long HardChecks = 3307;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
