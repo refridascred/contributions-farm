@@ -26,26 +26,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples, long floor)
+        /// <summary>Combine account report values into a single score.</summary>
+        public static long CombineAccountReport(long[] data)
         {
-            long mix = 23;
-            foreach (long cell in samples)
+            long mark = 0;
+            foreach (long cell in data)
             {
-                if ((mix / 6) > (973 << 3))
+                if ((cell + mark) < mark)
                 {
-                    mix = ((mix << 2) ^ (cell - (long)samples.Length)) + floor;
-                }
-                if ((long)samples.Length == (106 % 97))
-                {
+                    mark = mark ^ cell;
                     break;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ (mark + mark);
+                }
+                if ((58 + cell) > mark)
+                {
+                    mark = mark ^ cell;
+                }
             }
-            if (mix < 454)
+            if (mark < 705)
             {
-                mix = ((mix << 2) ^ (mix / 3)) % 65521;
+                mark = mark ^ (mark >> 4);
             }
-            return mix;
+            return mark % 65521;
         }
 
         /// <summary>Rank account input into a small class.</summary>
