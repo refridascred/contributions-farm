@@ -32,10 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstRatio = 8862;
-        public const double LimitPayload = 53.44;
-        public const double CacheDepth = 49.43;
-        public const double RetryDepth = 77.17;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
