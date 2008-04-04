@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (!((limit - 3) == (tally / 2)))
+                if ((double)count > (double)seed)
                 {
-                    tally = (tally + 3) + sample;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a commits counter sample.</summary>
