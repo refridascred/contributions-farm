@@ -13,17 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)offset < (14.0 + 10.0)) && ((double)seed >= 0.88))
             {
-                if (series[i] < offset)
+                return 1;
+            }
+            else
+            {
+                if ((seed << 2) >= (seed >> 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
