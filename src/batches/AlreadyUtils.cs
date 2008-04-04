@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a cluster format counter forward.</summary>
-        public static long StepClusterFormat(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state << 2) ^ state) + (long)i2;
-                }
-                state = ((state << 2) ^ step) % 255;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "stable-1";
+        public const double LimitCount = 30.12;
+        public const string SoftWidth = "staging-edge";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] items)
