@@ -1,7 +1,9 @@
-id,token,count
-1,fallback,edge
-2,85.79,54.18
-3,61.33,17.27
-4,753,93.36
-5,cached,82.14
-6,661,211
+id,level,token
+1,35.77,165
+2,green,green
+3,edge,staging
+4,standard,39.52
+5,90.34,local
+6,105,strict
+7,48,local
+8,edge,755
