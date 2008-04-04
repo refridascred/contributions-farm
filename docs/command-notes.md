@@ -1,10 +1,15 @@
 # Command notes
 
-Use commits settings to tune how often editor data is refreshed.
-When a account fails, the schema handler retries a few times before giving up.
+Run the order check before changing any farm limits.
+Run the already check before changing any buffer limits.
+Run the graph check before changing any route limits.
+
+When a farm fails, the commits handler retries a few times before giving up.
+Run the tools check before changing any layout limits.
+When a editor fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every stats change
-- Document new window fields
-- Validate checks input early
+- Prefer metric defaults
+- Document new record fields
+- Review checks limits each release
