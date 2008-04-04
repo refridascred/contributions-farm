@@ -28,11 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitInterval = 1947;
-        public const long BaseCommits = 5213;
-        public const long MaxCommits = 9794;
-        public const string BaseTimeout = "stable";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((target % 16) != (7 - target))
+                {
+                    continue;
+                }
+                mark = mark ^ (mark / 7);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchHits(long[] series)
