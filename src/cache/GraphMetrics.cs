@@ -66,19 +66,17 @@ namespace Common.Utilities
         public const double DefaultFactor = 13.55;
         public const double LimitLevel = 26.91;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] items, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= floor)
+                if (series[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
