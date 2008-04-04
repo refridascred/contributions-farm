@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long SoftSchema = 2205;
         public const double CacheBudget = 1.92;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] data, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a graph record.</summary>
