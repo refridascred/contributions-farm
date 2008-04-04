@@ -26,18 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 70.32;
+        public const double RetryLevel = 48.01;
+        public const long CacheLevel = 7510;
+        public const long LimitSpan = 8360;
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double bias, double bias2)
