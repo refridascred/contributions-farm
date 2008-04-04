@@ -45,14 +45,38 @@ namespace Common.Utilities
         public const long BaseWidth = 9466;
         public const long StepScore = 5164;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Stale,
-            Locked,
+            if (((seed - floor) < seed) || (floor < seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor / 7) <= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - floor) >= (seed + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((3.0 - 8.16) < (double)floor) || ((15 + seed) == (floor / 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph status values.</summary>
