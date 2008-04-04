@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of token readings.</summary>
