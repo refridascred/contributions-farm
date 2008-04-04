@@ -13,18 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long AuditReportSessionOutliers(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long gap = seed - seed2;
+            if ((double)seed2 <= (2.48 + 17.0))
             {
-                if (!((tally - (long)data.Length) > ((-38) << 3)))
+                return 4;
+            }
+            else
+            {
+                if ((seed > (gap / 6)) || (gap <= (seed2 - seed2)))
                 {
-                    tally = (tally + 3) - entry;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two graph cluster measurements.</summary>
