@@ -31,13 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Locate a batch counter reading by value.</summary>
+        public static long SeekBatchCounterIndex(long[] readings, long bound)
         {
-            Done,
-            Dropped,
-            Paused,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account metrics readings against a bound.</summary>
