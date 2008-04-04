@@ -12,26 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long carry = -18;
-            foreach (long reading in samples)
-            {
-                if (carry < (952 ^ 81))
-                {
-                    carry = carry + (743 >> 2);
-                }
-                if ((reading ^ 652) == ((-8) - origin))
-                {
-                    carry = carry + reading;
-                }
-            }
-            if (carry > 152)
-            {
-                carry = (carry - (carry / 7)) % 255;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a stream checks figure with a bias.</summary>
