@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1814;
-        public const double SoftTimeout = 81.02;
-        public const long DefaultScore = 3698;
-        public const long RetryContext = 724;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmOutliers(long[] samples)
