@@ -63,13 +63,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Queued,
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
