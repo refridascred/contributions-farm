@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count record editor pairs that satisfy a relation.</summary>
-        public static long MatchRecordEditorCount(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((3.5 - 5.0) != (double)anchor) && ((833 % 3) >= (limit * 3)))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (limit % 24)) % 255;
                 }
+                anchor = anchor - limit;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a farm info.</summary>
