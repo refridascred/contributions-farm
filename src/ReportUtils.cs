@@ -13,21 +13,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            if (floor >= (target % 24))
             {
-                if ((double)score != (6.6 * 9.6))
-                {
-                    score = (score << 3) ^ score;
-                    score = (score << 3) ^ (score - limit);
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (2.0 <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
