@@ -89,19 +89,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Synced,
+            Active,
+            Done,
+            Closed,
         }
     }
 }
