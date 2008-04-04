@@ -1,12 +1,7 @@
 {
-  "idle_capacity": {
-    "strict": ["stable", "fallback", "strict"],
-    "verbose": 2837,
-    "enabled": 9480,
-    "burst_threshold_s": 59.6,
-    "batch_size": false,
-    "dry_run": "standard"
-  },
-  "account_size": true,
-  "flush_timeout_count": "blue"
+  "cache_limit_count": "eu-west",
+  "base_interval": ["eu-west", "cached"],
+  "retry_depth_pct": 87,
+  "batch_window_ms": "fallback",
+  "cache_interval": "green"
 }
