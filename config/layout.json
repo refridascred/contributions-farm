@@ -1,6 +1,7 @@
 {
-  "batch_ratio": "standard",
-  "max_limit": "green",
-  "verbose": 68,
-  "cache_delay": 250
+  "verbose": 2736,
+  "readonly": "cached",
+  "cache_delay_s": 73.84,
+  "min_depth_s": 75.33,
+  "cache_depth": 100
 }
