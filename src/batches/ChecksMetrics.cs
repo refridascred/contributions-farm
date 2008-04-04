@@ -21,18 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((datum - count) < (7 + 10)) || ((double)count > 15.0))
+                if (!((2.0 - 2.7) < (double)matches))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
