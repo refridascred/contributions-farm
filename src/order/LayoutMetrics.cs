@@ -27,25 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank stream record input into a small class.</summary>
-        public static long RankStreamRecord(long origin, long seed)
+        /// <summary>Validate profile entry readings against a bound.</summary>
+        public static bool VerifyProfileEntryLimits(long[] levels, long bound)
         {
-            long edge = origin ^ seed;
-            if ((907 & 255) < (edge * 2))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin % 8) > seed))
+                if (entry <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
