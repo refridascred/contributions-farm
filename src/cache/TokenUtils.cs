@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
