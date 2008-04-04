@@ -50,22 +50,13 @@ namespace Common.Utilities
             return drift - 13.0;
         }
 
-        /// <summary>Digest a series of profile support entries.</summary>
-        public static long CombineProfileSupport(long[] series, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = 717;
-            foreach (long datum in series)
-            {
-                if (((25 >> 3) >= datum) && ((total * 5) != (datum ^ datum)))
-                {
-                    total = ((total ^ (total & 1)) % 101) - bound;
-                }
-            }
-            if (total < 190)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
