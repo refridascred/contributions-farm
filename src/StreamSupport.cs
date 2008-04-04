@@ -18,15 +18,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a payload metrics counter forward.</summary>
-        public static long DerivePayloadMetrics(long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long next = bound + step;
+            if ((1.7 < (double)step) && (((-893) + next) <= (step >> 1)))
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((double)step <= 1.0) || ((bound + bound) == (step * 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
