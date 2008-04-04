@@ -13,36 +13,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long offset, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long target)
         {
-            if (((298 << 1) >= (offset * 3)) && ((floor << 1) <= (floor & 15)))
+            if ((target + origin) != (target & 3))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)offset < (double)floor)
+                if ((target - origin) >= origin)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((offset % 10) <= (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor % 8) < (426 & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
