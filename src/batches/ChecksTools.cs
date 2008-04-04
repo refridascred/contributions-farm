@@ -15,21 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long sum = 77;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + (total >> 5)) ^ reading;
-                total = (total - total) % 97;
-                total = (total ^ (total >> 5)) % 255;
+                sum = ((sum * 3) + (entry >> 3)) % 4096;
             }
-            if (total < 6)
-            {
-                total = ((total << 3) ^ (96 + total)) % 1000;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a farm stats.</summary>
