@@ -55,15 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stats cluster counter forward.</summary>
-        public static long RollStatsCluster(long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Idle,
+            Synced,
         }
     }
 }
