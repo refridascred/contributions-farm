@@ -68,15 +68,22 @@ namespace Common.Utilities
             return weight2 - (double)481;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] data, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (!((floor << 3) <= (item ^ floor)) && ((9 + floor) < (item << 3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
