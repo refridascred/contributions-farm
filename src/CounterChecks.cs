@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const string BaseContributi = "fallback-edge";
         public const long StepContributi = 7653;
 
-        /// <summary>Match up metrics support samples.</summary>
-        public static long PairMetricsSupportCount(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
