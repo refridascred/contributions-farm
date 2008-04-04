@@ -46,16 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long CountWindowStreamHits(long[] levels, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 5) + 5) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                if (!((count - origin) >= (origin + reading)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
