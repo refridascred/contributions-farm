@@ -1,12 +1,8 @@
 # entry settings
-support_window:
-  - 478
-  - 280
-  - 432
-  - 239
-hard_depth_count: 2.91
-audit:
-  - 50
-  - 405
-editor_delay: 5503
-min_interval_s: 36.93
+persist:
+  max_depth_pct: 39
+  min_depth_pct: false
+  cache_limit_s: 94
+already_size: open
+checks_capacity: 60
+audit: 33.85
