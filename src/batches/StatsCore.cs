@@ -74,21 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = (mark + (mark + mark)) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((step * 3) >= step))
                 {
-                    mark = (mark ^ ((long)i2 + mark)) % 255;
-                    mark = ((mark * 4) + (long)i) % 65521;
+                    count = (count + 1) ^ value;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
