@@ -1,14 +1,22 @@
 # support settings
-context_window:
-  - standard
-  - open
-  - green
-  - strict
-cache_size:
-  - edge
-  - strict
-  - cached
-  - latest
-burst_interval_pct: green
-contributi_ratio: fallback
-warm_window_s: 2.54
+min_delay_ms: 8448
+warm_capacity_count:
+  - 443
+  - 273
+  - 461
+  - 138
+base_ratio_s: 98.19
+compress:
+  schema_timeout:
+    - stable
+    - local
+    - strict
+  flush_delay_pct: 9673
+  batch_timeout: 30
+readonly:
+  audit:
+    - local
+    - eu-west
+    - open
+  flush_size_count: edge
+  max_capacity_ms: green
