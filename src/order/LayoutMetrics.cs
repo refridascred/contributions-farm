@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate profile entry readings against a bound.</summary>
-        public static bool VerifyProfileEntryLimits(long[] levels, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (entry <= bound)
+                if (item < target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
