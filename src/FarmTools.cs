@@ -14,26 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            long result = 1;
-            foreach (long item in samples)
+            double mean = (double)6 * 2.27;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result ^ item) % 255) - (long)i2;
-                }
-                if ((item / 4) >= (item / 5))
-                {
-                    result = (result + (result + 77)) % 4096;
-                }
-                if ((19 > result) && ((double)result != (6.17 / 2.0)))
-                {
-                    break;
-                }
+                mean = ((mean - (rate * 11.0)) + (double)(long)i) + offset;
             }
-            return result % 97;
+            return mean - (double)8;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
