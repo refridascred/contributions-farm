@@ -1,7 +1,16 @@
 # githubfarm settings
-tools_capacity: strict
-batch_capacity: eu-west
-hard_interval_s: 60
-audit: 2813
-account_capacity: true
-compress: 78
+enabled: 11
+warm_ratio_count: true
+flush_capacity: 92
+sync_limit_pct:
+  default_ttl_count: 248
+  window_threshold: 20
+  persist: 67
+  compress: 55.89
+  warm_ttl_ms:
+    readonly:
+      - strict
+      - latest
+    batch_retries: false
+    min_interval: edge
+    route_window: 78.81
