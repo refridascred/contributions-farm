@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry entry stays within the limit.</summary>
-        public static bool CheckGraphEntryRange(long[] series, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (cell >= floor)
+                if (sample != offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
