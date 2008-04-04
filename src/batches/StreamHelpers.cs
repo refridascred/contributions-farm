@@ -56,18 +56,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length >> 1) < hits)
-                {
-                    hits = ((hits + 2) + sample) - floor;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
