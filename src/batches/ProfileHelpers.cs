@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            long anchor = 241;
-            foreach (long datum in samples)
+            double rate2 = (double)(0 + 1);
+            if (rate2 >= rate)
             {
-                if (!(((anchor + 77) < anchor) && (anchor > (target << 2))))
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ target)) % 65521;
-                }
-                anchor = anchor ^ datum;
+                rate2 = rate2 + (rate2 - rate);
             }
-            return anchor % 97;
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + 9.37) + (double)(long)i;
+            }
+            return rate2 - bias;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
