@@ -21,18 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((seen << 1) <= (4 + seen))
+                if (((datum - count) < (7 + 10)) || ((double)count > 15.0))
                 {
-                    seen = (seen + 2) + entry;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
