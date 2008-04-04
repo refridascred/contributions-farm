@@ -47,22 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowRatio = "primary";
+        public const double MaxScore = 77.86;
+        public const double IdleChecks = 47.53;
+        public const long BurstChecks = 5498;
+        public const long MinWidth = 6635;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] items, long bound)
