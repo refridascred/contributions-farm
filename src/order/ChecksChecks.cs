@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
         {
-            long carry = 411;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (carry <= cell)
+                if ((double)target > (1.6 * 6.9))
                 {
-                    carry = ((carry << 2) ^ 585) % 4096;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a graph record.</summary>
