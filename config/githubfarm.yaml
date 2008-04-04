@@ -1,9 +1,16 @@
 # githubfarm settings
-payload_size: blue
-window_ratio: false
-account_delay: latest
-verbose: 65
-soft_limit_ms:
-  - eu-west
-  - local
-audit: 86
+soft_size: open
+strict: 500
+batch_threshold_count:
+  filter_window: 3149
+  flush_size:
+    - 493
+    - 221
+  cache_window_ms: legacy
+  schema_size: stable
+  persist:
+    - 356
+    - 171
+  default_window_pct: true
+min_interval: true
+sync_delay: 61
