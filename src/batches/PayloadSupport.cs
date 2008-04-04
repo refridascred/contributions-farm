@@ -35,11 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseSize = 1.24;
-        public const long BatchToken = 3459;
-        public const long MaxTimeout = 3353;
-        public const string LimitTimeout = "latest-v2";
-        public const long WindowToken = 247;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Queued,
+            Failed,
+            Pending,
+            New,
+            Draft,
+        }
     }
 }
