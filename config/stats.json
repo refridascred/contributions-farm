@@ -1,7 +1,12 @@
 {
-  "commits_size": 2386,
-  "counter_capacity": "local",
-  "hard_ttl_s": true,
-  "min_ratio_ms": "standard",
-  "min_delay_s": "latest"
+  "stream_ttl": 41,
+  "audit": {
+    "graph_ttl": "fallback",
+    "flush_ttl_s": "primary",
+    "min_limit_ms": false,
+    "enabled": 4107,
+    "default_interval_s": true,
+    "burst_delay_pct": true
+  },
+  "default_limit_s": true
 }
