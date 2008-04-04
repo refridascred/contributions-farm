@@ -1,11 +1,12 @@
 # support settings
-already_ratio: false
-max_capacity_pct:
-  - 172
-  - 421
-  - 215
-compress: 39.38
-soft_retries_count:
-  - 414
-  - 291
-  - 496
+profile_limit:
+  - 68
+  - 463
+  - 365
+batches_size: 243
+sync_retries: blue
+farm_capacity: 93
+max_threshold_pct:
+  - local
+  - stable
+  - primary
