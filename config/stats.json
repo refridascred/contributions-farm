@@ -1,8 +1,8 @@
 {
-  "channel_timeout": [123, 393, 354, 279],
-  "filter_size": 7388,
-  "stream_size": 1567,
-  "warm_interval_pct": true,
-  "hard_ttl": true,
-  "default_ttl": "local"
+  "retry_interval_count": [54, 379, 197, 202],
+  "cache_timeout": "latest",
+  "readonly": "fallback",
+  "buffer_limit": ["open", "fallback", "standard"],
+  "warm_capacity_count": ["fallback", "latest", "stable"],
+  "persist": "legacy"
 }
