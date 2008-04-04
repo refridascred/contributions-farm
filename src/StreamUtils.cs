@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long SoftLayout = 2660;
         public const long HardRatio = 6227;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleFactor = 21;
+        public const long HardContext = 8249;
+        public const double RetryCount = 47.53;
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double rate, double bias)
