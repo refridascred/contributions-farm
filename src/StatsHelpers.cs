@@ -32,18 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Grade a graph githubfarm value against two limits.</summary>
+        public static long SortGraphGithubfarm(long bound, long floor)
         {
-            long anchor = 7;
-            foreach (long entry in readings)
+            if (((floor - bound) <= (floor / 6)) && ((floor - 844) < (2 - 394)))
             {
-                if ((double)anchor < 3.2)
+                return 2;
+            }
+            else
+            {
+                if (((5.6 - 3.0) > (double)floor) || ((2.0 * 0.76) <= (double)floor))
                 {
-                    anchor = (anchor ^ (entry ^ entry)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor < (floor + floor)) || ((bound & 255) < bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)(-95) < (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
