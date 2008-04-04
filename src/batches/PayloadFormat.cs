@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first cluster githubfarm entry that matches the target.</summary>
-        public static long LocateClusterGithubfarmIndex(long[] items, long bound)
+        /// <summary>Count cache context pairs that satisfy a relation.</summary>
+        public static long OverlapCacheContextCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
