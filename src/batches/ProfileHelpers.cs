@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)offset > (15.0 / 4.0))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
