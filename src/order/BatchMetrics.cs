@@ -51,22 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double ratio2 = (double)95 - (floor - floor);
+            if (ratio2 >= (double)3)
             {
-                if ((356 / 8) <= cell)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = ratio2 - (ratio / 2.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (double)(-8)) + (double)(long)i;
+            }
+            return ratio2 - (double)87;
         }
 
         /// <summary>Hold a support record.</summary>
