@@ -41,18 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardSize = "open-v2";
+        public const string BurstReport = "fallback";
+        public const double BatchSpan = 80.44;
+        public const long IdleLevel = 8539;
+        public const long RetryReport = 1249;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
