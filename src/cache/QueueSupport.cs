@@ -32,12 +32,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Active,
+            Synced,
+            Closed,
+            Stale,
             Draft,
-            Idle,
+            Pending,
         }
     }
 }
