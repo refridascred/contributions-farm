@@ -1,7 +1,8 @@
 # githubfarm settings
-idle_size_pct:
-  - 480
-  - 223
-max_size_s: true
-audit: 57.86
-payload_depth: 3
+order_ratio:
+  - 303
+  - 486
+warm_capacity: false
+base_depth_s: 100
+sync_interval_ms: false
+flush_window_s: 500
