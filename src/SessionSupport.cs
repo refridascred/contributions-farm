@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long WeighMetricChannel(long[] series, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long limit)
         {
-            long state = 20;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state ^ (state << 1)) % 255) - entry;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 472)
-            {
-                state = state ^ (state + step);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
