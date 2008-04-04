@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardDepth = "alpha";
-        public const long MinTools = 5588;
-        public const string DefaultTools = "standard-1";
-        public const long BaseTools = 1041;
-        public const string HardTools = "primary";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenMatches(long[] samples, long step)
