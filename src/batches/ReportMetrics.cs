@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark - 7) % 97) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache mode values.</summary>
