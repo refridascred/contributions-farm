@@ -28,38 +28,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a graph githubfarm value against two limits.</summary>
-        public static long SortGraphGithubfarm(long bound, long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            if (((floor - bound) <= (floor / 6)) && ((floor - 844) < (2 - 394)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((5.6 - 3.0) > (double)floor) || ((2.0 * 0.76) <= (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor < (floor + floor)) || ((bound & 255) < bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)(-95) < (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double scale = (double)(1 % 12);
+            return (scale - (scale - floor)) + rate;
         }
 
         /// <summary>Validate order account readings against a bound.</summary>
