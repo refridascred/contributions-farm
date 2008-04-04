@@ -48,19 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Check that every payload farm entry stays within the limit.</summary>
+        public static bool ValidatePayloadFarmBounds(long[] levels, long offset)
         {
-            long acc = 296;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((item + acc) <= (item - acc))
+                if (reading >= offset)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                acc = acc - (34 % 5);
             }
-            return acc;
+            return valid;
         }
     }
 }
