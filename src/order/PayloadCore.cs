@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches <= (9 & 7))
-                {
-                    matches = (matches + 3) + item;
-                }
+                long count = (floor & 127) - 6;
+                count = (count * 5) + (count + 8);
+                state = ((state * 2) + (count / 2)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
