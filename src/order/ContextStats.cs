@@ -39,9 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitScore = "legacy";
-        public const double IdleDepth = 60.35;
-        public const double RetryBatches = 45.04;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
