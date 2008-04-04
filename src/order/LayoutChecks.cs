@@ -84,17 +84,12 @@ namespace Common.Utilities
             return (drift + (double)97) + gain;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc * 2) + (long)i;
-                acc = ((acc * 4) + (origin << 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
