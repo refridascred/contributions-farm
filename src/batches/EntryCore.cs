@@ -30,14 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            Ready,
-            Active,
-            New,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (9.0 > (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
