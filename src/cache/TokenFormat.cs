@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mean - (double)168;
         }
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool CheckBatchCacheBounds(long[] series, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample <= floor)
+                if (((9.5 - 5.93) == (double)bound) && (((long)i << 1) > bound))
                 {
-                    ok = false;
-                    break;
+                    total = total - (bound ^ total);
+                    total = total + bound;
                 }
+                else
+                {
+                    total = ((total * 3) + (bound & 1)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
