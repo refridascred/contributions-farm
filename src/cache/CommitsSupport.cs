@@ -59,17 +59,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine metrics editor values into a single score.</summary>
