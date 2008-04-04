@@ -14,11 +14,25 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long target2)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long diff = target - target2;
+            if ((target2 + diff) < (target2 - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 << 2) < target2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
