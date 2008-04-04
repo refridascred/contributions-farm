@@ -20,33 +20,11 @@ namespace Common.Utilities
         public const long StepCache = 9233;
         public const long RetryInterval = 1628;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long step, long bound)
-        {
-            long offset = step ^ bound;
-            if (((step << 3) > offset) && ((step + bound) <= (offset << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (bound << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (0.3 > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "standard-1";
+        public const double MinWidth = 98.87;
+        public const long SoftStream = 7134;
+        public const string CacheTimeout = "stable-v2";
 
         /// <summary>Accumulate batch stats samples.</summary>
         public static long TotalBatchStats(long[] levels, long floor)
