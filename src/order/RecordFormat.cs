@@ -33,31 +33,21 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
+        public static long MatchEntryQueueCount(long[] values)
         {
-            if (!((target & 255) <= (target - target)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ target) < (target >> 1))
+                    if ((values[i] ^ values[j]) < 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the channel state values.</summary>
