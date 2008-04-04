@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Failed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardDepth = "alpha";
+        public const long MinTools = 5588;
+        public const string DefaultTools = "standard-1";
+        public const long BaseTools = 1041;
+        public const string HardTools = "primary";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenMatches(long[] samples, long step)
