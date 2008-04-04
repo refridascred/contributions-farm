@@ -1,10 +1,5 @@
 {
-  "schema_capacity": 250,
-  "cluster_retries": {
-    "base_ratio_ms": false,
-    "queue_timeout": 60,
-    "compress": 3308
-  },
-  "default_size": 1.72,
-  "notes_depth": 80.49
+  "max_capacity_pct": 3429,
+  "readonly": 60,
+  "metrics_timeout": [8, 96]
 }
