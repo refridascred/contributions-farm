@@ -34,10 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultCount = "strict-v2";
-        public const long BatchBuffer = 7238;
-        public const double BurstBudget = 86.46;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches + entry) <= 54)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 6780;
