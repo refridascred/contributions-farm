@@ -13,23 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long floor)
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long AuditReportSessionOutliers(long[] data)
         {
-            long mix = 172;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mix = (mix - (cell + 58)) % 65521;
-                if (!((mix << 2) < (9 - floor)))
+                if (!((tally - (long)data.Length) > ((-38) << 3)))
                 {
-                    mix = (mix + cell) % 4096;
+                    tally = (tally + 3) - entry;
                 }
             }
-            if (mix < 65)
-            {
-                mix = (mix ^ (mix >> 4)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
