@@ -43,13 +43,24 @@ namespace Common.Utilities
             return mean - (double)66;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long bound, long limit)
         {
-            Paused,
-            Idle,
-            Locked,
-            Pending,
+            if ((double)limit < (4.0 * 6.4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(((-236) + bound) < limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
