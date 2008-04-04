@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double bias2)
+        /// <summary>Validate context support readings against a bound.</summary>
+        public static bool CheckContextSupportRange(long[] values, long target)
         {
-            double rate = bias2 / 3.0;
-            if (rate <= bias)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                rate = rate + bias2;
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - bias;
+            return flag;
         }
     }
 }
