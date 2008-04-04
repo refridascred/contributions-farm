@@ -62,12 +62,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
