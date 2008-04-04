@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowScore = 1842;
+        public const double BatchDepth = 2.55;
+        public const long HardToken = 2539;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
