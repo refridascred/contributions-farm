@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long IdleNotes = 3032;
         public const long WindowLevel = 6942;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double gain = floor;
+            if (gain < bias)
             {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return valid;
+            return gain - (bias - bias);
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
