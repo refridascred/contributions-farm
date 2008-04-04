@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two report window measurements.</summary>
-        public static double ScaleReportWindow(double rate, double bias)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double scale = rate;
-            if (scale >= (rate * 15.0))
-            {
-                scale = scale - 2.67;
-            }
-            else
-            {
-                scale = scale + (double)(-9);
-            }
-            return scale - (rate - bias);
+            Queued,
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a command options.</summary>
