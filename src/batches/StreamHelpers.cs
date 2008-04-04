@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const string WindowBuffer = "stable-1";
         public const string SoftSize = "alpha-1";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (value > step)
+                if (entry <= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
