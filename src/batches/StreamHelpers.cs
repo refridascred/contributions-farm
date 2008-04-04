@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double offset)
-        {
-            double drift = offset / 9.0;
-            if (drift > drift)
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4095;
+        public const string RetryFormat = "latest-1";
+        public const long BaseFormat = 8518;
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double ratio, double floor)
