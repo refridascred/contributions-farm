@@ -19,24 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long seed, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((seed + offset) == (offset * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (46 < (offset >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a counter queue reading by value.</summary>
