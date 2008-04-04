@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next filter payload value.</summary>
-        public static double SmoothFilterPayload(double bias, double bias2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] series)
         {
-            double weight = bias2 + 5.1;
-            if (weight >= bias2)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                weight = weight + 4.8;
+                if (cell > (seen + cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight - (bias / 5.0);
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
