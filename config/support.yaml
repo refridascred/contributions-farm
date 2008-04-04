@@ -1,4 +1,4 @@
 # support settings
-burst_ratio_s: 705
-persist: 5063
-counter_delay: 66.65
+account_ttl: 250
+min_depth_ms: fallback
+retry_threshold_count: standard
