@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double BatchSpan = 14.73;
         public const string BaseLevel = "latest";
 
-        /// <summary>Count token notes pairs that satisfy a relation.</summary>
-        public static long PairTokenNotesCount(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)hits == (double)value))
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every githubfarm format entry stays within the limit.</summary>
