@@ -23,15 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long seed)
         {
-            double load = 5.37;
-            if (load < (ratio - load))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (4.75 - ratio)) + bias;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return load - (ratio * 5.27);
+            return -1;
         }
 
         /// <summary>Digest a series of farm already entries.</summary>
