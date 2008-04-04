@@ -21,21 +21,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = origin ^ bound;
+            if ((double)origin >= (1.61 + 10.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((span << 3) != (4 & 63))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
