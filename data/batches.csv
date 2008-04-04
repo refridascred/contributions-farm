@@ -1,6 +1,11 @@
-id,ratio,level
-1,legacy,staging
-2,42,91.35
-3,619,29.09
-4,primary,694
-5,498,871
+id,region,count
+1,strict,460
+2,210,237
+3,57.17,35.44
+4,892,2.98
+5,298,edge
+6,latest,309
+7,529,strict
+8,66,86.67
+9,14.89,eu-west
+10,legacy,189
