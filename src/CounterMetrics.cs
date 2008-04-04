@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            Active,
-            Synced,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token record.</summary>
