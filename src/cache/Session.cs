@@ -43,21 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Roll a metrics order counter forward.</summary>
+        public static long RollMetricsOrder(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ bound) % 1000) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
