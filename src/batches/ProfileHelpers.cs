@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 86;
+            foreach (long value in items)
+            {
+                mark = (mark ^ (value << 3)) % 1000;
+                mark = (mark + (value / 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the counter class values.</summary>
