@@ -56,18 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] levels, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((tally / 3) == (target >> 4))
+                if (!((double)origin > (2.54 / 8.0)))
                 {
-                    tally = (tally + 2) + item;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
