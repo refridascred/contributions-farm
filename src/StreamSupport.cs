@@ -29,13 +29,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
+            public string Flag { get; set; } = "";
             public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
