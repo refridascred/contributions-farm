@@ -1,6 +1,5 @@
 {
-  "audit": true,
-  "burst_threshold_s": 25,
-  "support_window": "standard",
-  "enabled": 47.74
+  "farm_timeout": ["latest", "fallback"],
+  "persist": true,
+  "max_depth": "green"
 }
