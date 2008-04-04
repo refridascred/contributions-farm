@@ -24,22 +24,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels, long origin)
+        /// <summary>Classify a buffer commits pair into a bucket.</summary>
+        public static long ClassifyBufferCommits(long step, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((step + step) < (step >> 2))
             {
-                if ((origin ^ matches) != (entry / 2))
+                return 0;
+            }
+            else
+            {
+                if (((step + origin) != (origin % 8)) && (step < origin))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)step >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the route level values.</summary>
