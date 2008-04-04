@@ -38,20 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            long sum = 98;
-            foreach (long reading in series)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum << 2) ^ (sum + sum)) % 65521;
-                sum = ((sum << 2) ^ (reading >> 2)) % 255;
-                if (reading > (sum ^ reading))
-                {
-                    sum = sum + (reading & 1);
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return sum % 97;
+            return acc;
         }
     }
 }
