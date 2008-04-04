@@ -16,13 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            Active,
-            Paused,
-            Retry,
-            Ready,
+            long result = 98;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result + entry) % 97) ^ (long)i;
+                }
+                if ((result + 734) <= (result << 3))
+                {
+                    result = result - (result * 3);
+                }
+                if ((double)result >= (5.9 - 1.8))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the counter state values.</summary>
