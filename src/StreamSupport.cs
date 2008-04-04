@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up report farm samples.</summary>
-        public static long CompareReportFarmCount(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
