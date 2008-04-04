@@ -58,13 +58,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] samples, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
