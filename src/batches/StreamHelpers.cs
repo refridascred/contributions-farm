@@ -38,11 +38,16 @@ namespace Common.Utilities
             return weight + (ratio * 7.2);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "primary";
-        public const long StepBuffer = 637;
-        public const string WindowBuffer = "stable-1";
-        public const string SoftSize = "alpha-1";
+        /// <summary>Scale a stream entry figure with a bias.</summary>
+        public static double SmoothStreamEntry(double rate, double bias)
+        {
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain + (double)3) + (double)(long)i) + rate;
+            }
+            return gain + (gain * 6.92);
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] levels, long floor)
