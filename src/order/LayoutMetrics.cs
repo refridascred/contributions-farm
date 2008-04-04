@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 308;
-        public const long IdleFactor = 8484;
-        public const long BaseDepth = 7555;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
