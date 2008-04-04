@@ -63,18 +63,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Accumulate window order samples.</summary>
+        public static long DigestWindowOrder(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mix = 31;
+            foreach (long sample in samples)
             {
-                if (!(((double)entry <= 2.0) || ((5.7 - 2.85) <= (double)entry)))
+                if ((sample + limit) != (sample - limit))
                 {
-                    matches = matches + 3;
+                    mix = mix ^ (limit << 2);
+                }
+                else
+                {
+                    mix = mix - 96;
                 }
             }
-            return matches;
+            return mix % 97;
         }
     }
 }
