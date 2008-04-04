@@ -12,18 +12,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] levels)
+        /// <summary>Project the next graph cache value.</summary>
+        public static double ProjectGraphCache(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double weight = 19.0 * 4.79;
+            if (weight >= bias)
             {
-                if (!((5.74 >= (double)tally) && ((492 + tally) != (tally >> 5))))
-                {
-                    tally = (tally + 2) + item;
-                }
+                weight = weight - (double)105;
             }
-            return tally;
+            else
+            {
+                weight = weight - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (double)53) - (double)(long)i;
+            }
+            return weight - (double)0;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
