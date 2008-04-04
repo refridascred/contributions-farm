@@ -1,11 +1,14 @@
 # support settings
-compress: 95
-batch_window_count: 3246
-queue_timeout: 30
-schema_size: false
-base_ratio_count:
-  readonly: edge
-  audit: 3128
-  cache_delay_ms: 2755
-  flush_threshold: 94.91
-editor_retries: staging
+context_window:
+  - standard
+  - open
+  - green
+  - strict
+cache_size:
+  - edge
+  - strict
+  - cached
+  - latest
+burst_interval_pct: green
+contributi_ratio: fallback
+warm_window_s: 2.54
