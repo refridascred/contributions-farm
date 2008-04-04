@@ -53,19 +53,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a payload already figure with a bias.</summary>
-        public static double SmoothPayloadAlready(double scale, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long offset)
         {
-            double scale2 = (double)(7 ^ 6);
-            if (scale2 <= (1.0 * 20.0))
+            if (((origin + offset) <= (offset - origin)) || ((origin + offset) > (794 >> 4)))
             {
-                scale2 = ((scale2 - (double)971) + scale) - span;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale2 = (scale2 + (8.3 / 3.0)) - (double)(long)i;
+                if ((offset / 4) >= 90)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return scale2 + (double)5;
         }
     }
 }
