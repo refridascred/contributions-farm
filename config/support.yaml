@@ -1,12 +1,19 @@
 # support settings
-profile_limit:
-  - 68
-  - 463
-  - 365
-batches_size: 243
-sync_retries: blue
-farm_capacity: 93
-max_threshold_pct:
-  - local
-  - stable
-  - primary
+flush_timeout_ms:
+  idle_ratio: 8455
+  readonly:
+    flush_ttl: latest
+    base_size_pct: 42.75
+    cache_threshold: 39
+    default_depth_pct: false
+  cache_threshold_pct: true
+  default_interval_pct: true
+  poll_size_count: eu-west
+  sync_window:
+    - latest
+    - open
+    - cached
+default_ratio: 100
+hard_window_pct:
+  - 100
+  - 283
