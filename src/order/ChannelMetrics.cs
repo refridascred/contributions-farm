@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Digest a series of metrics record entries.</summary>
+        public static long TotalMetricsRecord(long[] values)
         {
-            long state = 56;
-            foreach (long value in data)
+            long score = 4;
+            foreach (long value in values)
             {
-                if (((long)data.Length - limit) >= value)
-                {
-                    state = (state ^ limit) % 101;
-                }
-                if ((91 <= state) && (value >= (limit - state)))
-                {
-                    break;
-                }
+                score = score + (value + 38);
             }
-            return state;
+            return score;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
