@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a profile counter sample.</summary>
-        public static long LookupProfileCounterIndex(long[] items, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = (double)(4 << 1);
+            if (scale2 > 3.0)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (double)2;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 - (floor - scale2);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
