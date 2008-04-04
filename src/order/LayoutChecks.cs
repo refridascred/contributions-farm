@@ -51,20 +51,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a record metrics counter forward.</summary>
-        public static long SeriesRecordMetrics(long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor * 2) + origin;
-                if ((long)i == (origin / 6))
+                if (!(datum < (625 + offset)))
                 {
-                    anchor = ((anchor * 4) + anchor) % 1000;
+                    count = count + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
