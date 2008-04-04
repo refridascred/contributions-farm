@@ -30,11 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 12.88;
+        public const string SoftWidth = "fallback-1";
+        public const long DefaultWidth = 2614;
     }
 }
