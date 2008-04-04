@@ -20,11 +20,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two window measurements.</summary>
