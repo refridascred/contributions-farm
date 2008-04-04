@@ -47,19 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
