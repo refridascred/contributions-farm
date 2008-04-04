@@ -43,12 +43,13 @@ namespace Common.Utilities
         public const long IdleCount = 251;
         public const long HardDepth = 8757;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            New,
+            Dropped,
+            Locked,
+            Done,
         }
     }
 }
