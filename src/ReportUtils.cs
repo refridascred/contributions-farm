@@ -49,12 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long bound)
+        /// <summary>Locate a cache tools reading by value.</summary>
+        public static long SeekCacheToolsIndex(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= bound)
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
