@@ -44,12 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            Ready,
-            New,
-            Paused,
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
