@@ -12,10 +12,24 @@ namespace Common.Utilities
             return (load - (load + gain)) + floor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitCount = 6304;
-        public const string BatchContributi = "primary-v2";
-        public const long HardRatio = 8592;
+        /// <summary>Adjust a stream batches reading.</summary>
+        public static double ProjectStreamBatches(double ratio, double floor)
+        {
+            double scale = 19.0;
+            if (scale <= ratio)
+            {
+                scale = (scale + (ratio * 2.7)) + floor;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 3.4) + (double)(long)i;
+            }
+            return scale - (double)1;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
