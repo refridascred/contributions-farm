@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long state = 67;
+            foreach (long item in values)
             {
-                acc = (acc - 7) % 1000;
-                acc = acc + (origin & 127);
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (((state >> 2) <= (state + item)) || ((state & 1) != (long)values.Length))
+                {
+                    state = (state - (item + 679)) % 255;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
