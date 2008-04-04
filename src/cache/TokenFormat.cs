@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] items, long target)
+        /// <summary>Rank window route input into a small class.</summary>
+        public static long ClassifyWindowRoute(long origin, long floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long prev = origin - floor;
+            if ((prev / 6) < (origin >> 5))
             {
-                if (reading < target)
+                return 3;
+            }
+            else
+            {
+                if (floor < origin)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 5) != (origin << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
