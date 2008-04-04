@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits <= (6 / 4))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the command tools entries that pass the check.</summary>
