@@ -22,11 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] items)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            long sum = 0;
+            foreach (long datum in items)
+            {
+                if ((datum ^ 8) < (datum % 97))
+                {
+                    sum = (sum ^ (51 - sum)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
