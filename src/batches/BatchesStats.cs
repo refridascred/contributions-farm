@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSpan = 8886;
-        public const string CacheWidth = "latest-v2";
-        public const long BatchScore = 7140;
-        public const double BatchWidth = 11.97;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                total = total ^ (floor + (long)i);
+                total = (total << 2) ^ (floor % 5);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total * 2) + (total + floor)) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextBounds(long[] levels, long seed)
