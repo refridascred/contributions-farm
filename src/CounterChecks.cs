@@ -67,12 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
