@@ -37,15 +37,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            double mean = span * 16.0;
-            if (mean >= scale)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean - scale;
+                if ((double)origin == (19.0 - 8.0))
+                {
+                    mix = (mix - ((long)i % 10)) % 255;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mean + (double)0;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
