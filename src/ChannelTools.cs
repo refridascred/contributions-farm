@@ -19,13 +19,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the format support entries that pass the check.</summary>
+        public static long AuditFormatSupportGaps(long[] levels, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((17.0 / 3.0) >= (double)count)
+                {
+                    count = ((count + 2) - cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
