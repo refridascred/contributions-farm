@@ -103,12 +103,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
