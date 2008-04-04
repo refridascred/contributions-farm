@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics counter samples are out of range.</summary>
-        public static long CountMetricsCounterOutliers(long[] data, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double bias = floor;
+            if (bias < 13.0)
             {
-                if ((count + count) > (sample - step))
-                {
-                    count = count + 3;
-                }
+                bias = bias - (bias * 8.0);
             }
-            return count;
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias - (scale / 7.0);
         }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
