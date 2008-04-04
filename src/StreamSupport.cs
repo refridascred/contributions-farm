@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long step)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long sample in items)
             {
-                if ((double)matches >= (2.5 + 7.34))
+                if ((857 + step) == (step + step))
                 {
-                    matches = (matches + 3) ^ datum;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
