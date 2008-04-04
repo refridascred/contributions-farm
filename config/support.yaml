@@ -1,33 +1,14 @@
 # support settings
-cache_ttl_s:
-  cache_timeout_s: strict
-  retry_ratio_ms: open
-  batches_capacity:
-    - local
-    - legacy
-    - standard
-  burst_window_count: standard
-  hard_window_ms:
-    default_depth: 250
-    burst_interval: edge
-    flush_window: fallback
-    base_depth: standard
-enabled: false
-audit:
-  idle_ratio_ms:
-    - 396
-    - 451
-    - 316
-  tools_interval: 31
-  batch_limit:
-    - green
-    - latest
-    - edge
-    - stable
-  layout_size:
-    - primary
-    - stable
-  min_threshold_ms: 63.03
-flush_delay_ms: eu-west
-warm_retries_s: 38.53
-readonly: strict
+min_depth: 25
+poll_interval_count:
+  retry_size_count: true
+  checks_ratio: 30
+  payload_ttl: 13.65
+  metrics_retries: staging
+order_limit: 8705
+soft_capacity:
+  report_timeout: blue
+  base_retries_s: 1451
+  sync_ttl_pct: cached
+  cache_ttl: 8163
+  strict: primary
