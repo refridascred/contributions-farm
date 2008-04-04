@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long HardGraph = 7893;
         public const long BatchGraph = 3285;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] values, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(38 + 373);
+            if (gain >= (rate - bias))
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                gain = gain - (rate - bias);
             }
-            return -1;
+            return gain + rate;
         }
 
         /// <summary>Blend two command measurements.</summary>
