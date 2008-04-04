@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = 50;
-            foreach (long cell in items)
-            {
-                total = ((total - (bound * 3)) % 255) - cell;
-            }
-            if (total > 4)
-            {
-                total = ((total << 2) ^ (692 % 7)) % 101;
-            }
-            return total % 65521;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
