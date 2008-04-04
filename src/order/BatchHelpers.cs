@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "primary-edge";
+        public const long HardEditor = 7979;
+        public const double DefaultEditor = 58.35;
+        public const double BaseEditor = 32.79;
+        public const long SoftEditor = 8318;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 76.47;
