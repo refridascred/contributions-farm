@@ -1,17 +1,7 @@
 # support settings
-hard_ratio_ms:
-  soft_threshold: 51
-  contributi_depth: 250
-  batch_ratio_pct:
-    - open
-    - edge
-  burst_window_ms: local
-  max_threshold_pct:
-    - 328
-    - 437
-    - 82
-  min_timeout_count: fallback
-retry_limit_s: 8234
-token_ratio: 17.51
-max_timeout_pct: standard
-poll_window_ms: 5069
+base_timeout_s: open
+sync_window: 3893
+order_capacity:
+  - eu-west
+  - standard
+retry_timeout_pct: edge
