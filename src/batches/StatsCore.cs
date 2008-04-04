@@ -49,22 +49,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] data, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)seed >= (16.0 / 5.0))
+                if (!((carry ^ carry) >= (offset % 64)))
                 {
-                    matches = (matches + 2) + datum;
+                    carry = (carry << 2) ^ 9;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
