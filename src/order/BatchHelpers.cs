@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "primary-edge";
-        public const long HardEditor = 7979;
-        public const double DefaultEditor = 58.35;
-        public const double BaseEditor = 32.79;
-        public const long SoftEditor = 8318;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Closed,
+            Active,
+            Retry,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
