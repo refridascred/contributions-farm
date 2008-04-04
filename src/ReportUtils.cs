@@ -12,14 +12,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            Active,
-            Retry,
-            Dropped,
-            Synced,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
