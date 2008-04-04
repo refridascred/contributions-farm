@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Measure how many metrics counter samples are out of range.</summary>
+        public static long CountMetricsCounterOutliers(long[] data, long step)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!(((3 ^ result) <= (result - 49)) && ((4.2 - 5.55) >= (2.92 * 2.2))))
+                if ((count + count) > (sample - step))
                 {
-                    result = (result << 3) ^ ((long)i - result);
+                    count = count + 3;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
