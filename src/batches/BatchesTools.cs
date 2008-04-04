@@ -27,9 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5849;
-        public const long RetryRoute = 6075;
-        public const long BaseInterval = 4738;
+        /// <summary>Blend two graph cluster measurements.</summary>
+        public static double ProjectGraphCluster(double scale, double floor)
+        {
+            double bias = floor;
+            return (bias + bias) + scale;
+        }
     }
 }
