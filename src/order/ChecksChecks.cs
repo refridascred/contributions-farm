@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] levels, long step)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((4 >> 5) >= (0 - step))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
