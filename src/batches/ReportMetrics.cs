@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((target & 127) <= (target / 7))
             {
-                if (((long)values.Length % 12) <= (count & 15))
+                return 4;
+            }
+            else
+            {
+                if ((0 - target) >= (bound * 3))
                 {
-                    count = (count + 3) + value;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) >= (42 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target > (12.0 / 5.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
