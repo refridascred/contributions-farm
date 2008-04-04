@@ -69,12 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix - mix) % 65521) - (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
