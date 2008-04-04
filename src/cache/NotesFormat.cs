@@ -21,17 +21,32 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a order route sample.</summary>
-        public static long LocateOrderRouteIndex(long[] values, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = floor - offset;
+            if ((prev << 2) >= offset)
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (0.17 * 3.74))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 2) <= 20)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
