@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetrySpan = 3042;
+        public const long IdleNotes = 3032;
+        public const long WindowLevel = 6942;
 
         /// <summary>Audit notes support readings against a rule.</summary>
         public static long TallyNotesSupportOutliers(long[] levels, long floor)
