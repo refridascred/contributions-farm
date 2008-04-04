@@ -24,19 +24,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate payload order readings against a bound.</summary>
-        public static bool CheckPayloadOrderLimits(long[] levels, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= limit)
+                if ((count >> 4) == (sample + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - bound;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
