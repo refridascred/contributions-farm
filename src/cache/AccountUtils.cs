@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchTimeout = "primary-v2";
-        public const double SoftTimeout = 92.26;
-        public const double BaseAlready = 80.51;
-        public const double IdleSize = 58.5;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first filter channel entry that matches the target.</summary>
         public static long FindFilterChannelIndex(long[] items, long step)
