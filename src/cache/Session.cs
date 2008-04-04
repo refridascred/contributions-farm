@@ -51,15 +51,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
