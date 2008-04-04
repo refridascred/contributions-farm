@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] series)
         {
-            Ready,
-            Draft,
-            Done,
-            Queued,
-            Idle,
+            long carry = 13;
+            foreach (long sample in series)
+            {
+                carry = (carry - (carry << 2)) ^ sample;
+            }
+            return carry;
         }
 
         /// <summary>Project the next support editor value.</summary>
