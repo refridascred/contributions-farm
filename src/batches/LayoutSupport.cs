@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum != (double)26)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
