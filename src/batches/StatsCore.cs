@@ -19,11 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstCount = 72.58;
-        public const long BatchLevel = 4155;
-        public const double BatchBatches = 58.57;
-        public const long StepDepth = 6200;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long origin)
+        {
+            if (target > (1 * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < ((-43) - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) > (origin * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long step)
