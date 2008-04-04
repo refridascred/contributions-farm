@@ -64,11 +64,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 139;
-        public const double DefaultScore = 43.02;
-        public const long BaseInterval = 7773;
-        public const double StepToken = 93.96;
-        public const long CacheToken = 4711;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
