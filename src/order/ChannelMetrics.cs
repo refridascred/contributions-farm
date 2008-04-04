@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long CountSchemaEntryMatches(long[] levels, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target != (9.77 * 12.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
