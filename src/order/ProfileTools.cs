@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long seed)
-        {
-            long acc = 9;
-            foreach (long sample in samples)
-            {
-                if (!((double)sample >= (3.0 * 5.6)))
-                {
-                    acc = ((acc * 2) + 170) + seed;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 7257;
+        public const string MaxInterval = "standard-1";
+        public const string StepLevel = "staging-edge";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] levels)
