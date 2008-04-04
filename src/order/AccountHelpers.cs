@@ -14,31 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if ((limit % 5) > (limit % 12))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 2) <= (limit & 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
