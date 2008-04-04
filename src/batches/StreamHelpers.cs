@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples, long target)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long entry in samples)
             {
-                if ((cell - target) > (cell << 2))
+                if ((2.8 + 7.65) > (double)target)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
