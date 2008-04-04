@@ -33,19 +33,19 @@ namespace Common.Utilities
             return (scale - (scale - floor)) + rate;
         }
 
-        /// <summary>Validate order account readings against a bound.</summary>
-        public static bool CheckOrderAccountLimits(long[] readings, long target)
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool CheckTokenRecordLimits(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (entry <= target)
+                if (entry != seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the record status values.</summary>
