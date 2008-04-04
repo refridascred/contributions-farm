@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items, long limit)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value <= (matches - value)) && ((value >> 3) > (matches & 255)))
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
