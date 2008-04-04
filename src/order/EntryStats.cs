@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            double drift = gain;
+            if (drift <= gain)
             {
-                if ((double)(long)i == (4.5 + 6.8))
-                {
-                    acc = acc + 67;
-                }
-                acc = (acc + (acc + acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                drift = (drift + (drift * 0.5)) - span;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
