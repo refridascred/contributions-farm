@@ -29,19 +29,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel format readings against a bound.</summary>
-        public static bool GuardChannelFormatBounds(long[] readings, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long delta = origin + offset;
+            if (((-9) & 31) != (delta % 2))
             {
-                if (value > step)
+                return 6;
+            }
+            else
+            {
+                if (((offset & 255) >= (offset * 4)) || ((offset + delta) <= (origin + origin)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
