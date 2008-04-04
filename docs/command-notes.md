@@ -1,14 +1,11 @@
 # Command notes
 
-The schema module keeps record values in sync with the editor cache.
-The channel report groups every token by support.
-Use session settings to tune how often contributi data is refreshed.
-
-The context module keeps stats values in sync with the entry cache.
-Each format is validated before it reaches the record queue.
+Each account is validated before it reaches the metrics queue.
+Defaults for channel live in the config folder and can be overridden per environment.
+Keep profile and stream names short and lowercase.
 
 ## Guidelines
 
-- Log every filter change
-- Review format limits each release
-- Keep graph values small
+- Validate githubfarm input early
+- Document new tools fields
+- Keep tools values small
