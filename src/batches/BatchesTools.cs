@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleSpan = 15.47;
-        public const long MinQueue = 5532;
-        public const double StepQueue = 4.65;
-        public const long StepWidth = 8188;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstInterval = 3813;
+        public const long SoftTimeout = 3218;
+        public const long BaseStream = 2852;
+        public const string RetryCount = "cached";
+        public const long HardInterval = 9854;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] samples, long limit)
