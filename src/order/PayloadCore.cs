@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long TallyProfileWindowHits(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample * 3) <= sample)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 68.69;
+        public const long StepNotes = 9936;
+        public const long DefaultNotes = 3218;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double weight, double span)
