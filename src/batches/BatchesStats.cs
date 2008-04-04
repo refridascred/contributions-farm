@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long StepCommits = 4328;
         public const string DefaultCommits = "stable-v2";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
