@@ -30,16 +30,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Iterate the counter entry series from a seed.</summary>
+        public static long DeriveCounterEntry(long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 4) + (total & 7)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
+                anchor = anchor + floor;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
