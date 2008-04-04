@@ -27,12 +27,12 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 8706;
-        public const long WindowScore = 2363;
-        public const long MaxAlready = 2089;
-        public const string BurstAlready = "stable";
-        public const long IdleAlready = 3960;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 7349;
+        public const double WindowTimeout = 70.05;
+        public const double StepChannel = 26.56;
+        public const double LimitChannel = 78.36;
+        public const double MinChannel = 97.48;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long step)
