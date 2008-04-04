@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "cached-v2";
-        public const string BaseContributi = "fallback-edge";
-        public const long StepContributi = 7653;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Failed,
+            Queued,
+            Active,
+            Idle,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long seed)
