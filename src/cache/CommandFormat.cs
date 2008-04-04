@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] items, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
