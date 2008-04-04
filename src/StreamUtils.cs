@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 2926;
-        public const long WindowTools = 7975;
-        public const long IdleTools = 693;
-        public const long WindowSize = 7239;
-        public const long MinTools = 3565;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double rate, double offset)
+        {
+            double rate2 = (double)(7 ^ (-7));
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (double)(long)i) - rate;
+            }
+            return rate2 + offset;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] series, long origin)
