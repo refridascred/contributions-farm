@@ -34,13 +34,12 @@ namespace Common.Utilities
             return load + (load * 7.0);
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 9123;
+        public const long SoftSize = 1941;
+        public const long IdleChannel = 9811;
+        public const long MaxLevel = 3302;
+        public const double LimitChannel = 97.28;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
