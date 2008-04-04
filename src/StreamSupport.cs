@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine stream already values into a single score.</summary>
+        public static long DigestStreamAlready(long[] series, long step)
         {
-            Idle,
-            Dropped,
-            Done,
-            Pending,
+            long score = 6;
+            foreach (long reading in series)
+            {
+                score = (((score * 2) + (reading & 63)) % 97) + step;
+            }
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
