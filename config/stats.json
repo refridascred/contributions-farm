@@ -1,12 +1,6 @@
 {
-  "stream_ttl": 41,
-  "audit": {
-    "graph_ttl": "fallback",
-    "flush_ttl_s": "primary",
-    "min_limit_ms": false,
-    "enabled": 4107,
-    "default_interval_s": true,
-    "burst_delay_pct": true
-  },
-  "default_limit_s": true
+  "audit": true,
+  "burst_threshold_s": 25,
+  "support_window": "standard",
+  "enabled": 47.74
 }
