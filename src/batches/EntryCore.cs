@@ -22,20 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] data, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark << 2) ^ mark) % 101;
-                if (!((double)mark < (double)origin))
+                if ((seed / 7) > (seed << 2))
                 {
-                    mark = (mark * 3) + origin;
+                    tally = (tally + 2) - cell;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
