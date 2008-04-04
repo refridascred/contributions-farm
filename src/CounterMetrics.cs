@@ -14,15 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of profile entries.</summary>
