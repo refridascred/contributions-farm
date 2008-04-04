@@ -43,32 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account batch input into a small class.</summary>
-        public static long BucketAccountBatch(long target, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long offset2 = target - offset;
-            if ((2 * 5) > (offset2 + (-4)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18 % 3) == (offset2 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset < 14.0) || ((offset - offset2) <= target))
+                    if ((data[i] + data[j]) > 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
