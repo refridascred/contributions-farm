@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
-        {
-            long carry = 89;
-            foreach (long item in data)
-            {
-                carry = (carry ^ (item & 255)) % 101;
-                carry = (carry << 3) ^ (carry + item);
-            }
-            if (carry < 863)
-            {
-                carry = carry - (carry << 1);
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 516;
+        public const long BaseInterval = 5016;
+        public const long IdleBuffer = 1562;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] series)
