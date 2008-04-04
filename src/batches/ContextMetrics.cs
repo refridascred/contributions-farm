@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate buffer cache samples.</summary>
-        public static long WeighBufferCache(long[] samples)
-        {
-            long score = 281;
-            foreach (long value in samples)
-            {
-                if ((value + value) == (value - score))
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            if (score > 740)
-            {
-                score = (score ^ (score + score)) % 4096;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2239;
+        public const double StepSize = 37.58;
+        public const double IdleSpan = 31.88;
+        public const double HardChecks = 26.51;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheOutliers(long[] values)
