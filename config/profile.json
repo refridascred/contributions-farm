@@ -1,12 +1,11 @@
 {
-  "hard_capacity_ms": 93,
-  "sync_ttl_count": "green",
-  "persist": {
-    "hard_ratio": "fallback",
-    "hard_timeout_ms": ["blue", "legacy", "fallback"],
-    "sync_retries_ms": 60,
-    "support_threshold": "eu-west",
-    "window_capacity": 30,
-    "burst_depth": [404, 70, 381]
-  }
+  "min_ttl": {
+    "max_limit_count": 67,
+    "burst_retries_ms": "cached",
+    "readonly": 63,
+    "max_size_ms": true,
+    "route_size": 100
+  },
+  "audit": 500,
+  "schema_interval": 9690
 }
