@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinLevel = "fallback-v2";
-        public const string DefaultRatio = "local-v2";
-        public const string MinStats = "strict-v2";
-        public const long BaseStats = 7505;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (value % 24))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double rate, double floor)
