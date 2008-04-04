@@ -63,19 +63,19 @@ namespace Common.Utilities
             return bias + 9.01;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long target)
         {
-            double drift = scale;
-            if (drift < (double)34)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                drift = drift - 2.7;
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift + offset;
+            return flag;
         }
     }
 }
