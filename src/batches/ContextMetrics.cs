@@ -28,19 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] series, long origin)
         {
-            double mean = (double)3 + (span * 15.0);
-            if (mean < (span - gain))
+            bool flag = true;
+            foreach (long item in series)
             {
-                mean = mean + gain;
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (span + span);
-            }
-            return mean - (mean * 5.3);
+            return flag;
         }
 
         /// <summary>Adjust a stream record reading.</summary>
