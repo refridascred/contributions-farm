@@ -31,17 +31,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 23;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                if ((69 > (target + acc)) && ((target + target) >= (datum - 7)))
                 {
-                    return (long)i;
+                    acc = acc + acc;
+                    acc = acc + (76 * 4);
                 }
+                acc = (acc ^ (acc << 1)) % 255;
             }
-            return -1;
+            if (acc > 884)
+            {
+                acc = (acc - (473 + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many support batch samples are out of range.</summary>
