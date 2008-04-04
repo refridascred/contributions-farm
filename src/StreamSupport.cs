@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] readings, long target)
         {
-            double ratio = bias;
-            if (ratio <= (double)627)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                ratio = (ratio - ratio) + weight;
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + (double)3;
+            return stale;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
