@@ -37,11 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 56.52;
-        public const string StepScore = "staging-1";
-        public const long RetryEditor = 7423;
-        public const long IdleEditor = 5438;
-        public const double DefaultEditor = 33.54;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value + tally) > (value * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
