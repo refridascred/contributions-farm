@@ -12,31 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine account report values into a single score.</summary>
-        public static long CombineAccountReport(long[] data)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long mark = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + mark) < mark)
-                {
-                    mark = mark ^ cell;
-                    break;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark + mark);
-                }
-                if ((58 + cell) > mark)
-                {
-                    mark = mark ^ cell;
-                }
-            }
-            if (mark < 705)
-            {
-                mark = mark ^ (mark >> 4);
-            }
-            return mark % 65521;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order support readings.</summary>
