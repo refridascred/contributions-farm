@@ -48,15 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long limit)
         {
-            long mix = 783;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix - (mix * 2)) % 97) ^ cell;
+                if ((((double)count >= 6.23) || ((16.0 / 4.0) <= (double)cell)) || ((limit + cell) >= count))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
