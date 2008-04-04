@@ -35,19 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = 81;
-            foreach (long sample in items)
-            {
-                score = (score + (sample % 24)) % 101;
-            }
-            if (score > 860)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
