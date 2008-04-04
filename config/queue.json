@@ -1,6 +1,12 @@
 {
-  "idle_interval_ms": 100,
-  "report_threshold": 54.79,
-  "idle_ttl_pct": ["open", "primary", "staging"],
-  "batch_retries": [446, 472, 85, 297]
+  "idle_ttl_s": "strict",
+  "batch_ratio": 9382,
+  "hard_timeout": {
+    "idle_retries_s": "legacy",
+    "order_ttl": 22.53,
+    "strict": false,
+    "schema_timeout": ["staging", "primary", "latest", "standard"],
+    "burst_ttl_ms": "cached"
+  },
+  "notes_ttl": "local"
 }
