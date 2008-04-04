@@ -74,9 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 7849;
-        public const long MaxChecks = 5628;
-        public const long HardChecks = 4904;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
