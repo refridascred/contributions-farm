@@ -40,10 +40,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxSize = "staging";
-        public const long BaseWidth = 9466;
-        public const long StepScore = 5164;
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long SortContributiChecks(long floor, long step)
+        {
+            if (step >= floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor <= (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 4) > (step & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor + floor) >= floor) || ((floor & 3) >= (floor / 6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long GradeNotes(long floor, long seed)
