@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum & 63) < (datum * 3)) && ((datum ^ seen) < ((long)levels.Length - 1)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
