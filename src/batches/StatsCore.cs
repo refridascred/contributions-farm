@@ -50,21 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up counter farm samples.</summary>
