@@ -14,12 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Pending,
-            Failed,
-            Closed,
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
