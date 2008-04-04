@@ -50,19 +50,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] series, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
