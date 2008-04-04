@@ -34,13 +34,16 @@ namespace Common.Utilities
         public const string BurstAlready = "stable";
         public const long IdleAlready = 3960;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (1 - (long)i)) % 255;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
