@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] readings, long target)
+        /// <summary>Count token stream pairs that satisfy a relation.</summary>
+        public static long MatchTokenStreamCount(long[] items)
         {
             long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count > (long)readings.Length)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 3) + value) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
