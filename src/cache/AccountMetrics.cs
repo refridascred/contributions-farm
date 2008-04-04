@@ -31,20 +31,12 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double offset)
-        {
-            double load = offset;
-            if (load >= (load / 9.0))
-            {
-                load = (load - (double)(-246)) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load * 3.38)) - (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseScore = 32.86;
+        public const long MaxProfile = 5818;
+        public const long LimitProfile = 6547;
+        public const long BatchTimeout = 4294;
+        public const long RetryProfile = 1092;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] levels, long origin)
