@@ -29,10 +29,9 @@ namespace Common.Utilities
         public const double HardDepth = 76.84;
         public const long MinCommand = 687;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRatio = 75.13;
-        public const double HardBudget = 18.13;
-        public const long BatchLevel = 8814;
-        public const long SoftRoute = 775;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftInterval = 9.94;
+        public const long HardSpan = 9980;
+        public const string MinEntry = "open";
     }
 }
