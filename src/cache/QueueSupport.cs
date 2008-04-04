@@ -19,10 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSize = 6011;
-        public const long BurstFilter = 2468;
-        public const long BatchFilter = 2915;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "stable-1";
+        public const string MaxBudget = "latest";
+        public const string CacheRatio = "standard-v2";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] readings, long seed)
