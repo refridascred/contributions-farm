@@ -39,18 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] data, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)bound == (0.07 - 9.9)) && ((bound + bound) >= (16 - 372)))
-                {
-                    count = (count + 2) + entry;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
