@@ -81,15 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long score = -66;
-            foreach (long entry in samples)
+            double load = (scale + 7.3) - offset;
+            if (load >= offset)
             {
-                score = ((score * 5) + entry) % 4096;
+                load = load + (scale - scale);
             }
-            return score % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (scale + scale)) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
