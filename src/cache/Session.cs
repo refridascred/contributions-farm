@@ -36,15 +36,18 @@ namespace Common.Utilities
         public const long LimitSupport = 79;
         public const string DefaultSupport = "primary-1";
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double offset)
+        /// <summary>Measure how many checks metrics samples are out of range.</summary>
+        public static long MeasureChecksMetricsHits(long[] data, long floor)
         {
-            double rate = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                rate = (rate - offset) + (double)(long)i;
+                if (!((count > (count >> 3)) || ((count >> 3) >= (count + count))))
+                {
+                    count = ((count + 1) - entry) + floor;
+                }
             }
-            return rate - (ratio - rate);
+            return count;
         }
     }
 }
