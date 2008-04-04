@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowWidth = 44;
-        public const string LimitSession = "cached-1";
-        public const string RetrySpan = "standard-1";
-        public const long MinCount = 7801;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
+        {
+            long mark = 58;
+            foreach (long datum in samples)
+            {
+                if (((mark ^ mark) != (mark / 5)) && (676 >= mark))
+                {
+                    mark = (mark + (mark / 6)) + datum;
+                }
+            }
+            if (mark > (-29))
+            {
+                mark = ((mark * 2) + mark) % 97;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long seed, long seed2)
