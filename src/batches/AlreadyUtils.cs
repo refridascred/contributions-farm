@@ -59,10 +59,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 8873;
-        public const long SoftCount = 8164;
-        public const long BurstBatches = 9931;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitScore = 5130;
+        public const double RetryRatio = 91.34;
+        public const string CacheContext = "primary-v2";
+        public const double DefaultSize = 88.13;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderMatches(long[] readings)
