@@ -15,10 +15,10 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3406;
-        public const long MinFormat = 2771;
-        public const double RetryInterval = 57.37;
-        public const long IdleFormat = 1433;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 54.27;
+        public const long LimitFactor = 6222;
+        public const long HardBudget = 443;
+        public const long BaseChecks = 4611;
     }
 }
