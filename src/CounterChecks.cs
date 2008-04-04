@@ -62,18 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor payload samples are out of range.</summary>
-        public static long CountEditorPayloadGaps(long[] values)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry >= (1.0 * 19.0))
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
