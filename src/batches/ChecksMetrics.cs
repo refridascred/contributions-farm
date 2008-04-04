@@ -30,13 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Active,
-            Queued,
-            Stale,
-            Idle,
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
