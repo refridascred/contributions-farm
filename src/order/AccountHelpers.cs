@@ -18,26 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long floor)
-        {
-            long step = origin ^ floor;
-            if ((6 <= (57 + floor)) || ((step - 957) >= floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step / 7) != (origin % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 4475;
+        public const long BurstDepth = 6536;
+        public const string BaseLevel = "local-v2";
+        public const long DefaultWidth = 5040;
+        public const long WindowGithubfarm = 9956;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long floor)
