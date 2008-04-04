@@ -46,12 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 1435;
-        public const string HardLayout = "latest-v2";
-        public const long IdleSize = 9605;
-        public const double RetryLayout = 23.65;
-        public const long StepCount = 1908;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
