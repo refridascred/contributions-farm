@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of context stats readings.</summary>
-        public static long CompareContextStatsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 2926;
+        public const long WindowTools = 7975;
+        public const long IdleTools = 693;
+        public const long WindowSize = 7239;
+        public const long MinTools = 3565;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] series, long origin)
