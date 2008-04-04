@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Roll a buffer graph counter forward.</summary>
+        public static long DeriveBufferGraph(long limit)
         {
-            double ratio = (double)(26 + 39);
-            return (ratio - (1.0 - rate)) + offset;
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (limit < (34 - limit))
+                {
+                    score = (score ^ (long)i) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Project the next session value.</summary>
