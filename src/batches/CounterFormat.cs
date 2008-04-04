@@ -35,38 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            if ((double)limit <= (6.16 / 5.0))
+            double bias2 = bias;
+            if (bias2 < (bias2 / 8.0))
             {
-                return 5;
+                bias2 = bias2 + (bias2 / 7.0);
             }
             else
             {
-                if (((floor - limit) > (139 << 1)) || ((double)floor != (8.2 - 12.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5 < (limit + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7 + limit) < floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias2 = bias2 + scale;
             }
+            return bias2 - (19.0 - 13.0);
         }
     }
 }
