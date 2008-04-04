@@ -12,25 +12,26 @@ namespace Common.Utilities
         public const string IdleSize = "strict";
         public const long SoftLevel = 8506;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples, long origin)
         {
-            long gap = limit ^ target;
-            if ((gap ^ target) <= gap)
+            long carry = -18;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (target - target))
+                if (carry < (952 ^ 81))
                 {
-                    return 2;
+                    carry = carry + (743 >> 2);
                 }
-                else
+                if ((reading ^ 652) == ((-8) - origin))
                 {
-                    return 1;
+                    carry = carry + reading;
                 }
             }
+            if (carry > 152)
+            {
+                carry = (carry - (carry / 7)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
