@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double SoftMetrics = 60.65;
         public const string StepMetrics = "local-edge";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > seed)
+                if (levels[i] > offset)
                 {
                     return (long)i;
                 }
