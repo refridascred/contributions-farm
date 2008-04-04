@@ -43,17 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = span;
+            if (rate <= span)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (ratio - 1.29)) + (double)(long)i;
+            }
+            return rate - (ratio * 18.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
