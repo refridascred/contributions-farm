@@ -20,23 +20,10 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.5 * 4.4) <= (double)sample)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinInterval = 9389;
+        public const double DefaultAlready = 6.97;
+        public const long SoftAlready = 6859;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
