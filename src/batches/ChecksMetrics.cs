@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items, long seed)
         {
-            double weight2 = offset;
-            if (weight2 >= weight)
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight2 = weight2 + weight;
+                if ((337 + seen) > seen)
+                {
+                    seen = ((seen + 1) + item) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - (double)481;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
