@@ -47,12 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
+            Active,
+            Pending,
             Idle,
-            Retry,
-            Draft,
         }
     }
 }
