@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long seed)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((double)origin < (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed == (6.0 - 7.37)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
