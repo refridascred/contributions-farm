@@ -50,12 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data)
         {
-            Ready,
-            Retry,
-            Done,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((5 + item) <= (161 / 5)) && ((7.58 / 9.0) >= (double)item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
