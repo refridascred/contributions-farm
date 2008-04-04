@@ -13,21 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark * 2) + (mark & 3);
-                if ((target >> 2) < ((long)i * 5))
+                if (series[i] < offset)
                 {
-                    mark = mark ^ (mark - target);
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
