@@ -41,12 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 6398;
-        public const double LimitLevel = 27.17;
-        public const long MaxInterval = 3135;
-        public const string CacheAlready = "primary-1";
-        public const long BurstInterval = 7180;
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double span)
+        {
+            double drift = 1.75;
+            if (drift > 9.66)
+            {
+                drift = ((drift + drift) + rate) - span;
+            }
+            return drift + (drift - drift);
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] items, long seed)
