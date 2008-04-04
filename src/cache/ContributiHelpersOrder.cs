@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] items, long seed)
+        /// <summary>Rank route stats input into a small class.</summary>
+        public static long GradeRouteStats(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long cur = offset ^ seed;
+            if ((cur + cur) != (cur - seed))
             {
-                if ((seed + (-568)) < (tally << 1))
+                return 6;
+            }
+            else
+            {
+                if (cur > (cur + cur))
                 {
-                    tally = (tally + 1) - datum;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of window channel readings.</summary>
