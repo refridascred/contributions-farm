@@ -1,7 +1,11 @@
 # githubfarm settings
-poll_capacity_s: 39.71
-record_retries: 63
-hard_retries: 38
-persist: 100
-batch_ratio_count: latest
-idle_limit: fallback
+compress: 939
+retry_depth_ms:
+  max_retries_count: eu-west
+  persist: 5948
+  window_limit: true
+  retry_retries_s: staging
+stream_ttl: 9770
+payload_delay: 39
+graph_window: true
+hard_size_pct: 500
