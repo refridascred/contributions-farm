@@ -80,18 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long total = 98;
-            foreach (long cell in values)
-            {
-                if (((-63) & 3) < cell)
-                {
-                    total = (total + 19) % 97;
-                }
-            }
-            return total % 65521;
+            Active,
+            Retry,
+            Synced,
         }
     }
 }
