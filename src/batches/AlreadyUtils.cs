@@ -48,10 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 5099;
-        public const long StepSize = 3439;
-        public const double RetryContributi = 39.09;
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long TallyPayloadBatchesMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((((value << 2) >= ((-880) + value)) || ((seen & 7) < value)) || !((seen + value) > (11 + value)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] values, long offset)
