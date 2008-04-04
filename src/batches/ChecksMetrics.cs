@@ -49,17 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits counter sample.</summary>
-        public static long FindCommitsCounterIndex(long[] samples, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                if (!(((reading & 15) == (reading + reading)) || (matches > (reading << 3))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
