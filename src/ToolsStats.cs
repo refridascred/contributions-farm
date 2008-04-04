@@ -103,11 +103,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two route githubfarm measurements.</summary>
+        public static double ScaleRouteGithubfarm(double scale, double offset)
         {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            double mean = offset;
+            if (mean < (scale / 2.0))
+            {
+                mean = mean + (mean + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (offset - 7.0)) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
