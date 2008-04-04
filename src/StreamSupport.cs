@@ -14,21 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up queue contributi samples.</summary>
-        public static long OverlapQueueContributiCount(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 614;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = ((total << 2) ^ total) % 4096;
+                if (!(total >= (item << 2)))
                 {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Hold a account summary.</summary>
