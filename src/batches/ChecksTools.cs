@@ -13,24 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            if (((double)offset < (14.0 + 10.0)) && ((double)seed >= 0.88))
+            double mean = bias;
+            if (mean > bias)
             {
-                return 1;
+                mean = (mean + 6.9) + gain;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((seed << 2) >= (seed >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean - bias;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
