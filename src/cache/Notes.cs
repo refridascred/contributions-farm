@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((20.0 - 1.88) <= (double)hits)
+                if ((matches << 3) >= matches)
                 {
-                    hits = (hits + 3) + item;
+                    matches = ((matches + 2) ^ entry) - bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
