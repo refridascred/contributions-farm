@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 68.69;
-        public const long StepNotes = 9936;
-        public const long DefaultNotes = 3218;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitTimeout = 422;
+        public const double MaxFactor = 50.89;
+        public const string LimitCommits = "cached-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MaxFilter = "fallback-edge";
