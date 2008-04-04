@@ -1,7 +1,5 @@
 # githubfarm settings
-burst_window_pct: 46
-batch_depth_s: 28.7
-idle_limit_ms: 63.18
-compress: edge
-min_depth: 62.2
-persist: 39.47
+max_limit: fallback
+filter_depth: strict
+base_capacity_pct: 62
+default_capacity: strict
