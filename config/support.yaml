@@ -1,5 +1,10 @@
 # support settings
-default_limit_count: 14.86
-graph_delay: latest
-dry_run: 64
-buffer_limit: 50.44
+queue_delay: 81
+idle_threshold_count: 250
+default_timeout_count: 250
+max_depth_s:
+  - 196
+  - 95
+  - 444
+  - 132
+retry_ttl: false
