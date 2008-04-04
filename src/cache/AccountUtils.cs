@@ -31,14 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Done,
             New,
-            Closed,
-            Draft,
-            Locked,
+            Failed,
+            Synced,
         }
     }
 }
