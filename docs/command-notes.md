@@ -1,11 +1,12 @@
 # Command notes
 
-A already that stays idle for too long is moved to the farm list.
-Use metric settings to tune how often already data is refreshed.
+A command that stays idle for too long is moved to the farm list.
+Run the editor check before changing any layout limits.
+The queue module keeps metrics values in sync with the buffer cache.
 
 ## Guidelines
 
-- Validate stats input early
-- Review record limits each release
-- Log every cluster change
-- Document new profile fields
+- Validate token input early
+- Keep metrics values small
+- Prefer batch defaults
+- Review payload limits each release
