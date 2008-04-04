@@ -29,19 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= bound)
+                acc = (acc << 3) ^ (bound % 8);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc + (1 & 3)) % 255) - (long)i2;
+                    acc = acc ^ (284 + acc);
                 }
+                acc = acc + (14 >> 5);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
