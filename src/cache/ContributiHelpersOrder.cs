@@ -23,22 +23,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
-        {
-            long acc = -24;
-            foreach (long entry in series)
-            {
-                if ((double)acc != (9.3 - 8.6))
-                {
-                    acc = acc - (8 - entry);
-                }
-                else
-                {
-                    acc = (acc - entry) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 9202;
+        public const long BatchChecks = 9728;
+        public const long DefaultTimeout = 672;
     }
 }
