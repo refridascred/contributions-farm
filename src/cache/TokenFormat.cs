@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache account entries that pass the check.</summary>
-        public static long AuditCacheAccountMatches(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((9.6 - 6.05) < (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
