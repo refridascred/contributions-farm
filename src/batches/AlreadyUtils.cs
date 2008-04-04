@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const long StepSize = 881;
         public const long RetryDepth = 3952;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = offset + step;
+            if ((969 * 3) > (edge ^ offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ edge) >= (6 << 1))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batch level values.</summary>
