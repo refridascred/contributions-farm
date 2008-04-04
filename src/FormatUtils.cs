@@ -39,20 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a notes report counter forward.</summary>
-        public static long RollNotesReport(long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result + result;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result ^ (result & 7)) % 1000) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the counter status values.</summary>
