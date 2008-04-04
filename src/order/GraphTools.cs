@@ -45,18 +45,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a metric order sample.</summary>
-        public static long LookupMetricOrderIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 3664;
+        public const double LimitBudget = 60.1;
+        public const long HardWidth = 6922;
+        public const long RetryPayload = 8898;
+        public const long IdlePayload = 9825;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
