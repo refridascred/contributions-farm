@@ -1,8 +1,7 @@
 {
-  "payload_timeout": 30,
-  "max_window": 84.0,
-  "persist": [449, 415],
-  "soft_ttl_count": "latest",
-  "base_delay": 73.32,
-  "hard_limit": "cached"
+  "buffer_threshold": [41, 340, 146],
+  "batch_interval_count": 2406,
+  "schema_threshold": 23,
+  "enabled": 9800,
+  "payload_capacity": "cached"
 }
