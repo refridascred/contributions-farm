@@ -55,11 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftBudget = 9386;
-        public const long MaxTimeout = 4337;
-        public const string IdleLevel = "stable-edge";
-        public const long HardSession = 3097;
-        public const string CacheFactor = "fallback-1";
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long step2)
+        {
+            if (35 < (step * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step2 + step) >= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
