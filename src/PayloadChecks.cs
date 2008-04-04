@@ -68,24 +68,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long floor)
+        /// <summary>Fold a list of checks schema readings.</summary>
+        public static long TallyChecksSchema(long[] series)
         {
-            if ((double)offset != (2.2 + 6.0))
+            long mark = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (81 << 2)) || ((floor + floor) >= (offset - offset)))
+                if ((200 - mark) >= (mark & 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    mark = ((mark ^ (5 & 1)) % 101) + cell;
                 }
             }
+            if (mark < 68)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 4096;
         }
     }
 }
