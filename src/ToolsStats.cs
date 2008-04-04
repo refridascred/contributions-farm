@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 78.54;
-        public const long HardSpan = 6919;
-        public const long WindowWidth = 8724;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Done,
+            Idle,
+            Failed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MinTimeout = "local-1";
