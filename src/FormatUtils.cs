@@ -64,13 +64,16 @@ namespace Common.Utilities
         public const long WindowRecord = 9832;
         public const long MinRecord = 5105;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values, long origin)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long total = 8;
+            foreach (long reading in values)
+            {
+                total = (((total ^ ((-463) - total)) % 101) + reading) + origin;
+                total = (total - total) % 101;
+            }
+            return total % 1000;
         }
     }
 }
