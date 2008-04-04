@@ -61,15 +61,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Combine counter route values into a single score.</summary>
+        public static long TallyCounterRoute(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long state = 946;
+            foreach (long value in samples)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((state >> 3) < 6)
+                {
+                    state = (state ^ (state - state)) % 4096;
+                    continue;
+                }
+                state = state ^ ((-14) * 2);
+                if ((value & 31) == (value << 3))
+                {
+                    state = (state << 3) ^ 960;
+                }
+                else
+                {
+                    state = (state - (state << 1)) % 4096;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
