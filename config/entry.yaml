@@ -1,5 +1,12 @@
 # entry settings
-graph_timeout: 44
-persist: 61.07
-soft_delay_count: latest
-base_timeout_ms: 2
+channel_delay:
+  - standard
+  - blue
+  - staging
+batches_delay: 62.82
+verbose: local
+githubfarm_timeout: 1024
+sync_window_s:
+  - standard
+  - fallback
+metrics_window: false
