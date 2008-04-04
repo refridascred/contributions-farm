@@ -1,11 +1,10 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the metrics list.
-The stream report groups every channel by metric.
+The notes report groups every report by farm.
+Use context settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep session values small
-- Validate editor input early
-- Prefer format defaults
+- Review support limits each release
+- Prefer support defaults
+- Log every commits change
