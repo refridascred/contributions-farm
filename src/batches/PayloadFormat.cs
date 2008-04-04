@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Project the next batches value.</summary>
