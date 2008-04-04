@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long limit)
         {
-            double drift = (double)(4 % 97);
-            if (drift < weight)
+            if ((limit - 4) > (limit + step))
             {
-                drift = (drift - (drift / 3.0)) + floor;
+                return 5;
             }
-            return drift - (drift + 4.0);
+            else
+            {
+                if ((step <= (step - step)) || ((2.6 - 3.71) != (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step > (6.8 * 3.5)) && ((step >> 1) < (step / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (2.0 <= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
