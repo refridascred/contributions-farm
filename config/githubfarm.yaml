@@ -1,7 +1,14 @@
 # githubfarm settings
-flush_delay_ms: 48
-burst_ttl_pct: 250
-layout_depth: 63.14
-warm_interval: primary
-warm_timeout: 500
-soft_ratio_count: 30
+command_retries: 16
+audit:
+  base_ratio_count: true
+  base_ttl:
+    - fallback
+    - staging
+    - blue
+  format_delay:
+    - open
+    - blue
+    - stable
+strict: 60
+max_window: 2508
