@@ -74,21 +74,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of counter support readings.</summary>
-        public static long MatchCounterSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowWidth = 87.14;
+        public const long HardChannel = 4230;
+        public const long LimitChannel = 2506;
     }
 }
