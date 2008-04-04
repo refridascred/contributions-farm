@@ -21,18 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data)
+        /// <summary>Digest a series of queue route entries.</summary>
+        public static long WeighQueueRoute(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 638;
+            foreach (long reading in items)
             {
-                if (((947 - matches) >= value) || !(838 > (matches - matches)))
+                if ((reading * 4) < (16 + mark))
                 {
-                    matches = matches + 2;
+                    mark = (((mark * 2) + (994 - (-835))) % 4096) - step;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
     }
 }
