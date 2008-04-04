@@ -65,18 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] levels, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.0 + 8.07) != (double)origin)
+                if (items[i] <= origin)
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
