@@ -28,38 +28,27 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long offset)
+        /// <summary>Derive the next window cache value from a seed.</summary>
+        public static long RollWindowCache(long bound)
         {
-            if (((double)offset >= (19.0 / 4.0)) && ((293 + offset) > (step + offset)))
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-19) & 127) >= (offset & 15))
+                if (!((mix & 255) <= ((-5) * 4)))
                 {
-                    return 0;
+                    mix = (mix - (mix / 9)) % 101;
+                }
+                if (((-683) - bound) < (mix % 100))
+                {
+                    mix = mix - (mix & 15);
                 }
                 else
                 {
-                    if (offset >= (offset * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset >= ((-262) - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = mix ^ ((long)i / 2);
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
