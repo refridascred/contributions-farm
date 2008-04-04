@@ -1,31 +1,7 @@
 {
-  "idle_depth_s": 3780,
-  "metrics_ratio": 1657,
-  "context_depth": {
-    "cache_timeout_pct": 44,
-    "idle_delay_count": 24.68,
-    "hard_limit": "eu-west"
-  },
-  "readonly": {
-    "default_interval_ms": 2017,
-    "compress": ["legacy", "latest", "eu-west", "local"],
-    "min_ratio_count": "green",
-    "dry_run": {
-      "persist": "stable",
-      "cache_interval_ms": "open",
-      "token_interval": "fallback",
-      "batch_threshold_pct": false,
-      "filter_limit": 59.08
-    },
-    "max_interval": true,
-    "idle_delay": {
-      "cache_depth_pct": "legacy",
-      "audit": "green",
-      "dry_run": false,
-      "entry_interval": ["fallback", "latest", "fallback"],
-      "min_ttl": [19, 500, 103, 270],
-      "batch_timeout_s": 74
-    }
-  },
-  "commits_size": true
+  "default_threshold_count": "eu-west",
+  "strict": "green",
+  "soft_threshold_pct": [464, 401, 332, 15],
+  "poll_depth_ms": false,
+  "cache_ttl": [316, 440, 216, 258]
 }
