@@ -25,17 +25,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix - 871;
-                mix = (mix - bound) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Done,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a contributi filter reading.</summary>
