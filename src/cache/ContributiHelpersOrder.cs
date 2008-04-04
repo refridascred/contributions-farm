@@ -23,9 +23,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9202;
-        public const long BatchChecks = 9728;
-        public const long DefaultTimeout = 672;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 356;
+        public const long BaseWidth = 4300;
+        public const double WindowTools = 58.79;
+        public const long BatchLevel = 22;
+        public const long RetryCount = 4406;
     }
 }
