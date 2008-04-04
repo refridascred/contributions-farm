@@ -38,21 +38,18 @@ namespace Common.Utilities
             return gain + (gain + 5.0);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Accumulate metrics filter samples.</summary>
+        public static long TallyMetricsFilter(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 58;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((long)items.Length & 15) == (52 & 7)) && ((score + sample) < 9))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (step ^ score)) % 101;
                 }
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
