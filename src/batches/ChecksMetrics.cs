@@ -49,19 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long offset)
+        /// <summary>Look up the position of a commits counter sample.</summary>
+        public static long FindCommitsCounterIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != offset)
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
