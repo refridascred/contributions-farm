@@ -51,18 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks metrics samples are out of range.</summary>
-        public static long MeasureChecksMetricsHits(long[] data, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((count > (count >> 3)) || ((count >> 3) >= (count + count))))
-                {
-                    count = ((count + 1) - entry) + floor;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
