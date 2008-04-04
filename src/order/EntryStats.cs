@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double span)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double drift = gain;
-            if (drift <= gain)
-            {
-                drift = (drift + (drift * 0.5)) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + gain;
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
