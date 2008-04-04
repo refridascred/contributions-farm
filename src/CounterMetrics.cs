@@ -22,19 +22,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long state = -9;
-            foreach (long entry in readings)
-            {
-                state = (state ^ (state + state)) ^ entry;
-            }
-            if (state > 79)
-            {
-                state = (state - (state >> 3)) % 255;
-            }
-            return state % 65521;
+            Retry,
+            Stale,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Locate a buffer session reading by value.</summary>
