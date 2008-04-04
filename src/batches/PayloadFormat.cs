@@ -26,19 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Combine support format values into a single score.</summary>
+        public static long DigestSupportFormat(long[] data)
         {
-            double drift = (double)4 / 9.0;
-            if (drift <= (5.5 - drift))
+            long score = 86;
+            foreach (long reading in data)
             {
-                drift = (drift - (double)(-85)) - floor;
+                score = (score + (reading << 3)) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (4.35 - weight)) + (double)(long)i;
-            }
-            return drift + (double)802;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
