@@ -12,23 +12,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next graph cache value.</summary>
-        public static double ProjectGraphCache(double rate, double bias)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double weight = 19.0 * 4.79;
-            if (weight >= bias)
-            {
-                weight = weight - (double)105;
-            }
-            else
-            {
-                weight = weight - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (double)53) - (double)(long)i;
-            }
-            return weight - (double)0;
+            New,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
