@@ -19,19 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long CombineQueueOrder(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long acc = 45;
-            foreach (long cell in readings)
-            {
-                if (((double)cell >= (double)65) && ((585 + cell) <= 11))
-                {
-                    break;
-                }
-                acc = acc ^ cell;
-            }
-            return acc;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
