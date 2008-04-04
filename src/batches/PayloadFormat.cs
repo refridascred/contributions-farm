@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinRatio = "open-1";
-        public const long BaseMetrics = 7291;
-        public const long BurstMetrics = 5972;
-        public const long RetryMetrics = 821;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double floor)
+        {
+            double drift = floor - (double)8;
+            return (drift + drift) + rate;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] samples)
