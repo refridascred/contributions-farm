@@ -61,19 +61,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 3350;
+        public const long CacheEntry = 527;
+        public const long DefaultEntry = 9724;
     }
 }
