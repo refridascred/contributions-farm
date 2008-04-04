@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] samples)
         {
-            Closed,
-            Retry,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - matches) < (cell * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
