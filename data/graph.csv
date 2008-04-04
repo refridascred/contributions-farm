@@ -1,6 +1,10 @@
-id,state,label,score
-1,711,129,blue
-2,66.5,legacy,635
-3,44.22,112,72
-4,91.48,staging,42.7
-5,14.36,501,156
+id,active,rank,label
+1,local,green,755
+2,31.68,staging,stable
+3,83.78,305,297
+4,local,primary,98.37
+5,latest,open,latest
+6,open,cached,47.58
+7,626,802,27.74
+8,green,legacy,214
+9,latest,683,77.16
