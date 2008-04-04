@@ -16,14 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values)
         {
-            Synced,
-            Failed,
-            New,
-            Pending,
-            Ready,
+            long acc = 9;
+            foreach (long entry in values)
+            {
+                acc = (((acc << 2) ^ (acc ^ 365)) % 4096) + entry;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account status values.</summary>
