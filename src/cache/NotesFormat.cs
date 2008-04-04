@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double DefaultRoute = 45.25;
         public const double DefaultTimeout = 74.76;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
