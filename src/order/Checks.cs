@@ -27,13 +27,32 @@ namespace Common.Utilities
         public const long StepCache = 9233;
         public const long RetryInterval = 1628;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long step, long bound)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Synced,
+            long offset = step ^ bound;
+            if (((step << 3) > offset) && ((step + bound) <= (offset << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound >= (bound << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0.3 > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
