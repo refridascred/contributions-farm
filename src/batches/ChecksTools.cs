@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            Dropped,
-            Pending,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                total = total ^ step;
+                total = (total - (total - step)) % 255;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
