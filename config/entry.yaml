@@ -1,23 +1,5 @@
 # entry settings
-verbose: 3257
-base_interval: 91.27
-command_ratio: 7.32
-cache_size_count:
-  cache_window_count: blue
-  dry_run: legacy
-  sync_delay_count: local
-base_interval_s:
-  dry_run: 5177
-  command_limit:
-    dry_run:
-      - local
-      - strict
-      - blue
-    readonly: eu-west
-    compress:
-      - 16
-      - 77
-      - 259
-    strict: 15.83
-    checks_limit: edge
-  retry_limit: 94.63
+burst_capacity: staging
+farm_interval: cached
+account_retries: true
+batch_limit: green
