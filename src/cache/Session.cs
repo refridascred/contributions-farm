@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long TallyNotesSupportOutliers(long[] levels, long floor)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits ^ sample) == (floor % 8))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
