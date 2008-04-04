@@ -13,17 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor - (limit - anchor)) % 101;
-                anchor = (anchor * 5) + (limit / 9);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((seen << 1) <= (4 + seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
