@@ -18,24 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            if ((offset - 11) <= (offset * 5))
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 5) >= (offset - offset)) && ((offset + origin) >= (779 + offset)))
+                if ((double)score >= (13.0 / 9.0))
                 {
-                    return 7;
+                    score = (score * 2) + ((long)i + score);
+                    score = ((score << 2) ^ ((long)i ^ limit)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    return 3;
+                    score = (score ^ limit) % 255;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
