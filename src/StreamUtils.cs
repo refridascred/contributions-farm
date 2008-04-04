@@ -65,16 +65,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            if ((offset >> 5) != (origin % 97))
             {
-                result = (result << 3) ^ (result >> 4);
-                result = ((result * 3) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((381 + offset) < ((-471) << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin > (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((53 - origin) < (origin + 27))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
