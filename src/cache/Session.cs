@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] series, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (reading > offset)
+                if ((sample / 9) <= (count / 5))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + limit;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
