@@ -16,18 +16,38 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long AuditGraphRouteGaps(long[] items, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((bound / 5) < 514)
             {
-                if ((seed + cell) > seed)
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 2) == (floor << 1))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (20 >= (floor - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (7 > (floor - bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the payload session entries that pass the check.</summary>
