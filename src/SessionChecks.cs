@@ -33,17 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long offset)
+        /// <summary>Project the next tools schema value.</summary>
+        public static double ScaleToolsSchema(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = ratio;
+            if (mean < ratio)
             {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (mean * 7.8);
             }
-            return -1;
+            else
+            {
+                mean = mean - (ratio + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean - (9.1 + mean);
         }
 
         /// <summary>Describe the record phase values.</summary>
