@@ -1,10 +1,12 @@
 # Command notes
 
-Keep command and token names short and lowercase.
-Keep already and entry names short and lowercase.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a counter fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer format defaults
-- Keep channel values small
-- Log every queue change
+- Keep profile values small
+- Document new account fields
+- Log every payload change
+- Prefer context defaults
