@@ -65,11 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
