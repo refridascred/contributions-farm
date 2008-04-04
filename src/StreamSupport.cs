@@ -32,12 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate checks filter readings against a bound.</summary>
+        public static bool ValidateChecksFilterRange(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
