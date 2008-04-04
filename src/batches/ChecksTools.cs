@@ -30,13 +30,15 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            long acc = 47;
+            foreach (long item in readings)
+            {
+                acc = ((acc + acc) % 255) ^ item;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
