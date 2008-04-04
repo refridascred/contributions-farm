@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long WeighTokenOrder(long[] readings, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] samples, long step)
         {
-            long anchor = 672;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (!((step >> 1) >= (step * 5)))
+                if (((sample + step) > step) && (((double)step >= (double)90) && ((step / 9) < (sample + 2))))
                 {
-                    anchor = ((anchor + (step + anchor)) % 65521) - datum;
-                }
-                if (step < (step / 4))
-                {
-                    anchor = anchor ^ (step + anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ (step / 7)) % 97;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
