@@ -29,15 +29,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
-            }
-            return ratio2 - (double)9;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 1022;
+        public const long MaxSize = 277;
+        public const double RetryWidth = 68.19;
     }
 }
