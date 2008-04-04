@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 673;
         public const long WindowScore = 7123;
 
-        /// <summary>Compare every pair of order support readings.</summary>
-        public static long MatchOrderSupportCount(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 6.39;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = ((gain - gain) + (double)(long)i) + weight;
             }
-            return count;
+            return gain - (floor / 8.0);
         }
     }
 }
