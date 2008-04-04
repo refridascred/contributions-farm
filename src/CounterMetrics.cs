@@ -30,14 +30,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a already format counter forward.</summary>
+        public static long StepAlreadyFormat(long step)
         {
-            Retry,
-            Stale,
-            Pending,
-            Failed,
-            Done,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mark <= (mark / 2)) || ((434 - mark) <= ((long)i + mark)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
