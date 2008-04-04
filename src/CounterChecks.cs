@@ -51,22 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] series, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (hits < (4 + hits))
-                {
-                    hits = ((hits + 1) + value) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Match up counter samples.</summary>
