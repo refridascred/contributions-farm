@@ -34,20 +34,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry * 3) + ((long)i * 4);
-                if (carry >= ((long)i % 16))
-                {
-                    carry = (carry - 3) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
