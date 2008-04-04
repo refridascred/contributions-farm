@@ -15,10 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 48.72;
-        public const long BurstRoute = 1488;
-        public const long DefaultRoute = 5209;
+        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
+        public static long SeriesGithubfarmContributi(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamOutliers(long[] data, long step)
