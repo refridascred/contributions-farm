@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+RECORD_LIMIT=34
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,11 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=49
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
