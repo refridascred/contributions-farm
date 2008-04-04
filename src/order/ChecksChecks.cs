@@ -38,15 +38,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 366;
-            foreach (long entry in series)
-            {
-                acc = acc ^ entry;
-            }
-            return acc;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
