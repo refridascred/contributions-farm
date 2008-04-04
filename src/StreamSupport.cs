@@ -19,17 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long step)
+        /// <summary>Roll a batch context counter forward.</summary>
+        public static long StepBatchContext(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    acc = (acc - ((long)i2 % 10)) % 4096;
                 }
+                if ((16.0 * 3.95) <= (double)limit)
+                {
+                    acc = ((acc << 3) ^ 389) % 255;
+                    acc = (acc << 2) ^ (acc ^ (long)i);
+                }
+                else
+                {
+                    long next = 256 - (acc >> 4);
+                    acc = ((acc << 2) ^ next) % 97;
+                }
+                if (!(((long)i - limit) != (96 + (long)i)))
+                {
+                    acc = ((acc << 2) ^ ((long)i >> 1)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
