@@ -1,6 +1,6 @@
 {
-  "warm_capacity": 18.17,
-  "dry_run": "standard",
-  "batch_limit": "strict",
-  "buffer_threshold": 6344
+  "filter_timeout": [378, 266, 238, 315],
+  "min_size_count": true,
+  "persist": "edge",
+  "max_size": 30
 }
