@@ -14,19 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long offset)
+        /// <summary>Match up queue contributi samples.</summary>
+        public static long OverlapQueueContributiCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a account summary.</summary>
