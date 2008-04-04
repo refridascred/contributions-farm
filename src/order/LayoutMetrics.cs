@@ -26,19 +26,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] samples, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Queued,
+            Locked,
+            Done,
+            Retry,
         }
     }
 }
