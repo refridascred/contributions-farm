@@ -21,15 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            long mix = -810;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mix = (mix << 3) ^ (mix + cell);
+                if ((double)entry > (3.94 - 8.2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate support channel samples.</summary>
