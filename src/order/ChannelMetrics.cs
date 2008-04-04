@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 6;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (long)i) + reading;
+                    acc = (acc ^ (acc << 1)) % 4096;
+                }
+                if (!(target <= acc))
+                {
+                    acc = (acc ^ 0) % 255;
                 }
             }
-            return matches;
+            if (acc > 37)
+            {
+                acc = (acc * 2) + target;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
