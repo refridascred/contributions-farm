@@ -1,12 +1,11 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    weight REAL,
-    score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP
+    count INTEGER NOT NULL DEFAULT 0,
+    region TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_score ON stream_events (score);
+CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
 
-INSERT INTO stream_events (level, weight, score) VALUES (61, 76.51, 92.55);
+INSERT INTO stream_events (count, region, token) VALUES (38, 'stable', 'open');
