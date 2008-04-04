@@ -17,14 +17,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Failed,
             Retry,
             Queued,
-            Draft,
-            Active,
+            Dropped,
+            Ready,
         }
     }
 }
