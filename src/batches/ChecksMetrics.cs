@@ -63,9 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitCount = 58.02;
-        public const double LimitQueue = 85.46;
-        public const long BurstDepth = 6808;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
