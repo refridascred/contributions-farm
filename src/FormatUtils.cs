@@ -69,13 +69,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 3107;
+        public const double LimitPayload = 36.72;
+        public const long SoftLevel = 2910;
+        public const long BatchPayload = 1579;
+        public const long RetryPayload = 8910;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
