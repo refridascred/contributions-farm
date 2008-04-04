@@ -26,19 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm format entry stays within the limit.</summary>
-        public static bool GuardGithubfarmFormatBounds(long[] readings, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < origin)
+                if (levels[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
