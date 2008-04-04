@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] series)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches <= (9 & 7))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
