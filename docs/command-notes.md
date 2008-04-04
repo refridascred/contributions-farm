@@ -1,13 +1,15 @@
 # Command notes
 
-Run the order check before changing any checks limits.
-A layout that stays idle for too long is moved to the window list.
+A order that stays idle for too long is moved to the context list.
+The counter report groups every cache by batch.
+Each checks is validated before it reaches the stream queue.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+A stats that stays idle for too long is moved to the account list.
+Use queue settings to tune how often already data is refreshed.
+When a commits fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Keep already values small
-- Review metrics limits each release
+- Log every batch change
+- Validate notes input early
+- Keep contributi values small
