@@ -57,12 +57,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "open";
-        public const long BaseWidth = 6692;
-        public const double IdleBatches = 24.04;
-        public const double BurstBatches = 40.42;
-        public const double BatchBatches = 38.77;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long floor)
+        {
+            if (((8.25 + 7.9) <= (double)origin) || ((floor >> 3) >= (origin - floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + floor) < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] values)
