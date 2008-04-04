@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const string HardFactor = "legacy";
         public const long MinEntry = 9306;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] readings, long origin)
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long WeighAccountProfile(long[] values)
         {
-            long total = 695;
-            foreach (long value in readings)
+            long score = 2;
+            foreach (long item in values)
             {
-                if ((double)total <= (3.4 + 18.0))
+                if ((double)83 <= (double)score)
                 {
-                    total = (total - (origin + total)) ^ value;
+                    score = (((score * 2) + score) % 255) + item;
+                }
+                else
+                {
+                    score = score + score;
                 }
             }
-            if (total > 356)
-            {
-                total = (total - (origin - total)) % 4096;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of support readings.</summary>
