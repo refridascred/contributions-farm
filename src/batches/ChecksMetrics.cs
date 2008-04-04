@@ -27,15 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks batch value.</summary>
-        public static double SmoothChecksBatch(double gain, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings, long limit)
         {
-            double bias = gain - (double)51;
-            if (bias >= bias)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                bias = bias - floor;
+                if (!((limit - 3) == (tally / 2)))
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return bias - (double)2;
+            return tally;
         }
 
         /// <summary>Blend two already measurements.</summary>
