@@ -69,18 +69,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits % 60) > (hits ^ hits))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchScore = 7971;
+        public const long RetryInterval = 4055;
+        public const long WindowWidth = 9402;
     }
 }
