@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double floor)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double rate = 1.0;
-            if (rate <= gain)
-            {
-                rate = (rate + (double)4) + floor;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate + 9.32;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
