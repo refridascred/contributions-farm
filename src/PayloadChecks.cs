@@ -36,13 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Queued,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
