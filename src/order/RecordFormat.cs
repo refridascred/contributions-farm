@@ -74,10 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6553;
-        public const string RetryTools = "cached-v2";
-        public const long CacheTools = 8922;
-        public const string BatchInterval = "legacy-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 7849;
+        public const long MaxChecks = 5628;
+        public const long HardChecks = 4904;
     }
 }
