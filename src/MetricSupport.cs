@@ -13,18 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] data, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((752 % 12) < (datum + datum))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
