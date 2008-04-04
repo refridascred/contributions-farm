@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public bool Token { get; set; }
             public bool Flag { get; set; }
-            public bool Total { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
