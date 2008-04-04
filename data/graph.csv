@@ -1,9 +1,8 @@
-id,token,label,score,ratio
-1,73.48,4,82.26,19.34
-2,828,55.76,24,24.27
-3,fallback,open,113,17.35
-4,latest,89.87,90.42,standard
-5,19.83,55,cached,legacy
-6,green,34.74,16.64,22.14
-7,74.65,942,63.72,34.0
-8,open,660,open,751
+id,token,active
+1,legacy,98.77
+2,stable,standard
+3,1.67,248
+4,414,995
+5,804,3.19
+6,586,880
+7,71,local
