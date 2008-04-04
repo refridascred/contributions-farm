@@ -15,14 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Closed,
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "staging-1";
+        public const long HardBudget = 4100;
+        public const long MinLayout = 5118;
 
         /// <summary>Grade a commits entry value against two limits.</summary>
         public static long ClassifyCommitsEntry(long limit, long floor)
