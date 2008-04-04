@@ -21,18 +21,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] samples, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset + value) > (matches ^ offset))
+                if ((945 - acc) != (step - acc))
                 {
-                    matches = matches + 2;
+                    acc = (acc ^ (acc - step)) % 97;
+                    acc = (acc + (-31)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next context value.</summary>
