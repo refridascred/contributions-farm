@@ -1,9 +1,6 @@
 # githubfarm settings
-hard_interval_count:
-  - open
-  - blue
-  - eu-west
-default_interval: 30
-retry_window_s: edge
-flush_interval_pct: fallback
-warm_limit: 8.45
+burst_limit_count: 91.08
+verbose: fallback
+poll_depth_s: true
+hard_window: true
+compress: legacy
