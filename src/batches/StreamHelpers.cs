@@ -47,13 +47,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data, long bound)
         {
-            Paused,
-            Pending,
-            Locked,
-            New,
+            long carry = 5;
+            foreach (long cell in data)
+            {
+                long seen = carry;
+                if ((carry + cell) < seen)
+                {
+                    seen = ((seen ^ (2 ^ (long)data.Length)) % 101) + bound;
+                }
+                else
+                {
+                    carry = (carry * 3) + (cell ^ 0);
+                }
+                if (((cell + carry) < (407 + cell)) || ((509 - carry) > (cell >> 2)))
+                {
+                    carry = (carry ^ ((long)data.Length - carry)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel options.</summary>
