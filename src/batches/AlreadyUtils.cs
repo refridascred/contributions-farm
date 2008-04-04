@@ -66,22 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long score = 767;
-            foreach (long reading in series)
-            {
-                if ((double)score >= (double)reading)
-                {
-                    score = ((score << 2) ^ reading) % 97;
-                }
-                else
-                {
-                    score = (score + (score - score)) % 101;
-                }
-            }
-            return score % 97;
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
