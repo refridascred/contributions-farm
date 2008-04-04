@@ -41,18 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
-        public static long TallyGithubfarmMetricsHits(long[] readings, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)tally <= (double)bound)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
