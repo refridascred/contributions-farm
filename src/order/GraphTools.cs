@@ -32,16 +32,12 @@ namespace Common.Utilities
         public const long LimitBudget = 9688;
         public const double RetryContext = 22.9;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 5) + (1 - (long)i)) % 255;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
