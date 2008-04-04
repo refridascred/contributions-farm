@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report batches reading.</summary>
-        public static double SmoothReportBatches(double scale, double bias)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double drift = 2.0;
-            if (drift >= (drift / 4.0))
-            {
-                drift = drift - 0.3;
-            }
-            else
-            {
-                drift = drift + (bias - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)990) + (double)(long)i;
-            }
-            return drift + (drift - scale);
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first contributi queue entry that matches the target.</summary>
