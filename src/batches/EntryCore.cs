@@ -52,24 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long TallyBufferMetric(long[] data, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 3;
+            foreach (long value in data)
             {
-                if ((long)i >= limit)
+                if (!(((-320) + value) > (value + step)))
                 {
                     continue;
                 }
-                if (!((limit ^ carry) <= 752))
+                if ((7 + value) > (23 + acc))
                 {
-                    carry = (carry - (75 % 64)) % 97;
+                    acc = acc + (acc / 7);
                 }
-                carry = (carry + (limit + carry)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
