@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session schema entries.</summary>
-        public static long DigestSessionSchema(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                total = ((total + 0) % 255) + cell;
-            }
-            if (total > 726)
-            {
-                total = total ^ (total << 3);
-            }
-            return total;
+            Stale,
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
