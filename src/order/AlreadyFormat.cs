@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string LimitCount = "staging-edge";
         public const string SoftSpan = "local-v2";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] readings, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= target)
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
