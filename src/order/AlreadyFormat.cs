@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const string LimitCount = "staging-edge";
         public const string SoftSpan = "local-v2";
 
-        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
-        public static long PairGraphChecksCount(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 66;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result * 4) + (416 - result)) % 255;
+                result = ((result * 5) + (reading & 1)) % 101;
+                if (!((result + reading) >= result))
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Accumulate report samples.</summary>
