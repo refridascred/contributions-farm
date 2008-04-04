@@ -55,18 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command route samples are out of range.</summary>
-        public static long MeasureCommandRouteGaps(long[] values)
+        /// <summary>Roll a stats cluster counter forward.</summary>
+        public static long RollStatsCluster(long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (5.9 >= (double)seen)
-                {
-                    seen = (seen + 1) + item;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
