@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)limit != (double)count)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
