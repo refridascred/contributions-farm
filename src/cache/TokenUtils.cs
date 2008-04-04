@@ -15,10 +15,18 @@ namespace Common.Utilities
         public const long DefaultFarm = 8946;
         public const long MinFarm = 8192;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 54.27;
-        public const long LimitFactor = 6222;
-        public const long HardBudget = 443;
-        public const long BaseChecks = 4611;
+        /// <summary>Count the payload session entries that pass the check.</summary>
+        public static long AuditPayloadSessionOutliers(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((245 ^ (long)series.Length) > seed)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
