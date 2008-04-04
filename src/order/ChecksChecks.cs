@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry >= (entry * 4))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark - ((long)i / 2)) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
