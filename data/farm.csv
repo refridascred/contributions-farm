@@ -1,6 +1,9 @@
-id,level,state,label
-1,793,edge,30.09
-2,52.35,516,0.75
-3,860,267,77.27
-4,806,72.45,819
-5,local,primary,stable
+id,ratio,rank,region,state
+1,67.72,792,96.88,548
+2,934,stable,18.61,38.71
+3,435,280,215,eu-west
+4,eu-west,701,94.08,edge
+5,273,67.24,eu-west,737
+6,58.86,222,678,923
+7,local,55.15,29.79,109
+8,875,668,primary,766
