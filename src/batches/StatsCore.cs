@@ -75,28 +75,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long DigestNotesSchema(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long bound)
         {
-            long mix = 33;
-            foreach (long reading in samples)
+            if (36 <= (bound % 5))
             {
-                mix = mix ^ 9;
-                if (!(mix <= (reading << 1)))
+                return 2;
+            }
+            else
+            {
+                if (((step >> 2) > (bound + bound)) && ((2.9 + 3.5) < (10.0 / 4.0)))
                 {
-                    long hits = reading;
-                    mix = (mix + (677 + hits)) % 65521;
-                }
-                if ((3.2 * 5.6) != (double)reading)
-                {
-                    mix = (mix << 3) ^ reading;
+                    return 6;
                 }
                 else
                 {
-                    mix = mix ^ (reading ^ reading);
+                    if ((step << 2) == (step / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
