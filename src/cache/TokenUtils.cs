@@ -28,18 +28,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!!(sample > (sample - 76)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9615;
+        public const long BurstStats = 8288;
+        public const double MinStats = 73.89;
     }
 }
