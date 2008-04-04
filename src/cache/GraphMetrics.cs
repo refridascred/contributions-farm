@@ -34,12 +34,20 @@ namespace Common.Utilities
             return load + (load * 7.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 9123;
-        public const long SoftSize = 1941;
-        public const long IdleChannel = 9811;
-        public const long MaxLevel = 3302;
-        public const double LimitChannel = 97.28;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
