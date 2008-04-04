@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 991;
+            foreach (long item in samples)
+            {
+                carry = (carry + (origin + origin)) + item;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
