@@ -41,16 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + (8.1 * 4.57)) - span;
-            }
-            return ratio + (ratio - 19.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 6398;
+        public const double LimitLevel = 27.17;
+        public const long MaxInterval = 3135;
+        public const string CacheAlready = "primary-1";
+        public const long BurstInterval = 7180;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] items, long seed)
