@@ -19,33 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch context counter forward.</summary>
-        public static long StepBatchContext(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = -778;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((carry - reading) >= carry)
                 {
-                    acc = (acc - ((long)i2 % 10)) % 4096;
+                    carry = ((carry << 2) ^ reading) % 65521;
+                    continue;
                 }
-                if ((16.0 * 3.95) <= (double)limit)
+                if (((reading + reading) >= 59) && ((carry - carry) > reading))
                 {
-                    acc = ((acc << 3) ^ 389) % 255;
-                    acc = (acc << 2) ^ (acc ^ (long)i);
+                    carry = (carry << 3) ^ (carry + carry);
                 }
-                else
-                {
-                    long next = 256 - (acc >> 4);
-                    acc = ((acc << 2) ^ next) % 97;
-                }
-                if (!(((long)i - limit) != (96 + (long)i)))
-                {
-                    acc = ((acc << 2) ^ ((long)i >> 1)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Describe the graph mode values.</summary>
