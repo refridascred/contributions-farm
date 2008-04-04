@@ -41,17 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Closed,
         }
     }
 }
