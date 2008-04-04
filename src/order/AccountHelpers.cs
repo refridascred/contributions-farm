@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long seed)
         {
-            Retry,
-            New,
-            Paused,
-            Queued,
+            long acc = 2;
+            foreach (long item in data)
+            {
+                acc = (acc * 2) + (acc - item);
+                if ((13 << 1) <= seed)
+                {
+                    acc = (acc << 2) ^ (acc >> 4);
+                }
+            }
+            if (acc > 39)
+            {
+                acc = (acc << 3) ^ (seed + acc);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate metrics payload samples.</summary>
