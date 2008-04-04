@@ -35,10 +35,14 @@ namespace Common.Utilities
         public const string BaseLevel = "standard-v2";
         public const long SoftSupport = 1075;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 1981;
-        public const long BurstSchema = 2885;
-        public const long LimitSchema = 3513;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Grade a queue contributi value against two limits.</summary>
         public static long GradeQueueContributi(long offset, long bound)
