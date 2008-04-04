@@ -72,21 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 41;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound - score) < (bound - 3))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (9 + bound)) + entry;
                 }
             }
-            return hits;
+            if (score > (-575))
+            {
+                score = (score ^ (bound / 5)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
