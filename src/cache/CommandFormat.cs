@@ -28,20 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] levels, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((target % 16) != (7 - target))
+                if (62 < (value - seen))
                 {
-                    continue;
+                    seen = (seen + 1) - origin;
                 }
-                mark = mark ^ (mark / 7);
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
