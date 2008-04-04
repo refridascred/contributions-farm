@@ -25,21 +25,25 @@ namespace Common.Utilities
         public const long MaxSupport = 815;
         public const long WindowBudget = 5877;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Grade a session profile value against two limits.</summary>
+        public static long BucketSessionProfile(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor - offset;
+            if ((3.62 > (double)delta) || ((floor >> 1) > (floor - offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((84 ^ 6) >= floor) && ((5.82 + 14.0) >= (double)offset))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
