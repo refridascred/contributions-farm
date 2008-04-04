@@ -38,13 +38,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] samples, long limit)
         {
-            Pending,
-            Draft,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally - tally) <= (sample + sample))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
