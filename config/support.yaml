@@ -1,9 +1,20 @@
 # support settings
-support_limit:
-  - 440
-  - 150
-commits_depth: primary
-account_size: fallback
-batch_limit: staging
-sync_interval_pct: 70.43
-default_threshold_ms: 6.87
+default_interval_count:
+  window_retries: primary
+  soft_delay_s:
+    hard_depth_pct: 44.95
+    base_window_count: local
+    warm_interval_s: 91
+    batch_capacity: blue
+    min_delay_pct: 67.04
+    readonly: primary
+  burst_retries_count:
+    - fallback
+    - edge
+min_limit:
+  - strict
+  - strict
+  - eu-west
+idle_size_count: open
+hard_size_ms: 27.02
+channel_window: eu-west
