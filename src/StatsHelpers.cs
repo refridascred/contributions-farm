@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinLevel = "fallback-v2";
+        public const string DefaultRatio = "local-v2";
+        public const string MinStats = "strict-v2";
+        public const long BaseStats = 7505;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double rate, double floor)
