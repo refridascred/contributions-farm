@@ -16,15 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = 9;
-            foreach (long entry in values)
-            {
-                acc = (((acc << 2) ^ (acc ^ 365)) % 4096) + entry;
-            }
-            return acc;
+            Active,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the account status values.</summary>
