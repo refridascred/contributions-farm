@@ -22,10 +22,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultWidth = "local";
-        public const long StepGithubfarm = 8209;
-        public const long SoftGithubfarm = 4814;
-        public const long WindowDepth = 9096;
-        public const string SoftSize = "local-v2";
+        public const double CacheGithubfarm = 79.84;
+        public const long SoftSpan = 5691;
+        public const string DefaultGithubfarm = "cached-edge";
+        public const long RetryGithubfarm = 471;
     }
 }
