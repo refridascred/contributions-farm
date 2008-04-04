@@ -49,18 +49,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long MeasureTokenCommitsHits(long[] values, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!(datum > (origin >> 4)))
+                if ((double)seed >= (16.0 / 5.0))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
