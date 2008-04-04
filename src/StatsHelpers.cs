@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Match up schema githubfarm samples.</summary>
-        public static long OverlapSchemaGithubfarmCount(long[] series)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a graph githubfarm value against two limits.</summary>
