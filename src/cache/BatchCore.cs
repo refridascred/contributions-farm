@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((origin + reading) < (reading << 1))
+                if (count > (long)readings.Length)
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) + value) - target;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a order counter forward.</summary>
