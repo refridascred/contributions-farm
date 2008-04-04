@@ -31,15 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a contributi filter reading.</summary>
-        public static double AdjustContributiFilter(double ratio, double span)
+        /// <summary>Validate account metrics readings against a bound.</summary>
+        public static bool VerifyAccountMetricsLimits(long[] items, long offset)
         {
-            double gain = span;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                gain = ((gain - (double)9) - (double)(long)i) - ratio;
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (gain * 5.49);
+            return ready;
         }
 
         /// <summary>Fold a list of account readings.</summary>
