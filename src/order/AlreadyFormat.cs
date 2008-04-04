@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const string LimitCount = "staging-edge";
         public const string SoftSpan = "local-v2";
 
-        /// <summary>Digest a series of batch profile entries.</summary>
-        public static long WeighBatchProfile(long[] items, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] readings, long target)
         {
-            long total = -424;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (total <= (bound & 15))
+                if (datum >= target)
                 {
-                    total = (total * 5) + (entry & 7);
+                    flag = false;
+                    break;
                 }
-                total = total - (total * 5);
-                total = (total - (881 - total)) % 1000;
             }
-            return total % 65521;
+            return flag;
         }
 
         /// <summary>Accumulate report samples.</summary>
