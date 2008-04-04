@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long carry = 50;
+            foreach (long value in series)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                carry = ((carry << 3) ^ (value - value)) % 1000;
+                if (((double)value != (7.67 - 1.59)) && ((double)origin >= 19.0))
+                {
+                    break;
+                }
             }
-            return mark;
+            return carry % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
