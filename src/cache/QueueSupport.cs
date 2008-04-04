@@ -23,11 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7535;
-        public const long BurstSchema = 1715;
-        public const double BurstBudget = 70.12;
-        public const long RetryScore = 4971;
-        public const long IdleSchema = 5024;
+        /// <summary>Classify a format cluster pair into a bucket.</summary>
+        public static long RankFormatCluster(long floor, long offset)
+        {
+            if ((14.0 * 11.0) == (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + offset) < (offset & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
