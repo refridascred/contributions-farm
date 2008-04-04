@@ -22,11 +22,11 @@ namespace Common.Utilities
         public const long CacheCluster = 292;
         public const double BaseCluster = 44.01;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
