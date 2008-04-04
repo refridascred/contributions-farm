@@ -1,5 +1,11 @@
 {
-  "githubfarm_capacity": ["open", "green"],
-  "soft_size": "staging",
-  "idle_interval_s": 1470
+  "warm_retries_ms": "edge",
+  "soft_size_count": {
+    "audit": 30,
+    "filter_retries": "standard",
+    "default_limit_count": 7885,
+    "default_delay_ms": 371
+  },
+  "batch_delay_count": 2145,
+  "profile_retries": ["cached", "standard", "green", "green"]
 }
