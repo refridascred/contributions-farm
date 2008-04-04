@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Accumulate githubfarm batches samples.</summary>
+        public static long TotalGithubfarmBatches(long[] samples, long limit)
         {
-            double load = (double)419 + scale;
-            if (load >= (load - scale))
+            long acc = 530;
+            foreach (long entry in samples)
             {
-                load = load - 2.0;
+                if ((limit + 99) == (806 >> 1))
+                {
+                    acc = (acc + entry) % 1000;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc > 8)
             {
-                load = (load + span) + (double)(long)i;
+                acc = ((acc * 5) + (acc + limit)) % 65521;
             }
-            return load - scale;
+            return acc % 97;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
