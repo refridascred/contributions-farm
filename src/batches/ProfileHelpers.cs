@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const string BaseWidth = "latest-1";
         public const string IdleDepth = "latest-edge";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the counter class values.</summary>
