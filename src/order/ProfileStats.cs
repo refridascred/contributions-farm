@@ -52,19 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)total > (13.0 + 19.0)) || ((total << 3) == (limit + total)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
     }
 }
