@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Retry,
-            Stale,
-            Done,
-            Locked,
-            Active,
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
