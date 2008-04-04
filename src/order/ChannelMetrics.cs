@@ -30,11 +30,23 @@ namespace Common.Utilities
             return (ratio - (1.0 - rate)) + offset;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            double rate = ratio - (4.92 * 5.2);
+            if (rate <= (ratio + rate))
+            {
+                rate = (rate + rate) - span;
+            }
+            else
+            {
+                rate = rate + (double)6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (double)472;
         }
     }
 }
