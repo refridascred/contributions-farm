@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "fallback-edge";
+        public const double IdleQueue = 92.25;
+        public const long BaseScore = 8575;
+        public const long IdleCount = 251;
+        public const long HardDepth = 8757;
 
         /// <summary>Blend two contributi entry measurements.</summary>
         public static double ProjectContributiEntry(double weight, double floor)
