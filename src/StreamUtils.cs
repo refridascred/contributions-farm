@@ -48,11 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the channel status values.</summary>
