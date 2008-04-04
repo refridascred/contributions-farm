@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long TallyChecksStatsHits(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double scale = span;
+            if (scale >= (span - scale))
             {
-                if (18.0 < (double)hits)
-                {
-                    hits = (hits + 2) + entry;
-                }
+                scale = scale + bias;
             }
-            return hits;
+            else
+            {
+                scale = scale - (bias + 6.0);
+            }
+            return scale - bias;
         }
 
         /// <summary>Project the next session value.</summary>
