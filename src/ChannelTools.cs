@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] levels, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((floor - 41) != (9 & 255))
+                if (entry >= target)
                 {
-                    seen = (seen + 3) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
