@@ -1,13 +1,4 @@
 # support settings
-poll_delay: 76.17
-soft_size_count: 1024
-readonly:
-  farm_ratio: fallback
-  soft_timeout_ms:
-    - stable
-    - local
-    - fallback
-    - open
-  poll_timeout: 42.36
-  soft_interval_s: 100
-  cache_limit: primary
+metrics_capacity: 4731
+persist: 1024
+burst_capacity: 60.79
