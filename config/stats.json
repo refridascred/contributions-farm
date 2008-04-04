@@ -1,10 +1,6 @@
 {
-  "cache_capacity": {
-    "max_delay_pct": true,
-    "enabled": 92,
-    "dry_run": 88.15,
-    "batches_limit": true
-  },
-  "min_interval_s": "open",
-  "format_threshold": ["legacy", "edge", "staging", "blue"]
+  "audit": [354, 270, 371, 56],
+  "profile_retries": 8140,
+  "schema_threshold": 96.2,
+  "poll_depth": "blue"
 }
