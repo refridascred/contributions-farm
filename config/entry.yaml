@@ -1,35 +1,14 @@
 # entry settings
-default_ttl_count:
-  hard_size_s:
-    idle_threshold: 72.78
-    token_depth:
-      - open
-      - green
-      - open
-    base_delay: 1024
-    soft_retries_count: 23.64
-  base_window_count:
-    - 86
-    - 146
-    - 304
-    - 101
-  verbose:
-    hard_timeout_ms: 1024
-    order_threshold:
-      - local
-      - edge
-    batch_limit_s: 1024
-    readonly: 100
-    enabled: cached
-    profile_size: true
-  soft_size_ms: true
-dry_run:
-  readonly: 58.11
-  stats_threshold: primary
-  persist: 22
-  retry_capacity_pct: 500
-  flush_timeout_count:
-    - 359
-    - 24
-  retry_delay: 4498
-poll_size_ms: 93
+poll_window_s:
+  - 334
+  - 170
+  - 479
+  - 155
+cache_size_count: 1024
+batch_threshold_ms: 1825
+batch_size: 21.53
+burst_depth_count:
+  - local
+  - standard
+  - blue
+  - edge
