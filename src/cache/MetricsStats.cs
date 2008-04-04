@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double ratio = offset;
-            return (ratio + (ratio * 3.42)) + bias;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Iterate the token already series from a seed.</summary>
