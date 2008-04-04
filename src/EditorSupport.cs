@@ -30,22 +30,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long AuditRouteEditorMatches(long[] samples, long bound)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long TallyGraphSession(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = 94;
+            foreach (long cell in series)
             {
-                if ((bound >> 1) <= (seen << 1))
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = (seen + 3) - item;
+                    anchor = ((anchor << 2) ^ ((long)i / 3)) % 1000;
+                    anchor = anchor + ((long)i * 5);
                 }
-                else
+                if (((979 ^ anchor) <= cell) || ((13.0 * 6.72) != (double)cell))
                 {
-                    seen = seen - 1;
+                    anchor = ((anchor * 5) + (anchor + cell)) % 1000;
+                    continue;
                 }
+                anchor = (anchor - (anchor + cell)) % 65521;
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
