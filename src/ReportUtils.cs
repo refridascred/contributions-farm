@@ -25,18 +25,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long result = 637;
-            foreach (long cell in series)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)cell != (15.0 / 9.0)) && ((result % 10) >= result))
-                {
-                    result = (result ^ (result * 5)) + floor;
-                }
+                mix = mix - 871;
+                mix = (mix - bound) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Describe the report kind values.</summary>
