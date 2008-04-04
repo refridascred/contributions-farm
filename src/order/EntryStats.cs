@@ -31,14 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Synced,
-            Paused,
-            Active,
-            Ready,
-            Idle,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
