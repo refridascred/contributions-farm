@@ -29,17 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + offset) + (double)(long)i;
             }
-            return -1;
+            return ratio2 - (double)9;
         }
     }
 }
