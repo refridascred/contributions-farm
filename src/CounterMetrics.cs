@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)anchor != (1.49 / 4.0)) && ((double)target != (20.0 + 7.0)))
+                {
+                    anchor = anchor ^ (anchor - target);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate format command samples.</summary>
