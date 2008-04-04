@@ -64,19 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (cell > limit)
+                if ((bound & 1) <= (bound + seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
