@@ -1,8 +1,6 @@
-id,weight,state,label,token
-1,54.95,stable,strict,fallback
-2,741,738,87.49,115
-3,84,latest,cached,standard
-4,92.47,386,710,654
-5,fallback,cached,197,78.94
-6,259,69.67,100,199
-7,latest,523,204,edge
+id,token,label,active
+1,strict,stable,strict
+2,393,97.03,66.94
+3,820,269,fallback
+4,local,cached,647
+5,930,846,159
