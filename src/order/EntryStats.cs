@@ -54,26 +54,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long total = 74;
-            foreach (long datum in readings)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum - total) <= (datum + datum))
-                {
-                    total = total + (datum + total);
-                }
-                if (((total + datum) >= (total & 127)) && ((total - datum) <= datum))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (total < 804)
-            {
-                total = (total ^ (total ^ total)) % 4096;
-            }
-            return total % 97;
+            return total;
         }
     }
 }
