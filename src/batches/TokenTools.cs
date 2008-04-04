@@ -24,18 +24,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] values, long target)
+        /// <summary>Count queue format pairs that satisfy a relation.</summary>
+        public static long CompareQueueFormatCount(long[] data)
         {
-            long result = 5;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value - 536) > (value - result))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (result >> 1)) + target;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
