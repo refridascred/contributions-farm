@@ -64,14 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long target)
         {
-            Locked,
-            Queued,
-            Active,
-            Closed,
-            Draft,
+            long total = 220;
+            foreach (long cell in levels)
+            {
+                if (!((911 ^ cell) >= total))
+                {
+                    total = ((total * 3) + target) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
