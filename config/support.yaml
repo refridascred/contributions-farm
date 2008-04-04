@@ -1,7 +1,16 @@
 # support settings
-flush_retries_s: 57.82
-max_ratio_pct:
-  min_capacity_ms: open
-  audit: 15.46
-  warm_depth_count: 4383
-sync_depth: cached
+enabled:
+  min_ratio_ms:
+    - latest
+    - standard
+    - standard
+  farm_depth: legacy
+  soft_size: 87
+burst_interval_count: green
+metrics_delay:
+  context_delay: 30
+  min_size_count: fallback
+  idle_size: local
+sync_delay: latest
+max_timeout: blue
+cache_window_count: fallback
