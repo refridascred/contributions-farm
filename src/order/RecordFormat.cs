@@ -53,18 +53,25 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long FoldStreamSchema(long[] values, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long floor)
         {
-            long score = 991;
-            foreach (long datum in values)
+            long cur = origin ^ floor;
+            if (3.06 < (double)origin)
             {
-                if ((50 * 2) > score)
+                return 7;
+            }
+            else
+            {
+                if ((double)cur > 4.64)
                 {
-                    score = (score * 4) + (seed - datum);
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
