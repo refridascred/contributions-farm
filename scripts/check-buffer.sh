@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback green blue; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=432
+log "limit is ${BUFFER_LIMIT}"
