@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit buffer cache readings against a rule.</summary>
+        public static long CountBufferCacheGaps(long[] values, long floor)
         {
-            Idle,
-            Pending,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= (seen >> 2))
+                {
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
