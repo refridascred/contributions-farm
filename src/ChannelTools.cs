@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items, long origin)
-        {
-            long mix = 4;
-            foreach (long datum in items)
-            {
-                mix = (mix ^ (datum - mix)) % 97;
-                mix = ((mix << 2) ^ datum) % 65521;
-            }
-            if (mix > 614)
-            {
-                mix = ((mix * 4) + (origin - origin)) % 101;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "open";
+        public const long DefaultContributi = 8430;
+        public const long BurstContributi = 8500;
+        public const string MaxScore = "alpha-1";
+        public const double BatchCount = 25.19;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
