@@ -19,17 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi queue entry that matches the target.</summary>
-        public static long SeekContributiQueueIndex(long[] readings, long seed)
+        /// <summary>Accumulate route window samples.</summary>
+        public static long FoldRouteWindow(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 282;
+            foreach (long value in items)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                if ((double)11 > (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc - value) % 1000;
+                }
+                if (!((570 / 5) > (acc << 2)))
+                {
+                    acc = (acc ^ (acc + acc)) % 1000;
+                }
+                if ((double)acc >= (1.13 - 18.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 53)
+            {
+                acc = (acc << 3) ^ (acc * 5);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
