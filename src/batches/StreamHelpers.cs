@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultWidth = 37.09;
-        public const double SoftCount = 39.12;
-        public const long HardBudget = 2095;
-        public const double SoftSpan = 79.2;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double bias, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= 18.0)
+            {
+                ratio = (ratio + (1.4 * 16.0)) + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + 5.64;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string SoftInterval = "legacy-v2";
