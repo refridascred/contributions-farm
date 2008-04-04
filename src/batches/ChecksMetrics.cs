@@ -40,22 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long offset)
         {
-            long anchor = 451;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (((double)entry < (9.4 - 9.9)) || ((entry * 4) < entry))
+                if (reading != offset)
                 {
-                    anchor = (anchor ^ ((-6) - entry)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
