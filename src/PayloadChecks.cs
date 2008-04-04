@@ -45,14 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Idle,
-            Failed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchTimeout = 8906;
+        public const long DefaultContributi = 8394;
+        public const long SoftSpan = 5261;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
