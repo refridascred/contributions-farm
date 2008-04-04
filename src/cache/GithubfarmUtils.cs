@@ -24,18 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double mean = span * 16.0;
+            if (mean >= scale)
             {
-                if ((7 >> 2) < (reading - hits))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean - scale;
             }
-            return hits;
+            return mean + (double)0;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
