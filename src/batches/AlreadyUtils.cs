@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 5049;
-        public const string SoftTools = "local-edge";
-        public const long StepSize = 881;
-        public const long RetryDepth = 3952;
+        /// <summary>Audit graph farm readings against a rule.</summary>
+        public static long TallyGraphFarmOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((1.8 * 7.3) == (double)hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long offset, long step)
