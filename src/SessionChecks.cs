@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
