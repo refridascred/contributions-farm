@@ -1,6 +1,17 @@
 {
-  "format_retries": 81.58,
-  "sync_window_count": "standard",
-  "burst_interval_pct": false,
-  "batch_threshold_ms": 5095
+  "payload_limit": [309, 265, 258],
+  "default_timeout_ms": 12.16,
+  "dry_run": "local",
+  "sync_ttl": {
+    "strict": "blue",
+    "sync_timeout_pct": 93.11,
+    "readonly": 5199,
+    "soft_retries_count": {
+      "hard_retries": ["eu-west", "strict", "fallback", "green"],
+      "default_ratio": 100,
+      "default_limit": 39.64,
+      "layout_retries": "standard"
+    },
+    "idle_interval": 59.66
+  }
 }
