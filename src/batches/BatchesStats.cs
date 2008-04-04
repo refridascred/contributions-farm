@@ -34,27 +34,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data)
-        {
-            long mark = 916;
-            foreach (long entry in data)
-            {
-                if ((entry / 4) <= (entry >> 1))
-                {
-                    mark = mark - (mark - entry);
-                }
-                else
-                {
-                    mark = (mark ^ (84 - 32)) % 101;
-                }
-                if (((4.79 - 2.73) > (6.0 + 5.57)) || (mark >= (mark + entry)))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheSpan = "fallback-v2";
+        public const long StepCommits = 4328;
+        public const string DefaultCommits = "stable-v2";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderLimits(long[] samples, long floor)
