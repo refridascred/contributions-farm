@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((long)samples.Length + seen) <= (97 ^ seen)))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
