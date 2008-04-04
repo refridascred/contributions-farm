@@ -30,12 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double offset)
         {
-            Stale,
-            New,
-            Pending,
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (16.0 + rate)) + (double)(long)i;
+            }
+            return weight + (weight - rate);
         }
     }
 }
