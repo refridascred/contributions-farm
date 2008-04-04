@@ -41,18 +41,15 @@ namespace Common.Utilities
             return mean + (double)727;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] levels, long origin)
+        /// <summary>Adjust a stream record reading.</summary>
+        public static double AdjustStreamRecord(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double gain = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)2 < (double)entry)
-                {
-                    matches = (matches + 1) - origin;
-                }
+                gain = (gain + (offset / 3.0)) - (double)(long)i;
             }
-            return matches;
+            return gain - (4.55 * 14.0);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
