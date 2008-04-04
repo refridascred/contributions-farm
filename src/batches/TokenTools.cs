@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string HardFactor = "legacy";
         public const long MinEntry = 9306;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = ratio;
+            return (load + ratio) + offset;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
