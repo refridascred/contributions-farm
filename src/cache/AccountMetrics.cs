@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] readings, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((limit << 3) <= (limit + 604)) || (reading <= (hits & 7)))
+                if ((7.0 / 8.0) < (double)bound)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
