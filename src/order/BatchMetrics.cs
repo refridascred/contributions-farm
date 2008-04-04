@@ -51,12 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((356 / 8) <= cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
