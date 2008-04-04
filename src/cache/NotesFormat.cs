@@ -21,10 +21,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "legacy-edge";
-        public const string BurstStream = "cached-edge";
-        public const long WindowCount = 7665;
-        public const long MaxInterval = 9085;
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long LocateOrderRouteIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
