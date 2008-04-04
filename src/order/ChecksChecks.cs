@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] samples, long target)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 31) > (target * 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
