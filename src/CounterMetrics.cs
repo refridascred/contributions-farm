@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long MeasureQueueStatsMatches(long[] readings)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((double)hits > (double)item) && ((double)hits < (double)item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
