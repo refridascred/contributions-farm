@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data, long offset)
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long AuditMetricsChannelOutliers(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)seen >= (0.2 / 7.0))
+                if ((764 ^ hits) > (hits - bound))
                 {
-                    seen = ((seen + 1) ^ datum) + offset;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit context editor readings against a rule.</summary>
