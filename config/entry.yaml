@@ -1,11 +1,5 @@
 # entry settings
-base_timeout_pct: 13.6
-burst_interval_count: 39.6
-soft_window_pct: 30
-base_delay: true
-cache_ttl_pct: 250
-min_interval_pct:
-  burst_depth_s: false
-  filter_threshold: 9.26
-  window_threshold: 15
-  dry_run: green
+graph_timeout: 44
+persist: 61.07
+soft_delay_count: latest
+base_timeout_ms: 2
