@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Done,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinScore = 66.82;
+        public const double HardWidth = 0.7;
+        public const string MaxGithubfarm = "primary";
+        public const long HardDepth = 6678;
 
         /// <summary>Grade a metric account value against two limits.</summary>
         public static long GradeMetricAccount(long offset, long offset2)
