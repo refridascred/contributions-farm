@@ -30,20 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] series, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)origin == (19.0 - 8.0))
+                if ((9.3 + 7.4) > (double)datum)
                 {
-                    mix = (mix - ((long)i % 10)) % 255;
-                    break;
+                    tally = (tally + 1) + limit;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two session measurements.</summary>
