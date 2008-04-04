@@ -1,6 +1,11 @@
 {
-  "default_depth_s": "standard",
-  "base_limit_count": 91,
-  "compress": 59,
-  "cache_interval": 30
+  "poll_interval": {
+    "persist": "primary",
+    "dry_run": "stable",
+    "sync_ttl_s": 500,
+    "flush_retries_count": 2.15,
+    "compress": ["green", "blue", "green", "stable"]
+  },
+  "dry_run": ["primary", "standard", "cached", "stable"],
+  "persist": 1024
 }
