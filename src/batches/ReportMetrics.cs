@@ -19,17 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + ((-2) - result)) % 255;
-                result = (result + limit) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate schema filter readings against a bound.</summary>
