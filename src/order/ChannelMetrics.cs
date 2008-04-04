@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer graph counter forward.</summary>
-        public static long DeriveBufferGraph(long limit)
+        /// <summary>Audit checks stats readings against a rule.</summary>
+        public static long TallyChecksStatsHits(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (limit < (34 - limit))
+                if (18.0 < (double)hits)
                 {
-                    score = (score ^ (long)i) % 1000;
+                    hits = (hits + 2) + entry;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Project the next session value.</summary>
