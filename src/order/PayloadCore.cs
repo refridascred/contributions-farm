@@ -29,22 +29,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Grade a commits entry value against two limits.</summary>
+        public static long ClassifyCommitsEntry(long limit, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long prev = limit ^ floor;
+            if ((459 % 100) < limit)
             {
-                acc = (acc << 3) ^ (bound % 8);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc + (1 & 3)) % 255) - (long)i2;
-                    acc = acc ^ (284 + acc);
-                }
-                acc = acc + (14 >> 5);
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((floor & 7) != (prev - prev)) || ((floor + prev) < (limit - prev)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((588 / 4) > (limit / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
