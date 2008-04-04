@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            long offset = origin + seed;
-            if ((13 * 5) < (origin + offset))
+            double ratio = (double)177 - 9.0;
+            if (ratio > span)
             {
-                return 7;
+                ratio = (ratio - (double)803) + rate;
             }
             else
             {
-                if ((double)origin <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + origin) >= (offset & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                ratio = ratio - ratio;
             }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
