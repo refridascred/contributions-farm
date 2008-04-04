@@ -41,19 +41,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] items, long floor)
+        /// <summary>Scale a stream checks figure with a bias.</summary>
+        public static double ScaleStreamChecks(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double load = gain;
+            if (load >= 6.32)
             {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (offset * 9.99);
             }
-            return stale;
+            else
+            {
+                load = load + (offset / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - gain) - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
