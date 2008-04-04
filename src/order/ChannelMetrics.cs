@@ -35,15 +35,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next token entry value.</summary>
-        public static double AdjustTokenEntry(double bias, double offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            double bias2 = (offset - offset) / 6.0;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = ((bias2 - offset) - (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - 6.3;
+            return tally;
         }
     }
 }
