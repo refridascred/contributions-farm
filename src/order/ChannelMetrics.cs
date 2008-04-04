@@ -28,19 +28,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Grade a batch stream value against two limits.</summary>
+        public static long RankBatchStream(long offset, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            if ((double)limit == (19.0 * 3.2))
             {
-                if ((anchor % 2) < (750 % 3))
-                {
-                    anchor = anchor - offset;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (offset <= (78 + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.1 + 3.54) <= 7.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
