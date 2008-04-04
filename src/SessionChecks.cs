@@ -12,24 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next tools schema value.</summary>
-        public static double ScaleToolsSchema(double ratio, double offset)
-        {
-            double mean = ratio;
-            if (mean < ratio)
-            {
-                mean = mean + (mean * 7.8);
-            }
-            else
-            {
-                mean = mean - (ratio + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (9.1 + mean);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 2545;
+        public const long IdleFactor = 1551;
+        public const long RetryTimeout = 277;
+        public const long BaseFactor = 1930;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long target)
