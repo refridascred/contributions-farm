@@ -1,17 +1,5 @@
 {
-  "sync_ttl_pct": {
-    "default_threshold_count": 84.89,
-    "tools_threshold": {
-      "persist": [317, 345, 212],
-      "dry_run": 5283,
-      "compress": 30,
-      "warm_ttl_s": 5710,
-      "hard_ttl_s": ["fallback", "fallback", "open"]
-    },
-    "soft_timeout_count": 100,
-    "warm_retries_pct": 84
-  },
-  "format_retries": "primary",
-  "sync_capacity_s": [47, 401],
-  "readonly": "fallback"
+  "notes_interval": false,
+  "retry_ttl_pct": 77,
+  "cache_ttl_count": 2832
 }
