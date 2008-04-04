@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum + origin) ^ (long)i2;
+                }
+                if (!((sum * 3) >= origin))
+                {
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric class values.</summary>
