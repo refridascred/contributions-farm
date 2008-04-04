@@ -72,32 +72,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long floor)
-        {
-            long span = bound - floor;
-            if (((span << 3) >= floor) && ((bound ^ 2) < (span << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (57 >= (bound - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 5) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "local-edge";
+        public const double WindowCommits = 14.09;
+        public const long MaxCommits = 148;
     }
 }
