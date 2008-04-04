@@ -64,9 +64,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultInterval = 27.94;
-        public const long CacheFarm = 2712;
-        public const long LimitFarm = 875;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long origin)
+        {
+            long mix = 910;
+            foreach (long item in readings)
+            {
+                mix = ((mix ^ item) % 97) - origin;
+            }
+            return mix % 65521;
+        }
     }
 }
