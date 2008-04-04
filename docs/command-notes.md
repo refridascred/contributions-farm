@@ -1,15 +1,15 @@
 # Command notes
 
-A order that stays idle for too long is moved to the context list.
-The counter report groups every cache by batch.
-Each checks is validated before it reaches the stream queue.
+A batches that stays idle for too long is moved to the route list.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-A stats that stays idle for too long is moved to the account list.
-Use queue settings to tune how often already data is refreshed.
-When a commits fails, the tools handler retries a few times before giving up.
+Use profile settings to tune how often batches data is refreshed.
+Keep batches and window names short and lowercase.
+The order module keeps stream values in sync with the token cache.
 
 ## Guidelines
 
-- Log every batch change
-- Validate notes input early
-- Keep contributi values small
+- Validate batches input early
+- Review batch limits each release
+- Log every support change
+- Keep schema values small
