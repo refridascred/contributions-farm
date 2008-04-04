@@ -60,16 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long DigestSchemaFarm(long[] levels)
+        /// <summary>Iterate the cache commits series from a seed.</summary>
+        public static long SeriesCacheCommits(long floor)
         {
-            long total = 856;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total << 2) ^ datum;
-                total = ((total << 2) ^ (datum & 7)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
