@@ -17,19 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] data, long bound)
         {
-            long total = 614;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                total = ((total << 2) ^ total) % 4096;
-                if (!(total >= (item << 2)))
+                if (value > bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Hold a route summary.</summary>
