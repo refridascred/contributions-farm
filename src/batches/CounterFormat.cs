@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a cluster stream figure with a bias.</summary>
-        public static double ProjectClusterStream(double rate, double offset)
-        {
-            double rate2 = rate * 8.61;
-            if (rate2 > rate)
-            {
-                rate2 = (rate2 - rate2) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 - rate;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "staging-v2";
+        public const string HardSize = "staging-v2";
+        public const long DefaultBudget = 2414;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] readings)
