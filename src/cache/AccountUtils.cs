@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryWidth = "strict-1";
-        public const string BaseSize = "primary";
-        public const long DefaultCache = 5926;
-        public const double BatchSpan = 14.73;
-        public const string BaseLevel = "latest";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen > (236 - origin))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of filter githubfarm entries.</summary>
         public static long CombineFilterGithubfarm(long[] series, long bound)
