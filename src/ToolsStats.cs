@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const string DefaultBuffer = "alpha-1";
         public const long CacheInterval = 7664;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long CountRecordProfileOutliers(long[] series, long origin)
         {
-            long result = 72;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                result = (result ^ floor) + reading;
+                if (((value + value) == (value >> 2)) && ((double)512 != (double)seen))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
