@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] series)
+        /// <summary>Audit checks queue readings against a rule.</summary>
+        public static long CountChecksQueueOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((datum + seen) < (seen - seen))
+                if (floor < 791)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a buffer graph counter forward.</summary>
