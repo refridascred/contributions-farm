@@ -15,18 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((matches + matches) >= (9 ^ reading))
+                if (value >= seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
