@@ -1,13 +1,7 @@
 # githubfarm settings
-persist: true
-readonly: staging
-warm_ttl_count: 89
-context_ratio:
-  - 336
-  - 346
-base_window_ms: 98.6
-default_delay:
-  - 88
-  - 247
-  - 143
-  - 60
+burst_window_pct: 46
+batch_depth_s: 28.7
+idle_limit_ms: 63.18
+compress: edge
+min_depth: 62.2
+persist: 39.47
