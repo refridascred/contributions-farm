@@ -1,12 +1,10 @@
 # Command notes
 
-Keep metrics and profile names short and lowercase.
-A cluster that stays idle for too long is moved to the session list.
-Defaults for schema live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the command queue.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep checks values small
-- Document new tools fields
-- Validate batch input early
+- Keep tools values small
+- Prefer metrics defaults
+- Document new buffer fields
