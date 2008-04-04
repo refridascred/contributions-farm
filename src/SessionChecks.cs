@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 2545;
-        public const long IdleFactor = 1551;
-        public const long RetryTimeout = 277;
-        public const long BaseFactor = 1930;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 2601;
+        public const string BatchInterval = "cached-1";
+        public const long BatchProfile = 4596;
+        public const long MaxSize = 7374;
+        public const long HardProfile = 901;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long target)
