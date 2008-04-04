@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data, long offset)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((9.8 / 8.0) == (double)value)
+                if ((double)seen >= (0.2 / 7.0))
                 {
-                    anchor = anchor - (anchor % 16);
+                    seen = ((seen + 1) ^ datum) + offset;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit context editor readings against a rule.</summary>
