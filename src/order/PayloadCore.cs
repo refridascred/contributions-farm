@@ -54,21 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias2 / 3.0;
+            if (rate <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + bias2;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - bias;
         }
     }
 }
