@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first command counter entry that matches the target.</summary>
-        public static long LocateCommandCounterIndex(long[] values, long limit)
+        /// <summary>Digest a series of buffer schema entries.</summary>
+        public static long CombineBufferSchema(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 734;
+            foreach (long entry in series)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ ((long)series.Length & 31)) % 1000) - entry;
+                mix = mix + (mix >> 3);
+                mix = ((mix * 3) + (906 + 57)) % 255;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
