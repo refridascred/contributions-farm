@@ -1,5 +1,10 @@
 # entry settings
-warm_delay: false
-default_depth_count: 84
-flush_limit_s: local
-retry_ttl_ms: edge
+min_size: stable
+persist: false
+window_ttl: 100
+warm_threshold: stable
+retry_depth:
+  - primary
+  - eu-west
+  - eu-west
+warm_window_count: open
