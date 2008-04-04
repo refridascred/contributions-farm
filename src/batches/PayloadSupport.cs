@@ -27,24 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((0.6 + 4.6) <= (double)anchor)
-                {
-                    anchor = anchor - (target % 100);
-                }
-                if ((double)anchor >= (2.2 - 7.0))
-                {
-                    anchor = (anchor ^ ((long)i % 24)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 9314;
+        public const long DefaultMetric = 9241;
+        public const long HardFactor = 3409;
+        public const long DefaultFactor = 4533;
+        public const double BaseBudget = 37.47;
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] samples, long floor)
