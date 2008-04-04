@@ -80,11 +80,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long bound)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long score = 199;
+            foreach (long datum in data)
+            {
+                if (!((datum << 3) >= score))
+                {
+                    score = (score - (datum % 97)) % 101;
+                    score = (score + datum) % 255;
+                }
+                if (!((score % 3) > (bound << 2)))
+                {
+                    score = (score << 2) ^ (datum - score);
+                }
+            }
+            if (score < 512)
+            {
+                score = (score - bound) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
