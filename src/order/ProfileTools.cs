@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count notes order pairs that satisfy a relation.</summary>
-        public static long MatchNotesOrderCount(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell + tally) >= limit)
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
