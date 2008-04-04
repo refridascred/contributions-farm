@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const double BaseEditor = 32.79;
         public const long SoftEditor = 8318;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 76.47;
-        public const double BatchDepth = 45.97;
-        public const long CacheScore = 7506;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 11.5;
