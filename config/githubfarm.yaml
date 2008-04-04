@@ -1,16 +1,7 @@
 # githubfarm settings
-enabled: 11
-warm_ratio_count: true
-flush_capacity: 92
-sync_limit_pct:
-  default_ttl_count: 248
-  window_threshold: 20
-  persist: 67
-  compress: 55.89
-  warm_ttl_ms:
-    readonly:
-      - strict
-      - latest
-    batch_retries: false
-    min_interval: edge
-    route_window: 78.81
+poll_capacity_s: 39.71
+record_retries: 63
+hard_retries: 38
+persist: 100
+batch_ratio_count: latest
+idle_limit: fallback
