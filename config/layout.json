@@ -1,7 +1,7 @@
 {
-  "persist": true,
-  "cache_retries_pct": "fallback",
-  "payload_delay": 97.76,
-  "hard_interval_pct": 14,
-  "strict": "staging"
+  "hard_interval": "latest",
+  "githubfarm_retries": "open",
+  "base_window_pct": "stable",
+  "dry_run": 5381,
+  "warm_limit_count": [369, 32]
 }
