@@ -87,20 +87,11 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((carry ^ carry) >= (offset % 64)))
-                {
-                    carry = (carry << 2) ^ 9;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-edge";
+        public const long IdleSpan = 5318;
+        public const string HardSchema = "latest-edge";
+        public const long MaxSchema = 2915;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchDepth = 8997;
