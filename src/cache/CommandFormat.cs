@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] samples, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (reading > origin)
+                if (!((6.5 - 7.8) == (double)datum))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
