@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSize = 3544;
-        public const long CacheCluster = 6244;
-        public const long SoftCluster = 7362;
-        public const long StepCluster = 9599;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] samples, long target)
