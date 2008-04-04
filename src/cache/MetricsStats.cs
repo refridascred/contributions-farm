@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data, long origin)
+        /// <summary>Combine support route values into a single score.</summary>
+        public static long TotalSupportRoute(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = 11;
+            foreach (long reading in data)
             {
-                if ((item + count) <= (count % 12))
-                {
-                    count = (count + 2) + origin;
-                }
+                anchor = ((anchor * 2) + (anchor * 4)) % 97;
+                anchor = (anchor ^ (reading + anchor)) % 97;
+                anchor = ((anchor * 4) + (anchor / 4)) % 4096;
             }
-            return count;
+            if (anchor < (-197))
+            {
+                anchor = (anchor << 3) ^ (anchor >> 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the format level values.</summary>
