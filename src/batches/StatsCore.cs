@@ -19,31 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            if (target > (1 * 2))
+            long result = 8;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < ((-43) - target))
+                if (result < (result + result))
                 {
-                    return 5;
+                    result = (result ^ result) ^ datum;
                 }
                 else
                 {
-                    if ((origin << 1) > (origin * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result - (result ^ result)) % 4096;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
