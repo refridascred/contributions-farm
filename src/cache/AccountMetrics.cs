@@ -57,11 +57,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long floor, long offset)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long span = floor ^ offset;
+            if (!((20.0 * 2.78) <= (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 & 15) <= (floor - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((span << 1) > (0 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
