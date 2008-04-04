@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((origin + reading) < (reading << 1))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
