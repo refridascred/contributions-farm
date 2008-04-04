@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long limit2)
         {
-            Done,
-            Idle,
-            Failed,
-            Active,
-            Queued,
+            if ((double)20 != (double)limit2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(limit <= (limit + 899)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit2 == (8.1 + 3.22))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - limit2) <= (limit2 ^ limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
