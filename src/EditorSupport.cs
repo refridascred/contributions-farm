@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            Closed,
-            Done,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell <= (cell + cell)) || (((double)cell > (double)9) || (((long)items.Length + cell) >= (matches + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
