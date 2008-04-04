@@ -51,19 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((17.0 + 8.4) <= (double)(long)i)
+                if (cell != bound)
                 {
-                    anchor = ((anchor * 4) + anchor) % 101;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return valid;
         }
     }
 }
