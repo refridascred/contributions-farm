@@ -1,7 +1,6 @@
 {
-  "enabled": true,
-  "warm_retries_count": 61,
-  "already_ttl": "eu-west",
-  "verbose": 0.2,
-  "poll_size_s": "legacy"
+  "stats_depth": 500,
+  "cache_window": 88.72,
+  "cache_ratio_pct": 250,
+  "dry_run": "stable"
 }
