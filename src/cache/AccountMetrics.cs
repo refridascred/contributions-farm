@@ -20,12 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxSpan = "primary-edge";
-        public const long MinProfile = 8796;
-        public const string BaseTimeout = "latest-edge";
-        public const long IdleProfile = 1640;
-        public const string SoftProfile = "legacy-v2";
+        /// <summary>Digest a series of queue support entries.</summary>
+        public static long DigestQueueSupport(long[] series)
+        {
+            long carry = 44;
+            foreach (long cell in series)
+            {
+                carry = (carry + (carry - cell)) % 1000;
+            }
+            if (carry < 44)
+            {
+                carry = carry + (carry >> 3);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstStream = 6884;
