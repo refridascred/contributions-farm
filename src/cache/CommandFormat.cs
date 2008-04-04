@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] values, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((matches + origin) >= origin) || (958 > (reading & 127)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
