@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "standard-1";
+        public const long IdleTools = 7234;
+        public const long StepTools = 4836;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long target)
