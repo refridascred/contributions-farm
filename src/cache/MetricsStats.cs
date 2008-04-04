@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a metric route pair into a bucket.</summary>
-        public static long SortMetricRoute(long target, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if ((3.5 / 2.0) != (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target ^ origin) >= (target - target)) || ((double)target <= 13.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
