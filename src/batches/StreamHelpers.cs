@@ -40,15 +40,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a stream entry figure with a bias.</summary>
-        public static double SmoothStreamEntry(double rate, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long step)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain + (double)3) + (double)(long)i) + rate;
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (gain * 6.92);
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
