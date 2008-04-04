@@ -1,5 +1,15 @@
 {
-  "command_interval": "edge",
-  "flush_capacity_ms": true,
-  "sync_capacity_ms": [180, 226, 109, 333]
+  "metrics_window": 1024,
+  "batch_size_s": "staging",
+  "batch_threshold": 84,
+  "min_interval_s": {
+    "schema_depth": 38.45,
+    "base_interval": 23.32,
+    "profile_retries": 98
+  },
+  "batch_depth": {
+    "idle_window_count": false,
+    "counter_interval": 10.56,
+    "account_size": true
+  }
 }
