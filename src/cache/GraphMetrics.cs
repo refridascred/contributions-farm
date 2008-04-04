@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] values, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double mean = weight;
+            if (mean < (mean / 3.0))
             {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (weight / 7.0);
             }
-            return ready;
+            return mean - offset;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
