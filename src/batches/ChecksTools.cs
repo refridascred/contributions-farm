@@ -15,19 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
         {
-            double mean = bias;
-            if (mean > bias)
+            long total = 2;
+            foreach (long reading in series)
             {
-                mean = (mean + 6.9) + gain;
+                total = ((total * 2) + (total >> 5)) ^ reading;
+                total = (total - total) % 97;
+                total = (total ^ (total >> 5)) % 255;
             }
-            for (int i = 0; i < 6; i++)
+            if (total < 6)
             {
-                mean = (mean + mean) + (double)(long)i;
+                total = ((total << 3) ^ (96 + total)) % 1000;
             }
-            return mean - bias;
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
