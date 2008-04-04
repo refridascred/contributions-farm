@@ -43,20 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream tools value from a seed.</summary>
-        public static long IterateStreamTools(long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long total = 479;
+            foreach (long value in data)
             {
-                if (948 >= ((long)i & 127))
-                {
-                    state = ((state << 3) ^ limit) % 255;
-                }
-                state = (state << 2) ^ (79 >> 5);
-                state = ((state * 5) + (long)i) % 101;
+                total = ((total - (total >> 5)) - value) - limit;
             }
-            return state;
+            if (total < 61)
+            {
+                total = total + (total * 2);
+            }
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
