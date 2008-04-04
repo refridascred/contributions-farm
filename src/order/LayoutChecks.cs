@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long limit)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool ValidateGraphContextBounds(long[] values, long target)
         {
-            if ((limit - 4) > (limit + step))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step <= (step - step)) || ((2.6 - 3.71) != (double)step))
+                if (sample <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)step > (6.8 * 3.5)) && ((step >> 1) < (step / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (2.0 <= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the tools state values.</summary>
