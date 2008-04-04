@@ -17,18 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long AuditFilterSessionGaps(long[] readings)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (5 <= (entry % 10))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
