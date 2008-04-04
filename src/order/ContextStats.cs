@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "staging-edge";
-        public const long HardLevel = 146;
-        public const long HardSchema = 8467;
-        public const long SoftSchema = 2205;
-        public const double CacheBudget = 1.92;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (8.0 / 6.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
