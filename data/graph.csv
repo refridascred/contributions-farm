@@ -1,6 +1,10 @@
-id,ratio,owner
-1,62.92,edge
-2,480,7.31
-3,970,standard
-4,blue,82
-5,standard,408
+id,weight,count,rank
+1,431,58.31,441
+2,9.51,fallback,staging
+3,primary,639,eu-west
+4,open,strict,808
+5,edge,fallback,758
+6,primary,74.45,strict
+7,243,861,360
+8,60.49,legacy,65.68
+9,29.42,primary,local
