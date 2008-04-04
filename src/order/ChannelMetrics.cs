@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string MinWidth = "local-edge";
         public const double IdleFactor = 90.79;
 
-        /// <summary>Count the metric layout entries that pass the check.</summary>
-        public static long AuditMetricLayoutGaps(long[] values, long floor)
+        /// <summary>Measure how many notes filter samples are out of range.</summary>
+        public static long TallyNotesFilterMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((reading << 3) != (51 + floor))
+                if ((entry + count) >= entry)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
