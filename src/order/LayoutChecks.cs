@@ -60,25 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long seed)
+        /// <summary>Look up the position of a profile filter sample.</summary>
+        public static long SeekProfileFilterIndex(long[] items, long limit)
         {
-            long delta = origin + seed;
-            if (((delta / 3) > origin) && (origin >= (delta << 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta / 9) != (61 - origin))
+                if (items[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
