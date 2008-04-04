@@ -21,18 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long score = 19;
-            foreach (long reading in items)
+            long total = 5;
+            foreach (long datum in values)
             {
-                if ((double)(long)items.Length < (7.3 * 6.48))
+                if ((514 << 1) <= (datum ^ datum))
                 {
-                    score = ((score << 3) ^ (reading / 2)) % 4096;
+                    total = (total - (datum + datum)) % 65521;
                 }
             }
-            return score % 97;
+            if (total < 5)
+            {
+                total = ((total * 2) + (total & 255)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
