@@ -15,39 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long limit)
-        {
-            if (limit < (limit - (-830)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ 271) >= (limit << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit > (0.1 - 5.58)) || (offset < (offset / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((limit % 60) < (limit - offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 48.72;
+        public const long BurstRoute = 1488;
+        public const long DefaultRoute = 5209;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamOutliers(long[] data, long step)
