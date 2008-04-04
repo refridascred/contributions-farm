@@ -18,36 +18,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long floor)
         {
-            if (((target ^ 94) == (floor & 255)) && ((target - 69) <= (floor / 2)))
+            long step = origin ^ floor;
+            if ((6 <= (57 + floor)) || ((step - 957) >= floor))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (target >= (floor % 8))
+                if ((step / 7) != (origin % 100))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((target + floor) <= 67)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((18.0 / 2.0) <= (6.69 + 4.9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
