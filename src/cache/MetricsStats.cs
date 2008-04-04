@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardScore = "open-edge";
-        public const long LimitContext = 2828;
-        public const long MaxContext = 5681;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Dropped,
+            Active,
+            Retry,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double rate, double offset)
