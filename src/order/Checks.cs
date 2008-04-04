@@ -26,18 +26,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data, long step)
+        /// <summary>Look up the position of a tools contributi sample.</summary>
+        public static long LookupToolsContributiIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step * 3) <= (item % 8))
+                if (items[i] == floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
