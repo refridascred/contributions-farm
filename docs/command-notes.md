@@ -1,15 +1,15 @@
 # Command notes
 
-Keep schema and window names short and lowercase.
-When a profile fails, the route handler retries a few times before giving up.
-When a checks fails, the channel handler retries a few times before giving up.
+Run the metrics check before changing any layout limits.
+A order that stays idle for too long is moved to the entry list.
+The order report groups every command by token.
 
-Run the githubfarm check before changing any payload limits.
-Use batch settings to tune how often report data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
+The stream report groups every queue by schema.
+A cache that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer filter defaults
 - Validate payload input early
-- Document new command fields
+- Keep context values small
+- Review batches limits each release
