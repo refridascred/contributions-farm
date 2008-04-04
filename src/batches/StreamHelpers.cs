@@ -70,12 +70,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchTimeout = "staging-v2";
+        public const string BurstCount = "latest-v2";
+        public const long StepScore = 4264;
+        public const long IdleBatch = 4200;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long seed)
