@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (cell >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 7829;
+        public const long LimitTimeout = 6263;
+        public const double IdleScore = 77.5;
+        public const long WindowLevel = 134;
+        public const double BatchProfile = 53.19;
     }
 }
