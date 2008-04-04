@@ -42,13 +42,14 @@ namespace Common.Utilities
         public const long IdleLevel = 4931;
         public const double MaxCommits = 81.84;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Retry,
+            Draft,
+            Paused,
+            Pending,
+            Closed,
         }
     }
 }
