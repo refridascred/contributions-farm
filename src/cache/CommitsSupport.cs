@@ -26,12 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultBudget = 5468;
-        public const string SoftCluster = "alpha-1";
-        public const double CacheCluster = 14.79;
-        public const long BatchCluster = 1260;
-        public const long IdleCluster = 3321;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long seed)
+        {
+            if (((double)bound < (6.79 / 5.0)) || ((double)971 < (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)970 < (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + seed) >= (bound + bound)) && ((seed % 24) > (bound & 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (2.6 / 6.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate schema farm samples.</summary>
         public static long DigestSchemaFarm(long[] levels)
