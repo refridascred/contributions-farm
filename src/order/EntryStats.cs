@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the cache schema entries that pass the check.</summary>
-        public static long AuditCacheSchemaMatches(long[] data)
+        /// <summary>Iterate the already batch series from a seed.</summary>
+        public static long RollAlreadyBatch(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches + reading) == (matches * 4))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = matches + 1;
+                    score = (((score << 3) ^ score) % 1000) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    score = score ^ ((long)i3 >> 4);
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Roll a account session counter forward.</summary>
