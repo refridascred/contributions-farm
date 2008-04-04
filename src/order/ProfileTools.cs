@@ -48,14 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Locked,
-            Synced,
-            Failed,
-            Pending,
-            New,
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
