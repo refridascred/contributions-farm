@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
-        {
-            long state = 6;
-            foreach (long sample in series)
-            {
-                if ((double)state == (4.42 + 3.61))
-                {
-                    state = ((state * 2) + sample) % 97;
-                }
-                if (((state + sample) > state) || ((state << 2) <= state))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSize = 3544;
+        public const long CacheCluster = 6244;
+        public const long SoftCluster = 7362;
+        public const long StepCluster = 9599;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] items)
