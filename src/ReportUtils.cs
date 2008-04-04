@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long TotalMetricBatches(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = (total ^ (target + 32)) % 97;
+                if ((7.81 / 7.0) < (double)item)
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total << 3) ^ (total + (-73));
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the stats status values.</summary>
