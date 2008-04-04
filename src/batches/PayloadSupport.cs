@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleCount = "legacy-1";
-        public const string BaseTimeout = "legacy-1";
-        public const string WindowQueue = "latest";
-        public const long SoftRatio = 3965;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 3251;
+        public const double HardFactor = 36.77;
+        public const long BatchSize = 8545;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long bound)
