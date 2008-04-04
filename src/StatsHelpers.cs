@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine already cluster values into a single score.</summary>
-        public static long WeighAlreadyCluster(long[] values, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long result = 74;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-2) & 7) > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + (result >> 2)) % 1000;
-                }
-                if (cell >= (8 + 73))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
