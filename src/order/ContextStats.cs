@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] data, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((target + cell) != (cell * 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
