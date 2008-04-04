@@ -51,21 +51,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Blend two contributi entry measurements.</summary>
+        public static double ProjectContributiEntry(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = weight;
+            return (gain + (gain - gain)) + floor;
         }
     }
 }
