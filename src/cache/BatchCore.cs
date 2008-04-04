@@ -57,18 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long TallyPayloadCommandGaps(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = 296;
+            foreach (long item in samples)
             {
-                if ((item + item) == (item >> 4))
+                if ((item + acc) <= (item - acc))
                 {
-                    hits = hits + 3;
+                    continue;
                 }
+                acc = acc - (34 % 5);
             }
-            return hits;
+            return acc;
         }
     }
 }
