@@ -1,8 +1,5 @@
 {
-  "record_capacity": 84.55,
-  "flush_size_ms": [101, 331],
-  "min_interval_ms": true,
-  "retry_interval_pct": "staging",
-  "token_threshold": false,
-  "base_ttl": "standard"
+  "burst_depth_s": 4257,
+  "editor_ttl": 64,
+  "soft_limit_ms": "latest"
 }
