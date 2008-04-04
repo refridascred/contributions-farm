@@ -16,11 +16,20 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryRatio = "primary-v2";
-        public const long IdleSize = 6572;
-        public const long HardBuffer = 2509;
-        public const long DefaultBuffer = 642;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double floor)
+        {
+            double weight2 = floor + (floor + 4.2);
+            if (weight2 >= (9.0 * 9.2))
+            {
+                weight2 = weight2 - weight;
+            }
+            else
+            {
+                weight2 = weight2 - floor;
+            }
+            return weight2 - (double)178;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
