@@ -13,11 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] levels)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches / 4) < matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
