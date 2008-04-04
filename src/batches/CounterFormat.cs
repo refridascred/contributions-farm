@@ -32,19 +32,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double bias2 = bias;
-            if (bias2 < (bias2 / 8.0))
-            {
-                bias2 = bias2 + (bias2 / 7.0);
-            }
-            else
-            {
-                bias2 = bias2 + scale;
-            }
-            return bias2 - (19.0 - 13.0);
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
