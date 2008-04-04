@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
+            Locked,
             Retry,
-            Queued,
-            New,
+            Idle,
             Done,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
