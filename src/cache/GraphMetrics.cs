@@ -23,16 +23,11 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double span)
-        {
-            double load = 9.88;
-            if (load < (double)6)
-            {
-                load = (load + gain) - span;
-            }
-            return load + (load * 7.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 1685;
+        public const long SoftBudget = 7278;
+        public const string IdleFactor = "primary-edge";
+        public const long BaseSpan = 6229;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] series, long target)
