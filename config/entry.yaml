@@ -1,6 +1,5 @@
 # entry settings
-buffer_window: 500
-hard_window_ms: 30
-cache_depth: true
-hard_capacity_pct: 30
-strict: 6
+already_timeout: 59
+cluster_depth: 8280
+soft_threshold_count: open
+retry_depth_pct: 5219
