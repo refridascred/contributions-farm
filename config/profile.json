@@ -1,18 +1,21 @@
 {
-  "cache_ttl_s": {
-    "verbose": ["stable", "legacy", "eu-west"],
-    "flush_ttl": "local",
-    "flush_interval_count": 3321,
-    "idle_size_s": {
-      "verbose": 11.61,
-      "audit": 92.39,
-      "queue_capacity": "cached",
-      "enabled": 18,
-      "burst_delay": 75,
-      "idle_interval": "open"
+  "default_retries": {
+    "soft_capacity": 23.42,
+    "min_timeout": false,
+    "strict": ["primary", "eu-west", "standard", "strict"],
+    "burst_ttl": {
+      "commits_retries": 97.4,
+      "session_capacity": false,
+      "retry_ttl_s": 74.47,
+      "commits_depth": true,
+      "idle_limit": 91.67
     },
-    "soft_ratio_s": "stable"
+    "warm_timeout": [254, 177, 453],
+    "dry_run": 65.09
   },
-  "persist": 36.23,
-  "min_retries_ms": 8402
+  "batch_threshold_ms": [28, 231, 294],
+  "batches_limit": ["eu-west", "local", "latest"],
+  "report_capacity": true,
+  "readonly": 7,
+  "stats_limit": 100
 }
