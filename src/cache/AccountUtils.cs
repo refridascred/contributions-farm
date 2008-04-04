@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= step)
+                if (items[i] == floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
