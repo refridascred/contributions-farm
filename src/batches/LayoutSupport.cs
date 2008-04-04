@@ -49,22 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache account samples are out of range.</summary>
-        public static long AuditCacheAccountOutliers(long[] samples, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)seen >= 13.0))
-                {
-                    seen = ((seen + 1) + entry) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Blend two window measurements.</summary>
