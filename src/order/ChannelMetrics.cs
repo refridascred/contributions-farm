@@ -25,18 +25,19 @@ namespace Common.Utilities
             return gain + (gain + 5.0);
         }
 
-        /// <summary>Accumulate metrics filter samples.</summary>
-        public static long TallyMetricsFilter(long[] items, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long offset)
         {
-            long score = 58;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((((long)items.Length & 15) == (52 & 7)) && ((score + sample) < 9))
+                if (value < offset)
                 {
-                    score = (score - (step ^ score)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return valid;
         }
     }
 }
