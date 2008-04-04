@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metric support samples are out of range.</summary>
-        public static long AuditMetricSupportMatches(long[] series, long target)
+        /// <summary>Fold a list of graph report readings.</summary>
+        public static long FoldGraphReport(long[] series, long offset)
         {
-            long seen = 0;
+            long mark = 2;
             foreach (long cell in series)
             {
-                if ((cell / 6) <= seen)
+                long delta = (offset * 2) >> 5;
+                if ((8.38 - 7.96) == (double)mark)
                 {
-                    seen = (seen + 2) - target;
+                    mark = mark ^ delta;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - (cell % 64)) % 101;
             }
-            return seen;
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ (offset ^ offset)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
