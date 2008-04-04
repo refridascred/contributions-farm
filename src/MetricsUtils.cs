@@ -41,19 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches ^ sample) < 877)
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3917;
+        public const long BaseBatches = 5071;
+        public const long BatchBatches = 7669;
+        public const long BurstRatio = 1109;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long step, long step2)
