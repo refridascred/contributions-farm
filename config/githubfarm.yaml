@@ -1,21 +1,6 @@
 # githubfarm settings
-schema_delay: 5648
-sync_limit:
-  batch_ratio: staging
-  burst_retries_pct: blue
-  schema_capacity: legacy
-  sync_interval: primary
-  flush_window: false
-  burst_capacity: latest
-batch_ttl: 9771
-base_retries_count:
-  window_ratio: primary
-  hard_capacity_pct: 29.53
-  poll_size_pct: true
-flush_ratio:
-  soft_size_ms: 80.93
-  cache_threshold:
-    - stable
-    - cached
-  dry_run: strict
-record_depth: 4176
+dry_run:
+  - 91
+  - 354
+persist: 69
+readonly: strict
