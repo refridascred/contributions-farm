@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((738 << 1) > (hits + 1)) || ((hits > 4) || (hits >= (value % 3))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
