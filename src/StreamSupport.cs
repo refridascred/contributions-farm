@@ -48,20 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 47;
-            foreach (long entry in series)
-            {
-                if ((257 + entry) < 829)
-                {
-                    carry = carry ^ carry;
-                    continue;
-                }
-                carry = ((carry * 4) + (carry ^ 282)) % 255;
-            }
-            return carry % 65521;
+            Failed,
+            Synced,
+            New,
         }
     }
 }
