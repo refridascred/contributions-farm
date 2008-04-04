@@ -49,13 +49,22 @@ namespace Common.Utilities
         public const double BurstBatches = 40.42;
         public const double BatchBatches = 38.77;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels, long step)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long carry = -2;
+            foreach (long value in levels)
+            {
+                if (!((double)2 > (double)value))
+                {
+                    carry = ((carry << 2) ^ 9) % 97;
+                }
+                if ((2.0 - 3.0) < (double)step)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
