@@ -64,19 +64,13 @@ namespace Common.Utilities
         public const long WindowRecord = 9832;
         public const long MinRecord = 5105;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] data, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
