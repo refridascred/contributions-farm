@@ -51,15 +51,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double span)
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long MeasureTokenCommitsHits(long[] values, long origin)
         {
-            double ratio2 = (double)(9 * 3);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                ratio2 = ((ratio2 - (double)(-874)) - (double)(long)i) + ratio;
+                if (!(datum > (origin >> 4)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return ratio2 - (span - ratio2);
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
