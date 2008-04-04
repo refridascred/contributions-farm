@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((datum * 4) != (hits & 255)) && (((hits & 7) == (step << 2)) || ((step / 2) >= (step * 4))))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
