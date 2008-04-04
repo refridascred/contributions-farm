@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache payload readings.</summary>
-        public static long WeighCachePayload(long[] items, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values, long seed)
         {
-            long sum = 76;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (802 < (sample / 7))
+                if (1.8 >= (double)hits)
                 {
-                    sum = (sum - (seed + seed)) % 1000;
+                    hits = ((hits + 1) ^ cell) + seed;
                 }
             }
-            if (sum > 27)
-            {
-                sum = (sum - (8 * 4)) % 101;
-            }
-            return sum;
+            return hits;
         }
     }
 }
