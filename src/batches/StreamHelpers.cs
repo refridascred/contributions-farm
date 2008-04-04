@@ -43,12 +43,23 @@ namespace Common.Utilities
         public const string WindowBuffer = "stable-1";
         public const string SoftSize = "alpha-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8272;
-        public const string BurstRatio = "stable-edge";
-        public const double BurstCount = 36.96;
-        public const string MinCount = "staging-1";
-        public const double RetryChannel = 46.99;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count * 3) != (cell * 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferBounds(long[] data, long floor)
