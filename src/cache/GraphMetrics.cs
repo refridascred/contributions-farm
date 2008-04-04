@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const string IdleFactor = "primary-edge";
         public const long BaseSpan = 6229;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] series, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
