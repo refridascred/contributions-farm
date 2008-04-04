@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long HardSpan = 6919;
         public const long WindowWidth = 8724;
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double AdjustGithubfarmWindow(double bias, double offset)
-        {
-            double load = 7.26;
-            if (load > (double)0)
-            {
-                load = ((load + load) + bias) - offset;
-            }
-            else
-            {
-                load = load - 17.0;
-            }
-            return load - (double)91;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinTimeout = "local-1";
+        public const double DefaultSize = 56.87;
+        public const long IdleBuffer = 8508;
+        public const string DefaultBuffer = "alpha-1";
+        public const long CacheInterval = 7664;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] data, long floor)
