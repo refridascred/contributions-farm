@@ -39,19 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double load = floor * 7.0;
-            if (load < 6.1)
-            {
-                load = (load - 3.73) - ratio;
-            }
-            else
-            {
-                load = load + 3.2;
-            }
-            return load + floor;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
