@@ -32,13 +32,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long step)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
