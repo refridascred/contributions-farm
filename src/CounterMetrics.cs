@@ -30,23 +30,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a already format counter forward.</summary>
-        public static long StepAlreadyFormat(long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long step, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            if ((128 ^ 866) >= (step >> 5))
             {
-                if ((mark <= (mark / 2)) || ((434 - mark) <= ((long)i + mark)))
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 2) < step)
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark * 2) + mark) % 255;
+                    if (((step + step) >= (origin + step)) && ((double)step < (9.41 / 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step * 3) >= ((-4) * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
