@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] values, long origin)
         {
-            Stale,
-            Failed,
-            Locked,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate queue samples.</summary>
