@@ -25,12 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 21;
-        public const double MaxBudget = 36.75;
-        public const long LimitInterval = 6624;
-        public const string BaseTimeout = "primary-edge";
-        public const long StepSize = 2421;
+        /// <summary>Validate layout farm readings against a bound.</summary>
+        public static bool ValidateLayoutFarmRange(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double ratio, double bias)
