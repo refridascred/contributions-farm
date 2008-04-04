@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Digest a series of token order entries.</summary>
+        public static long WeighTokenOrder(long[] readings, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = 672;
+            foreach (long datum in readings)
             {
-                if ((double)offset <= (double)mark)
+                if (!((step >> 1) >= (step * 5)))
                 {
-                    mark = ((mark * 5) + (mark % 5)) % 255;
+                    anchor = ((anchor + (step + anchor)) % 65521) - datum;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (step < (step / 4))
+                {
+                    anchor = anchor ^ (step + anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ (step / 7)) % 97;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a batch header.</summary>
