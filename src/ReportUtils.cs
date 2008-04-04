@@ -39,14 +39,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Locked,
-            New,
             Retry,
-            Draft,
             Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a cache tools reading by value.</summary>
