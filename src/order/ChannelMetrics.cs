@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer cache readings against a rule.</summary>
-        public static long CountBufferCacheGaps(long[] values, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = 56;
+            foreach (long value in data)
             {
-                if (sample <= (seen >> 2))
+                if (((long)data.Length - limit) >= value)
                 {
-                    seen = (seen + 2) + floor;
+                    state = (state ^ limit) % 101;
                 }
-                else
+                if ((91 <= state) && (value >= (limit - state)))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
