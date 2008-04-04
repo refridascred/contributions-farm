@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((54 ^ 697) > (count + cell))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 5049;
+        public const string SoftTools = "local-edge";
+        public const long StepSize = 881;
+        public const long RetryDepth = 3952;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] items)
