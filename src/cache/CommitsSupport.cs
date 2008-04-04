@@ -94,38 +94,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long origin)
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long AuditTokenFarmOutliers(long[] samples)
         {
-            if ((double)target <= 1.7)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + 999) >= (20 << 2)) || ((1.0 * 3.7) >= (double)origin))
+                if ((datum + seen) <= (seen - 11))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin + origin) != (target << 1)) || ((origin % 2) < (80 + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 127) >= 113)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
