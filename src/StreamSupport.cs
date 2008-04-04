@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many channel farm samples are out of range.</summary>
-        public static long MeasureChannelFarmHits(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double ratio = bias;
+            if (ratio <= (double)627)
             {
-                if (!(tally >= (tally * 2)))
-                {
-                    tally = (tally + 1) - item;
-                }
+                ratio = (ratio - ratio) + weight;
             }
-            return tally;
+            return ratio + (double)3;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
