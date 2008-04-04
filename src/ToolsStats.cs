@@ -36,33 +36,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long target)
-        {
-            long prev = offset + target;
-            if ((target >> 2) > prev)
-            {
-                return 0;
-            }
-            else
-            {
-                if (prev <= (prev % 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)prev >= (0.5 - 7.56)) && (offset >= (target + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 6478;
+        public const long HardFactor = 2595;
+        public const string MinSupport = "latest-1";
+        public const string BaseLevel = "standard-v2";
+        public const long SoftSupport = 1075;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long SoftSchema = 1981;
