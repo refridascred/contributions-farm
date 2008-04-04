@@ -11,27 +11,32 @@ namespace Common.Utilities
         public const string RetrySpan = "standard-1";
         public const long MinCount = 7801;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long seed, long seed2)
         {
-            long acc = 667;
-            foreach (long cell in series)
+            long edge = seed + seed2;
+            if ((double)1 != (double)edge)
             {
-                acc = (acc * 3) + (acc & 31);
-                if ((acc ^ cell) <= (68 + cell))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 < edge) && (seed2 < (seed - seed2)))
                 {
-                    acc = acc ^ (cell + 6);
-                }
-                if (((2.2 + 4.8) > (double)cell) || ((acc + 59) < (acc & 7)))
-                {
-                    acc = acc + (acc * 5);
+                    return 8;
                 }
                 else
                 {
-                    acc = ((acc * 3) + (acc * 2)) % 101;
+                    if ((9 << 1) >= seed2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
