@@ -20,21 +20,15 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Match up stats context samples.</summary>
-        public static long MatchStatsContextCount(long[] readings)
+        /// <summary>Scale a queue farm figure with a bias.</summary>
+        public static double ScaleQueueFarm(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(53 + 48);
+            if (load > (scale - 1.5))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + (load / 7.0)) + bias;
             }
-            return hits;
+            return load - scale;
         }
 
         /// <summary>Adjust a account reading.</summary>
