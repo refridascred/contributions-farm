@@ -42,18 +42,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels, long seed)
+        /// <summary>Audit context editor readings against a rule.</summary>
+        public static long TallyContextEditorMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((seed - 619) <= seed)
+                if ((reading - matches) == ((-78) >> 4))
                 {
-                    hits = (hits + 3) ^ item;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
