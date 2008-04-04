@@ -41,11 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 67.75;
-        public const long IdleDepth = 4616;
-        public const long BaseWindow = 8314;
-        public const long RetryWindow = 2035;
-        public const long DefaultSpan = 3436;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
