@@ -75,10 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryScore = "staging";
-        public const long LimitWindow = 9420;
-        public const string SoftScore = "standard-edge";
-        public const long StepFactor = 7902;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples)
+        {
+            long anchor = 2;
+            foreach (long reading in samples)
+            {
+                if ((anchor - anchor) <= (reading << 1))
+                {
+                    anchor = (anchor ^ (anchor + reading)) % 255;
+                }
+            }
+            return anchor;
+        }
     }
 }
