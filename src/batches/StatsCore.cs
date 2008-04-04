@@ -88,12 +88,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3351;
+        public const double StepCount = 96.35;
+        public const string DefaultFarm = "latest-edge";
+        public const string BurstFarm = "open-edge";
     }
 }
