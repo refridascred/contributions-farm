@@ -27,13 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate schema filter readings against a bound.</summary>
+        public static bool CheckSchemaFilterRange(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
