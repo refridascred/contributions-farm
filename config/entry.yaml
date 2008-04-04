@@ -1,4 +1,14 @@
 # entry settings
-retry_delay: 60
-compress: 61
-stream_ttl: 75
+schema_interval: true
+strict:
+  filter_timeout:
+    readonly: false
+    layout_retries: 6864
+    flush_depth_pct: 9900
+    idle_ttl: false
+    hard_capacity_pct: 100
+  strict: 5114
+  warm_limit_ms: false
+  editor_ttl: 60
+  readonly: 97.75
+cluster_limit: standard
