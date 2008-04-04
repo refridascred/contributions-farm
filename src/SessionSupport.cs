@@ -14,22 +14,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
