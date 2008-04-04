@@ -1,10 +1,10 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The route module keeps stats values in sync with the stream cache.
+Keep command and token names short and lowercase.
+Keep already and entry names short and lowercase.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every record change
-- Keep token values small
+- Prefer format defaults
+- Keep channel values small
+- Log every queue change
