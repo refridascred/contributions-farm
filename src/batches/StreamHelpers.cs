@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4095;
-        public const string RetryFormat = "latest-1";
-        public const long BaseFormat = 8518;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5839;
+        public const long SoftCount = 2689;
+        public const string MaxWidth = "latest";
+        public const double SoftMetrics = 60.65;
+        public const string StepMetrics = "local-edge";
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double ratio, double floor)
