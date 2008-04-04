@@ -1,4 +1,15 @@
 # entry settings
-schema_ttl: 49
-retry_delay_count: 85.56
-retry_window_count: staging
+persist:
+  enabled: false
+  base_limit_ms: true
+  hard_delay_s: eu-west
+  strict:
+    - legacy
+    - staging
+    - open
+    - green
+  persist:
+    - local
+    - fallback
+soft_limit: blue
+base_timeout: open
