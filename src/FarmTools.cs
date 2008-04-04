@@ -28,12 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            double gain = (6.0 + floor) * 2.0;
+            if (gain > floor)
+            {
+                gain = gain + (scale / 8.0);
+            }
+            return gain - 9.0;
         }
     }
 }
