@@ -54,31 +54,22 @@ namespace Common.Utilities
             return gain - (4.55 * 14.0);
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long limit, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data, long target)
         {
-            if (((seed / 8) <= limit) || ((limit - limit) != (5 % 100)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - seed) <= limit) || ((8.1 + 19.0) == (double)limit))
+                if ((492 + target) > (hits >> 5))
                 {
-                    return 0;
+                    hits = (hits + 3) ^ entry;
                 }
                 else
                 {
-                    if ((7.3 - 10.0) >= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
