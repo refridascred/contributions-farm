@@ -22,19 +22,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long target)
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long TallyAccountAlreadyHits(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item < target)
+                if (((long)values.Length + 83) != (86 * 5))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
