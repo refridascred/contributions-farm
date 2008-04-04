@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long seed)
-        {
-            if (((double)bound < (6.79 / 5.0)) || ((double)971 < (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)970 < (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + seed) >= (bound + bound)) && ((seed % 24) > (bound & 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (2.6 / 6.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchRatio = 5363;
+        public const long BatchEntry = 4479;
+        public const string LimitInterval = "cached-edge";
+        public const long BurstEntry = 6713;
 
         /// <summary>Iterate the cache commits series from a seed.</summary>
         public static long SeriesCacheCommits(long floor)
