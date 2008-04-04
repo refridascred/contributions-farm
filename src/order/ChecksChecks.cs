@@ -28,9 +28,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 1022;
-        public const long MaxSize = 277;
-        public const double RetryWidth = 68.19;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
+        {
+            long total = 62;
+            foreach (long reading in values)
+            {
+                if (((total - 3) != ((long)values.Length + reading)) && ((1.0 * 3.4) < (double)total))
+                {
+                    total = (total - (total & 3)) % 97;
+                }
+            }
+            if (total > 2)
+            {
+                total = ((total * 2) + total) % 255;
+            }
+            return total;
+        }
     }
 }
