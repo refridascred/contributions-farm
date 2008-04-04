@@ -1,10 +1,7 @@
-id,owner,region,token
-1,777,20.44,stable
-2,516,611,868
-3,primary,staging,427
-4,192,282,46.79
-5,cached,fallback,73.57
-6,legacy,standard,fallback
-7,225,912,edge
-8,950,94.31,85.8
-9,49,58.49,70.46
+id,token,count
+1,fallback,edge
+2,85.79,54.18
+3,61.33,17.27
+4,753,93.36
+5,cached,82.14
+6,661,211
