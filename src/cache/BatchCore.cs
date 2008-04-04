@@ -14,15 +14,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long bound)
         {
-            double scale = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = -6;
+            foreach (long value in samples)
             {
-                scale = (scale - (double)(long)i) - weight;
+                if ((carry % 60) >= (carry / 6))
+                {
+                    carry = (carry + (value & 127)) % 97;
+                }
+                if (bound >= (value * 5))
+                {
+                    break;
+                }
             }
-            return scale - (floor * 5.8);
+            if (carry > 92)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of record readings.</summary>
