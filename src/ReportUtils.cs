@@ -38,23 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)(long)i > (6.6 - 7.0))
+                if ((value * 5) <= ((-665) - value))
                 {
-                    total = ((total << 2) ^ (total >> 3)) % 97;
+                    count = count + 1;
                 }
-                else
-                {
-                    total = total ^ offset;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
