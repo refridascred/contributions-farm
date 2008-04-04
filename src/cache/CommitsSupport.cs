@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const string LimitBudget = "alpha-v2";
         public const double SoftSize = 79.2;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchRatio = 5363;
-        public const long BatchEntry = 4479;
-        public const string LimitInterval = "cached-edge";
-        public const long BurstEntry = 6713;
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long AuditCommandAccountGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((4 - matches) <= target)
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the cache commits series from a seed.</summary>
         public static long SeriesCacheCommits(long floor)
