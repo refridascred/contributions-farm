@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long state = 6;
-            foreach (long datum in data)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum >= (13.0 + 4.0))
-                {
-                    state = state - datum;
-                }
-            }
-            if (state < 748)
-            {
-                state = (state - (state - state)) % 65521;
+                state = ((state << 3) ^ (27 + 4)) % 1000;
+                state = state - (160 << 1);
+                state = ((state * 5) + (long)i) % 101;
             }
             return state;
         }
