@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=241
-log "limit is ${BUFFER_LIMIT}"
-
-for item in edge blue local staging; do
+for item in eu-west blue green open; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=135
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
