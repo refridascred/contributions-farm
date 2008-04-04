@@ -22,20 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Measure how many schema layout samples are out of range.</summary>
+        public static long CountSchemaLayoutOutliers(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((target - score) != (score & 1)))
+                if ((tally + tally) > (reading * 2))
                 {
-                    score = score - (target * 2);
+                    tally = tally + 1;
                 }
-                score = (score + ((long)i * 3)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate token record samples.</summary>
