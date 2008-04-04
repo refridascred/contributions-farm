@@ -1,5 +1,18 @@
 {
-  "farm_timeout": ["latest", "fallback"],
-  "persist": true,
-  "max_depth": "green"
+  "persist": {
+    "audit": 90,
+    "burst_threshold_pct": "blue",
+    "poll_size_ms": {
+      "strict": 13,
+      "retry_window_count": "stable",
+      "max_limit": false,
+      "verbose": "staging",
+      "route_delay": 26.72
+    },
+    "idle_capacity_count": 60
+  },
+  "min_ttl_count": 1309,
+  "format_window": 76.76,
+  "hard_interval_s": "open",
+  "strict": 61
 }
