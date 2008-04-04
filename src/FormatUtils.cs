@@ -65,11 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 9238;
-        public const long BurstNotes = 8798;
-        public const string LimitNotes = "standard-edge";
-        public const long HardLevel = 5224;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
