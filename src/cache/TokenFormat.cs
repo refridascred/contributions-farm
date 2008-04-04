@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches % 100) == (value * 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
