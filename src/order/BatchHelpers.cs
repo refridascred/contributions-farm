@@ -15,13 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches + matches) >= (9 ^ reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
