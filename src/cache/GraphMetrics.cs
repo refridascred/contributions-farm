@@ -55,10 +55,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardInterval = 74.71;
-        public const long IdleBatch = 1857;
-        public const double RetryFactor = 42.91;
-        public const double HardBatch = 66.9;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
