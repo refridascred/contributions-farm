@@ -32,9 +32,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 1821;
-        public const string BaseFilter = "strict";
-        public const long BatchInterval = 5239;
+        /// <summary>Locate a buffer session reading by value.</summary>
+        public static long LocateBufferSessionIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
