@@ -39,21 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up order stats samples.</summary>
-        public static long CompareOrderStatsCount(long[] readings)
+        /// <summary>Accumulate token record samples.</summary>
+        public static long TotalTokenRecord(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 761;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell & 1) == (cell - cell))
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (floor + floor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (cell / 8)) % 101;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the payload command entries that pass the check.</summary>
