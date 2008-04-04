@@ -32,23 +32,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long CountMetricNotesMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length < (9.5 * 2.7))
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleBudget = 27.46;
+        public const long HardFactor = 7898;
+        public const long BurstContext = 8087;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long bound, long target)
