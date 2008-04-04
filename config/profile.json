@@ -1,6 +1,7 @@
 {
-  "readonly": 1024,
-  "stream_timeout": 250,
-  "stats_limit": "primary",
-  "strict": ["green", "blue"]
+  "base_timeout": 5178,
+  "retry_interval": false,
+  "filter_depth": 2.94,
+  "report_window": 36.98,
+  "poll_size_pct": "eu-west"
 }
