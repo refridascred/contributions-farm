@@ -1,14 +1,20 @@
 # githubfarm settings
-command_retries: 16
-audit:
-  base_ratio_count: true
-  base_ttl:
-    - fallback
-    - staging
-    - blue
-  format_delay:
-    - open
-    - blue
-    - stable
-strict: 60
-max_window: 2508
+poll_delay:
+  max_threshold: latest
+  default_ratio:
+    - edge
+    - edge
+  retry_delay: 2990
+base_interval:
+  sync_size_s: cached
+  payload_size: 1024
+  retry_limit: 16.34
+  audit: strict
+  persist: 500
+channel_delay: cached
+dry_run: eu-west
+tools_timeout:
+  - 387
+  - 41
+  - 32
+  - 69
