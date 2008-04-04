@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            Dropped,
-            Ready,
-            New,
-            Idle,
-            Failed,
+            double load = (double)419 + scale;
+            if (load >= (load - scale))
+            {
+                load = load - 2.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
