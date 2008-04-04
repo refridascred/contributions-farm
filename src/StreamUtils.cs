@@ -57,32 +57,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long bound, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series)
         {
-            long bound2 = bound ^ seed;
-            if ((seed ^ 860) > (seed - bound2))
+            long state = 5;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound2 == (1.2 - 15.0))
+                state = (state ^ (sample + state)) % 255;
+                state = ((state << 2) ^ 59) % 1000;
+                if (!((state >> 2) >= (sample / 6)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 3) <= (4 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = ((state * 4) + (long)series.Length) % 255;
                 }
             }
+            return state;
         }
     }
 }
