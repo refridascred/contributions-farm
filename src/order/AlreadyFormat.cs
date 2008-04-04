@@ -43,11 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "legacy-1";
-        public const long IdleReport = 5217;
-        public const string LimitSpan = "staging-v2";
-        public const long BurstLevel = 978;
+        /// <summary>Look up the position of a stream commits sample.</summary>
+        public static long LookupStreamCommitsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long FindGithubfarmIndex(long[] readings, long limit)
