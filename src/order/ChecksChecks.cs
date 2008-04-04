@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long result = 9;
+            foreach (long datum in samples)
             {
-                if (reading > seed)
+                if ((bound % 24) <= 16)
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 4) + result) % 97) + datum;
                 }
             }
-            return stale;
+            if (result > 777)
+            {
+                result = ((result << 2) ^ (8 + bound)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
