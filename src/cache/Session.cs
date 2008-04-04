@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7012;
-        public const string MaxCommand = "open-1";
-        public const long WindowBudget = 4566;
-        public const double StepCommand = 38.63;
-        public const long BatchCommand = 2600;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double SmoothMetric(double bias, double floor)
