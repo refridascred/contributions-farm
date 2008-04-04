@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6780;
-        public const double HardContributi = 64.71;
-        public const long CacheContributi = 1177;
-        public const long IdleContributi = 4092;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Dropped,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MinBudget = "open";
