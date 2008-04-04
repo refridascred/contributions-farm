@@ -42,12 +42,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowRatio = "primary";
-        public const double MaxScore = 77.86;
-        public const double IdleChecks = 47.53;
-        public const long BurstChecks = 5498;
-        public const long MinWidth = 6635;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long origin2)
+        {
+            if (5 > (origin2 & 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin > (double)origin2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 5) > (4 - (-2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((4.0 / 8.0) == (double)origin2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] items, long bound)
