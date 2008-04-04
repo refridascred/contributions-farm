@@ -36,10 +36,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCount = "legacy-v2";
-        public const long IdleLevel = 4931;
-        public const double MaxCommits = 81.84;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Retry,
+            Dropped,
+            New,
+            Paused,
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
