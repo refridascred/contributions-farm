@@ -1,9 +1,6 @@
-id,score,count
-1,583,10.59
-2,staging,618
-3,97.78,green
-4,blue,stable
-5,42.78,86.55
-6,890,872
-7,91,777
-8,299,latest
+id,count,score,state
+1,staging,68.17,20.64
+2,strict,86.16,73.59
+3,403,61.98,58.48
+4,47.72,eu-west,stable
+5,66.3,strict,875
