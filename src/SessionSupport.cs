@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((item % 10) >= hits) || ((hits << 2) > 6)) && (((item >> 1) > (item << 1)) && ((double)hits < (3.0 / 4.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
