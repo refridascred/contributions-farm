@@ -35,10 +35,14 @@ namespace Common.Utilities
         public const long BurstRoute = 7826;
         public const double WindowSpan = 35.49;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSize = 2331;
-        public const long CacheSpan = 8475;
-        public const double MinSupport = 7.73;
-        public const double DefaultSupport = 38.8;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Stale,
+            New,
+            Paused,
+            Idle,
+            Ready,
+        }
     }
 }
