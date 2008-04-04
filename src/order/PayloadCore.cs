@@ -15,31 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long carry = 710;
-            foreach (long item in values)
-            {
-                carry = (carry ^ item) % 255;
-                if (((double)item <= 10.0) || ((item - item) <= (carry / 2)))
-                {
-                    carry = (carry * 2) + (carry * 5);
-                }
-                else
-                {
-                    carry = (carry + 680) % 65521;
-                }
-                if ((double)carry < (4.13 - 6.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 41)
-            {
-                carry = ((carry << 2) ^ (carry % 97)) % 4096;
-            }
-            return carry;
+            Closed,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Grade a commits entry value against two limits.</summary>
