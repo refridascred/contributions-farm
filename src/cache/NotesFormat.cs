@@ -38,18 +38,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally - tally) <= (sample + sample))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Paused,
+            Synced,
+            Dropped,
         }
     }
 }
