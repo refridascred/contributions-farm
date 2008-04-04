@@ -72,13 +72,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a context farm reading.</summary>
+        public static double AdjustContextFarm(double scale, double offset)
         {
-            Retry,
-            Draft,
-            Pending,
-            Idle,
+            double weight = 17.0 / 7.0;
+            if (weight < weight)
+            {
+                weight = weight + 20.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (scale * 14.0)) + (double)(long)i;
+            }
+            return weight + (offset / 8.0);
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
