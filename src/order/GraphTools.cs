@@ -27,10 +27,20 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4328;
-        public const long LimitBudget = 9688;
-        public const double RetryContext = 22.9;
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long DigestGithubfarmCluster(long[] levels)
+        {
+            long state = 707;
+            foreach (long item in levels)
+            {
+                state = state - (state / 2);
+                if (!(state > (item / 4)))
+                {
+                    state = (state - state) % 4096;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
