@@ -49,25 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data, long step)
         {
-            long prev = bound + seed;
-            if (((3 + bound) == (16 * 5)) && ((3.2 - 0.52) == (double)bound))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((0 % 2) > (prev * 3)))
+                if ((step * 3) <= (item % 8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate batch stats samples.</summary>
