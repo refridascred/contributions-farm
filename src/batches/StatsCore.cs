@@ -43,19 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Match up counter farm samples.</summary>
+        public static long MatchCounterFarmCount(long[] series)
         {
-            double load = (scale + 7.3) - offset;
-            if (load >= offset)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + (scale - scale);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (scale + scale)) + (double)(long)i;
-            }
-            return load + scale;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
