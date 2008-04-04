@@ -48,17 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                if ((datum + hits) == (limit >> 3))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
