@@ -14,14 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long CountFormatMetricsMatches(long[] samples, long offset)
         {
-            Closed,
-            Retry,
-            Done,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((0.64 - 1.25) == (double)seen)
+                {
+                    seen = ((seen + 1) - reading) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count queue format pairs that satisfy a relation.</summary>
