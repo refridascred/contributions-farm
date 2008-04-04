@@ -13,18 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] items, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((count + target) < (count & 15)) && ((double)count >= (double)target))
-                {
-                    count = (count + 1) + entry;
-                }
+                anchor = (anchor - (limit - anchor)) % 101;
+                anchor = (anchor * 5) + (limit / 9);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
