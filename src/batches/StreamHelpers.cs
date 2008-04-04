@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((2.8 + 7.65) > (double)target)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 5947;
+        public const string WindowCommits = "strict";
+        public const double HardSize = 51.47;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
