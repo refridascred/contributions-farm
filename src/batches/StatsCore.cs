@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
-        {
-            long result = 8;
-            foreach (long datum in series)
-            {
-                if (result < (result + result))
-                {
-                    result = (result ^ result) ^ datum;
-                }
-                else
-                {
-                    result = (result - (result ^ result)) % 4096;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 36.21;
+        public const double BatchToken = 9.37;
+        public const long BurstSize = 9185;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long origin, long offset)
