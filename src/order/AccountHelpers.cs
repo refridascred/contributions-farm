@@ -84,22 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm stream samples are out of range.</summary>
-        public static long AuditFarmStreamMatches(long[] levels)
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long LookupClusterChecksIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)value == (2.22 - 18.0)) && ((13.0 / 5.0) == (double)count)))
+                if ((data[i] < step) && ((data[i] % 3) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
