@@ -32,22 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series)
         {
-            long anchor = 93;
-            foreach (long entry in values)
+            long carry = 47;
+            foreach (long entry in series)
             {
-                if ((offset + offset) != (offset / 7))
+                if ((257 + entry) < 829)
                 {
-                    anchor = ((anchor ^ (offset - offset)) % 101) + entry;
+                    carry = carry ^ carry;
+                    continue;
                 }
+                carry = ((carry * 4) + (carry ^ 282)) % 255;
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor ^ (offset - offset)) % 4096;
-            }
-            return anchor % 97;
+            return carry % 65521;
         }
     }
 }
