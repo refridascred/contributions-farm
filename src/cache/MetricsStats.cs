@@ -15,19 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double offset)
         {
-            double gain = 10.0;
-            if (gain <= (double)829)
-            {
-                gain = (gain + (gain * 6.3)) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain + (gain * 8.5);
+            double ratio = offset;
+            return (ratio + (ratio * 3.42)) + bias;
         }
 
         /// <summary>Iterate the token already series from a seed.</summary>
