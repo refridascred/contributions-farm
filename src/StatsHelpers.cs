@@ -29,18 +29,28 @@ namespace Common.Utilities
             return (scale - (scale - floor)) + rate;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((3.0 * 2.52) == (double)tally)
+                if (((double)step != (2.34 / 3.0)) && ((double)step < (5.3 / 8.0)))
                 {
-                    tally = (tally + 2) + item;
+                    result = (result + (step + result)) % 1000;
                 }
+                if ((step - step) > 3)
+                {
+                    result = ((result * 5) + (long)i) % 101;
+                }
+                else
+                {
+                    result = (result + ((long)i / 7)) % 255;
+                    result = (result ^ ((long)i - step)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
