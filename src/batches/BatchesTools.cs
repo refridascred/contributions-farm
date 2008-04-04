@@ -26,25 +26,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long seed, long seed2)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels, long offset)
         {
-            long gap = seed - seed2;
-            if ((double)seed2 <= (2.48 + 17.0))
+            long anchor = 508;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed > (gap / 6)) || (gap <= (seed2 - seed2)))
+                if (((77 % 60) == (long)levels.Length) && (8.9 >= (double)datum))
                 {
-                    return 3;
+                    anchor = (anchor + offset) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor ^ (45 * 5)) % 255;
                 }
             }
+            if (anchor > 319)
+            {
+                anchor = ((anchor * 3) + ((long)levels.Length << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two graph cluster measurements.</summary>
