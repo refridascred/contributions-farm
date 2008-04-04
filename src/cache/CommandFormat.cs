@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheDepth = 409;
-        public const long LimitFormat = 7650;
-        public const string StepBudget = "cached";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsGaps(long[] items)
