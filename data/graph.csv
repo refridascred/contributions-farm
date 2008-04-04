@@ -1,8 +1,6 @@
-id,token,active
-1,legacy,98.77
-2,stable,standard
-3,1.67,248
-4,414,995
-5,804,3.19
-6,586,880
-7,71,local
+id,label,ratio,score
+1,standard,22.54,540
+2,local,fallback,22.65
+3,stable,17.97,cached
+4,340,stable,26.04
+5,616,570,544
