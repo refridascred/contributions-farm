@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 6571;
-        public const long SoftLayout = 2660;
-        public const long HardRatio = 6227;
+        /// <summary>Compare every pair of context stats readings.</summary>
+        public static long CompareContextStatsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleFactor = 21;
