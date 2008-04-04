@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue farm figure with a bias.</summary>
-        public static double ScaleQueueFarm(double scale, double bias)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            double load = (double)(53 + 48);
-            if (load > (scale - 1.5))
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load + (load / 7.0)) + bias;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return load - scale;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
