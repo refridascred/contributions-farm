@@ -20,18 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long TallyContributiChannelGaps(long[] levels, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((6.72 / 2.0) < (double)target)
+                if (datum >= step)
                 {
-                    matches = (matches + 1) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
