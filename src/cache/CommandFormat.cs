@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double span)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double scale = (double)((-8) + 90);
-            if (scale < bias)
-            {
-                scale = scale - (bias + scale);
-            }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale - scale;
+            Active,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
