@@ -102,21 +102,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchDepth = 8997;
+        public const long IdleBudget = 1;
+        public const long MinRatio = 7868;
+        public const long IdleDepth = 3202;
+        public const string MinTimeout = "fallback";
     }
 }
