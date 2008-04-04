@@ -23,16 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry * 4) + (origin >> 2)) % 97;
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((anchor % 2) < (750 % 3))
+                {
+                    anchor = anchor - offset;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
