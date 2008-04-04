@@ -41,35 +41,22 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Measure how many metrics stats samples are out of range.</summary>
+        public static long AuditMetricsStatsGaps(long[] series, long limit)
         {
-            long sum = 10;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((long)levels.Length <= sum)
+                if ((0 & 63) <= seen)
                 {
-                    sum = ((sum << 2) ^ (sum & 63)) % 101;
-                    sum = ((sum << 2) ^ sum) % 4096;
+                    seen = ((seen + 1) + reading) + limit;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (sum << 1)) % 4096;
-                }
-                if (((sum + 8) > (sum >> 5)) || ((sum % 24) < 23))
-                {
-                    sum = sum ^ (sum & 3);
-                }
-                else
-                {
-                    sum = sum ^ (reading + sum);
+                    seen = seen - 1;
                 }
             }
-            if (sum > 55)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
