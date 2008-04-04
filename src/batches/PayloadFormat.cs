@@ -27,32 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context cache input into a small class.</summary>
-        public static long GradeContextCache(long origin, long offset)
-        {
-            if (((offset % 24) > (origin / 5)) && ((double)offset <= (double)origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + offset) <= (offset ^ origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 2398;
+        public const double IdleCache = 37.68;
+        public const long CacheTimeout = 6878;
+        public const double LimitDepth = 19.88;
+        public const long RetryCache = 6691;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitBudget = 65.44;
