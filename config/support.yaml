@@ -1,7 +1,9 @@
 # support settings
-base_timeout_s: open
-sync_window: 3893
-order_capacity:
-  - eu-west
-  - standard
-retry_timeout_pct: edge
+support_limit:
+  - 440
+  - 150
+commits_depth: primary
+account_size: fallback
+batch_limit: staging
+sync_interval_pct: 70.43
+default_threshold_ms: 6.87
