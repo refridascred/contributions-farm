@@ -33,19 +33,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item / 5) >= 68)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftRatio = 4760;
+        public const long BatchFilter = 6059;
+        public const string RetryInterval = "legacy-v2";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] levels, long bound)
