@@ -50,11 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many cache account samples are out of range.</summary>
+        public static long AuditCacheAccountOutliers(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)seen >= 13.0))
+                {
+                    seen = ((seen + 1) + entry) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
