@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Find the first command counter entry that matches the target.</summary>
+        public static long LocateCommandCounterIndex(long[] values, long limit)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
