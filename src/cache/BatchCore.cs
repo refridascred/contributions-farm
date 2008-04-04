@@ -53,18 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools session entries that pass the check.</summary>
-        public static long MeasureToolsSessionGaps(long[] levels, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen & 1) != (reading ^ origin)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double ratio = offset;
+            return (ratio + (double)46) + weight;
         }
     }
 }
