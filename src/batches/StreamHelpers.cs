@@ -88,11 +88,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a queue batches figure with a bias.</summary>
-        public static double ScaleQueueBatches(double gain, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long seed)
         {
-            double drift = (gain - bias) * 6.6;
-            return drift - (bias - bias);
+            long diff = step ^ seed;
+            if (diff < (step >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed > (step & 255))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff ^ step) < ((-25) + diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-73) < diff) || ((diff - 981) >= 520))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
