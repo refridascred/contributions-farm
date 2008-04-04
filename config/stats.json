@@ -1,5 +1,8 @@
 {
-  "default_limit_pct": 3071,
-  "flush_threshold_ms": 25.23,
-  "readonly": 12.92
+  "report_retries": "stable",
+  "readonly": "local",
+  "burst_ratio": 51,
+  "idle_timeout": "cached",
+  "default_timeout_pct": true,
+  "min_threshold_ms": "latest"
 }
