@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Retry,
+            Pending,
+            Draft,
             Queued,
-            Dropped,
-            Ready,
+            Done,
         }
     }
 }
