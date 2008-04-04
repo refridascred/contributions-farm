@@ -26,18 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((seed - seed) < (56 % 97))
+                if (((3.65 - 6.5) >= (double)seen) || ((double)16 != (double)cell))
                 {
-                    hits = (hits + 3) ^ reading;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
