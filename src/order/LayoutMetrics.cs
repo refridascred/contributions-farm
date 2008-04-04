@@ -27,17 +27,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (floor / 9.0)) + (double)(long)i;
             }
-            return -1;
+            return mean - rate;
         }
 
         /// <summary>Accumulate commits samples.</summary>
