@@ -39,13 +39,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
