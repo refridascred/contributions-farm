@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            long acc = 6;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)tally <= (3.09 - 3.9))
                 {
-                    acc = (acc + (long)i) + reading;
-                    acc = (acc ^ (acc << 1)) % 4096;
-                }
-                if (!(target <= acc))
-                {
-                    acc = (acc ^ 0) % 255;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            if (acc > 37)
-            {
-                acc = (acc * 2) + target;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
