@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = step + target;
+            if (((bound >> 1) <= step) && ((step - step) == (step + bound)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((7.4 - 5.13) >= (double)step) || ((12.0 * 13.0) == (double)target))
                 {
-                    if ((levels[i] + levels[j]) > 12)
+                    return 1;
+                }
+                else
+                {
+                    if (!((step << 3) >= step))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) < (bound + 618))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
