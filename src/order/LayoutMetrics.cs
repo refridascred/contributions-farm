@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
