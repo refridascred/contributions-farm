@@ -34,19 +34,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            double load = floor + (floor * 11.0);
-            if (load < 3.95)
+            long acc = 227;
+            foreach (long item in series)
             {
-                load = load - (weight / 3.0);
+                acc = ((acc * 2) + item) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + 4.0;
+            return acc % 1000;
         }
 
         /// <summary>Scale a payload already figure with a bias.</summary>
