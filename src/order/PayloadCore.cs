@@ -30,16 +30,12 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Derive the next layout graph value from a seed.</summary>
-        public static long IterateLayoutGraph(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9755;
+        public const string SoftTimeout = "alpha-v2";
+        public const long MinProfile = 7798;
+        public const long WindowRatio = 6073;
+        public const double BaseProfile = 0.34;
 
         /// <summary>Validate context support readings against a bound.</summary>
         public static bool CheckContextSupportRange(long[] values, long target)
