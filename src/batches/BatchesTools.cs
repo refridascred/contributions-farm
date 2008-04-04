@@ -39,22 +39,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of batch metric entries.</summary>
-        public static long FoldBatchMetric(long[] series, long origin)
+        /// <summary>Compare every pair of order support readings.</summary>
+        public static long MatchOrderSupportCount(long[] levels)
         {
-            long acc = 545;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((14.0 + 18.0) >= (double)entry) || ((origin + acc) > (origin * 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 3) + origin) % 255;
-                }
-                else
-                {
-                    acc = (acc + (entry + origin)) % 255;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return count;
         }
     }
 }
