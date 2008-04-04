@@ -35,11 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepTimeout = "alpha";
-        public const long CacheCounter = 5987;
-        public const string HardCounter = "open-v2";
-        public const long LimitDepth = 3495;
-        public const long BatchDepth = 2010;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double offset)
+        {
+            double mean = (double)(44 + 989);
+            if (mean <= (double)19)
+            {
+                mean = mean - offset;
+            }
+            return mean + (weight * 7.3);
+        }
     }
 }
