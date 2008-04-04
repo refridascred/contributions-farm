@@ -1,12 +1,13 @@
 {
-  "schema_delay": 250,
-  "max_timeout": "blue",
-  "channel_delay": {
-    "warm_ratio": false,
-    "strict": 4294,
-    "max_size": 60
+  "base_ttl": {
+    "hard_limit": 1748,
+    "persist": ["green", "stable", "latest"],
+    "session_ttl": 38.69
   },
-  "compress": "primary",
-  "notes_retries": "fallback",
-  "default_timeout_count": true
+  "persist": {
+    "min_ttl_s": 16.18,
+    "queue_limit": 8343,
+    "min_interval": 36.56
+  },
+  "warm_retries_count": 42
 }
