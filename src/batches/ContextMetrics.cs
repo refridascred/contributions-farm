@@ -43,15 +43,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a stream record reading.</summary>
-        public static double AdjustStreamRecord(double weight, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long origin)
         {
-            double gain = weight;
-            for (int i = 0; i < 3; i++)
+            if ((9.8 - 7.7) > (double)step)
             {
-                gain = (gain + (offset / 3.0)) - (double)(long)i;
+                return 3;
             }
-            return gain - (4.55 * 14.0);
+            else
+            {
+                if (((step % 10) > (step * 4)) || ((0 - step) != (step << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 + 5.0) >= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
