@@ -19,23 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] levels, long offset)
         {
-            long carry = -778;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((carry - reading) >= carry)
+                if (((offset + 266) > (hits / 9)) && ((offset + offset) < (hits * 4)))
                 {
-                    carry = ((carry << 2) ^ reading) % 65521;
-                    continue;
+                    hits = (hits + 2) + value;
                 }
-                if (((reading + reading) >= 59) && ((carry - carry) > reading))
+                else
                 {
-                    carry = (carry << 3) ^ (carry + carry);
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many buffer window samples are out of range.</summary>
