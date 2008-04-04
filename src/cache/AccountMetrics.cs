@@ -20,19 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of queue support entries.</summary>
-        public static long DigestQueueSupport(long[] series)
+        /// <summary>Match up route buffer samples.</summary>
+        public static long CompareRouteBufferCount(long[] data)
         {
-            long carry = 44;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (carry - cell)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry < 44)
-            {
-                carry = carry + (carry >> 3);
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
