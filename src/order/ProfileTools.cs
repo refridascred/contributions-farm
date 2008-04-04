@@ -34,17 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload context sample.</summary>
-        public static long FindPayloadContextIndex(long[] items, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] >= offset)
+                if (4.0 <= (double)reading)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the filter mode values.</summary>
