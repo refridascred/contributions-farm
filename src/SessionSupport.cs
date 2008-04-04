@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowScore = 1842;
-        public const double BatchDepth = 2.55;
-        public const long HardToken = 2539;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
