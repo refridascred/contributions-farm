@@ -24,25 +24,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph session entries.</summary>
-        public static long TallyGraphSession(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 94;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor << 2) ^ ((long)i / 3)) % 1000;
-                    anchor = anchor + ((long)i * 5);
-                }
-                if (((979 ^ anchor) <= cell) || ((13.0 * 6.72) != (double)cell))
-                {
-                    anchor = ((anchor * 5) + (anchor + cell)) % 1000;
-                    continue;
-                }
-                anchor = (anchor - (anchor + cell)) % 65521;
-            }
-            return anchor % 4096;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the filter buffer entries that pass the check.</summary>
