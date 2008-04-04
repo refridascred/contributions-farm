@@ -39,26 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long target)
         {
-            long mark = 8;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((83 / 8) != (datum + mark)))
+                if (samples[i] > target)
                 {
-                    mark = (mark * 3) + mark;
-                }
-                if ((double)datum != (double)4)
-                {
-                    mark = (mark + (mark / 6)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (8 & 7)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
