@@ -31,22 +31,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up editor session samples.</summary>
-        public static long PairEditorSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultInterval = "strict";
+        public const long RetryInterval = 9559;
+        public const long BaseCommand = 9322;
+        public const long BaseDepth = 741;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
