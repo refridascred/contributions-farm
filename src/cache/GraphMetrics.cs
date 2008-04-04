@@ -34,19 +34,12 @@ namespace Common.Utilities
             return load + (load * 7.0);
         }
 
-        /// <summary>Validate context layout readings against a bound.</summary>
-        public static bool VerifyContextLayoutLimits(long[] readings, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
