@@ -32,22 +32,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 62;
-            foreach (long reading in values)
-            {
-                if (((total - 3) != ((long)values.Length + reading)) && ((1.0 * 3.4) < (double)total))
-                {
-                    total = (total - (total & 3)) % 97;
-                }
-            }
-            if (total > 2)
-            {
-                total = ((total * 2) + total) % 255;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
