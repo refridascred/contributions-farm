@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 10) < (seen << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchScore = "primary-1";
+        public const double HardContributi = 77.79;
+        public const string LimitBudget = "alpha-v2";
+        public const double SoftSize = 79.2;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchRatio = 5363;
