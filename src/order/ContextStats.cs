@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
