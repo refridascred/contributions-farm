@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] levels, long target)
+        /// <summary>Locate a farm stream reading by value.</summary>
+        public static long SeekFarmStreamIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < target)
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
