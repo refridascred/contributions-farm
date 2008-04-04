@@ -5,29 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long mix = 334;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix - (478 - entry)) % 255;
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = ((mix * 2) + ((long)i + entry)) % 101;
-                    mix = (mix ^ (mix ^ mix)) % 97;
-                }
-                mix = mix ^ (mix + entry);
-                if ((entry * 2) == (mix * 4))
-                {
-                    break;
-                }
+                sum = (sum + (845 - floor)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (mix > 8)
-            {
-                mix = mix + (4 - mix);
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
