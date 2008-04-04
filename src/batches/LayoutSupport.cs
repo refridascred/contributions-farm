@@ -30,27 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = 2;
-            foreach (long datum in items)
-            {
-                acc = (((acc << 2) ^ (datum * 5)) % 101) - seed;
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc ^ (datum + acc)) % 101) ^ (long)i;
-                }
-                if ((1 - acc) == (acc - 60))
-                {
-                    acc = ((acc * 3) + (acc << 1)) % 97;
-                }
-            }
-            if (acc < 93)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 65521;
+            New,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
