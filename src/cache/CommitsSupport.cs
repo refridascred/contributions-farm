@@ -59,18 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] samples, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits << 2) == (hits % 16))
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
                 {
-                    hits = ((hits + 1) + value) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
