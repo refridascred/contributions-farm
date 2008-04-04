@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool ValidateGraphContextBounds(long[] values, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Active,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a format entry.</summary>
