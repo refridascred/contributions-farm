@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleNotes = 3032;
         public const long WindowLevel = 6942;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((11.0 - 2.06) >= (double)matches)
+                if (cell >= origin)
                 {
-                    matches = (matches + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
