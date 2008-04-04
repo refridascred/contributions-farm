@@ -74,18 +74,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((5 + item) <= (161 / 5)) && ((7.58 / 9.0) >= (double)item))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
