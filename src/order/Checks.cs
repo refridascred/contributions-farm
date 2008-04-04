@@ -15,15 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
-        public static long SeriesGithubfarmContributi(long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
