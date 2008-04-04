@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitTimeout = 422;
-        public const double MaxFactor = 50.89;
-        public const string LimitCommits = "cached-edge";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples)
+        {
+            long total = 73;
+            foreach (long sample in samples)
+            {
+                total = ((total * 5) + sample) % 65521;
+            }
+            if (total < 2)
+            {
+                total = (total ^ (65 + total)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MaxFilter = "fallback-edge";
