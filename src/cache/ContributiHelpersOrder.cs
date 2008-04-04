@@ -40,17 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] items, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 6.1;
+            if (mean < span)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + span) - ratio;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)64;
+            }
+            return mean - 9.6;
         }
     }
 }
