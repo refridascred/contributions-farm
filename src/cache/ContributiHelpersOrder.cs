@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias + 7.81;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (9.1 > (double)count)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
