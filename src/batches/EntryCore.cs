@@ -63,18 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double bias = (double)31 * 4.0;
+            if (bias > (offset - bias))
             {
-                if ((4.09 / 4.0) >= (double)hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
+                bias = bias - (9.0 + gain);
             }
-            return hits;
+            return bias - gain;
         }
     }
 }
