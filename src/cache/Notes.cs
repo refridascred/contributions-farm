@@ -53,38 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long origin2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] readings, long limit)
         {
-            if (5 > (origin2 & 1))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (double)origin2)
+                if ((double)(-505) > (double)value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 5) > (4 - (-2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((4.0 / 8.0) == (double)origin2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
