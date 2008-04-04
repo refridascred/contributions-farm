@@ -49,18 +49,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many command notes samples are out of range.</summary>
-        public static long MeasureCommandNotesHits(long[] values, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((limit <= (limit * 4)) && (((double)reading >= 4.22) && ((limit + tally) >= (42 + reading))))
+                if (reading > floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
