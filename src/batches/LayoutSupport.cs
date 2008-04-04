@@ -30,20 +30,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric schema value from a seed.</summary>
-        public static long IterateMetricSchema(long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = 2;
+            foreach (long datum in items)
             {
-                if (((long)i >> 2) <= anchor)
+                acc = (((acc << 2) ^ (datum * 5)) % 101) - seed;
+                for (int i = 0; i < 7; i++)
                 {
-                    anchor = ((anchor * 3) + bound) % 1000;
+                    acc = ((acc ^ (datum + acc)) % 101) ^ (long)i;
                 }
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((1 - acc) == (acc - 60))
+                {
+                    acc = ((acc * 3) + (acc << 1)) % 97;
+                }
             }
-            return anchor;
+            if (acc < 93)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
