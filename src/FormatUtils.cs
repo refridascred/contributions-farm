@@ -64,15 +64,19 @@ namespace Common.Utilities
         public const long WindowRecord = 9832;
         public const long MinRecord = 5105;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] data, long step)
         {
-            double drift = (double)(0 % 3);
-            if (drift >= 5.4)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                drift = (drift - 3.7) - bias;
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (rate / 9.0);
+            return flag;
         }
     }
 }
