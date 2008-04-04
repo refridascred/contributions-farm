@@ -1,5 +1,16 @@
 {
-  "readonly": 1.83,
-  "channel_interval": ["legacy", "standard", "edge", "legacy"],
-  "command_window": "latest"
+  "cache_retries": 33.96,
+  "checks_timeout": {
+    "counter_capacity": {
+      "batch_size_pct": 100,
+      "strict": "edge",
+      "hard_capacity_pct": 52.19
+    },
+    "enabled": 15,
+    "idle_retries_ms": 81,
+    "dry_run": 32,
+    "default_size_ms": [116, 392, 287]
+  },
+  "soft_ttl": 40,
+  "flush_ratio": 29.81
 }
