@@ -19,22 +19,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values, long seed)
         {
-            long acc = -999;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((offset << 2) < (33 + offset))
+                if ((seed >> 5) > (count & 7))
                 {
-                    acc = ((acc + (offset + acc)) % 255) ^ reading;
-                }
-                else
-                {
-                    acc = acc ^ (acc & 127);
+                    count = (count + 3) + entry;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
