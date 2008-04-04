@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((double)tally < (2.2 + 2.0)) && ((value > (tally - 73)) || ((value + tally) == (tally >> 3))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Roll a editor notes counter forward.</summary>
