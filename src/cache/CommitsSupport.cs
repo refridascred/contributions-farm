@@ -33,38 +33,18 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long SortContributiChecks(long floor, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] levels, long target)
         {
-            if (step >= floor)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (step - step))
+                if ((511 * 2) != (target + 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 4) > (step & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor + floor) >= floor) || ((floor & 3) >= (floor / 6)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
