@@ -30,12 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long state = -9;
+            foreach (long entry in readings)
+            {
+                state = (state ^ (state + state)) ^ entry;
+            }
+            if (state > 79)
+            {
+                state = (state - (state >> 3)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a buffer session reading by value.</summary>
