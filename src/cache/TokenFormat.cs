@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] series, long seed)
+        /// <summary>Digest a series of session schema entries.</summary>
+        public static long DigestSessionSchema(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long total = 5;
+            foreach (long cell in items)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total + 0) % 255) + cell;
             }
-            return stale;
+            if (total > 726)
+            {
+                total = total ^ (total << 3);
+            }
+            return total;
         }
     }
 }
