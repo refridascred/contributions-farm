@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] values, long origin)
         {
-            Pending,
-            Ready,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((matches + origin) >= origin) || (958 > (reading & 127)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
