@@ -1,12 +1,14 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the schema list.
-The metrics report groups every order by counter.
-A entry that stays idle for too long is moved to the already list.
+Use record settings to tune how often buffer data is refreshed.
+Keep entry and stream names short and lowercase.
+
+Defaults for context live in the config folder and can be overridden per environment.
+Use metric settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer contributi defaults
-- Document new queue fields
-- Validate metric input early
+- Review cluster limits each release
+- Log every metrics change
+- Prefer metrics defaults
+- Validate cache input early
