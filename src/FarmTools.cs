@@ -36,9 +36,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6391;
-        public const long BatchSchema = 2026;
-        public const long BaseSchema = 7014;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long bound, long bound2)
+        {
+            if (!(bound2 >= (bound / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (2.8 >= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 1) <= (bound2 / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
