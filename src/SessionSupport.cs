@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 7085;
-        public const double BaseChecks = 54.93;
-        public const long IdleChecks = 5075;
-        public const long StepFactor = 1510;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] samples)
+        {
+            long mix = 966;
+            foreach (long entry in samples)
+            {
+                mix = (((mix * 5) + ((-630) + mix)) % 65521) - entry;
+            }
+            if (mix < 10)
+            {
+                mix = mix - (mix * 4);
+            }
+            return mix;
+        }
 
         /// <summary>Match up token filter samples.</summary>
         public static long OverlapTokenFilterCount(long[] readings)
