@@ -62,14 +62,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data, long step)
         {
-            Synced,
-            Failed,
-            Locked,
-            Done,
-            Active,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ 89) > (2 - step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
