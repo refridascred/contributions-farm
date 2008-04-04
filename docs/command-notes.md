@@ -1,11 +1,11 @@
 # Command notes
 
-The graph module keeps checks values in sync with the format cache.
-A metrics that stays idle for too long is moved to the batch list.
-Run the filter check before changing any stats limits.
+A account that stays idle for too long is moved to the contributi list.
+Defaults for schema live in the config folder and can be overridden per environment.
+The command module keeps context values in sync with the window cache.
 
 ## Guidelines
 
-- Log every already change
-- Review contributi limits each release
-- Document new cluster fields
+- Validate metric input early
+- Log every account change
+- Document new farm fields
