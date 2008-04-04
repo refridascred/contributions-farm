@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (!(seed < datum) || ((tally * 4) > (datum % 100)))
+                if (entry <= floor)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
