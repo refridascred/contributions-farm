@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Accumulate farm schema samples.</summary>
+        public static long WeighFarmSchema(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 83;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry & 127) == (anchor ^ anchor))
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (seed - seed);
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
+                }
+                if ((anchor * 5) > entry)
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (entry % 10);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Blend two checks measurements.</summary>
