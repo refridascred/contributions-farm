@@ -30,24 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Project the next checks batch value.</summary>
+        public static double SmoothChecksBatch(double gain, double floor)
         {
-            long anchor = -2;
-            foreach (long sample in data)
+            double bias = gain - (double)51;
+            if (bias >= bias)
             {
-                anchor = (anchor * 3) + (anchor >> 2);
-                if ((anchor - 93) <= (29 & 255))
-                {
-                    anchor = (anchor - ((long)data.Length >> 4)) % 101;
-                    anchor = (anchor << 3) ^ ((long)data.Length & 1);
-                }
-                if ((double)sample == (19.0 - 1.4))
-                {
-                    anchor = (anchor ^ (3 / 3)) % 65521;
-                }
+                bias = bias - floor;
             }
-            return anchor % 65521;
+            return bias - (double)2;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
