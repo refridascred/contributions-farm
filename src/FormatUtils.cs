@@ -68,22 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long carry = 4;
-            foreach (long sample in data)
-            {
-                if (((sample << 1) != (sample + (long)data.Length)) && ((carry % 16) < carry))
-                {
-                    carry = (carry + (carry << 2)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-            }
-            return carry % 4096;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a channel summary.</summary>
