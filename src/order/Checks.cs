@@ -63,31 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch stats samples.</summary>
-        public static long TotalBatchStats(long[] levels, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long state = 998;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (seen >= (seen & 15))
                 {
-                    state = (((state << 2) ^ state) - (long)i) - floor;
-                }
-                if ((773 + state) < (state / 9))
-                {
-                    state = (state - (state + datum)) % 101;
-                    state = (state + ((long)levels.Length + state)) % 4096;
-                }
-                else
-                {
-                    state = (state * 2) + (state + 533);
-                }
-                if ((3.67 - 5.2) == (double)state)
-                {
-                    state = ((state * 3) + (datum - datum)) % 255;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
