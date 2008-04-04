@@ -14,22 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            long total = 799;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)(long)readings.Length >= (18.0 / 9.0))
+                if (5.9 >= (4.5 * 2.3))
                 {
-                    total = (((total << 3) ^ seed) % 101) ^ item;
+                    count = (count + 3) + value;
                 }
             }
-            if (total < 92)
-            {
-                total = (total ^ (seed / 3)) % 255;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
