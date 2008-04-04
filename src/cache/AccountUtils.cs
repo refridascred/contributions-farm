@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((offset + seen) == (offset % 24))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of filter githubfarm entries.</summary>
