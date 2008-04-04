@@ -47,18 +47,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support batch samples are out of range.</summary>
-        public static long TallySupportBatchGaps(long[] series)
+        /// <summary>Rank buffer contributi input into a small class.</summary>
+        public static long RankBufferContributi(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((limit + 461) < ((-4) * 5))
             {
-                if (!((hits ^ datum) != (hits - hits)) && !((double)datum >= (9.0 / 6.0)))
+                return 6;
+            }
+            else
+            {
+                if (((bound - limit) < (bound / 6)) && ((bound << 3) < limit))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (limit <= (208 - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
