@@ -46,19 +46,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a record summary.</summary>
