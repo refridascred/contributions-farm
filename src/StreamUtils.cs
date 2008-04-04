@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long HardContext = 8249;
         public const double RetryCount = 47.53;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (7 > (item & 127))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
