@@ -43,13 +43,22 @@ namespace Common.Utilities
         public const long IdleCount = 251;
         public const long HardDepth = 8757;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate report token samples.</summary>
+        public static long DigestReportToken(long[] samples)
         {
-            New,
-            Dropped,
-            Locked,
-            Done,
+            long mix = 939;
+            foreach (long sample in samples)
+            {
+                if ((sample + 457) == (mix + sample))
+                {
+                    mix = (mix - (mix % 24)) % 255;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix ^ (long)samples.Length) % 97;
+            }
+            return mix;
         }
     }
 }
