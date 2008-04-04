@@ -32,12 +32,14 @@ namespace Common.Utilities
         public const long LimitBudget = 9688;
         public const double RetryContext = 22.9;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Synced,
-            Draft,
-            Idle,
+            Paused,
+            Failed,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
