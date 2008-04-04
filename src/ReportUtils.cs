@@ -38,14 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Retry,
-            Dropped,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 9265;
+        public const double HardSpan = 92.8;
+        public const string SoftSize = "alpha";
+        public const string DefaultTimeout = "stable-v2";
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long SeekCacheToolsIndex(long[] values, long floor)
