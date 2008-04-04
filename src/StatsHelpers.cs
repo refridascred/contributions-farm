@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] readings, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double rate2 = rate / 8.0;
+            if (rate2 >= (rate2 / 5.0))
             {
-                if (value <= (value % 24))
-                {
-                    hits = (hits + 3) + offset;
-                }
+                rate2 = rate2 + (rate2 + rate);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - span) + (double)(long)i;
+            }
+            return rate2 + (span / 6.0);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
