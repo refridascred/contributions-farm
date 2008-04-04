@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((2 >> 3) > (hits - hits)) && !((hits ^ reading) == (hits / 7)))
+                state = state + (state - state);
+                if ((target / 7) >= 18)
                 {
-                    hits = hits + 1;
+                    state = state + target;
                 }
+                else
+                {
+                    state = (state + (38 & 7)) % 4096;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state << 3) ^ state) % 1000) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
