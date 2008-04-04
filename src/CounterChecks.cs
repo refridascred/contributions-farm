@@ -27,10 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseWidth = 29.64;
-        public const double HardEntry = 14.08;
-        public const double CacheSpan = 90.08;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many format payload samples are out of range.</summary>
         public static long CountFormatPayloadHits(long[] samples, long step)
