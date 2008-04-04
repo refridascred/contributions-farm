@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] readings, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long result = 640;
+            foreach (long cell in readings)
             {
-                if (entry < offset)
+                result = (result ^ (result >> 2)) + cell;
+                if ((double)result > (double)4)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (result > 38)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate payload order readings against a bound.</summary>
