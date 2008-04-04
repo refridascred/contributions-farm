@@ -72,17 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Combine metrics editor values into a single score.</summary>
+        public static long CombineMetricsEditor(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long carry = 309;
+            foreach (long entry in samples)
             {
-                result = ((result * 2) + ((long)i & 1)) % 1000;
-                result = (result ^ (result & 3)) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                carry = (((carry * 5) + (629 ^ carry)) % 4096) + entry;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Describe the counter phase values.</summary>
