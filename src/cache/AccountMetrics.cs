@@ -63,22 +63,19 @@ namespace Common.Utilities
             return bias + 9.01;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double drift = scale;
+            if (drift < (double)34)
             {
-                if ((double)hits >= 3.0)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - 2.7;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
