@@ -58,21 +58,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = gain;
+            return load - (span + load);
         }
     }
 }
