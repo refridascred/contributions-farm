@@ -1,6 +1,8 @@
 {
-  "filter_timeout": [378, 266, 238, 315],
-  "min_size_count": true,
-  "persist": "edge",
-  "max_size": 30
+  "burst_capacity_pct": ["eu-west", "latest"],
+  "record_capacity": "cached",
+  "persist": 32.12,
+  "hard_ttl_ms": 60,
+  "stream_ratio": 14,
+  "flush_timeout": 6
 }
