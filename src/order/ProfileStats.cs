@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double scale2 = (double)(4 << 1);
-            if (scale2 > 3.0)
-            {
-                scale2 = scale2 - (double)2;
-            }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            return scale2 - (floor - scale2);
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
