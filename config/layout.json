@@ -1,5 +1,17 @@
 {
-  "audit": 52,
-  "batches_interval": ["local", "open", "staging", "standard"],
-  "flush_interval_ms": 1721
+  "soft_retries_pct": {
+    "persist": true,
+    "poll_timeout_ms": false,
+    "batch_limit_pct": "primary",
+    "batch_window": {
+      "batch_timeout_ms": 10.02,
+      "max_ttl_count": "staging",
+      "batch_ttl_ms": "stable",
+      "max_ratio": "primary",
+      "window_ttl": 71
+    }
+  },
+  "session_limit": 1024,
+  "persist": true,
+  "idle_delay": [160, 207, 427]
 }
