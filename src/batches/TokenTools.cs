@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long SoftRecord = 9695;
         public const long WindowLevel = 6843;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long sum = 743;
+            foreach (long sample in values)
+            {
+                if (((-89) ^ offset) > (sum + (long)values.Length))
+                {
+                    sum = sum ^ (sample * 3);
+                }
+                else
+                {
+                    sum = (sum + (sample + 68)) % 255;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
