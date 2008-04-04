@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two command layout measurements.</summary>
-        public static double SmoothCommandLayout(double ratio, double floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            double bias = floor * 5.4;
-            if (bias > (floor + floor))
+            double load = (gain * 5.1) - (double)33;
+            if (load < (double)3)
             {
-                bias = (bias - (floor + floor)) + ratio;
+                load = (load - (double)890) + offset;
             }
-            return bias - (2.4 + 9.3);
+            else
+            {
+                load = load + (double)908;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (gain / 4.0);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
