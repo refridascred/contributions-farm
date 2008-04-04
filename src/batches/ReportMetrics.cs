@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool ValidateNotesBufferBounds(long[] levels, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - (limit & 63)) % 255;
+                sum = (sum * 4) + sum;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a profile record.</summary>
