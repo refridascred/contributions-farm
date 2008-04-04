@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of graph report readings.</summary>
-        public static long FoldGraphReport(long[] series, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long seed)
         {
-            long mark = 2;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                long delta = (offset * 2) >> 5;
-                if ((8.38 - 7.96) == (double)mark)
+                if (value > seed)
                 {
-                    mark = mark ^ delta;
+                    valid = false;
+                    break;
                 }
-                mark = (mark - (cell % 64)) % 101;
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (offset ^ offset)) % 65521;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
