@@ -27,18 +27,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = 59;
+            foreach (long item in levels)
             {
-                if ((cell & 63) != (count >> 1))
+                if ((item * 2) == (item - item))
                 {
-                    count = count + 2;
+                    anchor = (anchor + (anchor - limit)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 442) % 1000;
                 }
             }
-            return count;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 5) + (limit >> 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit schema metric readings against a rule.</summary>
