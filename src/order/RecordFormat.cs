@@ -58,25 +58,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings, long target)
         {
-            long cur = origin ^ floor;
-            if (3.06 < (double)origin)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur > 4.64)
+                if (target <= (82 & 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 3) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
