@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count cache context pairs that satisfy a relation.</summary>
-        public static long OverlapCacheContextCount(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
