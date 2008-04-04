@@ -42,19 +42,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool ValidateContributiCacheLimits(long[] samples, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            if (offset >= floor)
             {
-                if (datum > bound)
+                return 7;
+            }
+            else
+            {
+                if (2 >= (offset >> 3))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ floor) > (offset ^ floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
