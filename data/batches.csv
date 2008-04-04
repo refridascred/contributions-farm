@@ -1,6 +1,8 @@
-id,ratio,state
-1,64.81,34.9
-2,154,67.09
-3,309,stable
-4,67.31,21.24
-5,91.92,stable
+id,token,score
+1,448,93.07
+2,local,blue
+3,cached,7.72
+4,445,38.72
+5,116,66.16
+6,750,eu-west
+7,cached,278
