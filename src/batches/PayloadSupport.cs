@@ -42,27 +42,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long origin)
         {
-            long mark = -5;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (cell < origin)
                 {
-                    mark = (((mark << 2) ^ floor) - (long)i) ^ sample;
-                    mark = (mark + 57) % 97;
-                }
-                if ((mark >> 4) < mark)
-                {
-                    mark = (mark - (5 << 2)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark - (floor >> 5)) % 101;
-            }
-            return mark % 4096;
+            return ready;
         }
     }
 }
