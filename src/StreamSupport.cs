@@ -38,12 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long CountBufferWindowOutliers(long[] samples, long step)
         {
-            Failed,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 7) >= hits)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
     }
 }
