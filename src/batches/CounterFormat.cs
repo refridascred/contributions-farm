@@ -25,14 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "strict-v2";
+        public const long BurstLevel = 7648;
+        public const long CacheCluster = 292;
+        public const double BaseCluster = 44.01;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
