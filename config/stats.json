@@ -1,8 +1,8 @@
 {
-  "report_retries": "stable",
-  "readonly": "local",
-  "burst_ratio": 51,
-  "idle_timeout": "cached",
-  "default_timeout_pct": true,
-  "min_threshold_ms": "latest"
+  "channel_timeout": [123, 393, 354, 279],
+  "filter_size": 7388,
+  "stream_size": 1567,
+  "warm_interval_pct": true,
+  "hard_ttl": true,
+  "default_ttl": "local"
 }
