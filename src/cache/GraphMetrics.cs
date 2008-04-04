@@ -40,14 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Synced,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                long slot = 33;
+                state = (state << 3) ^ (slot % 7);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
