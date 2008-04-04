@@ -41,16 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                anchor = (anchor + ((long)i + seed)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((matches ^ sample) < 877)
+                {
+                    matches = (matches + 1) - bound;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
