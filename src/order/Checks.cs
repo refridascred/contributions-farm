@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a window cluster counter forward.</summary>
+        public static long SeriesWindowCluster(long step)
         {
-            Done,
-            Retry,
-            Active,
-            Idle,
-            Stale,
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = acc + step;
+                acc = acc + (acc - step);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already state values.</summary>
