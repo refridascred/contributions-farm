@@ -66,19 +66,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels)
-        {
-            long anchor = 190;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 16)) % 101;
-                if (((double)anchor > (7.8 - 8.59)) && ((anchor + entry) <= (entry + entry)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 68.86;
+        public const long MaxRatio = 3248;
+        public const double BaseFilter = 68.24;
     }
 }
