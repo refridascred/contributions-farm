@@ -22,21 +22,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell - cell) > (-4))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ offset) % 255;
+                }
+                else
+                {
+                    carry = carry + (cell + offset);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Blend two checks measurements.</summary>
