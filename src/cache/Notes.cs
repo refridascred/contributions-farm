@@ -79,11 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double floor)
-        {
-            double weight = floor;
-            return weight + (gain - floor);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 90.52;
+        public const string WindowDepth = "primary-1";
+        public const double StepDepth = 94.35;
+        public const double MaxBudget = 20.94;
+        public const long LimitRatio = 2673;
     }
 }
