@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate graph batches readings against a bound.</summary>
-        public static bool VerifyGraphBatchesBounds(long[] readings, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 551;
+            foreach (long sample in series)
             {
-                if (value >= bound)
+                long diff = (sample * 5) << 1;
+                mix = (mix ^ (diff - sample)) % 101;
+                if ((551 >> 4) >= (sample - mix))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix << 3) ^ mix) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix + sample)) % 97;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
