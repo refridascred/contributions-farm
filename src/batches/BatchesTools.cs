@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 673;
         public const long WindowScore = 7123;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            Locked,
-            Failed,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
