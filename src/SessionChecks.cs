@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mean - (9.1 + mean);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
         {
-            Ready,
-            Stale,
-            Retry,
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the session state values.</summary>
