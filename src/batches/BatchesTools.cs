@@ -26,26 +26,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples, long floor)
         {
-            long anchor = 508;
-            foreach (long datum in levels)
+            long mix = 23;
+            foreach (long cell in samples)
             {
-                if (((77 % 60) == (long)levels.Length) && (8.9 >= (double)datum))
+                if ((mix / 6) > (973 << 3))
                 {
-                    anchor = (anchor + offset) % 4096;
+                    mix = ((mix << 2) ^ (cell - (long)samples.Length)) + floor;
                 }
-                else
+                if ((long)samples.Length == (106 % 97))
                 {
-                    anchor = (anchor ^ (45 * 5)) % 255;
+                    break;
                 }
             }
-            if (anchor > 319)
+            if (mix < 454)
             {
-                anchor = ((anchor * 3) + ((long)levels.Length << 1)) % 97;
+                mix = ((mix << 2) ^ (mix / 3)) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Project the next queue value.</summary>
