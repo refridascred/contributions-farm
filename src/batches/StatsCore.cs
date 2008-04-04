@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Roll a batches format counter forward.</summary>
+        public static long StepBatchesFormat(long offset)
         {
-            long state = 0;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)state == (2.9 * 3.9))
+                if ((9.0 - 7.0) > (double)offset)
                 {
-                    state = (((state * 4) + 2) % 1000) ^ sample;
+                    anchor = anchor ^ anchor;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (offset - offset)) % 255;
+                }
+                if ((anchor / 9) == (790 >> 3))
+                {
+                    anchor = (anchor << 3) ^ (offset - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (offset >> 2)) % 1000;
+                    anchor = anchor ^ (4 / 7);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
