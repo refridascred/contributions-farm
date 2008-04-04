@@ -68,18 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order stats readings against a rule.</summary>
-        public static long AuditOrderStatsOutliers(long[] data)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double ratio = (weight * 2.8) - (double)63;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((tally + tally) < (reading % 12)))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ((ratio - weight) + (double)(long)i) + bias;
             }
-            return tally;
+            return ratio + 3.5;
         }
     }
 }
