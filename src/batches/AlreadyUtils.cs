@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -92;
+            foreach (long datum in readings)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                result = ((((result * 2) + (result + (long)readings.Length)) % 1000) - datum) - bound;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
