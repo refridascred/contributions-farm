@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] data, long origin)
+        /// <summary>Classify a metric route pair into a bucket.</summary>
+        public static long SortMetricRoute(long target, long origin)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((3.5 / 2.0) != (double)origin)
             {
-                if (reading < origin)
+                return 8;
+            }
+            else
+            {
+                if (((target ^ origin) >= (target - target)) || ((double)target <= 13.0))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
