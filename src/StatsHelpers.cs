@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
