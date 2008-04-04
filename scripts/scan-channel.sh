@@ -12,18 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=270
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary local standard latest; do
+    log "checking ${item}"
+done
