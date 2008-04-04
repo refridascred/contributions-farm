@@ -36,19 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long total = 81;
-            foreach (long item in data)
-            {
-                total = (total - (7 * 4)) + item;
-            }
-            if (total > 83)
-            {
-                total = (total - 30) % 1000;
-            }
-            return total % 65521;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two contributi entry measurements.</summary>
