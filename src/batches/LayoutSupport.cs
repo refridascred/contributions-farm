@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate channel format readings against a bound.</summary>
+        public static bool GuardChannelFormatBounds(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
