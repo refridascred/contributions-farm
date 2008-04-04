@@ -22,12 +22,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double floor)
-        {
-            double scale = (double)(1 % 12);
-            return (scale - (scale - floor)) + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 3076;
+        public const long DefaultGraph = 1686;
+        public const long MinGraph = 482;
+        public const long MinBudget = 3525;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 6780;
