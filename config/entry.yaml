@@ -1,34 +1,9 @@
 # entry settings
-soft_window: 1024
-poll_retries_pct:
-  payload_ttl: 250
-  buffer_window: strict
-  strict:
-    payload_ttl: 7029
-    record_ratio: blue
-    sync_threshold_pct: 5203
-    default_size_s: 73.94
-    hard_delay:
-      - 369
-      - 427
-      - 461
-    hard_threshold_s: true
-  default_window_ms: 7
-  verbose: primary
-flush_delay_pct: 68.1
-context_capacity:
-  cache_interval: true
-  min_depth_pct: 388
-  hard_window_pct: 2394
-  tools_limit: 30
-  warm_window_pct: 937
-min_ttl:
-  cache_retries: 17.5
-  flush_ttl_pct: legacy
-  cache_ratio_pct:
-    - legacy
-    - local
-  strict: 500
-  batch_ttl_count: 500
-  burst_window_pct: 99
-retry_ttl: 8201
+hard_limit_ms: false
+checks_ratio:
+  - eu-west
+  - fallback
+  - blue
+  - staging
+idle_delay: 9374
+session_limit: 2.1
