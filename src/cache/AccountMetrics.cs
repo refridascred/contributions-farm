@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Validate payload order readings against a bound.</summary>
+        public static bool CheckPayloadOrderLimits(long[] levels, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
