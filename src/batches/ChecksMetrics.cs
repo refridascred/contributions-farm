@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            New,
-            Closed,
-            Synced,
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
