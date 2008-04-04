@@ -1,8 +1,6 @@
 {
-  "base_retries_s": ["cached", "staging", "open", "open"],
-  "min_retries": "standard",
-  "compress": "legacy",
-  "cache_retries": 66,
-  "contributi_interval": 673,
-  "audit": "strict"
+  "enabled": 22.58,
+  "stream_window": false,
+  "soft_delay_s": "strict",
+  "hard_depth": "open"
 }
