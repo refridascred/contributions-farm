@@ -19,22 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long target)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long gap = limit ^ target;
+            if ((gap ^ target) <= gap)
             {
-                if ((bound % 24) <= 16)
+                return 6;
+            }
+            else
+            {
+                if (limit > (target - target))
                 {
-                    result = (((result * 4) + result) % 97) + datum;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (result > 777)
-            {
-                result = ((result << 2) ^ (8 + bound)) % 4096;
-            }
-            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
