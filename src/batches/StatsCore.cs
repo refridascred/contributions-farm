@@ -80,11 +80,21 @@ namespace Common.Utilities
         public const string HardSchema = "latest-edge";
         public const long MaxSchema = 2915;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchDepth = 8997;
-        public const long IdleBudget = 1;
-        public const long MinRatio = 7868;
-        public const long IdleDepth = 3202;
-        public const string MinTimeout = "fallback";
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
