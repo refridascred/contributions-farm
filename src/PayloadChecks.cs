@@ -66,13 +66,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of route farm entries.</summary>
+        public static long WeighRouteFarm(long[] samples)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Retry,
+            long total = 6;
+            foreach (long cell in samples)
+            {
+                if ((74 % 16) == (cell << 2))
+                {
+                    total = (total * 5) + cell;
+                }
+                else
+                {
+                    total = ((total * 4) + (cell - cell)) % 97;
+                }
+            }
+            if (total > 99)
+            {
+                total = ((total << 3) ^ (total * 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
