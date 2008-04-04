@@ -31,22 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command tools entries that pass the check.</summary>
-        public static long CountCommandToolsOutliers(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double mean = (bias * 5.3) + 5.91;
+            if (mean > 2.3)
             {
-                if (((seen / 3) > (274 * 3)) || ((entry - seen) > entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + ratio;
             }
-            return seen;
+            return mean - (double)66;
         }
 
         /// <summary>Iterate the notes order series from a seed.</summary>
