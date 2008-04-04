@@ -1,6 +1,15 @@
 {
-  "report_retries": 30,
-  "flush_timeout_pct": ["open", "blue", "blue"],
-  "min_retries_pct": "green",
-  "cache_delay_pct": "local"
+  "retry_timeout_pct": "blue",
+  "sync_capacity": {
+    "min_threshold_s": ["open", "blue", "standard"],
+    "farm_interval": "eu-west",
+    "dry_run": [203, 91],
+    "default_timeout_s": "stable"
+  },
+  "poll_retries_ms": {
+    "cluster_delay": 44.4,
+    "soft_window_ms": 3,
+    "max_timeout_s": "edge",
+    "poll_capacity": "local"
+  }
 }
