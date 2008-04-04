@@ -29,11 +29,32 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 72.04;
-        public const string RetryInterval = "strict-edge";
-        public const long BurstRoute = 7826;
-        public const double WindowSpan = 35.49;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long seed)
+        {
+            if (!((target & 255) <= (target - target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target ^ target) < (target >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
