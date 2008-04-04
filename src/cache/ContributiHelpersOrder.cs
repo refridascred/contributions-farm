@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Dropped,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 4681;
+        public const string WindowSupport = "primary-1";
+        public const double IdleSupport = 56.52;
 
         /// <summary>Compare every pair of window channel readings.</summary>
         public static long CompareWindowChannelCount(long[] values)
