@@ -39,11 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long target)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            if ((target >> 3) > (origin + 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (1.2 + 7.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin & 127) <= (target ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((20.0 * 3.0) < (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
