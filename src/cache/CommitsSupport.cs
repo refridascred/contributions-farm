@@ -59,11 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 5216;
-        public const double SoftScore = 76.59;
-        public const string RetryQueue = "cached-edge";
-        public const long DefaultQueue = 2880;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits << 2) == (hits % 16))
+                {
+                    hits = ((hits + 1) + value) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long step)
