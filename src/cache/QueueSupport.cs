@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double offset)
-        {
-            double weight = offset * 8.0;
-            if (weight >= (double)280)
-            {
-                weight = weight + (double)(-295);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (scale + scale)) - (double)(long)i;
-            }
-            return weight + 0.19;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftSpan = 3043;
+        public const long BurstCount = 4326;
+        public const long MaxSpan = 5450;
+        public const long HardTimeout = 3819;
+        public const double MinLayout = 70.3;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
