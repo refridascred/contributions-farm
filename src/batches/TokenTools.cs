@@ -33,11 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 3567;
-        public const double SoftFactor = 50.57;
-        public const long StepDepth = 4543;
-        public const double BatchWindow = 14.21;
-        public const long StepWindow = 4716;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Locked,
+            Dropped,
+            Synced,
+            Done,
+            Pending,
+        }
     }
 }
