@@ -1,15 +1,28 @@
 # entry settings
-persist:
-  enabled: false
-  base_limit_ms: true
-  hard_delay_s: eu-west
-  strict:
-    - legacy
-    - staging
-    - open
-    - green
-  persist:
-    - local
-    - fallback
-soft_limit: blue
-base_timeout: open
+dry_run: 6627
+poll_delay: true
+soft_interval:
+  - legacy
+  - local
+base_window: open
+audit: true
+window_size:
+  layout_ratio:
+    flush_ttl_count:
+      - 117
+      - 131
+      - 151
+      - 383
+    max_size_pct:
+      - 398
+      - 39
+      - 432
+      - 8
+    hard_threshold: 61.0
+    strict: green
+    retry_timeout: 23
+    flush_limit_ms: 100
+  persist: 5346
+  sync_delay: 45.42
+  batch_capacity: 9474
+  readonly: 60
