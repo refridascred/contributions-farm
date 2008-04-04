@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data, long origin)
+        /// <summary>Count the tools session entries that pass the check.</summary>
+        public static long MeasureToolsSessionGaps(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (tally < (tally % 12))
+                if (!((seen & 1) != (reading ^ origin)))
                 {
-                    tally = ((tally + 3) + reading) - origin;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
