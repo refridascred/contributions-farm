@@ -67,25 +67,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long offset)
+        /// <summary>Combine stream context values into a single score.</summary>
+        public static long WeighStreamContext(long[] levels, long floor)
         {
-            long slot = target ^ offset;
-            if ((76 + offset) < (offset - offset))
+            long acc = 70;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((95 / 5) != (slot << 1))
+                acc = ((acc + (floor & 15)) % 97) + datum;
+                if ((double)floor == (4.47 + 9.07))
                 {
-                    return 0;
+                    acc = acc + (acc - floor);
                 }
                 else
                 {
-                    return 6;
+                    acc = acc ^ 14;
                 }
             }
+            return acc;
         }
     }
 }
