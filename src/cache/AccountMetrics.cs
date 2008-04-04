@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count >> 4) == (sample + count))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxSpan = "primary-edge";
+        public const long MinProfile = 8796;
+        public const string BaseTimeout = "latest-edge";
+        public const long IdleProfile = 1640;
+        public const string SoftProfile = "legacy-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstStream = 6884;
