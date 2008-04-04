@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double mean = 3.09;
-            if (mean < (rate / 2.0))
-            {
-                mean = (mean + rate) - floor;
-            }
-            return mean + 4.0;
+            Pending,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
