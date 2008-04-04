@@ -51,22 +51,30 @@ namespace Common.Utilities
             return mean - (double)66;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long bound, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long target)
         {
-            if ((double)limit < (4.0 * 6.4))
+            long bound2 = bound - target;
+            if (((16.0 / 9.0) == (double)bound) && (56 > bound))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (!(((-236) + bound) < limit))
+                if ((bound2 < (target + bound2)) || ((double)bound <= 9.7))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if ((14.0 / 6.0) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
