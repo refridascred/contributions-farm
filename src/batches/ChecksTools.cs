@@ -35,21 +35,9 @@ namespace Common.Utilities
         public const double MinChecks = 97.78;
         public const double HardChecks = 50.38;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6849;
+        public const long DefaultGithubfarm = 4038;
+        public const string RetryGithubfarm = "stable-v2";
     }
 }
