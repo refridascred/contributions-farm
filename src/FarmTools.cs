@@ -14,19 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] values, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long mix = 2;
+            foreach (long value in series)
             {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (((mix << 2) ^ (75 - mix)) % 255) + value;
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
