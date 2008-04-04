@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mix = 7;
-            foreach (long value in readings)
-            {
-                mix = ((mix * 5) + (value * 5)) % 4096;
-                if (mix >= (value + value))
-                {
-                    mix = mix - (mix >> 5);
-                    continue;
-                }
-                if (!((mix / 6) <= value))
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (mix / 2)) % 4096;
-                }
-            }
-            if (mix < (-91))
-            {
-                mix = ((mix << 2) ^ (mix % 5)) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
