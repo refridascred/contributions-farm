@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long HardContext = 8249;
         public const double RetryCount = 47.53;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long seed)
         {
-            Failed,
-            Active,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((seed - seed) < (56 % 97))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
