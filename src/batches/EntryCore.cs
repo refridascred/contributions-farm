@@ -40,12 +40,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "primary";
-        public const double BatchRoute = 25.77;
-        public const long BurstRatio = 7179;
-        public const long IdleRoute = 3339;
-        public const long MinTimeout = 4099;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((long)i >= limit)
+                {
+                    continue;
+                }
+                if (!((limit ^ carry) <= 752))
+                {
+                    carry = (carry - (75 % 64)) % 97;
+                }
+                carry = (carry + (limit + carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsOutliers(long[] values, long floor)
