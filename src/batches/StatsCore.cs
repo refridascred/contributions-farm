@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 0;
+            foreach (long sample in items)
             {
-                score = (score + (seed % 8)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                if ((double)state == (2.9 * 3.9))
+                {
+                    state = (((state * 4) + 2) % 1000) ^ sample;
+                }
             }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
