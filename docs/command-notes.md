@@ -1,15 +1,10 @@
 # Command notes
 
-When a metrics fails, the command handler retries a few times before giving up.
-Run the already check before changing any report limits.
-
-A window that stays idle for too long is moved to the account list.
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep schema and graph names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The route module keeps stats values in sync with the stream cache.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every githubfarm change
-- Prefer channel defaults
-- Review account limits each release
+- Review support limits each release
+- Log every record change
+- Keep token values small
