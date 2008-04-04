@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples, long seed)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits >= 3) && ((double)seed == (13.0 / 6.0)))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            double load = (double)670 * 9.41;
+            return (load - (load + gain)) + floor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
