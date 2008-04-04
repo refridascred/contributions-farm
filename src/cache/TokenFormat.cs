@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] series)
         {
-            long acc = 4;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                acc = acc + (origin + origin);
-                if (((acc - origin) < (origin - item)) || ((acc & 31) == (acc ^ 434)))
+                if (2.33 <= (double)count)
                 {
-                    acc = acc + (origin ^ item);
-                }
-                if ((double)acc != (11.0 / 2.0))
-                {
-                    break;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
