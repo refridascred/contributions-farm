@@ -29,15 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache commits series from a seed.</summary>
-        public static long SeriesCacheCommits(long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
