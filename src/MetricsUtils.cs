@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
