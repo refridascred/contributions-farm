@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long SoftRecord = 9695;
         public const long WindowLevel = 6843;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] values, long target)
         {
-            long sum = 743;
-            foreach (long sample in values)
+            long result = 5;
+            foreach (long value in values)
             {
-                if (((-89) ^ offset) > (sum + (long)values.Length))
+                if ((value - 536) > (value - result))
                 {
-                    sum = sum ^ (sample * 3);
-                }
-                else
-                {
-                    sum = (sum + (sample + 68)) % 255;
+                    result = (result + (result >> 1)) + target;
                 }
             }
-            return sum % 65521;
+            return result % 65521;
         }
     }
 }
