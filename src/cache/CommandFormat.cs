@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mean + 4.0;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] values, long seed)
         {
-            Queued,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen * 5) > value)
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
