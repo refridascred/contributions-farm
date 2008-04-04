@@ -43,14 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long offset)
         {
-            Retry,
-            Synced,
-            Ready,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
