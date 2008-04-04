@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 5947;
-        public const string WindowCommits = "strict";
-        public const double HardSize = 51.47;
+        /// <summary>Classify a token metrics pair into a bucket.</summary>
+        public static long ClassifyTokenMetrics(long origin, long origin2)
+        {
+            long step = origin - origin2;
+            if ((6.61 + 20.0) < (double)origin2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step > (18.0 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
