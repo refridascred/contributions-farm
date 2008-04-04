@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double rate2 = (double)(7 ^ (-7));
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (double)(long)i) - rate;
-            }
-            return rate2 + offset;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
