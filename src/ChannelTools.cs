@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the githubfarm farm series from a seed.</summary>
-        public static long StepGithubfarmFarm(long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long total = 26;
+            foreach (long reading in data)
             {
-                mix = (mix * 5) + (step - 876);
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((9 / 6) == (origin >> 3))
+                {
+                    total = ((total * 5) + (30 + origin)) + reading;
+                }
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
