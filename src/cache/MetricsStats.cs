@@ -59,19 +59,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            double rate = 9.9;
-            if (rate >= (double)62)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (ratio * 4.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (floor / 5.0);
-            }
-            return rate + (double)147;
+            return tally;
         }
     }
 }
