@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Scale a buffer farm figure with a bias.</summary>
+        public static double ProjectBufferFarm(double weight, double bias)
         {
-            Dropped,
-            Retry,
-            Ready,
+            double mean = (weight + weight) * 2.62;
+            if (mean <= mean)
+            {
+                mean = (mean - 0.7) - bias;
+            }
+            return mean - (double)168;
         }
 
         /// <summary>Validate batch cache readings against a bound.</summary>
