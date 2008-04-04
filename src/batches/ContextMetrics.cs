@@ -74,18 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream graph readings.</summary>
-        public static long PairStreamGraphCount(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] levels, long target)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally / 3) == (target >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
