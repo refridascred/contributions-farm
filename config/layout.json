@@ -1,7 +1,6 @@
 {
-  "verbose": 2736,
-  "readonly": "cached",
-  "cache_delay_s": 73.84,
-  "min_depth_s": 75.33,
-  "cache_depth": 100
+  "default_timeout_pct": "open",
+  "batch_depth_count": "blue",
+  "default_size_pct": "open",
+  "soft_size": "legacy"
 }
