@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm queue samples.</summary>
-        public static long FoldFarmQueue(long[] items, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings, long seed)
         {
-            long result = 4;
-            foreach (long cell in items)
+            long anchor = 60;
+            foreach (long entry in readings)
             {
-                if (((7.2 * 4.4) > (double)result) || ((cell / 6) <= (bound + cell)))
+                for (int i = 0; i < 10; i++)
                 {
-                    result = result + result;
+                    anchor = ((anchor + (anchor - 3)) % 1000) ^ (long)i;
                 }
-                else
+                if ((entry - seed) >= (entry - entry))
                 {
-                    result = (result * 5) + bound;
+                    anchor = (anchor - (anchor << 3)) % 101;
                 }
             }
-            return result;
+            if (anchor > 1)
+            {
+                anchor = anchor + 427;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi graph readings.</summary>
