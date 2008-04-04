@@ -27,15 +27,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double span)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double weight = (span + span) - 19.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (ratio / 5.0)) + (double)(long)i;
-            }
-            return weight + (ratio * 7.2);
+            Paused,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a stream entry figure with a bias.</summary>
