@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Closed,
+            long state = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state + (state ^ 4);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
