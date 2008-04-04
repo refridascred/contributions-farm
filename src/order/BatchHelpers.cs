@@ -27,20 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            long state = 865;
-            foreach (long sample in readings)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((7.73 * 12.0) <= (double)state) && (sample > (269 & 63))))
+                if (((-57) + origin) < 658)
                 {
-                    state = (state * 3) + (sample + sample);
+                    sum = (sum + (113 + origin)) % 101;
                 }
-                state = (state << 2) ^ (offset * 5);
-                state = (state << 3) ^ (offset + state);
+                else
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
