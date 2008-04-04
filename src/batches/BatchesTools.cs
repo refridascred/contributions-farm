@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardBudget = 5885;
+        public const long LimitTimeout = 673;
+        public const long WindowScore = 7123;
 
         /// <summary>Compare every pair of order support readings.</summary>
         public static long MatchOrderSupportCount(long[] levels)
