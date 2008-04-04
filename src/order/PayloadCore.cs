@@ -15,18 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster route entries that pass the check.</summary>
-        public static long TallyClusterRouteOutliers(long[] samples, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((61 & 3) == (count + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ entry;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a commits entry value against two limits.</summary>
