@@ -1,8 +1,6 @@
 {
-  "retry_interval_count": [54, 379, 197, 202],
-  "cache_timeout": "latest",
-  "readonly": "fallback",
-  "buffer_limit": ["open", "fallback", "standard"],
-  "warm_capacity_count": ["fallback", "latest", "stable"],
-  "persist": "legacy"
+  "warm_ratio": 82,
+  "audit": 388,
+  "enabled": ["fallback", "green", "edge", "eu-west"],
+  "retry_threshold": "stable"
 }
