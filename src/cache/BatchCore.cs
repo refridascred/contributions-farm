@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "open-1";
+        public const long StepContext = 2536;
+        public const long WindowWidth = 2711;
+        public const double HardContext = 95.59;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long limit)
