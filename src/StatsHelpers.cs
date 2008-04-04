@@ -54,13 +54,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank account batch input into a small class.</summary>
+        public static long BucketAccountBatch(long target, long offset)
         {
-            Locked,
-            Paused,
-            Closed,
-            Ready,
+            long offset2 = target - offset;
+            if ((2 * 5) > (offset2 + (-4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((18 % 3) == (offset2 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset < 14.0) || ((offset - offset2) <= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
