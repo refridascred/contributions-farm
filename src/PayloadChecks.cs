@@ -66,12 +66,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
