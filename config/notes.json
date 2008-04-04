@@ -1,16 +1,9 @@
 {
-  "metrics_timeout": 1205,
-  "profile_capacity": false,
-  "support_interval": {
-    "enabled": "standard",
-    "metrics_capacity": 31,
-    "batch_ratio_count": {
-      "compress": "staging",
-      "checks_threshold": 62,
-      "buffer_size": false,
-      "context_interval": 84.15,
-      "sync_retries_count": "fallback",
-      "base_limit_ms": "fallback"
-    }
-  }
+  "cache_timeout_ms": {
+    "verbose": "primary",
+    "strict": [184, 346],
+    "readonly": ["fallback", "strict"]
+  },
+  "min_ratio": "fallback",
+  "persist": false
 }
