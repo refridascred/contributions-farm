@@ -69,13 +69,12 @@ namespace Common.Utilities
         public const string BaseLevel = "standard-v2";
         public const long SoftSupport = 1075;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a channel snapshot.</summary>
