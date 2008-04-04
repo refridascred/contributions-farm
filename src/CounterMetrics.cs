@@ -32,31 +32,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long offset)
-        {
-            if (38 < (offset + (-96)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target <= 1.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset < (9.8 / 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 1821;
+        public const string BaseFilter = "strict";
+        public const long BatchInterval = 5239;
     }
 }
