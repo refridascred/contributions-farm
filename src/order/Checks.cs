@@ -48,21 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Accumulate batch stats samples.</summary>
+        public static long TotalBatchStats(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 998;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (((state << 2) ^ state) - (long)i) - floor;
+                }
+                if ((773 + state) < (state / 9))
+                {
+                    state = (state - (state + datum)) % 101;
+                    state = (state + ((long)levels.Length + state)) % 4096;
+                }
+                else
+                {
+                    state = (state * 2) + (state + 533);
+                }
+                if ((3.67 - 5.2) == (double)state)
+                {
+                    state = ((state * 3) + (datum - datum)) % 255;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Match up payload samples.</summary>
