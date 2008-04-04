@@ -1,16 +1,13 @@
 # support settings
-enabled:
-  min_ratio_ms:
-    - latest
-    - standard
-    - standard
-  farm_depth: legacy
-  soft_size: 87
-burst_interval_count: green
-metrics_delay:
-  context_delay: 30
-  min_size_count: fallback
-  idle_size: local
-sync_delay: latest
-max_timeout: blue
-cache_window_count: fallback
+warm_ttl_count:
+  readonly:
+    - 4
+    - 461
+    - 318
+    - 220
+  flush_threshold: 6.22
+  dry_run: true
+payload_window: blue
+stats_retries: fallback
+idle_ttl: open
+batch_retries: 30
