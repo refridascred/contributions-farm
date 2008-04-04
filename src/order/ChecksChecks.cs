@@ -12,21 +12,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result - (result + 897)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a stream checks figure with a bias.</summary>
