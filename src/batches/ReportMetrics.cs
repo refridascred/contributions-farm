@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool ValidateNotesBufferBounds(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= step)
                 {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
