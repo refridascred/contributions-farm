@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long count = ((long)i << 2) + step;
+                score = (score - (count - score)) % 97;
+                score = (score ^ (step - count)) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a order stats.</summary>
