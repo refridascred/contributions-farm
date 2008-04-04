@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command layout entry stays within the limit.</summary>
-        public static bool CheckCommandLayoutBounds(long[] samples, long limit)
+        /// <summary>Compare every pair of queue layout readings.</summary>
+        public static long OverlapQueueLayoutCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every tools queue entry stays within the limit.</summary>
