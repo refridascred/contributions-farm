@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches - entry) == (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "cached-v2";
+        public const string BaseContributi = "fallback-edge";
+        public const long StepContributi = 7653;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] levels, long seed)
