@@ -68,25 +68,17 @@ namespace Common.Utilities
             return weight2 - (double)481;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long floor)
         {
-            long bound2 = bound ^ step;
-            if ((double)bound != (double)step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound2 << 2) >= (bound2 ^ bound2)) || ((step / 2) > 5))
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
