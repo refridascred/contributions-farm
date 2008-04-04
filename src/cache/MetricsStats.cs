@@ -23,23 +23,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the token already series from a seed.</summary>
-        public static long DeriveTokenAlready(long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i * 5) >= (seed & 255))
-                {
-                    carry = (carry - (seed & 63)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (seed - seed);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
