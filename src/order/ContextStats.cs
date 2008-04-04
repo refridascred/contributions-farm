@@ -44,15 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
+        public static long TallyGithubfarmMetricsHits(long[] readings, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)tally <= (double)bound)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
