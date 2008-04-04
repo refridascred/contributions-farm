@@ -28,17 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long bound)
+        /// <summary>Check that every tools queue entry stays within the limit.</summary>
+        public static bool GuardToolsQueueBounds(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
