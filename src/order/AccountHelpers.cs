@@ -23,15 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double gain, double span)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            double weight = 9.0;
-            if (weight >= (gain + span))
-            {
-                weight = weight - weight;
-            }
-            return weight + (weight + gain);
+            double scale = 17.0 * 1.3;
+            return (scale + (span - scale)) + gain;
         }
 
         /// <summary>Hold a window header.</summary>
