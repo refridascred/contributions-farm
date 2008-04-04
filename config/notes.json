@@ -1,8 +1,5 @@
 {
-  "graph_size": 37,
-  "contributi_interval": false,
-  "commits_limit": [72, 368],
-  "layout_ttl": 100,
-  "enabled": [224, 16],
-  "already_timeout": ["open", "primary", "legacy"]
+  "readonly": 1.83,
+  "channel_interval": ["legacy", "standard", "edge", "legacy"],
+  "command_window": "latest"
 }
