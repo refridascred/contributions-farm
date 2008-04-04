@@ -39,23 +39,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = 940;
-            foreach (long entry in data)
-            {
-                sum = ((sum << 2) ^ entry) % 101;
-                if ((double)sum < 6.0)
-                {
-                    sum = (sum << 3) ^ (sum << 3);
-                }
-                if (((double)sum >= (17.0 - 0.3)) && ((sum + entry) == (4 - sum)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Paused,
+            Retry,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
