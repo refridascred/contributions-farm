@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] items, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item >= origin)
+                if ((hits >> 2) <= (hits % 10))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
