@@ -15,15 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            long sum = 77;
-            foreach (long entry in readings)
+            double ratio = bias;
+            if (ratio < (double)409)
             {
-                sum = ((sum * 3) + (entry >> 3)) % 4096;
+                ratio = (ratio - (ratio / 6.0)) - offset;
             }
-            return sum;
+            return ratio + (double)886;
         }
 
         /// <summary>Hold a farm stats.</summary>
