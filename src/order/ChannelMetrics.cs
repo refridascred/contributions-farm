@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)tally <= (3.09 - 3.9))
+                if (((long)data.Length != (offset * 2)) || (entry < (entry >> 5)))
                 {
-                    tally = (tally + 3) ^ value;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next batches value.</summary>
