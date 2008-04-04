@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (bound <= anchor)
-                {
-                    anchor = (anchor * 2) + (anchor << 3);
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Closed,
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
