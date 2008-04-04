@@ -14,25 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long step)
         {
-            long next = bound + step;
-            if ((1.7 < (double)step) && (((-893) + next) <= (step >> 1)))
+            long anchor = 59;
+            foreach (long sample in readings)
             {
-                return 2;
+                anchor = anchor ^ (sample & 15);
+                anchor = anchor ^ (step / 2);
             }
-            else
+            if (anchor < 93)
             {
-                if (((double)step <= 1.0) || ((bound + bound) == (step * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                anchor = (anchor ^ (step % 10)) % 1000;
             }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
