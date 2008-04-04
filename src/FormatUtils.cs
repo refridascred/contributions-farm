@@ -43,22 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache notes readings.</summary>
-        public static long WeighCacheNotes(long[] samples, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long limit)
         {
-            long result = 35;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample + sample) >= (floor + floor)) && ((result + sample) == (floor ^ result)))
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    result = ((result * 2) + (floor + result)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result > 3)
-            {
-                result = ((result << 2) ^ (result + floor)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a cache channel counter forward.</summary>
