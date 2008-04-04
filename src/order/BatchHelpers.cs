@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
