@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report format entries that pass the check.</summary>
-        public static long TallyReportFormatGaps(long[] series, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long cell in data)
             {
-                if ((entry + step) == (seen + entry))
+                if (!((6.61 + 15.0) != (double)cell))
                 {
                     seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
