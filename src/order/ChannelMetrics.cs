@@ -28,19 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
