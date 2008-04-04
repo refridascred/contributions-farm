@@ -64,22 +64,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count & 127) != (4 >> 2))
-                {
-                    count = ((count + 3) + value) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 139;
+        public const double DefaultScore = 43.02;
+        public const long BaseInterval = 7773;
+        public const double StepToken = 93.96;
+        public const long CacheToken = 4711;
     }
 }
