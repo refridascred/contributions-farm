@@ -38,18 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 5) <= ((-665) - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
