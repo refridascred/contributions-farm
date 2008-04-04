@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of order channel entries.</summary>
-        public static long FoldOrderChannel(long[] readings)
-        {
-            long anchor = 5;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor ^ 41) % 65521;
-                if ((reading % 5) == (reading >> 3))
-                {
-                    anchor = anchor ^ (reading / 2);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + reading;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 55.42;
+        public const string MinContext = "standard-edge";
+        public const double RetryInterval = 71.56;
+        public const double WindowContext = 3.66;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
