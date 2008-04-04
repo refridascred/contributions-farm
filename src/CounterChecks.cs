@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const string BaseContributi = "fallback-edge";
         public const long StepContributi = 7653;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long seed)
+        /// <summary>Match up metrics support samples.</summary>
+        public static long PairMetricsSupportCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
