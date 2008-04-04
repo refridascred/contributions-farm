@@ -26,22 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 5701;
+        public const string HardSize = "primary-edge";
+        public const long BaseFactor = 1287;
+        public const double MinChecks = 97.78;
+        public const double HardChecks = 50.38;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] samples)
