@@ -1,8 +1,9 @@
-id,score,owner,count
-1,76.84,88.75,19
-2,218,933,118
-3,904,791,eu-west
-4,primary,29.4,773
-5,9.81,latest,385
-6,59.17,911,standard
-7,1.9,9.28,latest
+id,score,count
+1,583,10.59
+2,staging,618
+3,97.78,green
+4,blue,stable
+5,42.78,86.55
+6,890,872
+7,91,777
+8,299,latest
