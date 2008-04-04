@@ -33,18 +33,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (item > hits)
-                {
-                    hits = hits + 1;
-                }
+                acc = (acc + (acc % 100)) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
