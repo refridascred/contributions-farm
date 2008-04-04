@@ -35,14 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long FoldAlreadyOrder(long[] readings, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                carry = (carry + (359 + floor)) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
+                carry = (carry - carry) % 101;
+                if ((cell >> 5) == (origin & 7))
+                {
+                    carry = (carry - (cell / 7)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (origin / 7)) % 97;
+                }
             }
             return carry;
         }
