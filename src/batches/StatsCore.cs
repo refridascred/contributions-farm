@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] data, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((8.0 + 6.85) != (double)origin)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
