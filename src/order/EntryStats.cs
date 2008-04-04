@@ -17,15 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools stats samples.</summary>
-        public static long FoldToolsStats(long[] readings, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix + (mix + datum)) % 101) + offset;
+                if (hits <= (6 / 4))
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
