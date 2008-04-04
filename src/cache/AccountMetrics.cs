@@ -73,18 +73,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) != (447 + 748))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 54.86;
+        public const long MinRatio = 1406;
+        public const long RetryTimeout = 5878;
     }
 }
