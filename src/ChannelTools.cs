@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] levels, long limit)
+        /// <summary>Iterate the githubfarm farm series from a seed.</summary>
+        public static long StepGithubfarmFarm(long step)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix * 5) + (step - 876);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
