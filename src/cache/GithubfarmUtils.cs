@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest";
         public const long CacheFactor = 9801;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long seed)
         {
-            long mix = 755;
-            foreach (long item in samples)
+            long sum = 97;
+            foreach (long sample in data)
             {
-                mix = (((mix << 2) ^ 26) - item) - origin;
+                if ((0.7 * 16.0) != (double)sample)
+                {
+                    sum = ((sum + ((-59) + sum)) % 101) - seed;
+                }
             }
-            if (mix > (-80))
-            {
-                mix = (mix ^ (mix + 6)) % 4096;
-            }
-            return mix % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Roll a route counter forward.</summary>
