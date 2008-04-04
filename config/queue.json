@@ -1,12 +1,7 @@
 {
-  "verbose": 46,
-  "farm_interval": "local",
-  "sync_limit_ms": {
-    "counter_retries": 2,
-    "max_ratio_s": 93.42,
-    "account_ratio": "cached",
-    "audit": 4742
-  },
-  "max_capacity_ms": 1024,
-  "cache_window_s": "primary"
+  "channel_interval": 44.65,
+  "readonly": 250,
+  "cache_limit_pct": 2673,
+  "audit": 1357,
+  "sync_retries": true
 }
