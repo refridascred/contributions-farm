@@ -67,17 +67,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Done,
         }
     }
 }
