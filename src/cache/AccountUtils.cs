@@ -29,12 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long origin)
         {
-            New,
-            Failed,
-            Synced,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
