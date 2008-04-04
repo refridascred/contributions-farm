@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor + (bound - (long)i)) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the graph status values.</summary>
