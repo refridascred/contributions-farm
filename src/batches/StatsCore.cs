@@ -24,39 +24,21 @@ namespace Common.Utilities
         public const double BatchToken = 9.37;
         public const long BurstSize = 9185;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long prev = origin ^ offset;
-            if (((offset / 2) > (offset % 2)) || ((origin >> 3) >= (origin * 4)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev & 1) < (890 ^ offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (64 ^ 7))
+                    if ((readings[i] + readings[j]) == 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= (prev >> 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
