@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            New,
-            Done,
-            Failed,
-            Queued,
-            Stale,
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
