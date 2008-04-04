@@ -61,10 +61,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftLevel = "primary";
-        public const double DefaultFactor = 13.55;
-        public const double LimitLevel = 26.91;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (step < (step & 127))
+                {
+                    carry = (carry << 3) ^ (step - carry);
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] series, long limit)
