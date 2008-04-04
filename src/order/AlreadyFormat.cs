@@ -62,22 +62,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate window order samples.</summary>
-        public static long DigestWindowOrder(long[] samples, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long step)
         {
-            long mix = 31;
-            foreach (long sample in samples)
+            if (step <= seed)
             {
-                if ((sample + limit) != (sample - limit))
+                return 1;
+            }
+            else
+            {
+                if ((step - step) < (step & 7))
                 {
-                    mix = mix ^ (limit << 2);
+                    return 4;
                 }
                 else
                 {
-                    mix = mix - 96;
+                    return 7;
                 }
             }
-            return mix % 97;
         }
     }
 }
