@@ -1,12 +1,17 @@
 # githubfarm settings
-session_depth: latest
-enabled:
-  - 1
-  - 350
-  - 141
-  - 344
-format_limit:
-  burst_interval_pct: 100
-  checks_limit: 38.99
-  cache_capacity: green
-  flush_window_pct: stable
+base_window:
+  compress: false
+  checks_limit: 94.57
+  context_ratio: primary
+  burst_retries_pct:
+    - staging
+    - edge
+  dry_run:
+    - strict
+    - open
+    - fallback
+  strict: local
+base_limit_pct: 9982
+soft_size: eu-west
+flush_ttl: standard
+strict: eu-west
