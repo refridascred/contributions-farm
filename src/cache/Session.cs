@@ -21,21 +21,10 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((945 - acc) != (step - acc))
-                {
-                    acc = (acc ^ (acc - step)) % 97;
-                    acc = (acc + (-31)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 8331;
+        public const long LimitSupport = 79;
+        public const string DefaultSupport = "primary-1";
 
         /// <summary>Project the next context value.</summary>
         public static double ScaleContext(double ratio, double offset)
