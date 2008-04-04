@@ -51,19 +51,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            double bias = floor;
-            if (bias < 13.0)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (bias * 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias - (scale / 7.0);
+            return hits;
         }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
