@@ -1,12 +1,4 @@
 # entry settings
-channel_delay:
-  - standard
-  - blue
-  - staging
-batches_delay: 62.82
-verbose: local
-githubfarm_timeout: 1024
-sync_window_s:
-  - standard
-  - fallback
-metrics_window: false
+retry_delay: 60
+compress: 61
+stream_ttl: 75
