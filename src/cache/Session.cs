@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] levels, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 9) <= (count / 5))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
