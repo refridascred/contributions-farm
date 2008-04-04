@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry ^ (carry + 242);
-                if (((double)offset > (7.5 + 5.0)) || ((0.1 + 7.75) >= (double)carry))
-                {
-                    carry = (carry + carry) % 1000;
-                }
-                carry = ((carry << 2) ^ carry) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
