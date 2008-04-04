@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)target > (2.96 + 3.85))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 78.54;
+        public const long HardSpan = 6919;
+        public const long WindowWidth = 8724;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
