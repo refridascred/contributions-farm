@@ -20,19 +20,11 @@ namespace Common.Utilities
             return scale - (rate - bias);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] values, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
