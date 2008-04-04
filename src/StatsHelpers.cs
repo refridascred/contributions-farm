@@ -40,12 +40,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardSize = "open-v2";
-        public const string BurstReport = "fallback";
-        public const double BatchSpan = 80.44;
-        public const long IdleLevel = 8539;
-        public const long RetryReport = 1249;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5183;
+        public const string IdleScore = "alpha-v2";
+        public const double RetryBatches = 47.22;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
