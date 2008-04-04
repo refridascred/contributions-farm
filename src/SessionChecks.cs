@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const long DefaultCache = 5232;
         public const double MaxScore = 4.54;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 8.05;
+        public const double LimitFormat = 69.18;
+        public const double StepTimeout = 92.51;
+        public const long StepFormat = 8002;
+        public const long HardRatio = 8519;
     }
 }
