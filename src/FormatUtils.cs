@@ -56,21 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache channel counter forward.</summary>
-        public static long RollCacheChannel(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((14.0 / 7.0) >= (double)(long)i) && (((long)i - 3) >= (step << 1)))
-                {
-                    state = ((state * 2) + (step + step)) % 4096;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9795;
+        public const long SoftLevel = 1393;
+        public const long WindowRecord = 9832;
+        public const long MinRecord = 5105;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double rate, double bias)
