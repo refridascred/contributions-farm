@@ -1,7 +1,6 @@
-id,weight,label
-1,open,988
-2,472,open
-3,stable,559
-4,787,60.17
-5,308,local
-6,615,77.42
+id,label,active,level,score
+1,primary,primary,26.2,local
+2,local,706,83.13,63.42
+3,78.95,759,open,standard
+4,244,71.42,138,latest
+5,eu-west,42.29,96.96,819
