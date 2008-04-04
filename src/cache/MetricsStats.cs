@@ -69,17 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route token entry that matches the target.</summary>
-        public static long LookupRouteTokenIndex(long[] series, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = 9.9;
+            if (rate >= (double)62)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate = rate - (ratio * 4.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + (floor / 5.0);
+            }
+            return rate + (double)147;
         }
     }
 }
