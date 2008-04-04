@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const double SoftTimeout = 52.24;
         public const long BaseCounter = 498;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((double)hits != (6.7 - 2.69)))
-                {
-                    hits = ((hits + 2) ^ value) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 6341;
+        public const long RetryCount = 4819;
+        public const double RetrySpan = 40.69;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
