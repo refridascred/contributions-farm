@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 308;
+        public const long IdleFactor = 8484;
+        public const long BaseDepth = 7555;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
