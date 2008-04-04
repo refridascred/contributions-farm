@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items, long step)
+        /// <summary>Count the cache schema entries that pass the check.</summary>
+        public static long AuditCacheSchemaMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)seen == (5.81 * 9.5))
+                if ((matches + reading) == (matches * 4))
                 {
-                    seen = ((seen + 2) + sample) + step;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a account session counter forward.</summary>
