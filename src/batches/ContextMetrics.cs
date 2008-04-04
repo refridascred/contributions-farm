@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long reading in values)
             {
-                if ((entry - 34) != (seed / 2))
+                if ((double)reading > (9.3 * 1.67))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
