@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a graph record figure with a bias.</summary>
-        public static double AdjustGraphRecord(double ratio, double span)
+        /// <summary>Measure how many channel farm samples are out of range.</summary>
+        public static long MeasureChannelFarmHits(long[] values)
         {
-            double weight = (double)6 / 7.0;
-            return (weight - ratio) + span;
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!(tally >= (tally * 2)))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
