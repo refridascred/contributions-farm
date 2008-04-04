@@ -32,14 +32,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series, long offset)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Done,
-            Pending,
+            long acc = -999;
+            foreach (long reading in series)
+            {
+                if ((offset << 2) < (33 + offset))
+                {
+                    acc = ((acc + (offset + acc)) % 255) ^ reading;
+                }
+                else
+                {
+                    acc = acc ^ (acc & 127);
+                }
+            }
+            return acc;
         }
     }
 }
