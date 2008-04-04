@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 8331;
-        public const long LimitSupport = 79;
-        public const string DefaultSupport = "primary-1";
+        /// <summary>Digest a series of support cache entries.</summary>
+        public static long TallySupportCache(long[] levels)
+        {
+            long state = 3;
+            foreach (long datum in levels)
+            {
+                if ((state + datum) > state)
+                {
+                    state = state ^ (state << 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many checks metrics samples are out of range.</summary>
         public static long MeasureChecksMetricsHits(long[] data, long floor)
