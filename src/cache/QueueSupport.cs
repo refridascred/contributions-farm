@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSpan = 3043;
-        public const long BurstCount = 4326;
-        public const long MaxSpan = 5450;
-        public const long HardTimeout = 3819;
-        public const double MinLayout = 70.3;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Locked,
+            Pending,
+            Done,
+            Ready,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] series, long seed)
