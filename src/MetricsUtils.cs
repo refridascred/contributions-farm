@@ -28,26 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] readings, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long bound)
         {
-            long anchor = -679;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor - origin) >= (anchor + 27))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    anchor = ((anchor * 4) + (value - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (32 * 2);
-                }
-                if ((954 ^ value) > (origin + value))
-                {
-                    anchor = (anchor * 5) + (anchor - origin);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
