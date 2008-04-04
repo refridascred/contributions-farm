@@ -36,22 +36,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels, long origin)
+        /// <summary>Rank stream record input into a small class.</summary>
+        public static long RankStreamRecord(long origin, long seed)
         {
-            long result = 96;
-            foreach (long cell in levels)
+            long edge = origin ^ seed;
+            if ((907 & 255) < (edge * 2))
             {
-                if (((33 + 8) > (cell << 2)) || ((cell << 2) == (origin >> 4)))
+                return 7;
+            }
+            else
+            {
+                if (!((origin % 8) > seed))
                 {
-                    result = result - (489 & 63);
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result < 2)
-            {
-                result = ((result << 2) ^ (result * 4)) % 1000;
-            }
-            return result;
         }
     }
 }
