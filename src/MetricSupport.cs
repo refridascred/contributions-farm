@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Done,
+            Paused,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
