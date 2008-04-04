@@ -27,15 +27,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (floor / 9.0)) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - rate;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
