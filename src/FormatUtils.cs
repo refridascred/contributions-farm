@@ -44,19 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long CountSupportCommandMatches(long[] samples, long bound)
         {
-            double rate = span;
-            if (rate <= span)
+            long count = 0;
+            foreach (long item in samples)
             {
-                rate = rate + span;
+                if ((4 + item) == (count >> 4))
+                {
+                    count = (count + 1) + bound;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (ratio - 1.29)) + (double)(long)i;
-            }
-            return rate - (ratio * 18.0);
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
