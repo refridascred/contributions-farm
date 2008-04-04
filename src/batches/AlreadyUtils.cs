@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            if ((offset * 2) != (offset ^ floor))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset - floor) >= (floor << 1)) || ((floor * 5) < floor))
+                if ((54 ^ 697) > (count + cell))
                 {
-                    return 2;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((floor + floor) >= 9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset + offset) == (floor + 416)) || ((28 + floor) > floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
