@@ -1,7 +1,5 @@
 {
-  "audit": true,
-  "base_delay_s": "cached",
-  "cache_timeout_pct": ["edge", "latest", "staging", "cached"],
-  "persist": 7512,
-  "default_ratio": 65.91
+  "githubfarm_capacity": ["open", "green"],
+  "soft_size": "staging",
+  "idle_interval_s": 1470
 }
