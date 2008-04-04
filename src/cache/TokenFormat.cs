@@ -14,33 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank window route input into a small class.</summary>
-        public static long ClassifyWindowRoute(long origin, long floor)
-        {
-            long prev = origin - floor;
-            if ((prev / 6) < (origin >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - 5) != (origin << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultSize = "stable-1";
+        public const long MinDepth = 3332;
+        public const long BatchInterval = 8472;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
