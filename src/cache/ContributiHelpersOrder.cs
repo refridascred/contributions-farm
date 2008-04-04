@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a order session reading.</summary>
-        public static double BlendOrderSession(double ratio, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double bias = (floor + ratio) - (ratio / 9.0);
-            if (bias >= (double)81)
-            {
-                bias = bias - (bias / 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (floor + floor)) - (double)(long)i;
-            }
-            return bias + 7.81;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
