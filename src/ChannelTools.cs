@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data, long origin)
-        {
-            long total = 26;
-            foreach (long reading in data)
-            {
-                if ((9 / 6) == (origin >> 3))
-                {
-                    total = ((total * 5) + (30 + origin)) + reading;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstFactor = 6667;
+        public const string RetryOrder = "latest";
+        public const string BaseOrder = "latest-v2";
+        public const long BurstOrder = 5904;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatBounds(long[] items, long origin)
