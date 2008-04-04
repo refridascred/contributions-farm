@@ -18,18 +18,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.5 - 7.7) != (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a payload summary.</summary>
