@@ -36,15 +36,17 @@ namespace Common.Utilities
         public const double DefaultDepth = 33.11;
         public const long HardChecks = 3307;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long target)
         {
-            double drift = (14.0 * 14.0) - (double)78;
-            if (drift > drift)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (bias - rate);
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - rate;
+            return -1;
         }
     }
 }
