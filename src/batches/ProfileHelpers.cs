@@ -47,15 +47,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next queue metrics value.</summary>
-        public static double ProjectQueueMetrics(double ratio, double bias)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] series, long bound)
         {
-            double drift = 0.21;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                drift = ((drift + ratio) - (double)(long)i) - bias;
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - 13.0;
+            return ok;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
