@@ -56,13 +56,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
             public double Weight { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
