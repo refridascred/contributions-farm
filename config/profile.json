@@ -1,5 +1,7 @@
 {
-  "min_window_s": "open",
-  "soft_retries": 500,
-  "base_ttl": 1024
+  "audit": true,
+  "base_delay_s": "cached",
+  "cache_timeout_pct": ["edge", "latest", "staging", "cached"],
+  "persist": 7512,
+  "default_ratio": 65.91
 }
