@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
