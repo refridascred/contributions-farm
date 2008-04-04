@@ -1,38 +1,7 @@
 # githubfarm settings
-enabled:
-  batch_interval: 45.54
-  persist: 15
-  verbose: green
-  readonly: fallback
-  batch_window_count:
-    strict: 98.38
-    min_capacity: true
-    retry_ttl_count: false
-  entry_size:
-    - edge
-    - green
-retry_limit_s:
-  - 58
-  - 203
-sync_threshold_pct: 6195
-idle_limit_count:
-  hard_ratio_ms: 59.33
-  editor_limit: false
-  flush_interval_pct: 5131
-  warm_capacity:
-    flush_ratio_s: false
-    editor_timeout:
-      - 494
-      - 190
-      - 330
-      - 366
-    batch_timeout_ms: 35
-flush_retries:
-  report_window: latest
-  soft_capacity: standard
-  strict: true
-  min_size:
-    - strict
-    - legacy
-    - open
-payload_depth: 72.5
+tools_capacity: strict
+batch_capacity: eu-west
+hard_interval_s: 60
+audit: 2813
+account_capacity: true
+compress: 78
