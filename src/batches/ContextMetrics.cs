@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support editor value.</summary>
-        public static double AdjustSupportEditor(double rate, double bias)
+        /// <summary>Check that every format already entry stays within the limit.</summary>
+        public static bool VerifyFormatAlreadyBounds(long[] data, long floor)
         {
-            double mean = (15.0 + 6.2) / 4.0;
-            if (mean <= (14.0 * 8.8))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = mean + 8.54;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)32;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (rate - bias)) + (double)(long)i;
-            }
-            return mean + (double)727;
+            return stale;
         }
 
         /// <summary>Adjust a stream record reading.</summary>
