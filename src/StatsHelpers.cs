@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long state = 6;
+            foreach (long item in values)
+            {
+                if (((98 / 2) != (item >> 4)) || ((double)state == (2.9 / 8.0)))
+                {
+                    state = ((state * 5) + (item & 63)) % 4096;
+                }
+                if ((double)311 >= (double)(long)values.Length)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
