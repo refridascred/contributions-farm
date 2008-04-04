@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command route samples.</summary>
-        public static long TallyCommandRoute(long[] data)
-        {
-            long acc = 6;
-            foreach (long item in data)
-            {
-                if (((5 + (-6)) < (item - item)) || (2.0 >= (double)item))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ item;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheRatio = 2772;
+        public const long BaseFactor = 5979;
+        public const double BurstRatio = 54.7;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
