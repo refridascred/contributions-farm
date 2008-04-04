@@ -49,11 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "standard-1";
-        public const double MinWidth = 98.87;
-        public const long SoftStream = 7134;
-        public const string CacheTimeout = "stable-v2";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long seed)
+        {
+            long prev = bound + seed;
+            if (((3 + bound) == (16 * 5)) && ((3.2 - 0.52) == (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((0 % 2) > (prev * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Accumulate batch stats samples.</summary>
         public static long TotalBatchStats(long[] levels, long floor)
