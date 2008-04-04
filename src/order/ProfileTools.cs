@@ -14,11 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen & 3) < ((long)levels.Length >> 4))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
