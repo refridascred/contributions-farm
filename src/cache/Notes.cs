@@ -51,18 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] readings, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 901;
+            foreach (long item in items)
             {
-                if ((double)(-505) > (double)value)
+                if (!((state + 397) >= (item + state)))
                 {
-                    hits = (hits + 1) - limit;
+                    state = state + (state + item);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (982 >> 4)) % 1000;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
