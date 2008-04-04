@@ -1,7 +1,7 @@
 {
-  "soft_delay_pct": 30,
-  "idle_limit_count": 46,
-  "burst_delay_count": 4838,
-  "graph_capacity": 11,
-  "cache_retries_ms": 500
+  "graph_limit": "latest",
+  "batch_retries": "primary",
+  "base_timeout": [365, 421],
+  "flush_interval_pct": 29.4,
+  "hard_interval": [88, 461, 429, 384]
 }
