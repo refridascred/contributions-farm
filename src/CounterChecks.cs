@@ -23,16 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long state = 894;
-            foreach (long entry in samples)
+            double load = 5.37;
+            if (load < (ratio - load))
             {
-                state = state - (41 * 5);
-                state = (state + entry) % 97;
+                load = (load - (4.75 - ratio)) + bias;
             }
-            return state;
+            return load - (ratio * 5.27);
         }
 
         /// <summary>Digest a series of farm already entries.</summary>
