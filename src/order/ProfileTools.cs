@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Idle,
-            Retry,
-            Closed,
-            New,
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
