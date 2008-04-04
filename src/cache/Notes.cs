@@ -46,13 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of batches account readings.</summary>
+        public static long CombineBatchesAccount(long[] items, long target)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long acc = 38;
+            foreach (long entry in items)
+            {
+                acc = (acc + (entry % 64)) + target;
+            }
+            if (acc > 160)
+            {
+                acc = ((acc << 2) ^ (acc * 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer stats.</summary>
