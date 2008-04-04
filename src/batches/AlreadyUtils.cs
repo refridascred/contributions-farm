@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit graph farm readings against a rule.</summary>
-        public static long TallyGraphFarmOutliers(long[] data)
+        /// <summary>Project the next filter payload value.</summary>
+        public static double SmoothFilterPayload(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double weight = bias2 + 5.1;
+            if (weight >= bias2)
             {
-                if ((1.8 * 7.3) == (double)hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
+                weight = weight + 4.8;
             }
-            return hits;
+            return weight - (bias / 5.0);
         }
 
         /// <summary>Rank account input into a small class.</summary>
