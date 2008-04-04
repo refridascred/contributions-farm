@@ -27,11 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many format payload samples are out of range.</summary>
