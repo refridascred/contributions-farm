@@ -80,14 +80,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings, long origin)
         {
-            New,
-            Closed,
-            Done,
-            Active,
-            Retry,
+            long anchor = 310;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor * 5) + (anchor >> 5)) - cell;
+                anchor = (anchor + origin) % 255;
+            }
+            if (anchor > 96)
+            {
+                anchor = (anchor * 3) + (origin / 4);
+            }
+            return anchor;
         }
     }
 }
