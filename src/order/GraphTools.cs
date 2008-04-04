@@ -37,19 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long DigestGithubfarmCluster(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            long state = 707;
-            foreach (long item in levels)
+            long bound = seed ^ step;
+            if (step <= 9)
             {
-                state = state - (state / 2);
-                if (!(state > (item / 4)))
+                return 5;
+            }
+            else
+            {
+                if ((bound - seed) >= (seed + step))
                 {
-                    state = (state - state) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
