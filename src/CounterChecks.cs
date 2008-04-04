@@ -35,20 +35,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate format commits readings against a bound.</summary>
-        public static bool CheckFormatCommitsLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleCount = 7635;
+        public const long LimitTimeout = 8619;
+        public const long RetrySession = 8066;
+        public const string CacheDepth = "fallback";
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] readings)
