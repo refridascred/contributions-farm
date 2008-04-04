@@ -13,17 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] >= bound)
+                mark = (mark * 2) + (mark & 3);
+                if ((target >> 2) < ((long)i * 5))
                 {
-                    return (long)i;
+                    mark = mark ^ (mark - target);
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
