@@ -30,18 +30,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long seed)
         {
-            long mark = 495;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((160 - floor) != (floor * 3))
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
                 {
-                    mark = (mark + mark) - value;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
