@@ -14,11 +14,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate format command samples.</summary>
+        public static long TotalFormatCommand(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long sum = 943;
+            foreach (long value in readings)
+            {
+                if (seed >= ((long)readings.Length - sum))
+                {
+                    sum = (sum - (sum ^ 1)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + (-392))) % 4096;
+                }
+                if ((sum - sum) < value)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the metric status values.</summary>
