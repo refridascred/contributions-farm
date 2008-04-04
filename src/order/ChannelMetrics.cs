@@ -30,19 +30,11 @@ namespace Common.Utilities
             return (ratio - (1.0 - rate)) + offset;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((bound << 2) > (score / 2)) && (bound < (long)i)))
-                {
-                    score = ((score * 3) + (score / 5)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
