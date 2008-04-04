@@ -35,13 +35,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit record order readings against a rule.</summary>
+        public static long TallyRecordOrderOutliers(long[] samples)
         {
-            Locked,
-            Active,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry < (entry + entry)) && ((entry + entry) <= (entry + 23)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
