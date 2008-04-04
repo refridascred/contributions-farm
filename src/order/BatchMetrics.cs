@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record entry readings against a rule.</summary>
-        public static long MeasureRecordEntryGaps(long[] samples)
+        /// <summary>Measure how many channel counter samples are out of range.</summary>
+        public static long TallyChannelCounterGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (7 <= (value << 2))
+                if (item > count)
                 {
-                    seen = seen + 3;
+                    count = (count + 2) + bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
