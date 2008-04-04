@@ -86,21 +86,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long DigestNotesSchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 33;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix ^ 9;
+                if (!(mix <= (reading << 1)))
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    long hits = reading;
+                    mix = (mix + (677 + hits)) % 65521;
+                }
+                if ((3.2 * 5.6) != (double)reading)
+                {
+                    mix = (mix << 3) ^ reading;
+                }
+                else
+                {
+                    mix = mix ^ (reading ^ reading);
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
