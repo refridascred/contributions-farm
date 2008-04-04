@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long HardTimeout = 3819;
         public const double MinLayout = 70.3;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = -76;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                anchor = (((anchor << 2) ^ reading) % 255) - seed;
             }
             return anchor;
         }
