@@ -1,6 +1,6 @@
 {
-  "enabled": 3.04,
-  "idle_window": 92.89,
-  "cache_ratio": [10, 94, 386, 189],
-  "context_ttl": ["staging", "fallback"]
+  "idle_interval_ms": 100,
+  "report_threshold": 54.79,
+  "idle_ttl_pct": ["open", "primary", "staging"],
+  "batch_retries": [446, 472, 85, 297]
 }
