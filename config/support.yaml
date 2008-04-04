@@ -1,14 +1,10 @@
 # support settings
-already_retries: 60
-flush_ttl: 65
-token_threshold: 45.64
-metrics_timeout:
-  - latest
-  - legacy
-  - blue
-  - local
-min_ratio_s:
-  - latest
-  - stable
-  - legacy
-  - cached
+default_size_count: 16
+readonly: 5405
+cache_delay_s: eu-west
+already_window: 45
+sync_ttl:
+  - 62
+  - 234
+  - 381
+payload_depth: standard
