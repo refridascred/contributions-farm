@@ -1,14 +1,17 @@
 # support settings
-min_depth: 25
-poll_interval_count:
-  retry_size_count: true
-  checks_ratio: 30
-  payload_ttl: 13.65
-  metrics_retries: staging
-order_limit: 8705
-soft_capacity:
-  report_timeout: blue
-  base_retries_s: 1451
-  sync_ttl_pct: cached
-  cache_ttl: 8163
-  strict: primary
+hard_ratio_ms:
+  soft_threshold: 51
+  contributi_depth: 250
+  batch_ratio_pct:
+    - open
+    - edge
+  burst_window_ms: local
+  max_threshold_pct:
+    - 328
+    - 437
+    - 82
+  min_timeout_count: fallback
+retry_limit_s: 8234
+token_ratio: 17.51
+max_timeout_pct: standard
+poll_window_ms: 5069
