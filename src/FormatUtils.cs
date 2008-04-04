@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7695;
-        public const long WindowInterval = 6827;
-        public const long LimitRecord = 1036;
-        public const double LimitLevel = 25.45;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "fallback-1";
+        public const long SoftNotes = 1410;
+        public const long MinLevel = 4184;
+        public const long MinWidth = 7149;
+        public const long DefaultNotes = 715;
 
         /// <summary>Fold a list of report token readings.</summary>
         public static long DigestReportToken(long[] series)
