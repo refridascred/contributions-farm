@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 6544;
         public const long BatchChecks = 7130;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
             New,
-            Stale,
-            Failed,
-            Draft,
+            Done,
+            Closed,
         }
     }
 }
