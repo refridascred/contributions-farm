@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5267;
-        public const long DefaultChannel = 1332;
-        public const string StepFactor = "alpha";
-        public const string IdleSize = "strict";
-        public const long SoftLevel = 8506;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((4 >> 5) >= (0 - step))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] samples, long origin)
