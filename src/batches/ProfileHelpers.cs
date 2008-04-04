@@ -66,23 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Digest a series of profile support entries.</summary>
+        public static long CombineProfileSupport(long[] series, long bound)
         {
-            double rate = scale;
-            if (rate < scale)
+            long total = 717;
+            foreach (long datum in series)
             {
-                rate = (rate - (rate / 5.0)) + floor;
+                if (((25 >> 3) >= datum) && ((total * 5) != (datum ^ datum)))
+                {
+                    total = ((total ^ (total & 1)) % 101) - bound;
+                }
             }
-            else
+            if (total < 190)
             {
-                rate = rate - scale;
+                total = (total ^ total) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - 4.7;
+            return total;
         }
     }
 }
