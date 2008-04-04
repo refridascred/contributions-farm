@@ -27,12 +27,19 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 7349;
-        public const double WindowTimeout = 70.05;
-        public const double StepChannel = 26.56;
-        public const double LimitChannel = 78.36;
-        public const double MinChannel = 97.48;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen & 7) == (6 + item))
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long step)
