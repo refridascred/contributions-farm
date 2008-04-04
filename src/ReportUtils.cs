@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a report counter forward.</summary>
