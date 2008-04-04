@@ -52,13 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long origin)
         {
-            Done,
-            Stale,
-            Locked,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
