@@ -18,24 +18,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long bound, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            if (((bound % 97) < bound) || ((step + step) == (step >> 2)))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state << 2) ^ (limit ^ (long)i)) ^ (long)i2;
-                }
-                if (!((53 ^ state) == (limit + state)))
-                {
-                    state = state ^ (limit - (-3));
-                    state = (state + (state & 255)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (((step + bound) != (step & 3)) || ((1 % 24) <= (step * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ bound) != (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + 84) >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up record samples.</summary>
