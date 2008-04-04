@@ -32,13 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            Idle,
-            New,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!(((double)cell > (1.2 * 18.0)) && ((tally + cell) == (cell + cell))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
