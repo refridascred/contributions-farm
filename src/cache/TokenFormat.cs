@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the entry context entries that pass the check.</summary>
-        public static long CountEntryContextMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((-30) / 5) <= (seen ^ 3))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 7645;
+        public const long IdleFarm = 1584;
+        public const long BaseFarm = 1395;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long bound)
