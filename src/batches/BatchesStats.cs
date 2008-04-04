@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSpan = 8886;
+        public const string CacheWidth = "latest-v2";
+        public const long BatchScore = 7140;
+        public const double BatchWidth = 11.97;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextBounds(long[] levels, long seed)
