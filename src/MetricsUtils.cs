@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics session value from a seed.</summary>
-        public static long IterateMetricsSession(long bound)
+        /// <summary>Check that every command layout entry stays within the limit.</summary>
+        public static bool CheckCommandLayoutBounds(long[] samples, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
