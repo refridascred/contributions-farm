@@ -59,12 +59,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit notes stream readings against a rule.</summary>
+        public static long CountNotesStreamHits(long[] series, long floor)
         {
-            Dropped,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)reading > 0.81) || ((double)floor >= 2.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
