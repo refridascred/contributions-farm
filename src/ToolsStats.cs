@@ -44,17 +44,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long bound)
+        /// <summary>Derive the next githubfarm layout value from a seed.</summary>
+        public static long RollGithubfarmLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total - limit) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
