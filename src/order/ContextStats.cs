@@ -22,11 +22,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of route buffer entries.</summary>
+        public static long TotalRouteBuffer(long[] items, long target)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 4;
+            foreach (long cell in items)
+            {
+                mark = ((mark * 2) + (1 * 5)) + cell;
+                if ((target - mark) != (mark << 3))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
