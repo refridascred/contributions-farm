@@ -34,18 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long CountBufferWindowOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 7) >= hits)
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultDepth = "standard-edge";
+        public const string CacheCommand = "open-v2";
+        public const long BaseScore = 4317;
+        public const long IdleCommand = 6122;
+        public const long StepSize = 3520;
     }
 }
