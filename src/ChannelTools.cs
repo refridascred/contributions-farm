@@ -26,32 +26,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a payload farm pair into a bucket.</summary>
-        public static long SortPayloadFarm(long floor, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long offset = floor ^ seed;
-            if (7.08 < (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor + offset) != (offset % 60)) && ((99 / 8) == (offset / 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (seed * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Dropped,
         }
     }
 }
