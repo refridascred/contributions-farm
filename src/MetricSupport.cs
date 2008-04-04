@@ -36,11 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples, long seed)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum != (6.4 / 4.0))
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
