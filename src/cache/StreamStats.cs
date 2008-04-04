@@ -45,14 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
         {
-            Stale,
-            Done,
-            Pending,
-            Failed,
-            Paused,
+            double rate = (double)(391 + 2);
+            if (rate < bias)
+            {
+                rate = (rate - (15.0 * 3.2)) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias / 9.0)) + (double)(long)i;
+            }
+            return rate + (double)23;
         }
     }
 }
