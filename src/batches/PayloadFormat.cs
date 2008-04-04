@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long seed)
+        /// <summary>Find the first cluster githubfarm entry that matches the target.</summary>
+        public static long LocateClusterGithubfarmIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > seed)
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
