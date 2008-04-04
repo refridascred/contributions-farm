@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long total = 211;
+            foreach (long cell in levels)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total ^ (bound << 1)) % 255) + cell;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
