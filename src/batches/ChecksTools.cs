@@ -33,12 +33,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 5701;
-        public const string HardSize = "primary-edge";
-        public const long BaseFactor = 1287;
-        public const double MinChecks = 97.78;
-        public const double HardChecks = 50.38;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
