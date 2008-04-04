@@ -20,15 +20,12 @@ namespace Common.Utilities
         public const long MaxSize = 7374;
         public const long HardProfile = 901;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
