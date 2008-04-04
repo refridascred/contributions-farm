@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen == (2.0 * 2.85))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a notes info.</summary>
