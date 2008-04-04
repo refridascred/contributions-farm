@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseScore = 32.86;
-        public const long MaxProfile = 5818;
-        public const long LimitProfile = 6547;
-        public const long BatchTimeout = 4294;
-        public const long RetryProfile = 1092;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] levels, long origin)
