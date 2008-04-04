@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Count the cluster route entries that pass the check.</summary>
+        public static long TallyClusterRouteOutliers(long[] samples, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                long count = (floor & 127) - 6;
-                count = (count * 5) + (count + 8);
-                state = ((state * 2) + (count / 2)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((61 & 3) == (count + floor))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a commits entry value against two limits.</summary>
