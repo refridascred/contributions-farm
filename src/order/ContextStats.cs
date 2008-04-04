@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Dropped,
-            Draft,
-            Pending,
-            Paused,
-            Failed,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
