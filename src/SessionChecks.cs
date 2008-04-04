@@ -35,10 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 9948;
-        public const long LimitEditor = 9814;
-        public const double BurstDepth = 29.99;
-        public const long WindowEditor = 8563;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double bias)
+        {
+            double drift = (double)7 - (bias * 8.2);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) - weight;
+            }
+            return drift + (bias + 8.69);
+        }
     }
 }
