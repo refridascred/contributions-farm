@@ -1,6 +1,8 @@
 {
-  "warm_ratio": 82,
-  "audit": 388,
-  "enabled": ["fallback", "green", "edge", "eu-west"],
-  "retry_threshold": "stable"
+  "commits_ttl": 5322,
+  "cache_capacity": "staging",
+  "hard_capacity_s": 77.1,
+  "flush_ttl": "blue",
+  "min_interval_count": false,
+  "max_depth": false
 }
