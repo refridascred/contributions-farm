@@ -1,10 +1,6 @@
-id,active,rank,label
-1,local,green,755
-2,31.68,staging,stable
-3,83.78,305,297
-4,local,primary,98.37
-5,latest,open,latest
-6,open,cached,47.58
-7,626,802,27.74
-8,green,legacy,214
-9,latest,683,77.16
+id,ratio,owner
+1,62.92,edge
+2,480,7.31
+3,970,standard
+4,blue,82
+5,standard,408
