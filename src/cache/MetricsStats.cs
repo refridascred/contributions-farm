@@ -69,24 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long offset)
+        /// <summary>Find the first route token entry that matches the target.</summary>
+        public static long LookupRouteTokenIndex(long[] series, long bound)
         {
-            if (((origin + offset) <= (offset - origin)) || ((origin + offset) > (794 >> 4)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 4) >= 90)
+                if (series[i] < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
