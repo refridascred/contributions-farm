@@ -34,24 +34,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target > 392)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 5) + (target * 5)) % 65521;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = score - score;
-                if (((752 + 697) >= (target + target)) && (((long)i + target) > (score ^ target)))
-                {
-                    score = (score - (target / 9)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
