@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
