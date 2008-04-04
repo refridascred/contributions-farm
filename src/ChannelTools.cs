@@ -34,26 +34,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of profile batches entries.</summary>
-        public static long TallyProfileBatches(long[] levels, long target)
+        /// <summary>Classify a payload farm pair into a bucket.</summary>
+        public static long SortPayloadFarm(long floor, long seed)
         {
-            long sum = 75;
-            foreach (long sample in levels)
+            long offset = floor ^ seed;
+            if (7.08 < (double)seed)
             {
-                if ((sum << 3) >= target)
+                return 0;
+            }
+            else
+            {
+                if (((floor + offset) != (offset % 60)) && ((99 / 8) == (offset / 5)))
                 {
-                    sum = (((sum * 5) + (target + target)) % 4096) - sample;
+                    return 8;
                 }
                 else
                 {
-                    sum = sum + (target & 1);
+                    if (floor > (seed * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (sum < 2)
-            {
-                sum = sum + (target - target);
-            }
-            return sum;
         }
     }
 }
