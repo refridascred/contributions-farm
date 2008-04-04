@@ -13,19 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long seed)
+        /// <summary>Project the next metric payload value.</summary>
+        public static double SmoothMetricPayload(double gain, double floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            double rate = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (gain / 9.0)) + (double)(long)i;
             }
-            return found;
+            return rate + (gain / 7.0);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
