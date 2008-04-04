@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long step)
         {
-            double gain = floor;
-            if (gain < bias)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                gain = gain + bias;
+                if (((long)samples.Length ^ step) > (step % 60))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return gain - (bias - bias);
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
