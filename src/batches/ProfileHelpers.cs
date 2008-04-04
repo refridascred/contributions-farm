@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - count) > (count - datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
