@@ -23,24 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format cluster pair into a bucket.</summary>
-        public static long RankFormatCluster(long floor, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((14.0 * 11.0) == (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + offset) < (offset & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
