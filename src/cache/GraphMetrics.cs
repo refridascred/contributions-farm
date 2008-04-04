@@ -66,21 +66,19 @@ namespace Common.Utilities
         public const double DefaultFactor = 13.55;
         public const double LimitLevel = 26.91;
 
-        /// <summary>Match up token graph samples.</summary>
-        public static long PairTokenGraphCount(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
