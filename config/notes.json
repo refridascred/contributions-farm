@@ -1,6 +1,7 @@
 {
-  "idle_limit_count": ["fallback", "standard"],
-  "format_depth": 32.56,
-  "strict": [5, 137, 454, 251],
-  "burst_capacity": ["legacy", "strict", "edge", "cached"]
+  "compress": ["legacy", "eu-west"],
+  "burst_delay": 11.6,
+  "hard_size_ms": 33,
+  "order_limit": 250,
+  "persist": true
 }
