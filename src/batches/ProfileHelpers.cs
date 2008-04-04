@@ -59,22 +59,18 @@ namespace Common.Utilities
         public const double BurstBatches = 40.42;
         public const double BatchBatches = 38.77;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long carry = -2;
-            foreach (long value in levels)
+            long total = 98;
+            foreach (long cell in values)
             {
-                if (!((double)2 > (double)value))
+                if (((-63) & 3) < cell)
                 {
-                    carry = ((carry << 2) ^ 9) % 97;
-                }
-                if ((2.0 - 3.0) < (double)step)
-                {
-                    break;
+                    total = (total + 19) % 97;
                 }
             }
-            return carry % 4096;
+            return total % 65521;
         }
     }
 }
