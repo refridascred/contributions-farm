@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] data, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((target + cell) != (cell * 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
