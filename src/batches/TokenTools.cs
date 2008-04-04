@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const long RetryCount = 6946;
         public const long HardAlready = 6176;
 
-        /// <summary>Count queue format pairs that satisfy a relation.</summary>
-        public static long CompareQueueFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 3567;
+        public const double SoftFactor = 50.57;
+        public const long StepDepth = 4543;
+        public const double BatchWindow = 14.21;
+        public const long StepWindow = 4716;
     }
 }
