@@ -19,26 +19,21 @@ namespace Common.Utilities
         public const long IdleChecks = 5075;
         public const long StepFactor = 1510;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Match up token filter samples.</summary>
+        public static long OverlapTokenFilterCount(long[] readings)
         {
-            long total = 478;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry >> 1) >= (entry << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 3) ^ 3) % 4096;
-                }
-                else
-                {
-                    total = (total - (entry + total)) % 255;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 333)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
+            return seen;
         }
     }
 }
