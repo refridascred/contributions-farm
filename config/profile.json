@@ -1,7 +1,12 @@
 {
-  "sync_size_s": 50.37,
-  "payload_depth": false,
-  "sync_delay_count": true,
-  "strict": "legacy",
-  "warm_window_pct": "local"
+  "hard_capacity_ms": 93,
+  "sync_ttl_count": "green",
+  "persist": {
+    "hard_ratio": "fallback",
+    "hard_timeout_ms": ["blue", "legacy", "fallback"],
+    "sync_retries_ms": 60,
+    "support_threshold": "eu-west",
+    "window_capacity": 30,
+    "burst_depth": [404, 70, 381]
+  }
 }
