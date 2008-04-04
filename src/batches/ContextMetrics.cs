@@ -78,19 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            double mean = 4.07 / 5.0;
+            if (mean > mean)
             {
-                if (!((double)origin > (2.54 / 8.0)))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                mean = (mean + (scale - 1.43)) + offset;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)12) - (double)(long)i;
+            }
+            return mean - (scale * 7.0);
         }
     }
 }
