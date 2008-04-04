@@ -1,5 +1,6 @@
 {
-  "max_capacity_pct": 3429,
-  "readonly": 60,
-  "metrics_timeout": [8, 96]
+  "dry_run": 7.31,
+  "warm_capacity": [78, 88],
+  "retry_capacity_ms": ["staging", "strict", "green", "blue"],
+  "audit": true
 }
