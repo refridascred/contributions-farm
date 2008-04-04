@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            Failed,
+            Draft,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
