@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            Paused,
-            Retry,
-            Locked,
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = carry ^ (carry + 242);
+                if (((double)offset > (7.5 + 5.0)) || ((0.1 + 7.75) >= (double)carry))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+                carry = ((carry << 2) ^ carry) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
