@@ -1,6 +1,10 @@
 # support settings
-profile_limit: blue
-cache_ttl_ms: true
-sync_retries_ms: 30
-entry_ratio: latest
-verbose: 47
+hard_window_count: eu-west
+max_timeout_pct: 100
+batches_threshold:
+  - 23
+  - 198
+  - 377
+  - 248
+base_delay: fallback
+soft_depth_pct: 250
