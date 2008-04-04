@@ -56,23 +56,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long WeighStreamContext(long[] levels, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long bound)
         {
-            long acc = 70;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (floor & 15)) % 97) + datum;
-                if ((double)floor == (4.47 + 9.07))
+                if (readings[i] >= bound)
                 {
-                    acc = acc + (acc - floor);
-                }
-                else
-                {
-                    acc = acc ^ 14;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
