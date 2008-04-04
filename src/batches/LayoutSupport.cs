@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            New,
-            Draft,
-            Dropped,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
