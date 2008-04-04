@@ -28,15 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] readings, long seed)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long sample in readings)
             {
-                if (((3.65 - 6.5) >= (double)seen) || ((double)16 != (double)cell))
+                if (!((23 + seed) < (seen & 1)) && (((seen % 100) <= seed) && ((323 / 5) <= seen)))
                 {
-                    seen = (seen + 1) + floor;
+                    seen = (seen + 2) ^ sample;
                 }
             }
             return seen;
