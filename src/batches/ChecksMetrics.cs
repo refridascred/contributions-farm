@@ -39,17 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long target)
+        /// <summary>Iterate the format session series from a seed.</summary>
+        public static long IterateFormatSession(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
