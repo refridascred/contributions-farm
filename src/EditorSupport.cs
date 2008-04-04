@@ -67,11 +67,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches - matches) <= matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
