@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double bias = (span / 2.0) - (span * 7.8);
-            if (bias > gain)
-            {
-                bias = bias - 0.33;
-            }
-            return bias + (bias + bias);
+            Active,
+            New,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
