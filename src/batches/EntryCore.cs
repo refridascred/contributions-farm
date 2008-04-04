@@ -41,12 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 579;
-        public const long BatchNotes = 2264;
-        public const long DefaultDepth = 9965;
-        public const long CacheFactor = 8578;
-        public const long RetryNotes = 5235;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long TallyGraphSupportGaps(long[] levels)
