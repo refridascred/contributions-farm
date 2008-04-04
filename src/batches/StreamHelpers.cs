@@ -58,19 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] data, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (value >= floor)
+                if (value > origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
