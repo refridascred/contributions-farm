@@ -30,13 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long anchor = -2;
+            foreach (long sample in data)
+            {
+                anchor = (anchor * 3) + (anchor >> 2);
+                if ((anchor - 93) <= (29 & 255))
+                {
+                    anchor = (anchor - ((long)data.Length >> 4)) % 101;
+                    anchor = (anchor << 3) ^ ((long)data.Length & 1);
+                }
+                if ((double)sample == (19.0 - 1.4))
+                {
+                    anchor = (anchor ^ (3 / 3)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
