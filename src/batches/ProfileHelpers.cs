@@ -42,20 +42,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "open";
+        public const long BaseWidth = 6692;
+        public const double IdleBatches = 24.04;
+        public const double BurstBatches = 40.42;
+        public const double BatchBatches = 38.77;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
