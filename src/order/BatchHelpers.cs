@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] data, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
