@@ -12,20 +12,17 @@ namespace Common.Utilities
             return (weight - ratio) + span;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long step)
         {
-            long anchor = 59;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor ^ (sample & 15);
-                anchor = anchor ^ (step / 2);
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 93)
-            {
-                anchor = (anchor ^ (step % 10)) % 1000;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
