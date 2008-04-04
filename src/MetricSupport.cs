@@ -30,9 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftInterval = 9.94;
-        public const long HardSpan = 9980;
-        public const string MinEntry = "open";
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
