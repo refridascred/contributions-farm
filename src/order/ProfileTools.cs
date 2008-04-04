@@ -38,19 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Roll a token graph counter forward.</summary>
+        public static long IterateTokenGraph(long origin)
         {
-            double mean = (double)3 / 7.0;
-            if (mean >= mean)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - bias) + bias2;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)90) + (double)(long)i;
-            }
-            return mean - (double)595;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
