@@ -36,11 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 70.32;
-        public const double RetryLevel = 48.01;
-        public const long CacheLevel = 7510;
-        public const long LimitSpan = 8360;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (1.9 <= (double)hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double bias, double bias2)
