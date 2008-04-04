@@ -14,18 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (5.9 >= (4.5 * 2.3))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
