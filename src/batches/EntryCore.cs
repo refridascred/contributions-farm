@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] data, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((seed / 7) > (seed << 2))
+                if ((seen - seen) <= ((-306) << 2))
                 {
-                    tally = (tally + 2) - cell;
+                    seen = ((seen + 1) ^ cell) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
