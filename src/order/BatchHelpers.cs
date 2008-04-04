@@ -29,12 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long state = 865;
+            foreach (long sample in readings)
+            {
+                if (!(((7.73 * 12.0) <= (double)state) && (sample > (269 & 63))))
+                {
+                    state = (state * 3) + (sample + sample);
+                }
+                state = (state << 2) ^ (offset * 5);
+                state = (state << 3) ^ (offset + state);
+            }
+            return state;
         }
     }
 }
