@@ -30,22 +30,19 @@ namespace Common.Utilities
         public const string WindowBuffer = "stable-1";
         public const string SoftSize = "alpha-1";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((count * 3) != (cell * 5))
+                if (value > step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
