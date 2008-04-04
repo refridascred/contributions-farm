@@ -1,5 +1,12 @@
 {
-  "burst_depth_s": 4257,
-  "editor_ttl": 64,
-  "soft_limit_ms": "latest"
+  "schema_delay": 250,
+  "max_timeout": "blue",
+  "channel_delay": {
+    "warm_ratio": false,
+    "strict": 4294,
+    "max_size": 60
+  },
+  "compress": "primary",
+  "notes_retries": "fallback",
+  "default_timeout_count": true
 }
