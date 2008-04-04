@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many token command samples are out of range.</summary>
-        public static long CountTokenCommandMatches(long[] levels, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((0.6 / 2.0) != (double)target)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
