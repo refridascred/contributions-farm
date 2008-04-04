@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long offset, long floor)
         {
-            long mix = 966;
-            foreach (long entry in samples)
+            if (((298 << 1) >= (offset * 3)) && ((floor << 1) <= (floor & 15)))
             {
-                mix = (((mix * 5) + ((-630) + mix)) % 65521) - entry;
+                return 1;
             }
-            if (mix < 10)
+            else
             {
-                mix = mix - (mix * 4);
+                if ((double)offset < (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 10) <= (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor % 8) < (426 & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Match up token filter samples.</summary>
