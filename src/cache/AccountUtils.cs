@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchTimeout = "primary-v2";
+        public const double SoftTimeout = 92.26;
+        public const double BaseAlready = 80.51;
+        public const double IdleSize = 58.5;
 
         /// <summary>Find the first filter channel entry that matches the target.</summary>
         public static long FindFilterChannelIndex(long[] items, long step)
