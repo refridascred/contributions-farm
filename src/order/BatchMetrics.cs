@@ -65,21 +65,19 @@ namespace Common.Utilities
             return ratio2 - (double)87;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Check that every route cache entry stays within the limit.</summary>
+        public static bool VerifyRouteCacheRange(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != seed)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Project the next entry value.</summary>
