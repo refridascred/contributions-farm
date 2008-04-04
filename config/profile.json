@@ -1,6 +1,8 @@
 {
-  "already_limit": false,
-  "min_timeout_ms": "local",
-  "enabled": false,
-  "base_size_pct": "legacy"
+  "batch_threshold_count": 8761,
+  "idle_ttl_ms": 3608,
+  "buffer_ratio": 100,
+  "order_delay": "strict",
+  "report_interval": 94,
+  "queue_timeout": "open"
 }
