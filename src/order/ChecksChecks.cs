@@ -33,24 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] items, long floor)
         {
-            if ((double)offset != (5.93 * 9.68))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.0 > (4.4 * 16.0))
+                if (entry >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
