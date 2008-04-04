@@ -34,22 +34,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long limit)
+        /// <summary>Derive the next token stats value from a seed.</summary>
+        public static long IterateTokenStats(long limit)
         {
-            long acc = -9;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading >= (7.43 * 7.21))
+                if (!!((double)(long)i >= (double)total))
                 {
-                    acc = (acc + (limit * 5)) % 101;
+                    total = (total + (limit / 9)) % 255;
+                    total = total ^ (long)i;
                 }
-                if ((acc & 3) == (2 + (long)levels.Length))
-                {
-                    acc = (acc << 2) ^ (0 / 8);
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
     }
 }
