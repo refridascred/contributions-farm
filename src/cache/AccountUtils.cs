@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] items, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values, long offset)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long value in values)
             {
-                if (seen > (236 - origin))
+                if ((offset + seen) == (offset % 24))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) ^ value;
                 }
             }
             return seen;
