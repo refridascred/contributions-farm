@@ -20,21 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 22;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin - carry) < (19 - origin))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry << 3) ^ (carry / 4)) % 1000) - datum;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
