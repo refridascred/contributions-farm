@@ -23,18 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = 78;
+            foreach (long reading in data)
             {
-                if ((seen - seen) <= ((-306) << 2))
-                {
-                    seen = ((seen + 1) ^ cell) + origin;
-                }
+                mix = (((mix * 5) + (mix - seed)) % 101) ^ reading;
+                mix = (mix + (63 / 8)) % 255;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
