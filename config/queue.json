@@ -1,5 +1,23 @@
 {
-  "burst_ratio_ms": [302, 41],
-  "warm_threshold": 250,
-  "strict": 65.04
+  "enabled": false,
+  "hard_interval": {
+    "cache_threshold": 1.32,
+    "sync_capacity_pct": ["cached", "latest"],
+    "soft_ratio": {
+      "cache_limit_s": [247, 418, 141, 368],
+      "enabled": true,
+      "queue_window": [183, 487, 156, 354],
+      "editor_limit": "standard"
+    },
+    "persist": {
+      "metrics_retries": "staging",
+      "batch_depth": 890,
+      "warm_window_count": 90.54,
+      "verbose": "cached",
+      "filter_retries": "edge"
+    },
+    "soft_ratio_pct": "eu-west",
+    "dry_run": "latest"
+  },
+  "session_ttl": 100
 }
