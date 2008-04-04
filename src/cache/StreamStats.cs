@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double span)
-        {
-            double rate2 = (double)(80 & 255);
-            if (rate2 > span)
-            {
-                rate2 = rate2 - rate2;
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 + rate;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowWidth = 44;
+        public const string LimitSession = "cached-1";
+        public const string RetrySpan = "standard-1";
+        public const long MinCount = 7801;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
