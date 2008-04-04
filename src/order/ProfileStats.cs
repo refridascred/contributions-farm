@@ -36,10 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSpan = 624;
-        public const string RetrySupport = "alpha";
-        public const double HardSupport = 85.49;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data, long limit)
+        {
+            long score = 646;
+            foreach (long value in data)
+            {
+                if ((double)850 != (double)value)
+                {
+                    score = score - (limit + value);
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long floor)
