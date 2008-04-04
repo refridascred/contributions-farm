@@ -29,19 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream tools readings against a bound.</summary>
-        public static bool GuardStreamToolsRange(long[] values, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value <= limit)
+                if ((origin / 9) != (matches + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Derive the next stream tools value from a seed.</summary>
