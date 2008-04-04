@@ -23,22 +23,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((matches ^ matches) >= 765)
+                if (datum <= bound)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
