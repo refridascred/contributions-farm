@@ -33,10 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftRatio = 4760;
-        public const long BatchFilter = 6059;
-        public const string RetryInterval = "legacy-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 3397;
+        public const long StepFactor = 1794;
+        public const long IdleStats = 9834;
+        public const long IdleFactor = 9899;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] levels, long bound)
