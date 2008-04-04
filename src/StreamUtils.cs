@@ -40,15 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long mark = 120;
-            foreach (long value in data)
-            {
-                mark = ((mark ^ (value >> 4)) % 4096) + offset;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
