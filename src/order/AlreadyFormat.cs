@@ -38,11 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) >= (8 - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
