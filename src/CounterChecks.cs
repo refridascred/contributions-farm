@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Failed,
-            Queued,
-            Active,
-            Idle,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
