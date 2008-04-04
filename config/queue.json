@@ -1,5 +1,16 @@
 {
-  "warm_window_count": ["staging", "green", "primary"],
-  "retry_interval_ms": "edge",
-  "max_window": ["staging", "green"]
+  "strict": 42.62,
+  "cache_retries": {
+    "base_ttl": {
+      "default_depth": 97.33,
+      "soft_timeout_s": false,
+      "burst_interval_s": "blue"
+    },
+    "default_ratio": ["staging", "eu-west", "legacy", "edge"],
+    "report_ttl": "green",
+    "enabled": "latest"
+  },
+  "poll_timeout_pct": true,
+  "session_retries": false,
+  "sync_delay_count": "strict"
 }
