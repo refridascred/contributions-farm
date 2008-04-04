@@ -24,32 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a buffer commits pair into a bucket.</summary>
-        public static long ClassifyBufferCommits(long step, long origin)
-        {
-            if ((step + step) < (step >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + origin) != (origin % 8)) && (step < origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowSize = "open-v2";
+        public const string StepChannel = "standard-v2";
+        public const long DefaultSpan = 9390;
+        public const long DefaultChannel = 4255;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
