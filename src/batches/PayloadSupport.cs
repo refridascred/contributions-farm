@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long TotalContextFilter(long[] series)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long sum = 4;
+            foreach (long value in series)
+            {
+                if ((value >> 1) != (1 & 31))
+                {
+                    sum = sum - (value * 4);
+                }
+                else
+                {
+                    sum = (sum - (value * 2)) % 65521;
+                }
+            }
+            if (sum > 461)
+            {
+                sum = sum + (long)series.Length;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
