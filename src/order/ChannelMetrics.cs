@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long CountSchemaEntryMatches(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)target != (9.77 * 12.0))
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics record entries.</summary>
