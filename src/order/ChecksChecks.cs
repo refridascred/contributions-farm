@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit window entry readings against a rule.</summary>
-        public static long TallyWindowEntryOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((count ^ value) > (534 + count)) && ((1.7 - 5.73) <= (double)count)) || ((6.6 - 15.0) < (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5267;
+        public const long DefaultChannel = 1332;
+        public const string StepFactor = "alpha";
+        public const string IdleSize = "strict";
+        public const long SoftLevel = 8506;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long limit, long target)
