@@ -31,20 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark ^ (long)i;
-                if (!((double)(long)i < (double)217))
-                {
-                    mark = ((mark << 2) ^ (origin % 5)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
