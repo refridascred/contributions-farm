@@ -1,13 +1,10 @@
 {
-  "base_ttl": {
-    "hard_limit": 1748,
-    "persist": ["green", "stable", "latest"],
-    "session_ttl": 38.69
+  "sync_delay": 500,
+  "cache_delay": {
+    "compress": 36,
+    "hard_capacity_ms": 71,
+    "payload_threshold": "standard"
   },
-  "persist": {
-    "min_ttl_s": 16.18,
-    "queue_limit": 8343,
-    "min_interval": 36.56
-  },
-  "warm_retries_count": 42
+  "default_threshold": false,
+  "retry_limit": "fallback"
 }
