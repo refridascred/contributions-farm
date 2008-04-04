@@ -21,10 +21,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 79.84;
-        public const long SoftSpan = 5691;
-        public const string DefaultGithubfarm = "cached-edge";
-        public const long RetryGithubfarm = 471;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
