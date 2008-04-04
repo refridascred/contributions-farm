@@ -1,6 +1,7 @@
-id,label,active,level,score
-1,primary,primary,26.2,local
-2,local,706,83.13,63.42
-3,78.95,759,open,standard
-4,244,71.42,138,latest
-5,eu-west,42.29,96.96,819
+id,active,weight
+1,staging,581
+2,standard,53.68
+3,46,blue
+4,998,fallback
+5,65.65,845
+6,955,6.82
