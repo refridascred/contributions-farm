@@ -42,21 +42,18 @@ namespace Common.Utilities
         public const long CacheContributi = 1177;
         public const long IdleContributi = 4092;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= (6 >> 3))
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
