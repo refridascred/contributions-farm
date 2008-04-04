@@ -24,25 +24,17 @@ namespace Common.Utilities
         public const long MaxSupport = 815;
         public const long WindowBudget = 5877;
 
-        /// <summary>Grade a session profile value against two limits.</summary>
-        public static long BucketSessionProfile(long floor, long offset)
+        /// <summary>Locate a stats checks reading by value.</summary>
+        public static long FindStatsChecksIndex(long[] readings, long seed)
         {
-            long delta = floor - offset;
-            if ((3.62 > (double)delta) || ((floor >> 1) > (floor - offset)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((84 ^ 6) >= floor) && ((5.82 + 14.0) >= (double)offset))
+                if (readings[i] == seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
