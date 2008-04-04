@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile context samples are out of range.</summary>
-        public static long MeasureProfileContextMatches(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 550;
+            foreach (long reading in series)
             {
-                if ((matches ^ 627) < (cell >> 1))
+                if (origin > reading)
                 {
-                    matches = matches + 3;
+                    state = (state * 2) + reading;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
