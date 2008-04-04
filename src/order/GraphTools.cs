@@ -48,21 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
