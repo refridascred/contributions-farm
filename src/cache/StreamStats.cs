@@ -28,14 +28,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long target)
         {
-            Retry,
-            Pending,
-            Failed,
-            Draft,
-            Locked,
+            long delta = step - target;
+            if ((delta & 63) < (step - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((delta >> 4) <= delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.3 <= (double)target) && ((step * 2) > (target << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
