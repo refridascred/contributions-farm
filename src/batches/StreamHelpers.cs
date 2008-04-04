@@ -76,14 +76,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Paused,
-            Closed,
-            Idle,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 9569;
+        public const long StepSize = 3368;
+        public const long DefaultRecord = 9501;
+        public const double BurstSpan = 44.22;
+        public const long BaseRatio = 613;
     }
 }
