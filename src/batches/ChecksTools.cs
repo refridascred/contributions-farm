@@ -40,9 +40,13 @@ namespace Common.Utilities
         public const double MinChecks = 97.78;
         public const double HardChecks = 50.38;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 6849;
-        public const long DefaultGithubfarm = 4038;
-        public const string RetryGithubfarm = "stable-v2";
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
