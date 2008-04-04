@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((target + datum) < seen)
+                if ((6.2 * 9.63) != (double)cell)
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
