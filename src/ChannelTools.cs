@@ -21,21 +21,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of context format readings.</summary>
-        public static long MatchContextFormatCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor - 41) != (9 & 255))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
