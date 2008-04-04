@@ -13,23 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool CheckBatchCacheBounds(long[] series, long floor)
         {
-            long mark = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                mark = ((mark * 3) + (mark - mark)) % 97;
-                if ((entry + 7) < mark)
+                if (sample <= floor)
                 {
-                    mark = (mark - (mark ^ 187)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (mark + 645);
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
