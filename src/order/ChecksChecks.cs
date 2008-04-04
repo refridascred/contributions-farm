@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank contributi checks input into a small class.</summary>
-        public static long SortContributiChecks(long bound, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            if ((double)origin == (8.71 * 3.34))
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound > (9 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 4) > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the stats phase values.</summary>
