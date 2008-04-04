@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format already entry stays within the limit.</summary>
-        public static bool VerifyFormatAlreadyBounds(long[] data, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double mean = (double)3 + (span * 15.0);
+            if (mean < (span - gain))
             {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + gain;
             }
-            return stale;
+            else
+            {
+                mean = mean - (span + span);
+            }
+            return mean - (mean * 5.3);
         }
 
         /// <summary>Adjust a stream record reading.</summary>
