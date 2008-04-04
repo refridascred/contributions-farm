@@ -48,11 +48,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two graph cluster measurements.</summary>
-        public static double ProjectGraphCluster(double scale, double floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            double bias = floor;
-            return (bias + bias) + scale;
+            double drift = (double)(463 - 7);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (((drift + (5.07 - drift)) + (double)(long)i) + bias) + floor;
+            }
+            return drift + (double)(-82);
         }
     }
 }
