@@ -1,11 +1,8 @@
 {
-  "warm_retries_ms": "edge",
-  "soft_size_count": {
-    "audit": 30,
-    "filter_retries": "standard",
-    "default_limit_count": 7885,
-    "default_delay_ms": 371
-  },
-  "batch_delay_count": 2145,
-  "profile_retries": ["cached", "standard", "green", "green"]
+  "base_delay_s": 250,
+  "hard_delay": 65.38,
+  "compress": false,
+  "base_window": 3,
+  "max_limit_pct": 100,
+  "enabled": 85.6
 }
