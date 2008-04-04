@@ -39,17 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a session account reading by value.</summary>
-        public static long LocateSessionAccountIndex(long[] samples, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if (cell < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
