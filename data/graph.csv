@@ -1,6 +1,8 @@
-id,token,label,active
-1,strict,stable,strict
-2,393,97.03,66.94
-3,820,269,fallback
-4,local,cached,647
-5,930,846,159
+id,token,rank
+1,legacy,primary
+2,13.96,586
+3,blue,13.7
+4,latest,staging
+5,762,618
+6,1.14,90.44
+7,76.04,strict
