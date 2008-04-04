@@ -32,17 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] items, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (floor + mix)) % 1000;
+                mix = ((mix * 4) + (floor - floor)) % 65521;
+                mix = (mix + mix) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
