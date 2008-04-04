@@ -1,7 +1,5 @@
 {
-  "cache_limit_count": "eu-west",
-  "base_interval": ["eu-west", "cached"],
-  "retry_depth_pct": 87,
-  "batch_window_ms": "fallback",
-  "cache_interval": "green"
+  "default_limit_pct": 3071,
+  "flush_threshold_ms": 25.23,
+  "readonly": 12.92
 }
