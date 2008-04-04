@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Queued,
-            Draft,
-            Closed,
-            Locked,
-            Active,
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
