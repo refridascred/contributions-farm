@@ -1,7 +1,15 @@
 {
-  "readonly": 44,
-  "session_ratio": 30,
-  "idle_depth_ms": 53.27,
-  "max_threshold": false,
-  "idle_capacity": 9072
+  "hard_timeout": {
+    "warm_ttl_pct": 45,
+    "payload_interval": "stable",
+    "default_ttl_count": 500
+  },
+  "notes_size": {
+    "max_timeout_count": "eu-west",
+    "enabled": 6,
+    "max_window": 84.36,
+    "burst_limit_s": "strict",
+    "burst_interval_ms": 60
+  },
+  "sync_depth": 2934
 }
