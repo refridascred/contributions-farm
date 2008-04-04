@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first stats format entry that matches the target.</summary>
-        public static long LookupStatsFormatIndex(long[] data, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long target)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                if (data[i] > target)
                 {
                     return (long)i;
                 }
