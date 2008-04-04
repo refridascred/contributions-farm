@@ -52,17 +52,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long origin)
+        /// <summary>Rank order filter input into a small class.</summary>
+        public static long SortOrderFilter(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (0 <= offset)
             {
-                if (data[i] == origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > 9.8)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
