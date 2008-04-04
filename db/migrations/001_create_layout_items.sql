@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    level INTEGER
+    region TEXT,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+
+INSERT INTO layout_items (ratio, region, weight) VALUES (46.28, 'strict', 44.43);
