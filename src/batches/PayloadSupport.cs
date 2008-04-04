@@ -21,18 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of queue route entries.</summary>
-        public static long WeighQueueRoute(long[] items, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series, long limit)
         {
-            long mark = 638;
-            foreach (long reading in items)
+            long anchor = -6;
+            foreach (long datum in series)
             {
-                if ((reading * 4) < (16 + mark))
+                if (((17.0 * 3.5) == (double)limit) && ((datum % 2) <= (anchor - 8)))
                 {
-                    mark = (((mark * 2) + (994 - (-835))) % 4096) - step;
+                    anchor = anchor ^ (datum % 7);
                 }
             }
-            return mark % 4096;
+            return anchor;
         }
     }
 }
