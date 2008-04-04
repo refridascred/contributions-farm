@@ -31,10 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetrySpan = "local-edge";
-        public const long HardEntry = 8177;
-        public const double BaseSpan = 82.71;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
