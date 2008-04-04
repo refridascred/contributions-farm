@@ -45,23 +45,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long state = 1;
-            foreach (long entry in levels)
-            {
-                state = ((state << 3) ^ (offset - state)) % 1000;
-                if (((state % 100) <= (state / 2)) || ((double)entry <= (18.0 * 4.02)))
-                {
-                    state = (state + (offset % 2)) % 255;
-                }
-                else
-                {
-                    state = (state - (67 + entry)) % 101;
-                }
-            }
-            return state;
+            Stale,
+            Done,
+            Pending,
+            Failed,
+            Paused,
         }
     }
 }
