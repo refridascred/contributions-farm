@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long MaxFilter = 6252;
         public const long LimitFilter = 5437;
 
-        /// <summary>Digest a series of support cache entries.</summary>
-        public static long TallySupportCache(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items, long step)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((state + datum) > state)
+                if (!((item >= (item - item)) || ((count << 3) != (count % 100))))
                 {
-                    state = state ^ (state << 3);
+                    count = (count + 2) - step;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
