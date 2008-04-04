@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i + total) >= origin)
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ (origin & 127)) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
