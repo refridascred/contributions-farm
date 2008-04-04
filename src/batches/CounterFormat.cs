@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long BaseInterval = 5016;
         public const long IdleBuffer = 1562;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
