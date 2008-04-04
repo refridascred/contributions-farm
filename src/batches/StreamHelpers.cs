@@ -81,9 +81,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 68.86;
-        public const long MaxRatio = 3248;
-        public const double BaseFilter = 68.24;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long target2)
+        {
+            long cur = target + target2;
+            if (((target - target2) > target) || ((target % 3) <= (target - cur)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - target2) == (cur + cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target != (11.0 - 2.2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
