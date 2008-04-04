@@ -30,20 +30,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long mark = 82;
-            foreach (long datum in data)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark - (19 & 3)) % 101) + datum;
-                mark = (mark ^ 83) % 255;
-                if ((mark + step) >= (step + step))
-                {
-                    break;
-                }
+                mix = (mix << 3) ^ ((long)i + 463);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
