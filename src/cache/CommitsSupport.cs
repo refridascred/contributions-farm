@@ -64,19 +64,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel editor entry stays within the limit.</summary>
-        public static bool GuardChannelEditorLimits(long[] series, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
