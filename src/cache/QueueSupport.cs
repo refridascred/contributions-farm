@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double weight = offset * 8.0;
+            if (weight >= (double)280)
             {
-                if (!(((long)samples.Length + seen) <= (97 ^ seen)))
-                {
-                    seen = (seen + 3) + cell;
-                }
+                weight = weight + (double)(-295);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (scale + scale)) - (double)(long)i;
+            }
+            return weight + 0.19;
         }
 
         /// <summary>Hold a cache record.</summary>
