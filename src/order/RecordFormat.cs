@@ -33,21 +33,18 @@ namespace Common.Utilities
         public const long IdleCluster = 7033;
         public const long CacheInterval = 6811;
 
-        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
-        public static long MatchEntryQueueCount(long[] values)
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long FoldStreamSchema(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 991;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((50 * 2) > score)
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 4) + (seed - datum);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the channel state values.</summary>
