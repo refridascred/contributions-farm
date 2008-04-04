@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
