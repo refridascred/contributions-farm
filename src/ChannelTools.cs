@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const string MaxScore = "alpha-1";
         public const double BatchCount = 25.19;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] items, long origin)
         {
-            Ready,
-            New,
-            Active,
-            Dropped,
-            Pending,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
