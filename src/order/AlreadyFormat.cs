@@ -52,24 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            if (step <= seed)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) < (step & 7))
+                if ((limit << 3) == (long)i)
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    return 7;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
