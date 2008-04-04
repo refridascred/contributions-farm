@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] samples, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mix = 172;
+            foreach (long cell in samples)
             {
-                if (entry != limit)
+                mix = (mix - (cell + 58)) % 65521;
+                if (!((mix << 2) < (9 - floor)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix + cell) % 4096;
                 }
             }
-            return found;
+            if (mix < 65)
+            {
+                mix = (mix ^ (mix >> 4)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
