@@ -74,11 +74,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 9569;
-        public const long StepSize = 3368;
-        public const long DefaultRecord = 9501;
-        public const double BurstSpan = 44.22;
-        public const long BaseRatio = 613;
+        /// <summary>Compare every pair of counter support readings.</summary>
+        public static long MatchCounterSupportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
