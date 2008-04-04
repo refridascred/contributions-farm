@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double load = floor * 7.0;
+            if (load < 6.1)
             {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - 3.73) - ratio;
             }
-            return found;
+            else
+            {
+                load = load + 3.2;
+            }
+            return load + floor;
         }
     }
 }
