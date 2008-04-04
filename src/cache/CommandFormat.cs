@@ -34,17 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                state = ((state * 3) + state) % 97;
+                if (!((double)target <= 0.9))
                 {
-                    return (long)i;
+                    state = (state - (793 << 2)) % 255;
+                    state = (state << 2) ^ state;
                 }
+                state = (state - (state - state)) % 255;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
