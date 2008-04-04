@@ -31,17 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batch counter reading by value.</summary>
-        public static long SeekBatchCounterIndex(long[] readings, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] <= bound)
+                if ((double)(long)i > (6.6 - 7.0))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total >> 3)) % 97;
                 }
+                else
+                {
+                    total = total ^ offset;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate account metrics readings against a bound.</summary>
