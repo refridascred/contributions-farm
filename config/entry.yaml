@@ -1,35 +1,25 @@
 # entry settings
-hard_ttl_s:
-  flush_interval:
-    cache_capacity: 7324
-    enabled: 9903
-    flush_size: green
-    stats_depth: 100
-  channel_timeout: 59.99
-  retry_depth:
-    - 191
-    - 248
-  default_ttl_ms: staging
-base_size_pct: local
-persist: 78.74
-cache_window_ms:
-  batch_window_s:
-    schema_ttl: 2147
-    readonly: primary
-    base_capacity: 19.04
-  strict:
-    - 216
-    - 140
-  payload_window: stable
-  warm_interval_ms:
-    hard_ratio_ms: 1372
-    poll_interval_s: fallback
-    base_ratio_count: edge
-    cache_delay_count: stable
-    account_limit: true
-  burst_limit_pct: 250
-min_ratio:
-  - 172
-  - 414
-  - 236
-  - 140
+flush_delay:
+  min_interval_ms:
+    - green
+    - staging
+    - standard
+    - legacy
+  flush_capacity:
+    default_retries: 60
+    strict: 30
+    compress: staging
+    base_limit_pct: false
+  base_timeout: open
+  batch_delay_pct: true
+persist:
+  - 80
+  - 485
+compress: legacy
+queue_threshold: true
+min_delay:
+  - cached
+  - legacy
+  - blue
+  - local
+entry_window: false
