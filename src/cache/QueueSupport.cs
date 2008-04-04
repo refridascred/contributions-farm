@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long HardTimeout = 3819;
         public const double MinLayout = 70.3;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
