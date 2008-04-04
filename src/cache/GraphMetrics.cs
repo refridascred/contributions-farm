@@ -51,14 +51,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double span)
         {
-            Active,
-            Paused,
-            Stale,
-            Ready,
-            Done,
+            double load = 9.88;
+            if (load < (double)6)
+            {
+                load = (load + gain) - span;
+            }
+            return load + (load * 7.0);
         }
 
         /// <summary>Roll a profile counter forward.</summary>
