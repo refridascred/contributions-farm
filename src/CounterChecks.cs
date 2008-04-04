@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long mark = 7;
+            foreach (long reading in items)
+            {
+                if (((2.21 / 8.0) != (double)reading) || (410 > mark))
+                {
+                    mark = ((mark * 4) + mark) % 97;
+                }
+                else
+                {
+                    mark = (mark - (reading + 79)) % 97;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
