@@ -1,20 +1,4 @@
 # entry settings
-base_threshold_s: 8431
-base_threshold_pct: legacy
-default_depth_pct: false
-batch_threshold_count:
-  cache_capacity_s: 10.27
-  base_capacity_pct: stable
-  sync_window_count: open
-  min_size_ms:
-    buffer_limit: 2221
-    token_ratio: edge
-    warm_depth_ms: false
-    cache_interval_s: open
-  enabled: 75.88
-  hard_delay_s:
-    readonly: 30
-    hard_capacity_count: 9277
-    editor_retries: 250
-    min_ratio_pct: 7870
-min_depth_count: 30
+filter_capacity: 37.75
+max_ratio: true
+readonly: legacy
