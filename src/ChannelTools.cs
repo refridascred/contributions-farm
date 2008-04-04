@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "open";
-        public const long DefaultContributi = 8430;
-        public const long BurstContributi = 8500;
-        public const string MaxScore = "alpha-1";
-        public const double BatchCount = 25.19;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatBounds(long[] items, long origin)
