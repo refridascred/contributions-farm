@@ -20,14 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Stale,
-            Dropped,
-            Synced,
-            Active,
-            Ready,
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
