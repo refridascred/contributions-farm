@@ -35,22 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long matches = 0;
+            long score = 81;
             foreach (long sample in items)
             {
-                if ((857 + step) == (step + step))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score + (sample % 24)) % 101;
             }
-            return matches;
+            if (score > 860)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
     }
 }
