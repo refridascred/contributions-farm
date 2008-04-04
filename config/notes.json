@@ -1,14 +1,19 @@
 {
-  "enabled": true,
-  "warm_interval_count": "open",
-  "warm_delay_s": {
-    "readonly": 250,
-    "warm_ttl": "open",
-    "warm_capacity_s": 60,
-    "compress": {
-      "min_delay_s": ["blue", "open"],
-      "payload_threshold": "strict",
-      "cache_ttl_ms": 250
-    }
-  }
+  "session_threshold": 45,
+  "cache_ttl": {
+    "command_capacity": [6, 140, 126],
+    "retry_size_pct": ["open", "latest", "staging", "standard"],
+    "sync_ttl_pct": 77.56,
+    "idle_depth_ms": 3588
+  },
+  "filter_ttl": 36,
+  "dry_run": {
+    "hard_ratio_pct": false,
+    "dry_run": 87,
+    "max_capacity": true,
+    "soft_capacity_pct": 87.79,
+    "session_depth": 48.43
+  },
+  "retry_ratio_pct": 25,
+  "soft_timeout_count": 30
 }
