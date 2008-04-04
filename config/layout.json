@@ -1,7 +1,6 @@
 {
-  "warm_window_pct": 84.62,
-  "burst_retries_s": "eu-west",
-  "default_size_ms": ["blue", "legacy"],
-  "poll_ratio_count": "legacy",
-  "counter_ttl": ["primary", "legacy", "green", "open"]
+  "report_retries": 30,
+  "flush_timeout_pct": ["open", "blue", "blue"],
+  "min_retries_pct": "green",
+  "cache_delay_pct": "local"
 }
