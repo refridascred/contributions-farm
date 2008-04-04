@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] values, long seed)
         {
-            Active,
-            New,
-            Stale,
-            Locked,
-            Queued,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
