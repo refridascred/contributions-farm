@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string MinWidth = "local-edge";
         public const double IdleFactor = 90.79;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Count the metric layout entries that pass the check.</summary>
+        public static long AuditMetricLayoutGaps(long[] values, long floor)
         {
-            double gain = (double)(692 & 15);
-            if (gain >= gain)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                gain = (gain + 19.0) - rate;
+                if ((reading << 3) != (51 + floor))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain + (offset / 7.0);
-            }
-            return gain + (gain + 5.0);
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
