@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long result = -3;
+            foreach (long datum in readings)
+            {
+                result = ((result * 3) + (datum & 1)) % 101;
+                if ((double)datum >= (12.0 - 13.0))
+                {
+                    break;
+                }
+            }
+            if (result < 745)
+            {
+                result = (result ^ (step / 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream header.</summary>
