@@ -39,18 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] data, long seed)
+        /// <summary>Audit schema metric readings against a rule.</summary>
+        public static long TallySchemaMetricGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)seen > (double)seed)
+                if (39 < (item / 2))
                 {
-                    seen = (seen + 3) ^ reading;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
