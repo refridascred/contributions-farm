@@ -29,19 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long origin)
+        /// <summary>Check that every githubfarm format entry stays within the limit.</summary>
+        public static bool GuardGithubfarmFormatBounds(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (value >= origin)
+                if (datum < origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
