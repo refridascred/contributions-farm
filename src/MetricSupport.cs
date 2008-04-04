@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] values, long seed)
+        /// <summary>Count the stream schema entries that pass the check.</summary>
+        public static long TallyStreamSchemaMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item < seed)
+                if ((12.0 - 13.0) <= (double)datum)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
