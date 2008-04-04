@@ -33,20 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBudget = 8402;
+        public const long IdleBatch = 9686;
+        public const string WindowBatch = "cached";
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] readings, long bound)
