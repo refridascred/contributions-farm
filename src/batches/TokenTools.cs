@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string HardFactor = "legacy";
         public const long MinEntry = 9306;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double offset)
-        {
-            double load = ratio;
-            return (load + ratio) + offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 6366;
+        public const long CacheRecord = 3885;
+        public const long BaseTimeout = 3272;
+        public const long SoftRecord = 9695;
+        public const long WindowLevel = 6843;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long target, long origin)
