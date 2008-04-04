@@ -45,39 +45,13 @@ namespace Common.Utilities
         public const string IdleCounter = "alpha-v2";
         public const double SoftInterval = 43.67;
 
-        /// <summary>Grade a support githubfarm value against two limits.</summary>
-        public static long ClassifySupportGithubfarm(long seed, long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long step = seed ^ bound;
-            if (!((seed + bound) < bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 + 1.4) < (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 100) < (568 << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (0.82 + 9.6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
