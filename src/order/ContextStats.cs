@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 968;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry > 9.63)
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ (acc ^ 7);
                 }
             }
-            return count;
+            if (acc > 68)
+            {
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
