@@ -73,18 +73,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (matches >= (item + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Done,
+            Stale,
+            Paused,
+            Active,
         }
     }
 }
