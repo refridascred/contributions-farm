@@ -27,11 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            long sum = 651;
+            foreach (long item in samples)
+            {
+                sum = ((sum << 2) ^ (sum + 4)) - item;
+            }
+            if (sum < (-71))
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
