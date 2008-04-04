@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long TallyGraphSchemaHits(long[] data, long seed)
         {
-            long mark = 58;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((mark ^ mark) != (mark / 5)) && (676 >= mark))
+                if (matches <= entry)
                 {
-                    mark = (mark + (mark / 6)) + datum;
+                    matches = (matches + 2) - seed;
                 }
             }
-            if (mark > (-29))
-            {
-                mark = ((mark * 2) + mark) % 97;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
