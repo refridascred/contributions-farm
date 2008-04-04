@@ -23,14 +23,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data, long seed)
         {
-            Synced,
-            Ready,
-            Active,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - 34) != (seed / 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
