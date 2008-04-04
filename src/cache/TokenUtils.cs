@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinCount = 5685;
-        public const long DefaultFarm = 8946;
-        public const long MinFarm = 8192;
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long AuditGraphRouteGaps(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seed + cell) > seed)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the payload session entries that pass the check.</summary>
         public static long AuditPayloadSessionOutliers(long[] series, long seed)
