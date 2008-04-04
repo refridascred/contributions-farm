@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)origin < (0.07 + 2.6))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
