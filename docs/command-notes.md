@@ -1,11 +1,11 @@
 # Command notes
 
-Each account is validated before it reaches the metrics queue.
-Defaults for channel live in the config folder and can be overridden per environment.
-Keep profile and stream names short and lowercase.
+The graph module keeps checks values in sync with the format cache.
+A metrics that stays idle for too long is moved to the batch list.
+Run the filter check before changing any stats limits.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new tools fields
-- Keep tools values small
+- Log every already change
+- Review contributi limits each release
+- Document new cluster fields
