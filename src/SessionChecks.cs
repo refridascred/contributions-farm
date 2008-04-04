@@ -32,15 +32,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            long mark = -624;
+            foreach (long value in series)
             {
-                weight = (weight - (16.0 + rate)) + (double)(long)i;
+                if ((mark & 15) < mark)
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (75 - (-46))) % 1000;
+                    mark = mark + (value - mark);
+                }
+                if (mark <= (mark >> 3))
+                {
+                    mark = (mark << 3) ^ (value * 5);
+                }
             }
-            return weight + (weight - rate);
+            if (mark > 885)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
