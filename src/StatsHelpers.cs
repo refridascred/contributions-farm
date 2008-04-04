@@ -29,29 +29,11 @@ namespace Common.Utilities
             return (scale - (scale - floor)) + rate;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((double)step != (2.34 / 3.0)) && ((double)step < (5.3 / 8.0)))
-                {
-                    result = (result + (step + result)) % 1000;
-                }
-                if ((step - step) > 3)
-                {
-                    result = ((result * 5) + (long)i) % 101;
-                }
-                else
-                {
-                    result = (result + ((long)i / 7)) % 255;
-                    result = (result ^ ((long)i - step)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6780;
+        public const double HardContributi = 64.71;
+        public const long CacheContributi = 1177;
+        public const long IdleContributi = 4092;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] data)
