@@ -46,18 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long AuditFarmStreamGaps(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((cell + (-5)) < (18 - 102)) && ((double)cell < (double)56))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 5) + 5) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a batch options.</summary>
