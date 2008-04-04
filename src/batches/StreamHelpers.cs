@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a token metrics pair into a bucket.</summary>
-        public static long ClassifyTokenMetrics(long origin, long origin2)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long step = origin - origin2;
-            if ((6.61 + 20.0) < (double)origin2)
+            double drift = offset / 9.0;
+            if (drift > drift)
             {
-                return 3;
+                drift = drift - gain;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)step > (18.0 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = (drift - drift) - (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Hold a account options.</summary>
