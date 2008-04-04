@@ -15,10 +15,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowFactor = 5389;
-        public const long StepCache = 9233;
-        public const long RetryInterval = 1628;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long limit)
+        {
+            if (limit < (limit - (-830)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ 271) >= (limit << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit > (0.1 - 5.58)) || (offset < (offset / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((limit % 60) < (limit - offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string StepStream = "standard-1";
