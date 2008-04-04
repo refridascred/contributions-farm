@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Locked,
-            Queued,
-            Idle,
-            Failed,
+            Dropped,
+            Draft,
             Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
