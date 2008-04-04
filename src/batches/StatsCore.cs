@@ -46,12 +46,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 5789;
-        public const string StepSession = "legacy-1";
-        public const double WindowLevel = 68.87;
-        public const long SoftFactor = 726;
-        public const long HardLevel = 1416;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long offset)
+        {
+            long prev = origin ^ offset;
+            if (((offset / 2) > (offset % 2)) || ((origin >> 3) >= (origin * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev & 1) < (890 ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (64 ^ 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= (prev >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples)
