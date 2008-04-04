@@ -37,16 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                sum = sum - sum;
-                sum = ((sum * 2) + (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
