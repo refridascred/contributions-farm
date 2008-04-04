@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-1";
         public const string StepLevel = "staging-edge";
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
