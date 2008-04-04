@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] items, long seed)
         {
-            long step2 = floor + step;
-            if (((step + step) >= (step2 - step2)) && (floor >= (step % 5)))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor < (7.0 - 2.0))
+                if ((seed + (-568)) < (tally << 1))
                 {
-                    return 5;
+                    tally = (tally + 1) - datum;
                 }
                 else
                 {
-                    if ((679 + floor) <= (step >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of window channel readings.</summary>
