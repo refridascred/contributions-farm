@@ -35,21 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (origin >= 5)
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
