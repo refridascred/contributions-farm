@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a stats info.</summary>
