@@ -68,15 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long span = offset - floor;
+            if ((floor + offset) >= (span & 15))
             {
-                total = ((total * 2) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (((floor + span) >= (93 / 3)) && (17 <= (offset + 17)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 3) <= ((-7) * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - floor) <= (offset & 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
