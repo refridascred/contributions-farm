@@ -1,4 +1,4 @@
 # support settings
-metrics_capacity: 4731
-persist: 1024
-burst_capacity: 60.79
+burst_ratio_s: 705
+persist: 5063
+counter_delay: 66.65
