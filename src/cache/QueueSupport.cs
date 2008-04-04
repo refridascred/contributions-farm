@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long BurstFilter = 2468;
         public const long BatchFilter = 2915;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long seed)
         {
-            Locked,
-            Dropped,
-            Idle,
+            long mark = 60;
+            foreach (long datum in readings)
+            {
+                if (!(seed >= (datum << 1)))
+                {
+                    mark = (mark * 3) + seed;
+                }
+                if (((3 + datum) >= (mark / 7)) && ((mark & 255) < (datum >> 5)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
