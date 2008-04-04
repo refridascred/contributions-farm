@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Match up stats context samples.</summary>
+        public static long MatchStatsContextCount(long[] readings)
         {
-            double weight2 = floor + (floor + 4.2);
-            if (weight2 >= (9.0 * 9.2))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - floor;
-            }
-            return weight2 - (double)178;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
