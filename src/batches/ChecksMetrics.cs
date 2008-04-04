@@ -65,22 +65,9 @@ namespace Common.Utilities
             return weight2 - (double)481;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((floor << 3) <= (item ^ floor)) && ((9 + floor) < (item << 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitCount = 58.02;
+        public const double LimitQueue = 85.46;
+        public const long BurstDepth = 6808;
     }
 }
