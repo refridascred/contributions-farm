@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9570;
-        public const string LimitCount = "staging-edge";
-        public const string SoftSpan = "local-v2";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)cell > (0.2 - 7.0)) && ((cell + cell) >= (hits + (long)readings.Length)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] values, long limit)
