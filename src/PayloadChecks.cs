@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values, long seed)
+        /// <summary>Iterate the context support series from a seed.</summary>
+        public static long IterateContextSupport(long seed)
         {
-            long result = 97;
-            foreach (long reading in values)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)result >= (13.0 / 4.0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    result = ((result ^ (seed >> 1)) % 1000) ^ reading;
+                    mix = mix - (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Digest a series of route farm entries.</summary>
