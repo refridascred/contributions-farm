@@ -23,15 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double gain, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            double weight = 9.0;
+            if (weight >= (gain + span))
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                weight = weight - weight;
             }
-            return mix;
+            return weight + (weight + gain);
         }
 
         /// <summary>Hold a window header.</summary>
