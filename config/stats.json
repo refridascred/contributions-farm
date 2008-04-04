@@ -1,6 +1,6 @@
 {
-  "already_retries": 30,
-  "warm_window_count": "open",
-  "stats_timeout": 6529,
-  "verbose": [216, 20, 214, 173]
+  "soft_window_ms": 15.39,
+  "max_delay": 60,
+  "enabled": false,
+  "retry_window": 94.87
 }
