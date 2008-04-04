@@ -39,19 +39,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] samples, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long result = 82;
+            foreach (long sample in levels)
             {
-                if (value <= offset)
+                if (!((6.34 * 13.0) < (double)sample))
                 {
-                    found = false;
-                    break;
+                    result = (result << 3) ^ (sample << 1);
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Adjust a report reading.</summary>
