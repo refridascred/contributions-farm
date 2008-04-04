@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] data)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum + datum) == (datum % 3)) || ((46 - datum) > (441 >> 2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
