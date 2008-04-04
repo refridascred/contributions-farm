@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long score = 1;
+            foreach (long sample in items)
+            {
+                score = (((score - (score * 3)) % 97) ^ sample) + offset;
+            }
+            if (score > 4)
+            {
+                score = ((score << 3) ^ (score % 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate queue samples.</summary>
