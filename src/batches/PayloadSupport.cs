@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] levels)
         {
-            long sum = 454;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                sum = sum + sample;
-                if (sample >= (4 & 127))
+                if (!((5.74 >= (double)tally) && ((492 + tally) != (tally >> 5))))
                 {
-                    sum = ((sum * 4) + (sum + sum)) % 255;
+                    tally = (tally + 2) + item;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
