@@ -57,21 +57,10 @@ namespace Common.Utilities
             return mean - (double)595;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardInterval = 2002;
+        public const long RetryCount = 8347;
+        public const string BaseBudget = "alpha-v2";
+        public const long MinBatch = 5038;
     }
 }
