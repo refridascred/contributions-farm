@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum & 63) < (datum * 3)) && ((datum ^ seen) < ((long)levels.Length - 1)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
