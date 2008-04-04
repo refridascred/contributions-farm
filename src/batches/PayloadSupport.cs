@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long TotalContextFilter(long[] series)
-        {
-            long sum = 4;
-            foreach (long value in series)
-            {
-                if ((value >> 1) != (1 & 31))
-                {
-                    sum = sum - (value * 4);
-                }
-                else
-                {
-                    sum = (sum - (value * 2)) % 65521;
-                }
-            }
-            if (sum > 461)
-            {
-                sum = sum + (long)series.Length;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleCount = "legacy-1";
+        public const string BaseTimeout = "legacy-1";
+        public const string WindowQueue = "latest";
+        public const long SoftRatio = 3965;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long bound)
