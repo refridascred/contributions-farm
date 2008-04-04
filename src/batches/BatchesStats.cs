@@ -40,26 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long seed)
         {
-            long mark = -92;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (cell < (cell - cell))
+                if (value > seed)
                 {
-                    mark = ((mark * 4) + 6) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ (cell ^ cell);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 508)
-            {
-                mark = ((mark * 3) + (mark >> 1)) % 97;
-            }
-            return mark % 65521;
+            return ok;
         }
     }
 }
