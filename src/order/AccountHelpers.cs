@@ -52,16 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics payload samples.</summary>
-        public static long ScoreMetricsPayload(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long floor)
         {
-            long state = 99;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                state = ((state << 3) ^ (state & 255)) % 255;
-                state = state ^ (state ^ value);
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Accumulate support samples.</summary>
