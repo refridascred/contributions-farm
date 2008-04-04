@@ -90,12 +90,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4291;
-        public const string MaxSpan = "fallback-v2";
-        public const string BatchTimeout = "legacy";
-        public const long CacheCount = 9613;
-        public const long CacheBudget = 9071;
+        /// <summary>Accumulate order format samples.</summary>
+        public static long FoldOrderFormat(long[] levels)
+        {
+            long total = 9;
+            foreach (long entry in levels)
+            {
+                if (!((entry * 4) > 734))
+                {
+                    total = total + (entry & 127);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] readings, long target)
