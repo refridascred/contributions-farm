@@ -1,19 +1,12 @@
 {
-  "session_threshold": 45,
-  "cache_ttl": {
-    "command_capacity": [6, 140, 126],
-    "retry_size_pct": ["open", "latest", "staging", "standard"],
-    "sync_ttl_pct": 77.56,
-    "idle_depth_ms": 3588
+  "sync_size": {
+    "max_window_s": [423, 466, 371, 441],
+    "warm_capacity_count": [310, 247],
+    "audit": "staging",
+    "cache_depth": 2776
   },
-  "filter_ttl": 36,
-  "dry_run": {
-    "hard_ratio_pct": false,
-    "dry_run": 87,
-    "max_capacity": true,
-    "soft_capacity_pct": 87.79,
-    "session_depth": 48.43
-  },
-  "retry_ratio_pct": 25,
-  "soft_timeout_count": 30
+  "graph_capacity": 83.78,
+  "cluster_retries": [448, 496],
+  "window_retries": 100,
+  "farm_ratio": true
 }
