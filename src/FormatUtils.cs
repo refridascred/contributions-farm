@@ -65,11 +65,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9795;
-        public const long SoftLevel = 1393;
-        public const long WindowRecord = 9832;
-        public const long MinRecord = 5105;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
+        {
+            long carry = 4;
+            foreach (long sample in data)
+            {
+                if (((sample << 1) != (sample + (long)data.Length)) && ((carry % 16) < carry))
+                {
+                    carry = (carry + (carry << 2)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] values, long origin)
