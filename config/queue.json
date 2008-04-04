@@ -1,24 +1,7 @@
 {
-  "sync_retries_pct": 24,
-  "checks_ratio": {
-    "strict": 48.93,
-    "persist": [159, 300, 412],
-    "soft_window": ["green", "green", "strict"],
-    "audit": 51
-  },
-  "compress": {
-    "audit": 30,
-    "retry_capacity_ms": 59.49,
-    "min_interval": "cached",
-    "max_timeout_ms": 40,
-    "soft_ttl_ms": "cached",
-    "base_ratio_s": {
-      "poll_capacity_count": "primary",
-      "burst_interval_ms": "local",
-      "channel_timeout": false
-    }
-  },
-  "report_depth": "stable",
-  "readonly": 0.68,
-  "sync_depth_s": false
+  "readonly": 44,
+  "session_ratio": 30,
+  "idle_depth_ms": 53.27,
+  "max_threshold": false,
+  "idle_capacity": 9072
 }
