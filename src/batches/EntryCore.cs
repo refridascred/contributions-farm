@@ -72,18 +72,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] values, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((384 - (-9)) >= (tally + floor))
+                if ((4.09 / 4.0) >= (double)hits)
                 {
-                    tally = (tally + 2) + item;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
