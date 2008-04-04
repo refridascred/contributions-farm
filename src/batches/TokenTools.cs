@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const string HardFactor = "legacy";
         public const long MinEntry = 9306;
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long WeighAccountProfile(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = 2;
-            foreach (long item in values)
-            {
-                if ((double)83 <= (double)score)
-                {
-                    score = (((score * 2) + score) % 255) + item;
-                }
-                else
-                {
-                    score = score + score;
-                }
-            }
-            return score;
+            Closed,
+            Retry,
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Fold a list of support readings.</summary>
