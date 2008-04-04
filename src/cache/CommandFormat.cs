@@ -32,18 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] levels, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (62 < (value - seen))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
