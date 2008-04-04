@@ -49,19 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Done,
         }
     }
 }
