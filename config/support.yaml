@@ -1,12 +1,11 @@
 # support settings
-poll_delay_ms: strict
-flush_timeout_pct: 1782
-base_threshold_ms: 100
-hard_ratio_pct:
-  hard_depth: 56.19
-  min_delay_count: 37.07
-  poll_window_s: local
-  enabled: 1024
-  compress:
-    - 14
-    - 392
+compress: 95
+batch_window_count: 3246
+queue_timeout: 30
+schema_size: false
+base_ratio_count:
+  readonly: edge
+  audit: 3128
+  cache_delay_ms: 2755
+  flush_threshold: 94.91
+editor_retries: staging
