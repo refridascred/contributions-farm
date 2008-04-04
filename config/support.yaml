@@ -1,13 +1,16 @@
 # support settings
-verbose: true
-counter_depth:
-  - 478
-  - 247
-  - 36
-  - 235
-hard_size_ms: open
-max_size_count:
-  - 169
-  - 86
-  - 396
-  - 380
+batch_interval_count:
+  window_threshold: 30
+  compress: cached
+  schema_capacity: 64.24
+batch_capacity_s: 84
+strict: cached
+compress:
+  - 175
+  - 341
+  - 53
+verbose: 2671
+stats_size:
+  - standard
+  - legacy
+  - staging
