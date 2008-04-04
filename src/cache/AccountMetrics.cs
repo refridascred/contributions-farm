@@ -34,18 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 6884;
+        public const long RetryInterval = 8789;
+        public const long CacheWidth = 2884;
+        public const long DefaultStream = 5355;
+        public const double HardInterval = 14.1;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] levels, long origin)
