@@ -74,22 +74,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen - datum) == (seen + datum)) || ((double)seen > (double)datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepScore = 8504;
+        public const long DefaultCache = 8197;
+        public const string MaxScore = "strict";
     }
 }
