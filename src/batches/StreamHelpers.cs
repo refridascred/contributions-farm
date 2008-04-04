@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double ratio = floor;
-            if (ratio <= 18.0)
-            {
-                ratio = (ratio + (1.4 * 16.0)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + 5.64;
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
