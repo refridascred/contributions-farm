@@ -40,17 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 81;
+            foreach (long item in data)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                total = (total - (7 * 4)) + item;
             }
-            return -1;
+            if (total > 83)
+            {
+                total = (total - 30) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
