@@ -33,19 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools queue entry stays within the limit.</summary>
-        public static bool GuardToolsQueueBounds(long[] items, long seed)
+        /// <summary>Derive the next stream tools value from a seed.</summary>
+        public static long IterateStreamTools(long limit)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= seed)
+                if (948 >= ((long)i & 127))
                 {
-                    ok = false;
-                    break;
+                    state = ((state << 3) ^ limit) % 255;
                 }
+                state = (state << 2) ^ (79 >> 5);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
