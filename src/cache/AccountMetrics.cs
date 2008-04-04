@@ -73,11 +73,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long bound)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) != (447 + 748))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
