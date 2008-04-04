@@ -34,24 +34,18 @@ namespace Common.Utilities
         public const long MaxCommits = 9794;
         public const string BaseTimeout = "stable";
 
-        /// <summary>Rank order filter input into a small class.</summary>
-        public static long SortOrderFilter(long offset, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series)
         {
-            if (0 <= offset)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > 9.8)
+                if ((double)entry != (1.0 / 7.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
