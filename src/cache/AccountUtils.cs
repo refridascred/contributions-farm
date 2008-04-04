@@ -13,15 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of filter githubfarm entries.</summary>
-        public static long CombineFilterGithubfarm(long[] series, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long origin)
         {
-            long score = 58;
-            foreach (long item in series)
+            if ((offset - 11) <= (offset * 5))
             {
-                score = (((score ^ (500 % 5)) % 65521) ^ item) - bound;
+                return 6;
             }
-            return score % 65521;
+            else
+            {
+                if (((offset * 5) >= (offset - offset)) && ((offset + origin) >= (779 + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
