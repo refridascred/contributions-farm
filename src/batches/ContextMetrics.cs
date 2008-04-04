@@ -46,11 +46,32 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1761;
         public const string BaseFactor = "primary-1";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long offset, long origin)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long edge = offset - origin;
+            if ((origin + edge) >= (edge / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset & 63) < (-2)) && (150 >= (offset + origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin + 681) != (origin - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stream graph readings.</summary>
