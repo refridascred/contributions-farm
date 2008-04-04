@@ -19,13 +19,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long seed, long offset)
         {
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            if ((seed + offset) == (offset * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (46 < (offset >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
