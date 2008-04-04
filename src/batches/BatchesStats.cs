@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= target)
+                if ((double)offset <= (double)mark)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark * 5) + (mark % 5)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the tools class values.</summary>
