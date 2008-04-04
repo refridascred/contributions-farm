@@ -19,26 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long acc = 3;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) <= acc)
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc - (long)items.Length)) % 65521;
-                }
-            }
-            if (acc > 78)
-            {
-                acc = (acc ^ (seed >> 1)) % 65521;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
