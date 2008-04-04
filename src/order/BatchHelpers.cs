@@ -32,23 +32,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] levels, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((-57) + origin) < 658)
+                if (reading != bound)
                 {
-                    sum = (sum + (113 + origin)) % 101;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return ok;
         }
     }
 }
