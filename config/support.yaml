@@ -1,16 +1,11 @@
 # support settings
-batch_interval_count:
-  window_threshold: 30
-  compress: cached
-  schema_capacity: 64.24
-batch_capacity_s: 84
-strict: cached
-compress:
-  - 175
-  - 341
-  - 53
-verbose: 2671
-stats_size:
-  - standard
-  - legacy
-  - staging
+already_ratio: false
+max_capacity_pct:
+  - 172
+  - 421
+  - 215
+compress: 39.38
+soft_retries_count:
+  - 414
+  - 291
+  - 496
