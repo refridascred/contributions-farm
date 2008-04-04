@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            Paused,
-            Dropped,
-            Stale,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits ^ value) == (14 + value))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
