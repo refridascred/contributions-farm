@@ -18,11 +18,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 5668;
-        public const string StepOrder = "cached";
-        public const string BaseWidth = "latest-1";
-        public const string IdleDepth = "latest-edge";
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
