@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (1 >> 4)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 58.88;
+        public const long BurstInterval = 8721;
+        public const string SoftFarm = "legacy-edge";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
