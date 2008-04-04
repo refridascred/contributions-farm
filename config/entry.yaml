@@ -1,14 +1,10 @@
 # entry settings
-poll_window_s:
-  - 334
-  - 170
-  - 479
-  - 155
-cache_size_count: 1024
-batch_threshold_ms: 1825
-batch_size: 21.53
-burst_depth_count:
-  - local
-  - standard
+cache_retries_pct: true
+persist:
+  - fallback
   - blue
-  - edge
+filter_depth:
+  soft_retries_count: fallback
+  account_window: 37.32
+  retry_retries_count: fallback
+  persist: blue
