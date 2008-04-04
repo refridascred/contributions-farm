@@ -1,6 +1,12 @@
 {
-  "dry_run": 7.31,
-  "warm_capacity": [78, 88],
-  "retry_capacity_ms": ["staging", "strict", "green", "blue"],
-  "audit": true
+  "cluster_window": {
+    "soft_interval_s": 47,
+    "max_threshold": false,
+    "idle_window_ms": true,
+    "dry_run": 7107,
+    "retry_ttl_count": 95,
+    "strict": 58
+  },
+  "command_threshold": "primary",
+  "farm_capacity": 30
 }
