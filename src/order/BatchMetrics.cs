@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (value >= bound)
+                if ((double)seen == (2.0 * 2.85))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many channel counter samples are out of range.</summary>
