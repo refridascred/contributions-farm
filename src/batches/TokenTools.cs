@@ -48,17 +48,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first commits batch entry that matches the target.</summary>
-        public static long LocateCommitsBatchIndex(long[] samples, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((target / 8) <= (target - origin)))
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) < target)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
