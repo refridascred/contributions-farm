@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 986;
+        public const long StepTimeout = 1574;
+        public const long BurstBudget = 2070;
+        public const long DefaultCache = 7412;
+        public const long BatchDepth = 3733;
 
         /// <summary>Digest a series of buffer filter entries.</summary>
         public static long ScoreBufferFilter(long[] samples)
