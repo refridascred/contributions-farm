@@ -33,13 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Synced,
-            Stale,
-            New,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 8184;
+        public const long StepSpan = 1624;
+        public const long HardBatches = 2417;
+        public const long SoftTimeout = 4466;
+        public const string RetryBatches = "primary-v2";
     }
 }
