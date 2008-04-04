@@ -34,17 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                if (((long)data.Length >> 1) < hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + sample) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
