@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long anchor = 49;
-            foreach (long entry in readings)
+            double mean = 3.09;
+            if (mean < (rate / 2.0))
             {
-                anchor = ((anchor << 2) ^ (anchor & 31)) ^ entry;
+                mean = (mean + rate) - floor;
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 3) + (5 % 60)) % 1000;
-            }
-            return anchor % 1000;
+            return mean + 4.0;
         }
 
         /// <summary>Describe the cluster level values.</summary>
