@@ -19,10 +19,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 36.21;
-        public const double BatchToken = 9.37;
-        public const long BurstSize = 9185;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 7070;
+        public const double WindowGraph = 19.42;
+        public const long SoftScore = 8916;
+        public const long RetryScore = 6058;
+        public const double StepGraph = 92.87;
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] readings)
