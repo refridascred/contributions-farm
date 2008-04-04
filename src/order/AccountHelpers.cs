@@ -88,32 +88,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank queue cluster input into a small class.</summary>
-        public static long ClassifyQueueCluster(long limit, long origin)
-        {
-            if (((-7) + origin) < limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((92 + limit) >= (67 - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4291;
+        public const string MaxSpan = "fallback-v2";
+        public const string BatchTimeout = "legacy";
+        public const long CacheCount = 9613;
+        public const long CacheBudget = 9071;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] readings, long target)
