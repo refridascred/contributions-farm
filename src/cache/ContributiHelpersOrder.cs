@@ -33,11 +33,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 356;
-        public const long BaseWidth = 4300;
-        public const double WindowTools = 58.79;
-        public const long BatchLevel = 22;
-        public const long RetryCount = 4406;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((seed - 619) <= seed)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
