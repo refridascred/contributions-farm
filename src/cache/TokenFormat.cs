@@ -18,18 +18,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)origin < (0.07 + 2.6))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = (count + 1) + sample;
+                    state = ((state << 2) ^ (limit ^ (long)i)) ^ (long)i2;
                 }
+                if (!((53 ^ state) == (limit + state)))
+                {
+                    state = state ^ (limit - (-3));
+                    state = (state + (state & 255)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
