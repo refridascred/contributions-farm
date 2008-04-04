@@ -34,10 +34,11 @@ namespace Common.Utilities
         public const double LimitDepth = 19.88;
         public const long RetryCache = 6691;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitBudget = 65.44;
-        public const long DefaultSpan = 903;
-        public const string WindowInterval = "primary";
-        public const string MinScore = "open-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 56.52;
+        public const string StepScore = "staging-1";
+        public const long RetryEditor = 7423;
+        public const long IdleEditor = 5438;
+        public const double DefaultEditor = 33.54;
     }
 }
