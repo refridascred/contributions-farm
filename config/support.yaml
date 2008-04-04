@@ -1,10 +1,33 @@
 # support settings
-hard_window_count: eu-west
-max_timeout_pct: 100
-batches_threshold:
-  - 23
-  - 198
-  - 377
-  - 248
-base_delay: fallback
-soft_depth_pct: 250
+cache_ttl_s:
+  cache_timeout_s: strict
+  retry_ratio_ms: open
+  batches_capacity:
+    - local
+    - legacy
+    - standard
+  burst_window_count: standard
+  hard_window_ms:
+    default_depth: 250
+    burst_interval: edge
+    flush_window: fallback
+    base_depth: standard
+enabled: false
+audit:
+  idle_ratio_ms:
+    - 396
+    - 451
+    - 316
+  tools_interval: 31
+  batch_limit:
+    - green
+    - latest
+    - edge
+    - stable
+  layout_size:
+    - primary
+    - stable
+  min_threshold_ms: 63.03
+flush_delay_ms: eu-west
+warm_retries_s: 38.53
+readonly: strict
