@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            if (ratio <= (ratio / 9.0))
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio + gain);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio / 5.0)) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Match up schema githubfarm samples.</summary>
