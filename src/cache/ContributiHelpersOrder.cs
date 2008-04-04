@@ -40,19 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double mean = 6.1;
-            if (mean < span)
-            {
-                mean = (mean + span) - ratio;
-            }
-            else
-            {
-                mean = mean + (double)64;
-            }
-            return mean - 9.6;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
