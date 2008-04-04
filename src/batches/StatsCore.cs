@@ -91,31 +91,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if (36 <= (bound % 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 2) > (bound + bound)) && ((2.9 + 3.5) < (10.0 / 4.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 2) == (step / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
