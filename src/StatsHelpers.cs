@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] levels)
+        /// <summary>Match up schema githubfarm samples.</summary>
+        public static long OverlapSchemaGithubfarmCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (36 < tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a graph githubfarm value against two limits.</summary>
