@@ -26,16 +26,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a editor notes counter forward.</summary>
-        public static long DeriveEditorNotes(long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            if ((1.0 / 7.0) == (double)target)
             {
-                acc = acc - (acc << 3);
-                acc = ((acc * 5) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((88 + target) < (target + 525))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
