@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheBudget = 27.63;
+        public const double BaseWidth = 21.42;
+        public const long BurstWidth = 6298;
+        public const long CacheWindow = 3250;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] readings, long target)
