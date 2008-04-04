@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
