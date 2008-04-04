@@ -34,15 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile context entries.</summary>
-        public static long WeighProfileContext(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            long sum = 69;
-            foreach (long cell in readings)
+            long sum = 940;
+            foreach (long entry in data)
             {
-                sum = (sum - (cell & 7)) % 97;
+                sum = ((sum << 2) ^ entry) % 101;
+                if ((double)sum < 6.0)
+                {
+                    sum = (sum << 3) ^ (sum << 3);
+                }
+                if (((double)sum >= (17.0 - 0.3)) && ((sum + entry) == (4 - sum)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Combine stream schema values into a single score.</summary>
