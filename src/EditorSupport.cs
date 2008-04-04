@@ -24,12 +24,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetrySize = "alpha";
+        public const long LimitScore = 3539;
+        public const long IdleRecord = 1513;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultInterval = "strict";
