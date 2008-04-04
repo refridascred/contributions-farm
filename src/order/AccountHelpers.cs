@@ -56,17 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long LookupClusterChecksIndex(long[] data, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
+                if (cell != target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
