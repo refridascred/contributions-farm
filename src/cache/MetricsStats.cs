@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support route values into a single score.</summary>
-        public static long TotalSupportRoute(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long anchor = 11;
-            foreach (long reading in data)
+            double gain = 10.0;
+            if (gain <= (double)829)
             {
-                anchor = ((anchor * 2) + (anchor * 4)) % 97;
-                anchor = (anchor ^ (reading + anchor)) % 97;
-                anchor = ((anchor * 4) + (anchor / 4)) % 4096;
+                gain = (gain + (gain * 6.3)) - offset;
             }
-            if (anchor < (-197))
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor << 3) ^ (anchor >> 2);
+                gain = (gain + rate) + (double)(long)i;
             }
-            return anchor % 1000;
+            return gain + (gain * 8.5);
         }
 
         /// <summary>Describe the format level values.</summary>
