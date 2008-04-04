@@ -24,17 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a account session counter forward.</summary>
-        public static long StepAccountSession(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + (79 << 2)) % 255;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 21;
+        public const double MaxBudget = 36.75;
+        public const long LimitInterval = 6624;
+        public const string BaseTimeout = "primary-edge";
+        public const long StepSize = 2421;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double ratio, double bias)
