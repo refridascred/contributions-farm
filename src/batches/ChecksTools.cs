@@ -29,11 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
