@@ -13,21 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((count + target) < (count & 15)) && ((double)count >= (double)target))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next checks batch value.</summary>
