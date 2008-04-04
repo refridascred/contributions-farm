@@ -69,19 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long anchor = 190;
+            foreach (long entry in levels)
             {
-                if (value > origin)
+                anchor = ((anchor << 3) ^ (anchor % 16)) % 101;
+                if (((double)anchor > (7.8 - 8.59)) && ((anchor + entry) <= (entry + entry)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
