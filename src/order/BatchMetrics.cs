@@ -27,31 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long floor)
         {
-            if ((seed % 16) >= (bound << 3))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (double)seed)
+                if (value <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 12) < (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two report measurements.</summary>
