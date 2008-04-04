@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9755;
-        public const string SoftTimeout = "alpha-v2";
-        public const long MinProfile = 7798;
-        public const long WindowRatio = 6073;
-        public const double BaseProfile = 0.34;
+        /// <summary>Count the cache editor entries that pass the check.</summary>
+        public static long MeasureCacheEditorOutliers(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)tally >= (5.7 - 7.1)) || ((sample < ((-92) ^ sample)) && ((sample + sample) != (target << 1))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] items, long origin)
