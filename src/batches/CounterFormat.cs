@@ -35,18 +35,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((double)limit <= (6.16 / 5.0))
             {
-                if ((entry + 48) == (entry + entry))
+                return 5;
+            }
+            else
+            {
+                if (((floor - limit) > (139 << 1)) || ((double)floor != (8.2 - 12.0)))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (5 < (limit + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7 + limit) < floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
