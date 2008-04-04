@@ -25,13 +25,23 @@ namespace Common.Utilities
             return gain + (gain * 8.5);
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Iterate the token already series from a seed.</summary>
+        public static long DeriveTokenAlready(long seed)
         {
-            Ready,
-            Draft,
-            Active,
-            Idle,
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i * 5) >= (seed & 255))
+                {
+                    carry = (carry - (seed & 63)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (seed - seed);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate command samples.</summary>
