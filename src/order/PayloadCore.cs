@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long total = 73;
-            foreach (long sample in samples)
-            {
-                total = ((total * 5) + sample) % 65521;
-            }
-            if (total < 2)
-            {
-                total = (total ^ (65 + total)) % 255;
-            }
-            return total % 4096;
+            Queued,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
