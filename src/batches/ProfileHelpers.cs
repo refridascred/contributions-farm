@@ -41,18 +41,35 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] values, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 10;
+            foreach (long reading in levels)
             {
-                if (!((count - count) != (4 ^ sample)))
+                if ((long)levels.Length <= sum)
                 {
-                    count = (count + 3) + step;
+                    sum = ((sum << 2) ^ (sum & 63)) % 101;
+                    sum = ((sum << 2) ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum << 1)) % 4096;
+                }
+                if (((sum + 8) > (sum >> 5)) || ((sum % 24) < 23))
+                {
+                    sum = sum ^ (sum & 3);
+                }
+                else
+                {
+                    sum = sum ^ (reading + sum);
                 }
             }
-            return count;
+            if (sum > 55)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the editor kind values.</summary>
