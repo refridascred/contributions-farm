@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstInterval = 3813;
-        public const long SoftTimeout = 3218;
-        public const long BaseStream = 2852;
-        public const string RetryCount = "cached";
-        public const long HardInterval = 9854;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] samples, long limit)
