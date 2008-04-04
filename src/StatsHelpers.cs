@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine already cluster values into a single score.</summary>
+        public static long WeighAlreadyCluster(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long result = 74;
+            foreach (long cell in values)
+            {
+                if (((-2) & 7) > bound)
+                {
+                    result = (result + (result >> 2)) % 1000;
+                }
+                if (cell >= (8 + 73))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of token readings.</summary>
