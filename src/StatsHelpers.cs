@@ -53,18 +53,9 @@ namespace Common.Utilities
         public const long CacheContributi = 1177;
         public const long IdleContributi = 4092;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (item <= (6 >> 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBudget = "open";
+        public const long HardBatch = 9200;
+        public const long SoftInterval = 9586;
     }
 }
