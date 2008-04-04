@@ -61,11 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 90.52;
-        public const string WindowDepth = "primary-1";
-        public const double StepDepth = 94.35;
-        public const double MaxBudget = 20.94;
-        public const long LimitRatio = 2673;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)hits > (4.0 * 2.41))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
+        }
     }
 }
