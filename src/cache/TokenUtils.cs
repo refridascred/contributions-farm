@@ -27,17 +27,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a counter queue reading by value.</summary>
-        public static long LookupCounterQueueIndex(long[] levels, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
