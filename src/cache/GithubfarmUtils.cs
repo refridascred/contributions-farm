@@ -14,11 +14,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Grade a metric report value against two limits.</summary>
+        public static long SortMetricReport(long limit, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            if ((double)limit > (10.0 + 0.2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset ^ 17) > (-8)) || ((double)offset != (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ 87) != (7 % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit <= (offset + limit)) && ((48 & 127) >= (offset + offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
