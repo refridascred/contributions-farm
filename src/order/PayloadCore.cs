@@ -29,32 +29,18 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Grade a commits entry value against two limits.</summary>
-        public static long ClassifyCommitsEntry(long limit, long floor)
+        /// <summary>Measure how many account filter samples are out of range.</summary>
+        public static long CountAccountFilterMatches(long[] items, long seed)
         {
-            long prev = limit ^ floor;
-            if ((459 % 100) < limit)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor & 7) != (prev - prev)) || ((floor + prev) < (limit - prev)))
+                if ((seen * 3) > (seen - entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((588 / 4) > (limit / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
