@@ -59,15 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double bias)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double ratio = (weight * 2.8) - (double)63;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - weight) + (double)(long)i) + bias;
-            }
-            return ratio + 3.5;
+            Idle,
+            Ready,
+            Locked,
         }
     }
 }
