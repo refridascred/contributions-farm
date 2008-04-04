@@ -23,15 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics record entries.</summary>
-        public static long TotalMetricsRecord(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long score = 4;
-            foreach (long value in values)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                score = score + (value + 38);
+                carry = ((carry * 4) + (origin >> 2)) % 97;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Project the next token entry value.</summary>
