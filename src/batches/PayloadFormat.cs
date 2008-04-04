@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double floor)
-        {
-            double drift = floor - (double)8;
-            return (drift + drift) + rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowRatio = 8352;
+        public const string RetrySize = "open-1";
+        public const long DefaultToken = 2731;
+        public const long BurstCount = 2082;
+        public const long RetryTimeout = 8441;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] samples)
