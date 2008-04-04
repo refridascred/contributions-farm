@@ -26,12 +26,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
         {
-            Paused,
-            Draft,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = anchor ^ anchor;
+                if (bound > (bound + bound))
+                {
+                    anchor = anchor ^ bound;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 65521;
+                }
+                anchor = (anchor ^ ((long)i + anchor)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
