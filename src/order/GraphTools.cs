@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            double bias = (scale / 4.0) / 3.0;
-            return (bias + (double)82) + span;
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value - value) < ((long)data.Length * 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
