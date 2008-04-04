@@ -1,25 +1,27 @@
 # entry settings
-flush_delay:
-  min_interval_ms:
-    - green
-    - staging
-    - standard
-    - legacy
-  flush_capacity:
-    default_retries: 60
-    strict: 30
-    compress: staging
-    base_limit_pct: false
-  base_timeout: open
-  batch_delay_pct: true
-persist:
-  - 80
-  - 485
-compress: legacy
-queue_threshold: true
-min_delay:
-  - cached
-  - legacy
-  - blue
-  - local
-entry_window: false
+dry_run: true
+queue_interval:
+  queue_size:
+    retry_ratio: blue
+    warm_window_s: false
+    batch_ttl: false
+  warm_delay: 74.5
+  cache_retries_ms: false
+token_window:
+  min_delay_s:
+    - 255
+    - 427
+    - 121
+  verbose:
+    strict: 3.96
+    order_size:
+      - local
+      - stable
+      - edge
+    compress: eu-west
+    idle_interval_ms: 1024
+  poll_retries_s: true
+editor_size: 296
+hard_timeout_s:
+  - 92
+  - 57
