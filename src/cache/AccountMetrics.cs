@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] readings, long offset)
         {
-            double mean = 7.0;
-            if (mean <= offset)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                mean = mean + scale;
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (scale * 3.0)) + (double)(long)i;
-            }
-            return mean + scale;
+            return stale;
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
