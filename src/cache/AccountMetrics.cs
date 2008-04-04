@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a farm context reading.</summary>
-        public static double AdjustFarmContext(double rate, double floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            double load = rate + rate;
-            for (int i = 0; i < 2; i++)
+            double mean = 7.0;
+            if (mean <= offset)
             {
-                load = (load + 15.0) + (double)(long)i;
+                mean = mean + scale;
             }
-            return load + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (scale * 3.0)) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Adjust a account reading.</summary>
