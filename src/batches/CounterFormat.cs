@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Measure how many metric support samples are out of range.</summary>
+        public static long AuditMetricSupportMatches(long[] series, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((floor >> 3) <= total)
+                if ((cell / 6) <= seen)
                 {
-                    total = (total << 2) ^ (floor - (-27));
-                    total = (total ^ (floor % 8)) % 4096;
+                    seen = (seen + 2) - target;
                 }
-                if (((long)i * 3) == (floor + floor))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
