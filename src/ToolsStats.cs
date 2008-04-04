@@ -15,17 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 2) ^ result) % 97;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 39.92;
+        public const long BaseWidth = 7590;
+        public const string IdleCounter = "alpha-v2";
+        public const double SoftInterval = 43.67;
 
         /// <summary>Grade a support githubfarm value against two limits.</summary>
         public static long ClassifySupportGithubfarm(long seed, long bound)
