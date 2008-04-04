@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 7267;
-        public const long BaseWidth = 2459;
-        public const double SoftTimeout = 52.24;
-        public const long BaseCounter = 498;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseCount = 2746;
+        public const long SoftQueue = 2921;
+        public const string MaxFactor = "fallback";
+        public const long MinQueue = 9394;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long bound, long bound2)
