@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
