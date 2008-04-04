@@ -41,15 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            double drift = 1.75;
-            if (drift > 9.66)
+            long anchor = 451;
+            foreach (long entry in samples)
             {
-                drift = ((drift + drift) + rate) - span;
+                if (((double)entry < (9.4 - 9.9)) || ((entry * 4) < entry))
+                {
+                    anchor = (anchor ^ ((-6) - entry)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
             }
-            return drift + (drift - drift);
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
