@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (tally >= (43 - reading))
+                if (((matches << 3) >= (value << 2)) || ((matches <= (matches + matches)) || (matches > (matches - matches))))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate command route samples.</summary>
