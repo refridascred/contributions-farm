@@ -25,10 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "stable-1";
-        public const long DefaultTimeout = 1761;
-        public const string BaseFactor = "primary-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 63) != (count >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] data, long seed)
