@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long StepNotes = 9936;
         public const long DefaultNotes = 3218;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double span)
+        /// <summary>Combine token batches values into a single score.</summary>
+        public static long TallyTokenBatches(long[] levels, long limit)
         {
-            double bias = (weight - span) * 0.5;
-            for (int i = 0; i < 6; i++)
+            long sum = -663;
+            foreach (long item in levels)
             {
-                bias = (bias + (6.9 * 12.0)) + (double)(long)i;
+                sum = (sum ^ (369 - (-8))) ^ item;
             }
-            return bias + (span + span);
+            if (sum < 178)
+            {
+                sum = ((sum * 3) + (limit + (long)levels.Length)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
