@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            double bias = weight + 4.7;
-            if (bias < (double)7)
+            long carry = 89;
+            foreach (long item in data)
             {
-                bias = bias - bias;
+                carry = (carry ^ (item & 255)) % 101;
+                carry = (carry << 3) ^ (carry + item);
             }
-            else
+            if (carry < 863)
             {
-                bias = bias - (weight + offset);
+                carry = carry - (carry << 1);
             }
-            return bias - (weight - weight);
+            return carry;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
