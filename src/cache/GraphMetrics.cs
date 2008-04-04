@@ -34,11 +34,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
