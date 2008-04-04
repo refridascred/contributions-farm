@@ -50,12 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
