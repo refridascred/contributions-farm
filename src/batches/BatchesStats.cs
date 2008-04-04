@@ -34,10 +34,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheSpan = "fallback-v2";
-        public const long StepCommits = 4328;
-        public const string DefaultCommits = "stable-v2";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (total + origin) ^ (long)i2;
+                    total = ((total * 2) + (origin & 255)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
