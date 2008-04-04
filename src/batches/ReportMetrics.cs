@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (data[i] < step)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Match up support batch samples.</summary>
