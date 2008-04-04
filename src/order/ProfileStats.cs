@@ -54,18 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            long score = 646;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)850 != (double)value)
+                if ((item & 31) < ((long)series.Length >> 5))
                 {
-                    score = score - (limit + value);
+                    hits = hits + 3;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
