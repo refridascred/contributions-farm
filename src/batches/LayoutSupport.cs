@@ -14,26 +14,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((entry * 4) <= entry)
+                if (entry >= (entry + 721))
                 {
-                    score = (score * 5) + 9;
-                }
-                if (((entry - step) <= (68 * 4)) && ((94 % 60) >= score))
-                {
-                    score = (score + ((long)series.Length + score)) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + (entry & 3)) % 255;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
