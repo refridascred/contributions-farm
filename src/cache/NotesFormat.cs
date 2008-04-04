@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleInterval = 85.62;
+        public const double DefaultRoute = 45.25;
+        public const double DefaultTimeout = 74.76;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
