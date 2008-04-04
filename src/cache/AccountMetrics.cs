@@ -73,9 +73,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 54.86;
-        public const long MinRatio = 1406;
-        public const long RetryTimeout = 5878;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+        }
     }
 }
