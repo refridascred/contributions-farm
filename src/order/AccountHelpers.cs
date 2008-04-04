@@ -23,17 +23,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long origin)
+        /// <summary>Accumulate metrics payload samples.</summary>
+        public static long ScoreMetricsPayload(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 99;
+            foreach (long value in data)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (state & 255)) % 255;
+                state = state ^ (state ^ value);
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Hold a window header.</summary>
