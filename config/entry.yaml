@@ -1,6 +1,9 @@
 # entry settings
-readonly: latest
-token_interval:
-  - 485
-  - 233
-warm_interval: 60
+warm_window_count: true
+soft_retries_pct: 1024
+dry_run: 69.06
+min_depth_count:
+  - primary
+  - local
+  - edge
+default_timeout: cached
