@@ -54,18 +54,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (entry < (entry - entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
