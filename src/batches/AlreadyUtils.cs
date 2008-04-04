@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long result = -92;
-            foreach (long datum in readings)
-            {
-                result = ((((result * 2) + (result + (long)readings.Length)) % 1000) - datum) - bound;
-            }
-            return result;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
