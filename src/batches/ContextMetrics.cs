@@ -41,18 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "stable-1";
+        public const long DefaultTimeout = 1761;
+        public const string BaseFactor = "primary-1";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
