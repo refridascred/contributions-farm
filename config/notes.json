@@ -1,6 +1,26 @@
 {
-  "sync_ratio_count": "primary",
-  "batch_capacity_ms": "primary",
-  "compress": [451, 174, 419, 23],
-  "batch_interval": 1024
+  "idle_interval": 988,
+  "cache_delay_count": "stable",
+  "context_delay": "edge",
+  "retry_size_s": "standard",
+  "default_depth": 6.74,
+  "checks_depth": {
+    "flush_size_s": {
+      "flush_depth_s": 8.56,
+      "strict": "latest",
+      "notes_ratio": "green",
+      "verbose": [388, 426]
+    },
+    "flush_ratio": [481, 217, 154],
+    "readonly": {
+      "soft_retries": [227, 12, 366, 370],
+      "poll_interval_s": 63.14,
+      "window_limit": "latest",
+      "editor_interval": 500,
+      "hard_capacity_count": "legacy",
+      "hard_delay_count": 60
+    },
+    "command_threshold": "legacy",
+    "min_ratio_pct": 2028
+  }
 }
