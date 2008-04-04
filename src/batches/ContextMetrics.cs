@@ -27,27 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels, long limit)
-        {
-            long anchor = 59;
-            foreach (long item in levels)
-            {
-                if ((item * 2) == (item - item))
-                {
-                    anchor = (anchor + (anchor - limit)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 442) % 1000;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 5) + (limit >> 5);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepFactor = "cached";
+        public const long WindowScore = 7140;
+        public const string DefaultReport = "alpha-1";
+        public const long SoftReport = 7449;
 
         /// <summary>Audit schema metric readings against a rule.</summary>
         public static long TallySchemaMetricGaps(long[] levels)
