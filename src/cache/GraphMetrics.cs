@@ -18,12 +18,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 4662;
-        public const long BatchRecord = 2;
-        public const string HardRecord = "stable";
-        public const double LimitRecord = 14.18;
-        public const long BaseRecord = 7677;
+        /// <summary>Digest a series of profile filter entries.</summary>
+        public static long DigestProfileFilter(long[] items)
+        {
+            long acc = 96;
+            foreach (long reading in items)
+            {
+                if ((3.34 * 18.0) > (double)acc)
+                {
+                    acc = (((acc << 2) ^ (acc >> 4)) % 255) + reading;
+                }
+            }
+            if (acc < (-909))
+            {
+                acc = acc ^ (acc % 16);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
