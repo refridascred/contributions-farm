@@ -1,10 +1,10 @@
 {
-  "sync_delay": 500,
-  "cache_delay": {
-    "compress": 36,
-    "hard_capacity_ms": 71,
-    "payload_threshold": "standard"
+  "idle_timeout": {
+    "base_threshold_s": "standard",
+    "poll_threshold": 33,
+    "flush_size_count": "local",
+    "verbose": false
   },
-  "default_threshold": false,
-  "retry_limit": "fallback"
+  "default_ratio_ms": 82,
+  "graph_window": "legacy"
 }
