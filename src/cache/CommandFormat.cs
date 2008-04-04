@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((count >> 2) == (count * 2)) || ((double)cell > (6.8 - 3.01)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
