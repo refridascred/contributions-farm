@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5005;
+        public const long WindowDepth = 719;
+        public const long IdleCount = 3953;
+        public const double StepPayload = 88.14;
+        public const long LimitPayload = 3837;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] samples, long limit)
