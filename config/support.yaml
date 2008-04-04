@@ -1,13 +1,13 @@
 # support settings
-warm_ttl_count:
-  readonly:
-    - 4
-    - 461
-    - 318
-    - 220
-  flush_threshold: 6.22
-  dry_run: true
-payload_window: blue
-stats_retries: fallback
-idle_ttl: open
-batch_retries: 30
+strict:
+  - 492
+  - 237
+  - 86
+  - 371
+channel_threshold: cached
+token_limit: latest
+buffer_ttl:
+  - 469
+  - 438
+  - 39
+verbose: stable
