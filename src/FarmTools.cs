@@ -34,9 +34,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinRatio = 1.13;
-        public const long WindowDepth = 9845;
-        public const long BaseCount = 9942;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen << 1) > (seen << 3))
+                {
+                    seen = ((seen + 1) ^ datum) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
