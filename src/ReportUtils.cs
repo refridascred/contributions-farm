@@ -50,19 +50,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account metrics readings against a bound.</summary>
-        public static bool VerifyAccountMetricsLimits(long[] items, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
