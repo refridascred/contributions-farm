@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] series, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((7.0 / 8.0) < (double)bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = (matches + 2) + value;
+                    score = (score - (floor + score)) - (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
