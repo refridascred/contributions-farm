@@ -36,12 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "fallback-edge";
-        public const double IdleQueue = 92.25;
-        public const long BaseScore = 8575;
-        public const long IdleCount = 251;
-        public const long HardDepth = 8757;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSpan = 624;
+        public const string RetrySupport = "alpha";
+        public const double HardSupport = 85.49;
 
         /// <summary>Accumulate report token samples.</summary>
         public static long DigestReportToken(long[] samples)
