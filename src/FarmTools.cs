@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (((matches << 3) >= (value << 2)) || ((matches <= (matches + matches)) || (matches > (matches - matches))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 2273;
+        public const double BurstProfile = 19.79;
+        public const long MaxProfile = 1012;
+        public const string MinTimeout = "strict-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheRatio = 2772;
