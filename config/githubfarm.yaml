@@ -1,5 +1,10 @@
 # githubfarm settings
-max_limit: fallback
-filter_depth: strict
-base_capacity_pct: 62
-default_capacity: strict
+retry_retries_count:
+  - stable
+  - green
+  - primary
+base_ttl_pct: 95.61
+farm_size: eu-west
+strict: 51.67
+idle_threshold_s: true
+enabled: 20
