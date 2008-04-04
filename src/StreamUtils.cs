@@ -34,18 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] readings, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (!((23 + seed) < (seen & 1)) && (((seen % 100) <= seed) && ((323 / 5) <= seen)))
+                if (value < step)
                 {
-                    seen = (seen + 2) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
