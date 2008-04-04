@@ -1,15 +1,11 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the route list.
-Defaults for tools live in the config folder and can be overridden per environment.
-
-Use profile settings to tune how often batches data is refreshed.
-Keep batches and window names short and lowercase.
-The order module keeps stream values in sync with the token cache.
+The editor module keeps command values in sync with the already cache.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batches input early
-- Review batch limits each release
-- Log every support change
-- Keep schema values small
+- Prefer record defaults
+- Review graph limits each release
+- Keep checks values small
+- Document new format fields
