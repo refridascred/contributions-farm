@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Closed,
-            Active,
+            Synced,
+            Queued,
             Retry,
-            Stale,
-            Idle,
+            Failed,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
