@@ -1,9 +1,6 @@
-id,level,token
-1,35.77,165
-2,green,green
-3,edge,staging
-4,standard,39.52
-5,90.34,local
-6,105,strict
-7,48,local
-8,edge,755
+id,ratio,state
+1,64.81,34.9
+2,154,67.09
+3,309,stable
+4,67.31,21.24
+5,91.92,stable
