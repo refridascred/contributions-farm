@@ -1,6 +1,4 @@
 # entry settings
-commits_threshold: 46
-flush_ttl: strict
-cache_size: false
-buffer_size: local
-contributi_threshold: staging
+schema_ttl: 49
+retry_delay_count: 85.56
+retry_window_count: staging
