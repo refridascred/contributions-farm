@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long anchor = 74;
+            foreach (long entry in series)
+            {
+                anchor = (anchor + ((long)series.Length + entry)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics session value from a seed.</summary>
