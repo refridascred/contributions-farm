@@ -45,19 +45,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batch buffer readings against a bound.</summary>
-        public static bool VerifyBatchBufferLimits(long[] levels, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = 1;
+            foreach (long entry in levels)
             {
-                if (datum > floor)
+                state = ((state << 3) ^ (offset - state)) % 1000;
+                if (((state % 100) <= (state / 2)) || ((double)entry <= (18.0 * 4.02)))
                 {
-                    ok = false;
-                    break;
+                    state = (state + (offset % 2)) % 255;
+                }
+                else
+                {
+                    state = (state - (67 + entry)) % 101;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
