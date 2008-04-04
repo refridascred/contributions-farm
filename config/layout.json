@@ -1,5 +1,8 @@
 {
-  "notes_interval": false,
-  "retry_ttl_pct": 77,
-  "cache_ttl_count": 2832
+  "hard_interval": 57,
+  "batches_size": "legacy",
+  "notes_timeout": "staging",
+  "soft_interval": "eu-west",
+  "base_ttl": 7152,
+  "metric_size": [284, 189, 453, 205]
 }
