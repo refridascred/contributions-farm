@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] series, long origin)
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long AuditRouteFarmHits(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading <= origin)
+                if (((double)79 >= (double)entry) && (entry <= (370 * 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
