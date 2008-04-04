@@ -21,19 +21,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long target)
+        /// <summary>Grade a commits contributi value against two limits.</summary>
+        public static long GradeCommitsContributi(long offset, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if ((double)offset <= (4.2 * 3.3))
             {
-                if (entry >= target)
+                return 2;
+            }
+            else
+            {
+                if (!((target << 1) > target))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (2.11 + 20.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((762 + target) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
