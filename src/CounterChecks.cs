@@ -67,19 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] items, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items)
         {
-            bool found = true;
-            foreach (long item in items)
+            long mark = 4;
+            foreach (long sample in items)
             {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark - sample) % 255;
             }
-            return found;
+            return mark % 65521;
         }
     }
 }
