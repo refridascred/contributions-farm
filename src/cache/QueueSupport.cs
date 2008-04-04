@@ -14,15 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = -76;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor << 2) ^ reading) % 255) - seed;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
