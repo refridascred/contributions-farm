@@ -59,32 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long floor, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            long span = floor ^ offset;
-            if (!((20.0 * 2.78) <= (double)floor))
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 & 15) <= (floor - offset))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 6;
+                    mark = (mark + mark) ^ (long)i2;
                 }
-                else
-                {
-                    if ((span << 1) > (0 << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = (mark ^ ((long)i + 561)) % 97;
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Describe the graph kind values.</summary>
