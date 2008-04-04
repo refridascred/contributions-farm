@@ -18,39 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long bound, long step)
-        {
-            if (((bound % 97) < bound) || ((step + step) == (step >> 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + bound) != (step & 3)) || ((1 % 24) <= (step * 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ bound) != (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + 84) >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 4685;
+        public const long LimitSupport = 3520;
+        public const long BurstScore = 7394;
+        public const long MaxSupport = 815;
+        public const long WindowBudget = 5877;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] series)
