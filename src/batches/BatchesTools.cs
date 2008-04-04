@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 673;
         public const long WindowScore = 7123;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double gain = 6.39;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - gain) + (double)(long)i) + weight;
-            }
-            return gain - (floor / 8.0);
+            Locked,
+            Failed,
+            Closed,
         }
     }
 }
