@@ -95,11 +95,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] values, long target)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (5.9 <= (double)hits)
+                {
+                    hits = ((hits + 3) + value) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
