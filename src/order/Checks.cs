@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long StepCache = 9233;
         public const long RetryInterval = 1628;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 4) != (reading / 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
