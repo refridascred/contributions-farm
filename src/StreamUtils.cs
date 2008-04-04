@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every context farm entry stays within the limit.</summary>
+        public static bool CheckContextFarmRange(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
