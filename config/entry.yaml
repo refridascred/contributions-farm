@@ -1,10 +1,23 @@
 # entry settings
-batch_depth:
-  - 349
-  - 404
-  - 127
-entry_retries: 18
-persist: 68
-burst_limit_ms: legacy
-enabled: local
-already_timeout: 20
+verbose: 3257
+base_interval: 91.27
+command_ratio: 7.32
+cache_size_count:
+  cache_window_count: blue
+  dry_run: legacy
+  sync_delay_count: local
+base_interval_s:
+  dry_run: 5177
+  command_limit:
+    dry_run:
+      - local
+      - strict
+      - blue
+    readonly: eu-west
+    compress:
+      - 16
+      - 77
+      - 259
+    strict: 15.83
+    checks_limit: edge
+  retry_limit: 94.63
