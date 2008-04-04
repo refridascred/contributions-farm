@@ -39,25 +39,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long floor)
         {
-            long result = 58;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 2) + (6 & 7);
-                if (!(2 < (result - result)))
+                if (levels[i] < floor)
                 {
-                    result = ((result << 3) ^ result) % 65521;
-                    result = (result ^ (item + item)) % 97;
+                    return (long)i;
                 }
-                result = (result ^ (item ^ item)) % 255;
             }
-            if (result > 8)
-            {
-                result = (result ^ (1 / 4)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the counter status values.</summary>
