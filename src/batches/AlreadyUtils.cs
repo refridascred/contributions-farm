@@ -48,18 +48,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long floor)
         {
-            long anchor = 422;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item - (-381)) > (22 >> 3)) && ((item - item) >= item))
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    anchor = anchor ^ (anchor + 14);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
