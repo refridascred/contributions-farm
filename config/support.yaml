@@ -1,22 +1,7 @@
 # support settings
-min_delay_ms: 8448
-warm_capacity_count:
-  - 443
-  - 273
-  - 461
-  - 138
-base_ratio_s: 98.19
-compress:
-  schema_timeout:
-    - stable
-    - local
-    - strict
-  flush_delay_pct: 9673
-  batch_timeout: 30
-readonly:
-  audit:
-    - local
-    - eu-west
-    - open
-  flush_size_count: edge
-  max_capacity_ms: green
+flush_retries_s: 57.82
+max_ratio_pct:
+  min_capacity_ms: open
+  audit: 15.46
+  warm_depth_count: 4383
+sync_depth: cached
