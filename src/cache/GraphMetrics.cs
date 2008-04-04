@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] values, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                state = (state + (946 - seed)) % 4096;
-                state = (state ^ state) % 4096;
-                state = ((state * 5) + (long)i) % 101;
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
