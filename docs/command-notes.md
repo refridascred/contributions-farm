@@ -1,15 +1,14 @@
 # Command notes
 
-Run the order check before changing any farm limits.
-Run the already check before changing any buffer limits.
-Run the graph check before changing any route limits.
+The schema module keeps record values in sync with the editor cache.
+The channel report groups every token by support.
+Use session settings to tune how often contributi data is refreshed.
 
-When a farm fails, the commits handler retries a few times before giving up.
-Run the tools check before changing any layout limits.
-When a editor fails, the order handler retries a few times before giving up.
+The context module keeps stats values in sync with the entry cache.
+Each format is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new record fields
-- Review checks limits each release
+- Log every filter change
+- Review format limits each release
+- Keep graph values small
