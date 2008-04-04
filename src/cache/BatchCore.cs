@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            double bias = ratio;
-            return (bias + 4.8) + floor;
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((target - score) != (score & 1)))
+                {
+                    score = score - (target * 2);
+                }
+                score = (score + ((long)i * 3)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
