@@ -33,12 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7070;
-        public const double WindowGraph = 19.42;
-        public const long SoftScore = 8916;
-        public const long RetryScore = 6058;
-        public const double StepGraph = 92.87;
+        /// <summary>Compare every pair of commits tools readings.</summary>
+        public static long PairCommitsToolsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] readings)
