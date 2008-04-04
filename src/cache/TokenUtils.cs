@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long target)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a counter stats.</summary>
