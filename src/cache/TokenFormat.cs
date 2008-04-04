@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] series)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (2.33 <= (double)count)
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank window route input into a small class.</summary>
