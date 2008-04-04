@@ -71,12 +71,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
