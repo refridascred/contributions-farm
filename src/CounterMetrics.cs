@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((double)anchor != (1.49 / 4.0)) && ((double)target != (20.0 + 7.0)))
+                if (!(seed < datum) || ((tally * 4) > (datum % 100)))
                 {
-                    anchor = anchor ^ (anchor - target);
+                    tally = tally + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
