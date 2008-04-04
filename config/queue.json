@@ -1,6 +1,6 @@
 {
-  "warm_timeout_ms": "fallback",
-  "audit": 48.21,
-  "dry_run": "cached",
-  "buffer_delay": false
+  "enabled": 3.04,
+  "idle_window": 92.89,
+  "cache_ratio": [10, 94, 386, 189],
+  "context_ttl": ["staging", "fallback"]
 }
