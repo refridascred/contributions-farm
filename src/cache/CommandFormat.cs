@@ -14,12 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowFactor = 3243;
-        public const long HardFactor = 8103;
-        public const long BaseCount = 5304;
-        public const long BatchDepth = 2339;
-        public const double LimitAccount = 26.67;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
