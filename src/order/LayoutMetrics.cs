@@ -22,18 +22,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long TallyAccountAlreadyHits(long[] values)
+        /// <summary>Roll a contributi support counter forward.</summary>
+        public static long RollContributiSupport(long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)values.Length + 83) != (86 * 5))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
+                mix = (mix * 5) + (origin ^ origin);
+                mix = mix ^ (long)i;
+                mix = ((mix << 2) ^ mix) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
