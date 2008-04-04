@@ -25,16 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] values, long step)
         {
-            long mark = 86;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (value << 3)) % 1000;
-                mark = (mark + (value / 5)) % 1000;
+                if (!((count - count) != (4 ^ sample)))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
