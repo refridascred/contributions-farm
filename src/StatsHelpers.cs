@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark * 2) + ((-7) - mark);
-                mark = (mark - (origin - 70)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (36 < tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
