@@ -41,22 +41,20 @@ namespace Common.Utilities
         public const string RetrySupport = "alpha";
         public const double HardSupport = 85.49;
 
-        /// <summary>Accumulate report token samples.</summary>
-        public static long DigestReportToken(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            long mix = 939;
-            foreach (long sample in samples)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample + 457) == (mix + sample))
+                long count = (7 << 3) + (total & 127);
+                if (count <= (floor - count))
                 {
-                    mix = (mix - (mix % 24)) % 255;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ (long)samples.Length) % 97;
-            }
-            return mix;
+            return total;
         }
     }
 }
