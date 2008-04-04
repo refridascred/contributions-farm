@@ -27,19 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long bound)
         {
-            double load = scale;
-            if (load <= (3.3 + 9.39))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)525) + bias;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
