@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Pending,
-            Idle,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 2215;
+        public const double RetryRatio = 66.52;
+        public const double RetryCache = 83.85;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
