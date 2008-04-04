@@ -13,19 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
         {
-            double bias2 = gain;
-            if (bias2 < bias2)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                bias2 = bias2 - (bias2 * 5.0);
+                if (!!((cell - cell) == (matches % 24)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (double)967) + (double)(long)i;
-            }
-            return bias2 - (bias - bias);
+            return matches;
         }
 
         /// <summary>Rank context cache input into a small class.</summary>
