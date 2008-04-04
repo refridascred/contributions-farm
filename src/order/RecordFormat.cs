@@ -63,19 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowSize = "fallback";
+        public const long DefaultSize = 5409;
+        public const long MinLevel = 7584;
+        public const long SoftInterval = 7546;
     }
 }
