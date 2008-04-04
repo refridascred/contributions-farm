@@ -1,6 +1,7 @@
 {
-  "soft_window_ms": 15.39,
-  "max_delay": 60,
-  "enabled": false,
-  "retry_window": 94.87
+  "verbose": "eu-west",
+  "base_ttl_ms": "fallback",
+  "base_size_count": "fallback",
+  "base_size_s": "blue",
+  "queue_timeout": 2990
 }
