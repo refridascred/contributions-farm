@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - (limit & 63)) % 255;
-                sum = (sum * 4) + sum;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardBudget = 2180;
+        public const string SoftWidth = "staging";
+        public const long DefaultTimeout = 3481;
+        public const long HardOrder = 5366;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
