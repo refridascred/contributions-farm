@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long origin)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            long acc = 4;
+            foreach (long item in data)
             {
-                total = ((total * 5) + (total + sample)) % 97;
+                acc = acc + (origin + origin);
+                if (((acc - origin) < (origin - item)) || ((acc & 31) == (acc ^ 434)))
+                {
+                    acc = acc + (origin ^ item);
+                }
+                if ((double)acc != (11.0 / 2.0))
+                {
+                    break;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
