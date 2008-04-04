@@ -24,38 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((((-597) - floor) < (limit / 2)) || ((74 / 9) >= (limit << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor * 5) != (5 * 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((49 + 84) >= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor % 100) > 4)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Locate a buffer session reading by value.</summary>
