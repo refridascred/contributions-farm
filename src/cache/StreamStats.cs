@@ -29,39 +29,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long floor)
-        {
-            if (((seed - floor) > (floor + 671)) || ((3.0 - 6.43) <= (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) < (240 & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9 & 255) <= (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) == (floor / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 9197;
+        public const long MinLevel = 1733;
+        public const double LimitCommand = 84.28;
+        public const long SoftCommand = 1696;
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
         public static bool VerifyBatchBufferLimits(long[] levels, long floor)
