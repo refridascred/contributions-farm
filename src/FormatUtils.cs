@@ -49,31 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank buffer contributi input into a small class.</summary>
-        public static long RankBufferContributi(long bound, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if ((limit + 461) < ((-4) * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound - limit) < (bound / 6)) && ((bound << 3) < limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= (208 - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
