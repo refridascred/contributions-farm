@@ -45,14 +45,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long SeekSessionProfileIndex(long[] data, long limit)
         {
-            Retry,
-            Draft,
-            Paused,
-            Pending,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
