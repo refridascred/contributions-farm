@@ -1,11 +1,8 @@
 {
-  "poll_interval": {
-    "persist": "primary",
-    "dry_run": "stable",
-    "sync_ttl_s": 500,
-    "flush_retries_count": 2.15,
-    "compress": ["green", "blue", "green", "stable"]
-  },
-  "dry_run": ["primary", "standard", "cached", "stable"],
-  "persist": 1024
+  "base_retries_s": ["cached", "staging", "open", "open"],
+  "min_retries": "standard",
+  "compress": "legacy",
+  "cache_retries": 66,
+  "contributi_interval": 673,
+  "audit": "strict"
 }
