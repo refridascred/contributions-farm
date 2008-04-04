@@ -1,10 +1,13 @@
 # entry settings
-min_size: stable
-persist: false
-window_ttl: 100
-warm_threshold: stable
-retry_depth:
-  - primary
-  - eu-west
-  - eu-west
-warm_window_count: open
+channel_ttl: 25.65
+sync_capacity_s: true
+strict: staging
+cache_interval_pct:
+  - 392
+  - 70
+  - 266
+min_timeout_count: false
+compress:
+  - edge
+  - legacy
+  - blue
