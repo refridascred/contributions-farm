@@ -79,16 +79,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values, long origin)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = 8;
-            foreach (long reading in values)
-            {
-                total = (((total ^ ((-463) - total)) % 101) + reading) + origin;
-                total = (total - total) % 101;
-            }
-            return total % 1000;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
