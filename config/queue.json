@@ -1,10 +1,5 @@
 {
-  "idle_timeout": {
-    "base_threshold_s": "standard",
-    "poll_threshold": 33,
-    "flush_size_count": "local",
-    "verbose": false
-  },
-  "default_ratio_ms": 82,
-  "graph_window": "legacy"
+  "burst_ratio_ms": [302, 41],
+  "warm_threshold": 250,
+  "strict": 65.04
 }
