@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetrySpan = 3042;
-        public const long IdleNotes = 3032;
-        public const long WindowLevel = 6942;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7012;
+        public const string MaxCommand = "open-1";
+        public const long WindowBudget = 4566;
+        public const double StepCommand = 38.63;
+        public const long BatchCommand = 2600;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double SmoothMetric(double bias, double floor)
