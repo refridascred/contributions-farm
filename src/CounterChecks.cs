@@ -49,12 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            Stale,
-            Done,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command status values.</summary>
