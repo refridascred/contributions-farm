@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 2) + (1 >> 4)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a commits summary.</summary>
