@@ -13,25 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long cur = floor ^ bound;
-            if (bound < (floor - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur << 2) != (floor ^ 18))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of session readings.</summary>
