@@ -31,23 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 3) + state) % 97;
-                if (!((double)target <= 0.9))
-                {
-                    state = (state - (793 << 2)) % 255;
-                    state = (state << 2) ^ state;
-                }
-                state = (state - (state - state)) % 255;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "primary-v2";
+        public const long StepWidth = 8030;
+        public const long RetryStream = 5715;
+        public const string LimitLevel = "legacy";
+        public const long MaxBudget = 4961;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
