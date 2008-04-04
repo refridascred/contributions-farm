@@ -27,15 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
