@@ -36,21 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state << 3) ^ (state << 3)) % 4096;
-                if ((state << 3) <= step)
-                {
-                    state = state - (long)i;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitInterval = 1947;
+        public const long BaseCommits = 5213;
+        public const long MaxCommits = 9794;
+        public const string BaseTimeout = "stable";
 
         /// <summary>Rank order filter input into a small class.</summary>
         public static long SortOrderFilter(long offset, long bound)
