@@ -38,12 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstWidth = "legacy-edge";
-        public const double BaseAccount = 3.79;
-        public const long SoftAccount = 9969;
-        public const string IdleAccount = "stable-1";
-        public const long RetryAccount = 9914;
+        /// <summary>Adjust a contributi filter reading.</summary>
+        public static double AdjustContributiFilter(double ratio, double span)
+        {
+            double gain = span;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain - (double)9) - (double)(long)i) - ratio;
+            }
+            return gain + (gain * 5.49);
+        }
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long SeekCacheToolsIndex(long[] values, long floor)
