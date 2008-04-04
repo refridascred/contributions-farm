@@ -26,15 +26,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks tools readings.</summary>
-        public static long ScoreChecksTools(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long state = 19;
-            foreach (long value in samples)
-            {
-                state = (((state * 5) + (state % 60)) % 65521) - value;
-            }
-            return state;
+            Idle,
+            Draft,
+            Pending,
+            Stale,
+            Active,
         }
     }
 }
