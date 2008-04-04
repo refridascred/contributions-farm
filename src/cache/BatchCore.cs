@@ -47,19 +47,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload farm entry stays within the limit.</summary>
-        public static bool ValidatePayloadFarmBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "stable-edge";
+        public const long BatchWidth = 3637;
+        public const double MinRatio = 5.97;
     }
 }
