@@ -39,9 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 2502;
-        public const string HardWidth = "strict-1";
-        public const long CacheFarm = 2199;
+        /// <summary>Locate a counter queue reading by value.</summary>
+        public static long LookupCounterQueueIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
