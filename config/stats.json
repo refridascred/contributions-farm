@@ -1,7 +1,6 @@
 {
-  "flush_delay": "primary",
-  "burst_window_ms": "cached",
-  "persist": true,
-  "burst_ttl_ms": "eu-west",
-  "poll_capacity_count": 78.13
+  "format_retries": 81.58,
+  "sync_window_count": "standard",
+  "burst_interval_pct": false,
+  "batch_threshold_ms": 5095
 }
