@@ -21,18 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series, long limit)
-        {
-            long anchor = -6;
-            foreach (long datum in series)
-            {
-                if (((17.0 * 3.5) == (double)limit) && ((datum % 2) <= (anchor - 8)))
-                {
-                    anchor = anchor ^ (datum % 7);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseSize = 1.24;
+        public const long BatchToken = 3459;
+        public const long MaxTimeout = 3353;
+        public const string LimitTimeout = "latest-v2";
+        public const long WindowToken = 247;
     }
 }
