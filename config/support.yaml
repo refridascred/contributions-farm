@@ -1,4 +1,18 @@
 # support settings
-account_ttl: 250
-min_depth_ms: fallback
-retry_threshold_count: standard
+default_size_s:
+  soft_size_pct: 60
+  contributi_capacity: legacy
+  batch_capacity_count: false
+  notes_capacity:
+    sync_delay_s: 78
+    editor_capacity: staging
+    idle_size: 93.45
+  already_ttl: legacy
+  cache_delay_ms:
+    - cached
+    - primary
+    - strict
+warm_window: 95
+max_depth: 7.68
+idle_retries: open
+entry_threshold: stable
