@@ -51,23 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] data, long target)
         {
-            double bias = (double)6;
-            if (bias <= (weight * 1.3))
+            long tally = 0;
+            foreach (long item in data)
             {
-                bias = (bias + (double)40) + offset;
+                if (!((tally >> 2) <= (tally + target)) || ((double)tally <= (double)target))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            else
-            {
-                bias = bias + (6.9 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)(-8)) + (double)(long)i;
-            }
-            return bias + 9.01;
+            return tally;
         }
 
         /// <summary>Measure how many support payload samples are out of range.</summary>
