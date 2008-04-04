@@ -42,24 +42,17 @@ namespace Common.Utilities
         public const string RetryQueue = "cached-edge";
         public const long DefaultQueue = 2880;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long mark = 9;
-            foreach (long sample in items)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((sample << 3) == (sample % 64)) && ((3.0 / 6.0) == (double)mark))
-                {
-                    mark = (mark << 3) ^ (offset - sample);
-                    break;
-                }
-                mark = ((mark * 2) + (mark * 4)) % 97;
+                result = ((result * 2) + ((long)i & 1)) % 1000;
+                result = (result ^ (result & 3)) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (mark > 12)
-            {
-                mark = ((mark << 3) ^ (offset / 7)) % 101;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Describe the counter phase values.</summary>
