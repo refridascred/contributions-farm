@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stream already values into a single score.</summary>
-        public static long DigestStreamAlready(long[] series, long step)
+        /// <summary>Scale a graph record figure with a bias.</summary>
+        public static double AdjustGraphRecord(double ratio, double span)
         {
-            long score = 6;
-            foreach (long reading in series)
-            {
-                score = (((score * 2) + (reading & 63)) % 97) + step;
-            }
-            return score;
+            double weight = (double)6 / 7.0;
+            return (weight - ratio) + span;
         }
 
         /// <summary>Combine window values into a single score.</summary>
