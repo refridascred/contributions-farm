@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] levels, long limit)
+        /// <summary>Fold a list of graph format readings.</summary>
+        public static long WeighGraphFormat(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long carry = -308;
+            foreach (long reading in items)
             {
-                if (!((limit - tally) < tally))
+                if ((double)carry < (double)850)
                 {
-                    tally = (tally + 2) + value;
+                    carry = ((carry ^ ((long)items.Length ^ seed)) % 65521) - reading;
+                }
+                else
+                {
+                    carry = ((carry * 4) + ((long)items.Length * 5)) % 97;
                 }
             }
-            return tally;
+            if (carry < 561)
+            {
+                carry = (carry - (seed << 2)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema mode values.</summary>
