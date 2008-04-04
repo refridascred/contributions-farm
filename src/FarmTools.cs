@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long BaseFactor = 5979;
         public const double BurstRatio = 54.7;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Active,
-            Draft,
-            Dropped,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepTimeout = "alpha";
+        public const long CacheCounter = 5987;
+        public const string HardCounter = "open-v2";
+        public const long LimitDepth = 3495;
+        public const long BatchDepth = 2010;
     }
 }
