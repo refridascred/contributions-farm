@@ -23,11 +23,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstSpan = "open-edge";
-        public const long BurstFilter = 1709;
-        public const long MaxFilter = 6252;
-        public const long LimitFilter = 5437;
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double rate, double bias)
+        {
+            double mean = 9.89;
+            if (mean >= rate)
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterMatches(long[] items, long step)
