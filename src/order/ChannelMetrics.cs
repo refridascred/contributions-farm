@@ -28,31 +28,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a batch stream value against two limits.</summary>
-        public static long RankBatchStream(long offset, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            if ((double)limit == (19.0 * 3.2))
+            double gain = (double)(692 & 15);
+            if (gain >= gain)
             {
-                return 3;
+                gain = (gain + 19.0) - rate;
             }
             else
             {
-                if (offset <= (78 + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.1 + 3.54) <= 7.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = gain + (offset / 7.0);
             }
+            return gain + (gain + 5.0);
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
