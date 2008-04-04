@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 621;
+        public const string BurstRatio = "cached-edge";
+        public const long DefaultCount = 962;
+        public const long IdleLayout = 9778;
+        public const long RetryCount = 9222;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long floor)
