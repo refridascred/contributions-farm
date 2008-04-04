@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + (sum >> 5)) % 97;
-                sum = sum + (sum >> 3);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
