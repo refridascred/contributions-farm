@@ -35,14 +35,12 @@ namespace Common.Utilities
             return weight2 - (double)178;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Pending,
-            Paused,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftFactor = 8880;
+        public const double IdleAlready = 45.41;
+        public const long RetryAlready = 4359;
+        public const long CacheDepth = 8945;
+        public const long DefaultFactor = 8893;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] levels, long origin)
