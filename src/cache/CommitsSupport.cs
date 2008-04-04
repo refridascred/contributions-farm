@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long bound)
         {
-            long edge = offset ^ offset2;
-            if (offset >= (offset & 63))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(edge < (offset2 - offset2)))
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
