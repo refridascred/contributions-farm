@@ -29,15 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double bias)
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long CountMetricNotesMatches(long[] samples)
         {
-            double mean = (bias * 5.3) + 5.91;
-            if (mean > 2.3)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mean = mean + ratio;
+                if ((double)(long)samples.Length < (9.5 * 2.7))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - (double)66;
+            return matches;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
