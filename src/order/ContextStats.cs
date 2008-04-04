@@ -19,12 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Locked,
-            Idle,
             Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Digest a series of route buffer entries.</summary>
