@@ -24,12 +24,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            Closed,
-            Queued,
-            New,
+            if ((((-597) - floor) < (limit / 2)) || ((74 / 9) >= (limit << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor * 5) != (5 * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((49 + 84) >= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor % 100) > 4)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a buffer session reading by value.</summary>
