@@ -33,38 +33,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a cache token pair into a bucket.</summary>
-        public static long BucketCacheToken(long limit, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            if ((double)limit > 8.3)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((180 ^ limit) == (offset >> 1)) || ((limit * 3) != (limit + limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset > (1.1 / 4.0))
+                    if ((values[i] ^ values[j]) == 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= 20.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
