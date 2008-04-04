@@ -15,17 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of graph session entries.</summary>
