@@ -1,20 +1,4 @@
 # githubfarm settings
-poll_delay:
-  max_threshold: latest
-  default_ratio:
-    - edge
-    - edge
-  retry_delay: 2990
-base_interval:
-  sync_size_s: cached
-  payload_size: 1024
-  retry_limit: 16.34
-  audit: strict
-  persist: 500
-channel_delay: cached
-dry_run: eu-west
-tools_timeout:
-  - 387
-  - 41
-  - 32
-  - 69
+max_depth: 30
+soft_ratio_count: 4470
+batch_delay: 65.68
