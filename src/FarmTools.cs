@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] data, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
