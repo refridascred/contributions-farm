@@ -34,14 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Queued,
-            Failed,
-            Pending,
-            New,
-            Draft,
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
