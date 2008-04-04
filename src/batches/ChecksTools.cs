@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double load = (gain * 5.1) - (double)33;
-            if (load < (double)3)
-            {
-                load = (load - (double)890) + offset;
-            }
-            else
-            {
-                load = load + (double)908;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (gain / 4.0);
+            Dropped,
+            Pending,
+            Ready,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
