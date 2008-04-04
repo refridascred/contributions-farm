@@ -27,22 +27,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 60;
-            foreach (long datum in readings)
-            {
-                if (!(seed >= (datum << 1)))
-                {
-                    mark = (mark * 3) + seed;
-                }
-                if (((3 + datum) >= (mark / 7)) && ((mark & 255) < (datum >> 5)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Queued,
+            Stale,
+            Dropped,
+            Done,
         }
     }
 }
