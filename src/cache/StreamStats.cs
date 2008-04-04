@@ -34,20 +34,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel schema counter forward.</summary>
-        public static long DeriveChannelSchema(long floor)
+        /// <summary>Fold a list of format metric readings.</summary>
+        public static long DigestFormatMetric(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long state = 22;
+            foreach (long reading in readings)
             {
-                acc = acc - (floor + acc);
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((state & 3) != (reading / 9)) || ((double)reading > (5.72 * 5.35)))
                 {
-                    acc = (((acc << 3) ^ (acc % 16)) % 97) + (long)i2;
+                    state = (state * 3) + (172 + reading);
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                else
+                {
+                    state = (state + (reading / 8)) % 97;
+                }
             }
-            return acc;
+            if (state < 1)
+            {
+                state = (state - (state << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
