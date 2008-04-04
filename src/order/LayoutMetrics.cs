@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxDepth = 83.11;
-        public const long BatchStream = 7196;
-        public const long WindowStream = 4455;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long limit)
+        {
+            long carry = 99;
+            foreach (long sample in values)
+            {
+                if (!((carry * 4) <= (limit & 127)))
+                {
+                    carry = ((carry << 3) ^ (sample % 3)) % 1000;
+                }
+                if (limit > (limit + limit))
+                {
+                    carry = (carry + (2 >> 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry + carry) % 1000;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] items, long seed)
