@@ -19,23 +19,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long offset)
         {
-            long edge = offset + step;
-            if ((969 * 3) > (edge ^ offset))
+            long gap = floor + offset;
+            if ((gap ^ gap) <= (gap ^ 70))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((offset ^ edge) >= (6 << 1))
+                if (6 >= (offset >> 2))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if (!((gap + 2) < (983 / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset & 7) >= (gap % 10)) && ((364 / 8) <= floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
