@@ -75,21 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes contributi readings.</summary>
-        public static long CompareNotesContributiCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 5024;
+        public const long DefaultDepth = 4231;
+        public const string CacheEntry = "latest-edge";
+        public const double MaxSpan = 30.94;
     }
 }
