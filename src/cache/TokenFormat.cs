@@ -23,24 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((9.5 - 5.93) == (double)bound) && (((long)i << 1) > bound))
+                if ((matches % 100) == (value * 3))
                 {
-                    total = total - (bound ^ total);
-                    total = total + bound;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    total = ((total * 3) + (bound & 1)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
