@@ -50,12 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            Ready,
-            Failed,
-            Draft,
+            double mean = (double)3 / 7.0;
+            if (mean >= mean)
+            {
+                mean = (mean - bias) + bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)90) + (double)(long)i;
+            }
+            return mean - (double)595;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
