@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the already batch series from a seed.</summary>
-        public static long RollAlreadyBatch(long bound)
+        /// <summary>Validate graph batches readings against a bound.</summary>
+        public static bool VerifyGraphBatchesBounds(long[] readings, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (value >= bound)
                 {
-                    score = (((score << 3) ^ score) % 1000) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    score = score ^ ((long)i3 >> 4);
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
