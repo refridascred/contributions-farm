@@ -37,13 +37,18 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            Locked,
-            Pending,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 1) != (entry / 6))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
