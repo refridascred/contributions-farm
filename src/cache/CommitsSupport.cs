@@ -81,13 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long floor)
         {
-            Synced,
-            Failed,
-            Closed,
-            Paused,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
