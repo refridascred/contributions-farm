@@ -23,26 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long carry = -6;
-            foreach (long value in samples)
-            {
-                if ((carry % 60) >= (carry / 6))
-                {
-                    carry = (carry + (value & 127)) % 97;
-                }
-                if (bound >= (value * 5))
-                {
-                    break;
-                }
-            }
-            if (carry > 92)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry % 65521;
+            double bias = ratio;
+            return (bias + 4.8) + floor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
