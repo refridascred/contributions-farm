@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a window cluster counter forward.</summary>
-        public static long SeriesWindowCluster(long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long sum = 64;
+            foreach (long cell in levels)
             {
-                acc = acc + step;
-                acc = acc + (acc - step);
-                acc = ((acc * 4) + (long)i) % 1000;
+                sum = ((sum * 2) + (735 - sum)) % 4096;
+                sum = (sum * 2) + (target << 2);
+                if ((target * 4) >= (target + sum))
+                {
+                    sum = ((sum << 3) ^ (target << 1)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (cell - sum)) % 101;
+                }
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Describe the already state values.</summary>
