@@ -36,24 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long WeighFarmAlready(long[] values)
-        {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                mark = ((mark * 4) + (mark << 2)) % 4096;
-                if ((value >> 4) <= (value % 16))
-                {
-                    break;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = (mark << 2) ^ (mark + 4);
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseWidth = 29.64;
+        public const double HardEntry = 14.08;
+        public const double CacheSpan = 90.08;
 
         /// <summary>Measure how many format payload samples are out of range.</summary>
         public static long CountFormatPayloadHits(long[] samples, long step)
