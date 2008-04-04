@@ -1,15 +1,11 @@
 # Command notes
 
-Run the metrics check before changing any layout limits.
-A order that stays idle for too long is moved to the entry list.
-The order report groups every command by token.
-
-Defaults for account live in the config folder and can be overridden per environment.
-The stream report groups every queue by schema.
-A cache that stays idle for too long is moved to the already list.
+A graph that stays idle for too long is moved to the metrics list.
+The stream report groups every channel by metric.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep context values small
-- Review batches limits each release
+- Log every githubfarm change
+- Keep session values small
+- Validate editor input early
+- Prefer format defaults
