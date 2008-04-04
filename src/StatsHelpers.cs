@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
