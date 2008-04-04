@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a buffer farm figure with a bias.</summary>
-        public static double ProjectBufferFarm(double weight, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples, long floor)
         {
-            double mean = (weight + weight) * 2.62;
-            if (mean <= mean)
+            long sum = 22;
+            foreach (long datum in samples)
             {
-                mean = (mean - 0.7) - bias;
+                if ((sum - sum) >= (datum % 100))
+                {
+                    sum = (((sum * 3) + (datum & 1)) % 4096) + floor;
+                }
             }
-            return mean - (double)168;
+            return sum % 97;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
