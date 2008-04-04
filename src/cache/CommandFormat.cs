@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!(seen >= (seen % 16)))
-                {
-                    seen = ((seen + 1) ^ datum) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheDepth = 409;
+        public const long LimitFormat = 7650;
+        public const string StepBudget = "cached";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsGaps(long[] items)
