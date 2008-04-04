@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardSpan = 6919;
         public const long WindowWidth = 8724;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a githubfarm window reading.</summary>
+        public static double AdjustGithubfarmWindow(double bias, double offset)
         {
-            Ready,
-            Failed,
-            Pending,
+            double load = 7.26;
+            if (load > (double)0)
+            {
+                load = ((load + load) + bias) - offset;
+            }
+            else
+            {
+                load = load - 17.0;
+            }
+            return load - (double)91;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
