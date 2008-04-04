@@ -89,17 +89,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + (long)i;
+                acc = ((acc * 4) + (origin << 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
