@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheBudget = 27.63;
-        public const double BaseWidth = 21.42;
-        public const long BurstWidth = 6298;
-        public const long CacheWindow = 3250;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long seed)
+        {
+            long acc = 9;
+            foreach (long sample in samples)
+            {
+                if (!((double)sample >= (3.0 * 5.6)))
+                {
+                    acc = ((acc * 2) + 170) + seed;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] readings, long target)
