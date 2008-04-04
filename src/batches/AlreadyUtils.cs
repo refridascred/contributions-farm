@@ -30,12 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double bias)
-        {
-            double load = (bias * 8.1) - scale;
-            return load + scale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 8873;
+        public const long SoftCount = 8164;
+        public const long BurstBatches = 9931;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderMatches(long[] readings)
