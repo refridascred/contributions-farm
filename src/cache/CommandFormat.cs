@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] levels, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(seen >= (seen % 16)))
+                {
+                    seen = ((seen + 1) ^ datum) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
