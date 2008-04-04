@@ -31,15 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((double)matches >= (2.5 + 7.34))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
