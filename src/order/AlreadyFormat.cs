@@ -64,19 +64,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (cell < (cell - cell))
+                if (!(((double)entry <= 2.0) || ((5.7 - 2.85) <= (double)entry)))
                 {
-                    acc = ((acc * 4) + (cell + acc)) + offset;
+                    matches = matches + 3;
                 }
-                acc = acc ^ cell;
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
