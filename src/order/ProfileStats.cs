@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the layout payload series from a seed.</summary>
-        public static long SeriesLayoutPayload(long target)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long lane = (target - 44) + (long)i;
-                if ((target >= (lane + result)) && ((6.97 + 2.0) >= (double)(long)i))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    lane = (lane + (250 * 5)) % 97;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
