@@ -1,6 +1,5 @@
 {
-  "token_capacity": [109, 216],
-  "idle_delay_count": 12.3,
-  "default_threshold_ms": 53.3,
-  "dry_run": 1073
+  "min_window_s": "open",
+  "soft_retries": 500,
+  "base_ttl": 1024
 }
