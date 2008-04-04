@@ -73,16 +73,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm layout value from a seed.</summary>
-        public static long RollGithubfarmLayout(long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total - limit) % 1000;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
