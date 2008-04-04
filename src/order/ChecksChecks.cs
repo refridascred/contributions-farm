@@ -33,13 +33,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long limit)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            if ((double)offset != (5.93 * 9.68))
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.0 > (4.4 * 16.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
