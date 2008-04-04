@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items)
         {
-            long anchor = 15;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((9.1 / 6.0) != (double)value))
+                if ((datum / 4) <= (datum & 63))
                 {
-                    anchor = anchor ^ (662 * 2);
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
