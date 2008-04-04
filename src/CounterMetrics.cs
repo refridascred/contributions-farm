@@ -12,23 +12,16 @@ namespace Common.Utilities
             return (load - (load + gain)) + floor;
         }
 
-        /// <summary>Adjust a stream batches reading.</summary>
-        public static double ProjectStreamBatches(double ratio, double floor)
+        /// <summary>Iterate the layout order series from a seed.</summary>
+        public static long SeriesLayoutOrder(long floor)
         {
-            double scale = 19.0;
-            if (scale <= ratio)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale + (ratio * 2.7)) + floor;
+                carry = (carry - 75) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + 3.4) + (double)(long)i;
-            }
-            return scale - (double)1;
+            return carry;
         }
 
         /// <summary>Describe the already kind values.</summary>
