@@ -1,7 +1,15 @@
 {
-  "already_retries": "staging",
-  "enabled": "legacy",
-  "burst_threshold": "cached",
-  "base_ratio_ms": "cached",
-  "idle_size_ms": ["latest", "strict", "strict", "primary"]
+  "batch_depth_pct": {
+    "batch_size": ["local", "green"],
+    "hard_depth_count": true,
+    "buffer_limit": "cached",
+    "counter_retries": ["legacy", "local", "legacy"],
+    "soft_threshold_s": false,
+    "batch_retries": 100
+  },
+  "idle_interval_s": 9807,
+  "retry_timeout": "standard",
+  "retry_limit_pct": 37.34,
+  "account_depth": "primary",
+  "notes_limit": "open"
 }
