@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Dropped,
-            Synced,
-            Idle,
-            Paused,
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
