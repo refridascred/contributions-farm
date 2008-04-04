@@ -25,32 +25,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report booking pair into a bucket.</summary>
-        public static long BucketReportBooking(long bound, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long next = bound - origin;
-            if (((bound << 1) >= (bound << 3)) && ((bound * 2) >= (272 + next)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound ^ next) <= (origin / 9)) && ((29 + 46) <= (next * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 1) == (bound / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
