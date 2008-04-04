@@ -24,22 +24,19 @@ namespace Common.Utilities
             return rate + (gain / 7.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] values, long origin)
+        /// <summary>Digest a series of support editor entries.</summary>
+        public static long TotalSupportEditor(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = 821;
+            foreach (long item in series)
             {
-                if (origin >= 5)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor ^ 822) % 1000) + item;
             }
-            return matches;
+            if (anchor > 34)
+            {
+                anchor = (anchor + offset) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a window githubfarm pair into a bucket.</summary>
