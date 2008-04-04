@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
