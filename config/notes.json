@@ -1,11 +1,6 @@
 {
-  "schema_delay": true,
-  "flush_window_s": {
-    "min_capacity_s": 0.16,
-    "warm_interval": 10.09,
-    "retry_limit": true,
-    "contributi_threshold": 6753,
-    "warm_depth_count": 9026
-  },
-  "min_size_s": 500
+  "default_depth_s": "standard",
+  "base_limit_count": 91,
+  "compress": 59,
+  "cache_interval": 30
 }
