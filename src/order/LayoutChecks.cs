@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Closed,
-            New,
-            Draft,
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
