@@ -17,18 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] levels, long limit)
+        /// <summary>Audit filter session readings against a rule.</summary>
+        public static long AuditFilterSessionGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)limit != (double)count)
+                if (5 <= (entry % 10))
                 {
-                    count = (count + 3) + value;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
