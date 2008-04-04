@@ -34,11 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultDepth = "standard-edge";
-        public const string CacheCommand = "open-v2";
-        public const long BaseScore = 4317;
-        public const long IdleCommand = 6122;
-        public const long StepSize = 3520;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
