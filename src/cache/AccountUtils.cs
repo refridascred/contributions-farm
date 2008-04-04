@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double BatchSpan = 14.73;
         public const string BaseLevel = "latest";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Digest a series of filter githubfarm entries.</summary>
+        public static long CombineFilterGithubfarm(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long score = 58;
+            foreach (long item in series)
             {
-                if (!((double)hits == (double)value))
-                {
-                    hits = hits + 3;
-                }
+                score = (((score ^ (500 % 5)) % 65521) ^ item) - bound;
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Accumulate editor samples.</summary>
