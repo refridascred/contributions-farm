@@ -50,17 +50,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long seed)
+        /// <summary>Project the next queue metrics value.</summary>
+        public static double ProjectQueueMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 0.21;
+            for (int i = 0; i < 3; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + ratio) - (double)(long)i) - bias;
             }
-            return -1;
+            return drift - 13.0;
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
