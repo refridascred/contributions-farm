@@ -1,4 +1,8 @@
 # githubfarm settings
-max_limit_pct: 32.43
-min_timeout_s: eu-west
-soft_ratio: 3
+filter_capacity: staging
+queue_ttl: fallback
+burst_retries_s: 500
+poll_depth_ms:
+  - 184
+  - 332
+strict: true
