@@ -1,13 +1,4 @@
 # entry settings
-soft_timeout_pct: 4314
-base_depth: 68.25
-idle_ratio_s:
-  - 437
-  - 91
-account_limit:
-  - 44
-  - 447
-  - 441
-  - 281
-cache_size_ms: 30
-dry_run: stable
+batch_timeout_pct: 9394
+flush_capacity: false
+verbose: 20.99
