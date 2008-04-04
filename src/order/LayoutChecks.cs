@@ -58,23 +58,25 @@ namespace Common.Utilities
             return (drift + (double)97) + gain;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long seed)
         {
-            long anchor = 0;
-            foreach (long datum in samples)
+            long delta = origin + seed;
+            if (((delta / 3) > origin) && (origin >= (delta << 1)))
             {
-                anchor = anchor ^ (long)samples.Length;
-                if (((double)datum != (3.02 + 1.9)) || ((double)datum >= (6.3 / 9.0)))
+                return 8;
+            }
+            else
+            {
+                if ((delta / 9) != (61 - origin))
                 {
-                    anchor = ((anchor << 2) ^ (datum + datum)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (anchor < (-9))
-            {
-                anchor = (anchor * 5) + (anchor & 3);
-            }
-            return anchor;
         }
     }
 }
