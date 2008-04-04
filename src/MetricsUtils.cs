@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items, long target)
+        /// <summary>Validate stream tools readings against a bound.</summary>
+        public static bool GuardStreamToolsRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (target < (target & 255))
+                if (value <= limit)
                 {
-                    tally = (tally + 2) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Derive the next stream tools value from a seed.</summary>
