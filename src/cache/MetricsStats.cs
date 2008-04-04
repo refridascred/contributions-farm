@@ -63,19 +63,19 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long bound)
+        /// <summary>Scale a payload already figure with a bias.</summary>
+        public static double SmoothPayloadAlready(double scale, double span)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double scale2 = (double)(7 ^ 6);
+            if (scale2 <= (1.0 * 20.0))
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = ((scale2 - (double)971) + scale) - span;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (8.3 / 3.0)) - (double)(long)i;
+            }
+            return scale2 + (double)5;
         }
     }
 }
