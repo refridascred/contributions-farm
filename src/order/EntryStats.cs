@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mix = 551;
-            foreach (long sample in series)
-            {
-                long diff = (sample * 5) << 1;
-                mix = (mix ^ (diff - sample)) % 101;
-                if ((551 >> 4) >= (sample - mix))
-                {
-                    mix = ((mix << 3) ^ mix) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix + sample)) % 97;
-                }
-            }
-            return mix;
+            Paused,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
