@@ -58,18 +58,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] items, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((337 + seen) > seen)
+                if (readings[i] <= offset)
                 {
-                    seen = ((seen + 1) + item) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
