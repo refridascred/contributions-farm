@@ -78,19 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Compare every pair of notes contributi readings.</summary>
+        public static long CompareNotesContributiCount(long[] data)
         {
-            double mean = 4.07 / 5.0;
-            if (mean > mean)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (scale - 1.43)) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)12) - (double)(long)i;
-            }
-            return mean - (scale * 7.0);
+            return count;
         }
     }
 }
