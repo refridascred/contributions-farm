@@ -24,26 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values, long offset)
         {
-            long state = -372;
-            foreach (long reading in readings)
+            long anchor = 93;
+            foreach (long entry in values)
             {
-                if (!((long)readings.Length < (reading * 2)))
+                if ((offset + offset) != (offset / 7))
                 {
-                    state = ((state - (153 & 3)) % 1000) + bound;
-                }
-                if (66 >= (state / 5))
-                {
-                    break;
+                    anchor = ((anchor ^ (offset - offset)) % 101) + entry;
                 }
             }
-            if (state < (-782))
+            if (anchor < 4)
             {
-                state = (state * 4) + state;
+                anchor = (anchor ^ (offset - offset)) % 4096;
             }
-            return state;
+            return anchor % 97;
         }
     }
 }
