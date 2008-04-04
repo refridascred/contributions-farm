@@ -71,12 +71,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Paused,
-            Retry,
+            New,
+            Closed,
             Done,
+            Active,
+            Retry,
         }
     }
 }
