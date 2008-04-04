@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long slot = bound - limit;
-            if (!(limit >= (limit + bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ limit) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((slot - slot) == (limit + limit)) || ((slot - limit) < (limit - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit & 15) == (bound % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of account entries.</summary>
