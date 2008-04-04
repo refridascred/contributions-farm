@@ -51,13 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Done,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 5099;
+        public const long StepSize = 3439;
+        public const double RetryContributi = 39.09;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] values, long offset)
