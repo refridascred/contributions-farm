@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-1";
         public const string StepLevel = "staging-edge";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 33;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin >= (carry / 2))
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry * 4) + (origin - 4)) % 97) - value;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
