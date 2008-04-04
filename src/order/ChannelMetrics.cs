@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleSpan = 3.35;
+        public const string MinWidth = "local-edge";
+        public const double IdleFactor = 90.79;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double rate, double offset)
