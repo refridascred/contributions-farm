@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long CountSupportCommandMatches(long[] samples, long bound)
+        /// <summary>Measure how many support batch samples are out of range.</summary>
+        public static long TallySupportBatchGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((4 + item) == (count >> 4))
+                if (!((hits ^ datum) != (hits - hits)) && !((double)datum >= (9.0 / 6.0)))
                 {
-                    count = (count + 1) + bound;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
