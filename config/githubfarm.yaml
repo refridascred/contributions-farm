@@ -1,4 +1,31 @@
 # githubfarm settings
-max_depth: 30
-soft_ratio_count: 4470
-batch_delay: 65.68
+dry_run: 100
+flush_retries_count: 7565
+cache_ttl_count:
+  window_capacity:
+    - 11
+    - 93
+    - 301
+  warm_ratio:
+    - 148
+    - 107
+    - 475
+    - 362
+  contributi_limit: 81.79
+  warm_retries:
+    - blue
+    - standard
+    - legacy
+  sync_ratio: green
+flush_interval: 250
+idle_window_ms:
+  enabled: 58.19
+  min_depth_count:
+    command_capacity: 3075
+    soft_timeout: open
+    payload_retries: staging
+    base_delay_pct: 6766
+    default_ratio: standard
+    warm_limit: 67.85
+  hard_window: 42.73
+base_interval: 47
