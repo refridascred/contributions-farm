@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a farm account counter forward.</summary>
-        public static long DeriveFarmAccount(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (82 % 16)) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)seen == (5.81 * 9.5))
                 {
-                    carry = (((carry << 2) ^ (carry - (-14))) % 97) ^ (long)i2;
-                    carry = (carry - carry) % 255;
+                    seen = ((seen + 2) + sample) + step;
                 }
-                if ((carry ^ bound) == (bound ^ bound))
-                {
-                    carry = (carry + bound) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
