@@ -24,10 +24,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 11.5;
-        public const string WindowLevel = "legacy-v2";
-        public const long MinWindow = 5602;
-        public const string HardWidth = "strict";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state + (965 >> 3);
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
