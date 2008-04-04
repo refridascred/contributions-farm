@@ -1,7 +1,6 @@
-id,level,owner
-1,47.98,staging
-2,cached,949
-3,standard,69.85
-4,legacy,fallback
-5,standard,stable
-6,fallback,43.98
+id,state,owner
+1,cached,open
+2,166,141
+3,83.46,green
+4,726,714
+5,cached,edge
