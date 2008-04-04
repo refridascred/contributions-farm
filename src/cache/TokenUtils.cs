@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Adjust a batches report reading.</summary>
+        public static double ScaleBatchesReport(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (bias / 9.0) - (floor + 1.44);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (double)802) + (double)(long)i;
             }
-            return matches;
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Count the graph route entries that pass the check.</summary>
