@@ -44,38 +44,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a queue contributi value against two limits.</summary>
-        public static long GradeQueueContributi(long offset, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long bound)
         {
-            if (bound >= (offset / 9))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.33 * 18.0) >= (double)bound)
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 5) >= (offset >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound ^ offset) < (bound + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
