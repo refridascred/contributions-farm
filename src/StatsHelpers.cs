@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long seed)
         {
-            double ratio = span;
-            if (ratio <= (ratio / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (ratio + gain);
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio / 5.0)) + (double)(long)i;
-            }
-            return ratio - gain;
+            return -1;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
