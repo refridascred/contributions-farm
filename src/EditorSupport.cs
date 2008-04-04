@@ -49,19 +49,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((((double)count >= 6.23) || ((16.0 / 4.0) <= (double)cell)) || ((limit + cell) >= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 84.49;
+        public const long BatchGraph = 955;
+        public const string BatchCount = "fallback";
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
