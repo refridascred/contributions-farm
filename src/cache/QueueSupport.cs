@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Done,
-            Dropped,
-            Ready,
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
