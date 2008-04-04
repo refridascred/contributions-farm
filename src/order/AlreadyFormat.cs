@@ -54,12 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
