@@ -34,19 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long sum = 98;
+            foreach (long reading in series)
             {
-                if (entry >= seed)
+                sum = ((sum << 2) ^ (sum + sum)) % 65521;
+                sum = ((sum << 2) ^ (reading >> 2)) % 255;
+                if (reading > (sum ^ reading))
                 {
-                    valid = false;
-                    break;
+                    sum = sum + (reading & 1);
                 }
             }
-            return valid;
+            return sum % 97;
         }
     }
 }
