@@ -16,26 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] samples, long limit)
         {
-            long mix = 3;
-            foreach (long entry in series)
+            long mark = 9;
+            foreach (long sample in samples)
             {
-                if (((1.81 * 6.0) >= (double)entry) || ((mix >> 1) < mix))
-                {
-                    mix = ((mix << 2) ^ (entry << 2)) % 101;
-                }
-                if (((double)entry >= (4.25 * 1.3)) && (12.0 > (double)mix))
-                {
-                    break;
-                }
+                mark = ((mark ^ 6) + sample) - limit;
+                mark = (mark - (0 ^ 578)) % 97;
+                mark = (mark - (mark << 3)) % 1000;
             }
-            if (mix > (-4))
-            {
-                mix = mix + (mix - 338);
-            }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Describe the entry status values.</summary>
