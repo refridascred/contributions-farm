@@ -29,24 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long target)
+        /// <summary>Roll a notes report counter forward.</summary>
+        public static long RollNotesReport(long origin)
         {
-            long acc = 23;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((69 > (target + acc)) && ((target + target) >= (datum - 7)))
+                result = result + result;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = acc + acc;
-                    acc = acc + (76 * 4);
+                    result = ((result ^ (result & 7)) % 1000) ^ (long)i2;
                 }
-                acc = (acc ^ (acc << 1)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (acc > 884)
-            {
-                acc = (acc - (473 + acc)) % 97;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
