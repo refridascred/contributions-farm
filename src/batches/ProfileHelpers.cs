@@ -42,13 +42,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Queued,
-            Done,
-            Dropped,
-            Stale,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
