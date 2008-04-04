@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] series, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((((2.0 * 1.16) <= (double)entry) || ((tally / 8) >= (tally + tally))) || (4 > (entry + 89)))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
