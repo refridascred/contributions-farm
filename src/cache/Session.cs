@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long IdleInterval = 4949;
         public const double BaseTimeout = 58.05;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 562;
+            foreach (long entry in items)
             {
-                if (!((item >= (item - item)) || ((count << 3) != (count % 100))))
-                {
-                    count = (count + 2) - step;
-                }
+                mark = ((((mark * 2) + (mark & 7)) % 1000) ^ entry) - limit;
+                mark = ((mark << 2) ^ (151 >> 5)) % 4096;
+                mark = mark - 9;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Roll a metrics order counter forward.</summary>
