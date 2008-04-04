@@ -20,20 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - sum) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum + 534) % 65521) ^ (long)i2;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
