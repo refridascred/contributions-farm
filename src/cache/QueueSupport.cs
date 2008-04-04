@@ -23,13 +23,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mix ^ seed) < (mix >> 5))
+                {
+                    mix = (mix ^ (4 + mix)) % 255;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
