@@ -24,19 +24,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total << 2) ^ (long)i) % 1000;
+                total = ((total * 4) + (237 + (long)i)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
     }
 }
