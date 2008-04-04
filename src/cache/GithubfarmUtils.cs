@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long total = 50;
+            foreach (long cell in items)
+            {
+                total = ((total - (bound * 3)) % 255) - cell;
+            }
+            if (total > 4)
+            {
+                total = ((total << 2) ^ (692 % 7)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Blend two checks measurements.</summary>
