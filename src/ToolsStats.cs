@@ -56,12 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 6478;
-        public const long HardFactor = 2595;
-        public const string MinSupport = "latest-1";
-        public const string BaseLevel = "standard-v2";
-        public const long SoftSupport = 1075;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
