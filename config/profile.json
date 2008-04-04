@@ -1,8 +1,5 @@
 {
-  "burst_capacity_pct": ["eu-west", "latest"],
-  "record_capacity": "cached",
-  "persist": 32.12,
-  "hard_ttl_ms": 60,
-  "stream_ratio": 14,
-  "flush_timeout": 6
+  "base_interval_pct": "primary",
+  "token_window": "strict",
+  "route_depth": [101, 9]
 }
