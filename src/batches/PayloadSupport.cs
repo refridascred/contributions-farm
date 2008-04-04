@@ -24,17 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 185;
+            foreach (long item in samples)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (floor + 81)) ^ item;
             }
-            return -1;
+            if (total < 97)
+            {
+                total = total ^ (floor + total);
+            }
+            return total % 65521;
         }
     }
 }
