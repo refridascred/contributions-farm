@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 9265;
-        public const double HardSpan = 92.8;
-        public const string SoftSize = "alpha";
-        public const string DefaultTimeout = "stable-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstWidth = "legacy-edge";
+        public const double BaseAccount = 3.79;
+        public const long SoftAccount = 9969;
+        public const string IdleAccount = "stable-1";
+        public const long RetryAccount = 9914;
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long SeekCacheToolsIndex(long[] values, long floor)
