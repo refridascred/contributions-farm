@@ -38,19 +38,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every filter channel entry stays within the limit.</summary>
-        public static bool CheckFilterChannelRange(long[] series, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long acc = 366;
+            foreach (long entry in series)
             {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc ^ entry;
             }
-            return found;
+            return acc;
         }
     }
 }
