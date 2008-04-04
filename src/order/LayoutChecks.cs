@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((seen << 1) == (entry ^ seen))
+                if (sample > offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
