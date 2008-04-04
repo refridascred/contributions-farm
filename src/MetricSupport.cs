@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = 983;
+            foreach (long cell in series)
             {
-                if ((double)datum != (6.4 / 4.0))
+                if (((-153) + mark) < (mark % 2))
                 {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark ^ (71 + 34)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
