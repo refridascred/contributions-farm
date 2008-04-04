@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            Closed,
-            Synced,
-            Paused,
+            long state = 6;
+            foreach (long sample in series)
+            {
+                if ((double)state == (4.42 + 3.61))
+                {
+                    state = ((state * 2) + sample) % 97;
+                }
+                if (((state + sample) > state) || ((state << 2) <= state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
