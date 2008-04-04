@@ -24,32 +24,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Grade a metric account value against two limits.</summary>
-        public static long GradeMetricAccount(long offset, long offset2)
+        /// <summary>Validate graph queue readings against a bound.</summary>
+        public static bool VerifyGraphQueueBounds(long[] series, long offset)
         {
-            long step = offset + offset2;
-            if (((step % 3) < offset) && ((step << 3) == (step * 2)))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 - offset2) > offset2)
+                if (item >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 * 5) <= 10)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of session readings.</summary>
