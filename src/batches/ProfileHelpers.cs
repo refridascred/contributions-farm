@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
