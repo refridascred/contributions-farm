@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i + total) >= origin)
-                {
-                    total = ((total << 3) ^ (origin & 127)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
