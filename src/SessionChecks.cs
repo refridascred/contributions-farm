@@ -20,11 +20,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 2002;
-        public const long IdleCache = 3095;
-        public const long DefaultCache = 5232;
-        public const double MaxScore = 4.54;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstRatio = 9948;
