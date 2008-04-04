@@ -68,22 +68,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long TallyEditorFormatGaps(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long bound2 = bound ^ seed;
+            if ((seed ^ 860) > (seed - bound2))
             {
-                if (datum >= (seen + seen))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 == (1.2 - 15.0))
                 {
-                    seen = seen + 1;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed & 3) <= (4 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
