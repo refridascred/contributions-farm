@@ -1,14 +1,7 @@
 # support settings
-notes_timeout: green
-payload_window: latest
-warm_threshold:
-  warm_capacity_s: false
-  poll_size_ms: cached
-  audit: 35
-  soft_size_count: 271
-  sync_ttl_s:
-    - 125
-    - 267
-    - 130
-layout_retries: 83
-cache_limit_s: 63.56
+base_threshold: 4403
+batch_threshold: cached
+burst_ratio_pct: 10.61
+warm_window_pct: 90.13
+audit: false
+burst_timeout_pct: open
