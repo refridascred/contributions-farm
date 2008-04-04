@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long MeasureRecordEntryGaps(long[] samples)
         {
-            Draft,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (7 <= (value << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
