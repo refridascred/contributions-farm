@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_timeout: 2088
-burst_timeout_ms: 9090
-command_interval: false
+flush_delay_ms: 48
+burst_ttl_pct: 250
+layout_depth: 63.14
+warm_interval: primary
+warm_timeout: 500
+soft_ratio_count: 30
