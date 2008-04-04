@@ -39,17 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Measure how many command notes samples are out of range.</summary>
+        public static long MeasureCommandNotesHits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (values[i] > bound)
+                if ((limit <= (limit * 4)) && (((double)reading >= 4.22) && ((limit + tally) >= (42 + reading))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
