@@ -27,16 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] levels, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mix = (mix << 3) ^ ((long)i + 463);
-                mix = ((mix * 4) + (long)i) % 97;
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Measure how many command notes samples are out of range.</summary>
