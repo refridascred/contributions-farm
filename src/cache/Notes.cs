@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] items, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches << 3) >= matches)
-                {
-                    matches = ((matches + 2) ^ entry) - bound;
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a graph options.</summary>
