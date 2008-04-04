@@ -15,10 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "staging-1";
-        public const long HardBudget = 4100;
-        public const long MinLayout = 5118;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double span)
+        {
+            double bias = (weight - span) * 0.5;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (6.9 * 12.0)) + (double)(long)i;
+            }
+            return bias + (span + span);
+        }
 
         /// <summary>Grade a commits entry value against two limits.</summary>
         public static long ClassifyCommitsEntry(long limit, long floor)
