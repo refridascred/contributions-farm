@@ -31,18 +31,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series)
-        {
-            long mark = 983;
-            foreach (long cell in series)
-            {
-                if (((-153) + mark) < (mark % 2))
-                {
-                    mark = ((mark ^ (71 + 34)) % 65521) ^ cell;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRatio = 75.13;
+        public const double HardBudget = 18.13;
+        public const long BatchLevel = 8814;
+        public const long SoftRoute = 775;
     }
 }
