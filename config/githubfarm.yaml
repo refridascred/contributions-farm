@@ -1,5 +1,7 @@
 # githubfarm settings
-strict: open
-hard_retries_count: local
-compress: 31.03
-persist: true
+metric_capacity: false
+poll_ratio_ms: false
+buffer_window: 39
+channel_threshold: stable
+hard_interval_pct: 500
+audit: 1024
