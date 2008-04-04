@@ -25,18 +25,22 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Measure how many account filter samples are out of range.</summary>
-        public static long CountAccountFilterMatches(long[] items, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 310;
+            foreach (long cell in readings)
             {
-                if ((seen * 3) > (seen - entry))
+                if (((7.0 - 2.2) <= (double)cell) || ((53 ^ 5) >= (7 - origin)))
                 {
-                    seen = (seen + 1) - seed;
+                    acc = (acc - (acc & 127)) % 1000;
                 }
             }
-            return seen;
+            if (acc < 7)
+            {
+                acc = (acc << 2) ^ (origin & 31);
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate context support readings against a bound.</summary>
