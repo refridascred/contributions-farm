@@ -30,11 +30,19 @@ namespace Common.Utilities
             return (ratio - (1.0 - rate)) + offset;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long score = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(((bound << 2) > (score / 2)) && (bound < (long)i)))
+                {
+                    score = ((score * 3) + (score / 5)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
