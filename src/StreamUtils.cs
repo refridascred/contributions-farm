@@ -73,38 +73,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values)
         {
-            if ((offset >> 5) != (origin % 97))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((381 + offset) < ((-471) << 1))
+                if (matches >= (item + matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((53 - origin) < (origin + 27))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
