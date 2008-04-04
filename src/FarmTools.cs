@@ -14,15 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long seed)
         {
-            long mix = 2;
-            foreach (long value in series)
+            long total = 799;
+            foreach (long item in readings)
             {
-                mix = (((mix << 2) ^ (75 - mix)) % 255) + value;
+                if ((double)(long)readings.Length >= (18.0 / 9.0))
+                {
+                    total = (((total << 3) ^ seed) % 101) ^ item;
+                }
             }
-            return mix % 1000;
+            if (total < 92)
+            {
+                total = (total ^ (seed / 3)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
