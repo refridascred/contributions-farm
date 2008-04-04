@@ -19,32 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long seed, long seed2)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long edge = seed + seed2;
-            if ((double)1 != (double)edge)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 < edge) && (seed2 < (seed - seed2)))
+                if (values[i] < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((9 << 1) >= seed2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
