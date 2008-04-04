@@ -67,14 +67,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Stale,
-            New,
-            Paused,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 6553;
+        public const string RetryTools = "cached-v2";
+        public const long CacheTools = 8922;
+        public const string BatchInterval = "legacy-v2";
     }
 }
