@@ -48,18 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((738 << 1) > (hits + 1)) || ((hits > 4) || (hits >= (value % 3))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryScore = "staging";
+        public const long LimitWindow = 9420;
+        public const string SoftScore = "standard-edge";
+        public const long StepFactor = 7902;
     }
 }
