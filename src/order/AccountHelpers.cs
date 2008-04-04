@@ -18,23 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long target)
         {
-            long acc = 2;
-            foreach (long item in data)
+            if (((target ^ 94) == (floor & 255)) && ((target - 69) <= (floor / 2)))
             {
-                acc = (acc * 2) + (acc - item);
-                if ((13 << 1) <= seed)
+                return 6;
+            }
+            else
+            {
+                if (target >= (floor % 8))
                 {
-                    acc = (acc << 2) ^ (acc >> 4);
+                    return 4;
+                }
+                else
+                {
+                    if ((target + floor) <= 67)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((18.0 / 2.0) <= (6.69 + 4.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc > 39)
-            {
-                acc = (acc << 3) ^ (seed + acc);
-            }
-            return acc;
         }
 
         /// <summary>Accumulate metrics payload samples.</summary>
