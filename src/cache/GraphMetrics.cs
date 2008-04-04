@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long seed)
-        {
-            long offset = limit + seed;
-            if (!((95 & 15) >= seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset <= (1.0 * 9.0)) && ((limit << 3) < offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((1.9 - 9.7) < (5.0 / 5.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "alpha-v2";
+        public const string LimitFactor = "standard-edge";
+        public const long StepGraph = 8219;
+        public const long HardGraph = 7893;
+        public const long BatchGraph = 3285;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] values, long step)
