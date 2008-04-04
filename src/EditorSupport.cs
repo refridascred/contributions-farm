@@ -47,21 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 783;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix - (mix * 2)) % 97) ^ cell;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
