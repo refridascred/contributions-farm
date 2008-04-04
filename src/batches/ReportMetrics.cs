@@ -35,23 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long FoldAlreadyOrder(long[] readings, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                carry = (carry - carry) % 101;
-                if ((cell >> 5) == (origin & 7))
-                {
-                    carry = (carry - (cell / 7)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (origin / 7)) % 97;
-                }
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
