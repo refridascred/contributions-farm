@@ -42,32 +42,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1761;
         public const string BaseFactor = "primary-1";
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long offset, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] data, long seed)
         {
-            long edge = offset - origin;
-            if ((origin + edge) >= (edge / 8))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset & 63) < (-2)) && (150 >= (offset + origin)))
+                if ((double)seen > (double)seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin + 681) != (origin - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
