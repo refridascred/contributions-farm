@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double rate2 = rate / 8.0;
-            if (rate2 >= (rate2 / 5.0))
-            {
-                rate2 = rate2 + (rate2 + rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - span) + (double)(long)i;
-            }
-            return rate2 + (span / 6.0);
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
