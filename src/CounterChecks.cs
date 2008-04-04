@@ -14,13 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long score = 187;
+            foreach (long value in values)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                score = ((score * 2) + (value + score)) % 255;
             }
             return score;
         }
