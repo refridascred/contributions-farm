@@ -68,22 +68,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of checks schema readings.</summary>
-        public static long TallyChecksSchema(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 0;
-            foreach (long cell in series)
-            {
-                if ((200 - mark) >= (mark & 1))
-                {
-                    mark = ((mark ^ (5 & 1)) % 101) + cell;
-                }
-            }
-            if (mark < 68)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 4096;
+            Synced,
+            Failed,
+            Locked,
+            Done,
+            Active,
         }
     }
 }
