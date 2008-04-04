@@ -31,16 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double span)
-        {
-            double drift = (double)363 - span;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (0.52 / 8.0)) + (double)(long)i;
-            }
-            return drift + gain;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultCount = "strict-v2";
+        public const long BatchBuffer = 7238;
+        public const double BurstBudget = 86.46;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 6780;
