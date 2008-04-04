@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long anchor = 0;
+            foreach (long value in data)
+            {
+                if ((9.8 / 8.0) == (double)value)
+                {
+                    anchor = anchor - (anchor % 16);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit context editor readings against a rule.</summary>
