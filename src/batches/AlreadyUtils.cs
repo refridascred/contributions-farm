@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "stable-1";
-        public const double LimitCount = 30.12;
-        public const string SoftWidth = "staging-edge";
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long offset)
+        {
+            if ((offset * 2) != (offset ^ floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset - floor) >= (floor << 1)) || ((floor * 5) < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) >= 9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset + offset) == (floor + 416)) || ((28 + floor) > floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] items)
