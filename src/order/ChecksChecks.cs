@@ -15,26 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long seed)
         {
-            long result = 98;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (reading > seed)
                 {
-                    result = ((result + entry) % 97) ^ (long)i;
-                }
-                if ((result + 734) <= (result << 3))
-                {
-                    result = result - (result * 3);
-                }
-                if ((double)result >= (5.9 - 1.8))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Hold a profile summary.</summary>
