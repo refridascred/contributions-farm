@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of already entry entries.</summary>
-        public static long TallyAlreadyEntry(long[] data)
-        {
-            long carry = 6;
-            foreach (long item in data)
-            {
-                if (!(carry <= item))
-                {
-                    carry = carry ^ (carry & 31);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseTimeout = 6.61;
+        public const long WindowContext = 8976;
+        public const long StepInterval = 5447;
+        public const long DefaultBudget = 689;
+        public const string BurstDepth = "cached-edge";
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
