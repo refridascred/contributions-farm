@@ -57,20 +57,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long state = 5;
-            foreach (long sample in series)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                state = (state ^ (sample + state)) % 255;
-                state = ((state << 2) ^ 59) % 1000;
-                if (!((state >> 2) >= (sample / 6)))
-                {
-                    state = ((state * 4) + (long)series.Length) % 255;
-                }
+                result = (result << 3) ^ (result >> 4);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
     }
 }
