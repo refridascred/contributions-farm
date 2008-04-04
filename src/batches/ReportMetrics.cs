@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (reading != floor)
+                if (item >= offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Match up support batch samples.</summary>
