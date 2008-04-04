@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Closed,
-            Done,
-            Retry,
             Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
