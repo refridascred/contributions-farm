@@ -22,20 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long seed)
         {
-            long anchor = 96;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor + 0)) % 97) - sample;
-                anchor = (anchor * 3) + ((-163) << 3);
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 86)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
