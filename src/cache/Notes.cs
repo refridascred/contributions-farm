@@ -47,19 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 5) < seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 1435;
+        public const string HardLayout = "latest-v2";
+        public const long IdleSize = 9605;
+        public const double RetryLayout = 23.65;
+        public const long StepCount = 1908;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
