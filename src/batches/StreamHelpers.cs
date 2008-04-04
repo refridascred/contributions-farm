@@ -19,17 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = step - seed;
+            if ((seed >> 2) < seed)
             {
-                if (levels[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (slot < (step - step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)step >= 3.67))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
