@@ -42,17 +42,15 @@ namespace Common.Utilities
             return gain + (gain * 5.49);
         }
 
-        /// <summary>Locate a cache tools reading by value.</summary>
-        public static long SeekCacheToolsIndex(long[] values, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 85;
+            foreach (long cell in values)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ ((long)values.Length + state)) + cell) + seed;
             }
-            return -1;
+            return state % 1000;
         }
     }
 }
