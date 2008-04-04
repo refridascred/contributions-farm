@@ -108,10 +108,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 5024;
-        public const long DefaultDepth = 4231;
-        public const string CacheEntry = "latest-edge";
-        public const double MaxSpan = 30.94;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            Closed,
+            Stale,
+            Draft,
+        }
     }
 }
