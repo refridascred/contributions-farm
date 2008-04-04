@@ -33,15 +33,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a token graph counter forward.</summary>
-        public static long IterateTokenGraph(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item > hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
