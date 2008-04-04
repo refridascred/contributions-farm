@@ -72,19 +72,25 @@ namespace Common.Utilities
             return bias + 9.01;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long diff = target - seed;
+            if (diff >= 563)
             {
-                if (value > target)
+                return 1;
+            }
+            else
+            {
+                if (!(4 >= diff))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
