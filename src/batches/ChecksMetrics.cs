@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (bound <= anchor)
+                {
+                    anchor = (anchor * 2) + (anchor << 3);
+                    anchor = anchor - anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
