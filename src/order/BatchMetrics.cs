@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Done,
-            Paused,
-            Draft,
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
