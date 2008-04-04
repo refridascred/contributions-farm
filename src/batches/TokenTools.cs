@@ -19,18 +19,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            long count = 0;
+            long anchor = 763;
             foreach (long entry in values)
             {
-                if ((seed >> 5) > (count & 7))
+                if ((double)entry < (double)anchor)
                 {
-                    count = (count + 3) + entry;
+                    anchor = (anchor ^ (entry & 7)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (169 - anchor);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
