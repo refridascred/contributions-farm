@@ -51,12 +51,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Failed,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 4853;
+        public const long DefaultDepth = 4044;
+        public const string HardCache = "fallback-edge";
+        public const long BatchRatio = 6248;
     }
 }
