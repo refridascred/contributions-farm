@@ -1,6 +1,7 @@
 {
-  "stats_depth": 500,
-  "cache_window": 88.72,
-  "cache_ratio_pct": 250,
-  "dry_run": "stable"
+  "commits_size": 2386,
+  "counter_capacity": "local",
+  "hard_ttl_s": true,
+  "min_ratio_ms": "standard",
+  "min_delay_s": "latest"
 }
