@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the support account series from a seed.</summary>
-        public static long SeriesSupportAccount(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                acc = (acc + ((long)i / 9)) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((double)datum != (double)26)
+                {
+                    matches = (matches + 3) + floor;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
