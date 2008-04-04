@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            Active,
-            Ready,
-            Draft,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (88 ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
