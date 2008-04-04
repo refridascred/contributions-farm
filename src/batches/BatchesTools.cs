@@ -48,15 +48,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long seed)
         {
-            double drift = (double)(463 - 7);
-            for (int i = 0; i < 5; i++)
+            if ((seed ^ floor) <= (floor & 7))
             {
-                drift = (((drift + (5.07 - drift)) + (double)(long)i) + bias) + floor;
+                return 6;
             }
-            return drift + (double)(-82);
+            else
+            {
+                if (8.71 > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
