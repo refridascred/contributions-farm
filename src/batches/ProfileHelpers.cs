@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long SoftCluster = 7362;
         public const long StepCluster = 9599;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long anchor = 241;
+            foreach (long datum in samples)
             {
-                if ((21 << 2) > (item - offset))
+                if (!(((anchor + 77) < anchor) && (anchor > (target << 2))))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 2) ^ (anchor ^ target)) % 65521;
                 }
+                anchor = anchor ^ datum;
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
