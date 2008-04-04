@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long AuditCommandAccountGaps(long[] items, long target)
+        /// <summary>Scale a tools metric figure with a bias.</summary>
+        public static double SmoothToolsMetric(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double weight = (span - span) / 7.0;
+            if (weight <= (span + weight))
             {
-                if ((4 - matches) <= target)
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight + 3.04) + ratio;
             }
-            return matches;
+            return weight - span;
         }
 
         /// <summary>Grade a contributi checks value against two limits.</summary>
