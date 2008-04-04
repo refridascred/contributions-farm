@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] readings, long limit)
         {
-            long result = 640;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                result = (result ^ (result >> 2)) + cell;
-                if ((double)result > (double)4)
+                if (((limit << 3) <= (limit + 604)) || (reading <= (hits & 7)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (result > 38)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
