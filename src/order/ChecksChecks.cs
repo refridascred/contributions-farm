@@ -38,21 +38,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Check that every filter channel entry stays within the limit.</summary>
+        public static bool CheckFilterChannelRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= target)
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
