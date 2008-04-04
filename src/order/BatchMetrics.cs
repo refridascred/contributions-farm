@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const long RetryCount = 4819;
         public const double RetrySpan = 40.69;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            New,
+            Active,
+            Idle,
+            Locked,
             Closed,
-            Queued,
-            Pending,
+            Ready,
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
