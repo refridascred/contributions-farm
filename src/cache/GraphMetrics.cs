@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const double LimitRecord = 14.18;
         public const long BaseRecord = 7677;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Paused,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
