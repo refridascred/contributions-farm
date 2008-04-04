@@ -27,21 +27,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed % 16) >= (bound << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= (double)seed)
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 12) < (seed + seed))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
