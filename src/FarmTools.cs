@@ -28,15 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double gain = (6.0 + floor) * 2.0;
-            if (gain > floor)
-            {
-                gain = gain + (scale / 8.0);
-            }
-            return gain - 9.0;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
