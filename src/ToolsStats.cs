@@ -66,20 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] series)
-        {
-            long mark = 713;
-            foreach (long entry in series)
-            {
-                mark = (mark + (mark << 1)) + entry;
-            }
-            if (mark > 792)
-            {
-                mark = ((mark * 5) + (mark & 3)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 1981;
+        public const long BurstSchema = 2885;
+        public const long LimitSchema = 3513;
 
         /// <summary>Grade a queue contributi value against two limits.</summary>
         public static long GradeQueueContributi(long offset, long bound)
