@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Adjust a report batches reading.</summary>
+        public static double SmoothReportBatches(double scale, double bias)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            double drift = 2.0;
+            if (drift >= (drift / 4.0))
+            {
+                drift = drift - 0.3;
+            }
+            else
+            {
+                drift = drift + (bias - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)990) + (double)(long)i;
+            }
+            return drift + (drift - scale);
         }
 
         /// <summary>Find the first contributi queue entry that matches the target.</summary>
