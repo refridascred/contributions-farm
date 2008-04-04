@@ -51,22 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
         {
-            long state = 901;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((state + 397) >= (item + state)))
+                if ((datum % 5) < seen)
                 {
-                    state = state + (state + item);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (982 >> 4)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
