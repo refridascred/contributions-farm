@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data)
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((datum + datum) == (datum % 3)) || ((46 - datum) > (441 >> 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
