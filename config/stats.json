@@ -1,5 +1,7 @@
 {
-  "warm_capacity_pct": "staging",
-  "hard_window_count": [451, 357, 136, 198],
-  "flush_limit_s": 30
+  "enabled": true,
+  "warm_retries_count": 61,
+  "already_ttl": "eu-west",
+  "verbose": 0.2,
+  "poll_size_s": "legacy"
 }
