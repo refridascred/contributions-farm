@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series, long limit)
         {
-            long state = 67;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((state >> 2) <= (state + item)) || ((state & 1) != (long)values.Length))
+                if (((tally * 4) != ((long)series.Length + sample)) || ((9 % 7) >= (tally / 3)))
                 {
-                    state = (state - (item + 679)) % 255;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count filter report pairs that satisfy a relation.</summary>
