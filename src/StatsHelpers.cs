@@ -22,11 +22,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 3076;
-        public const long DefaultGraph = 1686;
-        public const long MinGraph = 482;
-        public const long MinBudget = 3525;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double span)
+        {
+            double drift = (double)363 - span;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (0.52 / 8.0)) + (double)(long)i;
+            }
+            return drift + gain;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 6780;
