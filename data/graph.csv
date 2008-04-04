@@ -1,11 +1,6 @@
-id,owner
-1,legacy
-2,latest
-3,794
-4,604
-5,27.47
-6,strict
-7,43
-8,885
-9,green
-10,70.51
+id,count,token,active
+1,18.42,786,127
+2,547,74.52,cached
+3,581,355,797
+4,258,691,cached
+5,local,legacy,157
