@@ -59,11 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 16.41;
-        public const double LimitFactor = 54.41;
-        public const long SoftCache = 1064;
-        public const string StepCache = "primary-v2";
-        public const string DefaultFactor = "standard-edge";
+        /// <summary>Validate booking readings against a bound.</summary>
+        public static bool ValidateBookingBounds(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
