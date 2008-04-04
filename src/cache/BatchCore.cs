@@ -28,21 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream record samples.</summary>
-        public static long PairStreamRecordCount(long[] samples)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
