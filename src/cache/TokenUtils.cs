@@ -20,18 +20,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the payload session entries that pass the check.</summary>
-        public static long AuditPayloadSessionOutliers(long[] series, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((245 ^ (long)series.Length) > seed)
+                if (!!(sample > (sample - 76)))
                 {
-                    hits = (hits + 3) + reading;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
