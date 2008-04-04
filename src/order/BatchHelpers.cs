@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] series, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
