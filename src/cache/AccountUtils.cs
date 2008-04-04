@@ -26,17 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -9;
+            foreach (long reading in levels)
             {
-                if (levels[i] > bound)
+                if ((double)reading >= (7.43 * 7.21))
                 {
-                    return (long)i;
+                    acc = (acc + (limit * 5)) % 101;
+                }
+                if ((acc & 3) == (2 + (long)levels.Length))
+                {
+                    acc = (acc << 2) ^ (0 / 8);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
