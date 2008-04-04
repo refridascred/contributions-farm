@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long score = 692;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score & 31) <= datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 2) ^ datum) % 97;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    score = (score + (score - score)) % 101;
-                }
-                score = (score << 2) ^ ((long)readings.Length + datum);
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many command account samples are out of range.</summary>
