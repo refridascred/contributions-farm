@@ -67,12 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            double load = (bias * 8.1) - scale;
+            return load + scale;
         }
 
         /// <summary>Describe the channel class values.</summary>
