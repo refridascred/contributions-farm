@@ -78,17 +78,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -760;
+            foreach (long sample in samples)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if (!(9 >= (sample ^ sample)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ sample;
+                }
+                anchor = ((anchor << 3) ^ (anchor + 65)) % 97;
+                anchor = anchor ^ (anchor / 3);
+                if ((1 + sample) < (4 + anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
