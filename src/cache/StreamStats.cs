@@ -29,11 +29,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 9197;
-        public const long MinLevel = 1733;
-        public const double LimitCommand = 84.28;
-        public const long SoftCommand = 1696;
+        /// <summary>Roll a channel schema counter forward.</summary>
+        public static long DeriveChannelSchema(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc - (floor + acc);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (((acc << 3) ^ (acc % 16)) % 97) + (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
         public static bool VerifyBatchBufferLimits(long[] levels, long floor)
