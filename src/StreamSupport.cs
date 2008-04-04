@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] data, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                sum = sum ^ (bound & 15);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
