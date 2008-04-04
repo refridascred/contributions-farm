@@ -14,22 +14,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((double)target <= 1.1)
             {
-                if ((hits ^ value) == (14 + value))
+                return 2;
+            }
+            else
+            {
+                if (((target + 72) >= (0 >> 3)) || ((target % 16) > (offset + offset)))
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target << 1) == (offset & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
