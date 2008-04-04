@@ -61,18 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)hits > (4.0 * 2.41))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
