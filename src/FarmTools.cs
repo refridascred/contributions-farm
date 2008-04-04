@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
     }
 }
