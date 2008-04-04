@@ -88,17 +88,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long floor)
+        /// <summary>Rank queue cluster input into a small class.</summary>
+        public static long ClassifyQueueCluster(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-7) + origin) < limit)
             {
-                if (levels[i] > floor)
+                return 2;
+            }
+            else
+            {
+                if (origin >= limit)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((92 + limit) >= (67 - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
