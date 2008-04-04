@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long MeasureFarmNotesOutliers(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double drift = (double)(4 % 97);
+            if (drift < weight)
             {
-                if ((((tally % 2) <= (sample - sample)) || (sample <= (95 % 7))) && ((double)tally == (7.4 + 11.0)))
-                {
-                    tally = tally + 2;
-                }
+                drift = (drift - (drift / 3.0)) + floor;
             }
-            return tally;
+            return drift - (drift + 4.0);
         }
 
         /// <summary>Rank cache input into a small class.</summary>
