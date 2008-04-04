@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 621;
-        public const string BurstRatio = "cached-edge";
-        public const long DefaultCount = 962;
-        public const long IdleLayout = 9778;
-        public const long RetryCount = 9222;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long floor)
