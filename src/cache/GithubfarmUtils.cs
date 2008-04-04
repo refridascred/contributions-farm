@@ -38,18 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long origin)
         {
-            long anchor = 2;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((anchor - anchor) <= (reading << 1))
+                if (sample <= origin)
                 {
-                    anchor = (anchor ^ (anchor + reading)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
