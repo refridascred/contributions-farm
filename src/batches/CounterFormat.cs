@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "staging-v2";
-        public const string HardSize = "staging-v2";
-        public const long DefaultBudget = 2414;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double offset)
+        {
+            double bias = weight + 4.7;
+            if (bias < (double)7)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias - (weight + offset);
+            }
+            return bias - (weight - weight);
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] readings)
