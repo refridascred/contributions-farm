@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 9;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 2) + ((-673) % 3)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                total = ((total * 5) + (total + sample)) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
