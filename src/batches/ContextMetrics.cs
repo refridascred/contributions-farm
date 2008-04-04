@@ -33,18 +33,31 @@ namespace Common.Utilities
         public const string DefaultReport = "alpha-1";
         public const long SoftReport = 7449;
 
-        /// <summary>Audit schema metric readings against a rule.</summary>
-        public static long TallySchemaMetricGaps(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (((seed / 8) <= limit) || ((limit - limit) != (5 % 100)))
             {
-                if (39 < (item / 2))
+                return 6;
+            }
+            else
+            {
+                if (((seed - seed) <= limit) || ((8.1 + 19.0) == (double)limit))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((7.3 - 10.0) >= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
