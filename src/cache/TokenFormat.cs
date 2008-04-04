@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long CountProfileLayoutOutliers(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = 6;
+            foreach (long datum in data)
             {
-                if ((double)hits > (4.86 / 8.0))
+                if ((double)datum >= (13.0 + 4.0))
                 {
-                    hits = (hits + 1) - cell;
+                    state = state - datum;
                 }
             }
-            return hits;
+            if (state < 748)
+            {
+                state = (state - (state - state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a record stats.</summary>
