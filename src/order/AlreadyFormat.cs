@@ -45,17 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long result = -448;
+            foreach (long reading in items)
             {
-                if ((limit << 3) == (long)i)
+                if ((reading + 20) >= (result % 2))
                 {
-                    continue;
+                    result = (result + (13 & 63)) % 255;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
             return result;
         }
