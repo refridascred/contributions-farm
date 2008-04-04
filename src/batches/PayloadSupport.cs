@@ -27,12 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 9314;
-        public const long DefaultMetric = 9241;
-        public const long HardFactor = 3409;
-        public const long DefaultFactor = 4533;
-        public const double BaseBudget = 37.47;
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double bias)
+        {
+            double load = scale;
+            if (load <= (3.3 + 9.39))
+            {
+                load = (load + (double)525) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] samples, long floor)
