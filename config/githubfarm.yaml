@@ -1,21 +1,9 @@
 # githubfarm settings
-batch_retries_pct:
-  idle_size_s:
-    - staging
-    - standard
-  retry_size_ms:
-    soft_retries_s: 100
-    batch_delay_pct: cached
-    hard_depth: 60
-    base_limit_count:
-      - 108
-      - 183
-    strict: eu-west
-  metrics_delay:
-    already_ttl: 80.9
-    layout_window: edge
-    max_window_count: stable
-  batch_size: green
-verbose: stable
-sync_window_ms: 83.45
-default_depth: standard
+hard_interval_count:
+  - open
+  - blue
+  - eu-west
+default_interval: 30
+retry_window_s: edge
+flush_interval_pct: fallback
+warm_limit: 8.45
