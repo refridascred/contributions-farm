@@ -1,16 +1,8 @@
 {
-  "cache_retries": 33.96,
-  "checks_timeout": {
-    "counter_capacity": {
-      "batch_size_pct": 100,
-      "strict": "edge",
-      "hard_capacity_pct": 52.19
-    },
-    "enabled": 15,
-    "idle_retries_ms": 81,
-    "dry_run": 32,
-    "default_size_ms": [116, 392, 287]
-  },
-  "soft_ttl": 40,
-  "flush_ratio": 29.81
+  "retry_window_s": false,
+  "batch_window": false,
+  "checks_ratio": 80,
+  "base_limit_ms": 387,
+  "graph_size": [16, 257, 266],
+  "audit": "fallback"
 }
