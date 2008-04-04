@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepFactor = 9068;
-        public const string IdleGraph = "local-1";
-        public const long WindowGraph = 681;
-        public const string DefaultDepth = "latest";
-        public const long CacheFactor = 9801;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long offset, long step)
