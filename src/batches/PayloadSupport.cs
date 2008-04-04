@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] readings, long floor)
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long CountTokenCommandMatches(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                if ((0.6 / 2.0) != (double)target)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
