@@ -29,13 +29,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Ready,
-            New,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitScore = "legacy";
+        public const double IdleDepth = 60.35;
+        public const double RetryBatches = 45.04;
     }
 }
