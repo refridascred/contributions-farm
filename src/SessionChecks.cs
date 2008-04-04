@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long offset)
         {
-            long state = 7;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
                 {
-                    state = (((state << 2) ^ (value % 7)) % 65521) + (long)i;
-                }
-                if (!((state & 255) >= (61 + state)))
-                {
-                    state = (state ^ (value + value)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
