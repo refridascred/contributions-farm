@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Paused,
-            Closed,
-            Locked,
-            Queued,
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many format payload samples are out of range.</summary>
