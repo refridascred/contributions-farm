@@ -1,6 +1,11 @@
-id,state,owner
-1,cached,open
-2,166,141
-3,83.46,green
-4,726,714
-5,cached,edge
+id,count,weight,rank
+1,607,10.74,49.72
+2,6,edge,437
+3,812,edge,618
+4,700,664,30.66
+5,eu-west,staging,staging
+6,804,green,66.52
+7,fallback,624,cached
+8,979,93.83,25
+9,local,545,staging
+10,131,primary,710
