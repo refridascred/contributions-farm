@@ -1,10 +1,28 @@
 # githubfarm settings
-retry_retries_count:
-  - stable
-  - green
-  - primary
-base_ttl_pct: 95.61
-farm_size: eu-west
-strict: 51.67
-idle_threshold_s: true
-enabled: 20
+min_limit_s:
+  stats_depth: 100
+  readonly: 9943
+  window_depth: true
+  verbose: 1.49
+  default_ratio_s: 19.22
+  persist: green
+tools_interval:
+  counter_delay: 76.05
+  min_interval: false
+  queue_threshold: 92
+  max_size: 22.25
+  burst_interval: standard
+  idle_size_ms:
+    soft_ttl_count: true
+    command_retries: 93
+    burst_ttl_count: 74
+    burst_ttl_pct:
+      - cached
+      - fallback
+    warm_retries_ms: stable
+    window_size: 54.91
+idle_delay:
+  flush_retries_s: 9456
+  dry_run: 64.83
+  contributi_limit: true
+strict: 1024
