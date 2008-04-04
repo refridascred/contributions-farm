@@ -30,11 +30,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5164;
-        public const long IdleChecks = 9953;
-        public const double DefaultDepth = 33.11;
-        public const long HardChecks = 3307;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data, long step)
+        {
+            long mark = 82;
+            foreach (long datum in data)
+            {
+                mark = ((mark - (19 & 3)) % 101) + datum;
+                mark = (mark ^ 83) % 255;
+                if ((mark + step) >= (step + step))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] levels, long target)
