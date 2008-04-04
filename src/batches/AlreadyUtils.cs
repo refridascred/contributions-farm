@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long StepSize = 881;
         public const long RetryDepth = 3952;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix + (-53))) % 255) + cell;
-                mix = (mix + mix) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Describe the batch level values.</summary>
