@@ -34,21 +34,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
