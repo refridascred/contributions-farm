@@ -1,6 +1,4 @@
 # githubfarm settings
-burst_limit_count: 91.08
-verbose: fallback
-poll_depth_s: true
-hard_window: true
-compress: legacy
+burst_timeout: 2088
+burst_timeout_ms: 9090
+command_interval: false
