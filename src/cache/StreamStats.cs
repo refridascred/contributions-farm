@@ -54,9 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchScore = 7971;
-        public const long RetryInterval = 4055;
-        public const long WindowWidth = 9402;
+        /// <summary>Measure how many command route samples are out of range.</summary>
+        public static long MeasureCommandRouteGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (5.9 >= (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
