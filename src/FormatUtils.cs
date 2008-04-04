@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "fallback-1";
-        public const long SoftNotes = 1410;
-        public const long MinLevel = 4184;
-        public const long MinWidth = 7149;
-        public const long DefaultNotes = 715;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((((72 - seen) == (seen / 9)) || ((5.0 + 2.41) >= (double)target)) && ((target & 1) < (seen + seen)))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of report token readings.</summary>
         public static long DigestReportToken(long[] series)
