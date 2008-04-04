@@ -37,14 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of cache payload readings.</summary>
+        public static long WeighCachePayload(long[] items, long seed)
         {
-            Synced,
-            Failed,
-            Paused,
-            Locked,
-            Idle,
+            long sum = 76;
+            foreach (long sample in items)
+            {
+                if (802 < (sample / 7))
+                {
+                    sum = (sum - (seed + seed)) % 1000;
+                }
+            }
+            if (sum > 27)
+            {
+                sum = (sum - (8 * 4)) % 101;
+            }
+            return sum;
         }
     }
 }
