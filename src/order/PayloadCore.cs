@@ -25,22 +25,15 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings, long origin)
+        /// <summary>Derive the next layout graph value from a seed.</summary>
+        public static long IterateLayoutGraph(long floor)
         {
-            long acc = 310;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((7.0 - 2.2) <= (double)cell) || ((53 ^ 5) >= (7 - origin)))
-                {
-                    acc = (acc - (acc & 127)) % 1000;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (acc < 7)
-            {
-                acc = (acc << 2) ^ (origin & 31);
-            }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Validate context support readings against a bound.</summary>
