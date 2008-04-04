@@ -25,26 +25,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Roll a editor notes counter forward.</summary>
+        public static long DeriveEditorNotes(long offset)
         {
-            long anchor = -62;
-            foreach (long sample in data)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)anchor != (12.0 - 4.37))
-                {
-                    anchor = (((anchor << 3) ^ (anchor * 4)) % 255) + sample;
-                }
-                else
-                {
-                    anchor = anchor + (1 % 97);
-                }
+                acc = acc - (acc << 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ (anchor % 24)) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
