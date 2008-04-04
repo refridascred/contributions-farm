@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long step, long target)
+        /// <summary>Look up the position of a profile counter sample.</summary>
+        public static long LookupProfileCounterIndex(long[] items, long bound)
         {
-            long bound = step + target;
-            if (((bound >> 1) <= step) && ((step - step) == (step + bound)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7.4 - 5.13) >= (double)step) || ((12.0 * 13.0) == (double)target))
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step << 3) >= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) < (bound + 618))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
