@@ -1,4 +1,6 @@
 # entry settings
-filter_capacity: 37.75
-max_ratio: true
-readonly: legacy
+commits_threshold: 46
+flush_ttl: strict
+cache_size: false
+buffer_size: local
+contributi_threshold: staging
