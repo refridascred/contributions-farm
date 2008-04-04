@@ -49,19 +49,15 @@ namespace Common.Utilities
             return gain + (gain * 6.92);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
