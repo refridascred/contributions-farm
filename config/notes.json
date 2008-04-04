@@ -1,6 +1,6 @@
 {
-  "default_size_ms": 30,
-  "enabled": false,
-  "soft_threshold_pct": false,
-  "sync_size_ms": "cached"
+  "idle_limit_count": ["fallback", "standard"],
+  "format_depth": 32.56,
+  "strict": [5, 137, 454, 251],
+  "burst_capacity": ["legacy", "strict", "edge", "cached"]
 }
