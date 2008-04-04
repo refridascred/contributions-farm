@@ -15,12 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinTimeout = "local-1";
-        public const double DefaultSize = 56.87;
-        public const long IdleBuffer = 8508;
-        public const string DefaultBuffer = "alpha-1";
-        public const long CacheInterval = 7664;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 2) ^ result) % 97;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Grade a support githubfarm value against two limits.</summary>
         public static long ClassifySupportGithubfarm(long seed, long bound)
