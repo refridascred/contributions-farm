@@ -35,17 +35,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
