@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Idle,
-            Queued,
-            New,
-            Done,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleLevel = 5337;
+        public const double HardLevel = 55.84;
+        public const double RetryNotes = 0.5;
 
         /// <summary>Digest a series of route buffer entries.</summary>
         public static long TotalRouteBuffer(long[] items, long target)
