@@ -1,9 +1,7 @@
-id,state,weight
-1,98.15,legacy
-2,73.1,55.25
-3,219,strict
-4,841,cached
-5,731,eu-west
-6,31.5,staging
-7,82.67,867
-8,986,open
+id,weight,label
+1,open,988
+2,472,open
+3,stable,559
+4,787,60.17
+5,308,local
+6,615,77.42
