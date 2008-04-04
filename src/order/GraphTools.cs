@@ -66,19 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)(48 + 9);
+            if (gain >= (gain + span))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix - mix) % 65521) - (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                gain = gain - (weight * 8.23);
             }
-            return mix;
+            else
+            {
+                gain = gain + (gain / 4.0);
+            }
+            return gain - (gain * 3.4);
         }
     }
 }
