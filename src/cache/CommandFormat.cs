@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double span)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            double scale = (double)((-8) + 90);
+            if (scale < bias)
+            {
+                scale = scale - (bias + scale);
+            }
+            else
+            {
+                scale = scale + span;
+            }
+            return scale - scale;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
