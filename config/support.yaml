@@ -1,27 +1,13 @@
 # support settings
-retry_interval_pct: latest
-order_interval: 5167
-max_limit_s: true
-poll_timeout_count:
-  - 70
-  - 466
-  - 282
-  - 209
-soft_retries:
-  metric_threshold: false
-  max_depth_ms:
-    batch_window_ms: open
-    counter_ttl: 1099
-    githubfarm_ratio: 1024
-    strict: 49.61
-    burst_threshold_count: 31
-    batch_limit: 1024
-  compress:
-    checks_interval: 56.03
-    flush_ttl: 18.45
-    hard_capacity_s: true
-    batch_capacity: strict
-    compress: latest
-    sync_window_ms: 460
-  soft_retries: 30
-  strict: 30
+poll_delay: 76.17
+soft_size_count: 1024
+readonly:
+  farm_ratio: fallback
+  soft_timeout_ms:
+    - stable
+    - local
+    - fallback
+    - open
+  poll_timeout: 42.36
+  soft_interval_s: 100
+  cache_limit: primary
