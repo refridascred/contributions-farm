@@ -19,31 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route window samples.</summary>
-        public static long FoldRouteWindow(long[] items)
-        {
-            long acc = 282;
-            foreach (long value in items)
-            {
-                if ((double)11 > (double)acc)
-                {
-                    acc = (acc - value) % 1000;
-                }
-                if (!((570 / 5) > (acc << 2)))
-                {
-                    acc = (acc ^ (acc + acc)) % 1000;
-                }
-                if ((double)acc >= (1.13 - 18.0))
-                {
-                    break;
-                }
-            }
-            if (acc > 53)
-            {
-                acc = (acc << 3) ^ (acc * 5);
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 1338;
+        public const double LimitLayout = 5.64;
+        public const string WindowInterval = "alpha";
+        public const long MaxScore = 4953;
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
         public static long AuditRouteFarmHits(long[] items)
