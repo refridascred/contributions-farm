@@ -41,22 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] series)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 3) <= 96)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a stream header.</summary>
