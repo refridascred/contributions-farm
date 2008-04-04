@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the support class values.</summary>
