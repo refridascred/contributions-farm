@@ -24,31 +24,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long offset, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items)
         {
-            if (!((218 ^ step) >= (offset * 2)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 3) <= (step % 16))
+                if ((7 >> 2) < (reading - hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (step & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
