@@ -20,18 +20,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long seed)
         {
-            long carry = 22;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin - carry) < (19 - origin))
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
                 {
-                    carry = (((carry << 3) ^ (carry / 4)) % 1000) - datum;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
