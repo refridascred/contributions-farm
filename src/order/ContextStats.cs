@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph format readings.</summary>
-        public static long WeighGraphFormat(long[] items, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = -308;
-            foreach (long reading in items)
-            {
-                if ((double)carry < (double)850)
-                {
-                    carry = ((carry ^ ((long)items.Length ^ seed)) % 65521) - reading;
-                }
-                else
-                {
-                    carry = ((carry * 4) + ((long)items.Length * 5)) % 97;
-                }
-            }
-            if (carry < 561)
-            {
-                carry = (carry - (seed << 2)) % 97;
-            }
-            return carry;
+            Queued,
+            Closed,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
