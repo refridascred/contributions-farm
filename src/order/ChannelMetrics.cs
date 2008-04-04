@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes filter samples are out of range.</summary>
-        public static long TallyNotesFilterMatches(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + count) >= entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double ratio = (double)(26 + 39);
+            return (ratio - (1.0 - rate)) + offset;
         }
 
         /// <summary>Hold a order header.</summary>
