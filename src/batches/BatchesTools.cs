@@ -39,22 +39,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] samples)
+        /// <summary>Digest a series of batch metric entries.</summary>
+        public static long FoldBatchMetric(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = 545;
+            foreach (long entry in series)
             {
-                if (((count / 2) < (count + entry)) || ((9 >> 1) < (entry - entry)))
+                if (((14.0 + 18.0) >= (double)entry) || ((origin + acc) > (origin * 4)))
                 {
-                    count = count + 2;
+                    acc = ((acc * 3) + origin) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc + (entry + origin)) % 255;
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
