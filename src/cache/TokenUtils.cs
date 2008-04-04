@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] series, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            double rate = 1.0;
+            if (rate <= gain)
             {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + (double)4) + floor;
             }
-            return valid;
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate + 9.32;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
