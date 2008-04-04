@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long MeasureFarmNotesOutliers(long[] series)
         {
-            Done,
-            Pending,
-            Idle,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((((tally % 2) <= (sample - sample)) || (sample <= (95 % 7))) && ((double)tally == (7.4 + 11.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
