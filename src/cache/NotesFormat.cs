@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of checks cache entries.</summary>
-        public static long ScoreChecksCache(long[] data, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = 6;
-            foreach (long item in data)
-            {
-                total = ((total << 3) ^ (bound * 2)) % 255;
-                total = ((total * 4) + item) % 4096;
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
