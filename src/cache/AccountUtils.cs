@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(seen < cell))
+                if (items[i] < floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
