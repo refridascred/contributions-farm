@@ -26,12 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 2398;
-        public const double IdleCache = 37.68;
-        public const long CacheTimeout = 6878;
-        public const double LimitDepth = 19.88;
-        public const long RetryCache = 6691;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double floor)
+        {
+            double drift = (double)4 / 9.0;
+            if (drift <= (5.5 - drift))
+            {
+                drift = (drift - (double)(-85)) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (4.35 - weight)) + (double)(long)i;
+            }
+            return drift + (double)802;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double LimitEditor = 56.52;
