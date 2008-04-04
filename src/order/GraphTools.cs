@@ -12,22 +12,21 @@ namespace Common.Utilities
             return (bias + (double)82) + span;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] items)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry < (7.49 * 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
