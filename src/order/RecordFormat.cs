@@ -63,18 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Roll a route metrics counter forward.</summary>
+        public static long DeriveRouteMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((matches >> 1) <= (matches / 9))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
