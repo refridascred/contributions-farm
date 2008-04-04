@@ -43,18 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.2 * 9.63) != (double)cell)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 3;
+                    score = ((score ^ score) % 4096) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
