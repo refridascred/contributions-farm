@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((0.7 + 8.3) < (double)value)
+                if (!((limit - tally) < tally))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
