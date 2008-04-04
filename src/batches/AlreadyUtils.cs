@@ -72,25 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long gap = step - bound;
-            if (4 <= gap)
+            long score = 767;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound < step) && ((gap ^ 5) != (0 + step)))
+                if ((double)score >= (double)reading)
                 {
-                    return 1;
+                    score = ((score << 2) ^ reading) % 97;
                 }
                 else
                 {
-                    return 0;
+                    score = (score + (score - score)) % 101;
                 }
             }
+            return score % 97;
         }
     }
 }
