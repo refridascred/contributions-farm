@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardSize = 6.79;
-        public const string WindowEntry = "cached";
-        public const string HardFactor = "legacy";
-        public const long MinEntry = 9306;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Closed,
+            Retry,
+            Done,
+            Synced,
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
