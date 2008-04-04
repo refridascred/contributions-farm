@@ -17,32 +17,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long floor, long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long prev = floor - offset;
-            if ((prev << 2) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= (0.17 * 3.74))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 2) <= 20)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Queued,
+            Draft,
+            Active,
         }
     }
 }
