@@ -1,6 +1,10 @@
-id,region,level
-1,staging,open
-2,stable,primary
-3,138,473
-4,latest,231
-5,597,781
+id,score,count,rank,level
+1,738,53,863,30.17
+2,eu-west,811,298,957
+3,806,77.21,769,802
+4,21.62,344,885,40.91
+5,399,12.35,110,green
+6,97.2,43.3,standard,70.71
+7,73.26,38.53,591,944
+8,blue,55.23,65,16.73
+9,local,532,871,blue
