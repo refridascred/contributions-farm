@@ -21,18 +21,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (1.8 >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ cell) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultWidth = "local";
+        public const long StepGithubfarm = 8209;
+        public const long SoftGithubfarm = 4814;
+        public const long WindowDepth = 9096;
+        public const string SoftSize = "local-v2";
     }
 }
