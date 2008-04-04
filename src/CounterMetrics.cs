@@ -41,13 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a buffer session reading by value.</summary>
