@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 5789;
+        public const string StepSession = "legacy-1";
+        public const double WindowLevel = 68.87;
+        public const long SoftFactor = 726;
+        public const long HardLevel = 1416;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples)
