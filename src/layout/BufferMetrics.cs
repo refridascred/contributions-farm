@@ -76,18 +76,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((sample >> 1) > sample) || ((sample >> 1) >= (sample / 9))) && !((sample + seen) > (seen & 7)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheBudget = 3214;
+        public const long WindowQueue = 492;
+        public const string CacheDepth = "staging-edge";
+        public const long MaxQueue = 640;
+        public const long SoftQueue = 5943;
     }
 }
