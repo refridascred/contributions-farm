@@ -1,19 +1,13 @@
 # support settings
-flush_timeout_ms:
-  idle_ratio: 8455
-  readonly:
-    flush_ttl: latest
-    base_size_pct: 42.75
-    cache_threshold: 39
-    default_depth_pct: false
-  cache_threshold_pct: true
-  default_interval_pct: true
-  poll_size_count: eu-west
-  sync_window:
-    - latest
-    - open
-    - cached
-default_ratio: 100
-hard_window_pct:
-  - 100
-  - 283
+flush_depth:
+  - 38
+  - 260
+warm_timeout_count: green
+cache_ttl:
+  - open
+  - eu-west
+  - edge
+  - local
+default_interval: blue
+compress: 6763
+flush_depth_s: 56
