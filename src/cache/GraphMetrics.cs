@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile filter entries.</summary>
-        public static long DigestProfileFilter(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] samples, long bound)
         {
-            long acc = 96;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((3.34 * 18.0) > (double)acc)
+                if ((29 ^ bound) > (bound >> 3))
                 {
-                    acc = (((acc << 2) ^ (acc >> 4)) % 255) + reading;
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (acc < (-909))
-            {
-                acc = acc ^ (acc % 16);
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
