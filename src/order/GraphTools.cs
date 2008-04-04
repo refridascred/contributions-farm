@@ -40,19 +40,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
