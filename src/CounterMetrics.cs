@@ -40,11 +40,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 8728;
-        public const long DefaultMetric = 4248;
-        public const string LimitMetric = "stable-1";
-        public const double LimitInterval = 86.04;
-        public const long DefaultSpan = 7578;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double bias)
+        {
+            double bias2 = bias;
+            return bias2 + (scale - 5.3);
+        }
     }
 }
