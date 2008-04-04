@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long TallyGraphSchemaHits(long[] data, long seed)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long ScoreBatchesOrder(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = -817;
+            foreach (long value in readings)
             {
-                if (matches <= entry)
+                carry = (carry + (bound - bound)) % 4096;
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = (matches + 2) - seed;
+                    carry = (((carry * 5) + value) % 65521) - (long)i;
+                }
+                if ((56 % 100) == (bound / 7))
+                {
+                    carry = carry ^ 494;
+                }
+                else
+                {
+                    carry = carry - (carry + value);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the farm mode values.</summary>
