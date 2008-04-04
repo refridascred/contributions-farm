@@ -53,18 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context editor readings against a rule.</summary>
-        public static long TallyContextEditorMatches(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading - matches) == ((-78) >> 4))
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
