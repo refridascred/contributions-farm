@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (values[i] < origin)
+                if ((((2.0 * 1.16) <= (double)entry) || ((tally / 8) >= (tally + tally))) || (4 > (entry + 89)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
