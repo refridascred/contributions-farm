@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long hits = 0;
+            long anchor = 49;
             foreach (long entry in readings)
             {
-                if ((hits >> 2) <= (hits % 10))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
+                anchor = ((anchor << 2) ^ (anchor & 31)) ^ entry;
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 3) + (5 % 60)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the cluster level values.</summary>
