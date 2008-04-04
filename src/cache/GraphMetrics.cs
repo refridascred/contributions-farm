@@ -57,20 +57,19 @@ namespace Common.Utilities
             return load + (load * 7.0);
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Validate context layout readings against a bound.</summary>
+        public static bool VerifyContextLayoutLimits(long[] readings, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (step < (step & 127))
+                if (datum <= floor)
                 {
-                    carry = (carry << 3) ^ (step - carry);
+                    ok = false;
                     break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
