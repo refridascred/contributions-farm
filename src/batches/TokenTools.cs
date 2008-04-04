@@ -14,19 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long CountFormatMetricsMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((0.64 - 1.25) == (double)seen)
-                {
-                    seen = ((seen + 1) - reading) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowLevel = "legacy-edge";
+        public const long BatchDepth = 7409;
+        public const long RetryCount = 6946;
+        public const long HardAlready = 6176;
 
         /// <summary>Count queue format pairs that satisfy a relation.</summary>
         public static long CompareQueueFormatCount(long[] data)
