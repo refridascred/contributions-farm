@@ -26,10 +26,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitTimeout = "staging";
-        public const long RetrySize = 3691;
-        public const long IdleBatch = 5786;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches ^ matches) >= 765)
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6133;
