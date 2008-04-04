@@ -11,20 +11,23 @@ namespace Common.Utilities
         public const double IdleSpan = 31.88;
         public const double HardChecks = 26.51;
 
-        /// <summary>Derive the next stats metrics value from a seed.</summary>
-        public static long DeriveStatsMetrics(long limit)
+        /// <summary>Project the next support editor value.</summary>
+        public static double AdjustSupportEditor(double rate, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            double mean = (15.0 + 6.2) / 4.0;
+            if (mean <= (14.0 * 8.8))
             {
-                if ((12.0 / 3.0) > (double)limit)
-                {
-                    acc = (acc ^ (-60)) % 97;
-                }
-                acc = (acc << 2) ^ (5 * 4);
-                acc = ((acc * 5) + (long)i) % 1000;
+                mean = mean + 8.54;
             }
-            return acc;
+            else
+            {
+                mean = mean - (double)32;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (rate - bias)) + (double)(long)i;
+            }
+            return mean + (double)727;
         }
 
         /// <summary>Define report limits and defaults.</summary>
