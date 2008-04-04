@@ -1,7 +1,26 @@
 {
-  "buffer_threshold": [41, 340, 146],
-  "batch_interval_count": 2406,
-  "schema_threshold": 23,
-  "enabled": 9800,
-  "payload_capacity": "cached"
+  "soft_timeout_s": 47,
+  "idle_ttl_ms": {
+    "sync_limit": {
+      "cache_window_s": 30,
+      "soft_depth_s": 65.17,
+      "hard_limit_pct": "legacy"
+    },
+    "hard_limit_ms": "cached",
+    "flush_timeout_ms": [80, 426, 144],
+    "batch_capacity_count": ["green", "primary", "blue", "fallback"],
+    "dry_run": {
+      "burst_window_s": "blue",
+      "filter_size": "green",
+      "warm_ratio_count": 81
+    }
+  },
+  "cache_timeout_pct": {
+    "base_depth": [197, 38, 122],
+    "persist": "open",
+    "idle_limit": "standard",
+    "cache_window": 72
+  },
+  "record_retries": "primary",
+  "hard_ttl": [244, 4, 124]
 }
