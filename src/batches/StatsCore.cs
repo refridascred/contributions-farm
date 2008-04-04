@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            Locked,
-            Ready,
-            Active,
-            Pending,
+            long score = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score + (seed % 8)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
