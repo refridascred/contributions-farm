@@ -33,11 +33,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long mark = -5;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = (((mark << 2) ^ floor) - (long)i) ^ sample;
+                    mark = (mark + 57) % 97;
+                }
+                if ((mark >> 4) < mark)
+                {
+                    mark = (mark - (5 << 2)) % 97;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark - (floor >> 5)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
