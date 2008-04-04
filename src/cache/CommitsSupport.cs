@@ -69,15 +69,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine metrics editor values into a single score.</summary>
-        public static long CombineMetricsEditor(long[] samples)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long carry = 309;
-            foreach (long entry in samples)
-            {
-                carry = (((carry * 5) + (629 ^ carry)) % 4096) + entry;
-            }
-            return carry % 4096;
+            Synced,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every channel editor entry stays within the limit.</summary>
