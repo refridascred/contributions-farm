@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleFactor = 21;
-        public const long HardContext = 8249;
-        public const double RetryCount = 47.53;
+        /// <summary>Measure how many profile context samples are out of range.</summary>
+        public static long MeasureProfileContextMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches ^ 627) < (cell >> 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphOutliers(long[] samples, long seed)
