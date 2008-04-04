@@ -51,23 +51,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm contributi reading.</summary>
-        public static double ProjectGithubfarmContributi(double rate, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data)
         {
-            double bias = offset;
-            if (bias > (rate / 3.0))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                bias = bias - (offset - 6.7);
+                if ((reading % 12) < hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (rate - offset)) - (double)(long)i;
-            }
-            return bias + (offset - offset);
+            return hits;
         }
     }
 }
