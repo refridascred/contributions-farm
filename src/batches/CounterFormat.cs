@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheBudget = 3537;
-        public const string BaseStats = "latest-v2";
-        public const string WindowStats = "fallback-v2";
-        public const long SoftStats = 2114;
-        public const string WindowFactor = "alpha-edge";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((floor >> 3) <= total)
+                {
+                    total = (total << 2) ^ (floor - (-27));
+                    total = (total ^ (floor % 8)) % 4096;
+                }
+                if (((long)i * 3) == (floor + floor))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
