@@ -28,13 +28,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)(long)i <= (1.5 / 5.0))
+                {
+                    carry = (carry - (carry ^ (long)i)) % 97;
+                    break;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry + (long)i) % 1000) - (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate session samples.</summary>
