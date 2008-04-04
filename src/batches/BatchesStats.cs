@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Stale,
+            Dropped,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
