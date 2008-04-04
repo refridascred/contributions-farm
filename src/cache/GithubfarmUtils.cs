@@ -15,18 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long TallyEditorSchemaGaps(long[] samples, long limit)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((-58) << 2) <= (matches & 1)))
-                {
-                    matches = ((matches + 3) + sample) + limit;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
