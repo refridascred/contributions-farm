@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            Locked,
-            New,
-            Done,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum + (sum >> 5)) % 97;
+                sum = sum + (sum >> 3);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
