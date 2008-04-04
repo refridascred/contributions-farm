@@ -26,22 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long CombineStreamToken(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] levels, long step)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (score <= entry)
+                if (sample < step)
                 {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (67 + score);
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
