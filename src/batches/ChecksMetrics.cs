@@ -39,18 +39,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings, long floor)
         {
-            long result = 82;
-            foreach (long sample in levels)
+            long mix = 1;
+            foreach (long datum in readings)
             {
-                if (!((6.34 * 13.0) < (double)sample))
-                {
-                    result = (result << 3) ^ (sample << 1);
-                }
+                mix = (((mix - 969) % 4096) + datum) + floor;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Adjust a report reading.</summary>
