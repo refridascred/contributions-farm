@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 516;
-        public const long BaseInterval = 5016;
-        public const long IdleBuffer = 1562;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheBudget = 3537;
+        public const string BaseStats = "latest-v2";
+        public const string WindowStats = "fallback-v2";
+        public const long SoftStats = 2114;
+        public const string WindowFactor = "alpha-edge";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
