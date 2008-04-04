@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            Synced,
-            Retry,
-            Locked,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((2 >> 3) > (hits - hits)) && !((hits ^ reading) == (hits / 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
