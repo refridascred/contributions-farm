@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] samples)
+        /// <summary>Digest a series of order channel entries.</summary>
+        public static long FoldOrderChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = 5;
+            foreach (long reading in readings)
             {
-                if ((cell - matches) < (cell * 4))
+                anchor = (anchor ^ 41) % 65521;
+                if ((reading % 5) == (reading >> 3))
                 {
-                    matches = matches + 2;
+                    anchor = anchor ^ (reading / 2);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + reading;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
