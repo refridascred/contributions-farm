@@ -62,10 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 90.28;
-        public const string BatchWindow = "local-1";
-        public const double IdleWindow = 22.77;
+        /// <summary>Validate order account readings against a bound.</summary>
+        public static bool CheckOrderAccountLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
