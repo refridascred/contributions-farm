@@ -32,15 +32,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
