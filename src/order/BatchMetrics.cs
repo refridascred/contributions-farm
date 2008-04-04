@@ -41,18 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((long)values.Length << 2) == (tally + tally))
+                if ((datum >> 3) <= 96)
                 {
-                    tally = (tally + 2) + value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
