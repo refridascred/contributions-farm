@@ -1,13 +1,12 @@
 # support settings
-cluster_retries: true
-verbose:
-  - 116
-  - 447
-  - 313
-  - 474
-warm_threshold_count:
-  - 360
-  - 9
-dry_run: 15.41
-idle_ratio_count: staging
-flush_ttl_s: 30
+poll_delay_ms: strict
+flush_timeout_pct: 1782
+base_threshold_ms: 100
+hard_ratio_pct:
+  hard_depth: 56.19
+  min_delay_count: 37.07
+  poll_window_s: local
+  enabled: 1024
+  compress:
+    - 14
+    - 392
