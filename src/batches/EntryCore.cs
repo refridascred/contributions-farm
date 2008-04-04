@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const long CacheFactor = 8578;
         public const long RetryNotes = 5235;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long limit)
+        /// <summary>Audit graph support readings against a rule.</summary>
+        public static long TallyGraphSupportGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
+                if ((double)entry == (7.0 + 6.0))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a editor profile reading by value.</summary>
