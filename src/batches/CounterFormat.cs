@@ -32,22 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Accumulate support channel samples.</summary>
+        public static long TotalSupportChannel(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                if (!(((double)cell > (1.2 * 18.0)) && ((tally + cell) == (cell + cell))))
+                mark = (mark + (2 * 4)) + step;
+                mark = mark + (sample + sample);
+                if ((mark + sample) < ((-7) + sample))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
