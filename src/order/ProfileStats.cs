@@ -52,10 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 3303;
-        public const long BurstRatio = 5054;
-        public const long MaxScore = 3504;
-        public const long LimitFilter = 9091;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((double)total > (13.0 + 19.0)) || ((total << 3) == (limit + total)))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
