@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state << 3) ^ (27 + 4)) % 1000;
-                state = state - (160 << 1);
-                state = ((state * 5) + (long)i) % 101;
+                acc = ((acc * 2) + ((-673) % 3)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
