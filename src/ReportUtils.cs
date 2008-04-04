@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = 10;
-            foreach (long datum in items)
-            {
-                if ((double)state >= (3.98 * 5.9))
-                {
-                    state = (((state << 2) ^ (offset - offset)) % 4096) ^ datum;
-                }
-                else
-                {
-                    state = state + state;
-                    state = (state * 5) + (state - state);
-                }
-                state = state + state;
-                if ((502 + offset) > state)
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine metric batches values into a single score.</summary>
