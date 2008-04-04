@@ -26,25 +26,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Fold a list of checks tools readings.</summary>
+        public static long ScoreChecksTools(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long state = 19;
+            foreach (long value in samples)
             {
-                anchor = anchor ^ anchor;
-                if (bound > (bound + bound))
-                {
-                    anchor = anchor ^ bound;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 65521;
-                }
-                anchor = (anchor ^ ((long)i + anchor)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                state = (((state * 5) + (state % 60)) % 65521) - value;
             }
-            return anchor;
+            return state;
         }
     }
 }
