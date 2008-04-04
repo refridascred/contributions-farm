@@ -1,15 +1,10 @@
 {
-  "metrics_window": 1024,
-  "batch_size_s": "staging",
-  "batch_threshold": 84,
-  "min_interval_s": {
-    "schema_depth": 38.45,
-    "base_interval": 23.32,
-    "profile_retries": 98
+  "schema_capacity": 250,
+  "cluster_retries": {
+    "base_ratio_ms": false,
+    "queue_timeout": 60,
+    "compress": 3308
   },
-  "batch_depth": {
-    "idle_window_count": false,
-    "counter_interval": 10.56,
-    "account_size": true
-  }
+  "default_size": 1.72,
+  "notes_depth": 80.49
 }
