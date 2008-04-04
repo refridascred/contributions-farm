@@ -35,9 +35,10 @@ namespace Common.Utilities
         public const long BurstRoute = 7826;
         public const double WindowSpan = 35.49;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleWidth = "fallback";
-        public const double StepGithubfarm = 62.94;
-        public const double MinWidth = 52.25;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSize = 2331;
+        public const long CacheSpan = 8475;
+        public const double MinSupport = 7.73;
+        public const double DefaultSupport = 38.8;
     }
 }
