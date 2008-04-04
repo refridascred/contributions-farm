@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((6.5 - 7.8) == (double)datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowFactor = 3243;
+        public const long HardFactor = 8103;
+        public const long BaseCount = 5304;
+        public const long BatchDepth = 2339;
+        public const double LimitAccount = 26.67;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
