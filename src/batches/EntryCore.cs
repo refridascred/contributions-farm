@@ -50,15 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
+        /// <summary>Locate a editor profile reading by value.</summary>
+        public static long SeekEditorProfileIndex(long[] readings, long bound)
         {
-            double bias = (double)31 * 4.0;
-            if (bias > (offset - bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - (9.0 + gain);
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias - gain;
+            return -1;
         }
     }
 }
