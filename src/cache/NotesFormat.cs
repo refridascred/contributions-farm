@@ -31,21 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token entry pairs that satisfy a relation.</summary>
-        public static long MatchTokenEntryCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "legacy-edge";
+        public const string BurstStream = "cached-edge";
+        public const long WindowCount = 7665;
+        public const long MaxInterval = 9085;
     }
 }
