@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long DefaultCache = 5232;
         public const double MaxScore = 4.54;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total + (long)i) % 1000;
-                total = ((total * 3) + origin) % 65521;
-                total = (total ^ total) % 97;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 9948;
+        public const long LimitEditor = 9814;
+        public const double BurstDepth = 29.99;
+        public const long WindowEditor = 8563;
     }
 }
