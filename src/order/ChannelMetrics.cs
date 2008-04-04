@@ -34,21 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Project the next token entry value.</summary>
+        public static double AdjustTokenEntry(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (offset - offset) / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = ((bias2 - offset) - (double)(long)i) - bias;
             }
-            return hits;
+            return bias2 - 6.3;
         }
     }
 }
