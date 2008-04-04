@@ -42,15 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long acc = 227;
-            foreach (long item in series)
-            {
-                acc = ((acc * 2) + item) % 101;
-            }
-            return acc % 1000;
+            Paused,
+            Idle,
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
