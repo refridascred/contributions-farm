@@ -47,19 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context support series from a seed.</summary>
-        public static long IterateContextSupport(long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] levels, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (reading <= bound)
                 {
-                    mix = mix - (long)i2;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Digest a series of route farm entries.</summary>
