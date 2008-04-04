@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] levels, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = 12;
+            foreach (long reading in series)
             {
-                if (((offset + 266) > (hits / 9)) && ((offset + offset) < (hits * 4)))
+                if ((6 ^ reading) < acc)
                 {
-                    hits = (hits + 2) + value;
+                    acc = acc ^ (37 * 3);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc << 3) ^ offset) % 97;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
