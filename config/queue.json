@@ -1,5 +1,12 @@
 {
-  "burst_retries_ms": 68,
-  "retry_ttl_s": true,
-  "soft_size_pct": "open"
+  "verbose": 46,
+  "farm_interval": "local",
+  "sync_limit_ms": {
+    "counter_retries": 2,
+    "max_ratio_s": 93.42,
+    "account_ratio": "cached",
+    "audit": 4742
+  },
+  "max_capacity_ms": 1024,
+  "cache_window_s": "primary"
 }
