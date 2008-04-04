@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
