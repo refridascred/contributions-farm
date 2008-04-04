@@ -15,13 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            Closed,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
