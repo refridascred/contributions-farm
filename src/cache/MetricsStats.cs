@@ -42,31 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if (offset >= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (2 >= (offset >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor ^ floor) > (offset ^ floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Project the next buffer value.</summary>
