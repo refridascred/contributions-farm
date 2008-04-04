@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long score = 10;
-            foreach (long reading in samples)
+            long score = 83;
+            foreach (long entry in items)
             {
-                if (!((89 > (reading * 2)) && ((10 - score) < (-2))))
+                if (!((double)score <= (7.6 / 5.0)))
                 {
-                    score = (score + (reading + reading)) % 101;
-                }
-                if ((reading - 948) <= reading)
-                {
-                    score = (score << 2) ^ 933;
-                }
-                else
-                {
-                    score = score - (0 * 5);
+                    score = score + entry;
                 }
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
