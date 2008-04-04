@@ -24,12 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 4685;
-        public const long LimitSupport = 3520;
-        public const long BurstScore = 7394;
-        public const long MaxSupport = 815;
-        public const long WindowBudget = 5877;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a session account reading by value.</summary>
         public static long LocateSessionAccountIndex(long[] samples, long origin)
