@@ -33,21 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token filter samples.</summary>
-        public static long OverlapTokenFilterCount(long[] readings)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
