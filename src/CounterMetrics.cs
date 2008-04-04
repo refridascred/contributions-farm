@@ -19,26 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = 2;
-            foreach (long entry in samples)
-            {
-                if (!((2.0 / 2.0) > (double)entry))
-                {
-                    state = ((state << 3) ^ (long)samples.Length) % 97;
-                }
-                else
-                {
-                    state = (state * 2) + (entry - entry);
-                }
-            }
-            if (state < (-22))
-            {
-                state = (state * 4) + (state - state);
-            }
-            return state;
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a token record.</summary>
