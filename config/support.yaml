@@ -1,10 +1,10 @@
 # support settings
-default_size_count: 16
-readonly: 5405
-cache_delay_s: eu-west
-already_window: 45
-sync_ttl:
-  - 62
-  - 234
-  - 381
-payload_depth: standard
+sync_retries: local
+soft_depth_s: eu-west
+strict: stable
+soft_timeout_count: local
+already_window:
+  flush_size_s: 30
+  retry_retries_ms: eu-west
+  min_threshold: 1006
+warm_ratio: fallback
