@@ -25,31 +25,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long bound, long bound2)
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool GuardStatsAlreadyBounds(long[] levels, long target)
         {
-            if (!(bound2 >= (bound / 7)))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (2.8 >= (double)bound)
+                if (cell <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) <= (bound2 / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
