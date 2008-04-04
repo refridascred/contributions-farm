@@ -14,10 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftCount = 3839;
-        public const string BatchBudget = "stable-v2";
-        public const long BatchSchema = 3668;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((16.0 * 4.5) == (double)hits)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
