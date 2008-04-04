@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long carry = 411;
+            foreach (long cell in series)
             {
-                mark = (mark - ((long)i / 2)) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (carry <= cell)
+                {
+                    carry = ((carry << 2) ^ 585) % 4096;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
