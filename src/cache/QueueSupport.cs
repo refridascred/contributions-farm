@@ -27,14 +27,12 @@ namespace Common.Utilities
         public const long BurstFilter = 2468;
         public const long BatchFilter = 2915;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Synced,
-            Closed,
-            Stale,
-            Draft,
-            Pending,
+            Locked,
+            Dropped,
+            Idle,
         }
     }
 }
