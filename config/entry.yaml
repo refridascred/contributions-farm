@@ -1,19 +1,9 @@
 # entry settings
-batch_capacity: false
-githubfarm_capacity: standard
-strict:
-  format_ratio: eu-west
-  poll_threshold_ms: 36
-  retry_capacity_count: 68.86
-  batch_ttl_s:
-    retry_retries: true
-    sync_limit: 1024
-    flush_retries_s:
-      - 129
-      - 407
-enabled:
-  enabled: 63.92
-  filter_size: primary
-  min_depth_count: blue
-  warm_timeout: 500
-  metric_ratio: fallback
+flush_window:
+  - legacy
+  - primary
+  - stable
+  - open
+metrics_window: 100
+default_ttl_ms: 40.49
+default_size_pct: 500
