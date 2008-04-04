@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel counter samples are out of range.</summary>
-        public static long TallyChannelCounterGaps(long[] samples, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (item > count)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
