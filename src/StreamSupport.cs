@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next checks support value from a seed.</summary>
-        public static long RollChecksSupport(long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix ^ mix;
-                mix = mix - 2;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
