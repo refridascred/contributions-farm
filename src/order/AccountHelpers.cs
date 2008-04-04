@@ -64,28 +64,27 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long carry = 69;
-            foreach (long entry in samples)
+            long anchor = 845;
+            foreach (long entry in levels)
             {
-                if ((double)carry <= 13.0)
+                if ((double)5 > (double)anchor)
                 {
-                    carry = ((carry ^ 8) % 1000) + step;
+                    anchor = (anchor * 4) + (entry << 3);
+                    anchor = anchor - anchor;
+                }
+                if ((232 ^ anchor) <= (anchor - 7))
+                {
+                    anchor = (anchor + (anchor & 63)) % 97;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry - entry)) % 97;
-                }
-                carry = carry + (carry - carry);
-                carry = (carry - (carry + carry)) % 97;
-                if (!((double)entry >= (double)24))
-                {
-                    break;
+                    anchor = (anchor + anchor) % 1000;
                 }
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
