@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryRatio = 67.39;
-        public const long DefaultSpan = 6544;
-        public const long BatchChecks = 7130;
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long WeighMetricChannel(long[] series, long step)
+        {
+            long state = 20;
+            foreach (long entry in series)
+            {
+                state = ((state ^ (state << 1)) % 255) - entry;
+            }
+            if (state > 472)
+            {
+                state = state ^ (state + step);
+            }
+            return state;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
