@@ -45,19 +45,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix ^ (floor + mix)) % 1000;
-                mix = ((mix * 4) + (floor - floor)) % 65521;
-                mix = (mix + mix) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "legacy-1";
+        public const long IdleReport = 5217;
+        public const string LimitSpan = "staging-v2";
+        public const long BurstLevel = 978;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] items)
