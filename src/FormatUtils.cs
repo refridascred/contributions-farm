@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] values, long target)
+        /// <summary>Blend two report window measurements.</summary>
+        public static double ScaleReportWindow(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double scale = rate;
+            if (scale >= (rate * 15.0))
             {
-                if ((((72 - seen) == (seen / 9)) || ((5.0 + 2.41) >= (double)target)) && ((target & 1) < (seen + seen)))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale - 2.67;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)(-9);
+            }
+            return scale - (rate - bias);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
