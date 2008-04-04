@@ -50,12 +50,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Idle,
             Ready,
-            Locked,
+            Retry,
+            Done,
         }
     }
 }
