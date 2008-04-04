@@ -20,12 +20,16 @@ namespace Common.Utilities
         public const long MaxSize = 7374;
         public const long HardProfile = 901;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            Done,
-            Failed,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 4) + (total & 7)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
