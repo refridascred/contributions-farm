@@ -1,8 +1,6 @@
 {
-  "profile_depth": 51.96,
-  "retry_size_count": 100,
-  "batch_delay": 1024,
-  "githubfarm_interval": "legacy",
-  "account_ratio": true,
-  "warm_threshold": 6836
+  "schema_size": ["strict", "stable"],
+  "compress": 100,
+  "githubfarm_timeout": "latest",
+  "burst_delay": 9701
 }
