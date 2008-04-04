@@ -35,17 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long floor)
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long WeighFarmAlready(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 5;
+            foreach (long value in values)
             {
-                if (series[i] < floor)
+                mark = ((mark * 4) + (mark << 2)) % 4096;
+                if ((value >> 4) <= (value % 16))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = (mark << 2) ^ (mark + 4);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many format payload samples are out of range.</summary>
