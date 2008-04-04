@@ -63,18 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                if (seen >= (seen & 15))
+                if ((cell + 2) >= (67 << 1))
                 {
-                    seen = (seen + 2) + reading;
+                    sum = (sum - (cell << 3)) % 1000;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
