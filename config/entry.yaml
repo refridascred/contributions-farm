@@ -1,23 +1,20 @@
 # entry settings
-max_window: 500
-min_capacity_count:
-  - 4
-  - 408
-  - 208
-contributi_limit: fallback
-cache_interval:
-  verbose:
-    - eu-west
-    - strict
-  poll_timeout: primary
-  queue_threshold: 98.56
-  report_size: false
-  sync_depth: 22
-  max_interval_count: 60
-poll_timeout_count:
-  account_size: latest
-  window_threshold:
-    - 292
-    - 105
-    - 42
-  record_ratio: cached
+base_threshold_s: 8431
+base_threshold_pct: legacy
+default_depth_pct: false
+batch_threshold_count:
+  cache_capacity_s: 10.27
+  base_capacity_pct: stable
+  sync_window_count: open
+  min_size_ms:
+    buffer_limit: 2221
+    token_ratio: edge
+    warm_depth_ms: false
+    cache_interval_s: open
+  enabled: 75.88
+  hard_delay_s:
+    readonly: 30
+    hard_capacity_count: 9277
+    editor_retries: 250
+    min_ratio_pct: 7870
+min_depth_count: 30
