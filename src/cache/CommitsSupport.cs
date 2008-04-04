@@ -40,22 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics counter samples.</summary>
-        public static long PairMetricsCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxSize = "staging";
+        public const long BaseWidth = 9466;
+        public const long StepScore = 5164;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
