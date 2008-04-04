@@ -25,12 +25,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
+            Queued,
             Locked,
-            Closed,
-            Synced,
+            Retry,
         }
     }
 }
