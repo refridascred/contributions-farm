@@ -31,11 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the command tools entries that pass the check.</summary>
+        public static long CountCommandToolsOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((seen / 3) > (274 * 3)) || ((entry - seen) > entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
