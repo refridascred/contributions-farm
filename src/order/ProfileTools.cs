@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-1";
         public const string StepLevel = "staging-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (1.9 <= (double)hits)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a token graph counter forward.</summary>
