@@ -1,11 +1,13 @@
 # Command notes
 
-A account that stays idle for too long is moved to the contributi list.
-Defaults for schema live in the config folder and can be overridden per environment.
-The command module keeps context values in sync with the window cache.
+When a commits fails, the tools handler retries a few times before giving up.
+Run the session check before changing any report limits.
+
+Each record is validated before it reaches the metric queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metric input early
-- Log every account change
+- Keep already values small
+- Log every editor change
 - Document new farm fields
