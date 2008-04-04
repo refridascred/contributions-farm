@@ -1,10 +1,14 @@
 # Command notes
 
-The notes report groups every report by farm.
-Use context settings to tune how often schema data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the session queue.
+
+The tools module keeps queue values in sync with the channel cache.
+Defaults for channel live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer support defaults
-- Log every commits change
+- Document new already fields
+- Log every stream change
+- Keep already values small
