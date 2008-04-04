@@ -78,10 +78,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 4853;
-        public const long DefaultDepth = 4044;
-        public const string HardCache = "fallback-edge";
-        public const long BatchRatio = 6248;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double span)
+        {
+            double scale = span;
+            if (scale <= (double)74)
+            {
+                scale = scale + span;
+            }
+            return scale - (weight - span);
+        }
     }
 }
