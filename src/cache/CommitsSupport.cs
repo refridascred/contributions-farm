@@ -33,18 +33,16 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] levels, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = 622;
+            foreach (long item in samples)
             {
-                if ((511 * 2) != (target + 9))
-                {
-                    count = (count + 2) + entry;
-                }
+                carry = (carry - (carry / 8)) % 97;
+                carry = ((carry << 2) ^ (item ^ seed)) % 97;
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
