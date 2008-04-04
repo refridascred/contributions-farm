@@ -42,14 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool ValidateContributiCacheLimits(long[] samples, long bound)
         {
-            Paused,
-            Idle,
-            New,
-            Dropped,
-            Stale,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
