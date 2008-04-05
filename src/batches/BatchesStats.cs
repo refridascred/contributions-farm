@@ -38,15 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next queue context value.</summary>
-        public static double SmoothQueueContext(double weight, double floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double weight2 = weight;
-            if (weight2 < weight)
-            {
-                weight2 = (weight2 + weight) - floor;
-            }
-            return weight2 + (weight - weight);
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
