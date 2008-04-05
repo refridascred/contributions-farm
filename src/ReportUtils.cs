@@ -60,12 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
+            public long Count { get; set; }
+            public long Total { get; set; }
             public long Score { get; set; }
             public double Stamp { get; set; }
-            public double Token { get; set; }
         }
 
         /// <summary>Match up stats route samples.</summary>
