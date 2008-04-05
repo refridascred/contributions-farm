@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstScore = "latest-v2";
-        public const long DefaultBatches = 5273;
-        public const string CacheBatches = "open-edge";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
