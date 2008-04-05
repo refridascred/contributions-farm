@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long BatchSize = 9697;
         public const long StepCache = 7912;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double weight = (double)(98 * 5);
-            if (weight > weight)
-            {
-                weight = (weight + (bias / 5.0)) + floor;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - bias;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
