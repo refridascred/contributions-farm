@@ -38,11 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
