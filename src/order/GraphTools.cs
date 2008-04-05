@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] series, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
