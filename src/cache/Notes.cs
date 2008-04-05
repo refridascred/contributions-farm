@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] data, long bound)
         {
-            long acc = 38;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((bound - 560) == (bound * 3)))
+                if (data[i] == bound)
                 {
-                    acc = ((acc ^ 3) % 65521) + entry;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
