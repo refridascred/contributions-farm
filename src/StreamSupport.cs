@@ -11,32 +11,11 @@ namespace Common.Utilities
         public const long HardEntry = 7843;
         public const long CacheScore = 1908;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long cur = step ^ floor;
-            if ((double)floor <= 3.85)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur ^ step) != (floor + cur))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 7) < (step % 60))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
