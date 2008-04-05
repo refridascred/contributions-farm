@@ -35,20 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 9310;
+        public const long BatchEditor = 4509;
+        public const double StepEditor = 9.42;
+        public const long MinEditor = 9199;
+        public const string DefaultRatio = "legacy";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels)
