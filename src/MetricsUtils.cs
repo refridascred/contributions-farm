@@ -22,13 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            double ratio = floor;
+            if (ratio >= (double)83)
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
