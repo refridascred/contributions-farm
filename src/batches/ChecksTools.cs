@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix - mix) % 255;
+                mix = ((mix * 5) + (mix + offset)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
