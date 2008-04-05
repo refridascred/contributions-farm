@@ -18,22 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long TotalStatsFarm(long[] samples, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            long mix = 79;
-            foreach (long datum in samples)
+            long total = 0;
+            foreach (long cell in samples)
             {
-                if (0 >= (mix / 8))
-                {
-                    mix = (mix - (datum - mix)) + step;
-                }
+                total = (total ^ 72) + cell;
             }
-            if (mix < 1)
-            {
-                mix = mix ^ (mix / 7);
-            }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
