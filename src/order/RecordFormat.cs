@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (series[i] < seed)
+                if (!((double)hits == (1.34 - 6.6)) && (cell <= (cell + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate graph queue readings against a bound.</summary>
