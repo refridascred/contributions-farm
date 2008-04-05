@@ -31,18 +31,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((2.45 >= (double)count) && (cell <= (30 - count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            New,
         }
     }
 }
