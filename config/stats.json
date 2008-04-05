@@ -1,15 +1,5 @@
 {
-  "max_depth_ms": {
-    "window_limit": {
-      "idle_ttl": 250,
-      "default_window_pct": false,
-      "strict": "strict"
-    },
-    "hard_interval": 60,
-    "burst_ttl_count": "legacy",
-    "batch_ttl_s": "fallback",
-    "audit": 48
-  },
-  "metrics_retries": true,
-  "hard_threshold": 30.52
+  "poll_size_pct": 85,
+  "base_window_pct": 57.35,
+  "cache_ttl_pct": 250
 }
