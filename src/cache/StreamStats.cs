@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long MeasureAccountOrderMatches(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((((double)entry <= (double)count) || (entry <= (entry + entry))) || (count >= ((-360) >> 3)))
+                if ((value % 100) < (tally + value))
                 {
-                    count = count + 1;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of already stats entries.</summary>
