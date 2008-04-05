@@ -38,21 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Audit graph record readings against a rule.</summary>
+        public static long TallyGraphRecordGaps(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches * 5) == (reading - floor))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
