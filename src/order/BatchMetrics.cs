@@ -56,24 +56,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((limit - 929) != (730 + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) != (4 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
