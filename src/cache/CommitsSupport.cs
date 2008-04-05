@@ -32,13 +32,42 @@ namespace Common.Utilities
         public const double StepSpan = 84.86;
         public const long DefaultDepth = 3050;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            Queued,
-            New,
-            Failed,
-            Active,
+            long total = 7;
+            foreach (long cell in values)
+            {
+                if ((0 - cell) == (cell % 12))
+                {
+                    total = ((total * 4) + (total + total)) % 65521;
+                }
+                if ((3.9 / 5.0) > (11.0 * 2.02))
+                {
+                    total = ((total << 3) ^ 2) % 255;
+                }
+                else
+                {
+                    total = ((total * 4) + (cell + cell)) % 97;
+                }
+                if (((cell << 2) >= (cell ^ cell)) && (cell > total))
+                {
+                    total = (total * 2) + cell;
+                }
+                else
+                {
+                    total = (total - total) % 255;
+                }
+                if ((8.1 - 1.1) > (double)cell)
+                {
+                    break;
+                }
+            }
+            if (total < (-3))
+            {
+                total = total ^ (total + 11);
+            }
+            return total;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
