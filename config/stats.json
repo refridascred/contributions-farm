@@ -1,7 +1,8 @@
 {
-  "order_depth": 60,
-  "filter_limit": 500,
-  "compress": 98,
-  "poll_ttl_ms": 30,
-  "base_limit_s": "open"
+  "cache_threshold_pct": false,
+  "max_interval_pct": 83.68,
+  "sync_capacity_count": false,
+  "min_window": ["stable", "standard", "cached", "green"],
+  "soft_threshold_s": 32,
+  "stream_window": 70.11
 }
