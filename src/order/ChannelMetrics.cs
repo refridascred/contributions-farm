@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long HardFilter = 930;
         public const long StepSize = 4040;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            long result = 50;
+            foreach (long item in levels)
+            {
+                if (!((0 + result) != (limit + item)))
+                {
+                    result = result + result;
+                }
+            }
+            if (result < 160)
+            {
+                result = result ^ limit;
+            }
+            return result;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
