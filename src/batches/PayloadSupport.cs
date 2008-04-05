@@ -33,23 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            double gain = floor;
-            if (gain < (gain - weight))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain - 9.3;
+            return seen;
         }
     }
 }
