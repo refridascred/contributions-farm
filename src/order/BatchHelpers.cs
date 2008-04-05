@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples, long offset)
+        /// <summary>Find the first schema support entry that matches the target.</summary>
+        public static long SeekSchemaSupportIndex(long[] series, long bound)
         {
-            long sum = 28;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((16.0 / 5.0) < (double)offset))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    sum = ((sum ^ 416) % 65521) + sample;
-                }
-                else
-                {
-                    sum = (sum ^ offset) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
