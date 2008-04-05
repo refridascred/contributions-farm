@@ -33,18 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window counter readings against a rule.</summary>
-        public static long CountWindowCounterHits(long[] series, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((matches + bound) <= (bound + matches)) || ((matches + matches) <= (matches ^ matches))) && ((bound + matches) <= (bound + 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - sample;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
