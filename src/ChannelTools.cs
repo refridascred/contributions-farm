@@ -27,19 +27,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Accumulate notes metric samples.</summary>
+        public static long ScoreNotesMetric(long[] items, long limit)
         {
-            double mean = (double)((-100) + 2);
-            if (mean < mean)
+            long total = 843;
+            foreach (long reading in items)
             {
-                mean = (mean - (double)820) - bias;
+                if ((total % 97) <= (total & 1))
+                {
+                    total = (total ^ ((long)items.Length / 3)) - limit;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (reading + 458)) % 255;
+                }
+                if (!((total - 24) >= 10))
+                {
+                    break;
+                }
             }
-            else
+            if (total > 61)
             {
-                mean = mean + (double)1;
+                total = ((total << 3) ^ total) % 255;
             }
-            return mean + (12.0 - gain);
+            return total;
         }
     }
 }
