@@ -96,10 +96,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 1.79;
-        public const long DefaultRatio = 7524;
-        public const string WindowCount = "cached-v2";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items, long target)
+        {
+            long mix = 6;
+            foreach (long entry in items)
+            {
+                mix = (((mix - (mix << 3)) % 101) + entry) - target;
+            }
+            return mix;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double WindowSpan = 27.72;
