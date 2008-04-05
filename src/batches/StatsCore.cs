@@ -57,21 +57,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result ^ result) % 101;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
