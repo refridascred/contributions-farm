@@ -16,10 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseRatio = 93.46;
-        public const string WindowContributi = "fallback-1";
-        public const long DefaultContributi = 7778;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long floor2)
+        {
+            if ((floor2 ^ floor) > (floor2 % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)floor2 <= (2.7 * 0.6)) || (floor2 >= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
