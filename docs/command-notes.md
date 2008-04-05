@@ -1,11 +1,14 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the counter list.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Use stream settings to tune how often channel data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the counter handler retries a few times before giving up.
+The checks report groups every support by editor.
+
+Keep already and session names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Review format limits each release
 - Log every editor change
-- Document new report fields
-- Review metric limits each release
+- Validate checks input early
