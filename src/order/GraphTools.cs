@@ -85,19 +85,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long origin)
         {
-            double gain = (double)(48 + 9);
-            if (gain >= (gain + span))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (weight * 8.23);
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 4.0);
-            }
-            return gain - (gain * 3.4);
+            return -1;
         }
     }
 }
