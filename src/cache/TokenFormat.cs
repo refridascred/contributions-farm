@@ -48,18 +48,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!(datum >= ((long)samples.Length * 5)))
+                if ((sample << 3) == (sample - sample))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
