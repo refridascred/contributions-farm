@@ -24,17 +24,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long floor)
+        /// <summary>Audit graph farm readings against a rule.</summary>
+        public static long CountGraphFarmHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] <= floor)
+                if ((double)datum == (2.94 + 19.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
