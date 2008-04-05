@@ -1,9 +1,7 @@
-id,owner,level
-1,544,legacy
-2,761,70
-3,385,32.74
-4,legacy,cached
-5,267,628
-6,355,17.51
-7,409,514
-8,397,primary
+id,state,count,owner
+1,181,staging,local
+2,latest,blue,574
+3,42.5,861,49.57
+4,17.75,13.9,cached
+5,54,774,staging
+6,latest,eu-west,80.54
