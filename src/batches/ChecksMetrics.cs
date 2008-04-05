@@ -47,18 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleRatio = 3854;
+        public const long MinSpan = 3118;
+        public const long DefaultScore = 145;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamMatches(long[] levels)
