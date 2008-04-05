@@ -40,18 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowDepth = 83.06;
+        public const double WindowRatio = 44.46;
+        public const long SoftNotes = 4513;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] series, long bound)
