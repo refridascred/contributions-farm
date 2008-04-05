@@ -1,8 +1,32 @@
 # support settings
-sync_ratio_s: 54
-audit:
-  - 120
-  - 498
-  - 37
-  - 471
-support_ttl: 34.91
+base_delay_s:
+  burst_ttl_ms:
+    poll_delay_s: 97.72
+    commits_capacity: latest
+    soft_limit: 5018
+    profile_ttl:
+      - standard
+      - green
+      - eu-west
+      - fallback
+    queue_timeout:
+      - strict
+      - open
+      - latest
+      - legacy
+    window_timeout:
+      - 9
+      - 179
+      - 35
+  min_timeout: 1303
+  min_retries: false
+poll_delay: stable
+readonly:
+  default_threshold: stable
+  verbose: eu-west
+  tools_retries:
+    - 197
+    - 354
+    - 218
+    - 177
+  soft_ratio_s: staging
