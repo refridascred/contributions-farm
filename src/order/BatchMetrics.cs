@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] series, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (2 < (datum % 5))
+                if (value < origin)
                 {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
