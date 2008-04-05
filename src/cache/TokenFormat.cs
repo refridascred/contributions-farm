@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 7072;
+        public const long BatchWidth = 5099;
+        public const long IdleLayout = 7817;
+        public const long RetryLayout = 2358;
 
         /// <summary>Digest a series of buffer command entries.</summary>
         public static long TallyBufferCommand(long[] data, long bound)
