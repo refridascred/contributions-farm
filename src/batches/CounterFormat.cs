@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift >= drift)
             {
-                if (matches > (matches + item))
-                {
-                    matches = matches + 3;
-                }
+                drift = drift - (rate + bias);
             }
-            return matches;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - (double)126;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
