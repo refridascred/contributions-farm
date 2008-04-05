@@ -22,19 +22,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long carry = 51;
+            foreach (long datum in series)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((((carry << 3) ^ (long)series.Length) % 4096) ^ datum) - target;
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Hold a schema info.</summary>
