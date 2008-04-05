@@ -19,13 +19,27 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
         {
-            Stale,
-            Paused,
-            Failed,
-            Queued,
+            long carry = 72;
+            foreach (long value in values)
+            {
+                if (!((double)value > (1.54 / 2.0)))
+                {
+                    carry = ((carry * 3) + value) % 101;
+                }
+                carry = (carry - (value + value)) % 65521;
+                if ((value * 3) <= (61 + 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 561)
+            {
+                carry = (carry ^ (carry - carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
