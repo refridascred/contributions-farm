@@ -23,14 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Retry,
-            Closed,
-            Pending,
-            Failed,
-            Paused,
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
