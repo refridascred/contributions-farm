@@ -49,9 +49,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBudget = "open";
-        public const long HardBatch = 9200;
-        public const long SoftInterval = 9586;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Draft,
+            Synced,
+            Retry,
+            Failed,
+            Stale,
+        }
     }
 }
