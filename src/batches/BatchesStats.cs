@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every already notes entry stays within the limit.</summary>
-        public static bool GuardAlreadyNotesLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSize = "primary-edge";
+        public const long MinLevel = 7645;
+        public const long LimitSchema = 3832;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchLevel = 1108;
