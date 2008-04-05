@@ -72,13 +72,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            Done,
-            Locked,
-            Queued,
-            Pending,
+            double load = (double)785 - (ratio * 9.0);
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + load) + (double)(long)i) + span;
+            }
+            return load + load;
         }
     }
 }
