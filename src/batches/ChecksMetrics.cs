@@ -72,9 +72,19 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "local-edge";
-        public const double WindowCommits = 14.09;
-        public const long MaxCommits = 148;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
