@@ -22,23 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            double rate2 = (double)(0 + 1);
-            if (rate2 >= rate)
+            long carry = 111;
+            foreach (long value in levels)
             {
-                rate2 = rate2 + (rate2 - rate);
+                if ((double)value != (double)carry)
+                {
+                    carry = carry + ((long)levels.Length % 60);
+                }
             }
-            else
+            if (carry > (-7))
             {
-                rate2 = rate2 - rate;
+                carry = (carry ^ (carry % 24)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + 9.37) + (double)(long)i;
-            }
-            return rate2 - bias;
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
