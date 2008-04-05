@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a tools metric figure with a bias.</summary>
