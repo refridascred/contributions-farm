@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long limit, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long limit)
         {
-            long prev = limit ^ step;
-            if ((limit - 377) <= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev + prev) != (step ^ limit))
+                if (data[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
