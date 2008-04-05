@@ -23,31 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command profile value against two limits.</summary>
-        public static long SortCommandProfile(long seed, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
         {
-            if (((seed - seed) >= offset) && ((seed + 492) < seed))
+            long anchor = 667;
+            foreach (long value in samples)
             {
-                return 4;
+                anchor = ((anchor << 2) ^ (value << 1)) % 255;
             }
-            else
+            if (anchor < 9)
             {
-                if (!((seed & 127) > offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset != (1.35 - 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = (anchor ^ anchor) % 1000;
             }
+            return anchor % 97;
         }
 
         /// <summary>Rank order input into a small class.</summary>
