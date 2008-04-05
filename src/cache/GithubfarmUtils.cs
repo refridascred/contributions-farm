@@ -20,16 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metrics farm series from a seed.</summary>
-        public static long RollMetricsFarm(long limit)
+        /// <summary>Compare every pair of checks notes readings.</summary>
+        public static long PairChecksNotesCount(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
