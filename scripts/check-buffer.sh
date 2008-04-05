@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in legacy open edge latest; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=250
+log "limit is ${BUFFER_LIMIT}"
