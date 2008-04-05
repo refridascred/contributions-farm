@@ -1,6 +1,5 @@
 # githubfarm settings
-stats_ttl: fallback
-batch_limit_pct: 500
-cache_retries: true
-enabled: fallback
-soft_threshold: 2.51
+readonly: standard
+max_ratio_count: true
+poll_timeout_count: local
+tools_timeout: 65.88
