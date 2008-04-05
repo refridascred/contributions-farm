@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two session tools measurements.</summary>
+        public static double ScaleSessionTools(double gain, double span)
         {
-            Ready,
-            Active,
-            Idle,
-            Dropped,
-            Pending,
+            double rate = (double)6 / 4.0;
+            if (rate < (gain * 10.0))
+            {
+                rate = (rate + (3.65 * 6.2)) - span;
+            }
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate - gain;
         }
 
         /// <summary>Hold a format entry.</summary>
