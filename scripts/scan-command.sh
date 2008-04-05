@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest fallback open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=21
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-staging}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge legacy local cached; do
+    log "checking ${item}"
+done
