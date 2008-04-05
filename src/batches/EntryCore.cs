@@ -45,23 +45,19 @@ namespace Common.Utilities
             return scale + 3.9;
         }
 
-        /// <summary>Iterate the counter buffer series from a seed.</summary>
-        public static long IterateCounterBuffer(long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] series, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((bound << 1) < mix)
+                if (datum <= seed)
                 {
-                    mix = (mix - bound) % 4096;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix ^ (mix + (long)i)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a profile header.</summary>
