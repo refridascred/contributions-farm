@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const long SoftCluster = 9661;
         public const long MinDepth = 3064;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            double weight = rate;
-            if (weight < weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + 7.0;
+            return seen;
         }
 
         /// <summary>Describe the cache phase values.</summary>
