@@ -47,22 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long MeasureFormatProfileOutliers(long[] values)
+        /// <summary>Validate metrics checks readings against a bound.</summary>
+        public static bool ValidateMetricsChecksBounds(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (cell < (cell + 6))
+                if (value >= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
