@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long seed)
+        /// <summary>Check that every payload account entry stays within the limit.</summary>
+        public static bool ValidatePayloadAccountBounds(long[] items, long offset)
         {
-            long sum = 610;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                sum = (sum + seed) % 255;
-                if (!((sum + seed) > sum))
+                if (value != offset)
                 {
-                    sum = sum ^ (value * 3);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
