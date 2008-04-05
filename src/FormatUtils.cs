@@ -66,25 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route farm value against two limits.</summary>
-        public static long SortRouteFarm(long limit, long offset)
-        {
-            long step = limit + offset;
-            if ((double)offset > (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step < 9) && ((11.0 + 12.0) < (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 94.35;
+        public const double CacheInterval = 37.61;
+        public const double CacheLevel = 24.55;
+        public const double StepRoute = 47.78;
+        public const long SoftRoute = 5901;
     }
 }
