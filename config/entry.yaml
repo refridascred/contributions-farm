@@ -1,7 +1,18 @@
 # entry settings
-base_window_pct: open
-default_ratio: local
-soft_ratio_s: blue
-hard_depth_ms: latest
-window_timeout: 74
-compress: 12
+readonly:
+  - stable
+  - blue
+idle_ttl: 97.52
+metrics_threshold: 30
+base_timeout:
+  farm_threshold: 13.3
+  flush_timeout:
+    poll_timeout_ms: 500
+    persist: legacy
+    burst_size_s: 13.7
+    soft_threshold_s:
+      - latest
+      - staging
+    cache_timeout: 1024
+    batch_limit_pct: primary
+  account_depth: 6574
