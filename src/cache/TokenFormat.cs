@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score << 2) ^ ((long)i / 5)) % 255;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
