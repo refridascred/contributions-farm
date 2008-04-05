@@ -111,10 +111,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 7904;
-        public const long SoftRatio = 1945;
-        public const long MaxOrder = 5047;
-        public const string BurstSize = "standard-1";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
