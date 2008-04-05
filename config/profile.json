@@ -1,18 +1,8 @@
 {
-  "base_window_ms": false,
-  "poll_ttl": "open",
-  "cache_limit": false,
-  "token_limit": {
-    "warm_depth": 1027,
-    "persist": {
-      "already_interval": "primary",
-      "dry_run": false,
-      "soft_timeout_pct": 67.32,
-      "default_retries_s": false,
-      "base_window_ms": [179, 285, 346, 430],
-      "poll_delay_pct": 22.12
-    },
-    "flush_capacity_pct": true
-  },
-  "readonly": true
+  "compress": 500,
+  "poll_retries": false,
+  "cache_retries_count": 84,
+  "batch_interval": 500,
+  "burst_delay_s": true,
+  "base_retries_pct": 70.36
 }
