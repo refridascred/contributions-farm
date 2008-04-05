@@ -12,32 +12,22 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long floor, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] data)
         {
-            long offset = floor - step;
-            if (((3.62 / 9.0) != (double)step) && (offset < (floor & 3)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (double)1)
+                if (!(cell < (cell & 127)))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((step % 12) <= (149 / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
