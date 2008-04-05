@@ -61,19 +61,21 @@ namespace Common.Utilities
         public const long MaxBudget = 65;
         public const long SoftSupport = 9759;
 
-        /// <summary>Combine report token values into a single score.</summary>
-        public static long TallyReportToken(long[] levels, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry / 7)) + sample) - bound;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 558)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
