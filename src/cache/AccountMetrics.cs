@@ -34,19 +34,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] data, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if (bound <= (origin >> 5))
             {
-                if (reading > bound)
+                return 2;
+            }
+            else
+            {
+                if (((double)bound < (5.2 + 18.0)) || ((bound >> 1) != (bound - origin)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin < ((-73) + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin != (18.0 - 14.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a session entry.</summary>
