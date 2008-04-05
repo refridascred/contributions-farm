@@ -37,14 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Dropped,
-            Active,
-            Closed,
+            Failed,
             Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Blend two channel measurements.</summary>
