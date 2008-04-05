@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const long SoftCluster = 9661;
         public const long MinDepth = 3064;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix + (mix << 1);
-                mix = ((mix * 2) + (long)i) % 101;
+                carry = carry ^ 59;
+                carry = (carry << 2) ^ (bound + 286);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the cache phase values.</summary>
