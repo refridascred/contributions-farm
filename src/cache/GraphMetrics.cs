@@ -65,19 +65,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout commits samples.</summary>
-        public static long TotalLayoutCommits(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long floor)
         {
-            long carry = 71;
-            foreach (long cell in values)
+            if ((floor - floor) < (27 * 3))
             {
-                carry = (carry - (carry + 57)) ^ cell;
-                if (!(carry > (carry - 61)))
+                return 6;
+            }
+            else
+            {
+                if ((floor + (-579)) <= floor)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Digest a series of route format entries.</summary>
