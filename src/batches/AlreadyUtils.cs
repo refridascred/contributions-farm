@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long origin)
         {
-            double ratio = rate + rate;
-            if (ratio > rate)
+            if ((double)origin >= (5.1 * 7.95))
             {
-                ratio = ratio - (floor - ratio);
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                if ((double)origin > 0.7)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 5) != (seed + 19)) && ((double)seed == (2.5 / 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return ratio - (floor + rate);
         }
 
         /// <summary>Digest a series of context entries.</summary>
