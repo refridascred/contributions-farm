@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 2505;
+        public const double HardTimeout = 54.58;
+        public const string WindowRecord = "open-edge";
+        public const string DefaultSpan = "primary-1";
+        public const double DefaultRecord = 81.47;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
