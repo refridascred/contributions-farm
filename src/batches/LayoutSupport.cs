@@ -67,9 +67,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 70.85;
-        public const string BurstAccount = "standard-v2";
-        public const double BaseTimeout = 41.38;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + 22) < (966 - entry))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
