@@ -20,27 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Validate stats layout readings against a bound.</summary>
+        public static bool GuardStatsLayoutRange(long[] series, long step)
         {
-            long mix = 95;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (((double)reading <= (9.5 / 4.0)) || ((reading - 837) == (reading & 127)))
+                if (value <= step)
                 {
-                    mix = (mix ^ ((-457) >> 3)) % 97;
+                    ready = false;
+                    break;
                 }
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix ^ (mix + reading)) + (long)i;
-                }
-                mix = (mix + (747 * 3)) % 4096;
             }
-            if (mix < 1)
-            {
-                mix = ((mix << 2) ^ (mix << 1)) % 255;
-            }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Measure how many commits queue samples are out of range.</summary>
