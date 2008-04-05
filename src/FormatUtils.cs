@@ -52,39 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long gap = floor - origin;
-            if ((5.25 * 9.1) != (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin * 2) <= (floor << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap & 3) > (gap & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((6.0 / 5.0) == (double)gap))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of already readings.</summary>
