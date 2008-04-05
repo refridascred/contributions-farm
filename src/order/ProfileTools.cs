@@ -25,12 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long step)
         {
-            Active,
-            Draft,
-            Paused,
+            long total = 281;
+            foreach (long item in items)
+            {
+                if (!((8.4 + 6.7) > (double)total))
+                {
+                    total = ((total ^ (step + 0)) % 97) ^ item;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (4 & 3)) % 255;
+                }
+            }
+            if (total > (-5))
+            {
+                total = ((total << 3) ^ 291) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
