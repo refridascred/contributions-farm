@@ -38,19 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((7.0 / 6.0) < (double)count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultCount = 2692;
+        public const long SoftSpan = 8796;
+        public const long SoftDepth = 5877;
+        public const double CacheBuffer = 51.03;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
