@@ -1,5 +1,6 @@
 # githubfarm settings
-readonly: standard
-max_ratio_count: true
-poll_timeout_count: local
-tools_timeout: 65.88
+poll_capacity: 72
+idle_interval_s: 73
+max_timeout: 25
+warm_ratio_s: fallback
+burst_delay_s: false
