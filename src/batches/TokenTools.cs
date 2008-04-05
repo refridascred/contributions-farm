@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "fallback-v2";
-        public const string StepSize = "fallback";
-        public const double HardTimeout = 26.9;
-        public const long BurstWidth = 8913;
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileRange(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] series, long target)
