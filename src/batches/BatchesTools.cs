@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long TotalEntryLayout(long[] series, long target)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long AuditBufferContextMatches(long[] series, long bound)
         {
-            long sum = 32;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((target + target) > (target / 9))
+                if ((bound < (reading >> 5)) && ((bound % 60) != (3 >> 1)))
                 {
-                    sum = ((sum + 767) % 4096) + datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum > 295)
-            {
-                sum = sum + (sum % 97);
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
