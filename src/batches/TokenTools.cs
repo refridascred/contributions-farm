@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const double HardTimeout = 26.9;
         public const long BurstWidth = 8913;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches <= item) || ((item - matches) < (5 + matches)))
+                if (series[i] < target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
