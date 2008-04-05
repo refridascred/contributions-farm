@@ -1,18 +1,8 @@
 {
-  "verbose": true,
-  "poll_delay_pct": false,
-  "retry_limit_ms": 81.72,
-  "base_interval_ms": {
-    "enabled": 500,
-    "flush_interval_pct": "standard",
-    "hard_depth": {
-      "default_timeout_s": true,
-      "min_depth_pct": true,
-      "idle_interval": 58,
-      "idle_window_pct": [345, 66, 182],
-      "batches_ratio": false
-    },
-    "retry_delay_count": 6504
-  },
-  "strict": 67
+  "soft_limit_ms": false,
+  "retry_delay": true,
+  "soft_timeout_count": 570,
+  "commits_retries": 83.62,
+  "account_ratio": "green",
+  "burst_window_pct": 38
 }
