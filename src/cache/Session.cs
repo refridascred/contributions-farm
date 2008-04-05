@@ -51,26 +51,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] data)
         {
-            long carry = 5;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((15.0 / 4.0) > (double)limit) || ((543 - limit) <= ((-4) - datum)))
+                if ((sample << 2) <= (hits / 6))
                 {
-                    carry = ((carry * 2) + limit) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (limit * 4)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            if (carry > 18)
-            {
-                carry = (carry ^ ((-76) / 3)) % 65521;
-            }
-            return carry;
+            return hits;
         }
     }
 }
