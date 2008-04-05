@@ -29,18 +29,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many support context samples are out of range.</summary>
-        public static long CountSupportContextHits(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)matches != (double)origin) || (matches <= (matches + matches))) || (((matches - sample) >= (matches % 5)) && ((matches + sample) <= (67 & 15))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7319;
+        public const long IdleChecks = 1927;
+        public const double LimitChecks = 32.68;
+        public const long BatchChecks = 9704;
+        public const long MinSize = 4321;
     }
 }
