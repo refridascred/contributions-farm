@@ -1,17 +1,10 @@
 # githubfarm settings
-queue_interval: false
-record_timeout: true
-idle_retries_pct:
-  checks_limit:
-    min_limit: 3876
-    graph_window: 21.33
-    burst_depth_s: 1024
-    max_depth_ms: legacy
-  default_ttl_s: false
-  audit:
-    persist: 100
-    verbose: eu-west
-    layout_timeout: 42.88
-    base_limit_s: cached
-    token_ratio: 100
-tools_size: true
+hard_capacity_count: latest
+poll_delay_s: standard
+compress: 70.02
+retry_ttl_ms: standard
+hard_ratio_count:
+  - 13
+  - 375
+  - 166
+default_threshold_pct: standard
