@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Active,
-            Draft,
-            Failed,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Match up schema samples.</summary>
