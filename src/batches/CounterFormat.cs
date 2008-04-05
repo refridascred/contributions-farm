@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseWidth = 5513;
-        public const string BurstWidth = "latest-v2";
-        public const long LimitCache = 854;
-        public const long DefaultCache = 7765;
-        public const double LimitInterval = 30.04;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Paused,
+            Queued,
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long seed, long bound)
