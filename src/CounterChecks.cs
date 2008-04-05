@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Dropped,
-            Idle,
-            Draft,
-            Retry,
-            New,
+            Pending,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Adjust a profile reading.</summary>
