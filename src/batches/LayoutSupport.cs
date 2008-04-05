@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Accumulate graph report samples.</summary>
+        public static long WeighGraphReport(long[] series)
         {
-            long carry = -290;
-            foreach (long entry in levels)
+            long anchor = 40;
+            foreach (long entry in series)
             {
-                carry = carry ^ (151 & 3);
-                if ((carry % 64) > ((-61) + 0))
+                if (((anchor & 1) <= (anchor + anchor)) && (anchor <= (anchor << 2)))
                 {
-                    carry = carry ^ (carry ^ carry);
-                    continue;
+                    anchor = (anchor << 2) ^ entry;
                 }
-                if (entry <= (16 / 2))
+                if (!((anchor / 3) <= (anchor + entry)))
                 {
-                    carry = (carry + carry) % 255;
+                    break;
                 }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit graph record readings against a rule.</summary>
