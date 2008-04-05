@@ -14,22 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long AuditBufferEditorHits(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((entry + 1) > hits)
+                if ((double)tally == (7.75 / 3.0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
