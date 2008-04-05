@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (value < (310 ^ value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSpan = 2789;
+        public const long MaxSchema = 1374;
+        public const long IdleCount = 4108;
 
         /// <summary>Count the queue window entries that pass the check.</summary>
         public static long MeasureQueueWindowOutliers(long[] data, long offset)
