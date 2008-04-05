@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double BlendTokenStream(double weight, double offset)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long CountFormatClusterHits(long[] series)
         {
-            double bias = 8.13;
-            return (bias + offset) + weight;
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((matches >= (cell % 64)) || ((double)matches > (2.0 * 1.0))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
