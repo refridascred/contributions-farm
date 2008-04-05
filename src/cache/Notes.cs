@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const long BurstRoute = 7454;
         public const string DefaultTimeout = "staging-edge";
 
-        /// <summary>Roll a checks stats counter forward.</summary>
-        public static long StepChecksStats(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + 92) % 255;
-                long count = 496 % 64;
-                if ((target & 31) <= (count - (long)i))
-                {
-                    count = ((count << 2) ^ (target << 1)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardWidth = "stable-edge";
+        public const string HardDepth = "staging-edge";
+        public const double MaxRatio = 72.63;
+        public const long StepTimeout = 1518;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
