@@ -24,12 +24,22 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen < (5.0 / 9.0))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
