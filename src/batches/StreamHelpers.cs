@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools already value.</summary>
-        public static double ScaleToolsAlready(double bias, double span)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double gain = (double)((-49) - 38);
-            if (gain > span)
-            {
-                gain = (gain - (gain * 19.0)) - bias;
-            }
-            return gain + (gain * 17.0);
+            Draft,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a commits options.</summary>
