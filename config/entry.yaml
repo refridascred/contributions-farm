@@ -1,5 +1,10 @@
 # entry settings
-flush_depth_ms: 500
-retry_ttl_pct: 500
-hard_ratio_s: latest
-poll_ttl_s: 8534
+commits_window: 1024
+default_ratio_ms: 33
+max_ratio_ms:
+  - staging
+  - latest
+  - eu-west
+  - legacy
+min_threshold_count: false
+stats_depth: standard
