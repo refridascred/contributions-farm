@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long result = 4;
-            foreach (long datum in readings)
-            {
-                result = ((result * 2) + (result >> 5)) % 65521;
-                result = result ^ (datum - 885);
-                result = result ^ (datum << 2);
-            }
-            if (result < 7)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
