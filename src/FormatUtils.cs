@@ -46,10 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowDepth = 83.06;
-        public const double WindowRatio = 44.46;
-        public const long SoftNotes = 4513;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 4881;
+        public const long SoftSpan = 7251;
+        public const double BaseScore = 16.51;
+        public const long HardSize = 1547;
+        public const double WindowQueue = 90.31;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] values, long floor)
