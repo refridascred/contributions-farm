@@ -1,12 +1,6 @@
 # githubfarm settings
-dry_run: 73.77
-batch_delay:
-  hard_delay_count: 74.32
-  retry_capacity_ms: 55.88
-  batch_ttl_ms: 1024
-  strict: true
-  channel_timeout: 3992
-batch_delay_s: edge
-max_capacity_count: 3872
-batch_ttl: 96.85
-base_size: 39
+stats_ttl: fallback
+batch_limit_pct: 500
+cache_retries: true
+enabled: fallback
+soft_threshold: 2.51
