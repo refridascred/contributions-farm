@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + count) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
