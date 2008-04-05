@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
