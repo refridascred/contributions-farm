@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = 1;
-            foreach (long reading in readings)
-            {
-                acc = (acc ^ (65 >> 3)) - reading;
-            }
-            if (acc > 41)
-            {
-                acc = ((acc << 3) ^ (bound ^ bound)) % 65521;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a context header.</summary>
