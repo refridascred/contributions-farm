@@ -1,7 +1,7 @@
 {
-  "persist": ["standard", "stable"],
-  "default_threshold_count": 43.49,
-  "base_delay_count": "primary",
-  "session_depth": 57.12,
-  "record_depth": 4171
+  "schema_capacity": 30,
+  "min_size_count": 72,
+  "audit": 100,
+  "poll_retries_s": "green",
+  "batch_timeout": 46.71
 }
