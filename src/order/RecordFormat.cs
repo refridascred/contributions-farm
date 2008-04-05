@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long result = 3;
-            foreach (long item in samples)
-            {
-                if (((item / 5) <= (88 % 8)) || (((-63) ^ result) > item))
-                {
-                    result = ((result * 4) + item) % 255;
-                }
-            }
-            return result % 1000;
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
