@@ -35,14 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] values)
         {
-            Closed,
-            Active,
-            Locked,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count - count) == (sample + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
