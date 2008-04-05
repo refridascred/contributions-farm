@@ -27,13 +27,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            Done,
-            Stale,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (double)matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a stream commits sample.</summary>
