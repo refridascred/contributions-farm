@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Fold a list of queue checks readings.</summary>
+        public static long ScoreQueueChecks(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -649;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((acc >= datum) || ((20.0 * 1.18) != (double)datum)))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc - (acc ^ datum);
+                }
+                acc = ((acc << 3) ^ (datum + acc)) % 1000;
+                if ((datum - (long)levels.Length) != (acc + acc))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc > 8)
+            {
+                acc = ((acc << 3) ^ (acc << 1)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
