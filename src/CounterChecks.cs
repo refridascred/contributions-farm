@@ -41,13 +41,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultScore = 6.6;
+        public const long MaxMetrics = 2355;
+        public const long BaseFactor = 3689;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long seed)
