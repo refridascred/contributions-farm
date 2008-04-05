@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order githubfarm entries.</summary>
-        public static long ScoreOrderGithubfarm(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long result = 433;
-            foreach (long value in items)
+            long state = 2;
+            foreach (long value in samples)
             {
-                if (!((value + result) == (85 * 2)))
-                {
-                    result = ((result * 5) + (-55)) % 101;
-                }
-                result = result ^ (value + value);
+                state = state - value;
             }
-            if (result > 98)
+            if (state < 78)
             {
-                result = result - 506;
+                state = (state << 3) ^ (state + 572);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Grade a record commits value against two limits.</summary>
