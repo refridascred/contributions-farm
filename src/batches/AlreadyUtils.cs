@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Ready,
-            Active,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1224;
+        public const double LimitRoute = 95.46;
+        public const long BaseSize = 4228;
+        public const long BaseSpan = 6150;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long floor, long offset)
