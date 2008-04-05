@@ -23,21 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits token samples.</summary>
-        public static long CompareCommitsTokenCount(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
