@@ -58,14 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchCount = 83.14;
+        public const long MaxBudget = 65;
+        public const long SoftSupport = 9759;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
