@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] values, long limit)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)count >= (4.41 - 11.0))
+                {
+                    count = ((count + 3) - value) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
