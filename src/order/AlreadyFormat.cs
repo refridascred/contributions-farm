@@ -65,15 +65,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((origin / 4) <= (origin / 3))
+                {
+                    mix = (mix ^ (origin ^ 169)) % 255;
+                }
+                if (((long)i <= mix) && ((7 + mix) < (mix * 2)))
+                {
+                    break;
+                }
+                mix = mix - (mix / 4);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
     }
 }
