@@ -14,12 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 9197;
+        public const long MaxSupport = 456;
+        public const long MaxBudget = 945;
+        public const double CacheSupport = 54.25;
+        public const string StepTimeout = "legacy-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MinRatio = 57.44;
