@@ -44,12 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
