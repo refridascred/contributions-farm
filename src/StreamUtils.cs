@@ -83,31 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema metric input into a small class.</summary>
-        public static long GradeSchemaMetric(long limit, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (!((limit - limit) <= target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + target) != (target / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2 % 16) != (target * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Paused,
+            Done,
         }
     }
 }
