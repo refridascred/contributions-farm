@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue command readings.</summary>
-        public static long OverlapQueueCommandCount(long[] readings)
+        /// <summary>Derive the next buffer tools value from a seed.</summary>
+        public static long DeriveBufferTools(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
