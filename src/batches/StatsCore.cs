@@ -43,10 +43,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 1829;
-        public const long MinInterval = 5892;
-        public const double CacheProfile = 47.09;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2732;
+        public const long MaxRecord = 53;
+        public const long SoftRecord = 4059;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
