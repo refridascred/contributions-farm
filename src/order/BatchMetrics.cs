@@ -14,11 +14,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long limit)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((6 + sum) == ((long)i + sum)))
+                {
+                    sum = sum - (sum & 31);
+                    sum = sum ^ limit;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
