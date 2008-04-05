@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up githubfarm metrics samples.</summary>
-        public static long OverlapGithubfarmMetricsCount(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > target)
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
