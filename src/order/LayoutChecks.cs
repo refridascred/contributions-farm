@@ -20,21 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the context githubfarm series from a seed.</summary>
-        public static long DeriveContextGithubfarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((sum - sum) != (sum % 97))
-                {
-                    long lane = sum - ((long)i ^ limit);
-                    sum = sum + (lane * 3);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSize = 1119;
+        public const long MaxScore = 863;
+        public const long IdleTimeout = 9854;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long limit, long origin)
