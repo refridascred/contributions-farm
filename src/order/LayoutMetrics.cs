@@ -39,13 +39,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix + ((long)i << 3)) % 255;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
