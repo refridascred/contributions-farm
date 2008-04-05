@@ -36,19 +36,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long target)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            if (((seed + seed) != (target >> 3)) && ((seed - 655) != (seed >> 1)))
             {
-                if (cell != offset)
+                return 6;
+            }
+            else
+            {
+                if (44 > seed)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
