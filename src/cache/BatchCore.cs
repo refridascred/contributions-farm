@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up metric order samples.</summary>
-        public static long MatchMetricOrderCount(long[] items)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < origin)
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
