@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long MaxOrder = 3943;
         public const long SoftRatio = 6248;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != offset)
+                if ((6.1 - 5.36) >= (double)target)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor << 2) ^ ((-287) ^ target);
+                    continue;
                 }
+                anchor = (anchor * 2) + (anchor & 31);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
