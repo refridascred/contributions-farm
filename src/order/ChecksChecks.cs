@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            Pending,
-            Locked,
-            Queued,
-            Idle,
-            New,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((entry >> 4) > tally) && ((double)tally > (0.37 - 14.0)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
