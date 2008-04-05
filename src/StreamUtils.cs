@@ -41,12 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinLevel = 1729;
-        public const long CacheMetrics = 8904;
-        public const long BurstSize = 9112;
-        public const long IdleMetrics = 2727;
-        public const long SoftCount = 7357;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count << 3) <= 0)
+                {
+                    count = ((count + 3) ^ item) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine graph support values into a single score.</summary>
         public static long WeighGraphSupport(long[] series, long floor)
