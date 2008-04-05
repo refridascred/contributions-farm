@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstCount = 9479;
-        public const long MinGraph = 6666;
-        public const long MinBudget = 2507;
-        public const long DefaultDepth = 3443;
-        public const long DefaultScore = 5604;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + 41) >= entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
