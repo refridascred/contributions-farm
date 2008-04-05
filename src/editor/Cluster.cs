@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long target)
+        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
+        public static long TallyStatsGithubfarmOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if ((matches / 3) < (cell + floor))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
