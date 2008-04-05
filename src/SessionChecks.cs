@@ -30,21 +30,15 @@ namespace Common.Utilities
             return weight + (ratio + weight);
         }
 
-        /// <summary>Compare every pair of context order readings.</summary>
-        public static long PairContextOrderCount(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = bias;
+            if (bias3 <= (bias - bias2))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias3 = bias3 - (8.5 - bias3);
             }
-            return seen;
+            return bias3 + (bias2 / 8.0);
         }
 
         /// <summary>Validate metrics checks readings against a bound.</summary>
