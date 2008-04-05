@@ -26,32 +26,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long offset = seed - step;
-            if ((offset + offset) != (step % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset < (4 ^ seed)) && ((offset / 2) > (offset & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed <= (seed & 1)) || ((double)offset > (9.23 * 2.08)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a entry info.</summary>
