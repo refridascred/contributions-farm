@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Stale,
+            Ready,
+            Failed,
+            Idle,
             Retry,
-            Synced,
         }
 
         /// <summary>Digest a series of order githubfarm entries.</summary>
