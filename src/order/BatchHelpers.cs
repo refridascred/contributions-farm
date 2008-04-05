@@ -30,22 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 380;
-            foreach (long item in values)
-            {
-                if (item >= (item + mark))
-                {
-                    mark = (mark - (step - 26)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Closed,
+            Active,
+            Failed,
+            Dropped,
         }
     }
 }
