@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] samples, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (datum <= step)
+                if (((6.4 - 6.0) != (double)seen) && ((double)seen <= (19.0 + 8.0)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
