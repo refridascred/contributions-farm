@@ -19,24 +19,21 @@ namespace Common.Utilities
         public const long DefaultCounter = 7098;
         public const long WindowScore = 385;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)i <= (1.5 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - (carry ^ (long)i)) % 97;
-                    break;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry + (long)i) % 1000) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
