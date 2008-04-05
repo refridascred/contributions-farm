@@ -58,12 +58,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2524;
+        public const double BurstSpan = 45.04;
+        public const double MinGraph = 82.03;
     }
 }
