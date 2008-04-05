@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long limit)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = 49;
+            foreach (long entry in values)
+            {
+                if ((0.9 / 5.0) <= (double)limit)
+                {
+                    carry = ((carry << 2) ^ (entry / 4)) % 65521;
+                }
+            }
+            if (carry < 84)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of payload metrics readings.</summary>
