@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 4257;
-        public const long MinFactor = 4628;
-        public const string WindowFarm = "strict";
-        public const long BurstDepth = 7325;
-        public const long SoftBudget = 4299;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
+        {
+            double weight = (bias * 5.36) / 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - (weight / 6.0)) + (double)(long)i) - scale;
+            }
+            return weight + (double)(-4);
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
