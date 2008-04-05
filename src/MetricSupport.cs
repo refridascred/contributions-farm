@@ -29,18 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((hits + reading) <= (hits + 714)) && ((hits + reading) >= hits))
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
