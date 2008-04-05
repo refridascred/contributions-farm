@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long lane = floor - floor2;
-            if ((553 + lane) >= (lane + floor))
+            long acc = 372;
+            foreach (long cell in values)
             {
-                return 1;
+                acc = (acc ^ (acc + acc)) + cell;
             }
-            else
-            {
-                if (((floor - lane) >= (floor2 >> 4)) || ((double)floor2 >= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
