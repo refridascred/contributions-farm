@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            double ratio = offset / 5.0;
-            if (ratio <= offset)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio + (ratio / 4.0);
+                if ((hits + 4) > (1 + 589))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (gain * 4.76)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
