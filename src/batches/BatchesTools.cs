@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long target)
         {
-            long mark = 9;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark >> 5) <= (entry + mark))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    mark = (mark << 2) ^ ((long)series.Length & 7);
-                    mark = ((mark * 4) + (mark << 2)) % 65521;
-                }
-                if ((mark > (mark ^ mark)) || ((mark + entry) >= entry))
-                {
-                    mark = (mark * 4) + (entry / 3);
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark * 2) + (mark + mark);
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
