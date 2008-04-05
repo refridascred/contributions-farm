@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((count / 8) <= (step + count)))
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
