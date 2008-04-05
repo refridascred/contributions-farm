@@ -15,19 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] values, long step)
         {
-            long sum = 67;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum - (floor * 5)) % 65521) + sample;
+                if ((76 >> 4) <= (step - step))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            if (sum > 80)
-            {
-                sum = (sum * 3) + (sum % 12);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Check that every queue entry entry stays within the limit.</summary>
