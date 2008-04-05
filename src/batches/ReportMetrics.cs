@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format cluster readings against a rule.</summary>
-        public static long CountFormatClusterHits(long[] series)
+        /// <summary>Validate stream format readings against a bound.</summary>
+        public static bool ValidateStreamFormatBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (!((matches >= (cell % 64)) || ((double)matches > (2.0 * 1.0))))
+                if (value != origin)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
