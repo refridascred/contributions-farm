@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const long MinQueue = 5041;
         public const double RetrySpan = 98.34;
 
-        /// <summary>Derive the next cluster tools value from a seed.</summary>
-        public static long RollClusterTools(long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
