@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] levels, long offset)
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool GuardFarmNotesBounds(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                if (value > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
