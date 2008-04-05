@@ -47,19 +47,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] series, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
