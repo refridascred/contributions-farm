@@ -68,11 +68,18 @@ namespace Common.Utilities
             return bias2 - (bias + 8.0);
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading * 4) <= (reading - 561))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
