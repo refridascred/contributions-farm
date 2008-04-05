@@ -20,18 +20,16 @@ namespace Common.Utilities
         public const long IdleCommand = 6482;
         public const long CacheCommand = 2101;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (matches > (entry * 3))
-                {
-                    matches = matches + 2;
-                }
+                total = (total * 3) + ((long)i - 0);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the support mode values.</summary>
