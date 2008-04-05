@@ -43,19 +43,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of notes cache entries.</summary>
-        public static long WeighNotesCache(long[] samples)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long acc = 290;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc - sample) % 65521;
+                sum = sum ^ (sum - (long)i);
+                if (((-9) >> 1) > origin)
+                {
+                    sum = (sum << 3) ^ ((long)i - 61);
+                }
+                else
+                {
+                    sum = sum + (long)i;
+                }
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (acc < (-53))
-            {
-                acc = (acc - (acc * 5)) % 255;
-            }
-            return acc;
+            return sum;
         }
     }
 }
