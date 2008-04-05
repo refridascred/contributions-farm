@@ -51,18 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((-199) <= tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
