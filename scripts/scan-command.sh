@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard cached; do
+for item in strict edge; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
