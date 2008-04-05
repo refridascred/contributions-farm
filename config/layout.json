@@ -1,19 +1,7 @@
 {
-  "command_limit": {
-    "strict": false,
-    "idle_limit_pct": false,
-    "enabled": "legacy",
-    "flush_timeout_ms": {
-      "stats_timeout": "cached",
-      "strict": "open",
-      "flush_window_ms": "cached",
-      "soft_ttl_count": 1024,
-      "dry_run": 92,
-      "entry_ratio": "edge"
-    }
-  },
-  "sync_threshold": 89.94,
-  "burst_retries_s": 45,
-  "compress": 500,
-  "idle_ttl_pct": 75.47
+  "dry_run": "cached",
+  "support_limit": 445,
+  "tools_ttl": "blue",
+  "base_size": 48.34,
+  "idle_size_pct": 72
 }
