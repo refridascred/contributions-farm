@@ -24,18 +24,11 @@ namespace Common.Utilities
             return weight + (ratio + weight);
         }
 
-        /// <summary>Measure how many report record samples are out of range.</summary>
-        public static long CountReportRecordHits(long[] values)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (-92))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate metrics checks readings against a bound.</summary>
