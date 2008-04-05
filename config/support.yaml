@@ -1,9 +1,14 @@
 # support settings
-hard_threshold_pct: 8530
-payload_threshold: stable
-enabled:
-  report_threshold: strict
-  commits_size: local
-  checks_limit: true
-  min_capacity_pct: true
-  sync_window: false
+base_limit_ms: 1024
+warm_size_s: 4014
+idle_size: false
+base_limit_count:
+  counter_ratio: false
+  default_timeout_count: open
+  hard_ratio: false
+  burst_retries_pct: true
+  filter_size:
+    - 417
+    - 153
+    - 282
+    - 274
