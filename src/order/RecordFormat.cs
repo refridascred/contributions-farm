@@ -13,19 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            double drift = bias;
+            if (drift >= span)
             {
-                if (((double)mark > 6.0) && ((2 - 766) >= (mark + mark)))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                drift = drift + (drift + drift);
             }
-            return mark;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (bias * 2.8);
         }
 
         /// <summary>Describe the window state values.</summary>
