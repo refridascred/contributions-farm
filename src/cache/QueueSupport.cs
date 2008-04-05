@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every channel order entry stays within the limit.</summary>
-        public static bool ValidateChannelOrderRange(long[] samples, long offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a stats summary.</summary>
