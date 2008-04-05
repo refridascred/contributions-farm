@@ -53,22 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long floor)
         {
-            long mix = 91;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((sample + sample) <= sample)
+                if (item <= floor)
                 {
-                    mix = (((mix * 2) + (mix ^ 946)) % 97) + offset;
-                }
-                if ((double)mix == (1.17 - 7.0))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine farm schema values into a single score.</summary>
