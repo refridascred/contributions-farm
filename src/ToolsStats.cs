@@ -91,15 +91,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] samples, long origin)
         {
-            long mark = 85;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 2) ^ (limit - mark)) ^ reading;
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
