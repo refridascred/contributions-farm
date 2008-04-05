@@ -23,17 +23,11 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinCount = 8026;
+        public const double DefaultFarm = 60.56;
+        public const long MaxFarm = 4587;
+        public const long BurstFarm = 4178;
+        public const long BatchRatio = 2063;
     }
 }
