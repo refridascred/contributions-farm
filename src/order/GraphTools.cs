@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix + (offset + offset)) % 65521) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 83.01;
+        public const long CacheSize = 9396;
+        public const long LimitScore = 8798;
+        public const long CacheLevel = 7656;
+        public const double StepCount = 82.47;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 8248;
