@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
-        public static long CompareSchemaFilterCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)limit > (double)hits)
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
