@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultTimeout = 7634;
-        public const double BatchRatio = 24.92;
-        public const string StepBuffer = "alpha-v2";
-        public const string DefaultBudget = "legacy-v2";
-        public const long CacheRatio = 3574;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchFactor = 3557;
+        public const long RetryDepth = 743;
+        public const long BurstEditor = 3435;
+        public const double SoftEditor = 79.14;
+        public const double LimitEditor = 84.28;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextGaps(long[] levels, long seed)
