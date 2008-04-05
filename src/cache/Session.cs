@@ -51,19 +51,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a metrics order counter forward.</summary>
-        public static long RollMetricsOrder(long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long mark = 220;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry ^ bound) % 1000) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                mark = (((mark * 4) + (mark % 100)) % 255) + value;
             }
-            return carry;
+            return mark;
         }
     }
 }
