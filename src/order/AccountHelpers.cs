@@ -73,21 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order metrics samples.</summary>
-        public static long PairOrderMetricsCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (bound >= (seen & 3))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) - cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
