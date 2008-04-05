@@ -16,22 +16,10 @@ namespace Common.Utilities
             return gain - (ratio * 11.0);
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4642;
+        public const long MinRecord = 4049;
+        public const long StepRecord = 3134;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
