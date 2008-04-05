@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "open";
-        public const long BatchSession = 9966;
-        public const long SoftCount = 1160;
-        public const long SoftSession = 2249;
-        public const double BaseSession = 14.37;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches > (matches + item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountGaps(long[] series)
