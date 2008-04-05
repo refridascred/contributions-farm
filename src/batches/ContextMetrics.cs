@@ -28,18 +28,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] values, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)hits < 5.0)
-                {
-                    hits = ((hits + 2) + cell) - origin;
-                }
+                state = (state * 2) + floor;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a editor summary.</summary>
