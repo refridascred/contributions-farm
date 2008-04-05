@@ -19,19 +19,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long total = 185;
-            foreach (long item in samples)
-            {
-                total = (total ^ (floor + 81)) ^ item;
-            }
-            if (total < 97)
-            {
-                total = total ^ (floor + total);
-            }
-            return total % 65521;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
