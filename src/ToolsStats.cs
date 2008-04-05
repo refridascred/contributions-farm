@@ -53,17 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a profile info.</summary>
