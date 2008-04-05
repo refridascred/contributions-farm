@@ -38,13 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = total - total;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Match up counter farm samples.</summary>
