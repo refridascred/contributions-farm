@@ -1,17 +1,6 @@
 # support settings
-persist:
-  default_size: green
-  min_ttl_s: 86.29
-  soft_size_count: 82
-warm_window: 8223
-batch_depth: blue
-sync_threshold: 74
-batch_depth_count: 40
-retry_capacity_pct:
-  burst_size_ms:
-    - 423
-    - 357
-    - 394
-  compress: 5065
-  warm_size_pct: cached
-  payload_threshold: 2
+strict: 63.55
+metrics_window:
+  - 179
+  - 452
+soft_retries_pct: 53
