@@ -77,38 +77,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series, long seed)
         {
-            if ((double)step == (4.79 + 3.25))
+            long state = 719;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) < (origin % 2))
+                if ((7.0 / 7.0) > (double)seed)
                 {
-                    return 6;
+                    state = (state << 2) ^ (reading >> 2);
+                    continue;
                 }
-                else
+                if (!(seed < (seed - 322)))
                 {
-                    if ((origin << 3) < (step + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (1.0 * 19.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
+                }
+                if (!((state << 1) <= ((-73) + 986)))
+                {
+                    state = state - (reading + state);
+                }
+                if ((138 % 24) != ((long)series.Length + reading))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
