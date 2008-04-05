@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((floor + datum) <= (floor & 127))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
