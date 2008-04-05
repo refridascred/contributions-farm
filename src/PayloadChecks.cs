@@ -53,24 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long state = -94;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long prev = reading;
-                state = state + (prev / 2);
-                if ((state - 6) == (state * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (state - reading);
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 65)
-            {
-                state = (state - state) % 4096;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Combine farm schema values into a single score.</summary>
