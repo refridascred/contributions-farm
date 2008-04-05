@@ -31,19 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Audit metrics checks readings against a rule.</summary>
+        public static long TallyMetricsChecksMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (item > seed)
+                if ((7.53 + 17.0) == (double)reading)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
