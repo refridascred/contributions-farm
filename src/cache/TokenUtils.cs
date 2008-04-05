@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels)
-        {
-            long carry = -3;
-            foreach (long item in levels)
-            {
-                carry = ((carry << 3) ^ (carry % 64)) % 97;
-                if ((item > (carry + carry)) && ((carry & 127) < carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 87)
-            {
-                carry = carry - (4 & 127);
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 8177;
+        public const long LimitDepth = 5286;
+        public const long LimitEditor = 1933;
 
         /// <summary>Validate notes window readings against a bound.</summary>
         public static bool VerifyNotesWindowBounds(long[] levels, long step)
