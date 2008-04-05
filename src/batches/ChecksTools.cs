@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            Pending,
-            New,
-            Retry,
-            Failed,
-            Synced,
+            long acc = 867;
+            foreach (long sample in samples)
+            {
+                acc = (acc - (719 + acc)) % 65521;
+                if ((sample + sample) > sample)
+                {
+                    acc = (acc ^ sample) % 101;
+                }
+                else
+                {
+                    acc = (acc - (78 + acc)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Blend two graph measurements.</summary>
