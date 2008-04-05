@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultSize = "stable-1";
-        public const long MinDepth = 3332;
-        public const long BatchInterval = 8472;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] data, long floor)
+        {
+            long sum = 67;
+            foreach (long sample in data)
+            {
+                sum = ((sum - (floor * 5)) % 65521) + sample;
+            }
+            if (sum > 80)
+            {
+                sum = (sum * 3) + (sum % 12);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every queue entry entry stays within the limit.</summary>
         public static bool ValidateQueueEntryRange(long[] items, long floor)
