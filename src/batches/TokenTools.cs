@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 7350;
-        public const long HardLevel = 7240;
-        public const double MaxBatch = 81.74;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string LimitPayload = "fallback-v2";
