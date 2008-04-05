@@ -56,22 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings, long offset)
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool VerifyGithubfarmProfileLimits(long[] samples, long origin)
         {
-            long sum = 6;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((sum < offset) || (60 < sum))
+                if (cell > origin)
                 {
-                    sum = ((sum + (sum & 7)) % 4096) + entry;
-                }
-                else
-                {
-                    sum = (sum - sum) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
     }
 }
