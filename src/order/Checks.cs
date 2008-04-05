@@ -53,23 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long DeriveReportChecks(long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            double weight = (double)(98 * 5);
+            if (weight > weight)
             {
-                if (!((step - step) < (768 - step)))
-                {
-                    continue;
-                }
-                if (!((step + state) != (state & 7)))
-                {
-                    state = state ^ (long)i;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                weight = (weight + (bias / 5.0)) + floor;
             }
-            return state;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - bias;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
