@@ -1,8 +1,9 @@
-id,count,ratio,active
-1,edge,76,staging
-2,31,strict,435
-3,staging,staging,standard
-4,63.32,789,stable
-5,95.23,832,633
-6,154,45.48,224
-7,staging,blue,45.38
+id,count,region,owner
+1,306,82.37,30
+2,blue,663,staging
+3,44.32,388,81.32
+4,open,70.68,13.76
+5,106,stable,145
+6,green,edge,green
+7,644,747,86.8
+8,36.58,stable,66.13
