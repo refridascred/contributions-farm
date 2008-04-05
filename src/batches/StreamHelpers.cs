@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit > (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
