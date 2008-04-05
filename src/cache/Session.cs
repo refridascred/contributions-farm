@@ -46,18 +46,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 2) <= (hits / 6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
