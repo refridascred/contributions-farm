@@ -33,16 +33,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 3) + (56 / 8)) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Locked,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
