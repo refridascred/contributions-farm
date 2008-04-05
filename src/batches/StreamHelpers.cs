@@ -89,12 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long step)
+        /// <summary>Locate a order contributi reading by value.</summary>
+        public static long FindOrderContributiIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= step)
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
