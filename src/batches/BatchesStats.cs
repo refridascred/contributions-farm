@@ -36,20 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value < offset)
                 {
-                    total = (total + origin) ^ (long)i2;
-                    total = ((total * 2) + (origin & 255)) % 101;
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
