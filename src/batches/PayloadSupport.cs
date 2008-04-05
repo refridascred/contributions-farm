@@ -35,24 +35,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            if ((target & 3) <= floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 2) <= (6 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Active,
+            Locked,
+            Done,
+            Idle,
         }
     }
 }
