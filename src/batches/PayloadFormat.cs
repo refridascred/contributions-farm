@@ -33,19 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] values, long seed)
+        /// <summary>Grade a commits notes value against two limits.</summary>
+        public static long GradeCommitsNotes(long limit, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long cur = limit ^ origin;
+            if (((origin - limit) != (limit - 192)) || ((cur * 5) <= cur))
             {
-                if (cell != seed)
+                return 8;
+            }
+            else
+            {
+                if ((origin - limit) > (origin / 8))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((0.25 * 9.8) >= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((cur << 3) != (891 % 100)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
