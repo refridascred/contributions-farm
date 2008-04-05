@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] data, long offset)
         {
-            double mean = (double)(129 * 2);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = (mean - (weight * 8.0)) + (double)(long)i;
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - floor;
+            return stale;
         }
 
         /// <summary>Hold a queue info.</summary>
