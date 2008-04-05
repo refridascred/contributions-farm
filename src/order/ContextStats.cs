@@ -50,16 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches token counter forward.</summary>
-        public static long DeriveBatchesToken(long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 5) + 63) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((target & 255) <= sum)
+                {
+                    sum = sum + (long)i;
+                }
+                if ((sum > (sum << 2)) && (sum <= target))
+                {
+                    sum = (sum ^ (target ^ sum)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
     }
 }
