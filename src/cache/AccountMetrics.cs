@@ -49,19 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] values, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
