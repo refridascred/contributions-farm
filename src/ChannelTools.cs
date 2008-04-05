@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                if (item != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
