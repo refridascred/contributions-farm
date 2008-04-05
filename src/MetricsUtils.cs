@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (state - state);
-                if ((target / 7) >= 18)
-                {
-                    state = state + target;
-                }
-                else
-                {
-                    state = (state + (38 & 7)) % 4096;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state << 3) ^ state) % 1000) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
