@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+CHANNEL_LIMIT=66
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard latest staging; do
+for item in edge stable; do
     log "checking ${item}"
 done
