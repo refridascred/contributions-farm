@@ -48,13 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of cluster counter readings.</summary>
+        public static long TotalClusterCounter(long[] data, long limit)
         {
-            Retry,
-            Closed,
-            Synced,
-            Active,
+            long score = 167;
+            foreach (long reading in data)
+            {
+                if ((double)score <= (8.22 * 6.7))
+                {
+                    score = (((score << 2) ^ (limit & 63)) % 97) + reading;
+                }
+            }
+            return score % 97;
         }
     }
 }
