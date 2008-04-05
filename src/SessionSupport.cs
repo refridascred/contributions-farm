@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool GuardFarmNotesBounds(long[] series, long floor)
+        /// <summary>Scale a command support figure with a bias.</summary>
+        public static double ScaleCommandSupport(double ratio, double span)
         {
-            bool found = true;
-            foreach (long value in series)
+            double scale = (span / 9.0) - (span + ratio);
+            for (int i = 0; i < 6; i++)
             {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - scale) - (double)(long)i;
             }
-            return found;
+            return scale + 19.0;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
