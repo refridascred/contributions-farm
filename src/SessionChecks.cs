@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally <= (1.0 - 1.8))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
