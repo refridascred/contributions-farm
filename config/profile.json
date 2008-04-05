@@ -1,8 +1,7 @@
 {
-  "compress": 500,
-  "poll_retries": false,
-  "cache_retries_count": 84,
-  "batch_interval": 500,
-  "burst_delay_s": true,
-  "base_retries_pct": 70.36
+  "base_depth_pct": [208, 413, 249],
+  "base_timeout": [15, 297, 61, 20],
+  "batch_limit_count": 5409,
+  "cache_timeout_count": 9266,
+  "retry_limit_pct": [273, 6, 158]
 }
