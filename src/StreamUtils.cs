@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double bias)
         {
-            long state = 550;
-            foreach (long reading in series)
+            double weight2 = 17.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (origin > reading)
-                {
-                    state = (state * 2) + reading;
-                }
+                weight2 = ((weight2 + (weight2 - weight)) + (double)(long)i) - bias;
             }
-            return state;
+            return weight2 - (double)0;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
