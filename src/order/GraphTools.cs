@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultTimeout = 7634;
+        public const double BatchRatio = 24.92;
+        public const string StepBuffer = "alpha-v2";
+        public const string DefaultBudget = "legacy-v2";
+        public const long CacheRatio = 3574;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] values)
