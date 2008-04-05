@@ -1,15 +1,5 @@
 # support settings
-hard_delay_ms:
-  - eu-west
-  - standard
-  - eu-west
-  - primary
-format_threshold: 24
-dry_run: 1024
-retry_retries_s: strict
-hard_limit: false
-hard_ratio:
-  - 383
-  - 34
-  - 51
-  - 205
+hard_window_s: eu-west
+base_depth: staging
+idle_retries_ms: blue
+persist: 500
