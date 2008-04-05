@@ -49,19 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] samples, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading > limit)
+                if (((long)data.Length + reading) > 23)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
