@@ -29,15 +29,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
