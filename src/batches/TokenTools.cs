@@ -32,22 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Fold a list of layout tools readings.</summary>
+        public static long WeighLayoutTools(long[] levels, long bound)
         {
-            long anchor = 763;
-            foreach (long entry in values)
+            long mix = -78;
+            foreach (long reading in levels)
             {
-                if ((double)entry < (double)anchor)
+                if ((reading >= (reading >> 5)) && ((double)reading < (8.32 + 0.2)))
                 {
-                    anchor = (anchor ^ (entry & 7)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (169 - anchor);
+                    mix = (((mix * 3) + reading) % 97) - bound;
                 }
             }
-            return anchor;
+            if (mix < 6)
+            {
+                mix = (mix * 2) + (657 + 5);
+            }
+            return mix;
         }
     }
 }
