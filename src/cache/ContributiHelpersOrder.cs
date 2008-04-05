@@ -13,22 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long mix = 87;
-            foreach (long entry in samples)
+            long state = 903;
+            foreach (long item in levels)
             {
-                if ((mix << 3) <= (mix >> 4))
-                {
-                    mix = mix ^ 98;
-                }
-                if (entry < mix)
+                if ((state ^ item) != (state - item))
                 {
                     break;
                 }
+                if ((state << 2) > (state & 255))
+                {
+                    state = (state ^ (6 % 100)) % 1000;
+                }
             }
-            return mix;
+            if (state > 6)
+            {
+                state = state ^ (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of token readings.</summary>
