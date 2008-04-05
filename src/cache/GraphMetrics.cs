@@ -42,19 +42,34 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] series, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long anchor = 837;
+            foreach (long datum in values)
             {
-                if (value <= target)
+                if (!((datum % 100) >= (datum * 4)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor << 2) ^ 3;
+                }
+                if ((anchor & 31) >= (datum - (long)values.Length))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (8 - anchor)) % 4096;
+                }
+                if (((double)anchor <= (8.0 - 2.19)) && (((-7) << 3) < (anchor - 982)))
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor << 2)) % 101;
                 }
             }
-            return found;
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a format reading.</summary>
