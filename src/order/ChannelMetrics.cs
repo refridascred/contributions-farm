@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long HardFilter = 930;
         public const long StepSize = 4040;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Draft,
-            Stale,
-            Queued,
-            Idle,
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Roll a metric queue counter forward.</summary>
