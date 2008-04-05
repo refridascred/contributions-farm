@@ -1,7 +1,12 @@
 {
-  "farm_retries": "stable",
-  "poll_retries_count": 1.96,
-  "warm_depth_ms": "stable",
-  "soft_window_count": "edge",
-  "idle_window": 67.18
+  "metric_threshold": "latest",
+  "persist": {
+    "batch_capacity": false,
+    "batches_retries": 8734,
+    "tools_delay": [349, 1, 346, 24]
+  },
+  "stats_ttl": [32, 98],
+  "warm_size_count": 23.9,
+  "cache_retries": ["blue", "standard"],
+  "max_ratio_pct": ["legacy", "green", "strict", "standard"]
 }
