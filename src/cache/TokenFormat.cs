@@ -36,22 +36,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((floor + 406) == (72 - hits))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 61.96;
+        public const long WindowScore = 2447;
+        public const long DefaultSpan = 3495;
     }
 }
