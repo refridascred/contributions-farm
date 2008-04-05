@@ -20,11 +20,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
