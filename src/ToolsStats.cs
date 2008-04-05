@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] series, long limit)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((limit + 21) < (cell + limit)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
