@@ -40,19 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double rate, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double rate2 = bias * 9.47;
-            if (rate2 > (bias - bias))
-            {
-                rate2 = rate2 - (bias - 0.3);
-            }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 + (bias / 5.0);
+            Active,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
