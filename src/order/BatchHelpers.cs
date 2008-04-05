@@ -13,28 +13,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long offset, long seed)
+        /// <summary>Grade a format metrics value against two limits.</summary>
+        public static long RankFormatMetrics(long origin, long seed)
         {
-            if ((double)seed == (14.0 * 2.07))
+            long lane = origin ^ seed;
+            if (((18.0 - 6.1) <= (double)seed) && ((seed + 81) > (0 ^ lane)))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((offset * 3) <= ((-351) ^ offset)) || (((-514) * 5) > (seed & 7)))
+                if ((lane & 63) >= origin)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (0.5 >= (double)seed)
+                    if ((lane - 514) >= (origin >> 4))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        return 4;
                     }
                 }
             }
