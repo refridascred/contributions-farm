@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
             New,
-            Pending,
-            Synced,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
