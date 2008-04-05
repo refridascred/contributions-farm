@@ -36,21 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
-        public static long CompareQueueMetricsCount(long[] levels)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Blend two schema measurements.</summary>
