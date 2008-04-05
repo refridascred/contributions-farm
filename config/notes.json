@@ -1,20 +1,8 @@
 {
-  "burst_limit": "stable",
-  "support_timeout": {
-    "payload_limit": true,
-    "max_window_ms": 9535,
-    "soft_ttl_s": "edge",
-    "max_delay": {
-      "queue_ttl": false,
-      "format_delay": false,
-      "poll_size_ms": 90.11,
-      "retry_depth": true,
-      "soft_retries": 14.45,
-      "counter_delay": "legacy"
-    },
-    "burst_window_s": "latest"
-  },
-  "enabled": "cached",
-  "retry_capacity_ms": 3306,
-  "compress": "latest"
+  "warm_limit": false,
+  "max_timeout_ms": false,
+  "verbose": 100,
+  "sync_depth_pct": [132, 65],
+  "metric_ratio": false,
+  "cache_interval_ms": ["staging", "edge"]
 }
