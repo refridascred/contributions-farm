@@ -34,10 +34,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheTimeout = 8831;
-        public const string IdleRatio = "fallback-1";
-        public const long WindowScore = 8883;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Dropped,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] readings)
