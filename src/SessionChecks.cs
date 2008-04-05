@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading & 7) <= (seen >> 1)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
