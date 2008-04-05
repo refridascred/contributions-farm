@@ -33,17 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
