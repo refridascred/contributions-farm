@@ -59,21 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((404 % 8) < tally)
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) ^ sample) + origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
