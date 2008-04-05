@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples, long limit)
         {
-            long bound2 = bound - seed;
-            if (bound2 <= (269 + 7))
+            long mix = 230;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound + 958) == (seed - seed)))
+                if ((2.2 * 8.0) > (double)sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    mix = mix ^ (sample << 3);
                 }
             }
+            if (mix < 213)
+            {
+                mix = mix ^ limit;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine route values into a single score.</summary>
