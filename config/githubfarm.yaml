@@ -1,13 +1,7 @@
 # githubfarm settings
-filter_capacity: blue
-strict: true
-payload_size: true
-persist:
-  - 425
-  - 322
-  - 53
-checks_limit:
+idle_ttl: primary
+cluster_interval: 7
+support_capacity:
   - strict
-  - edge
-  - cached
-  - strict
+  - blue
+  - blue
