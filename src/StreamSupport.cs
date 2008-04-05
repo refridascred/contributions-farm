@@ -33,22 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long MeasureQueueWindowOutliers(long[] data, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long sum = 210;
+            foreach (long cell in data)
             {
-                if ((6 ^ offset) < datum)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (sum ^ 379) + cell;
             }
-            return matches;
+            return sum;
         }
     }
 }
