@@ -86,22 +86,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] data)
         {
-            long total = 95;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((item + item) < item)
+                if (tally < (tally >> 2))
                 {
-                    total = (total << 3) ^ (seed & 255);
-                }
-                else
-                {
-                    total = (total - (item + seed)) % 1000;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
