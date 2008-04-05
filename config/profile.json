@@ -1,7 +1,7 @@
 {
-  "schema_capacity": 30,
-  "min_size_count": 72,
-  "audit": 100,
-  "poll_retries_s": "green",
-  "batch_timeout": 46.71
+  "verbose": ["eu-west", "standard", "staging"],
+  "format_delay": "open",
+  "audit": "blue",
+  "default_ttl_ms": 5849,
+  "cache_delay_count": 250
 }
