@@ -38,14 +38,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Closed,
-            Pending,
-            Locked,
-            Draft,
-            Idle,
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
