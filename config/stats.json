@@ -1,7 +1,6 @@
 {
-  "default_window": [132, 246, 322, 207],
-  "farm_limit": true,
-  "max_interval": 3224,
-  "warm_capacity_pct": 76,
-  "hard_capacity": 250
+  "soft_timeout_count": "legacy",
+  "min_timeout_count": "strict",
+  "default_delay_count": "local",
+  "window_interval": "staging"
 }
