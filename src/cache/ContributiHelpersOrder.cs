@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long bound)
         {
-            if (((origin / 2) <= (target << 3)) && ((target << 1) <= (origin & 7)))
+            long result = 90;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= (4.8 + 8.5))
+                if ((bound ^ reading) != (bound << 3))
                 {
-                    return 4;
+                    result = ((result << 3) ^ bound) % 255;
                 }
                 else
                 {
-                    if ((origin % 3) != (origin << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 1) >= (origin + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = result ^ reading;
                 }
             }
+            if (result < 3)
+            {
+                result = (result + bound) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
