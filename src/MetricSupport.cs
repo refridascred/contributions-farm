@@ -29,18 +29,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((hits + reading) <= (hits + 714)) && ((hits + reading) >= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 75.34;
+        public const long BaseScore = 1456;
+        public const string WindowSize = "alpha-edge";
+        public const double CacheWindow = 27.67;
+        public const string HardRatio = "stable";
     }
 }
