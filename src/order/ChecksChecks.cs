@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sample > 7) && ((seen & 15) < (sample + seen))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
