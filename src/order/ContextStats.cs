@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((cell < count) || (10.0 <= (double)count)) || ((cell - count) > (count * 2)))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
