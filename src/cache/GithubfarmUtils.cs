@@ -55,31 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank route profile input into a small class.</summary>
-        public static long RankRouteProfile(long target, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (((double)target >= (7.48 + 2.0)) || (floor > (floor & 127)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (14.0 - 6.58))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 31) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
