@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long floor, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            if (!((floor ^ origin) != (825 + floor)))
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor - origin) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + origin) < (origin - origin)) || ((double)floor == (0.38 + 2.8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Blend two cache measurements.</summary>
