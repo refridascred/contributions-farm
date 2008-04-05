@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            New,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 4257;
+        public const long MinFactor = 4628;
+        public const string WindowFarm = "strict";
+        public const long BurstDepth = 7325;
+        public const long SoftBudget = 4299;
 
         /// <summary>Audit graph farm readings against a rule.</summary>
         public static long CountGraphFarmHits(long[] readings, long seed)
