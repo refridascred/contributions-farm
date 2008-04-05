@@ -53,12 +53,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 50.07;
+        public const double BaseFactor = 23.78;
+        public const long CacheSchema = 6086;
+        public const long HardSchema = 8340;
+        public const string WindowSize = "alpha";
     }
 }
