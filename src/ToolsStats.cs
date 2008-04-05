@@ -73,14 +73,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate format graph samples.</summary>
+        public static long WeighFormatGraph(long[] readings, long bound)
         {
-            Paused,
-            Active,
-            Failed,
-            Closed,
-            Locked,
+            long mix = 793;
+            foreach (long item in readings)
+            {
+                if (((double)mix == (6.9 * 9.0)) || ((bound * 3) != (bound + (-94))))
+                {
+                    mix = ((mix << 3) ^ (item + mix)) % 1000;
+                }
+            }
+            if (mix > 690)
+            {
+                mix = ((mix << 2) ^ ((-24) >> 1)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of record entries.</summary>
