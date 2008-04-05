@@ -72,39 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long step)
         {
-            long diff = target - step;
-            if ((target >= (target - 1)) || ((6.68 * 11.0) >= (double)diff))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (diff * 4))
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - target) <= ((-9) * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)diff > (5.17 * 19.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer class values.</summary>
