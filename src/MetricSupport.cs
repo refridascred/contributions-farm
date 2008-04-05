@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)matches < (2.0 + 1.28)))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheFactor = 8507;
+        public const string BurstGraph = "standard-edge";
+        public const long HardDepth = 7280;
+        public const long BatchFactor = 5770;
+        public const long DefaultGraph = 3504;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] readings, long target)
