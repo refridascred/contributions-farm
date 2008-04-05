@@ -1,11 +1,6 @@
 {
-  "soft_delay_pct": {
-    "account_capacity": true,
-    "warm_limit_pct": true,
-    "enabled": 30,
-    "report_window": "fallback",
-    "retry_ttl_s": "edge"
-  },
-  "soft_delay_count": "latest",
-  "retry_ttl": "eu-west"
+  "hard_retries_ms": 93.05,
+  "sync_timeout_pct": 7313,
+  "compress": [152, 254],
+  "farm_ratio": 76
 }
