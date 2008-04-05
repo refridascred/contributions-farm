@@ -25,15 +25,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Check that every layout stats entry stays within the limit.</summary>
+        public static bool ValidateLayoutStatsLimits(long[] data, long limit)
         {
-            double ratio = offset / 7.0;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + scale;
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (offset / 8.0);
+            return found;
         }
 
         /// <summary>Adjust a metric reading.</summary>
