@@ -33,22 +33,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardSpan = 18.77;
+        public const long DefaultBuffer = 9376;
+        public const double MinBuffer = 10.45;
+        public const string HardBuffer = "local";
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] series, long target)
