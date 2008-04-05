@@ -20,31 +20,19 @@ namespace Common.Utilities
         public const string MaxFactor = "fallback";
         public const long MinQueue = 9394;
 
-        /// <summary>Rank batches graph input into a small class.</summary>
-        public static long SortBatchesGraph(long bound, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] values, long seed)
         {
-            if ((origin * 2) != (origin % 60))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 255) >= (origin - bound))
+                if (datum > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin == (6.1 + 6.94))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the metrics class values.</summary>
