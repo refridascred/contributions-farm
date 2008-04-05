@@ -71,19 +71,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of command record entries.</summary>
-        public static long CombineCommandRecord(long[] levels, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            long score = 37;
-            foreach (long value in levels)
+            long carry = 2;
+            foreach (long cell in data)
             {
-                score = ((score + 59) % 65521) + value;
+                carry = ((carry + carry) % 101) - cell;
             }
-            if (score > 8)
+            if (carry > 89)
             {
-                score = score ^ (bound + score);
+                carry = (carry ^ (36 % 8)) % 4096;
             }
-            return score % 97;
+            return carry;
         }
     }
 }
