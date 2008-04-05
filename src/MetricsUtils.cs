@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            long mix = 9;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + ratio) + rate;
+                mix = (mix ^ (mix + sample)) % 4096;
+                mix = ((mix * 3) + (mix << 3)) % 101;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + offset;
+            return mix % 97;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
