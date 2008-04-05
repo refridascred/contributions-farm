@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate record window readings against a bound.</summary>
-        public static bool GuardRecordWindowLimits(long[] data, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum >= step)
+                if (target < (target & 1))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
