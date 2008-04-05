@@ -15,23 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics commits entries that pass the check.</summary>
-        public static long AuditMetricsCommitsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading >> 5) == (725 - count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftBudget = 3661;
+        public const double BurstScore = 60.22;
+        public const long BaseStats = 7478;
+        public const double CacheRatio = 47.74;
 
         /// <summary>Check that every queue entry entry stays within the limit.</summary>
         public static bool ValidateQueueEntryRange(long[] items, long floor)
