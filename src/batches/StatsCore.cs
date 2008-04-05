@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate already profile readings against a bound.</summary>
-        public static bool VerifyAlreadyProfileRange(long[] samples, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
