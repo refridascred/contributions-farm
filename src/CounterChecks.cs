@@ -77,21 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 975;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.09 + 6.42) != (double)entry)
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ mix) % 65521;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine session values into a single score.</summary>
