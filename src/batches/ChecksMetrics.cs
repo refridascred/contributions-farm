@@ -50,16 +50,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        public static long DeriveAlready(long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
