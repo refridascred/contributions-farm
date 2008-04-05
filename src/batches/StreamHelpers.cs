@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long floor)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                carry = ((carry + carry) % 101) - cell;
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry > 89)
-            {
-                carry = (carry ^ (36 % 8)) % 4096;
-            }
-            return carry;
+            return ready;
         }
     }
 }
