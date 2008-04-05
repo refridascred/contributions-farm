@@ -33,39 +33,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a commits notes value against two limits.</summary>
-        public static long GradeCommitsNotes(long limit, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long cur = limit ^ origin;
-            if (((origin - limit) != (limit - 192)) || ((cur * 5) <= cur))
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                carry = ((carry * 3) + (56 / 8)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin - limit) > (origin / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.25 * 9.8) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((cur << 3) != (891 % 100)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
