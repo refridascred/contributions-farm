@@ -40,11 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits notes value.</summary>
-        public static double ScaleCommitsNotes(double scale, double bias)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            double mean = scale;
-            return (mean - mean) + bias;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue phase values.</summary>
