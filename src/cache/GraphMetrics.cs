@@ -80,38 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
-        public static long BucketGithubfarmContributi(long origin, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if (origin < (offset + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin - origin) < (offset + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin == (7.0 * 13.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin << 1) <= (offset << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Locked,
         }
     }
 }
