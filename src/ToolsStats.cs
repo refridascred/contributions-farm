@@ -42,17 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
