@@ -29,11 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 75.34;
-        public const long BaseScore = 1456;
-        public const string WindowSize = "alpha-edge";
-        public const double CacheWindow = 27.67;
-        public const string HardRatio = "stable";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Paused,
+            Done,
+            Locked,
+            Failed,
+            Draft,
+        }
     }
 }
