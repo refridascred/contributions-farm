@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] levels, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long seed)
         {
-            long total = 595;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > (item - item))
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
                 {
-                    total = (total << 3) ^ (total ^ limit);
+                    return (long)i;
                 }
             }
-            if (total > 16)
-            {
-                total = (total * 2) + (total & 63);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
