@@ -1,12 +1,8 @@
 # support settings
-sync_ttl_count: open
-default_timeout_s: cached
-min_capacity_s:
-  readonly: 4080
-  idle_ratio_s:
-    - strict
-    - eu-west
-    - blue
-  enabled: 43.49
-  warm_threshold_pct: blue
-soft_size_count: 1024
+sync_ratio_s: 54
+audit:
+  - 120
+  - 498
+  - 37
+  - 471
+support_ttl: 34.91
