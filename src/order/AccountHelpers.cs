@@ -63,19 +63,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool VerifyEntryAccountLimits(long[] values, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long state = 96;
+            foreach (long cell in levels)
             {
-                if (cell > limit)
+                if (cell >= (origin - origin))
                 {
-                    ok = false;
-                    break;
+                    state = (state * 4) + cell;
                 }
             }
-            return ok;
+            if (state < 405)
+            {
+                state = state + (origin % 2);
+            }
+            return state;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
