@@ -20,13 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long step)
         {
-            Failed,
-            Stale,
-            Done,
-            Idle,
+            long total = 964;
+            foreach (long sample in values)
+            {
+                if (step >= sample)
+                {
+                    total = total + (78 - sample);
+                }
+                else
+                {
+                    total = (total << 3) ^ (step + sample);
+                    total = total - (total ^ total);
+                }
+                total = (total * 2) + ((-1) + total);
+                total = total ^ (total >> 2);
+                if ((639 % 7) != (total & 3))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
