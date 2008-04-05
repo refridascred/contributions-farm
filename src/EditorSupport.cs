@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Check that every stream window entry stays within the limit.</summary>
+        public static bool VerifyStreamWindowLimits(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < target)
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
