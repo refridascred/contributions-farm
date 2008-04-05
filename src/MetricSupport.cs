@@ -50,23 +50,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double mean = weight;
-            if (mean > (double)0)
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean - (weight / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 0.9) + (double)(long)i;
-            }
-            return mean + floor;
+            Done,
+            Dropped,
+            Queued,
         }
     }
 }
