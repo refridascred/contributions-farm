@@ -22,39 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            long lane = floor ^ seed;
-            if (floor >= (985 >> 5))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.77 + 4.0) > (double)seed)
+                if ((((reading % 12) == (reading - (-606))) && (count < (reading / 3))) && ((reading & 31) <= reading))
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (!((double)lane < (6.96 - 6.9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((496 - floor) <= 6)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next batches value.</summary>
