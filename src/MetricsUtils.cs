@@ -24,16 +24,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "stable-1";
+        public const long LimitLayout = 355;
+        public const long MinLayout = 4329;
+        public const long CacheLayout = 3984;
+        public const long IdleScore = 2890;
 
         /// <summary>Blend two route measurements.</summary>
         public static double SmoothRoute(double bias, double floor)
