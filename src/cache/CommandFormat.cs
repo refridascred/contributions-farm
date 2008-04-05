@@ -29,19 +29,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            long mix = -5;
-            foreach (long datum in samples)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix * 5) + floor) + datum;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (mix > 15)
-            {
-                mix = ((mix * 2) + (59 & 7)) % 1000;
-            }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Describe the filter level values.</summary>
