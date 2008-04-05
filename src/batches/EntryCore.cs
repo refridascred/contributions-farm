@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 7.03;
-        public const string BatchCommand = "local";
-        public const string DefaultFactor = "local-v2";
-        public const long StepLevel = 2614;
-        public const long RetryBudget = 6740;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item > (11.0 * 7.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a tools githubfarm figure with a bias.</summary>
         public static double BlendToolsGithubfarm(double gain, double floor)
