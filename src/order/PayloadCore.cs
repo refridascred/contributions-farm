@@ -35,16 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Scale a githubfarm commits figure with a bias.</summary>
+        public static double BlendGithubfarmCommits(double bias, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            double bias2 = 8.8;
+            if (bias2 <= offset)
             {
-                mix = (mix ^ (limit - (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                bias2 = bias2 + (offset * 19.0);
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 * 7.0)) + (double)(long)i;
+            }
+            return bias2 + 4.18;
         }
 
         /// <summary>Hold a channel record.</summary>
