@@ -23,20 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
-        {
-            long anchor = 667;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor << 2) ^ (value << 1)) % 255;
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 8388;
+        public const double SoftFactor = 94.22;
+        public const long DefaultInterval = 7473;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long seed, long step)
