@@ -109,15 +109,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor commits values into a single score.</summary>
-        public static long FoldEditorCommits(long[] levels, long step)
-        {
-            long score = 87;
-            foreach (long value in levels)
-            {
-                score = ((score * 2) + (5 - step)) + value;
-            }
-            return score % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryRatio = "stable";
+        public const string BaseWidth = "open";
+        public const long BaseToken = 7853;
+        public const long CacheTimeout = 6558;
+        public const string MinToken = "primary-v2";
     }
 }
