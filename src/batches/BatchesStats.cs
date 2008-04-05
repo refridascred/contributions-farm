@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long score = 531;
+            foreach (long sample in samples)
             {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score * 5) + (score - sample);
             }
-            return found;
+            if (score > (-63))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a editor record.</summary>
