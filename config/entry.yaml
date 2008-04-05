@@ -1,6 +1,4 @@
 # entry settings
-min_limit_ms: 2201
-queue_ratio: 60
-burst_ttl: 69
-batch_window_count: local
-flush_size: 30
+min_ttl_ms: staging
+audit: 44.81
+warm_timeout_ms: true
