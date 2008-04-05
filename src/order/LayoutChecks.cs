@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
+            Retry,
             Ready,
-            Done,
-            Failed,
+            Paused,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
