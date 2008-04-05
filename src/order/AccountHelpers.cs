@@ -97,9 +97,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 38.51;
-        public const long WindowFarm = 7210;
-        public const long WindowFactor = 5703;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Idle,
+            Done,
+            Paused,
+            Synced,
+        }
     }
 }
