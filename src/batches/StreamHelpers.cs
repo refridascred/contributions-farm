@@ -61,27 +61,19 @@ namespace Common.Utilities
             return gain + (gain * 17.0);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long step)
         {
-            long mark = 98;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((354 / 3) > reading)
+                if (sample >= step)
                 {
-                    mark = (mark - mark) % 101;
-                    mark = ((mark << 3) ^ ((-781) + seed)) % 4096;
-                }
-                if (reading >= (reading + reading))
-                {
-                    mark = (mark + seed) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 13)
-            {
-                mark = (mark << 3) ^ (seed & 31);
-            }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
