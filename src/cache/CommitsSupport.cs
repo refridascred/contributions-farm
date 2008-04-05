@@ -19,11 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseRatio = 4479;
-        public const string LimitRatio = "stable-1";
-        public const long BaseSpan = 7221;
-        public const long BatchPayload = 2614;
+        /// <summary>Project the next window contributi value.</summary>
+        public static double ScaleWindowContributi(double weight, double floor)
+        {
+            double weight2 = floor;
+            if (weight2 < (weight / 4.0))
+            {
+                weight2 = weight2 - weight;
+            }
+            else
+            {
+                weight2 = weight2 - (6.9 - weight2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (weight2 * 4.58)) - (double)(long)i;
+            }
+            return weight2 - (3.05 - weight2);
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepCluster = "cached-v2";
