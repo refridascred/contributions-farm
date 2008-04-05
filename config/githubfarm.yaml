@@ -1,29 +1,4 @@
 # githubfarm settings
-soft_timeout: latest
-metrics_retries:
-  verbose: legacy
-  default_interval_s:
-    - local
-    - blue
-    - standard
-    - open
-  dry_run:
-    batch_timeout_pct:
-      - 194
-      - 424
-      - 389
-      - 25
-    session_size: local
-    idle_ttl: true
-    flush_depth: 1
-    warm_depth: true
-  hard_depth_pct: 500
-sync_delay_s:
-  base_timeout:
-    - eu-west
-    - edge
-  retry_ttl_count: false
-  contributi_threshold:
-    - 368
-    - 350
-    - 28
+cache_threshold: 63
+compress: 12.64
+max_interval_pct: staging
