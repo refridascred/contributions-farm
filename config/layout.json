@@ -1,6 +1,16 @@
 {
-  "sync_limit": "green",
-  "record_limit": "green",
-  "readonly": "staging",
-  "batch_timeout": 700
+  "metrics_depth": 3.26,
+  "order_ratio": {
+    "burst_timeout": ["staging", "stable", "legacy", "primary"],
+    "hard_ratio_ms": {
+      "hard_interval": 61,
+      "base_ttl": 15.0,
+      "cache_ratio": 79,
+      "hard_ratio_pct": 59.63
+    },
+    "max_threshold_ms": "green",
+    "batch_retries": "latest",
+    "idle_depth_count": 54
+  },
+  "notes_ratio": ["strict", "staging", "standard"]
 }
