@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long state = 5;
+            foreach (long datum in values)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((double)state > (0.83 * 6.5))
+                {
+                    state = ((state ^ state) % 4096) - datum;
+                }
             }
-            return total;
+            if (state < 2)
+            {
+                state = (state * 4) + 0;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
