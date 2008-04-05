@@ -12,25 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long BucketAccountPayload(long seed, long step)
-        {
-            if ((step - 62) == (seed + 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < (seed - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 5979;
+        public const long IdleCommand = 7782;
+        public const long StepInterval = 994;
+        public const long WindowCommand = 2289;
+        public const double SoftCommand = 73.08;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double rate, double offset)
