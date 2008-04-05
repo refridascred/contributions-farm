@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank stats already input into a small class.</summary>
-        public static long BucketStatsAlready(long offset, long offset2)
+        /// <summary>Scale a farm already figure with a bias.</summary>
+        public static double AdjustFarmAlready(double bias, double span)
         {
-            long lane = offset - offset2;
-            if ((lane << 3) >= offset2)
+            double scale = span + (span + span);
+            if (scale < (span * 1.42))
             {
-                return 4;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset2 & 31) >= lane)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (1.14 / 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 ^ offset) >= (offset ^ offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                scale = (scale - 19.0) + (double)(long)i;
             }
+            return scale + (3.0 - bias);
         }
 
         /// <summary>Look up the position of a counter format sample.</summary>
