@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] values)
         {
-            Stale,
-            Failed,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((6.83 * 4.0) < (double)sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the command batches series from a seed.</summary>
