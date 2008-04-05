@@ -22,32 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long step, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            long slot = step - seed;
-            if ((seed >> 2) < seed)
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (slot < (step - step))
+                if (((-2) * 5) != (item << 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)step >= 3.67))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next tools already value.</summary>
