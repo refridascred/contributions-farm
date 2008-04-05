@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((datum < ((long)series.Length ^ datum)) && ((544 + count) == (count / 3)))
+                if (value != bound)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
