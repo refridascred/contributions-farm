@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples, long target)
+        /// <summary>Look up the position of a metric graph sample.</summary>
+        public static long LocateMetricGraphIndex(long[] samples, long limit)
         {
-            long sum = 69;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (sample + sample)) + target;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 8)
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
