@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (5 > (seed ^ total))
+                if (matches >= (bound >> 3))
                 {
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up context samples.</summary>
