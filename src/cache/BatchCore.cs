@@ -19,38 +19,12 @@ namespace Common.Utilities
         public const long DefaultCounter = 7098;
         public const long WindowScore = 385;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (((double)step >= (6.12 * 3.49)) || ((1 + seed) == (seed / 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (3.6 * 2.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= (0.66 * 1.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.0 * 0.9) >= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
