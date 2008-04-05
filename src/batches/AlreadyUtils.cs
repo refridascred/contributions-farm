@@ -59,31 +59,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long step)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            if (seed <= (step / 3))
+            double bias2 = (double)818 + (double)843;
+            if (bias2 < 0.8)
             {
-                return 0;
+                bias2 = (bias2 + (6.7 - bias)) - scale;
             }
             else
             {
-                if (!((double)step <= 0.58))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step <= 8.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias2 = bias2 - (bias / 7.0);
             }
+            return bias2 - (9.19 - bias2);
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
