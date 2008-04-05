@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            long mark = 935;
-            foreach (long item in readings)
+            double load = (16.0 + bias) + bias2;
+            if (load <= (bias + 5.1))
             {
-                if ((item ^ item) == (item - mark))
-                {
-                    mark = (mark ^ (mark ^ mark)) % 65521;
-                }
+                load = load - bias;
             }
-            return mark % 97;
+            return load + bias2;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
