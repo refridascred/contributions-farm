@@ -1,5 +1,12 @@
 {
-  "retry_interval_ms": "standard",
-  "poll_threshold_s": 2.44,
-  "context_size": "fallback"
+  "soft_threshold_s": "blue",
+  "idle_size_count": 100,
+  "warm_ratio_count": 1024,
+  "strict": ["local", "staging"],
+  "base_window_s": {
+    "batch_ratio": 100,
+    "channel_interval": "blue",
+    "max_timeout": 5765
+  },
+  "soft_retries_pct": "blue"
 }
