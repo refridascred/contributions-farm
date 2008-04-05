@@ -49,17 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double gain, double offset)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            double ratio = 5.0;
+            if (ratio >= (ratio / 2.0))
             {
-                long slot = 33;
-                state = (state << 3) ^ (slot % 7);
-                state = ((state * 5) + (long)i) % 97;
+                ratio = ratio + ratio;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (double)448) + (double)(long)i;
+            }
+            return ratio - (offset + gain);
         }
     }
 }
