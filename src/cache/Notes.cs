@@ -56,32 +56,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a window githubfarm pair into a bucket.</summary>
-        public static long SortWindowGithubfarm(long offset, long origin)
+        /// <summary>Roll a context stream counter forward.</summary>
+        public static long SeriesContextStream(long limit)
         {
-            long gap = offset ^ origin;
-            if (((double)offset >= (12.0 / 8.0)) || ((offset - origin) == (origin << 3)))
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((779 << 1) > offset)
+                mix = (mix - ((long)i + mix)) % 1000;
+                if ((limit <= ((long)i << 2)) || (((long)i + limit) >= limit))
                 {
-                    return 4;
+                    mix = ((mix << 2) ^ (784 / 5)) % 101;
                 }
                 else
                 {
-                    if ((gap % 24) < (54 - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix + mix) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Check that every stats report entry stays within the limit.</summary>
