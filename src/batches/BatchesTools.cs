@@ -33,10 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "latest";
-        public const long MinWidth = 4368;
-        public const string MinTimeout = "alpha";
-        public const long BurstFarm = 8439;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBudget = 8075;
+        public const long WindowRatio = 1447;
+        public const double BurstLevel = 84.33;
+        public const string HardSpan = "local-v2";
     }
 }
