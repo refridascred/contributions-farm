@@ -34,21 +34,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != offset)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
