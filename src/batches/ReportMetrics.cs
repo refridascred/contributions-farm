@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next graph githubfarm value from a seed.</summary>
-        public static long StepGraphGithubfarm(long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] levels, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                state = ((state * 3) + origin) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
+                if (seen > (target + (-179)))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
