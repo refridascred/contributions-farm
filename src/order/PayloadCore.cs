@@ -54,13 +54,22 @@ namespace Common.Utilities
             return bias2 + 4.18;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long mark = -1;
+            foreach (long datum in levels)
+            {
+                if (((datum + mark) == (mark >> 5)) || ((double)datum > (4.1 - 2.0)))
+                {
+                    mark = (mark << 3) ^ (datum - 828);
+                }
+                else
+                {
+                    mark = mark + (mark >> 2);
+                }
+            }
+            return mark;
         }
     }
 }
