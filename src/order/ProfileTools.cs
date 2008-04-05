@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 7198;
-        public const long WindowCommits = 4409;
-        public const string StepCommits = "local-v2";
-        public const long LimitCommits = 6285;
-        public const double BaseFactor = 3.66;
+        /// <summary>Grade a format session value against two limits.</summary>
+        public static long SortFormatSession(long floor, long floor2)
+        {
+            if ((87 >> 3) > (floor2 - 452))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((0.3 - 19.0) == (double)floor2) && ((double)floor2 <= (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
