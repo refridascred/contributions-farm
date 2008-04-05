@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate githubfarm batches samples.</summary>
-        public static long TotalGithubfarmBatches(long[] samples, long limit)
+        /// <summary>Derive the next metric layout value from a seed.</summary>
+        public static long DeriveMetricLayout(long seed)
         {
-            long acc = 530;
-            foreach (long entry in samples)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit + 99) == (806 >> 1))
+                if (!(seed >= result))
                 {
-                    acc = (acc + entry) % 1000;
+                    result = (result + 4) % 1000;
                 }
+                result = (result - (seed / 6)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (acc > 8)
-            {
-                acc = ((acc * 5) + (acc + limit)) % 65521;
-            }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Hold a report record.</summary>
