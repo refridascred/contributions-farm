@@ -37,13 +37,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long origin)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            long delta = bound + origin;
+            if ((78 - delta) >= (-65))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((delta < (113 + origin)) || ((double)origin < (13.0 - 16.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
