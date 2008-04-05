@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitDepth = 90.75;
-        public const long SoftCluster = 9661;
-        public const long MinDepth = 3064;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstSpan = "primary";
+        public const long DefaultWindow = 4029;
+        public const string MinWindow = "standard-1";
+        public const long LimitWindow = 8801;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] levels)
