@@ -48,19 +48,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] series, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long sum = 5;
+            foreach (long item in values)
             {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum ^ (84 / 3)) % 255) - item;
             }
-            return stale;
+            return sum % 65521;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
