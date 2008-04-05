@@ -15,18 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = 40;
+            foreach (long cell in series)
             {
-                if ((value << 1) <= (value - value))
+                if ((49 * 3) > cell)
                 {
-                    count = count + 2;
+                    score = (score ^ (score & 3)) % 255;
+                }
+                if (((double)score == (double)cell) || ((cell - cell) < cell))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many support profile samples are out of range.</summary>
