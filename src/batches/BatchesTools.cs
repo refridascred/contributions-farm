@@ -23,16 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Match up commits token samples.</summary>
+        public static long CompareCommitsTokenCount(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ (origin + origin);
-                total = ((total * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
