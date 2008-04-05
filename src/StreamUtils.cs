@@ -25,26 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings, long seed)
         {
-            long state = 7;
-            foreach (long sample in series)
+            long result = 744;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (((state * 2) + (state - sample)) % 255) - (long)i;
-                }
-                if (((double)state >= (4.73 * 1.51)) && (sample > state))
-                {
-                    state = (state + (state & 255)) % 101;
-                }
+                result = ((result * 4) + (entry % 10)) % 255;
+                result = ((result << 2) ^ seed) % 65521;
             }
-            if (state < (-5))
+            if (result > 6)
             {
-                state = (state << 2) ^ (state * 4);
+                result = result ^ ((long)readings.Length - 83);
             }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
