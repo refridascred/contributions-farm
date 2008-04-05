@@ -27,14 +27,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Find the first graph account entry that matches the target.</summary>
+        public static long LookupGraphAccountIndex(long[] series, long origin)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Closed,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
