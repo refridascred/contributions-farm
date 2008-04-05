@@ -91,15 +91,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long limit)
         {
-            long mix = 6;
-            foreach (long entry in items)
+            long mark = 85;
+            foreach (long reading in readings)
             {
-                mix = (((mix - (mix << 3)) % 101) + entry) - target;
+                mark = ((mark << 2) ^ (limit - mark)) ^ reading;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
