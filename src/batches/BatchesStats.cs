@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchLevel = 1108;
+        public const double WindowOrder = 54.38;
+        public const long MaxOrder = 3943;
+        public const long SoftRatio = 6248;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] readings)
