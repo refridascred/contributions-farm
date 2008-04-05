@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Accumulate session metric samples.</summary>
+        public static long TotalSessionMetric(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long reading in series)
             {
-                if ((hits / 8) != (245 & 3))
+                if ((reading - 51) >= (score - 923))
                 {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score ^ score) % 101;
                 }
             }
-            return hits;
+            if (score > 567)
+            {
+                score = (score + (score + score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many window stream samples are out of range.</summary>
