@@ -1,7 +1,5 @@
 # githubfarm settings
-entry_ttl:
-  - 428
-  - 373
-  - 195
-idle_depth_pct: primary
-base_ttl_ms: true
+flush_window_ms: latest
+flush_ratio_count: false
+format_interval: 19
+dry_run: fallback
