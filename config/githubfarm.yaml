@@ -1,4 +1,5 @@
 # githubfarm settings
-cache_ttl_count: 44
-hard_threshold_pct: 70
-verbose: 84.24
+cache_limit: 1.36
+hard_depth: 1024
+flush_window_s: 37
+entry_timeout: true
