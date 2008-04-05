@@ -45,38 +45,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long target2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] values)
         {
-            if (!((target + target2) != (target2 * 4)))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target / 4) > (target + 89))
+                if ((-199) <= tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target << 1) >= (target % 10)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target2 >> 4) > (target2 << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
