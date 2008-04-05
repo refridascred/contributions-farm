@@ -25,26 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 281;
-            foreach (long item in items)
-            {
-                if (!((8.4 + 6.7) > (double)total))
-                {
-                    total = ((total ^ (step + 0)) % 97) ^ item;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (4 & 3)) % 255;
-                }
-            }
-            if (total > (-5))
-            {
-                total = ((total << 3) ^ 291) % 101;
-            }
-            return total;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
