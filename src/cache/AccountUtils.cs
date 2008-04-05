@@ -26,17 +26,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a batches layout reading by value.</summary>
-        public static long FindBatchesLayoutIndex(long[] samples, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                mix = (mix - mix) % 65521;
+                mix = mix - target;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
