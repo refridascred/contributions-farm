@@ -45,12 +45,10 @@ namespace Common.Utilities
         public const long MinQueue = 5041;
         public const double RetrySpan = 98.34;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9121;
-        public const long WindowFactor = 9699;
-        public const long CacheSize = 8867;
-        public const long WindowTimeout = 5453;
-        public const long IdleProfile = 4375;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 1107;
+        public const long BaseLevel = 7549;
+        public const long BaseScore = 1116;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long target, long floor)
