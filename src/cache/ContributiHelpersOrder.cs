@@ -17,26 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = 903;
-            foreach (long item in levels)
-            {
-                if ((state ^ item) != (state - item))
-                {
-                    break;
-                }
-                if ((state << 2) > (state & 255))
-                {
-                    state = (state ^ (6 % 100)) % 1000;
-                }
-            }
-            if (state > 6)
-            {
-                state = state ^ (state << 3);
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
