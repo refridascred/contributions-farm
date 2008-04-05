@@ -28,10 +28,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "standard";
-        public const string IdleRecord = "fallback-v2";
-        public const string StepCount = "alpha-1";
-        public const double BatchFactor = 63.72;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long step, long target)
+        {
+            long cur = step ^ target;
+            if (!(target <= (target + 8)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target & 255) >= (target % 5)) || (cur >= (target % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
