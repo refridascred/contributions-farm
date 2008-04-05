@@ -18,24 +18,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long offset, long floor)
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long TotalStatsFarm(long[] samples, long step)
         {
-            if (((double)offset >= 9.9) || ((offset + floor) >= (offset ^ offset)))
+            long mix = 79;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - offset) > (4 / 5))
+                if (0 >= (mix / 8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    mix = (mix - (datum - mix)) + step;
                 }
             }
+            if (mix < 1)
+            {
+                mix = mix ^ (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of command entries.</summary>
