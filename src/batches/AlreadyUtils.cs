@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long mix = 73;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample <= (3.0 + 7.15))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - (long)items.Length) - bound;
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Hold a counter record.</summary>
