@@ -54,26 +54,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = 6;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = ((mark << 2) ^ (mark - value)) - (long)i;
-                }
-                if (((2.0 * 7.13) > (double)mark) || (40 > (mark * 3)))
-                {
-                    mark = (mark - (mark & 63)) % 4096;
-                }
-            }
-            if (mark < 27)
-            {
-                mark = (mark + (mark - 65)) % 101;
-            }
-            return mark;
+            Idle,
+            Pending,
+            Dropped,
+            Synced,
+            Done,
         }
     }
 }
