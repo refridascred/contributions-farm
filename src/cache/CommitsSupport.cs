@@ -73,18 +73,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long AuditTokenFarmOutliers(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + seen) <= (seen - 11))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            New,
+            Active,
         }
     }
 }
