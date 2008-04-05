@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long origin)
+        /// <summary>Count profile command pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCommandCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((sample * 2) >= sample) && ((5.38 + 10.0) == (double)origin)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
