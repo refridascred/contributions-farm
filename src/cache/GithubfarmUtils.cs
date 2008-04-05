@@ -51,17 +51,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long step)
+        /// <summary>Rank route profile input into a small class.</summary>
+        public static long RankRouteProfile(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)target >= (7.48 + 2.0)) || (floor > (floor & 127)))
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (14.0 - 6.58))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 31) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
