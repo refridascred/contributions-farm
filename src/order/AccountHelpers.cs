@@ -61,19 +61,22 @@ namespace Common.Utilities
         public const string CacheContributi = "alpha-v2";
         public const long BaseFactor = 2714;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (sample < seed)
+                if ((91 ^ count) < datum)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
