@@ -53,16 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats editor value from a seed.</summary>
-        public static long DeriveStatsEditor(long origin)
+        /// <summary>Derive the next filter already value from a seed.</summary>
+        public static long SeriesFilterAlready(long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry - (carry >> 4)) % 65521;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((8.3 / 5.0) < (double)target))
+                {
+                    mix = (mix - (mix << 3)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
     }
 }
