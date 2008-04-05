@@ -56,21 +56,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (1.0 - bias) - (bias + bias);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - span) + (double)(long)i;
             }
-            return seen;
+            return bias2 - (bias + 8.0);
         }
 
         /// <summary>Hold a profile info.</summary>
