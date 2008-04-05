@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            double mean = ratio;
+            if (mean >= (double)(-7))
+            {
+                mean = mean + (ratio - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Define context limits and defaults.</summary>
