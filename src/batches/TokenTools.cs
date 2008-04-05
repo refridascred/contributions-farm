@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileRange(long[] levels, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (entry <= seed)
+                if ((5.48 + 4.0) <= (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the order session entries that pass the check.</summary>
