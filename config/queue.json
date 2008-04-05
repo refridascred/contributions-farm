@@ -1,6 +1,7 @@
 {
-  "filter_timeout": "fallback",
-  "batch_window_pct": false,
-  "cache_window": ["standard", "primary", "blue"],
-  "warm_capacity_s": false
+  "sync_window": 6335,
+  "token_ttl": 94,
+  "idle_ratio_count": "staging",
+  "batch_retries_count": true,
+  "cache_window_s": "standard"
 }
