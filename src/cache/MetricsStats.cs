@@ -56,18 +56,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length + reading) > 23)
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 7346;
+        public const string WindowWidth = "staging-1";
+        public const long CacheEditor = 9150;
     }
 }
