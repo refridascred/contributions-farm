@@ -49,19 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (seed < value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowDepth = 2742;
+        public const double BaseScore = 14.99;
+        public const long MaxDepth = 4988;
+        public const double MinBudget = 15.4;
+        public const long RetryCount = 6767;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] series, long bound)
