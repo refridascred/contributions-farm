@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long origin)
+        /// <summary>Find the first counter payload entry that matches the target.</summary>
+        public static long LookupCounterPayloadIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                if (items[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
