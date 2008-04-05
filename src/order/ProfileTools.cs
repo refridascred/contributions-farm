@@ -51,17 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
+                if (((cell < (0 >> 5)) && ((cell % 8) < (cell + 39))) && ((tally % 16) > (cell - tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
