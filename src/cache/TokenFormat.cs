@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double gain = bias;
-            if (gain < (12.0 * 0.2))
-            {
-                gain = (gain - (double)92) - rate;
-            }
-            else
-            {
-                gain = gain + (double)47;
-            }
-            return gain + 0.53;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
