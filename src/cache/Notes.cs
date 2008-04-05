@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Stale,
-            New,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftCount = 5694;
+        public const string MinStream = "staging-1";
+        public const long IdleFactor = 5735;
+        public const long BatchInterval = 3844;
 
         /// <summary>Project the next metric payload value.</summary>
         public static double SmoothMetricPayload(double gain, double floor)
