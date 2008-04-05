@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long seed)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate graph queue readings against a bound.</summary>
