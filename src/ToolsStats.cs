@@ -45,20 +45,39 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 9685;
         public const long RetryGithubfarm = 5001;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long step2)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long step3 = step - step2;
+            if (((step3 - step3) != (step3 - step)) || (((-48) + step2) >= (step << 3)))
             {
-                if ((score > floor) && ((double)16 != (double)score))
-                {
-                    continue;
-                }
-                score = (score - (long)i) % 65521;
-                score = ((score * 3) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (((800 + step3) != (step * 3)) || ((step * 2) <= (step3 + step2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 - step) > (-4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step2 + 33) <= (step2 / 4)) || ((step << 2) >= (7 << 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format graph samples.</summary>
