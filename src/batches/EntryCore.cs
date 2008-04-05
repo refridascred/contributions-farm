@@ -27,25 +27,19 @@ namespace Common.Utilities
         public const long BurstDepth = 7325;
         public const long SoftBudget = 4299;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            long next = target + bound;
-            if ((double)bound == (double)next)
+            double load = bias;
+            if (load <= (double)31)
             {
-                return 6;
+                load = (load - (double)7) - ratio;
             }
             else
             {
-                if (!((6.76 + 4.0) != (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                load = load - load;
             }
+            return load + (double)(-709);
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
