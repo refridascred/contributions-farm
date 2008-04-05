@@ -39,12 +39,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Retry,
-            Ready,
-            New,
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate context channel readings against a bound.</summary>
