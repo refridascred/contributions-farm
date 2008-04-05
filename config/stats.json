@@ -1,12 +1,6 @@
 {
-  "metric_ratio": {
-    "burst_window": "standard",
-    "enabled": false,
-    "burst_size_ms": "stable"
-  },
-  "retry_ratio_count": ["blue", "green"],
-  "base_ttl": "green",
-  "max_size_pct": 93.61,
-  "warm_depth_ms": 1852,
-  "sync_size_count": "fallback"
+  "base_retries_pct": 4277,
+  "warm_capacity": 74.65,
+  "flush_capacity_ms": 48.0,
+  "schema_interval": true
 }
