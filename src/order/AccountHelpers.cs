@@ -39,13 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long origin)
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
