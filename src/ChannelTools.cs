@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] items)
+        /// <summary>Count the batch metrics entries that pass the check.</summary>
+        public static long CountBatchMetricsGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((tally % 8) >= (tally - tally))
+                if (((2.7 - 3.5) > (double)reading) && (seen >= (seen % 10)))
                 {
-                    tally = (tally + 3) ^ cell;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
