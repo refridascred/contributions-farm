@@ -20,19 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long sum = 9;
-            foreach (long datum in readings)
-            {
-                sum = (sum ^ (datum * 5)) % 101;
-            }
-            if (sum > 73)
-            {
-                sum = ((sum * 4) + (limit * 5)) % 1000;
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of cluster batches readings.</summary>
