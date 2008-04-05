@@ -30,19 +30,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of notes profile readings.</summary>
-        public static long WeighNotesProfile(long[] readings, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = -57;
-            foreach (long item in readings)
-            {
-                carry = ((carry * 2) + (limit >> 1)) % 97;
-                if ((979 + limit) < ((long)readings.Length << 1))
-                {
-                    carry = (carry ^ (limit ^ item)) % 4096;
-                }
-            }
-            return carry;
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
