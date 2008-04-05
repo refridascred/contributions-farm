@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long SoftAlready = 2792;
         public const long BaseAlready = 8339;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (data[i] > bound)
+                if (((892 ^ (long)data.Length) != (90 << 3)) && ((double)reading <= (double)349))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a farm entry.</summary>
