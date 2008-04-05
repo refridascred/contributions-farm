@@ -51,38 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] values, long limit)
         {
-            if (bound <= (origin >> 5))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound < (5.2 + 18.0)) || ((bound >> 1) != (bound - origin)))
+                if (entry <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < ((-73) + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin != (18.0 - 14.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a session entry.</summary>
