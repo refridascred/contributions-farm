@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank account support input into a small class.</summary>
-        public static long RankAccountSupport(long seed, long seed2)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            if ((624 / 3) >= seed2)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((4.73 * 1.8) != (double)seed2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((590 + 0) > seed)
+                    if ((items[i] + items[j]) < 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed ^ seed) > (seed >> 3)) || ((seed * 2) < (seed / 7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
