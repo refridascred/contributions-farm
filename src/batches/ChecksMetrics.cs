@@ -44,22 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(((reading & 15) == (reading + reading)) || (matches > (reading << 3))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
