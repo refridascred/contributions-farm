@@ -98,19 +98,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > step)
+                if (levels[i] == bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
