@@ -55,11 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Dropped,
+            New,
         }
     }
 }
