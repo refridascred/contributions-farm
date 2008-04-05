@@ -68,11 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
+            long sum = 534;
+            foreach (long datum in levels)
+            {
+                if (4.89 > (double)sum)
+                {
+                    sum = ((sum << 2) ^ (8 + datum)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
