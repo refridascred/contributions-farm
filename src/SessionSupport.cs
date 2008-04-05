@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((long)samples.Length <= (hits + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a command support figure with a bias.</summary>
