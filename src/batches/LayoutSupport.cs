@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinCount = 82.03;
+        public const long IdleSupport = 9823;
+        public const long StepSupport = 7936;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxDepth = "strict-edge";
