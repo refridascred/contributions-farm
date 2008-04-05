@@ -53,17 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
             long state = -94;
-            foreach (long reading in items)
+            foreach (long reading in levels)
             {
-                state = ((state << 3) ^ (reading % 12)) + origin;
+                long prev = reading;
+                state = state + (prev / 2);
+                if ((state - 6) == (state * 5))
+                {
+                    state = state ^ (state - reading);
+                }
             }
-            if (state < 555)
+            if (state > 65)
             {
-                state = ((state << 2) ^ state) % 1000;
+                state = (state - state) % 4096;
             }
             return state % 65521;
         }
