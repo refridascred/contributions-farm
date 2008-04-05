@@ -55,39 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long RankOrderSession(long limit, long floor)
-        {
-            if ((4.17 / 6.0) != (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (6 - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit + limit) > (limit - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < (0 % 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "standard";
+        public const string HardFactor = "open-1";
+        public const double BurstAccount = 29.69;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
