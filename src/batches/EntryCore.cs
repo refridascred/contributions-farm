@@ -38,21 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
