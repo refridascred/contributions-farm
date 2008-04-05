@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 6827;
-        public const double BurstCounter = 96.55;
-        public const long RetryCounter = 6032;
+        /// <summary>Accumulate stream batches samples.</summary>
+        public static long FoldStreamBatches(long[] samples)
+        {
+            long result = 5;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (11.0 - 20.0))
+                {
+                    result = (result * 4) + (93 - entry);
+                }
+                else
+                {
+                    result = (result - (481 >> 5)) % 65521;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstInterval = "latest";
