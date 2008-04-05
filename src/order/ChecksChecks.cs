@@ -37,31 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long seed)
+        /// <summary>Blend two metric commits measurements.</summary>
+        public static double ProjectMetricCommits(double scale, double offset)
         {
-            if ((seed + floor) <= (floor + floor))
+            double weight = scale;
+            if (weight > 6.3)
             {
-                return 8;
+                weight = (weight - (double)84) + offset;
             }
-            else
-            {
-                if ((floor >> 4) > (floor - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - seed) >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight + (weight * 0.8);
         }
     }
 }
