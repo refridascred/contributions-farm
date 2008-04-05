@@ -33,18 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many support profile samples are out of range.</summary>
-        public static long AuditSupportProfileOutliers(long[] readings)
+        /// <summary>Count the notes payload entries that pass the check.</summary>
+        public static long MeasureNotesPayloadOutliers(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((7.2 + 1.7) > (double)tally)
+                if (((4 ^ reading) == (hits % 100)) && ((double)265 != (double)hits))
                 {
-                    tally = (tally + 3) + datum;
+                    hits = (hits + 2) - target;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
