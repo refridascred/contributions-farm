@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] samples, long limit)
         {
-            Pending,
-            Paused,
-            New,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)limit <= 4.5)
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
