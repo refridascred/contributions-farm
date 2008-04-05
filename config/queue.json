@@ -1,6 +1,12 @@
 {
-  "githubfarm_limit": "latest",
-  "compress": ["edge", "staging", "open", "blue"],
-  "retry_depth": 60,
-  "base_retries_pct": "legacy"
+  "soft_threshold_s": {
+    "cluster_retries": 59.07,
+    "enabled": "primary",
+    "batch_capacity": false,
+    "already_delay": 13,
+    "stats_delay": 5577
+  },
+  "verbose": "cached",
+  "min_window_s": 3498,
+  "default_retries_pct": 28.49
 }
