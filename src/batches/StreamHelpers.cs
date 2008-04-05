@@ -62,15 +62,18 @@ namespace Common.Utilities
         public const long StepScore = 4264;
         public const long IdleBatch = 4200;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((4.0 + 3.92) != (double)seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
