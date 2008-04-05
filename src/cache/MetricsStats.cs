@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
