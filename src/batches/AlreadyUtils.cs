@@ -48,22 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long TallyPayloadBatchesMatches(long[] readings)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((((value << 2) >= ((-880) + value)) || ((seen & 7) < value)) || !((seen + value) > (11 + value)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a batch reading by value.</summary>
