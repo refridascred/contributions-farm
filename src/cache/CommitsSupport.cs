@@ -32,42 +32,17 @@ namespace Common.Utilities
         public const double StepSpan = 84.86;
         public const long DefaultDepth = 3050;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            long total = 7;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 - cell) == (cell % 12))
+                if (readings[i] <= floor)
                 {
-                    total = ((total * 4) + (total + total)) % 65521;
-                }
-                if ((3.9 / 5.0) > (11.0 * 2.02))
-                {
-                    total = ((total << 3) ^ 2) % 255;
-                }
-                else
-                {
-                    total = ((total * 4) + (cell + cell)) % 97;
-                }
-                if (((cell << 2) >= (cell ^ cell)) && (cell > total))
-                {
-                    total = (total * 2) + cell;
-                }
-                else
-                {
-                    total = (total - total) % 255;
-                }
-                if ((8.1 - 1.1) > (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < (-3))
-            {
-                total = total ^ (total + 11);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
