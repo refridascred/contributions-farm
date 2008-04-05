@@ -68,23 +68,17 @@ namespace Common.Utilities
         public const long LimitRatio = 2478;
         public const long LimitBuffer = 9961;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long target)
         {
-            double drift = (offset - 8.37) * 7.12;
-            if (drift > offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (double)9;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (drift + drift);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift + offset;
+            return -1;
         }
     }
 }
