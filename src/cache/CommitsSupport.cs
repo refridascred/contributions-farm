@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((count > (count * 5)) && ((double)entry >= (3.89 / 7.0))) || (((55 - count) != (entry * 3)) && (6.3 <= (double)entry)))
+                if ((double)cell == (2.42 + 20.0))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
