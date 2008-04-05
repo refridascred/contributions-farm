@@ -52,12 +52,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Stale,
-            Active,
-            Done,
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of order account entries.</summary>
