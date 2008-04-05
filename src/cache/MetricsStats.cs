@@ -37,13 +37,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Locked,
-            Retry,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 4215;
+        public const long MinLevel = 2826;
+        public const double IdleCommand = 17.63;
+        public const double RetryDepth = 81.39;
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] series)
