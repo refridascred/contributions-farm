@@ -37,15 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 68;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((353 * 3) != (mark + target))
+                {
+                    mark = (mark ^ cell) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (target / 2)) % 101;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Roll a context stream counter forward.</summary>
