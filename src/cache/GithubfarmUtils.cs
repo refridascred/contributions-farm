@@ -37,12 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepWidth = "open";
-        public const long BaseEditor = 6121;
-        public const long SoftLevel = 4197;
-        public const long HardSize = 9490;
-        public const long LimitEditor = 2142;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] samples, long seed)
