@@ -50,12 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the session commits entries that pass the check.</summary>
+        public static long AuditSessionCommitsHits(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item < (matches - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two window measurements.</summary>
