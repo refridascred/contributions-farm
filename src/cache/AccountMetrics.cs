@@ -34,20 +34,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] data, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (reading > bound)
                 {
-                    mark = (mark + mark) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                mark = (mark ^ ((long)i + 561)) % 97;
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a session entry.</summary>
