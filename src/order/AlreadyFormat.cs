@@ -45,17 +45,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream commits sample.</summary>
-        public static long LookupStreamCommitsIndex(long[] items, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((target + target2) != (target2 * 4)))
             {
-                if (items[i] < target)
+                return 6;
+            }
+            else
+            {
+                if ((target / 4) > (target + 89))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target << 1) >= (target % 10)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target2 >> 4) > (target2 << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a batch checks counter forward.</summary>
