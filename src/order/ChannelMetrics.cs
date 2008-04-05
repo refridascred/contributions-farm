@@ -29,15 +29,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                mark = mark - (seed + seed);
+                if ((seed >= mark) || (mark > (mark - seed)))
+                {
+                    mark = (mark - (seed + (long)i)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
     }
 }
