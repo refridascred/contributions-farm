@@ -76,14 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Dropped,
-            Retry,
-            Stale,
-            Closed,
-            Done,
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
