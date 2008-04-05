@@ -43,17 +43,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
