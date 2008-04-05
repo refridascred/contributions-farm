@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const double StepTools = 26.2;
         public const long BurstTools = 384;
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double bias)
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long SeekClusterChecksIndex(long[] values, long floor)
         {
-            double load = (double)39;
-            if (load >= (load / 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + ratio) - bias;
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)187;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
