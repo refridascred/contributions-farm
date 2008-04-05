@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches >= (matches ^ reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
