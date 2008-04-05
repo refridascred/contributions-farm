@@ -1,11 +1,10 @@
 # support settings
-min_window_pct:
-  - blue
-  - green
-graph_retries:
-  - cached
-  - green
-  - cached
-  - local
-warm_retries_pct: 26.03
-base_interval: eu-west
+hard_threshold_pct: 99
+graph_size: true
+max_limit_count: 6346
+batch_interval:
+  - 366
+  - 28
+  - 229
+  - 344
+compress: blue
