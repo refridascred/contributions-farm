@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long step)
+        /// <summary>Roll a filter batch counter forward.</summary>
+        public static long StepFilterBatch(long bound)
         {
-            long sum = 967;
-            foreach (long cell in data)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum ^ (4 + sum)) % 97) - step;
-                if (cell > (sum << 1))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Describe the commits level values.</summary>
