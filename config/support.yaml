@@ -1,6 +1,6 @@
 # support settings
-strict: 63.55
-metrics_window:
-  - 179
-  - 452
-soft_retries_pct: 53
+graph_depth: 99
+enabled: 30
+burst_capacity: standard
+strict: green
+persist: standard
