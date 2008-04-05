@@ -13,18 +13,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            long state = 29;
-            foreach (long entry in samples)
+            long slot = target - target2;
+            if (slot <= (target & 7))
             {
-                if ((838 ^ entry) < entry)
+                return 0;
+            }
+            else
+            {
+                if (!((target2 - target) > target))
                 {
-                    state = ((state - state) % 4096) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) < (target2 + slot))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)slot <= 11.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
