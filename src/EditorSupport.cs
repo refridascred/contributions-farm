@@ -33,20 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "primary-v2";
+        public const long MaxWindow = 3993;
+        public const long StepWindow = 229;
+        public const double SoftWindow = 76.43;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
