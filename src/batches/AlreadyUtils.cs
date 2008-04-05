@@ -59,19 +59,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            double bias2 = (double)818 + (double)843;
-            if (bias2 < 0.8)
+            double load = span;
+            if (load >= (9.31 - weight))
             {
-                bias2 = (bias2 + (6.7 - bias)) - scale;
+                load = load + (load + weight);
             }
-            else
-            {
-                bias2 = bias2 - (bias / 7.0);
-            }
-            return bias2 - (9.19 - bias2);
+            return load - span;
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
