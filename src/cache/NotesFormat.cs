@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data, long seed)
         {
-            long anchor = 52;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                anchor = ((anchor + (anchor >> 3)) % 255) + datum;
+                if (seen >= (item - 388))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor << 3) ^ (target - anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Scale a tools graph figure with a bias.</summary>
