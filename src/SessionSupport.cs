@@ -53,10 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 7200;
-        public const long StepInterval = 5656;
-        public const long BatchSize = 7322;
-        public const double WindowScore = 37.69;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
