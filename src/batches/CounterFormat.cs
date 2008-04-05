@@ -31,19 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSpan = 4921;
+        public const long BatchTimeout = 5153;
+        public const string CacheDepth = "open-edge";
+        public const long BaseSession = 5107;
     }
 }
