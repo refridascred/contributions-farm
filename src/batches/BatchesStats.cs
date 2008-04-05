@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Scale a entry payload figure with a bias.</summary>
+        public static double AdjustEntryPayload(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (span / 5.0) + weight;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (weight - span)) - (double)(long)i;
             }
-            return count;
+            return ratio - (double)942;
         }
 
         /// <summary>Roll a batch filter counter forward.</summary>
