@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Active,
+            Draft,
         }
 
         /// <summary>Define context limits and defaults.</summary>
