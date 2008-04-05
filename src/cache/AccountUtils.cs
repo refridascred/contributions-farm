@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
-        public static long CompareStatsStreamCount(long[] levels)
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long TallySchemaOrder(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 925;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((3.7 / 3.0) >= (double)datum) || ((total + datum) < total))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ (total - total)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ datum) % 97;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
