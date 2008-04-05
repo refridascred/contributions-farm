@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxDepth = "strict-edge";
+        public const double BatchRatio = 35.48;
+        public const double BatchNotes = 13.11;
+        public const string StepFactor = "legacy";
+        public const long IdleNotes = 4709;
 
         /// <summary>Rank order profile input into a small class.</summary>
         public static long ClassifyOrderProfile(long step, long floor)
