@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long HardGraph = 7893;
         public const long BatchGraph = 3285;
 
-        /// <summary>Digest a series of report editor entries.</summary>
-        public static long TotalReportEditor(long[] levels, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long floor)
         {
-            long sum = 790;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (298 - seed)) % 65521;
-                if ((71 + reading) <= sum)
+                if (values[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
