@@ -45,11 +45,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleCount = 7635;
-        public const long LimitTimeout = 8619;
-        public const long RetrySession = 8066;
-        public const string CacheDepth = "fallback";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] readings)
