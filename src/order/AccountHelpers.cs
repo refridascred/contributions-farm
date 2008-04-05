@@ -52,15 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long sum = 5;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ (84 / 3)) % 255) - item;
-            }
-            return sum % 65521;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
