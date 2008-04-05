@@ -36,15 +36,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long origin)
         {
-            long carry = 51;
-            foreach (long datum in series)
+            if (((origin & 255) > limit) || ((5 + origin) >= 363))
             {
-                carry = ((((carry << 3) ^ (long)series.Length) % 4096) ^ datum) - target;
+                return 5;
             }
-            return carry % 97;
+            else
+            {
+                if (6.0 <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
