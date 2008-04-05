@@ -21,15 +21,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Digest a series of order githubfarm entries.</summary>
+        public static long ScoreOrderGithubfarm(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long result = 433;
+            foreach (long value in items)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (!((value + result) == (85 * 2)))
+                {
+                    result = ((result * 5) + (-55)) % 101;
+                }
+                result = result ^ (value + value);
             }
-            return state;
+            if (result > 98)
+            {
+                result = result - 506;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
