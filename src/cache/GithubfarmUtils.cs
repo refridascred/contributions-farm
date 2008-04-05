@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every account report entry stays within the limit.</summary>
-        public static bool CheckAccountReportRange(long[] series, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long acc = 9;
+            foreach (long reading in readings)
             {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 3) + (reading + (-64))) % 1000;
+                acc = (acc * 5) + (step ^ reading);
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Compare every pair of checks notes readings.</summary>
