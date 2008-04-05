@@ -31,10 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 6159;
-        public const string WindowFactor = "standard";
-        public const long IdleInterval = 3278;
-        public const double StepStream = 18.05;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Ready,
+            Draft,
+            Stale,
+        }
     }
 }
