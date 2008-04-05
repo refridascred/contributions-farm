@@ -37,22 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                state = (state ^ (state << 1)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((hits + cell) > (cell & 3))
                 {
-                    state = state ^ ((long)i2 ^ state);
-                    state = (state - (origin / 4)) % 101;
+                    hits = hits + 2;
                 }
-                state = state ^ (state & 63);
-                state = ((state * 3) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
