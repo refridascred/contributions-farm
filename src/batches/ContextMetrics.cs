@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((((value ^ matches) <= matches) || ((value % 16) > (value / 5))) || ((5.26 / 3.0) > (double)matches))
+                if ((count > (226 + count)) && ((3.79 - 8.38) <= (double)entry))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
