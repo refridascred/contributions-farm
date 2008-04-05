@@ -40,13 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix ^ mix) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (((mix * 5) + limit) % 65521) ^ (long)i2;
+                    mix = ((mix * 5) + limit) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
