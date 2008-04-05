@@ -27,12 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
