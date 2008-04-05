@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long count = ((long)i << 2) + step;
-                score = (score - (count - score)) % 97;
-                score = (score ^ (step - count)) % 65521;
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
