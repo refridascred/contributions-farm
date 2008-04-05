@@ -22,32 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format metrics value against two limits.</summary>
-        public static long RankFormatMetrics(long origin, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long origin)
         {
-            long lane = origin ^ seed;
-            if (((18.0 - 6.1) <= (double)seed) && ((seed + 81) > (0 ^ lane)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane & 63) >= origin)
+                if (samples[i] > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane - 514) >= (origin >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
