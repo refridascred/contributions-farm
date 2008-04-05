@@ -85,19 +85,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route format entries.</summary>
-        public static long WeighRouteFormat(long[] samples, long floor)
-        {
-            long mix = 2;
-            foreach (long sample in samples)
-            {
-                mix = ((mix - (floor * 3)) % 255) + sample;
-            }
-            if (mix < 270)
-            {
-                mix = mix ^ floor;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryFactor = 47.71;
+        public const double MinBudget = 33.82;
+        public const long CacheWidth = 103;
+        public const long RetryCount = 1036;
     }
 }
