@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] data)
         {
-            if ((14.0 + 19.0) > (double)seed)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - 612) >= (seed ^ seed)) || (seed <= (3 + seed)))
+                if (((675 + value) < (seen ^ value)) && ((double)(-64) != (double)seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 64) <= (seed + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a notes stream sample.</summary>
