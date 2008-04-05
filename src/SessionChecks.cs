@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading & 7) <= (seen >> 1)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
