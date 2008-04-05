@@ -16,12 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 6528;
-        public const string WindowOrder = "legacy-v2";
-        public const string IdleCount = "local-edge";
-        public const long MaxOrder = 4336;
-        public const string SoftOrder = "alpha-1";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings, long origin)
+        {
+            long carry = 6;
+            foreach (long reading in readings)
+            {
+                if (!((1 + origin) <= reading))
+                {
+                    carry = (carry ^ (8 >> 1)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 2) + reading) % 101;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
