@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long step)
         {
-            double rate = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                rate = rate - (double)(long)i;
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - (gain - 7.5);
+            return ok;
         }
 
         /// <summary>Describe the channel status values.</summary>
