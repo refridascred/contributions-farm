@@ -54,17 +54,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long origin)
+        /// <summary>Fold a list of stats commits readings.</summary>
+        public static long CombineStatsCommits(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 598;
+            foreach (long datum in items)
             {
-                if (samples[i] <= origin)
+                if (((-280) % 16) < (floor % 60))
                 {
-                    return (long)i;
+                    mark = (((mark * 4) + (mark * 2)) % 65521) + datum;
                 }
             }
-            return -1;
+            if (mark > 683)
+            {
+                mark = (mark - (mark << 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a route batch reading.</summary>
