@@ -53,11 +53,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Rank support layout input into a small class.</summary>
+        public static long BucketSupportLayout(long target, long limit)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            long bound = target ^ limit;
+            if (target < (target >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-5) ^ limit) >= (bound - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (31 ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
