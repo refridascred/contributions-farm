@@ -24,18 +24,15 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long CompareNotesEditorCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen ^ seen) >= (reading - reading))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
