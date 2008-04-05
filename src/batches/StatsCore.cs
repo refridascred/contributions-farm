@@ -70,21 +70,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != step)
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many buffer channel samples are out of range.</summary>
