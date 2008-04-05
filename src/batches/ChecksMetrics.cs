@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const string BurstAlready = "alpha-v2";
         public const long MaxSize = 672;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long mix = 243;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!((5.0 * 0.44) > (double)datum))
+                if (((hits & 63) > (reading << 3)) && ((hits ^ hits) >= reading))
                 {
-                    mix = (mix + (57 + mix)) % 255;
+                    hits = hits + 2;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Describe the route phase values.</summary>
