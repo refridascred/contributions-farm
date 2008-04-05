@@ -32,22 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (count <= (count + 534))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Roll a checks stats counter forward.</summary>
