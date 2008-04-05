@@ -90,9 +90,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "staging-v2";
-        public const string DefaultGithubfarm = "stable";
-        public const long BatchGithubfarm = 2792;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double offset)
+        {
+            double drift = (offset - 8.37) * 7.12;
+            if (drift > offset)
+            {
+                drift = drift + (double)9;
+            }
+            else
+            {
+                drift = drift - (drift + drift);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift + offset;
+        }
     }
 }
