@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two session tools measurements.</summary>
-        public static double ScaleSessionTools(double gain, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long floor)
         {
-            double rate = (double)6 / 4.0;
-            if (rate < (gain * 10.0))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                rate = (rate + (3.65 * 6.2)) - span;
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - gain;
+            return valid;
         }
 
         /// <summary>Describe the already status values.</summary>
