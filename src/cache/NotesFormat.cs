@@ -16,25 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long floor2)
-        {
-            if ((floor2 ^ floor) > (floor2 % 12))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor2 <= (2.7 * 0.6)) || (floor2 >= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstCount = 9479;
+        public const long MinGraph = 6666;
+        public const long MinBudget = 2507;
+        public const long DefaultDepth = 3443;
+        public const long DefaultScore = 5604;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
