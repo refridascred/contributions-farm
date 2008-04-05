@@ -26,21 +26,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((4 << 2) < offset) || (8 > (offset >> 1)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound * 5) < (bound + bound))
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate order account readings against a bound.</summary>
