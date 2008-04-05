@@ -50,22 +50,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter farm samples.</summary>
-        public static long MatchCounterFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 1829;
+        public const long MinInterval = 5892;
+        public const double CacheProfile = 47.09;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
