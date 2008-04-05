@@ -24,21 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of already batch readings.</summary>
-        public static long PairAlreadyBatchCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (517 > matches)
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
