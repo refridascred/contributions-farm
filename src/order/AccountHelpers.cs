@@ -73,18 +73,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound >= (seen & 3))
+                if (items[i] > floor)
                 {
-                    seen = (seen + 3) - cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
