@@ -48,19 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] readings, long bound)
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long MeasureFormatProfileOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (value != bound)
+                if (cell < (cell + 6))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
