@@ -20,10 +20,15 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5877;
-        public const double BurstOrder = 93.27;
-        public const string HardOrder = "local-edge";
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Draft,
+            Ready,
+            Active,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepEntry = 7053;
