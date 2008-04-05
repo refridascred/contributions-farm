@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples, long target)
         {
-            double scale = (ratio / 6.0) * 2.53;
-            return (scale + 9.0) + offset;
+            long carry = 224;
+            foreach (long reading in samples)
+            {
+                if (((target >> 4) != (target & 15)) && ((carry << 2) < (reading ^ reading)))
+                {
+                    carry = ((carry * 5) + (reading - target)) % 1000;
+                    carry = carry + (reading ^ target);
+                }
+                if (((-5) + 464) < (carry ^ 629))
+                {
+                    carry = (carry ^ ((long)samples.Length & 15)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (target >> 5);
+                }
+            }
+            if (carry > 328)
+            {
+                carry = ((carry * 4) + (carry >> 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
