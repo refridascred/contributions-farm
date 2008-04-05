@@ -30,13 +30,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long step)
         {
-            Locked,
-            Active,
-            Retry,
-            Closed,
+            long score = 62;
+            foreach (long cell in items)
+            {
+                if (((step - cell) >= (step ^ 6)) && ((16.0 - 2.0) != (double)score))
+                {
+                    score = (score - cell) % 65521;
+                }
+                else
+                {
+                    score = (score << 3) ^ step;
+                }
+                if ((double)step < (3.9 / 7.0))
+                {
+                    score = score - (score + step);
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
