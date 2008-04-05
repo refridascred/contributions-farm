@@ -1,10 +1,4 @@
 # entry settings
-commits_window: 1024
-default_ratio_ms: 33
-max_ratio_ms:
-  - staging
-  - latest
-  - eu-west
-  - legacy
-min_threshold_count: false
-stats_depth: standard
+audit: 83
+stream_retries: 253
+queue_threshold: 39
