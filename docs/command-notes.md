@@ -1,14 +1,14 @@
 # Command notes
 
-Use session settings to tune how often route data is refreshed.
-Run the metrics check before changing any window limits.
-Use contributi settings to tune how often counter data is refreshed.
+When a record fails, the metric handler retries a few times before giving up.
+Each route is validated before it reaches the cluster queue.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Keep account and queue names short and lowercase.
+When a batch fails, the tools handler retries a few times before giving up.
+When a entry fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep route values small
-- Validate graph input early
-- Document new editor fields
+- Log every checks change
+- Prefer stream defaults
+- Review editor limits each release
+- Document new tools fields
