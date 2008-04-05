@@ -52,16 +52,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            if ((step % 5) >= 14)
             {
-                mark = mark + step;
-                mark = ((mark * 3) + (long)i) % 97;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((-198) >> 4) > (origin - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 100) < (origin - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin * 2) <= (88 ^ step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
