@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits schema values into a single score.</summary>
-        public static long TotalCommitsSchema(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long state = -254;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((item % 3) > (item - state)) || ((double)item > 4.5))
-                {
-                    state = state ^ state;
-                }
+                score = ((score * 2) + (offset - offset)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
