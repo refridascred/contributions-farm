@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 986;
-        public const long StepTimeout = 1574;
-        public const long BurstBudget = 2070;
-        public const long DefaultCache = 7412;
-        public const long BatchDepth = 3733;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally >> 4) <= (tally / 4)) || (((tally + cell) <= (tally + tally)) && ((double)cell < (9.97 - 3.6))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a stats stream figure with a bias.</summary>
         public static double SmoothStatsStream(double ratio, double floor)
