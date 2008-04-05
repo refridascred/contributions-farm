@@ -66,9 +66,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySpan = 4884;
-        public const long SoftFilter = 875;
-        public const long BaseCount = 4381;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long offset)
+        {
+            long total = 288;
+            foreach (long entry in items)
+            {
+                if (!((entry + entry) <= (84 << 3)))
+                {
+                    total = (total + (total + offset)) % 4096;
+                }
+            }
+            return total % 97;
+        }
     }
 }
