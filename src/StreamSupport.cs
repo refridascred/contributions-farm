@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxCount = 71.8;
+        public const long BaseSize = 8721;
+        public const long LimitFactor = 1740;
+        public const long MaxBatches = 8170;
+        public const string CacheRatio = "standard-v2";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long step, long floor)
