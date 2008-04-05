@@ -54,19 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] series, long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up stats route samples.</summary>
