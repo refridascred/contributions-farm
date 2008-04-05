@@ -29,20 +29,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark - (seed + seed);
-                if ((seed >= mark) || (mark > (mark - seed)))
-                {
-                    mark = (mark - (seed + (long)i)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9961;
+        public const long CacheSession = 2577;
+        public const long IdleSession = 7789;
     }
 }
