@@ -1,6 +1,8 @@
-id,count,active,weight
-1,open,fallback,177
-2,legacy,437,39.92
-3,941,strict,39.84
-4,edge,primary,cached
-5,61.7,467,64.7
+id,score,owner
+1,400,77.44
+2,91.66,28.32
+3,green,59.76
+4,edge,68.85
+5,987,81.93
+6,843,287
+7,standard,primary
