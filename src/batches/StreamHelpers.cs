@@ -61,11 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchTimeout = "staging-v2";
-        public const string BurstCount = "latest-v2";
-        public const long StepScore = 4264;
-        public const long IdleBatch = 4200;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 5305;
