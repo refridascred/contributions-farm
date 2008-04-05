@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = span / 3.0;
+            if (load >= rate)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - 8.4;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (span - load);
         }
     }
 }
