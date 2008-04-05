@@ -93,11 +93,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 94.35;
-        public const double CacheInterval = 37.61;
-        public const double CacheLevel = 24.55;
-        public const double StepRoute = 47.78;
-        public const long SoftRoute = 5901;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Stale,
+            Retry,
+            Pending,
+        }
     }
 }
