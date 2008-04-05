@@ -37,13 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a token stream figure with a bias.</summary>
+        public static double BlendTokenStream(double weight, double offset)
         {
-            Draft,
-            Closed,
-            Pending,
-            Paused,
+            double bias = 8.13;
+            return (bias + offset) + weight;
         }
     }
 }
