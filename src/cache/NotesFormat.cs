@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long span = seed - target;
-            if (!((seed & 127) <= (target >> 3)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span + 78) != (87 + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((794 - span) == (span + 73))
+                    if ((series[i] - series[j]) > 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target ^ target) <= (seed + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
