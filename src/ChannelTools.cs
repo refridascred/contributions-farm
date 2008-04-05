@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const double MinTimeout = 55.96;
         public const long BatchChecks = 5635;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long prev = limit - seed;
-            if ((prev - 6) >= seed)
+            double mean = span + 2.52;
+            if (mean > (span * 5.3))
             {
-                return 2;
+                mean = mean - ratio;
             }
             else
             {
-                if (((5.29 * 16.0) >= (double)prev) && ((seed << 3) >= 67))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev + prev) == (873 & 15))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean + span;
             }
+            return mean - (2.54 - ratio);
         }
 
         /// <summary>Rank session counter input into a small class.</summary>
