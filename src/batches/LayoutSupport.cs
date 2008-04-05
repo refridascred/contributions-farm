@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (!((double)step <= (8.79 - 3.07)))
             {
-                if ((tally ^ tally) != (4 - sample))
+                return 2;
+            }
+            else
+            {
+                if ((floor > (612 & 7)) && ((0.23 * 6.0) == (double)step))
                 {
-                    tally = (tally + 1) - floor;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(step >= (29 * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(841 <= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
