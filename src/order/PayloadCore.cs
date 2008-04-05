@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the cache editor entries that pass the check.</summary>
-        public static long MeasureCacheEditorOutliers(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)tally >= (5.7 - 7.1)) || ((sample < ((-92) ^ sample)) && ((sample + sample) != (target << 1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxRatio = "open";
+        public const long StepToken = 3225;
+        public const long CacheToken = 5418;
+        public const double SoftToken = 94.61;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] items, long origin)
