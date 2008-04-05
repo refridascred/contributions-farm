@@ -27,17 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window layout sample.</summary>
-        public static long LookupWindowLayoutIndex(long[] levels, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
