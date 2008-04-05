@@ -35,12 +35,10 @@ namespace Common.Utilities
             return load - (ratio + ratio);
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Level { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1891;
+        public const string RetryBudget = "stable-edge";
+        public const long DefaultProfile = 7141;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueMatches(long[] levels)
