@@ -38,14 +38,17 @@ namespace Common.Utilities
         public const long MaxScore = 7684;
         public const long MaxChecks = 5626;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Look up the position of a graph order sample.</summary>
+        public static long LocateGraphOrderIndex(long[] readings, long limit)
         {
-            Synced,
-            Done,
-            Closed,
-            Pending,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
