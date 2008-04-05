@@ -40,13 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
