@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const long BurstLayout = 1843;
         public const long BatchSpan = 3633;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the order batch series from a seed.</summary>
+        public static long IterateOrderBatch(long seed)
         {
-            Retry,
-            Active,
-            Pending,
-            Draft,
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster summary.</summary>
