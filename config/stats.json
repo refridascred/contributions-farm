@@ -1,19 +1,6 @@
 {
-  "soft_timeout": 48.45,
-  "warm_threshold_ms": 25,
-  "batch_delay": ["green", "blue", "latest", "staging"],
-  "retry_size": false,
-  "warm_delay": 404,
-  "stream_window": {
-    "flush_size_pct": {
-      "soft_size": ["edge", "eu-west", "fallback"],
-      "enabled": 97,
-      "verbose": false,
-      "idle_capacity_count": "eu-west"
-    },
-    "hard_delay": "local",
-    "enabled": [27, 103],
-    "stats_ttl": [403, 379, 327, 286],
-    "audit": 14.1
-  }
+  "flush_capacity_pct": ["eu-west", "cached", "legacy", "latest"],
+  "sync_depth_ms": 79.03,
+  "farm_delay": false,
+  "batches_depth": false
 }
