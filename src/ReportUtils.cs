@@ -38,38 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entry entries.</summary>
-        public static long WeighCounterEntry(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long target)
         {
-            long carry = -410;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry / 8) >= reading)
+                if ((series[i] >= target) && ((series[i] % 2) != 0))
                 {
-                    carry = ((carry << 3) ^ reading) % 1000;
-                }
-                if ((carry < reading) && ((60 ^ carry) <= reading))
-                {
-                    break;
-                }
-                if ((carry & 63) <= reading)
-                {
-                    carry = carry ^ (carry - 80);
-                }
-                else
-                {
-                    carry = carry + (43 << 1);
-                }
-                if ((3.99 - 8.46) <= (double)reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 16)
-            {
-                carry = ((carry << 2) ^ (long)samples.Length) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
