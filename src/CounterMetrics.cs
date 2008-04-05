@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long target)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
+            if ((origin ^ origin) <= ((-607) % 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target < (target >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target >> 5) == (origin / 5)) || (origin > target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((795 + 517) >= (origin >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
