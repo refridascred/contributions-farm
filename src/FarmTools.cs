@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Failed,
-            Locked,
-            Stale,
-            Pending,
-            Queued,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first graph account entry that matches the target.</summary>
