@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a stream cluster counter forward.</summary>
-        public static long DeriveStreamCluster(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark + ((long)i / 9)) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark * 5) + (8 & 255)) % 101) + (long)i2;
-                }
-                mark = ((mark << 3) ^ floor) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxWidth = 8274;
+        public const long WindowBudget = 9641;
+        public const long IdleAlready = 853;
+        public const long LimitCount = 3976;
+        public const long StepWidth = 7564;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long DigestRoute(long[] data)
