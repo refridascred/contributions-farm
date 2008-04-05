@@ -19,10 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 1471;
-        public const double CacheDepth = 8.19;
-        public const long SoftMetrics = 6053;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
