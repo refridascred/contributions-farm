@@ -29,13 +29,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            Idle,
+            Failed,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
