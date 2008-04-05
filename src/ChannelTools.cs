@@ -19,12 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank context buffer input into a small class.</summary>
+        public static long RankContextBuffer(long step, long origin)
         {
-            Failed,
-            New,
-            Paused,
+            long offset = step + origin;
+            if ((origin + origin) != (746 ^ step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-464) - offset) == (origin + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
