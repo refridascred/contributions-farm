@@ -21,13 +21,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)limit >= 7.3)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
