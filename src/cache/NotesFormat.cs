@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((floor ^ origin) != (825 + floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor - origin) > floor)
                 {
-                    if ((series[i] - series[j]) > 18)
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + origin) < (origin - origin)) || ((double)floor == (0.38 + 2.8)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
