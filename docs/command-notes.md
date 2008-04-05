@@ -1,12 +1,10 @@
 # Command notes
 
-The notes module keeps graph values in sync with the filter cache.
-When a window fails, the notes handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and commits names short and lowercase.
+Use entry settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every route change
-- Keep order values small
-- Document new githubfarm fields
+- Log every metrics change
+- Review session limits each release
+- Document new token fields
