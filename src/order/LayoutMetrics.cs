@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Queued,
-            Closed,
-            Pending,
-            Locked,
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
