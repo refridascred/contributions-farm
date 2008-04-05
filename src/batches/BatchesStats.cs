@@ -19,15 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long floor)
+        /// <summary>Roll a batch filter counter forward.</summary>
+        public static long SeriesBatchFilter(long bound)
         {
-            long total = 8;
-            foreach (long datum in series)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total << 3) ^ datum) + floor;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total - (bound & 15)) % 101) ^ (long)i2;
+                }
+                total = total ^ (bound % 100);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
