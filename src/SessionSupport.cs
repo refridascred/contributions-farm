@@ -20,17 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] samples, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = seed + origin;
+            if ((4.47 / 7.0) <= (double)origin)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (step > (3 & 7))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
