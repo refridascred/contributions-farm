@@ -26,19 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings, long step)
+        /// <summary>Blend two session report measurements.</summary>
+        public static double ProjectSessionReport(double weight, double floor)
         {
-            long anchor = 17;
-            foreach (long cell in readings)
+            double gain = weight;
+            if (gain < (weight / 8.0))
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (((anchor << 2) ^ (step - cell)) % 97) + (long)i;
-                }
-                anchor = ((anchor * 5) + (step + cell)) % 101;
+                gain = (gain + (gain * 15.0)) - floor;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)572) + (double)(long)i;
+            }
+            return gain - (double)99;
         }
 
         /// <summary>Hold a entry info.</summary>
