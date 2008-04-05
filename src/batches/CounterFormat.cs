@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((total + total) == (cell - total))
+                if ((tally << 3) < 61)
                 {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = (total << 3) ^ (983 / 8);
+                    tally = (tally + 1) + datum;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate stats farm readings against a bound.</summary>
