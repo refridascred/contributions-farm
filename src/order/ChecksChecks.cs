@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long origin)
         {
-            long carry = 6;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((1 + origin) <= reading))
+                if (((datum & 255) > (tally - 8)) || (((10 + tally) < (origin + datum)) && ((datum / 4) < (datum * 2))))
                 {
-                    carry = (carry ^ (8 >> 1)) % 97;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = ((carry * 2) + reading) % 101;
+                    tally = tally - 1;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
