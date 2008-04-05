@@ -56,38 +56,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank contributi editor input into a small class.</summary>
-        public static long ClassifyContributiEditor(long step, long step2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] values, long bound)
         {
-            if ((4.05 + 11.0) >= (double)step2)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((4 & 31) != (step + step)))
+                if (bound > (tally + tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step / 4) <= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.03 - 3.0) < (double)step2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
