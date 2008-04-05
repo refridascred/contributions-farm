@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] levels, long limit)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)9)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - (double)44) - ratio;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (bias2 - 3.07);
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
