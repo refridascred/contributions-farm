@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Retry,
-            New,
-            Failed,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
