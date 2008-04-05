@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= bound)
+                if ((reading & 255) > origin)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
