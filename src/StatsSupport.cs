@@ -27,12 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value & 63) > (347 + 22))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
