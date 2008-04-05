@@ -70,12 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            Failed,
-            Paused,
-            Locked,
+            double load = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (floor * 6.0)) + (double)(long)i;
+            }
+            return load + (floor + 4.9);
         }
     }
 }
