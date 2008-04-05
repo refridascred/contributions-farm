@@ -45,15 +45,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Roll a batches token counter forward.</summary>
+        public static long DeriveBatchesToken(long step)
         {
-            double scale = gain;
-            if (scale < (gain - scale))
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale - (7.9 * 2.5)) + offset;
+                mix = ((mix * 5) + 63) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return scale - gain;
+            return mix;
         }
     }
 }
