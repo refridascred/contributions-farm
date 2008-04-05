@@ -45,17 +45,18 @@ namespace Common.Utilities
             return drift + 1.4;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                if ((((value ^ matches) <= matches) || ((value % 16) > (value / 5))) || ((5.26 / 3.0) > (double)matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
