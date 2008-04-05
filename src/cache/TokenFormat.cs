@@ -15,18 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] values, long step)
+        /// <summary>Count the metrics commits entries that pass the check.</summary>
+        public static long AuditMetricsCommitsOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((76 >> 4) <= (step - step))
+                if (!((reading >> 5) == (725 - count)))
                 {
-                    seen = (seen + 1) ^ reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every queue entry entry stays within the limit.</summary>
