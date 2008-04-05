@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long step)
         {
-            long result = 988;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((cell & 255) >= (seed - result))
+                if (reading < step)
                 {
-                    result = (result - ((-891) - result)) % 4096;
-                }
-                if ((1 + 81) > seed)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result % 97;
+            return ready;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
