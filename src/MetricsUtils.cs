@@ -24,12 +24,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "stable-1";
-        public const long LimitLayout = 355;
-        public const long MinLayout = 4329;
-        public const long CacheLayout = 3984;
-        public const long IdleScore = 2890;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double floor)
+        {
+            double gain = (floor + floor) - (floor + floor);
+            return gain + ratio;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double SmoothRoute(double bias, double floor)
