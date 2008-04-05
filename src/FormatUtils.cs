@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
