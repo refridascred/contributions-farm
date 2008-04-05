@@ -1,7 +1,7 @@
 {
-  "verbose": 1024,
-  "enabled": 60,
-  "soft_size_pct": "open",
-  "warm_threshold_s": ["fallback", "eu-west", "green"],
-  "default_depth": true
+  "soft_limit_s": 2338,
+  "hard_capacity": "eu-west",
+  "batch_window_pct": false,
+  "hard_ratio": "strict",
+  "command_retries": 3723
 }
