@@ -33,16 +33,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double floor)
-        {
-            double bias = rate * 3.58;
-            if (bias >= (rate + floor))
-            {
-                bias = bias + 7.36;
-            }
-            return bias - (bias + 3.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleRatio = 85.33;
+        public const double MinQueue = 59.62;
+        public const long LimitQueue = 3784;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
