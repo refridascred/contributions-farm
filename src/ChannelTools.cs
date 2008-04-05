@@ -27,30 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate notes metric samples.</summary>
-        public static long ScoreNotesMetric(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            long total = 843;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((total % 97) <= (total & 1))
+                if (((-5) > (hits % 97)) || ((113 - hits) < (value - hits)))
                 {
-                    total = (total ^ ((long)items.Length / 3)) - limit;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (reading + 458)) % 255;
-                }
-                if (!((total - 24) >= 10))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (total > 61)
-            {
-                total = ((total << 3) ^ total) % 255;
-            }
-            return total;
+            return hits;
         }
     }
 }
