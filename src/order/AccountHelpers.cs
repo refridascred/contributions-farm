@@ -63,18 +63,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] items, long offset)
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool VerifyEntryAccountLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (reading < (7 + reading))
+                if (cell > limit)
                 {
-                    tally = (tally + 2) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
