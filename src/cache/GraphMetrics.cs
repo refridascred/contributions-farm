@@ -40,34 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Accumulate layout commits samples.</summary>
+        public static long TotalLayoutCommits(long[] values)
         {
-            long anchor = 837;
-            foreach (long datum in values)
+            long carry = 71;
+            foreach (long cell in values)
             {
-                if (!((datum % 100) >= (datum * 4)))
+                carry = (carry - (carry + 57)) ^ cell;
+                if (!(carry > (carry - 61)))
                 {
-                    anchor = (anchor << 2) ^ 3;
-                }
-                if ((anchor & 31) >= (datum - (long)values.Length))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (8 - anchor)) % 4096;
-                }
-                if (((double)anchor <= (8.0 - 2.19)) && (((-7) << 3) < (anchor - 982)))
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 101;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Adjust a format reading.</summary>
