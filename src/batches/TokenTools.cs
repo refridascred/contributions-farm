@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format notes samples.</summary>
-        public static long CombineFormatNotes(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] data, long limit)
         {
-            long state = 286;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (state < (value & 7))
+                if ((0.52 * 0.06) > (double)hits)
                 {
-                    state = (state - 86) % 101;
+                    hits = ((hits + 1) - reading) - limit;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
