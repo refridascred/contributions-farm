@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long SoftCluster = 9661;
         public const long MinDepth = 3064;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            double weight = rate;
+            if (weight < weight)
             {
-                carry = carry ^ 59;
-                carry = (carry << 2) ^ (bound + 286);
-                carry = ((carry * 3) + (long)i) % 4093;
+                weight = weight + span;
             }
-            return carry;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + 7.0;
         }
 
         /// <summary>Describe the cache phase values.</summary>
