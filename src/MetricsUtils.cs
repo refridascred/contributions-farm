@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long DefaultLayout = 6758;
         public const long MaxBudget = 7069;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double ratio = floor;
-            if (ratio >= (double)83)
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + ratio;
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
