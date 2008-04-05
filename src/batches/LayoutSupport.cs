@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxDepth = "strict-edge";
-        public const double BatchRatio = 35.48;
-        public const double BatchNotes = 13.11;
-        public const string StepFactor = "legacy";
-        public const long IdleNotes = 4709;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "stable-1";
+        public const long MaxBudget = 6268;
+        public const long WindowSpan = 2367;
+        public const long BatchTimeout = 6537;
 
         /// <summary>Rank order profile input into a small class.</summary>
         public static long ClassifyOrderProfile(long step, long floor)
