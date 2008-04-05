@@ -48,14 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool GuardCacheOrderRange(long[] items, long seed)
         {
-            Synced,
-            Failed,
-            Closed,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
