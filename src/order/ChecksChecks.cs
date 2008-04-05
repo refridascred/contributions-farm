@@ -34,12 +34,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long seed)
         {
-            Retry,
-            Synced,
-            Draft,
+            if ((seed + floor) <= (floor + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 4) > (floor - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - seed) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
