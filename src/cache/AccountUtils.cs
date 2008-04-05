@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] items, long offset)
+        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
+        public static long CompareStatsStreamCount(long[] levels)
         {
             long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((offset % 97) >= (offset >> 2)) && !((reading >> 2) != (reading - 20)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
