@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Failed,
-            Draft,
-            Ready,
-            Retry,
-            Active,
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
