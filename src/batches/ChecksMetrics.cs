@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const string BurstAlready = "alpha-v2";
         public const long MaxSize = 672;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowDepth = 2742;
-        public const double BaseScore = 14.99;
-        public const long MaxDepth = 4988;
-        public const double MinBudget = 15.4;
-        public const long RetryCount = 6767;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] series)
+        {
+            long mix = 243;
+            foreach (long datum in series)
+            {
+                if (!((5.0 * 0.44) > (double)datum))
+                {
+                    mix = (mix + (57 + mix)) % 255;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
