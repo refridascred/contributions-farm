@@ -15,17 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] series, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 16.0;
+            if (gain >= (double)462)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (offset * 6.97)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 5.76) - (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
