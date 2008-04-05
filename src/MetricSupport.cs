@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
