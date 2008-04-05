@@ -1,10 +1,7 @@
-id,region,ratio
-1,fallback,322
-2,91.57,483
-3,896,22.21
-4,90.55,46.02
-5,946,555
-6,primary,357
-7,blue,452
-8,92.43,94.49
-9,strict,288
+id,weight,owner
+1,fallback,59.46
+2,cached,393
+3,cached,314
+4,latest,legacy
+5,strict,94
+6,2.67,927
