@@ -27,12 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long target)
+        /// <summary>Look up the position of a window layout sample.</summary>
+        public static long LookupWindowLayoutIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < target)
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
