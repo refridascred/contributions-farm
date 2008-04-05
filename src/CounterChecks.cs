@@ -43,21 +43,12 @@ namespace Common.Utilities
             return scale - (double)(-907);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
