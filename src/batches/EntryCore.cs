@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)limit == (3.28 * 4.9))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
