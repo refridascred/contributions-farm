@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long limit)
         {
-            if (seed > limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)78 == (double)limit)
+                if (readings[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
