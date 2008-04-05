@@ -1,8 +1,12 @@
 {
-  "flush_delay_s": 773,
-  "format_ratio": 80,
-  "soft_depth_s": [199, 256, 43],
-  "githubfarm_window": "primary",
-  "readonly": true,
-  "warm_threshold_count": 187
+  "flush_size_ms": {
+    "cache_delay": 6,
+    "cache_delay_s": true,
+    "strict": "legacy"
+  },
+  "payload_delay": [402, 341, 34],
+  "persist": "latest",
+  "metric_depth": 30,
+  "strict": 9826,
+  "base_delay_count": "staging"
 }
