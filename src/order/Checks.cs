@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseFactor = 78.37;
-        public const long CacheCount = 98;
-        public const long StepRoute = 5755;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series)
+        {
+            long result = 87;
+            foreach (long item in series)
+            {
+                if (!((302 & 127) > result))
+                {
+                    result = (result * 4) + result;
+                    result = (result + (result - result)) % 4096;
+                }
+                if (!((item % 100) < (result % 7)))
+                {
+                    result = (result << 2) ^ result;
+                }
+                result = ((result << 3) ^ item) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate cache stream samples.</summary>
         public static long WeighCacheStream(long[] data, long bound)
