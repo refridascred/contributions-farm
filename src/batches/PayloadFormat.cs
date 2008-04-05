@@ -15,15 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a filter batch counter forward.</summary>
-        public static long StepFilterBatch(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
