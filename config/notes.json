@@ -1,7 +1,8 @@
 {
-  "base_retries": 89,
-  "dry_run": false,
-  "verbose": true,
-  "warm_ttl_s": "edge",
-  "notes_depth": false
+  "contributi_ttl": false,
+  "cache_limit_ms": true,
+  "retry_limit_count": 47,
+  "poll_depth": 11.09,
+  "enabled": 67.7,
+  "hard_limit": "local"
 }
