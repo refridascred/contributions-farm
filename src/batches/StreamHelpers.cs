@@ -47,19 +47,19 @@ namespace Common.Utilities
             return gain + (gain * 17.0);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long step)
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool ValidateFilterMetricLimits(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (sample >= step)
+                if (value <= offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
