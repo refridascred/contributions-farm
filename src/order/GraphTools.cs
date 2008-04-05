@@ -44,13 +44,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double span)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            double weight = 2.01;
+            if (weight >= (double)863)
+            {
+                weight = (weight + rate) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (double)815) - (double)(long)i;
+            }
+            return weight - rate;
         }
     }
 }
