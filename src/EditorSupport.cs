@@ -45,12 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
