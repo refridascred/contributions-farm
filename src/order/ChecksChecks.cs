@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (!((sample > 7) && ((seen & 15) < (sample + seen))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of already readings.</summary>
