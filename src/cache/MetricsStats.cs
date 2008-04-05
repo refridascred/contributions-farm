@@ -22,13 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long bound)
         {
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            if ((1 * 4) == (bound + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed << 3) > (seed - (-136))) || ((945 >> 3) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate counter samples.</summary>
