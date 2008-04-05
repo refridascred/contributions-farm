@@ -1,13 +1,7 @@
 {
-  "warm_window_pct": [328, 471, 275, 123],
-  "compress": false,
-  "flush_ratio": 9768,
-  "command_capacity": false,
-  "poll_limit_ms": 9154,
-  "tools_capacity": {
-    "metric_limit": "green",
-    "readonly": false,
-    "poll_ratio_count": 30,
-    "max_depth_count": true
-  }
+  "base_retries": 89,
+  "dry_run": false,
+  "verbose": true,
+  "warm_ttl_s": "edge",
+  "notes_depth": false
 }
