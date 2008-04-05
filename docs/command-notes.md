@@ -1,15 +1,15 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for record live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the route list.
+The support helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often format data is refreshed.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The entry module keeps entry values in sync with the report cache.
-Keep entry and cache names short and lowercase.
+Keep githubfarm and metric names short and lowercase.
+A schema that stays idle for too long is moved to the account list.
+Use githubfarm settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Prefer token defaults
-- Keep format values small
+- Prefer record defaults
+- Keep schema values small
+- Validate graph input early
