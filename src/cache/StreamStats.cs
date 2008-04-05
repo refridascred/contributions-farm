@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long SoftFarm = 3461;
         public const long RetryInterval = 7864;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] data, long target)
         {
-            New,
-            Queued,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
