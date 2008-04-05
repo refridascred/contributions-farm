@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Digest a series of support channel entries.</summary>
