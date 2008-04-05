@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = 888;
-            foreach (long sample in values)
-            {
-                sum = (sum - (sample << 1)) % 101;
-                if ((sample & 31) <= (22 << 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 97;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a already stats.</summary>
