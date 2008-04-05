@@ -43,25 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long acc = 19;
+            foreach (long reading in series)
             {
-                sum = sum ^ (sum - (long)i);
-                if (((-9) >> 1) > origin)
+                if ((double)reading <= 3.6)
                 {
-                    sum = (sum << 3) ^ ((long)i - 61);
+                    acc = (acc << 2) ^ (reading ^ acc);
                 }
-                else
-                {
-                    sum = sum + (long)i;
-                }
-                sum = ((sum << 2) ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            if (acc < 624)
+            {
+                acc = acc - (acc ^ 69);
+            }
+            return acc;
         }
     }
 }
