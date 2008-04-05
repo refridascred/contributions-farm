@@ -26,18 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] samples, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)hits < (4.09 + 16.0)) || ((reading > (hits >> 2)) && (reading > (hits - 5))))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
