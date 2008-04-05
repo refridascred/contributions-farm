@@ -1,13 +1,12 @@
 # Command notes
 
-Each schema is validated before it reaches the route queue.
-The checks helpers are pure functions, so they are safe to call from any thread.
-
-Run the tools check before changing any stream limits.
-Each already is validated before it reaches the notes queue.
+The notes module keeps graph values in sync with the filter cache.
+When a window fails, the notes handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep support values small
-- Review layout limits each release
+- Prefer metrics defaults
+- Log every route change
+- Keep order values small
+- Document new githubfarm fields
