@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            Active,
-            Dropped,
-            Done,
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
