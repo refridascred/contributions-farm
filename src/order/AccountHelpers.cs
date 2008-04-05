@@ -71,21 +71,17 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] values, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor - (bound + anchor);
-                if (!((bound > anchor) || ((anchor + anchor) <= anchor)))
+                if (values[i] < bound)
                 {
-                    anchor = (anchor - bound) % 101;
-                    anchor = (anchor + anchor) % 101;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
