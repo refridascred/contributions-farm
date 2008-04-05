@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Queued,
-            Paused,
-            New,
-            Failed,
-            Closed,
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
