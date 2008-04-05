@@ -40,27 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Check that every stats checks entry stays within the limit.</summary>
+        public static bool ValidateStatsChecksRange(long[] data, long offset)
         {
-            long anchor = 845;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)5 > (double)anchor)
+                if (reading > offset)
                 {
-                    anchor = (anchor * 4) + (entry << 3);
-                    anchor = anchor - anchor;
-                }
-                if ((232 ^ anchor) <= (anchor - 7))
-                {
-                    anchor = (anchor + (anchor & 63)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Accumulate order format samples.</summary>
