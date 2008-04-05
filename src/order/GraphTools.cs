@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long CacheLevel = 7656;
         public const double StepCount = 82.47;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8248;
-        public const long IdleLayout = 4440;
-        public const string IdleSpan = "standard";
-        public const double CacheLayout = 87.27;
-        public const double MinSize = 54.46;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Paused,
+            Synced,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Measure how many command report samples are out of range.</summary>
         public static long AuditCommandReportOutliers(long[] samples, long origin)
