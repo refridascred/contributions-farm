@@ -57,14 +57,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Draft,
-            Synced,
-            Retry,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowLevel = "standard-1";
+        public const long IdleScore = 6845;
+        public const string RetryInterval = "staging";
     }
 }
