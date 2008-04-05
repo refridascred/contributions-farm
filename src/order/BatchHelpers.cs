@@ -50,32 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values, long step)
         {
-            long step = offset + target;
-            if ((534 % 64) <= (step & 3))
+            long mark = 380;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.3 / 5.0) != (double)step)
+                if (item >= (item + mark))
                 {
-                    return 6;
+                    mark = (mark - (step - 26)) % 255;
                 }
                 else
                 {
-                    if (target <= ((-167) - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = mark ^ mark;
                 }
             }
+            return mark % 4096;
         }
     }
 }
