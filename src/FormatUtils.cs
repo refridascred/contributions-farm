@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((seen - sample) <= 5)
+                if (datum <= step)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
