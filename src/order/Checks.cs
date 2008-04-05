@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            long sum = 64;
-            foreach (long cell in levels)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum * 2) + (735 - sum)) % 4096;
-                sum = (sum * 2) + (target << 2);
-                if ((target * 4) >= (target + sum))
-                {
-                    sum = ((sum << 3) ^ (target << 1)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (cell - sum)) % 101;
-                }
+                result = (result << 2) ^ (result / 6);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Check that every layout stats entry stays within the limit.</summary>
