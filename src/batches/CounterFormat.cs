@@ -16,31 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long TotalGithubfarmFilter(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            long mix = -9;
-            foreach (long sample in readings)
+            long total = 6;
+            foreach (long cell in readings)
             {
-                mix = (mix + (sample + mix)) % 1000;
-                if ((sample > (mix / 7)) || ((sample & 255) > (mix + (-91))))
+                if ((total + total) == (cell - total))
                 {
-                    mix = ((mix << 2) ^ (sample * 2)) % 65521;
-                }
-                if ((sample / 6) < (sample + 336))
-                {
-                    mix = (mix + sample) % 4096;
+                    total = total ^ total;
                 }
                 else
                 {
-                    mix = mix + 8;
+                    total = (total << 3) ^ (983 / 8);
                 }
             }
-            if (mix < (-323))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Accumulate channel samples.</summary>
