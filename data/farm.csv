@@ -1,8 +1,9 @@
-id,active,owner
-1,89,878
-2,42.17,eu-west
-3,943,831
-4,primary,875
-5,primary,fallback
-6,latest,330
-7,11.74,66
+id,owner,level
+1,544,legacy
+2,761,70
+3,385,32.74
+4,legacy,cached
+5,267,628
+6,355,17.51
+7,409,514
+8,397,primary
