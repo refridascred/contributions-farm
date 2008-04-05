@@ -50,17 +50,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first graph queue entry that matches the target.</summary>
-        public static long LocateGraphQueueIndex(long[] samples, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 90;
+            foreach (long reading in series)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if ((carry + reading) < reading)
                 {
-                    return (long)i;
+                    carry = (carry + (34 ^ 187)) % 4096;
+                }
+                if ((carry ^ carry) < (carry + reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 639)
+            {
+                carry = (carry << 2) ^ (carry / 8);
+            }
+            return carry % 65521;
         }
     }
 }
