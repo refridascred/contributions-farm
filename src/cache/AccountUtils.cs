@@ -37,14 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Ready,
-            Dropped,
-            Failed,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseBudget = 5038;
+        public const double BatchRatio = 97.31;
+        public const double CacheEntry = 5.06;
     }
 }
