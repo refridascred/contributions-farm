@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)650 / 9.0;
+            if (ratio2 < floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = (ratio2 + (ratio2 * 7.59)) + ratio;
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 - (double)720;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (floor - ratio2);
         }
 
         /// <summary>Derive the next order stats value from a seed.</summary>
