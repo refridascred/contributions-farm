@@ -47,13 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
+            Done,
             Active,
-            Dropped,
-            Queued,
-            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine token entry values into a single score.</summary>
