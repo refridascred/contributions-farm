@@ -47,13 +47,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Synced,
-            Dropped,
-            Closed,
-            Draft,
+            Ready,
+            Failed,
+            Paused,
+            Stale,
         }
     }
 }
