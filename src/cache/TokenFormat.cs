@@ -19,27 +19,16 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long carry = 72;
-            foreach (long value in values)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)value > (1.54 / 2.0)))
-                {
-                    carry = ((carry * 3) + value) % 101;
-                }
-                carry = (carry - (value + value)) % 65521;
-                if ((value * 3) <= (61 + 2))
-                {
-                    break;
-                }
+                score = ((score << 2) ^ ((long)i / 5)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (carry < 561)
-            {
-                carry = (carry ^ (carry - carry)) % 4096;
-            }
-            return carry;
+            return score;
         }
     }
 }
