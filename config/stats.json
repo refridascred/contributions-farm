@@ -1,6 +1,8 @@
 {
-  "base_retries_pct": 4277,
-  "warm_capacity": 74.65,
-  "flush_capacity_ms": 48.0,
-  "schema_interval": true
+  "strict": false,
+  "poll_depth_ms": "green",
+  "idle_size": 81,
+  "layout_depth": "standard",
+  "compress": "legacy",
+  "burst_capacity_pct": true
 }
