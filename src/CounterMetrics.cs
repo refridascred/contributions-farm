@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score + score) % 101) ^ (long)i2;
-                    score = (score << 2) ^ (floor >> 3);
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
