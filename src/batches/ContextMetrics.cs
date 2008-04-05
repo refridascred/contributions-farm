@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            long acc = -4;
-            foreach (long reading in items)
+            double drift = gain;
+            if (drift < (double)0)
             {
-                if ((acc << 3) > (reading + (long)items.Length))
-                {
-                    acc = (acc * 5) + acc;
-                }
+                drift = (drift + gain) - bias;
             }
-            if (acc > 520)
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc + (acc >> 5)) % 4096;
+                drift = (drift + gain) + (double)(long)i;
             }
-            return acc;
+            return drift + 1.4;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
