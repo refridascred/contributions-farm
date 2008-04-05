@@ -32,19 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (16.0 + 6.69))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 21.18;
+        public const string WindowEntry = "legacy-edge";
+        public const double BaseEntry = 18.07;
+        public const long MaxEntry = 4314;
+        public const string DefaultCount = "open-v2";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
