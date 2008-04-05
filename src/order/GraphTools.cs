@@ -71,18 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer farm entries that pass the check.</summary>
-        public static long CountBufferFarmOutliers(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((seen << 1) == (6 / 9)))
+                if ((7.0 / 6.0) < (double)count)
                 {
-                    seen = (seen + 2) ^ datum;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
