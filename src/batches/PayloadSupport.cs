@@ -28,21 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((matches - sample) >= sample) && (bound >= (sample + 52)))
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
