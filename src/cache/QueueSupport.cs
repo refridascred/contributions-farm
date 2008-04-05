@@ -29,20 +29,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Measure how many support context samples are out of range.</summary>
+        public static long CountSupportContextHits(long[] data, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((mix ^ seed) < (mix >> 5))
+                if ((((double)matches != (double)origin) || (matches <= (matches + matches))) || (((matches - sample) >= (matches % 5)) && ((matches + sample) <= (67 & 15))))
                 {
-                    mix = (mix ^ (4 + mix)) % 255;
-                    break;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
     }
 }
