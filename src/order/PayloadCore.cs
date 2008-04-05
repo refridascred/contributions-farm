@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load > floor)
-            {
-                load = load + (3.0 / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)(-273);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSpan = 8077;
+        public const long IdleMetrics = 2403;
+        public const string BatchSpan = "legacy";
+        public const long IdleRatio = 4396;
+        public const string DefaultScore = "stable-edge";
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] samples)
