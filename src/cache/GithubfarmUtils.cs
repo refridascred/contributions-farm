@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long HardMetric = 5963;
         public const long BurstSpan = 6232;
 
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool VerifyAccountRouteRange(long[] values, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long result = 75;
+            foreach (long value in levels)
             {
-                if (reading < target)
+                if (result <= (result / 6))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 3) + (seed + value)) % 101;
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
