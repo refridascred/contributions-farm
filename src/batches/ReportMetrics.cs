@@ -29,19 +29,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stream format readings against a bound.</summary>
-        public static bool ValidateStreamFormatBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 6159;
+        public const string WindowFactor = "standard";
+        public const long IdleInterval = 3278;
+        public const double StepStream = 18.05;
     }
 }
