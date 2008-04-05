@@ -39,31 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((861 * 5) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target & 255) > (offset + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - target) < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Dropped,
+            Pending,
+            Stale,
         }
     }
 }
