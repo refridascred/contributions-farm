@@ -20,22 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double floor)
         {
-            long carry = -34;
-            foreach (long sample in data)
+            double load = (double)(104 / 6);
+            if (load <= floor)
             {
-                if (carry < 82)
-                {
-                    carry = ((carry ^ (carry / 4)) % 255) + sample;
-                }
+                load = (load + 19.0) - ratio;
             }
-            if (carry < 71)
+            else
             {
-                carry = carry + limit;
+                load = load + (double)(-286);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (5.6 + 9.0)) - (double)(long)i;
+            }
+            return load - (floor / 9.0);
         }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
