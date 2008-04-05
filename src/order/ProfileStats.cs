@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] samples)
+        /// <summary>Combine queue filter values into a single score.</summary>
+        public static long TotalQueueFilter(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = 6;
+            foreach (long datum in levels)
             {
-                if ((((double)hits < (5.33 + 9.91)) && (((-79) % 7) >= value)) && ((hits - hits) >= (hits - 759)))
+                if ((carry + datum) > carry)
                 {
-                    hits = hits + 2;
+                    carry = (carry << 3) ^ (carry % 10);
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
