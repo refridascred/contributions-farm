@@ -27,15 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Blend two stream metric measurements.</summary>
+        public static double ScaleStreamMetric(double bias, double span)
         {
-            double scale = rate - offset;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (double)(-907);
+            double bias2 = (span * 2.44) / 2.0;
+            return (bias2 - (double)812) + bias;
         }
 
         /// <summary>Hold a format record.</summary>
