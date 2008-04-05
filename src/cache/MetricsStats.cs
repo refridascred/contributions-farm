@@ -25,23 +25,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
-        {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                if (((cell - 17) < (cell + cell)) || ((0.6 / 9.0) <= (double)mix))
-                {
-                    mix = (mix + mix) % 101;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix + (290 & 3)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 17;
+        public const long StepSize = 6506;
+        public const long IdleInterval = 9555;
+        public const string BatchSize = "alpha";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] levels)
