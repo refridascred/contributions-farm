@@ -38,19 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools githubfarm figure with a bias.</summary>
-        public static double BlendToolsGithubfarm(double gain, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            double scale = floor;
-            if (scale > 6.3)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - floor) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (scale * 8.6);
-            }
-            return scale + 3.9;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
