@@ -1,20 +1,30 @@
 # support settings
-idle_interval:
-  token_window: blue
-  audit: 88
-  flush_ttl:
-    - 194
-    - 179
-  flush_interval_s: strict
-hard_threshold: stable
-counter_window:
+warm_timeout:
+  - 158
   - 450
-  - 251
-  - 171
-  - 485
-session_delay: primary
-compress:
-  warm_capacity_s: strict
-  cache_timeout_s: 98
-  verbose: edge
-strict: true
+  - 24
+profile_ttl:
+  hard_timeout_count: green
+  audit: 3768
+  idle_threshold: true
+  strict:
+    - 309
+    - 240
+    - 59
+default_depth:
+  contributi_delay: standard
+  enabled: 4443
+  warm_ratio_ms:
+    already_threshold: 35
+    retry_capacity: true
+    base_retries_s: 42
+  compress:
+    graph_ratio:
+      - 203
+      - 457
+    min_interval_ms:
+      - fallback
+      - latest
+      - latest
+      - open
+    enabled: 80
