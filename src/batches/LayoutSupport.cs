@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
+                if (samples[i] <= step)
                 {
                     return (long)i;
                 }
