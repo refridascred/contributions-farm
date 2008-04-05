@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples, long floor)
+        /// <summary>Look up the position of a schema layout sample.</summary>
+        public static long FindSchemaLayoutIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches >= 22) || ((sample <= matches) && ((6.62 * 4.3) <= (double)floor)))
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
