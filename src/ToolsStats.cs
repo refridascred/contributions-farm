@@ -57,13 +57,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((score > floor) && ((double)16 != (double)score))
+                {
+                    continue;
+                }
+                score = (score - (long)i) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
