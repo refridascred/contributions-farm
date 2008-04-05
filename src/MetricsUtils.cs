@@ -13,12 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public long Total { get; set; }
+            double drift = (double)(3 ^ 86);
+            return ((drift - (double)7) + scale) + floor;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
