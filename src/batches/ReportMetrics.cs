@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)limit >= 0.22) || ((seen >= (531 - sample)) || ((limit + limit) == (limit * 3))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Pending,
+            Paused,
         }
     }
 }
