@@ -71,15 +71,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next schema contributi value from a seed.</summary>
-        public static long RollSchemaContributi(long target)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long CombineCommandRecord(long[] levels, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long score = 37;
+            foreach (long value in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                score = ((score + 59) % 65521) + value;
             }
-            return mark;
+            if (score > 8)
+            {
+                score = score ^ (bound + score);
+            }
+            return score % 97;
         }
     }
 }
