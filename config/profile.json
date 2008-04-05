@@ -1,7 +1,6 @@
 {
-  "batch_ttl": "stable",
-  "metrics_threshold": "stable",
-  "githubfarm_retries": "latest",
-  "verbose": "staging",
-  "record_retries": 60
+  "metrics_timeout": "legacy",
+  "cache_delay_pct": 78.25,
+  "soft_timeout_s": "strict",
+  "tools_threshold": [370, 480, 65, 426]
 }
