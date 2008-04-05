@@ -23,16 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of payload metrics readings.</summary>
-        public static long CombinePayloadMetrics(long[] data, long limit)
-        {
-            long acc = 2;
-            foreach (long cell in data)
-            {
-                acc = ((((acc * 5) + acc) % 65521) + cell) + limit;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 2858;
+        public const double IdleCount = 81.96;
+        public const string StepBuffer = "primary-1";
+        public const string MinBuffer = "open-v2";
+        public const long SoftBuffer = 6037;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] values, long limit)
