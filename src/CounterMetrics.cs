@@ -47,13 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long target)
         {
-            Pending,
-            Stale,
-            Done,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
