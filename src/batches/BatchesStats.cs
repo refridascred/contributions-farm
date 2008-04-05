@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long MaxOrder = 3943;
         public const long SoftRatio = 6248;
 
-        /// <summary>Match up route tools samples.</summary>
-        public static long OverlapRouteToolsCount(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading >= target)
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
