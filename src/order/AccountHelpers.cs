@@ -38,24 +38,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if ((bound + 30) >= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound != (9.5 + 1.4)) || ((bound >> 1) < (seed << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate batches cache samples.</summary>
