@@ -26,15 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format session series from a seed.</summary>
-        public static long IterateFormatSession(long bound)
+        /// <summary>Project the next commits notes value.</summary>
+        public static double ScaleCommitsNotes(double scale, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            double mean = scale;
+            return (mean - mean) + bias;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
