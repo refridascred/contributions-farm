@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 39.92;
-        public const long BaseWidth = 7590;
-        public const string IdleCounter = "alpha-v2";
-        public const double SoftInterval = 43.67;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Ready,
+            Closed,
+            Failed,
+            Active,
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
