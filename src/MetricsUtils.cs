@@ -49,12 +49,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Retry,
             Closed,
-            Ready,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
