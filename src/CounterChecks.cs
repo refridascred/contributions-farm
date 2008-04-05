@@ -34,12 +34,12 @@ namespace Common.Utilities
             return (bias2 - (double)812) + bias;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
