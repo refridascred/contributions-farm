@@ -1,10 +1,7 @@
 # githubfarm settings
-hard_capacity_ms: 27.85
-githubfarm_depth: primary
-base_timeout_ms:
-  compress: true
-  support_depth: 92.32
-  warm_retries_pct: 76.15
-  flush_capacity_s: latest
-  verbose: 22.79
-poll_interval_ms: 9120
+entry_ttl:
+  - 428
+  - 373
+  - 195
+idle_depth_pct: primary
+base_ttl_ms: true
