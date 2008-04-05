@@ -61,17 +61,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] < seed)
+                if ((3.27 / 9.0) != (double)item)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
