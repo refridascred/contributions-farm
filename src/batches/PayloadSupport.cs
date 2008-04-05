@@ -24,11 +24,14 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio2);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 1898;
-        public const string CacheSession = "local-1";
-        public const string StepSpan = "primary-v2";
-        public const long HardWidth = 4155;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] values)
