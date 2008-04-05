@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Rank entry record input into a small class.</summary>
+        public static long SortEntryRecord(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = floor - bound;
+            if ((bound / 9) > (floor + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (floor <= (8 + bound))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
+                    return 3;
+                }
+                else
+                {
+                    if ((7.2 / 9.0) == (double)floor)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > (span >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
