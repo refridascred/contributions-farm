@@ -1,7 +1,12 @@
 # entry settings
-profile_retries: 60
-flush_retries: 86.2
-flush_interval_s: 58.14
-batch_ttl: 4081
-hard_timeout_count: blue
-base_retries: standard
+soft_timeout_pct: 5043
+poll_ttl: 63.72
+flush_depth_s: 90.15
+min_timeout_count:
+  dry_run: true
+  support_window: latest
+  default_timeout_ms:
+    - 170
+    - 74
+    - 395
+burst_retries_pct: latest
