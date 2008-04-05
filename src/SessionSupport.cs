@@ -31,14 +31,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Synced,
-            Done,
-            Closed,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetrySpan = 70.27;
+        public const double LimitAccount = 79.77;
+        public const long StepAccount = 2962;
     }
 }
