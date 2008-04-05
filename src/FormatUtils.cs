@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long seed, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples, long offset)
         {
-            if (!((47 >> 4) > (seed >> 2)))
+            long result = 3;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (52 <= (floor << 3))
+                if (158 > (offset + offset))
                 {
-                    return 6;
+                    result = result - ((-128) / 4);
                 }
                 else
                 {
-                    if ((seed - floor) > seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed == (14.0 + 0.69))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = ((result << 3) ^ entry) % 255;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
