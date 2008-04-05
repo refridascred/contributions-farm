@@ -19,12 +19,39 @@ namespace Common.Utilities
         public const long DefaultCounter = 7098;
         public const long WindowScore = 385;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long target)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long next = offset + target;
+            if (next > (target << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset >> 2) <= (493 << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next - 6) <= (target % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next + target) >= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
