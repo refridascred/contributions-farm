@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the context githubfarm series from a seed.</summary>
+        public static long DeriveContextGithubfarm(long limit)
         {
-            Retry,
-            Ready,
-            Paused,
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((sum - sum) != (sum % 97))
+                {
+                    long lane = sum - ((long)i ^ limit);
+                    sum = sum + (lane * 3);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
