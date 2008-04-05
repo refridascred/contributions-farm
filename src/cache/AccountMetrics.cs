@@ -34,12 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long CompareRouteStatsCount(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
