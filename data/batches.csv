@@ -1,7 +1,9 @@
-id,count,active
-1,latest,strict
-2,green,fallback
-3,608,550
-4,cached,197
-5,359,90.73
-6,open,71.99
+id,token,active
+1,80.69,cached
+2,cached,85
+3,122,18.59
+4,fallback,84.55
+5,primary,cached
+6,82.5,standard
+7,900,green
+8,stable,499
