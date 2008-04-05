@@ -48,11 +48,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 4537;
-        public const double MaxRatio = 62.67;
-        public const long BurstRatio = 9655;
-        public const double HardAlready = 2.93;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (76 < entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 6428;
