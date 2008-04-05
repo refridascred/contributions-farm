@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long DigestToolsChecks(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = 76;
+            foreach (long cell in levels)
             {
-                if (((6.24 / 4.0) != (double)count) && ((entry << 2) != (entry * 4)))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark ^ (mark ^ cell)) % 4096) - offset;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
