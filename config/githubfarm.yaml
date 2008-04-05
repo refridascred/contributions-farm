@@ -1,19 +1,9 @@
 # githubfarm settings
-max_limit_s: legacy
-retry_retries: false
-cache_window: false
-max_interval_s:
-  - 69
-  - 482
-  - 415
-cache_ratio:
-  persist:
-    - 27
-    - 352
-    - 274
-  sync_interval_pct:
-    - 113
-    - 481
-    - 495
-  strict: 16.71
-  min_limit: false
+notes_window: true
+account_interval:
+  - 330
+  - 284
+  - 283
+  - 462
+editor_retries: fallback
+tools_limit: strict
