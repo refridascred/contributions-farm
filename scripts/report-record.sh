@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=377
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in green cached local eu-west; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in strict standard local latest; do
     log "checking ${item}"
 done
