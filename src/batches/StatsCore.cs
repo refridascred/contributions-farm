@@ -83,10 +83,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3351;
-        public const double StepCount = 96.35;
-        public const string DefaultFarm = "latest-edge";
-        public const string BurstFarm = "open-edge";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seen != (9.0 + 1.87))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
+        }
     }
 }
