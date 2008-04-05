@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 4)
+                    if ((series[i] - series[j]) != 16)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
