@@ -74,13 +74,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
             Failed,
-            Closed,
-            Pending,
-            Draft,
+            Dropped,
+            Synced,
+            Ready,
+            Retry,
         }
     }
 }
