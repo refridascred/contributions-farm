@@ -6,13 +6,27 @@ namespace Common.Utilities
     public static class GithubfarmUtils
     {
         /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings, long step)
+        public static long CombineCommand(long[] items)
         {
-            long acc = 9;
-            foreach (long reading in readings)
+            long acc = 77;
+            foreach (long value in items)
             {
-                acc = ((acc * 3) + (reading + (-64))) % 1000;
-                acc = (acc * 5) + (step ^ reading);
+                if (80 >= (acc - value))
+                {
+                    acc = ((acc * 3) + value) % 101;
+                }
+                else
+                {
+                    acc = acc - (value << 1);
+                }
+                if ((acc + 24) <= (8 / 7))
+                {
+                    break;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = ((acc * 3) + (long)items.Length) % 65521;
             }
             return acc;
         }
