@@ -53,19 +53,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] readings, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
