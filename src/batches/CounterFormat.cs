@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache window entries.</summary>
-        public static long FoldCacheWindow(long[] items, long origin)
-        {
-            long acc = 722;
-            foreach (long sample in items)
-            {
-                if ((sample + origin) <= (403 << 3))
-                {
-                    acc = ((acc << 2) ^ origin) % 255;
-                }
-            }
-            if (acc > 31)
-            {
-                acc = ((acc << 2) ^ origin) % 4096;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardLevel = 2756;
+        public const long HardScore = 9732;
+        public const long LimitLevel = 2862;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
