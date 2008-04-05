@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-1";
         public const double LimitFarm = 91.89;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] data, long target)
+        /// <summary>Count farm buffer pairs that satisfy a relation.</summary>
+        public static long CompareFarmBufferCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
