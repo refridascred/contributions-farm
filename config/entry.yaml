@@ -1,5 +1,13 @@
 # entry settings
-audit: primary
-format_limit: 7255
-burst_ttl_s: 38.58
-compress: false
+cache_interval_ms:
+  - primary
+  - standard
+flush_timeout_ms: false
+flush_ratio_count: 5
+base_capacity_ms: true
+batch_retries_ms: 12
+flush_retries_count:
+  - staging
+  - standard
+  - strict
+  - stable
