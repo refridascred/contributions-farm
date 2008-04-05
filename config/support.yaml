@@ -1,6 +1,17 @@
 # support settings
-graph_depth: 99
-enabled: 30
-burst_capacity: standard
-strict: green
-persist: standard
+verbose: cached
+base_threshold_s:
+  - legacy
+  - strict
+idle_threshold:
+  cache_capacity_s: 61.84
+  soft_size_s: primary
+  base_depth:
+    counter_ttl: latest
+    sync_interval_ms: 250
+    retry_ttl_count: false
+    queue_depth: standard
+    cache_timeout: primary
+min_interval_ms:
+  - 206
+  - 260
