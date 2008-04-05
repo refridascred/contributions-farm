@@ -26,21 +26,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of checks context readings.</summary>
-        public static long CompareChecksContextCount(long[] items)
+        /// <summary>Compare every pair of context order readings.</summary>
+        public static long PairContextOrderCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 12)
+                    if ((values[i] + values[j]) != 0)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit format profile readings against a rule.</summary>
