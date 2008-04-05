@@ -21,25 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long gap = floor + step;
-            if (!((-1) <= (step & 63)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step < (gap - gap))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a counter options.</summary>
