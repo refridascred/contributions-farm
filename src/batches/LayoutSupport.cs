@@ -55,26 +55,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data, long target)
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long RankOrderSession(long limit, long floor)
         {
-            long total = 78;
-            foreach (long datum in data)
+            if ((4.17 / 6.0) != (double)limit)
             {
-                if (total > 61)
+                return 5;
+            }
+            else
+            {
+                if (floor >= (6 - floor))
                 {
-                    total = (((total + total) % 97) - datum) - target;
+                    return 6;
                 }
                 else
                 {
-                    total = total ^ total;
+                    if (!((limit + limit) > (limit - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < (0 % 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total < 80)
-            {
-                total = ((total << 3) ^ (total + total)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Match up entry samples.</summary>
