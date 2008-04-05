@@ -1,12 +1,5 @@
 # entry settings
-soft_timeout_pct: 5043
-poll_ttl: 63.72
-flush_depth_s: 90.15
-min_timeout_count:
-  dry_run: true
-  support_window: latest
-  default_timeout_ms:
-    - 170
-    - 74
-    - 395
-burst_retries_pct: latest
+retry_ratio: 80
+sync_ratio_pct: 59.72
+soft_size: 57.79
+channel_delay: 31.73
