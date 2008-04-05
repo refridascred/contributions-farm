@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools graph figure with a bias.</summary>
-        public static double BlendToolsGraph(double scale, double offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double mean = 16.0;
-            if (mean < scale)
-            {
-                mean = mean - (mean / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (offset / 8.0)) - (double)(long)i;
-            }
-            return mean + (double)642;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
