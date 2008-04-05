@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Match up payload metrics samples.</summary>
-        public static long OverlapPayloadMetricsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 3802;
+        public const long WindowToken = 9779;
+        public const long BurstToken = 7686;
+        public const long BurstBudget = 8557;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
