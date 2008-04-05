@@ -20,17 +20,19 @@ namespace Common.Utilities
             return scale + (3.0 - bias);
         }
 
-        /// <summary>Look up the position of a counter format sample.</summary>
-        public static long FindCounterFormatIndex(long[] readings, long step)
+        /// <summary>Validate layout metrics readings against a bound.</summary>
+        public static bool GuardLayoutMetricsBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] >= step)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a commits summary.</summary>
