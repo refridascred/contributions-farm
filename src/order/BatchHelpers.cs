@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 395;
-        public const long SoftSpan = 2149;
-        public const long HardInterval = 4805;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen & 15) < (seen % 8))
+                {
+                    seen = ((seen + 2) ^ item) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] samples)
