@@ -53,20 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftRatio = 8871;
+        public const string LimitLevel = "alpha";
+        public const long DefaultSize = 9376;
+        public const string BurstDepth = "open-1";
 
         /// <summary>Combine farm schema values into a single score.</summary>
         public static long TotalFarmSchema(long[] levels, long origin)
