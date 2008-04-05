@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
