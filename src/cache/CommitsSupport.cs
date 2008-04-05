@@ -63,17 +63,21 @@ namespace Common.Utilities
         public const long BaseChecks = 7571;
         public const long DefaultChecks = 8188;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long offset)
+        /// <summary>Match up layout tools samples.</summary>
+        public static long PairLayoutToolsCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
