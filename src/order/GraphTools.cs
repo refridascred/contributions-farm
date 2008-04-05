@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 849;
+            foreach (long entry in values)
+            {
+                result = ((result << 2) ^ (result ^ entry)) % 97;
+            }
+            if (result > 66)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Roll a command checks counter forward.</summary>
