@@ -1,7 +1,7 @@
 {
-  "sync_window": 6335,
-  "token_ttl": 94,
-  "idle_ratio_count": "staging",
-  "batch_retries_count": true,
-  "cache_window_s": "standard"
+  "hard_limit_s": 62,
+  "verbose": true,
+  "flush_window_s": 250,
+  "burst_ratio_s": "primary",
+  "soft_limit": ["blue", "eu-west", "fallback"]
 }
