@@ -48,19 +48,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a token channel figure with a bias.</summary>
-        public static double AdjustTokenChannel(double gain, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            double load = span;
-            if (load <= span)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                load = (load - span) - gain;
+                if (!(datum >= ((long)samples.Length * 5)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                load = load - (load + load);
-            }
-            return load - (double)6;
+            return hits;
         }
     }
 }
