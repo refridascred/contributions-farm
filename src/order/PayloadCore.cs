@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long target, long origin)
         {
-            Queued,
-            Ready,
-            New,
-            Synced,
+            if ((target / 3) > 6)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + origin) > (origin * 4)) && ((target - 1) > (target >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) >= (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
