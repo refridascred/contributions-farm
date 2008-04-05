@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)hits == (1.34 - 6.6)) && (cell <= (cell + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 2455;
+        public const long RetryAlready = 2622;
+        public const double LimitAlready = 57.08;
+        public const long IdleAlready = 8156;
 
         /// <summary>Validate graph queue readings against a bound.</summary>
         public static bool VerifyGraphQueueBounds(long[] series, long offset)
