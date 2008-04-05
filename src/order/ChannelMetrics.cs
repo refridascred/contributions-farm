@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long acc = 372;
-            foreach (long cell in values)
-            {
-                acc = (acc ^ (acc + acc)) + cell;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
