@@ -22,19 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] levels, long step)
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long ClassifyChannelTools(long seed, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            if ((93 * 4) <= seed)
             {
-                if (sample >= step)
+                return 1;
+            }
+            else
+            {
+                if (offset >= (seed * 3))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset * 3) >= (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset <= (offset + seed)) || ((offset >> 2) >= (offset & 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a commits entry.</summary>
