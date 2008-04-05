@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Stale,
-            Closed,
-            Synced,
-            Done,
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
