@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] series, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= limit)
+                if (!((hits % 3) > origin) || ((hits & 15) <= origin))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
