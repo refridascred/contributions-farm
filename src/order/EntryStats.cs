@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultFactor = "standard";
-        public const long StepTimeout = 6427;
-        public const string LimitQueue = "stable-v2";
-        public const long DefaultSpan = 3882;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels)
+        {
+            long mark = 876;
+            foreach (long datum in levels)
+            {
+                mark = ((mark << 2) ^ (mark >> 2)) % 97;
+                mark = mark + datum;
+                if (3 < (mark << 3))
+                {
+                    mark = ((mark * 2) + (7 << 1)) % 101;
+                }
+            }
+            if (mark < 580)
+            {
+                mark = (mark + (mark / 7)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] items, long floor)
