@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings, long offset)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            foreach (long entry in readings)
             {
-                if (!((hits % 3) > origin) || ((hits & 15) <= origin))
+                if ((entry << 2) >= (offset - 794))
                 {
-                    hits = (hits + 2) + entry;
+                    hits = hits + 2;
                 }
             }
             return hits;
