@@ -1,6 +1,4 @@
 # support settings
-commits_delay: 250
-burst_interval_ms: 100
-persist: 72
-base_delay_s: 100
-base_delay: latest
+poll_ttl_pct: 250
+batch_depth_count: 1.84
+sync_ttl_count: 96
