@@ -19,19 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long result = 23;
+            foreach (long value in items)
             {
-                if (entry < target)
+                if ((56 - result) == (value + value))
                 {
-                    flag = false;
-                    break;
+                    result = (result << 3) ^ (result - value);
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Hold a counter stats.</summary>
