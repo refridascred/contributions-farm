@@ -24,12 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Paused,
-            Done,
-            Idle,
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
