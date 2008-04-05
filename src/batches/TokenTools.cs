@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            Paused,
-            New,
-            Draft,
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
