@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string MinWidth = "alpha-1";
         public const long BatchLevel = 5920;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long sum = 81;
+            foreach (long cell in readings)
+            {
+                if ((step << 1) < step)
+                {
+                    sum = sum ^ cell;
+                }
+                if ((9.8 * 17.0) >= (6.98 / 5.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a report counter forward.</summary>
