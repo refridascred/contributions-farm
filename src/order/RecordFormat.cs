@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const double BurstOrder = 93.27;
         public const string HardOrder = "local-edge";
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > seed)
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
