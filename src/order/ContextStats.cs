@@ -25,31 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] items, long offset)
         {
-            if ((9.12 > (double)bound) || (bound >= (step & 255)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + step) <= step)
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound <= (2.1 * 16.0)) && ((1.68 * 20.0) == (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
