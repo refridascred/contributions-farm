@@ -23,11 +23,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((0.51 / 8.0) != (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
