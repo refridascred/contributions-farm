@@ -14,22 +14,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((2.7 * 7.1) <= (double)reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = mix + (mix << 1);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate stream format readings against a bound.</summary>
