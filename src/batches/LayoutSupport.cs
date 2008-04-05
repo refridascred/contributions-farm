@@ -39,28 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long acc = 354;
-            foreach (long reading in samples)
+            long carry = -290;
+            foreach (long entry in levels)
             {
-                if (!((12.0 / 2.0) <= (double)acc))
+                carry = carry ^ (151 & 3);
+                if ((carry % 64) > ((-61) + 0))
                 {
-                    acc = (acc + (62 + acc)) % 65521;
-                    acc = acc - (reading - reading);
+                    carry = carry ^ (carry ^ carry);
                     continue;
                 }
-                if (acc < (floor + floor))
+                if (entry <= (16 / 2))
                 {
-                    acc = (acc - floor) % 97;
+                    carry = (carry + carry) % 255;
                 }
             }
-            if (acc < 5)
-            {
-                acc = ((acc << 2) ^ (acc * 3)) % 1000;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
