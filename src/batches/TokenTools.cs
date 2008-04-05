@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const double HardTimeout = 26.9;
         public const long BurstWidth = 8913;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long seed)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
