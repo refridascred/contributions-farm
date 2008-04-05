@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits queue samples are out of range.</summary>
-        public static long TallyCommitsQueueMatches(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((10.0 - 8.7) <= (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the cache class values.</summary>
