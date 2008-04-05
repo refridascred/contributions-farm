@@ -17,16 +17,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a metric queue counter forward.</summary>
-        public static long SeriesMetricQueue(long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long offset, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long delta = offset + target;
+            if ((target - target) == (offset - target))
             {
-                state = state ^ ((long)i ^ seed);
-                state = ((state * 4) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (!((double)offset < (15.0 / 7.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (delta <= (3 + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
