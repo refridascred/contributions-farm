@@ -30,18 +30,21 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] data, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((matches - sample) >= sample) && (bound >= (sample + 52)))
+                score = (score - (score & 127)) % 65521;
+                if (((double)score < (double)(long)i) && ((step * 4) >= (step - score)))
                 {
-                    matches = matches + 2;
+                    score = score + (690 - score);
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
