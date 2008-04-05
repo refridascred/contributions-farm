@@ -1,12 +1,7 @@
 {
-  "soft_threshold_s": "blue",
-  "idle_size_count": 100,
-  "warm_ratio_count": 1024,
-  "strict": ["local", "staging"],
-  "base_window_s": {
-    "batch_ratio": 100,
-    "channel_interval": "blue",
-    "max_timeout": 5765
-  },
-  "soft_retries_pct": "blue"
+  "base_threshold": "fallback",
+  "editor_window": 3075,
+  "sync_limit_ms": 250,
+  "verbose": true,
+  "base_timeout": "fallback"
 }
