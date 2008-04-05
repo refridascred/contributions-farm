@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Match up route notes samples.</summary>
+        public static long OverlapRouteNotesCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16.0 * 4.5) == (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a channel reading.</summary>
