@@ -1,6 +1,10 @@
-id,active,token,ratio,level
-1,367,87,edge,fallback
-2,edge,6.39,56.61,fallback
-3,edge,edge,547,139
-4,865,open,273,79.38
-5,strict,187,59.46,892
+id,owner,token,count
+1,872,stable,legacy
+2,78,635,legacy
+3,cached,158,96.15
+4,green,94.58,93.29
+5,9.54,cached,760
+6,18.0,48.23,33.88
+7,standard,eu-west,771
+8,53.22,44.51,84.91
+9,63.45,943,171
