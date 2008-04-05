@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long target)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool ValidateTokenClusterRange(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (item >= target)
+                if (datum >= limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Combine token values into a single score.</summary>
