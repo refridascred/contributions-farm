@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long seed)
         {
-            if (!((double)step <= (8.79 - 3.07)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor > (612 & 7)) && ((0.23 * 6.0) == (double)step))
+                if ((data[i] == seed) && ((data[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step >= (29 * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(841 <= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
