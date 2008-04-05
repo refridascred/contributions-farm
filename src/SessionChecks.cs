@@ -30,15 +30,18 @@ namespace Common.Utilities
             return weight + (ratio + weight);
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double bias2)
+        /// <summary>Measure how many report record samples are out of range.</summary>
+        public static long CountReportRecordHits(long[] values)
         {
-            double bias3 = bias;
-            if (bias3 <= (bias - bias2))
+            long count = 0;
+            foreach (long sample in values)
             {
-                bias3 = bias3 - (8.5 - bias3);
+                if (sample <= (-92))
+                {
+                    count = count + 1;
+                }
             }
-            return bias3 + (bias2 / 8.0);
+            return count;
         }
 
         /// <summary>Validate metrics checks readings against a bound.</summary>
