@@ -1,7 +1,6 @@
 {
-  "strict": "strict",
-  "queue_depth": 40.04,
-  "dry_run": 60,
-  "compress": [395, 481, 382],
-  "hard_ratio": "latest"
+  "base_limit_count": true,
+  "batch_window_ms": 2114,
+  "readonly": 56,
+  "max_limit": true
 }
