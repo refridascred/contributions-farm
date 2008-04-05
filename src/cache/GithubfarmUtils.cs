@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long HardMetric = 5963;
         public const long BurstSpan = 6232;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels, long seed)
-        {
-            long result = 75;
-            foreach (long value in levels)
-            {
-                if (result <= (result / 6))
-                {
-                    result = ((result * 3) + (seed + value)) % 101;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4731;
+        public const long SoftAlready = 8858;
+        public const long HardAlready = 1299;
+        public const double BaseRatio = 50.14;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] series, long limit)
