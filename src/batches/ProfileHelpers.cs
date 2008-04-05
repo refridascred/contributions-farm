@@ -94,22 +94,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long bound)
-        {
-            long score = 41;
-            foreach (long entry in data)
-            {
-                if ((bound - score) < (bound - 3))
-                {
-                    score = (score - (9 + bound)) + entry;
-                }
-            }
-            if (score > (-575))
-            {
-                score = (score ^ (bound / 5)) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "staging-v2";
+        public const string DefaultGithubfarm = "stable";
+        public const long BatchGithubfarm = 2792;
     }
 }
