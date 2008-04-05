@@ -60,12 +60,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double floor)
         {
-            Locked,
-            Done,
-            Retry,
+            double gain = bias - bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (double)37) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
