@@ -19,11 +19,39 @@ namespace Common.Utilities
         public const long DefaultCounter = 7098;
         public const long WindowScore = 385;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "primary-edge";
-        public const double StepCache = 60.84;
-        public const long SoftCache = 7470;
-        public const long BurstCache = 251;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long step)
+        {
+            if (((double)step >= (6.12 * 3.49)) || ((1 + seed) == (seed / 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (3.6 * 2.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step >= (0.66 * 1.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.0 * 0.9) >= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string SoftFilter = "stable-edge";
