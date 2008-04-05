@@ -27,19 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long origin)
         {
-            double scale = (double)((-48) ^ 75);
-            if (scale < gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + span;
+                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (scale + gain);
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
