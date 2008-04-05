@@ -55,20 +55,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 27.22;
+        public const long MinFormat = 6093;
+        public const long WindowFormat = 610;
+        public const double DefaultFormat = 78.78;
+        public const double StepWidth = 47.95;
 
         /// <summary>Project the next order value.</summary>
         public static double ScaleOrder(double ratio, double span)
