@@ -25,20 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch filter counter forward.</summary>
-        public static long SeriesBatchFilter(long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total - (bound & 15)) % 101) ^ (long)i2;
-                }
-                total = total ^ (bound % 100);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
