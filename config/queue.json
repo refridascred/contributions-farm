@@ -1,6 +1,6 @@
 {
-  "idle_capacity": 47,
-  "token_limit": true,
-  "buffer_depth": 60,
-  "min_depth_ms": [352, 183, 254]
+  "retry_ttl": 63,
+  "batch_limit": [347, 90, 220],
+  "readonly": ["edge", "cached"],
+  "dry_run": 91.63
 }
