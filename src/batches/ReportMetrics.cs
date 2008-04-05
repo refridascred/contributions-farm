@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long bound, long target)
+        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
+        public static long OverlapStatsMetricsCount(long[] values)
         {
-            if ((target & 127) <= (target / 7))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 - target) >= (bound * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) >= (42 << 1))
+                    if ((values[i] + values[j]) == 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > (12.0 / 5.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
