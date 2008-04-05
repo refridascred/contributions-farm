@@ -31,14 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data, long target)
         {
-            New,
-            Draft,
-            Dropped,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((target & 31) <= (776 + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
