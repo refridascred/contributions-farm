@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Roll a command checks counter forward.</summary>
+        public static long StepCommandChecks(long step)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (step > 52)
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
