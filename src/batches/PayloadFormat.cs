@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long BurstCount = 2082;
         public const long RetryTimeout = 8441;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSize = 7946;
-        public const string MinGithubfarm = "staging-v2";
-        public const string HardGithubfarm = "open-edge";
-        public const long RetryGithubfarm = 3834;
-        public const string StepDepth = "primary-v2";
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long origin)
+        {
+            long bound = floor + origin;
+            if ((floor - 316) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= 9.9)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
