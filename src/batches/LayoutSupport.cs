@@ -29,25 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long floor)
         {
-            long delta = origin + offset;
-            if (((-9) & 31) != (delta % 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset & 255) >= (offset * 4)) || ((offset + delta) <= (origin + origin)))
+                if (data[i] < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the session commits entries that pass the check.</summary>
