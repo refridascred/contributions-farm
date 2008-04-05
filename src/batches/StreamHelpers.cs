@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Project the next tools already value.</summary>
+        public static double ScaleToolsAlready(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double gain = (double)((-49) - 38);
+            if (gain > span)
             {
-                if ((item + (long)series.Length) < (94 % 24))
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain - (gain * 19.0)) - bias;
             }
-            return seen;
+            return gain + (gain * 17.0);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
