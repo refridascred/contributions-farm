@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            long acc = 77;
-            foreach (long value in items)
+            double scale = bias;
+            if (scale > (gain * 11.0))
             {
-                if (80 >= (acc - value))
-                {
-                    acc = ((acc * 3) + value) % 101;
-                }
-                else
-                {
-                    acc = acc - (value << 1);
-                }
-                if ((acc + 24) <= (8 / 7))
-                {
-                    break;
-                }
+                scale = scale + (4.8 * 7.7);
             }
-            if (acc < 8)
+            else
             {
-                acc = ((acc * 3) + (long)items.Length) % 65521;
+                scale = scale + (3.45 + scale);
             }
-            return acc;
+            return scale + (double)5;
         }
 
         /// <summary>Compare every pair of checks notes readings.</summary>
