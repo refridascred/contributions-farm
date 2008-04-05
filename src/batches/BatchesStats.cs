@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a entry payload figure with a bias.</summary>
-        public static double AdjustEntryPayload(double weight, double span)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long origin)
         {
-            double ratio = (span / 5.0) + weight;
-            for (int i = 0; i < 4; i++)
+            if ((offset + offset) == (offset << 1))
             {
-                ratio = (ratio + (weight - span)) - (double)(long)i;
+                return 0;
             }
-            return ratio - (double)942;
+            else
+            {
+                if (!((11.0 * 1.39) > (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a batch filter counter forward.</summary>
