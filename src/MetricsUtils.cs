@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 7211;
-        public const long MaxLayout = 5201;
-        public const double CacheLayout = 74.29;
-        public const long DefaultLayout = 6758;
-        public const long MaxBudget = 7069;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Queued,
+            Active,
+            Paused,
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
