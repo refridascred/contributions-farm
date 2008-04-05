@@ -50,17 +50,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 4;
+            foreach (long reading in samples)
             {
-                if (series[i] > offset)
+                if ((44 * 2) >= (reading * 3))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (reading + 68)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ reading;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Hold a profile stats.</summary>
