@@ -40,22 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format graph samples.</summary>
-        public static long WeighFormatGraph(long[] readings, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long step)
         {
-            long mix = 793;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)mix == (6.9 * 9.0)) || ((bound * 3) != (bound + (-94))))
+                if (samples[i] < step)
                 {
-                    mix = ((mix << 3) ^ (item + mix)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 690)
-            {
-                mix = ((mix << 2) ^ ((-24) >> 1)) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
