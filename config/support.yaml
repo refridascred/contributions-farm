@@ -1,19 +1,33 @@
 # support settings
-compress:
-  flush_depth_pct: 100
-  enabled: stable
-  warm_depth: 41
-  poll_interval_count:
-    default_size: 1651
-    dry_run: 66.92
-    metrics_ttl:
-      - fallback
-      - strict
-    hard_ratio_ms: 250
-    batch_limit: 26.32
-    channel_limit: 2834
-  audit: true
-audit:
-  - 282
-  - 261
-burst_timeout: false
+schema_capacity:
+  - 138
+  - 426
+  - 490
+  - 38
+audit: 1.19
+sync_ttl_s: eu-west
+min_threshold_pct:
+  flush_delay_ms:
+    - 202
+    - 250
+    - 258
+    - 70
+  max_size_pct:
+    cache_delay_ms:
+      - eu-west
+      - stable
+      - cached
+      - green
+    profile_timeout: 30
+    idle_timeout_s: 97
+  context_ttl:
+    - 263
+    - 42
+    - 75
+  metrics_depth: 49
+profile_ratio: 83
+max_ttl:
+  - 350
+  - 158
+  - 39
+  - 415
