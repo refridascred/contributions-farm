@@ -23,16 +23,21 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples, long seed)
+        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
+        public static long CompareNotesEditorCount(long[] series)
         {
-            long carry = 622;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (carry / 8)) % 97;
-                carry = ((carry << 2) ^ (item ^ seed)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
