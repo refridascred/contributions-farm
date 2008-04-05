@@ -55,10 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "standard";
-        public const string HardFactor = "open-1";
-        public const double BurstAccount = 29.69;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepLevel = 9283;
+        public const long BaseSize = 1601;
+        public const long BaseFormat = 8787;
+        public const double MaxSpan = 63.86;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
