@@ -28,13 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 2528;
+        public const long WindowReport = 8726;
+        public const long BatchReport = 3179;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
