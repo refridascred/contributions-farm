@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Project the next record tools value.</summary>
+        public static double BlendRecordTools(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double ratio = (double)((-791) % 10);
+            if (ratio <= span)
             {
-                if ((count - item) < (item ^ item))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio - (double)(-181)) - rate;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (double)81;
+            }
+            return ratio - (double)5;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
