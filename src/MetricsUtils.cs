@@ -74,14 +74,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values, long bound)
         {
-            Locked,
-            Synced,
-            Done,
-            Closed,
-            Pending,
+            long mark = 5;
+            foreach (long sample in values)
+            {
+                if ((8.43 - 9.2) >= (double)sample)
+                {
+                    mark = (mark << 3) ^ (long)values.Length;
+                }
+            }
+            if (mark < 511)
+            {
+                mark = mark - (bound - mark);
+            }
+            return mark;
         }
     }
 }
