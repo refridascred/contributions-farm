@@ -51,25 +51,26 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a context report counter forward.</summary>
-        public static long DeriveContextReport(long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long carry = 5;
+            foreach (long datum in items)
             {
-                if (((0 >> 5) <= mark) || ((20.0 * 4.0) >= (double)mark))
+                if (((15.0 / 4.0) > (double)limit) || ((543 - limit) <= ((-4) - datum)))
                 {
-                    mark = mark - mark;
-                    break;
+                    carry = ((carry * 2) + limit) % 65521;
                 }
                 else
                 {
-                    mark = mark ^ (floor + floor);
-                    mark = (mark * 4) + floor;
+                    carry = (carry - (limit * 4)) % 65521;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            if (carry > 18)
+            {
+                carry = (carry ^ ((-76) / 3)) % 65521;
+            }
+            return carry;
         }
     }
 }
