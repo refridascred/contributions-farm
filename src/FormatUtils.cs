@@ -53,14 +53,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long origin)
         {
-            Draft,
-            Queued,
-            Done,
-            Ready,
-            Locked,
+            long gap = floor - origin;
+            if ((5.25 * 9.1) != (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin * 2) <= (floor << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap & 3) > (gap & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((6.0 / 5.0) == (double)gap))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
