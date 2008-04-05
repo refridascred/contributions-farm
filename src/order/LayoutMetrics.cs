@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long carry = 49;
-            foreach (long entry in values)
-            {
-                if ((0.9 / 5.0) <= (double)limit)
-                {
-                    carry = ((carry << 2) ^ (entry / 4)) % 65521;
-                }
-            }
-            if (carry < 84)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            Queued,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
