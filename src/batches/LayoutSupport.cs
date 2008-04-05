@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinCount = 82.03;
-        public const long IdleSupport = 9823;
-        public const long StepSupport = 7936;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally ^ tally) != (4 - sample))
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxDepth = "strict-edge";
