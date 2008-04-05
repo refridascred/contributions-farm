@@ -74,9 +74,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepScore = 8504;
-        public const long DefaultCache = 8197;
-        public const string MaxScore = "strict";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Locked,
+            Synced,
+            Done,
+            Closed,
+            Pending,
+        }
     }
 }
