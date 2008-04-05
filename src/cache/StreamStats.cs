@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long ScoreBatchesOrder(long[] readings, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long carry = -817;
-            foreach (long value in readings)
-            {
-                carry = (carry + (bound - bound)) % 4096;
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (((carry * 5) + value) % 65521) - (long)i;
-                }
-                if ((56 % 100) == (bound / 7))
-                {
-                    carry = carry ^ 494;
-                }
-                else
-                {
-                    carry = carry - (carry + value);
-                }
-            }
-            return carry;
+            Done,
+            Queued,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
