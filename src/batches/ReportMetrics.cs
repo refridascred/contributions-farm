@@ -14,24 +14,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            if ((7.0 + 7.7) > (double)origin)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (double)bound)
+                if ((2.7 * 7.1) <= (double)reading)
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit format cluster readings against a rule.</summary>
