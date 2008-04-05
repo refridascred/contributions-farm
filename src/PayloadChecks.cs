@@ -53,11 +53,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftRatio = 8871;
-        public const string LimitLevel = "alpha";
-        public const long DefaultSize = 9376;
-        public const string BurstDepth = "open-1";
+        /// <summary>Validate entry stats readings against a bound.</summary>
+        public static bool CheckEntryStatsLimits(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string SoftEditor = "alpha-1";
