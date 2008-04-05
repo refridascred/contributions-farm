@@ -26,19 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats farm readings against a bound.</summary>
-        public static bool ValidateStatsFarmBounds(long[] readings, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (reading > step)
+                if (((double)hits < (4.09 + 16.0)) || ((reading > (hits >> 2)) && (reading > (hits - 5))))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - step;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
