@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Look up the position of a notes stream sample.</summary>
+        public static long SeekNotesStreamIndex(long[] levels, long seed)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
