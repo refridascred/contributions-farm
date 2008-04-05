@@ -20,21 +20,18 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Compare every pair of checks notes readings.</summary>
-        public static long PairChecksNotesCount(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)count < (5.0 * 0.5))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
