@@ -13,24 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            if ((double)floor < (8.5 / 8.0))
+            long mix = 87;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) >= 58)
+                if ((mix << 3) <= (mix >> 4))
                 {
-                    return 2;
+                    mix = mix ^ 98;
                 }
-                else
+                if (entry < mix)
                 {
-                    return 7;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of token readings.</summary>
