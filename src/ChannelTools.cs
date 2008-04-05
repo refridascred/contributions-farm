@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = 168;
+            foreach (long item in items)
             {
-                if ((datum * 4) == (seen & 7))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc ^ (target % 5)) % 1000;
+                acc = (acc << 2) ^ (item / 3);
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
