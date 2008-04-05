@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a queue farm value against two limits.</summary>
-        public static long BucketQueueFarm(long seed, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long seed)
         {
-            if (!((560 * 3) > (origin - seed)))
+            long bound2 = bound - seed;
+            if (bound2 <= (269 + 7))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((9.0 * 5.05) <= (double)origin)
+                if (!((bound + 958) == (seed - seed)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 6;
                 }
             }
         }
