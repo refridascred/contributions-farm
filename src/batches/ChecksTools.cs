@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series, long seed)
+        /// <summary>Match up entry contributi samples.</summary>
+        public static long OverlapEntryContributiCount(long[] values)
         {
-            long anchor = 243;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor - 511) > (59 * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (anchor + seed)) ^ cell;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
