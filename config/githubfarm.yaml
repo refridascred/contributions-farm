@@ -1,5 +1,4 @@
 # githubfarm settings
-flush_window_ms: latest
-flush_ratio_count: false
-format_interval: 19
-dry_run: fallback
+contributi_depth: 60
+default_size_pct: 54
+buffer_retries: true
