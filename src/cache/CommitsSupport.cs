@@ -38,10 +38,14 @@ namespace Common.Utilities
             return weight2 - (3.05 - weight2);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 1770;
-        public const double BurstInterval = 21.62;
-        public const long BaseFarm = 107;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long floor)
