@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
-        public static long CompareProfileChannelCount(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-204) << 3) != (tally - reading))
                 {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
