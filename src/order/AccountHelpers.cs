@@ -30,19 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long result = 56;
+            foreach (long value in levels)
             {
-                if (datum > floor)
+                result = (result - (value << 1)) + floor;
+                if (value <= (result ^ result))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
