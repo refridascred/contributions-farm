@@ -33,11 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "primary-v2";
-        public const long MaxWindow = 3993;
-        public const long StepWindow = 229;
-        public const double SoftWindow = 76.43;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
