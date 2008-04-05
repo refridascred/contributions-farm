@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (!(((double)target <= (double)entry) && ((entry % 8) > (target + tally))))
+                if (datum >= limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of command entries.</summary>
