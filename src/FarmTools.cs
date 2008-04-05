@@ -18,21 +18,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 633;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mark >= (reading % 3))
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark - (reading + (long)data.Length);
+                }
+                else
+                {
+                    mark = (mark - (439 % 64)) % 65521;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
