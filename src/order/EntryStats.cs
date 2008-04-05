@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Ready,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSize = 5379;
+        public const long DefaultProfile = 6615;
+        public const string IdleProfile = "primary-v2";
 
         /// <summary>Validate layout farm readings against a bound.</summary>
         public static bool ValidateLayoutFarmRange(long[] values, long target)
