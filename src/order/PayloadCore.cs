@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long offset)
+        /// <summary>Locate a stream profile reading by value.</summary>
+        public static long LocateStreamProfileIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= offset)
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
