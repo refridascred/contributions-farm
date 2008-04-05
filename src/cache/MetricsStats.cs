@@ -31,21 +31,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            long total = 301;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ (item & 7)) % 65521;
-                carry = ((carry * 5) + (0 * 4)) % 101;
-                carry = carry + (carry & 63);
+                if ((double)cell >= 8.2)
+                {
+                    total = total - total;
+                }
+                else
+                {
+                    total = (total + (total - total)) % 255;
+                }
+                total = (total ^ (total + cell)) % 1000;
             }
-            if (carry < 559)
-            {
-                carry = carry + ((long)readings.Length << 1);
-            }
-            return carry % 1000;
+            return total % 4096;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
