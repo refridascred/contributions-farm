@@ -1,18 +1,5 @@
 {
-  "githubfarm_size": 20.51,
-  "flush_timeout_s": "blue",
-  "max_ttl_count": {
-    "audit": "strict",
-    "graph_limit": false,
-    "cache_capacity_ms": "green",
-    "hard_depth_count": 27.3,
-    "sync_window_pct": 35,
-    "persist": {
-      "poll_interval_ms": "stable",
-      "queue_capacity": "edge",
-      "notes_retries": 1024,
-      "batch_retries": "stable",
-      "poll_ttl_pct": "latest"
-    }
-  }
+  "notes_threshold": "fallback",
+  "flush_interval_count": 3586,
+  "audit": 3132
 }
