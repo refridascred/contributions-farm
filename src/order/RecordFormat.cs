@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const double BurstOrder = 93.27;
         public const string HardOrder = "local-edge";
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 7053;
+        public const long CacheEntry = 9474;
+        public const string SoftEntry = "cached-edge";
 
         /// <summary>Audit session tools readings against a rule.</summary>
         public static long AuditSessionToolsGaps(long[] levels, long bound)
