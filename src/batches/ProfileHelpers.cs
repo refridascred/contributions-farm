@@ -59,21 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > 81)
                 {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
