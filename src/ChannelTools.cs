@@ -31,31 +31,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank session counter input into a small class.</summary>
-        public static long RankSessionCounter(long offset, long floor)
-        {
-            if ((((-44) + floor) != (offset & 63)) || ((floor << 2) != (offset - 0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + 1) < (offset >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "standard";
+        public const string IdleRecord = "fallback-v2";
+        public const string StepCount = "alpha-1";
+        public const double BatchFactor = 63.72;
     }
 }
