@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 243;
+            foreach (long cell in series)
             {
-                if (items[i] <= floor)
+                if ((anchor - 511) > (59 * 2))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor + seed)) ^ cell;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
