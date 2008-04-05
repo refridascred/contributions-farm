@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((value % 64) <= (61 + matches))
+                if (item != floor)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Look up the position of a cache session sample.</summary>
