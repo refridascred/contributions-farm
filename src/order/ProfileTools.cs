@@ -58,18 +58,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Fold a list of cluster payload readings.</summary>
-        public static long TotalClusterPayload(long[] values, long target)
+        /// <summary>Blend two account payload measurements.</summary>
+        public static double ProjectAccountPayload(double scale, double floor)
         {
-            long carry = 0;
-            foreach (long sample in values)
+            double load = scale / 9.0;
+            if (load > floor)
             {
-                if ((double)sample >= (0.2 / 8.0))
-                {
-                    carry = (carry ^ (target % 100)) % 255;
-                }
+                load = load + load;
             }
-            return carry % 65521;
+            return load - floor;
         }
     }
 }
