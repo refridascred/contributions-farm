@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length <= (hits + value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
