@@ -44,18 +44,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long AuditSessionToolsGaps(long[] levels, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (bound >= (item * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
