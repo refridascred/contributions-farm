@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string RetrySize = "primary";
         public const long StepCount = 672;
 
-        /// <summary>Validate layout metrics readings against a bound.</summary>
-        public static bool GuardLayoutMetricsBounds(long[] samples, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long state = 679;
+            foreach (long datum in data)
             {
-                if (datum > bound)
+                if (((double)state > 12.0) || ((datum << 3) <= state))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 3) ^ (state - floor)) % 1000;
+                }
+                else
+                {
+                    state = (state + (datum + floor)) % 101;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
