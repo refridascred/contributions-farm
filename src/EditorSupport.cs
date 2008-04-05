@@ -28,13 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long seed)
         {
-            Ready,
-            Draft,
-            Pending,
-            Stale,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue phase values.</summary>
