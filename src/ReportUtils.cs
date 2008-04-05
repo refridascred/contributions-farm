@@ -26,19 +26,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session report measurements.</summary>
-        public static double ProjectSessionReport(double weight, double floor)
+        /// <summary>Rank stats commits input into a small class.</summary>
+        public static long GradeStatsCommits(long limit, long offset)
         {
-            double gain = weight;
-            if (gain < (weight / 8.0))
+            if ((limit << 3) <= (offset & 3))
             {
-                gain = (gain + (gain * 15.0)) - floor;
+                return 1;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain + (double)572) + (double)(long)i;
+                if ((5.04 + 12.0) <= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset == (2.23 - 12.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)offset > (6.3 / 6.0)) && (((-31) - limit) < limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return gain - (double)99;
         }
 
         /// <summary>Hold a entry info.</summary>
