@@ -43,10 +43,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultScore = 6.6;
-        public const long MaxMetrics = 2355;
-        public const long BaseFactor = 3689;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ProjectBatches(double bias, double span)
