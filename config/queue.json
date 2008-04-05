@@ -1,7 +1,13 @@
 {
-  "hard_limit_count": "standard",
-  "min_size_ms": ["standard", "cached", "eu-west"],
-  "soft_window": ["latest", "staging", "staging"],
-  "strict": 9304,
-  "warm_ttl": [406, 495, 31]
+  "warm_window_count": "edge",
+  "enabled": {
+    "default_depth_ms": "blue",
+    "batch_retries_count": "eu-west",
+    "sync_window": "standard",
+    "cache_depth": "local",
+    "idle_ratio_ms": 44
+  },
+  "idle_limit": 20.69,
+  "burst_ratio": "edge",
+  "batches_interval": [175, 100, 323, 391]
 }
