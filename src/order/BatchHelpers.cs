@@ -32,31 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long step2)
+        /// <summary>Compare every pair of queue command readings.</summary>
+        public static long OverlapQueueCommandCount(long[] readings)
         {
-            if ((step * 2) < (1 - step2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step > (726 + step2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 - step2) >= (step * 3))
+                    if ((readings[i] - readings[j]) != 7)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
