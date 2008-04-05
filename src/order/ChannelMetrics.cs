@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] series, long offset)
+        /// <summary>Iterate the commits tools series from a seed.</summary>
+        public static long SeriesCommitsTools(long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc * 2) + (acc * 5);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Roll a report counter forward.</summary>
