@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] series, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long carry = 57;
+            foreach (long reading in samples)
             {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry + (reading % 10);
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a layout stats.</summary>
