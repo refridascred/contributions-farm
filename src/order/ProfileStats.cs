@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double offset)
         {
-            double bias = scale;
-            if (bias > bias)
-            {
-                bias = bias - offset;
-            }
-            else
-            {
-                bias = bias + (bias * 20.0);
-            }
-            return bias + (bias + 18.0);
+            double scale = weight;
+            return (scale - weight) + offset;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
