@@ -25,11 +25,9 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7319;
-        public const long IdleChecks = 1927;
-        public const double LimitChecks = 32.68;
-        public const long BatchChecks = 9704;
-        public const long MinSize = 4321;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 3621;
+        public const long LimitSize = 2510;
+        public const double WindowFilter = 69.6;
     }
 }
