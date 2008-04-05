@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seen + 214) > (102 / 5)) && ((item + item) == (item & 31)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
