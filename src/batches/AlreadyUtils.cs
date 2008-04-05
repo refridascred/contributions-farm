@@ -71,18 +71,21 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many payload editor samples are out of range.</summary>
-        public static long TallyPayloadEditorMatches(long[] readings)
+        /// <summary>Match up entry checks samples.</summary>
+        public static long OverlapEntryChecksCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)count <= 2.0) || (value <= (value / 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
