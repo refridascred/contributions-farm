@@ -53,18 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] samples, long limit)
         {
-            long score = -47;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (((bound - score) != (score >> 2)) && ((double)entry <= (3.42 + 2.3)))
+                if (reading > limit)
                 {
-                    score = (score * 4) + ((long)series.Length - bound);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
     }
 }
