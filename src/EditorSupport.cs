@@ -54,22 +54,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stats commits readings.</summary>
-        public static long CombineStatsCommits(long[] items, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            long mark = 598;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-280) % 16) < (floor % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark * 4) + (mark * 2)) % 65521) + datum;
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 683)
-            {
-                mark = (mark - (mark << 2)) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Adjust a route batch reading.</summary>
