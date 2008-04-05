@@ -1,11 +1,9 @@
 # support settings
-persist: stable
-queue_limit:
-  - primary
-  - legacy
-  - fallback
-max_size: false
-batch_capacity: staging
-context_retries:
-  - legacy
-  - open
+retry_size_pct: false
+enabled: stable
+retry_threshold_ms: blue
+window_timeout: false
+burst_threshold_s:
+  - 471
+  - 230
+retry_capacity_pct: open
