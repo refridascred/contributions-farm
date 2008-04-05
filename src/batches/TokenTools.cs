@@ -35,17 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long target)
+        /// <summary>Count the order session entries that pass the check.</summary>
+        public static long TallyOrderSessionOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (series[i] < target)
+                if (((floor & 63) < (seen << 1)) || !(seen < (value ^ seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
