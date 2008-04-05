@@ -40,34 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi graph readings.</summary>
-        public static long CombineContributiGraph(long[] levels, long seed)
+        /// <summary>Find the first session filter entry that matches the target.</summary>
+        public static long LocateSessionFilterIndex(long[] readings, long floor)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading - anchor) != (anchor - reading))
+                if (readings[i] <= floor)
                 {
-                    anchor = ((anchor * 4) + (seed % 2)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                if (!(8 >= (reading ^ 18)))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 151)
-            {
-                anchor = (anchor * 2) + seed;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit context payload readings against a rule.</summary>
