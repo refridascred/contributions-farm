@@ -7,20 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=101
-log "limit is ${CHANNEL_LIMIT}"
+for item in strict edge fallback staging; do
+    log "checking ${item}"
+done
