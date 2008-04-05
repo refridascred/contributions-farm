@@ -1,7 +1,5 @@
 {
-  "compress": ["legacy", "eu-west"],
-  "burst_delay": 11.6,
-  "hard_size_ms": 33,
-  "order_limit": 250,
-  "persist": true
+  "payload_limit": 12.51,
+  "strict": [348, 485, 140],
+  "format_threshold": true
 }
