@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] levels, long limit)
         {
-            double gain = (9.0 + bias) + bias2;
-            return gain + bias;
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank already input into a small class.</summary>
