@@ -19,17 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes stream sample.</summary>
-        public static long SeekNotesStreamIndex(long[] levels, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = limit ^ step;
+            if ((limit - 377) <= step)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((prev + prev) != (step ^ limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
