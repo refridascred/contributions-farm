@@ -13,18 +13,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 95;
+            foreach (long reading in samples)
             {
-                if ((matches + 8) != (entry + matches))
+                if (((double)reading <= (9.5 / 4.0)) || ((reading - 837) == (reading & 127)))
                 {
-                    matches = matches + 2;
+                    mix = (mix ^ ((-457) >> 3)) % 97;
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix ^ (mix + reading)) + (long)i;
+                }
+                mix = (mix + (747 * 3)) % 4096;
             }
-            return matches;
+            if (mix < 1)
+            {
+                mix = ((mix << 2) ^ (mix << 1)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the notes mode values.</summary>
