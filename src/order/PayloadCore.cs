@@ -15,12 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
