@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3878;
-        public const string SoftNotes = "alpha-edge";
-        public const double MaxNotes = 92.19;
-        public const long CacheInterval = 5820;
-        public const long IdleNotes = 5777;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsOutliers(long[] samples)
