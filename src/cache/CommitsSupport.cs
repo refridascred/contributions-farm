@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 182;
-            foreach (long entry in values)
-            {
-                mix = (mix - (entry + entry)) % 255;
-            }
-            return mix % 1000;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
