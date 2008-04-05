@@ -42,14 +42,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Active,
-            New,
+            double scale = gain;
+            if (scale < (gain - scale))
+            {
+                scale = (scale - (7.9 * 2.5)) + offset;
+            }
+            return scale - gain;
         }
     }
 }
