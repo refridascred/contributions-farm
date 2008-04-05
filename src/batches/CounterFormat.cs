@@ -34,22 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long target)
         {
-            long acc = 19;
-            foreach (long reading in series)
+            long sum = 813;
+            foreach (long value in levels)
             {
-                if ((double)reading <= 3.6)
+                if (((target << 2) <= (target / 8)) || ((sum - value) < (sum >> 2)))
                 {
-                    acc = (acc << 2) ^ (reading ^ acc);
+                    sum = (sum * 5) + (value * 2);
                 }
             }
-            if (acc < 624)
-            {
-                acc = acc - (acc ^ 69);
-            }
-            return acc;
+            return sum % 1000;
         }
     }
 }
