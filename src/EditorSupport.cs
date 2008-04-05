@@ -34,10 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinTimeout = 9663;
-        public const long DefaultEditor = 8931;
-        public const long BatchTimeout = 1410;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
