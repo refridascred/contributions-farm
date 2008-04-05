@@ -22,14 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Pending,
-            Paused,
+            Done,
+            Queued,
+            Draft,
             Idle,
             Locked,
-            Ready,
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
