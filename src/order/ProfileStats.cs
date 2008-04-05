@@ -37,25 +37,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long delta = bound + origin;
-            if ((78 - delta) >= (-65))
+            double rate2 = 2.83 / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                rate2 = ((rate2 - (rate2 + rate)) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((delta < (113 + origin)) || ((double)origin < (13.0 - 16.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate2 + (rate / 7.0);
         }
     }
 }
