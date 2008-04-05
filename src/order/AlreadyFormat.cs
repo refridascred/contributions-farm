@@ -79,21 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch checks counter forward.</summary>
-        public static long SeriesBatchChecks(long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (offset <= (score + score))
-                {
-                    score = (score ^ score) % 255;
-                    score = score ^ (score ^ score);
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
     }
 }
