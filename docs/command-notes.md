@@ -1,11 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the format list.
-Keep window and cluster names short and lowercase.
+Keep channel and report names short and lowercase.
+Each route is validated before it reaches the counter queue.
+Use stats settings to tune how often route data is refreshed.
+
+A metrics that stays idle for too long is moved to the checks list.
+Use channel settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Log every report change
-- Keep route values small
-- Validate batch input early
-- Review payload limits each release
+- Keep already values small
+- Log every githubfarm change
+- Prefer account defaults
+- Review cache limits each release
