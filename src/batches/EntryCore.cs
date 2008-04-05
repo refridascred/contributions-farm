@@ -57,12 +57,10 @@ namespace Common.Utilities
             return scale + (ratio + ratio);
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Active,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 2690;
+        public const string HardFactor = "standard-edge";
+        public const long CacheLayout = 7734;
+        public const long LimitLayout = 4193;
     }
 }
