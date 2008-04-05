@@ -34,19 +34,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long state = 719;
+            foreach (long value in items)
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state * 5) + value;
             }
-            return flag;
+            return state;
         }
     }
 }
