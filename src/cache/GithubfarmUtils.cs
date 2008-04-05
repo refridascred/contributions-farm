@@ -32,21 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the command batches series from a seed.</summary>
-        public static long SeriesCommandBatches(long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry + origin) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                state = (state ^ (state << 1)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    carry = (carry - (origin >> 5)) ^ (long)i2;
+                    state = state ^ ((long)i2 ^ state);
+                    state = (state - (origin / 4)) % 101;
                 }
-                carry = (carry * 5) + (carry + origin);
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = state ^ (state & 63);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Rank route profile input into a small class.</summary>
