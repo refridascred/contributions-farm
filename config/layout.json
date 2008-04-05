@@ -1,6 +1,8 @@
 {
-  "hard_threshold_pct": "open",
-  "idle_window_ms": false,
-  "flush_size_s": 9003,
-  "sync_window": false
+  "flush_delay_s": 773,
+  "format_ratio": 80,
+  "soft_depth_s": [199, 256, 43],
+  "githubfarm_window": "primary",
+  "readonly": true,
+  "warm_threshold_count": 187
 }
