@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data, long step)
         {
-            Locked,
-            Closed,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((-17) - count) != (step - 50))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
