@@ -54,19 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches layout samples.</summary>
-        public static long WeighBatchesLayout(long[] values, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long carry = 3;
-            foreach (long datum in values)
-            {
-                carry = (carry ^ (target + carry)) % 65521;
-                if ((target & 31) <= datum)
-                {
-                    carry = (carry ^ (carry << 3)) % 65521;
-                }
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
