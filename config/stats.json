@@ -1,16 +1,11 @@
 {
-  "window_depth": {
-    "command_capacity": 100,
-    "audit": true,
-    "verbose": {
-      "compress": 34.01,
-      "sync_depth": false,
-      "enabled": 60,
-      "record_retries": false
-    },
-    "strict": 86.8,
-    "buffer_limit": 36.5
+  "soft_threshold_ms": "local",
+  "dry_run": false,
+  "poll_window_count": {
+    "strict": 70,
+    "order_threshold": "blue",
+    "burst_delay": false,
+    "enabled": 92
   },
-  "default_interval": "open",
-  "compress": 90.89
+  "soft_delay_count": 10.35
 }
