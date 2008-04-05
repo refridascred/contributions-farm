@@ -92,32 +92,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long floor)
         {
-            long step = seed - origin;
-            if ((origin * 3) <= (seed - origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (1 < step)
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin / 8) >= (seed + seed)) || ((origin ^ step) <= (origin - origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
