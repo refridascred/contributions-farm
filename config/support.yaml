@@ -1,4 +1,6 @@
 # support settings
-poll_ttl_pct: 250
-batch_depth_count: 1.84
-sync_ttl_count: 96
+layout_ttl:
+  - strict
+  - standard
+editor_window: strict
+retry_threshold_ms: 89.6
