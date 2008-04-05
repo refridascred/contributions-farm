@@ -47,13 +47,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
