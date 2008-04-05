@@ -32,21 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Combine layout already values into a single score.</summary>
+        public static long WeighLayoutAlready(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 56;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc ^ (516 + 279)) % 65521;
+                acc = ((acc * 4) + acc) % 1000;
+                if ((double)acc <= 1.95)
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc + acc;
+                }
+                if (((double)origin > (4.5 / 5.0)) && ((origin - entry) <= acc))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a counter record.</summary>
