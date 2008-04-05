@@ -64,18 +64,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long sum = 534;
-            foreach (long datum in levels)
+            double rate = (offset / 3.0) + gain;
+            if (rate <= rate)
             {
-                if (4.89 > (double)sum)
-                {
-                    sum = ((sum << 2) ^ (8 + datum)) % 97;
-                }
+                rate = rate - (gain + rate);
             }
-            return sum;
+            return rate - (offset / 7.0);
         }
     }
 }
