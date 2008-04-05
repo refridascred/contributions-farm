@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate stream batches samples.</summary>
-        public static long FoldStreamBatches(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long seed)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry < (11.0 - 20.0))
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    result = (result * 4) + (93 - entry);
-                }
-                else
-                {
-                    result = (result - (481 >> 5)) % 65521;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
