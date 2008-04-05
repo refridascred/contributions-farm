@@ -36,18 +36,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long state = 478;
+            foreach (long sample in levels)
             {
-                if (target <= (82 & 3))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                state = (state ^ (sample / 5)) % 1000;
+                state = state + 44;
+                state = (state ^ (sample << 1)) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
