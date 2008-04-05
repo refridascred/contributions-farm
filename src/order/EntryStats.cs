@@ -62,12 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 2966;
-        public const string BaseStats = "standard-v2";
-        public const long StepDepth = 4320;
-        public const string BurstStats = "alpha-1";
-        public const double CacheFactor = 44.95;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] levels, long seed)
