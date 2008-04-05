@@ -36,27 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values, long floor)
-        {
-            long mix = 182;
-            foreach (long value in values)
-            {
-                if (((double)floor > (0.17 - 9.3)) && (value >= (value - value)))
-                {
-                    break;
-                }
-                if ((long)values.Length < (floor * 4))
-                {
-                    mix = (mix ^ floor) % 4096;
-                }
-            }
-            if (mix < 76)
-            {
-                mix = ((mix * 5) + (mix + floor)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultCount = 3679;
+        public const double LimitSpan = 23.49;
+        public const long LimitSize = 6485;
+        public const double HardScore = 74.66;
+        public const long WindowProfile = 3652;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] series)
