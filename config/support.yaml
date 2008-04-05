@@ -1,15 +1,16 @@
 # support settings
-sync_interval:
-  batch_depth_pct: 3
-  queue_limit: 30
-  cache_threshold_ms: green
-  hard_capacity_pct:
-    session_threshold: false
-    schema_ttl: false
-    verbose:
-      - 132
-      - 18
-      - 435
-    batch_threshold: true
-context_ttl: 1024
-base_threshold_s: false
+persist: 3661
+base_threshold_count: 29
+schema_ratio:
+  flush_size_ms:
+    - green
+    - stable
+  persist: 53.99
+  max_ratio_count:
+    enabled: 76.28
+    idle_size_ms: true
+    payload_size: false
+    dry_run: false
+order_ratio: latest
+audit: 40.99
+default_threshold_pct: cached
