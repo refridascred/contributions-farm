@@ -41,9 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2372;
-        public const string MinInterval = "staging-v2";
-        public const string LimitBudget = "standard-v2";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark + (mark - origin);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
