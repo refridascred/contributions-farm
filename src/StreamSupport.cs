@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseWidth = 5361;
-        public const long StepNotes = 5099;
-        public const string BurstLevel = "strict-v2";
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double bias)
+        {
+            double gain = (weight + bias) * 3.1;
+            if (gain >= 1.06)
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain + gain)) - (double)(long)i;
+            }
+            return gain - weight;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double ratio, double floor)
