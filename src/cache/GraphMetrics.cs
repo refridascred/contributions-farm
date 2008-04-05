@@ -53,19 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((target >> 2) == (tally + target))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9121;
+        public const long WindowFactor = 9699;
+        public const long CacheSize = 8867;
+        public const long WindowTimeout = 5453;
+        public const long IdleProfile = 4375;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long target, long floor)
