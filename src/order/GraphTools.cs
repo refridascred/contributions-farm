@@ -23,10 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 8388;
-        public const double SoftFactor = 94.22;
-        public const long DefaultInterval = 7473;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 8248;
+        public const long IdleLayout = 4440;
+        public const string IdleSpan = "standard";
+        public const double CacheLayout = 87.27;
+        public const double MinSize = 54.46;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long seed, long step)
