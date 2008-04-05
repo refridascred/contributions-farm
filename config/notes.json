@@ -1,8 +1,6 @@
 {
-  "strict": "edge",
-  "sync_threshold": false,
-  "retry_delay_s": true,
-  "poll_capacity_s": "green",
-  "base_size_count": 75,
-  "persist": 29.93
+  "compress": "local",
+  "default_depth_ms": true,
+  "enabled": 61.68,
+  "warm_depth": [405, 39, 227, 48]
 }
