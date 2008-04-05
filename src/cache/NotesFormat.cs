@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5005;
-        public const long WindowDepth = 719;
-        public const long IdleCount = 3953;
-        public const double StepPayload = 88.14;
-        public const long LimitPayload = 3837;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long target)
+        {
+            long span = seed - target;
+            if (!((seed & 127) <= (target >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span + 78) != (87 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((794 - span) == (span + 73))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target ^ target) <= (seed + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] samples, long limit)
