@@ -35,21 +35,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target & 3) <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor << 2) <= (6 << 3))
                 {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
