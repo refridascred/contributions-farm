@@ -58,19 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
