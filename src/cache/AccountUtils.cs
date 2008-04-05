@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 54;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result + result) < (86 % 2))
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (item + result)) % 101;
                 }
             }
-            return count;
+            if (result < 7)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
