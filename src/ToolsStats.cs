@@ -86,19 +86,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route githubfarm measurements.</summary>
-        public static double ScaleRouteGithubfarm(double scale, double offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double mean = offset;
-            if (mean < (scale / 2.0))
-            {
-                mean = mean + (mean + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (offset - 7.0)) + (double)(long)i;
-            }
-            return mean - scale;
+            Dropped,
+            Failed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
