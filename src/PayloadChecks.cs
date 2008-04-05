@@ -71,10 +71,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchTimeout = 8906;
-        public const long DefaultContributi = 8394;
-        public const long SoftSpan = 5261;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long origin)
+        {
+            long state = -94;
+            foreach (long reading in items)
+            {
+                state = ((state << 3) ^ (reading % 12)) + origin;
+            }
+            if (state < 555)
+            {
+                state = ((state << 2) ^ state) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Combine farm schema values into a single score.</summary>
         public static long TotalFarmSchema(long[] levels, long origin)
