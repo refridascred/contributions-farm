@@ -47,19 +47,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long offset)
         {
-            long total = 3;
-            foreach (long item in readings)
+            if ((861 * 5) < target)
             {
-                total = ((total << 3) ^ ((long)readings.Length % 97)) + item;
+                return 3;
             }
-            if (total > 8)
+            else
             {
-                total = (total * 3) + (offset + total);
+                if ((target & 255) > (offset + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - target) < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return total;
         }
     }
 }
