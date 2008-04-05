@@ -1,8 +1,9 @@
 {
-  "flush_size_pct": 1464,
-  "min_interval": 25.52,
-  "stream_threshold": ["latest", "stable", "eu-west", "local"],
-  "max_size_s": true,
-  "cache_capacity_ms": 25,
-  "persist": "fallback"
+  "max_capacity_s": {
+    "hard_ttl_pct": 5873,
+    "account_threshold": ["fallback", "cached", "legacy", "staging"],
+    "payload_window": 100
+  },
+  "cache_ratio": true,
+  "farm_interval": "open"
 }
