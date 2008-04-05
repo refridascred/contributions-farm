@@ -57,10 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2690;
-        public const string HardFactor = "standard-edge";
-        public const long CacheLayout = 7734;
-        public const long LimitLayout = 4193;
+        /// <summary>Accumulate batches layout samples.</summary>
+        public static long WeighBatchesLayout(long[] values, long target)
+        {
+            long carry = 3;
+            foreach (long datum in values)
+            {
+                carry = (carry ^ (target + carry)) % 65521;
+                if ((target & 31) <= datum)
+                {
+                    carry = (carry ^ (carry << 3)) % 65521;
+                }
+            }
+            return carry;
+        }
     }
 }
