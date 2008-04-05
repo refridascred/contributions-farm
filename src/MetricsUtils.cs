@@ -22,18 +22,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] levels, long origin)
+        /// <summary>Accumulate metrics schema samples.</summary>
+        public static long CombineMetricsSchema(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = -8;
+            foreach (long item in items)
             {
-                if ((origin / 9) != (matches + matches))
+                if ((target + 991) < score)
                 {
-                    matches = (matches + 3) + entry;
+                    score = ((score << 3) ^ (item / 2)) % 1000;
+                    break;
+                }
+                else
+                {
+                    score = ((score << 3) ^ ((long)items.Length & 1)) % 1000;
+                }
+                if (((4.0 / 8.0) > (double)item) || ((item >> 1) >= (item / 9)))
+                {
+                    break;
+                }
+                if (((1.0 - 4.4) < (double)score) || (score > (2 + score)))
+                {
+                    score = (score - (score - score)) % 65521;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of report readings.</summary>
