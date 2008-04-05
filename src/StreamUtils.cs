@@ -31,19 +31,22 @@ namespace Common.Utilities
             return weight2 - (double)0;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long step)
+        /// <summary>Digest a series of order tools entries.</summary>
+        public static long DigestOrderTools(long[] series)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long state = 3;
+            foreach (long reading in series)
             {
-                if (value < step)
+                if ((state + state) > (400 % 3))
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ 902) - reading;
                 }
             }
-            return flag;
+            if (state > 8)
+            {
+                state = (state - (state / 5)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
