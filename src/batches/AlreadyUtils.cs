@@ -53,19 +53,31 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long step)
         {
-            long acc = -981;
-            foreach (long value in levels)
+            if (seed <= (step / 3))
             {
-                if (!((acc + value) >= (value << 2)))
-                {
-                    break;
-                }
-                acc = (acc + (value >> 1)) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (!((double)step <= 0.58))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= 8.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
