@@ -46,17 +46,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first format checks entry that matches the target.</summary>
-        public static long SeekFormatChecksIndex(long[] items, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 822;
+            foreach (long item in samples)
             {
-                if (items[i] > limit)
+                if ((9.0 - 9.4) > (0.1 * 4.8))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (item & 31)) % 255;
                 }
             }
-            return -1;
+            if (score > 135)
+            {
+                score = score - 1;
+            }
+            return score % 4096;
         }
     }
 }
