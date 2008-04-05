@@ -33,10 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBudget = 8075;
-        public const long WindowRatio = 1447;
-        public const double BurstLevel = 84.33;
-        public const string HardSpan = "local-v2";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
