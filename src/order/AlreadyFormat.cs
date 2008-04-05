@@ -67,24 +67,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((origin / 4) <= (origin / 3))
-                {
-                    mix = (mix ^ (origin ^ 169)) % 255;
-                }
-                if (((long)i <= mix) && ((7 + mix) < (mix * 2)))
-                {
-                    break;
-                }
-                mix = mix - (mix / 4);
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3190;
+        public const double RetryDepth = 72.87;
+        public const long LimitEditor = 664;
+        public const string BatchEditor = "legacy";
+        public const long DefaultCount = 9769;
     }
 }
