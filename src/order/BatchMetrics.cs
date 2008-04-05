@@ -68,11 +68,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            Dropped,
+            Retry,
+            Stale,
+            Closed,
+            Done,
         }
     }
 }
