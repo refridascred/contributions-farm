@@ -32,14 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheTimeout = 8831;
+        public const string IdleRatio = "fallback-1";
+        public const long WindowScore = 8883;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
