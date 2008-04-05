@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] readings, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long anchor = 54;
+            foreach (long datum in data)
             {
-                if (datum >= floor)
+                anchor = anchor - (anchor >> 5);
+                if ((anchor << 3) > (datum ^ 9))
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor - datum;
+                }
+                else
+                {
+                    anchor = anchor + (anchor & 63);
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Accumulate commits samples.</summary>
