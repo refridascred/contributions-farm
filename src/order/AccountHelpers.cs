@@ -65,15 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double floor)
+        /// <summary>Accumulate batches cache samples.</summary>
+        public static long TallyBatchesCache(long[] data, long step)
         {
-            double gain = bias - bias;
-            for (int i = 0; i < 9; i++)
+            long anchor = 448;
+            foreach (long cell in data)
             {
-                gain = (gain + (double)37) + (double)(long)i;
+                if (!((2 <= (cell * 2)) && ((step - 78) <= step)))
+                {
+                    anchor = (anchor + step) % 4096;
+                }
+                anchor = (anchor - step) % 65521;
             }
-            return gain + floor;
+            if (anchor > 17)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
