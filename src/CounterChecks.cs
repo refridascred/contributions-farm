@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            double scale = span;
-            if (scale > span)
+            long result = 706;
+            foreach (long value in series)
             {
-                scale = scale - (span * 9.75);
+                if ((value - result) == (123 & 63))
+                {
+                    result = (result - (result / 3)) % 65521;
+                }
+                if (!((double)value > (double)result))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (2.9 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (rate + span)) + (double)(long)i;
-            }
-            return scale + (scale / 9.0);
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
