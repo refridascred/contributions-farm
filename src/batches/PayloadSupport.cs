@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long seed)
         {
-            Paused,
-            Ready,
-            Stale,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
