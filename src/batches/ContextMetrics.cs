@@ -33,16 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state * 2) + floor;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
