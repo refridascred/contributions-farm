@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 9468;
-        public const double MaxSession = 88.83;
-        public const string SoftBudget = "strict-v2";
-        public const long RetrySession = 4794;
-        public const long WindowSession = 158;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((317 / 2) > limit)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long CombineRoute(long[] readings, long seed)
