@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long offset)
+        /// <summary>Check that every stats report entry stays within the limit.</summary>
+        public static bool CheckStatsReportBounds(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (reading < offset)
+                if (value < limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
