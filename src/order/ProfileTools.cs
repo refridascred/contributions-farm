@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double weight, double offset)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            double weight2 = offset;
+            if (weight2 >= offset)
+            {
+                weight2 = weight2 + (weight2 - weight2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 + (double)4;
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
