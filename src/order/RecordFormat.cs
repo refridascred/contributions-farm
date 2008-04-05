@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double bias = (12.0 / 4.0) * 9.6;
-            if (bias >= (2.1 / 6.0))
-            {
-                bias = (bias - (bias + rate)) + offset;
-            }
-            else
-            {
-                bias = bias - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)79) - (double)(long)i;
-            }
-            return bias - bias;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate graph queue readings against a bound.</summary>
