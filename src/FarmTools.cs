@@ -13,21 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
