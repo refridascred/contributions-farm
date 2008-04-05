@@ -33,11 +33,13 @@ namespace Common.Utilities
             return load - (double)(-273);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxRatio = "open";
-        public const long StepToken = 3225;
-        public const long CacheToken = 5418;
-        public const double SoftToken = 94.61;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
