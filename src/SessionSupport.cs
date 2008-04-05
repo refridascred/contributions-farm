@@ -31,24 +31,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((5 % 8) > (seed & 15))
-            {
-                return 5;
-            }
-            else
-            {
-                if (4.0 < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Done,
+            Closed,
+            Pending,
+            Paused,
         }
     }
 }
