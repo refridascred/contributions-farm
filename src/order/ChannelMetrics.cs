@@ -14,16 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the commits tools series from a seed.</summary>
-        public static long SeriesCommitsTools(long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc * 2) + (acc * 5);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
