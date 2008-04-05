@@ -29,14 +29,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            Paused,
-            Done,
-            Locked,
-            Failed,
-            Draft,
+            double mean = weight;
+            if (mean > (double)0)
+            {
+                mean = mean + (double)0;
+            }
+            else
+            {
+                mean = mean - (weight / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 0.9) + (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
