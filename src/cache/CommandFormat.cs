@@ -31,19 +31,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine commits tools values into a single score.</summary>
-        public static long TotalCommitsTools(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values, long bound)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long carry = 2;
+            foreach (long entry in values)
             {
-                state = state - reading;
-                if (7.0 >= (double)state)
-                {
-                    state = state ^ (state * 4);
-                }
+                carry = ((carry << 3) ^ ((long)values.Length + bound)) ^ entry;
             }
-            return state % 65521;
+            if (carry < 883)
+            {
+                carry = (carry ^ (bound + bound)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a graph order sample.</summary>
