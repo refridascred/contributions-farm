@@ -64,21 +64,11 @@ namespace Common.Utilities
         public const long MaxBudget = 65;
         public const long SoftSupport = 9759;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
