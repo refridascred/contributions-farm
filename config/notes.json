@@ -1,6 +1,6 @@
 {
-  "readonly": 162,
-  "retry_threshold_count": "fallback",
-  "max_interval_pct": "local",
-  "dry_run": "cached"
+  "default_limit": 7462,
+  "enabled": "fallback",
+  "min_size": true,
+  "soft_limit_ms": 8.37
 }
