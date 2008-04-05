@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (datum < step)
+                if (((entry ^ (long)samples.Length) >= (limit + entry)) || ((double)seen < (double)limit))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a stream entry.</summary>
