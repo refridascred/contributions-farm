@@ -53,21 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 91;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample + sample) <= sample)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (((mix * 2) + (mix ^ 946)) % 97) + offset;
+                }
+                if ((double)mix == (1.17 - 7.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Combine farm schema values into a single score.</summary>
