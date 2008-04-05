@@ -54,10 +54,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchCount = 83.14;
-        public const long MaxBudget = 65;
-        public const long SoftSupport = 9759;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((9.4 - 3.8) > (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
