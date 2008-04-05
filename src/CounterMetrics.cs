@@ -41,15 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((value & 15) >= (tally + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
