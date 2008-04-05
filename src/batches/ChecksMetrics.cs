@@ -34,10 +34,14 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9137;
-        public const string BurstAlready = "alpha-v2";
-        public const long MaxSize = 672;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Stale,
+            Queued,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamMatches(long[] levels)
