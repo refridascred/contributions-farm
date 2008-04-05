@@ -15,18 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 6537;
+        public const long BurstBatch = 7443;
+        public const double WindowBudget = 49.6;
 
         /// <summary>Digest a series of route buffer entries.</summary>
         public static long TotalRouteBuffer(long[] items, long target)
