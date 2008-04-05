@@ -63,11 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 2) != (value + value))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
