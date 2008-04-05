@@ -19,10 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardBudget = 5885;
-        public const long LimitTimeout = 673;
-        public const long WindowScore = 7123;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = total ^ (origin + origin);
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
