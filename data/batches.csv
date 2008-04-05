@@ -1,6 +1,8 @@
-id,count,state,weight
-1,69.34,edge,74.54
-2,49.48,84,legacy
-3,89.89,21,418
-4,28.07,412,standard
-5,73.14,88.5,378
+id,score,state,ratio,count
+1,standard,latest,528,standard
+2,356,primary,576,legacy
+3,latest,fallback,latest,latest
+4,standard,0,local,43
+5,49.93,eu-west,188,464
+6,203,497,legacy,564
+7,latest,green,primary,strict
