@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] readings, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long span = floor + step;
+            if ((floor ^ floor) > (step >> 4))
             {
-                if ((double)seen >= (5.2 / 6.0))
+                return 8;
+            }
+            else
+            {
+                if ((double)step != (double)span)
                 {
-                    seen = ((seen + 2) + datum) - step;
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 3) > (span + 82))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a filter batch counter forward.</summary>
