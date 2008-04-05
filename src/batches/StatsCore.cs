@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item + matches) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
