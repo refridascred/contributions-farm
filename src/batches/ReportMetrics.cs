@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of counter notes readings.</summary>
-        public static long OverlapCounterNotesCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitDepth = 90.75;
+        public const long SoftCluster = 9661;
+        public const long MinDepth = 3064;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long floor)
