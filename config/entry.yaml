@@ -1,4 +1,4 @@
 # entry settings
-flush_size_ms: 2170
-strict: fallback
-min_interval: 1024
+batches_ratio: stable
+verbose: 15
+strict: false
