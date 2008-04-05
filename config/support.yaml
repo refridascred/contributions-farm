@@ -1,21 +1,8 @@
 # support settings
-payload_ttl: true
-max_capacity:
-  tools_interval:
-    - 170
-    - 202
-    - 138
-  sync_depth_count:
-    batches_window:
-      - green
-      - staging
-      - latest
-      - legacy
-    cluster_ratio: 31.6
-    dry_run: 98.99
-    notes_depth: 64.54
-    base_timeout_pct: cached
-  burst_size_count: 250
-  sync_ratio_pct: 500
-  metric_limit: 69.84
-soft_retries_count: 4873
+dry_run: 27.78
+default_ttl_s: cached
+poll_capacity: 500
+min_threshold:
+  readonly: 79.73
+  min_delay_pct: stable
+  audit: fallback
