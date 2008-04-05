@@ -58,20 +58,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Fold a list of cluster payload readings.</summary>
+        public static long TotalClusterPayload(long[] values, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                if ((-7) >= (3 ^ carry))
+                if ((double)sample >= (0.2 / 8.0))
                 {
-                    carry = (carry ^ (offset + carry)) % 101;
-                    carry = carry ^ (carry << 1);
+                    carry = (carry ^ (target % 100)) % 255;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return carry % 65521;
         }
     }
 }
