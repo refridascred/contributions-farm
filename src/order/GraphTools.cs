@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "legacy-v2";
         public const long CacheRatio = 3574;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels, long seed)
         {
-            long result = 849;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                result = ((result << 2) ^ (result ^ entry)) % 97;
+                if ((3.6 + 4.1) > (double)seed)
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            if (result > 66)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a command checks counter forward.</summary>
