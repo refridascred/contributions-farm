@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the channel context entries that pass the check.</summary>
-        public static long MeasureChannelContextHits(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (item <= (item + hits))
+                if (entry >= bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of format entries.</summary>
