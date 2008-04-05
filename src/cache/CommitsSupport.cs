@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Fold a list of report cache readings.</summary>
+        public static long DigestReportCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = 1;
+            foreach (long sample in levels)
             {
-                if ((seen ^ seen) >= (reading - reading))
-                {
-                    seen = seen + 3;
-                }
+                score = (score * 5) + (sample + 3);
             }
-            return seen;
+            if (score > 2)
+            {
+                score = ((score * 2) + (score / 5)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
