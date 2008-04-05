@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+for item in primary cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=136
-log "limit is ${RECORD_LIMIT}"
