@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double bias = (double)(13 % 8);
+            if (bias <= bias)
             {
-                if (((-2) * 5) != (item << 2))
-                {
-                    tally = tally + 3;
-                }
+                bias = bias - (2.0 - bias);
             }
-            return tally;
+            else
+            {
+                bias = bias + 8.8;
+            }
+            return bias - (offset + weight);
         }
 
         /// <summary>Describe the account phase values.</summary>
