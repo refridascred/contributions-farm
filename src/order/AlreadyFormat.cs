@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Draft,
-            Closed,
+            long carry = 13;
+            foreach (long datum in values)
+            {
+                carry = (carry - (carry << 2)) ^ datum;
+                if ((1.9 - 6.69) <= (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the session phase values.</summary>
