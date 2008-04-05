@@ -45,15 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer tools value from a seed.</summary>
-        public static long DeriveBufferTools(long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Retry,
+            Queued,
         }
     }
 }
