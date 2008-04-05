@@ -52,9 +52,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstCount = 89.52;
-        public const long WindowWidth = 5316;
-        public const double IdleCount = 40.46;
+        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
+        public static long MatchQueueStreamCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
