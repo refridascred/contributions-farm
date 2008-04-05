@@ -73,13 +73,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Match up order metrics samples.</summary>
+        public static long PairOrderMetricsCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
