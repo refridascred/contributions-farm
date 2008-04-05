@@ -1,8 +1,5 @@
 {
-  "warm_limit": false,
-  "max_timeout_ms": false,
-  "verbose": 100,
-  "sync_depth_pct": [132, 65],
-  "metric_ratio": false,
-  "cache_interval_ms": ["staging", "edge"]
+  "dry_run": 1926,
+  "cache_ttl_pct": 20.64,
+  "warm_limit_s": 500
 }
