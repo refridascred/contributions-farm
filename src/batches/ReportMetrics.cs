@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
-        public static long OverlapStatsMetricsCount(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((count / 8) <= (step + count)))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
