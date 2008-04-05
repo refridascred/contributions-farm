@@ -54,22 +54,18 @@ namespace Common.Utilities
             return rate2 + (bias / 5.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            long mix = 4;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((44 * 2) >= (reading * 3))
+                if (!!((sample + tally) < (tally / 4)))
                 {
-                    mix = ((mix << 3) ^ (reading + 68)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ reading;
+                    tally = tally + 2;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
