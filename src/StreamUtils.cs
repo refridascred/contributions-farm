@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmToolsRange(long[] items, long limit)
         {
-            double weight2 = 17.0;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                weight2 = ((weight2 + (weight2 - weight)) + (double)(long)i) - bias;
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight2 - (double)0;
+            return stale;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
