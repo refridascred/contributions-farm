@@ -15,18 +15,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] items, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if ((floor << 1) > (floor2 ^ floor))
             {
-                if (entry >= (entry + 721))
+                return 5;
+            }
+            else
+            {
+                if ((floor - floor) != (floor2 / 8))
                 {
-                    seen = (seen + 2) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if (919 >= (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
