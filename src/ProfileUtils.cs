@@ -19,21 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mark = 38;
-            foreach (long item in values)
-            {
-                mark = (mark ^ (item ^ mark)) % 4096;
-                mark = (mark * 3) + (item / 8);
-                mark = mark ^ (item - mark);
-                if (((mark << 2) <= mark) || ((mark & 127) < (-962)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
