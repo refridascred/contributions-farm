@@ -51,15 +51,17 @@ namespace Common.Utilities
         public const double WindowRatio = 44.46;
         public const long SoftNotes = 4513;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a route farm value against two limits.</summary>
