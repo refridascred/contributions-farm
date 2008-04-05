@@ -26,16 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultTimeout = 2089;
+        public const string HardStream = "fallback-1";
+        public const string SoftStream = "cached";
+        public const long CacheStream = 1281;
 
         /// <summary>Compare every pair of route stats readings.</summary>
         public static long CompareRouteStatsCount(long[] levels)
