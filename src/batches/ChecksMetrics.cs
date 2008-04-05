@@ -15,22 +15,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long DeriveStreamEditor(long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((2.0 - 2.7) < (double)matches))
+                if ((mark - floor) == (mark % 10))
                 {
-                    matches = (matches + 1) + entry;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark - mark) % 101;
                 }
+                if ((mark << 3) < ((long)i + mark))
+                {
+                    mark = ((mark * 2) + (78 ^ floor)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the format session series from a seed.</summary>
