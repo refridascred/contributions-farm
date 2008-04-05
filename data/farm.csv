@@ -1,11 +1,6 @@
-id,active,state
-1,cached,795
-2,110,green
-3,58.23,83.46
-4,legacy,74
-5,10.39,300
-6,651,576
-7,65.75,787
-8,24.96,5.74
-9,fallback,110
-10,284,93.82
+id,label,region,level
+1,staging,628,eu-west
+2,88.08,green,16.56
+3,cached,456,119
+4,52.42,800,398
+5,396,239,legacy
