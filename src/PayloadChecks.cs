@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] series, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = 115;
+            foreach (long value in readings)
             {
-                if (((tally * 4) != ((long)series.Length + sample)) || ((9 % 7) >= (tally / 3)))
+                if (sum >= (value & 127))
                 {
-                    tally = (tally + 2) - limit;
+                    sum = ((sum * 3) + (step - 84)) % 255;
                 }
             }
-            return tally;
+            if (sum < 319)
+            {
+                sum = sum ^ step;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
