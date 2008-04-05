@@ -1,6 +1,12 @@
 # githubfarm settings
-poll_capacity: 72
-idle_interval_s: 73
-max_timeout: 25
-warm_ratio_s: fallback
-burst_delay_s: false
+warm_size: 94
+payload_size:
+  - strict
+  - latest
+  - primary
+persist: 30
+verbose: green
+cache_delay:
+  - 370
+  - 92
+readonly: false
