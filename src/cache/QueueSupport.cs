@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2505;
-        public const double HardTimeout = 54.58;
-        public const string WindowRecord = "open-edge";
-        public const string DefaultSpan = "primary-1";
-        public const double DefaultRecord = 81.47;
+        /// <summary>Derive the next checks already value from a seed.</summary>
+        public static long IterateChecksAlready(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((offset << 1) >= (offset & 127)))
+                {
+                    total = (total - offset) % 1000;
+                }
+                long gap = total + (total + total);
+                if ((199 + gap) <= (total & 255))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
