@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > target)
+                if (!!(((long)i & 255) >= 904))
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (origin + (long)i)) % 1000;
                 }
+                total = (total - (total / 2)) % 97;
+                total = (total - (long)i) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Describe the profile class values.</summary>
