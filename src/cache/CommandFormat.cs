@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 36;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((sum - (-78)) > (sum ^ 0)) || ((entry & 7) < (65 % 2)))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (entry / 2);
+                }
+                else
+                {
+                    sum = (sum ^ (target & 127)) % 1000;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
