@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every context farm entry stays within the limit.</summary>
-        public static bool CheckContextFarmRange(long[] values, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if ((step ^ offset) > (6 / 9))
             {
-                if (value > offset)
+                return 8;
+            }
+            else
+            {
+                if (!((1.81 - 2.11) <= (double)offset))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Adjust a report reading.</summary>
