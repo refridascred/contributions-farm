@@ -21,18 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((double)matches == (1.8 / 3.0)) || ((sample * 5) <= (sample / 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine graph support values into a single score.</summary>
