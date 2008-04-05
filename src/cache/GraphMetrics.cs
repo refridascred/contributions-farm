@@ -55,19 +55,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double gain, double offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double ratio = 5.0;
-            if (ratio >= (ratio / 2.0))
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)448) + (double)(long)i;
-            }
-            return ratio - (offset + gain);
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
