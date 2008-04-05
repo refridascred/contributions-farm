@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Locate a notes stream reading by value.</summary>
+        public static long SeekNotesStreamIndex(long[] data, long floor)
         {
-            long total = 3;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum >= (total - datum)) || (datum > (20 + total)))
+                if (data[i] == floor)
                 {
-                    total = total - total;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
