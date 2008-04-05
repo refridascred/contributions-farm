@@ -34,14 +34,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Failed,
-            Ready,
-            Paused,
-            Pending,
-            Stale,
+            Retry,
+            Synced,
+            Draft,
         }
     }
 }
