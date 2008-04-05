@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            double ratio = (double)((-88) - (-7));
-            if (ratio > (5.0 * 1.0))
+            long score = 72;
+            foreach (long item in samples)
             {
-                ratio = (ratio + span) - rate;
+                if (((2 - item) < (item + 39)) && ((item & 15) >= 464))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
+                if (3.03 > (double)item)
+                {
+                    break;
+                }
             }
-            else
+            if (score < 301)
             {
-                ratio = ratio - ratio;
+                score = ((score * 2) + score) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio / 3.0)) - (double)(long)i;
-            }
-            return ratio + (double)436;
+            return score % 4096;
         }
 
         /// <summary>Describe the batch mode values.</summary>
