@@ -47,13 +47,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Ready,
-            Failed,
-            Paused,
+            Done,
             Stale,
+            Locked,
+            Retry,
+            Queued,
         }
     }
 }
