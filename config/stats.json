@@ -1,17 +1,12 @@
 {
-  "payload_limit": [309, 265, 258],
-  "default_timeout_ms": 12.16,
-  "dry_run": "local",
-  "sync_ttl": {
-    "strict": "blue",
-    "sync_timeout_pct": 93.11,
-    "readonly": 5199,
-    "soft_retries_count": {
-      "hard_retries": ["eu-west", "strict", "fallback", "green"],
-      "default_ratio": 100,
-      "default_limit": 39.64,
-      "layout_retries": "standard"
-    },
-    "idle_interval": 59.66
-  }
+  "metric_ratio": {
+    "burst_window": "standard",
+    "enabled": false,
+    "burst_size_ms": "stable"
+  },
+  "retry_ratio_count": ["blue", "green"],
+  "base_ttl": "green",
+  "max_size_pct": 93.61,
+  "warm_depth_ms": 1852,
+  "sync_size_count": "fallback"
 }
