@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 935;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item ^ item) == (item - mark))
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ (mark ^ mark)) % 65521;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
