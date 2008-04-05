@@ -71,10 +71,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "stable-v2";
-        public const double CacheTimeout = 12.63;
-        public const long BurstProfile = 3201;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long step)
+        {
+            if (((78 - bound) > ((-76) % 3)) && ((step - bound) != (47 << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - 67) > (step / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Rank schema metric input into a small class.</summary>
         public static long GradeSchemaMetric(long limit, long target)
