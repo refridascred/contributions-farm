@@ -19,15 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long prev = floor + limit;
+            if (((double)prev == (3.0 + 20.0)) || ((prev + prev) <= (prev / 9)))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (84 <= (floor ^ 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.97 + 5.0) < (double)prev) && ((floor - limit) >= (prev + 49)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
