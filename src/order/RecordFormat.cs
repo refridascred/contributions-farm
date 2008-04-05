@@ -30,10 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 7053;
-        public const long CacheEntry = 9474;
-        public const string SoftEntry = "cached-edge";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit session tools readings against a rule.</summary>
         public static long AuditSessionToolsGaps(long[] levels, long bound)
