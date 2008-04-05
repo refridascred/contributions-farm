@@ -48,19 +48,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long seed)
+        /// <summary>Adjust a editor checks reading.</summary>
+        public static double ScaleEditorChecks(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double ratio = bias + (bias / 8.0);
+            if (ratio <= (bias / 8.0))
             {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (0.82 - ratio);
             }
-            return ready;
+            return ratio + gain;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
