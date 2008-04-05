@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSpan = 8077;
-        public const long IdleMetrics = 2403;
-        public const string BatchSpan = "legacy";
-        public const long IdleRatio = 4396;
-        public const string DefaultScore = "stable-edge";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] samples)
