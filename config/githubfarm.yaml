@@ -1,8 +1,6 @@
 # githubfarm settings
-max_ttl_s: 32
-flush_size: 72.46
-poll_retries_count: true
-hard_ttl_s:
-  - standard
-  - local
-burst_timeout: green
+poll_capacity_s: cached
+idle_threshold_count: 97
+strict: 2252
+already_delay: 52.97
+soft_ttl_s: true
