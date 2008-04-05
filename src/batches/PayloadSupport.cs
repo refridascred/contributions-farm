@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] levels)
+        /// <summary>Derive the next order stats value from a seed.</summary>
+        public static long StepOrderStats(long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((86 - 5) <= entry)
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
