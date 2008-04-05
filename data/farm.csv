@@ -1,7 +1,6 @@
-id,state,count,owner
-1,181,staging,local
-2,latest,blue,574
-3,42.5,861,49.57
-4,17.75,13.9,cached
-5,54,774,staging
-6,latest,eu-west,80.54
+id,state,weight,ratio,owner
+1,105,68.28,965,588
+2,eu-west,fallback,216,47.28
+3,eu-west,619,74.84,731
+4,248,23.15,stable,open
+5,52.81,edge,782,stable
