@@ -45,21 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format counter readings.</summary>
-        public static long CompareFormatCounterCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item >= (1 - 24))
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
