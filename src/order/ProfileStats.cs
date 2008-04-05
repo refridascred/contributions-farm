@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long carry = 382;
+            foreach (long datum in levels)
+            {
+                if (((5.7 + 6.44) == (double)carry) || (origin <= (676 << 2)))
+                {
+                    carry = ((carry + (carry + carry)) % 97) + datum;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a stats reading.</summary>
