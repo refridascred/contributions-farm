@@ -13,18 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 182;
+            foreach (long entry in values)
             {
-                if ((double)cell == (2.42 + 20.0))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix - (entry + entry)) % 255;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
