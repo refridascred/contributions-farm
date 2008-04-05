@@ -1,8 +1,12 @@
 {
-  "batch_interval": 60,
-  "flush_ratio": 4841,
-  "poll_threshold": true,
-  "hard_delay_s": 32.95,
-  "readonly": [333, 304],
-  "compress": 35
+  "min_ttl": {
+    "poll_retries_count": "standard",
+    "compress": "local",
+    "retry_ttl_ms": 57.27
+  },
+  "record_ttl": 29,
+  "window_retries": 3.22,
+  "poll_timeout_ms": true,
+  "hard_limit_s": 81.11,
+  "batch_delay_ms": 48
 }
