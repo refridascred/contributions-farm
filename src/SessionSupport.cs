@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const string RetryOrder = "strict";
         public const double BurstOrder = 41.36;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long origin)
+        /// <summary>Adjust a commits layout reading.</summary>
+        public static double BlendCommitsLayout(double weight, double bias)
         {
-            long step = seed + origin;
-            if ((4.47 / 7.0) <= (double)origin)
+            double drift = (double)7 / 3.0;
+            if (drift > (double)9)
             {
-                return 0;
+                drift = drift - (weight / 3.0);
             }
             else
             {
-                if (step > (3 & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift + bias;
             }
+            return drift - bias;
         }
 
         /// <summary>Define account limits and defaults.</summary>
