@@ -50,23 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long mix = 1;
+            foreach (long entry in series)
             {
-                if ((target & 255) <= sum)
+                mix = (mix + (177 + mix)) % 65521;
+                if (((entry >> 1) >= mix) || ((mix - entry) > mix))
                 {
-                    sum = sum + (long)i;
+                    mix = (mix ^ (entry >> 3)) % 101;
                 }
-                if ((sum > (sum << 2)) && (sum <= target))
+                else
                 {
-                    sum = (sum ^ (target ^ sum)) % 101;
+                    mix = (mix * 5) + (mix << 2);
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
     }
 }
