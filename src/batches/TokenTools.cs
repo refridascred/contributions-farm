@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long CacheStream = 6724;
         public const long MinScore = 6016;
 
-        /// <summary>Project the next context githubfarm value.</summary>
-        public static double SmoothContextGithubfarm(double weight, double bias)
-        {
-            double mean = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (double)347) + (double)(long)i;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "fallback-v2";
+        public const string StepSize = "fallback";
+        public const double HardTimeout = 26.9;
+        public const long BurstWidth = 8913;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
