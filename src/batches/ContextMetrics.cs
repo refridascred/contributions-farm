@@ -33,12 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
+            Synced,
+            Active,
             Queued,
             Failed,
-            Draft,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
