@@ -30,15 +30,17 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
         {
-            long acc = 47;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + acc) % 255) ^ item;
+                if ((values[i] < target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
