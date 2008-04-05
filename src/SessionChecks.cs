@@ -24,11 +24,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Total { get; set; } = "";
             public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of checks context readings.</summary>
