@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long span = floor + step;
-            if ((floor ^ floor) > (step >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step != (double)span)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 3) > (span + 82))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a filter batch counter forward.</summary>
