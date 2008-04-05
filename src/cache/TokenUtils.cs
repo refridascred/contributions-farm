@@ -25,15 +25,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long target)
         {
-            long total = 95;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total ^ (total >> 1)) % 255) - cell) - step;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
