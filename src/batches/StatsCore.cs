@@ -37,16 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Digest a series of format buffer entries.</summary>
+        public static long DigestFormatBuffer(long[] values, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long acc = 6;
+            foreach (long item in values)
             {
-                total = total - total;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((double)item <= (double)origin)
+                {
+                    acc = (acc * 5) + 0;
+                }
             }
-            return total;
+            if (acc < 16)
+            {
+                acc = (acc << 3) ^ (acc + origin);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the cache level values.</summary>
