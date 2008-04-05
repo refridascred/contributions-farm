@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 5.3;
-        public const double LimitTimeout = 33.29;
-        public const long IdleInterval = 9181;
-        public const long StepGithubfarm = 8292;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell + cell) == (197 % 24)) || ((hits - cell) >= cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] readings)
