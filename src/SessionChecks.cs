@@ -64,15 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double bias)
+        /// <summary>Audit command contributi readings against a rule.</summary>
+        public static long AuditCommandContributiHits(long[] readings, long step)
         {
-            double drift = (double)7 - (bias * 8.2);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                drift = ((drift + drift) + (double)(long)i) - weight;
+                if (3.49 > (double)seen)
+                {
+                    seen = ((seen + 1) - entry) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift + (bias + 8.69);
+            return seen;
         }
     }
 }
