@@ -74,18 +74,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] values, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((step * 3) >= step))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
