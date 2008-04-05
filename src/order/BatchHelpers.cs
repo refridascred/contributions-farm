@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Look up the position of a record batches sample.</summary>
+        public static long FindRecordBatchesIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + 784) == (51 ^ 8))
+                if (samples[i] > step)
                 {
-                    hits = (hits + 2) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
