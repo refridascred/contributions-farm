@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a batches format counter forward.</summary>
-        public static long StepBatchesFormat(long offset)
+        /// <summary>Validate already profile readings against a bound.</summary>
+        public static bool VerifyAlreadyProfileRange(long[] samples, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((9.0 - 7.0) > (double)offset)
+                if (item > bound)
                 {
-                    anchor = anchor ^ anchor;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (offset - offset)) % 255;
-                }
-                if ((anchor / 9) == (790 >> 3))
-                {
-                    anchor = (anchor << 3) ^ (offset - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (offset >> 2)) % 1000;
-                    anchor = anchor ^ (4 / 7);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
