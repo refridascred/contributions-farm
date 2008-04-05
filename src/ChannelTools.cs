@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchDepth = "stable-v2";
+        public const double LimitSpan = 46.1;
+        public const double MinTimeout = 55.96;
+        public const long BatchChecks = 5635;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long limit, long seed)
