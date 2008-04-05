@@ -35,15 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a route stats.</summary>
