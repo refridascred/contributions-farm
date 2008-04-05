@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] data, long target)
         {
-            if ((offset + offset) == (offset << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((11.0 * 1.39) > (double)offset))
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
