@@ -30,25 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long span = origin ^ bound;
-            if ((double)origin >= (1.61 + 10.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((span << 3) != (4 & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
