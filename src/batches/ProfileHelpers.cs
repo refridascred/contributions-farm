@@ -41,17 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
