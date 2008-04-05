@@ -31,18 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long TallySupportChannel(long[] levels)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long seed)
         {
-            long acc = 847;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell & 3) >= (7 + cell))
+                if (values[i] > seed)
                 {
-                    acc = acc ^ (cell >> 4);
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
