@@ -1,8 +1,8 @@
 {
-  "sync_delay_pct": "strict",
-  "persist": "stable",
-  "compress": "edge",
-  "soft_threshold": "staging",
-  "warm_capacity": "local",
-  "max_depth_s": "open"
+  "graph_interval": 1.76,
+  "default_interval_ms": 21,
+  "verbose": true,
+  "cache_delay": ["latest", "open", "primary"],
+  "burst_window_ms": [86, 183, 366, 172],
+  "dry_run": 4272
 }
