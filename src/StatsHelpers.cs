@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long TallySupportChannel(long[] levels)
         {
-            long state = 6;
-            foreach (long item in values)
+            long acc = 847;
+            foreach (long cell in levels)
             {
-                if (((98 / 2) != (item >> 4)) || ((double)state == (2.9 / 8.0)))
+                if ((cell & 3) >= (7 + cell))
                 {
-                    state = ((state * 5) + (item & 63)) % 4096;
-                }
-                if ((double)311 >= (double)(long)values.Length)
-                {
-                    break;
+                    acc = acc ^ (cell >> 4);
                 }
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
