@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const double HardTimeout = 26.9;
         public const long BurstWidth = 8913;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            double load = span;
-            return (load + (load - span)) + gain;
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches <= item) || ((item - matches) < (5 + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
