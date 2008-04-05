@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Audit buffer tools readings against a rule.</summary>
+        public static long CountBufferToolsOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (tally >= (entry * 3))
+                if ((double)672 > (double)0)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next window contributi value.</summary>
