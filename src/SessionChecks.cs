@@ -30,18 +30,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((matches * 2) == (matches + origin))
+                if ((datum < ((long)series.Length ^ datum)) && ((544 + count) == (count / 3)))
                 {
-                    matches = (matches + 1) ^ sample;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
