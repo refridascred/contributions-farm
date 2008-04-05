@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first order metrics entry that matches the target.</summary>
-        public static long FindOrderMetricsIndex(long[] samples, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (samples[i] >= origin)
+                if (cell != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Scale a schema channel figure with a bias.</summary>
