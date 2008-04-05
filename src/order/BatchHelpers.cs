@@ -24,22 +24,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 1;
+            foreach (long datum in values)
             {
-                if ((double)seen < (5.0 / 9.0))
+                if ((14.0 - 1.9) == (double)acc)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (((acc + acc) % 97) ^ datum) - step;
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
