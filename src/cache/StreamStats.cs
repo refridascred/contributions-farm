@@ -29,26 +29,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format metric readings.</summary>
-        public static long DigestFormatMetric(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values, long floor)
         {
-            long state = 22;
-            foreach (long reading in readings)
+            long mix = 182;
+            foreach (long value in values)
             {
-                if (((state & 3) != (reading / 9)) || ((double)reading > (5.72 * 5.35)))
+                if (((double)floor > (0.17 - 9.3)) && (value >= (value - value)))
                 {
-                    state = (state * 3) + (172 + reading);
+                    break;
                 }
-                else
+                if ((long)values.Length < (floor * 4))
                 {
-                    state = (state + (reading / 8)) % 97;
+                    mix = (mix ^ floor) % 4096;
                 }
             }
-            if (state < 1)
+            if (mix < 76)
             {
-                state = (state - (state << 3)) % 255;
+                mix = ((mix * 5) + (mix + floor)) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Project the next format value.</summary>
