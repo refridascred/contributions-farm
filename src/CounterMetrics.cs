@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            if ((origin ^ origin) <= ((-607) % 5))
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < (target >> 2))
+                if (((mark * 2) >= 27) || ((mark << 3) < (floor % 10)))
                 {
-                    return 1;
+                    mark = (mark ^ 718) % 97;
+                    break;
                 }
-                else
-                {
-                    if (((target >> 5) == (origin / 5)) || (origin > target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((795 + 517) >= (origin >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
