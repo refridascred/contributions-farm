@@ -27,25 +27,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a batches graph value against two limits.</summary>
-        public static long BucketBatchesGraph(long origin, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            long step2 = origin - step;
-            if ((step % 16) != (step2 - step))
+            long total = -875;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step2 >= (2.4 - 2.26))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 3;
+                    total = (total << 3) ^ ((long)i - sample);
                 }
-                else
-                {
-                    return 6;
-                }
+                total = (total * 3) + (long)readings.Length;
             }
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
