@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series, long step)
         {
-            long carry = 382;
-            foreach (long datum in levels)
+            long result = 0;
+            foreach (long value in series)
             {
-                if (((5.7 + 6.44) == (double)carry) || (origin <= (676 << 2)))
-                {
-                    carry = ((carry + (carry + carry)) % 97) + datum;
-                }
+                result = (((result - 5) % 101) + value) + step;
             }
-            if (carry > 6)
+            if (result < 352)
             {
-                carry = (carry * 3) + carry;
+                result = result - (7 * 2);
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
