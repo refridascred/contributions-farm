@@ -27,18 +27,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cluster counter readings.</summary>
-        public static long TotalClusterCounter(long[] data, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] levels, long target)
         {
-            long score = 167;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)score <= (8.22 * 6.7))
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
                 {
-                    score = (((score << 2) ^ (limit & 63)) % 97) + reading;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
     }
 }
