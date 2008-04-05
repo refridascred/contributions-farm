@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long state = 5;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)state > (0.83 * 6.5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state ^ state) % 4096) - datum;
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 2)
-            {
-                state = (state * 4) + 0;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
