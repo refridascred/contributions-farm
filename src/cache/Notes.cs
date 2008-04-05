@@ -14,23 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long WeighRouteSchema(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] samples, long step)
         {
-            long score = 78;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item - score) >= (item >> 2)) && ((double)score <= (13.0 * 7.6)))
+                if (samples[i] <= step)
                 {
-                    score = (score - 547) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score * 2) + 882;
-                }
-                score = (score * 4) + score;
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
