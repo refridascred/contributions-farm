@@ -50,23 +50,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long origin)
         {
-            long mark = 1;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mark = ((mark << 2) ^ value) % 1000;
-                if ((mark < value) && (2 < mark))
+                if (datum >= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mark > 576)
-            {
-                mark = (mark * 3) + (mark * 5);
-            }
-            return mark % 97;
+            return found;
         }
     }
 }
