@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values)
         {
-            New,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits >= 9.58)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache entry.</summary>
