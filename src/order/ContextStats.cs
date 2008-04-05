@@ -34,19 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((sample >> 3) < (sample & 7))
                 {
-                    score = ((score ^ score) % 4096) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                score = ((score * 5) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
