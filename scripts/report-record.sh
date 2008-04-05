@@ -6,13 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
