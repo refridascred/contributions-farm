@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Validate tools checks readings against a bound.</summary>
+        public static bool GuardToolsChecksBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((cell <= (cell + cell)) || (((double)cell > (double)9) || (((long)items.Length + cell) >= (matches + matches))))
+                if (datum < floor)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
