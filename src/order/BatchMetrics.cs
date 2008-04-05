@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 1059;
-        public const long CacheAlready = 8401;
-        public const string BaseAlready = "alpha-v2";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (2 < (datum % 5))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] data)
