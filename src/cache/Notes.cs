@@ -37,19 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support editor entries.</summary>
-        public static long TotalSupportEditor(long[] series, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels, long origin)
         {
-            long anchor = 821;
-            foreach (long item in series)
+            long sum = 939;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor ^ 822) % 1000) + item;
+                sum = (sum - (datum ^ sum)) % 1000;
+                if ((sum ^ 9) == (origin + sum))
+                {
+                    sum = (sum + (217 - origin)) % 255;
+                }
             }
-            if (anchor > 34)
+            if (sum < 418)
             {
-                anchor = (anchor + offset) % 101;
+                sum = (sum - (sum + origin)) % 255;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Classify a window githubfarm pair into a bucket.</summary>
