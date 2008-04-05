@@ -30,19 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics channel figure with a bias.</summary>
-        public static double BlendMetricsChannel(double weight, double floor)
-        {
-            double load = 9.5;
-            if (load <= load)
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load + floor)) - (double)(long)i;
-            }
-            return load + (weight / 6.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 5744;
+        public const long StepRecord = 1527;
+        public const double SoftRecord = 13.12;
+        public const long RetryRecord = 7686;
+        public const long MaxCount = 2644;
     }
 }
