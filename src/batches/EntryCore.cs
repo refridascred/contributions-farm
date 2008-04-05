@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
