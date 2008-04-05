@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] values, long target)
         {
-            long result = 23;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((56 - result) == (value + value))
+                if (17.0 < (double)item)
                 {
-                    result = (result << 3) ^ (result - value);
+                    matches = (matches + 2) + target;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Describe the commits class values.</summary>
