@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a contributi counter sample.</summary>
-        public static long FindContributiCounterIndex(long[] values, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
+                if ((double)seen >= (5.2 / 6.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
