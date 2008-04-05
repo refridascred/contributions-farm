@@ -41,33 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long bound, long target)
-        {
-            long bound2 = bound - target;
-            if (((16.0 / 9.0) == (double)bound) && (56 > bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 < (target + bound2)) || ((double)bound <= 9.7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14.0 / 6.0) < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 2966;
+        public const string BaseStats = "standard-v2";
+        public const long StepDepth = 4320;
+        public const string BurstStats = "alpha-1";
+        public const double CacheFactor = 44.95;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MinLevel = "local-v2";
