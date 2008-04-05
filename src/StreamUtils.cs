@@ -26,12 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            Stale,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((double)matches == (1.8 / 3.0)) || ((sample * 5) <= (sample / 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine graph support values into a single score.</summary>
