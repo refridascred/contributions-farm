@@ -60,15 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] series, long limit)
         {
-            long anchor = 282;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                anchor = ((anchor ^ 9) % 101) ^ value;
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Locate a route reading by value.</summary>
