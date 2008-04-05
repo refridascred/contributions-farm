@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix - mix) % 255;
-                mix = ((mix * 5) + (mix + offset)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
