@@ -39,13 +39,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
