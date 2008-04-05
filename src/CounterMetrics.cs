@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((mark * 2) >= 27) || ((mark << 3) < (floor % 10)))
-                {
-                    mark = (mark ^ 718) % 97;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Digest a series of order githubfarm entries.</summary>
