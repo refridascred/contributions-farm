@@ -16,21 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long TotalGithubfarmFilter(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -9;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix + (sample + mix)) % 1000;
+                if ((sample > (mix / 7)) || ((sample & 255) > (mix + (-91))))
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 2) ^ (sample * 2)) % 65521;
+                }
+                if ((sample / 6) < (sample + 336))
+                {
+                    mix = (mix + sample) % 4096;
+                }
+                else
+                {
+                    mix = mix + 8;
                 }
             }
-            return count;
+            if (mix < (-323))
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of notes queue readings.</summary>
