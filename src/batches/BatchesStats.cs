@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool ValidateCommitsNotesLimits(long[] series, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
