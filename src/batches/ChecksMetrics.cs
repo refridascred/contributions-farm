@@ -15,27 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long DeriveStreamEditor(long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            double bias = (double)(69 * 4);
+            if (bias <= (rate / 8.0))
             {
-                if ((mark - floor) == (mark % 10))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark - mark) % 101;
-                }
-                if ((mark << 3) < ((long)i + mark))
-                {
-                    mark = ((mark * 2) + (78 ^ floor)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                bias = bias - (floor / 8.0);
             }
-            return mark;
+            return bias - (floor / 3.0);
         }
 
         /// <summary>Iterate the format session series from a seed.</summary>
