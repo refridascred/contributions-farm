@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((hits - hits) <= hits) && ((double)hits <= (3.4 - 16.0)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
