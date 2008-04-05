@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long RetrySession = 4794;
         public const long WindowSession = 158;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 812;
+            foreach (long value in readings)
             {
-                if (((datum & 255) > (tally - 8)) || (((10 + tally) < (origin + datum)) && ((datum / 4) < (datum * 2))))
+                if ((double)acc == (double)seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc ^ (acc + value)) % 97;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
