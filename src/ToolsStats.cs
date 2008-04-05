@@ -101,22 +101,11 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (5.9 <= (double)hits)
-                {
-                    hits = ((hits + 3) + value) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowSpan = 27.72;
+        public const double SoftFactor = 16.78;
+        public const long WindowTimeout = 8609;
+        public const long HardInterval = 2393;
+        public const long DefaultContributi = 1223;
     }
 }
