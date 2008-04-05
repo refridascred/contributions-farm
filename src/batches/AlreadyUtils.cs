@@ -32,15 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long floor, long bound)
         {
-            long acc = 9;
-            foreach (long entry in samples)
+            long delta = floor + bound;
+            if (((1 ^ floor) <= (bound << 3)) || (delta > (bound + bound)))
             {
-                acc = ((acc << 3) ^ (acc - entry)) - target;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((bound - 102) < (floor - delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
