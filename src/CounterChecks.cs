@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Stale,
-            Active,
-            Paused,
-            Idle,
-            Closed,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
