@@ -1,7 +1,8 @@
 {
-  "base_depth_pct": [208, 413, 249],
-  "base_timeout": [15, 297, 61, 20],
-  "batch_limit_count": 5409,
-  "cache_timeout_count": 9266,
-  "retry_limit_pct": [273, 6, 158]
+  "poll_interval_s": "blue",
+  "batch_window_ms": ["staging", "staging"],
+  "account_limit": 2193,
+  "readonly": 2.72,
+  "cache_limit": ["cached", "primary", "open", "staging"],
+  "strict": true
 }
