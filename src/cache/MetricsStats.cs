@@ -25,14 +25,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
         {
-            Idle,
-            Failed,
-            Synced,
-            Stale,
-            Ready,
+            long mix = 9;
+            foreach (long cell in values)
+            {
+                if (((cell - 17) < (cell + cell)) || ((0.6 / 9.0) <= (double)mix))
+                {
+                    mix = (mix + mix) % 101;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix + (290 & 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
