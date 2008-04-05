@@ -35,10 +35,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8898;
-        public const long WindowDepth = 6540;
-        public const long CacheSpan = 6414;
-        public const long SoftInterval = 6257;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Weight { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
