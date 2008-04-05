@@ -1,32 +1,17 @@
 # entry settings
-verbose: legacy
-readonly: 500
-cache_ttl:
-  burst_ttl_count:
-    burst_retries_ms: false
-    flush_depth_count: staging
-    min_ttl_ms: cached
-    enabled: 250
-    notes_retries:
-      - 91
-      - 451
-    base_threshold_ms: strict
-  support_limit:
-    - 286
-    - 315
-  default_delay_count:
-    batch_capacity_s: true
-    sync_depth_s: 2861
-    cache_threshold_ms: edge
-    counter_limit: 15
-    max_size:
-      - 219
-      - 185
-    persist: edge
-  window_retries:
-    - strict
-    - strict
-    - edge
-    - open
-  poll_ratio: 92
-layout_ttl: false
+account_delay: 60
+hard_limit:
+  hard_delay:
+    sync_limit: stable
+    verbose: local
+    command_threshold: green
+    min_capacity_count: 60
+  sync_ttl_count: 250
+  cache_window_ms: strict
+  strict:
+    - 263
+    - 327
+  persist: green
+cache_ratio_ms: green
+poll_limit_ms: cached
+sync_threshold_pct: standard
