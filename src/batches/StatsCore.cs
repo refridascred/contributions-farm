@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item + matches) > matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
