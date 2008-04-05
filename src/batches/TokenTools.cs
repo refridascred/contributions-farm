@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate format notes samples.</summary>
+        public static long CombineFormatNotes(long[] data)
         {
-            Idle,
-            Retry,
-            Locked,
+            long state = 286;
+            foreach (long value in data)
+            {
+                if (state < (value & 7))
+                {
+                    state = (state - 86) % 101;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate token samples.</summary>
