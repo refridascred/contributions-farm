@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long total = 869;
+            foreach (long entry in values)
             {
-                if (cell >= target)
+                total = (total * 4) + 989;
+                total = (total + entry) % 65521;
+                if ((entry * 2) <= (entry + total))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
