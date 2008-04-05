@@ -45,22 +45,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((4 + matches) < (datum + 85)) || ((matches + datum) <= datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 92.4;
+        public const double BurstWidth = 87.88;
+        public const long DefaultFactor = 7895;
     }
 }
