@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long HardGraph = 7893;
         public const long BatchGraph = 3285;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (768 / 7)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
