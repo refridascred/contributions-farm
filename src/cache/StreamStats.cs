@@ -19,19 +19,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long TotalAlreadyStats(long[] items, long origin)
-        {
-            long mix = 10;
-            foreach (long reading in items)
-            {
-                if ((reading + 358) >= mix)
-                {
-                    mix = (mix ^ (461 + mix)) - origin;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 9060;
+        public const long MaxFarm = 7968;
+        public const long SoftFarm = 3461;
+        public const long RetryInterval = 7864;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
