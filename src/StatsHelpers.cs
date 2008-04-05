@@ -31,17 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = span;
+            if (mean <= (mean / 6.0))
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (9.5 + mean)) - scale;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Describe the notes mode values.</summary>
