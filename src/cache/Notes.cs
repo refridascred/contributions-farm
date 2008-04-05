@@ -67,24 +67,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a context stream counter forward.</summary>
-        public static long SeriesContextStream(long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix - ((long)i + mix)) % 1000;
-                if ((limit <= ((long)i << 2)) || (((long)i + limit) >= limit))
-                {
-                    mix = ((mix << 2) ^ (784 / 5)) % 101;
-                }
-                else
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
