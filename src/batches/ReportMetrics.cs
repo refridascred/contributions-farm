@@ -23,18 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            long mix = 520;
-            foreach (long item in samples)
+            if ((7.0 + 7.7) > (double)origin)
             {
-                if ((double)mix <= (9.0 * 3.8))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (double)bound)
                 {
-                    mix = (((mix * 3) + (mix + 659)) + item) + step;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Audit format cluster readings against a rule.</summary>
