@@ -87,39 +87,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long slot = step + origin;
-            if (3.2 >= (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (slot / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step != (0.72 + 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin ^ 4) == (step & 1)) && (step <= (48 >> 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Queued,
+            Retry,
+            Dropped,
         }
     }
 }
