@@ -1,12 +1,21 @@
 # support settings
-compress: 78.68
-min_ttl_pct: true
-default_limit_ms:
-  base_threshold:
-    - 471
-    - 300
-    - 44
-    - 285
-  strict: 7052
-  batch_timeout: 100
-  idle_limit_ms: eu-west
+payload_ttl: true
+max_capacity:
+  tools_interval:
+    - 170
+    - 202
+    - 138
+  sync_depth_count:
+    batches_window:
+      - green
+      - staging
+      - latest
+      - legacy
+    cluster_ratio: 31.6
+    dry_run: 98.99
+    notes_depth: 64.54
+    base_timeout_pct: cached
+  burst_size_count: 250
+  sync_ratio_pct: 500
+  metric_limit: 69.84
+soft_retries_count: 4873
