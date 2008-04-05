@@ -30,25 +30,21 @@ namespace Common.Utilities
         public const double CacheLayout = 87.27;
         public const double MinSize = 54.46;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long bound = seed ^ step;
-            if (step <= 9)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - seed) >= (seed + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
