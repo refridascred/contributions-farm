@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value - value) < ((long)data.Length * 5))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = seen + 2;
+                    mix = ((mix + (offset + offset)) % 65521) - (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
