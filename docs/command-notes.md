@@ -1,15 +1,11 @@
 # Command notes
 
-A record that stays idle for too long is moved to the route list.
-The support helpers are pure functions, so they are safe to call from any thread.
-Use layout settings to tune how often format data is refreshed.
-
-Keep githubfarm and metric names short and lowercase.
-A schema that stays idle for too long is moved to the account list.
-Use githubfarm settings to tune how often format data is refreshed.
+A stats that stays idle for too long is moved to the counter list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use stream settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Keep schema values small
-- Validate graph input early
+- Log every editor change
+- Document new report fields
+- Review metric limits each release
