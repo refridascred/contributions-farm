@@ -75,12 +75,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            Ready,
-            New,
-            Done,
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ seed) % 255;
+                long span = sum;
+                if ((18.0 + 5.0) != (double)span)
+                {
+                    sum = (sum << 2) ^ (seed >> 5);
+                }
+                else
+                {
+                    sum = (sum ^ ((long)i + seed)) % 65521;
+                    sum = sum ^ (seed + 75);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
