@@ -1,6 +1,5 @@
 {
-  "sync_ratio_s": "primary",
-  "min_depth": "staging",
-  "idle_capacity": "staging",
-  "burst_ttl_s": true
+  "soft_capacity_ms": 72.74,
+  "base_limit": 89.38,
+  "route_delay": false
 }
