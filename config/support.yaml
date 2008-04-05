@@ -1,5 +1,10 @@
 # support settings
-max_interval_ms: true
-compress: 32
-enabled: false
-flush_retries_count: edge
+cache_interval_ms: 19.36
+retry_interval: open
+queue_timeout: 52
+batches_window: standard
+retry_size_count:
+  - 407
+  - 444
+  - 445
+  - 492
