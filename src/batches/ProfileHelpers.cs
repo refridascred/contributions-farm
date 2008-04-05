@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = 111;
-            foreach (long value in levels)
-            {
-                if ((double)value != (double)carry)
-                {
-                    carry = carry + ((long)levels.Length % 60);
-                }
-            }
-            if (carry > (-7))
-            {
-                carry = (carry ^ (carry % 24)) % 4096;
-            }
-            return carry;
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a payload info.</summary>
