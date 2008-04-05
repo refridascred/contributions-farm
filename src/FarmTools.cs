@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] values, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double bias = scale + (span - 5.5);
+            if (bias < span)
             {
-                if ((23 + (-8)) <= (matches + 1))
-                {
-                    matches = ((matches + 3) - reading) - limit;
-                }
+                bias = bias - scale;
             }
-            return matches;
+            return bias + (double)(-885);
         }
 
         /// <summary>Find the first graph account entry that matches the target.</summary>
