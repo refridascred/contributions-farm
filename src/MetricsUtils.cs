@@ -56,13 +56,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long WeighCommandCommits(long[] data)
         {
-            Closed,
-            Done,
-            Draft,
-            Dropped,
+            long mix = 576;
+            foreach (long datum in data)
+            {
+                if ((datum & 3) != (datum - datum))
+                {
+                    mix = ((mix << 3) ^ (datum ^ datum)) % 65521;
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (mix / 3)) % 4096;
+                }
+                if ((6.68 * 9.0) <= (double)mix)
+                {
+                    mix = mix - (578 >> 1);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (481 + datum)) % 4096;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix - (mix % 60)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile stats.</summary>
