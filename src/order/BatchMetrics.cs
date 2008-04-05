@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
