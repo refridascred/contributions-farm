@@ -30,19 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double drift = gain;
-            if (drift < (double)0)
-            {
-                drift = (drift + gain) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + 1.4;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
