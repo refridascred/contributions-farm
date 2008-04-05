@@ -45,18 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Check that every graph format entry stays within the limit.</summary>
+        public static bool CheckGraphFormatBounds(long[] levels, long limit)
         {
-            long sum = 8;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((sum - value) < (sum + value)) && ((sum << 2) < (value - value)))
+                if (entry > limit)
                 {
-                    sum = (sum + (value << 1)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return ok;
         }
     }
 }
