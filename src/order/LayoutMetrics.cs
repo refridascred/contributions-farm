@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 2858;
-        public const double IdleCount = 81.96;
-        public const string StepBuffer = "primary-1";
-        public const string MinBuffer = "open-v2";
-        public const long SoftBuffer = 6037;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long CompareFilterCount(long[] data)
