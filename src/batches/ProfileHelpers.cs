@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values, long seed)
+        /// <summary>Count the channel context entries that pass the check.</summary>
+        public static long MeasureChannelContextHits(long[] data)
         {
-            long result = 70;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result - seed) % 101) ^ reading;
-                result = (result ^ (58 / 4)) % 97;
+                if (item <= (item + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
