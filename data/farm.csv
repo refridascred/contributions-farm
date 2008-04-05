@@ -1,6 +1,8 @@
-id,label,region,level
-1,staging,628,eu-west
-2,88.08,green,16.56
-3,cached,456,119
-4,52.42,800,398
-5,396,239,legacy
+id,active,owner
+1,89,878
+2,42.17,eu-west
+3,943,831
+4,primary,875
+5,primary,fallback
+6,latest,330
+7,11.74,66
