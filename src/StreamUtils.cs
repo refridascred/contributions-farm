@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long DefaultProfile = 3436;
         public const double BatchProfile = 35.66;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long step)
         {
-            long result = 744;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                result = ((result * 4) + (entry % 10)) % 255;
-                result = ((result << 2) ^ seed) % 65521;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 6)
-            {
-                result = result ^ ((long)readings.Length - 83);
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
