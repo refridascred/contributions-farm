@@ -1,17 +1,20 @@
 # support settings
-verbose: cached
-base_threshold_s:
-  - legacy
-  - strict
-idle_threshold:
-  cache_capacity_s: 61.84
-  soft_size_s: primary
-  base_depth:
-    counter_ttl: latest
-    sync_interval_ms: 250
-    retry_ttl_count: false
-    queue_depth: standard
-    cache_timeout: primary
-min_interval_ms:
-  - 206
-  - 260
+cache_size:
+  - open
+  - cached
+  - standard
+  - staging
+checks_timeout: 90.0
+sync_window_count: 16.87
+sync_size_count: 23.12
+idle_window_count:
+  commits_ttl: legacy
+  retry_timeout_s: local
+  readonly: 84
+  audit: 68.62
+  max_size: 100
+  dry_run:
+    flush_limit: false
+    poll_depth_pct: 57.16
+    burst_threshold: 31
+route_threshold: 41.53
