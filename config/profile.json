@@ -1,6 +1,11 @@
 {
-  "default_interval_count": ["cached", "standard"],
-  "base_window_count": "latest",
-  "max_threshold_count": 685,
-  "burst_delay_count": ["blue", "edge", "primary"]
+  "editor_limit": 41,
+  "max_timeout_s": ["staging", "legacy", "open", "staging"],
+  "stream_threshold": {
+    "cache_threshold_s": 61,
+    "payload_capacity": 9564,
+    "metric_depth": false,
+    "batch_delay_pct": "edge"
+  },
+  "max_capacity_ms": 2999
 }
