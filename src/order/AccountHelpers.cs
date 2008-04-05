@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a context stream sample.</summary>
+        public static long FindContextStreamIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= origin)
+                if (series[i] == seed)
                 {
                     return (long)i;
                 }
