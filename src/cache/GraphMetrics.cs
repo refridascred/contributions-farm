@@ -39,16 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics format counter forward.</summary>
-        public static long RollMetricsFormat(long bound)
+        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
+        public static long CompareProfileChannelCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + ((long)i / 8)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
