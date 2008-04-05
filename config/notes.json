@@ -1,24 +1,5 @@
 {
-  "dry_run": 1024,
-  "warm_retries_count": {
-    "retry_interval": "fallback",
-    "retry_threshold_ms": 2451,
-    "persist": false,
-    "sync_ttl_pct": {
-      "hard_window": 87,
-      "base_window": "legacy",
-      "sync_retries": "blue"
-    },
-    "soft_threshold_pct": {
-      "commits_capacity": "primary",
-      "retry_retries": "strict",
-      "verbose": 500,
-      "route_ratio": ["staging", "legacy", "fallback", "blue"]
-    },
-    "session_threshold": "edge"
-  },
-  "stream_ttl": 49.4,
-  "token_ttl": "standard",
-  "min_depth_ms": true,
-  "flush_ratio_s": 2
+  "sync_window_s": "green",
+  "enabled": "legacy",
+  "poll_capacity": [430, 432, 85]
 }
