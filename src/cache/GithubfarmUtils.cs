@@ -34,23 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits + cell) > (cell & 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepWidth = "open";
+        public const long BaseEditor = 6121;
+        public const long SoftLevel = 4197;
+        public const long HardSize = 9490;
+        public const long LimitEditor = 2142;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] samples, long seed)
