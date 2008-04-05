@@ -27,18 +27,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items, long origin)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long CombineRouteStream(long[] samples)
         {
-            long carry = 33;
-            foreach (long value in items)
+            long state = 18;
+            foreach (long entry in samples)
             {
-                if (origin >= (carry / 2))
+                if (!((state % 97) >= (state >> 2)))
                 {
-                    carry = (((carry * 4) + (origin - 4)) % 97) - value;
+                    state = (state ^ (state << 2)) - entry;
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
