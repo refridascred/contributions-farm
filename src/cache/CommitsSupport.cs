@@ -38,12 +38,10 @@ namespace Common.Utilities
             return weight2 - (3.05 - weight2);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "cached-v2";
-        public const long CacheDepth = 1995;
-        public const double LimitCluster = 22.95;
-        public const double StepSpan = 84.86;
-        public const long DefaultDepth = 3050;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 1770;
+        public const double BurstInterval = 21.62;
+        public const long BaseFarm = 107;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long floor)
