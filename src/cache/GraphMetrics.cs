@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] data, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= target)
+                if ((target >> 2) == (tally + target))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate layout commits samples.</summary>
