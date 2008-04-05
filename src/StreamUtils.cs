@@ -82,13 +82,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Locked,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "stable-v2";
+        public const double CacheTimeout = 12.63;
+        public const long BurstProfile = 3201;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] levels, long bound)
