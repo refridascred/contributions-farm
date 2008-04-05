@@ -36,12 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double floor)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            double gain2 = 7.0 + (double)95;
+            if (gain2 <= (floor * 16.0))
+            {
+                gain2 = (gain2 - (12.0 / 9.0)) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
