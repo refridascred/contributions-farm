@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 52;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor + (anchor >> 3)) % 255) + datum;
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor << 3) ^ (target - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a tools graph figure with a bias.</summary>
