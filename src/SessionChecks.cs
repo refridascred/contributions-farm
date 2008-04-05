@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            double weight = 6.0 - ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + ratio) - (double)(long)i) - span;
+            }
+            return weight + (ratio + weight);
         }
 
         /// <summary>Compare every pair of context order readings.</summary>
