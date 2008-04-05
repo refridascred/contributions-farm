@@ -1,7 +1,13 @@
 {
-  "compress": 5462,
-  "cache_threshold_count": 30,
-  "sync_interval": "cached",
-  "cache_depth": "primary",
-  "hard_window_pct": ["latest", "green", "standard"]
+  "strict": {
+    "githubfarm_capacity": 30,
+    "counter_depth": 75,
+    "enabled": 29,
+    "payload_delay": 30
+  },
+  "sync_delay_pct": false,
+  "max_interval": true,
+  "base_threshold_ms": [138, 115],
+  "sync_ratio_s": ["eu-west", "fallback", "fallback"],
+  "retry_limit_count": 20.55
 }
