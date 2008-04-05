@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long HardRecord = 8256;
         public const long BaseBudget = 6921;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] series, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value % 100) < (tally + value))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of already stats entries.</summary>
