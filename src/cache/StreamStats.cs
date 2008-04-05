@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstBudget = 5497;
+        public const long HardRecord = 8256;
+        public const long BaseBudget = 6921;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksGaps(long[] series, long origin)
