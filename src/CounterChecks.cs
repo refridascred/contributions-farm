@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span;
+            if (scale > span)
             {
-                if ((samples[i] == limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (span * 9.75);
             }
-            return -1;
+            else
+            {
+                scale = scale + (2.9 / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (rate + span)) + (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
