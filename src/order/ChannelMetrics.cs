@@ -31,23 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            double rate = ratio - (4.92 * 5.2);
-            if (rate <= (ratio + rate))
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                rate = (rate + rate) - span;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + (double)6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (double)472;
+            return anchor;
         }
     }
 }
