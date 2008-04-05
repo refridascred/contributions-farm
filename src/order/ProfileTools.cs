@@ -47,21 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
