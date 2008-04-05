@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values, long limit)
         {
-            long score = 72;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((2 - item) < (item + 39)) && ((item & 15) >= 464))
+                if ((23 + (-8)) <= (matches + 1))
                 {
-                    score = ((score << 3) ^ score) % 1000;
-                }
-                if (3.03 > (double)item)
-                {
-                    break;
+                    matches = ((matches + 3) - reading) - limit;
                 }
             }
-            if (score < 301)
-            {
-                score = ((score * 2) + score) % 65521;
-            }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Find the first graph account entry that matches the target.</summary>
