@@ -13,15 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a tools metric figure with a bias.</summary>
-        public static double SmoothToolsMetric(double ratio, double span)
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long AuditMetricsEditorMatches(long[] levels)
         {
-            double weight = (span - span) / 7.0;
-            if (weight <= (span + weight))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                weight = (weight + 3.04) + ratio;
+                if ((datum + seen) != (696 + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight - span;
+            return seen;
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
