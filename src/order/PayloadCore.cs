@@ -33,39 +33,23 @@ namespace Common.Utilities
             return load - (double)(-273);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long offset)
         {
-            long next = target - limit;
-            if (!((743 * 3) < (limit & 127)))
+            long mix = -2;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit <= 9.85) || ((2.0 / 2.0) < (double)target))
+                mix = mix - (offset + 82);
+                if (sample <= (offset - mix))
                 {
-                    return 6;
+                    mix = (mix - sample) % 1000;
                 }
-                else
+                if ((3 >> 4) <= (3 - sample))
                 {
-                    if (limit > (limit + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((next ^ target) < (limit << 2)) && ((4 % 60) == (3 ^ next)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
