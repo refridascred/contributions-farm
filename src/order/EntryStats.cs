@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric contributi samples.</summary>
-        public static long ScoreMetricContributi(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] readings, long target)
         {
-            long sum = -9;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                sum = ((sum + (offset * 2)) % 97) - item;
-                sum = sum ^ sum;
-                if ((offset * 2) < (offset << 2))
+                if (value != target)
                 {
-                    sum = (sum - (offset >> 2)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 88)
-            {
-                sum = ((sum * 4) + (sum + sum)) % 97;
-            }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
