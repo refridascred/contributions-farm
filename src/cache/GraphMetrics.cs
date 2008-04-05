@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] series, long seed)
         {
-            double load = gain;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                load = (load + (floor * 6.0)) + (double)(long)i;
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + (floor + 4.9);
+            return valid;
         }
     }
 }
