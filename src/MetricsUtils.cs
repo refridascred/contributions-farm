@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            double ratio = offset;
+            if (ratio >= offset)
+            {
+                ratio = (ratio + ratio) + rate;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
