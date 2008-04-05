@@ -1,4 +1,5 @@
 # entry settings
-batches_ratio: stable
-verbose: 15
-strict: false
+flush_depth_ms: 500
+retry_ttl_pct: 500
+hard_ratio_s: latest
+poll_ttl_s: 8534
