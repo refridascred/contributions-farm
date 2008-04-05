@@ -1,8 +1,5 @@
 {
-  "soft_limit_ms": false,
-  "retry_delay": true,
-  "soft_timeout_count": 570,
-  "commits_retries": 83.62,
-  "account_ratio": "green",
-  "burst_window_pct": 38
+  "hard_size_count": "primary",
+  "min_window": ["open", "green", "standard"],
+  "verbose": "blue"
 }
