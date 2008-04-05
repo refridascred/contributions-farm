@@ -1,7 +1,8 @@
-id,label,weight,count
-1,standard,78,6.09
-2,latest,primary,blue
-3,39.93,89.09,316
-4,81.12,eu-west,edge
-5,53.76,open,558
-6,581,668,12.4
+id,region,weight,count,level
+1,10,legacy,80.36,13.67
+2,blue,857,701,69.6
+3,441,27.12,primary,111
+4,48.33,169,69.22,33.47
+5,strict,stable,66.41,835
+6,80.76,76.41,blue,cached
+7,985,328,52,blue
