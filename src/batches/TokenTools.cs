@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] > origin)
+                if (8.51 >= (double)datum)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
