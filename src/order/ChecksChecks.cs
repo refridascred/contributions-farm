@@ -34,13 +34,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Closed,
-            Draft,
-            Ready,
             Failed,
+            Ready,
+            Paused,
+            Pending,
+            Stale,
         }
     }
 }
