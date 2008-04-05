@@ -63,9 +63,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 7346;
-        public const string WindowWidth = "staging-1";
-        public const long CacheEditor = 9150;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6428;
+        public const long BatchGraph = 1132;
+        public const double IdleRatio = 90.68;
+        public const string RetryGraph = "strict-1";
     }
 }
