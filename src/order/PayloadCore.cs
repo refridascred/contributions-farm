@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] readings)
         {
-            double rate = floor;
-            if (rate <= (weight / 8.0))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                rate = rate + floor;
+                if ((tally & 3) < sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 3.0) + (double)(long)i;
-            }
-            return rate - (rate / 3.0);
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
