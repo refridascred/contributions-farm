@@ -27,29 +27,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long offset)
         {
-            long cur = limit ^ origin;
-            if (!((1.58 / 6.0) < (double)cur))
+            long span = seed - offset;
+            if (((9.92 - 2.7) >= (double)seed) || ((seed - seed) > (span - span)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((cur << 1) != (210 % 97)) || ((cur / 3) == (cur + 28)))
+                if ((712 + offset) != (span * 5))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (5.6 > (double)cur)
+                    if ((4.4 - 0.5) > (double)span)
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if (18.0 > (double)span)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
