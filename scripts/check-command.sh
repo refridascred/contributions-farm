@@ -7,14 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest cached local staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=9
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
