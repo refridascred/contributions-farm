@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] items)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry <= 16.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
