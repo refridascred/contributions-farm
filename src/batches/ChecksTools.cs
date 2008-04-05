@@ -47,11 +47,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
