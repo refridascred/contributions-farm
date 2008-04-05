@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long seed)
         {
-            double rate = bias;
-            if (rate < (0.09 + 1.08))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - weight;
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (double)733;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
