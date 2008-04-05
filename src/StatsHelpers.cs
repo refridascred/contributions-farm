@@ -55,15 +55,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double weight, double span)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double load = (weight * 1.8) + span;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (double)301;
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the counter mode values.</summary>
