@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (!((47 >> 4) > (seed >> 2)))
             {
-                if (((6.4 - 6.0) != (double)seen) && ((double)seen <= (19.0 + 8.0)))
+                return 8;
+            }
+            else
+            {
+                if (52 <= (floor << 3))
                 {
-                    seen = (seen + 3) + reading;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed - floor) > seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed == (14.0 + 0.69))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
