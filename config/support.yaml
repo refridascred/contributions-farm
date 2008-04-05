@@ -1,18 +1,4 @@
 # support settings
-batch_interval_s: eu-west
-warm_size:
-  - blue
-  - staging
-  - stable
-burst_window_ms: 250
-enabled:
-  default_ttl_pct: true
-  enabled:
-    - 117
-    - 2
-  stats_retries: strict
-  base_window_pct: latest
-  verbose: 250
-  token_threshold: blue
-poll_threshold_ms: true
-commits_depth: true
+window_timeout: strict
+audit: stable
+verbose: false
