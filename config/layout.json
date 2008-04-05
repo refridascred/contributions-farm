@@ -1,12 +1,12 @@
 {
-  "flush_size_ms": {
-    "cache_delay": 6,
-    "cache_delay_s": true,
-    "strict": "legacy"
+  "default_ttl_ms": "stable",
+  "cache_limit": {
+    "base_depth_pct": 250,
+    "metrics_capacity": [115, 143],
+    "enabled": "stable",
+    "poll_size": 7979,
+    "idle_ttl_s": "green"
   },
-  "payload_delay": [402, 341, 34],
-  "persist": "latest",
-  "metric_depth": 30,
-  "strict": 9826,
-  "base_delay_count": "staging"
+  "poll_retries_count": "local",
+  "verbose": ["fallback", "staging", "fallback"]
 }
