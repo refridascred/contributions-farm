@@ -53,19 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context farm reading.</summary>
-        public static double AdjustContextFarm(double scale, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            double weight = 17.0 / 7.0;
-            if (weight < weight)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + 20.0;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (scale * 14.0)) + (double)(long)i;
-            }
-            return weight + (offset / 8.0);
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
