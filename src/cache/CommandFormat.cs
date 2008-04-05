@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)limit >= 7.3)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitRatio = "strict";
+        public const long MinRatio = 3436;
+        public const string RetryChecks = "stable";
+        public const long MaxScore = 7684;
+        public const long MaxChecks = 5626;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] series, long target)
