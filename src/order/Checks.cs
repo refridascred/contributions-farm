@@ -28,14 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Done,
-            Ready,
-            New,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 6593;
+        public const long DefaultRecord = 3090;
+        public const long SoftRecord = 5444;
+        public const string CacheFactor = "alpha-v2";
+        public const long StepRecord = 458;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
