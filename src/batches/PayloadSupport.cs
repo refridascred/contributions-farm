@@ -36,21 +36,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                score = (score - (score & 127)) % 65521;
-                if (((double)score < (double)(long)i) && ((step * 4) >= (step - score)))
+                if ((8.0 + 11.0) > (double)matches)
                 {
-                    score = score + (690 - score);
-                    break;
+                    matches = ((matches + 1) + value) - limit;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
