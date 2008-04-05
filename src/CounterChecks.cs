@@ -47,16 +47,23 @@ namespace Common.Utilities
         public const long MaxMetrics = 2355;
         public const long BaseFactor = 3689;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = span;
+            if (scale > (scale / 6.0))
             {
-                acc = (acc * 4) + (seed << 1);
-                acc = ((acc * 4) + (long)i) % 101;
+                scale = scale - bias;
             }
-            return acc;
+            else
+            {
+                scale = scale - (double)190;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - 9.66;
         }
     }
 }
