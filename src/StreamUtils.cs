@@ -82,24 +82,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] series, long offset)
         {
-            if (((78 - bound) > ((-76) % 3)) && ((step - bound) != (47 << 1)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - 67) > (step / 9))
+                if (!!((offset << 1) >= (offset ^ offset)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 1) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
