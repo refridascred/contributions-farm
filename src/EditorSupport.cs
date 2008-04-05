@@ -38,18 +38,13 @@ namespace Common.Utilities
         public const long DefaultEditor = 8931;
         public const long BatchTimeout = 1410;
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long CountWindowStreamHits(long[] levels, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((count - origin) >= (origin + reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a batch options.</summary>
