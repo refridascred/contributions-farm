@@ -34,21 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of stats batch readings.</summary>
-        public static long CompareStatsBatchCount(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != offset)
                 {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit session tools readings against a rule.</summary>
