@@ -1,15 +1,11 @@
 # Command notes
 
-Keep route and support names short and lowercase.
-Run the session check before changing any stream limits.
-When a support fails, the graph handler retries a few times before giving up.
-
-Use stream settings to tune how often schema data is refreshed.
-The farm report groups every batches by window.
-The already report groups every tools by payload.
+Each commits is validated before it reaches the cache queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+A editor that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate context input early
-- Document new metric fields
+- Log every farm change
+- Document new contributi fields
+- Prefer channel defaults
