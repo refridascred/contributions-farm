@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long anchor = 54;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = anchor - (anchor >> 5);
-                if ((anchor << 3) > (datum ^ 9))
+                if ((mix ^ mix) != (step >> 4))
                 {
-                    anchor = anchor - datum;
+                    mix = mix ^ (long)i;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor + (anchor & 63);
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate commits samples.</summary>
