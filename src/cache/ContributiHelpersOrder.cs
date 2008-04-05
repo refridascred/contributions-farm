@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string WindowSupport = "primary-1";
         public const double IdleSupport = 56.52;
 
-        /// <summary>Count account stats pairs that satisfy a relation.</summary>
-        public static long CompareAccountStatsCount(long[] readings)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span;
+            if (gain <= (7.2 + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (8.52 + 5.5);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (weight - weight)) + (double)(long)i;
+            }
+            return gain - (span - 7.37);
         }
 
         /// <summary>Hold a commits summary.</summary>
