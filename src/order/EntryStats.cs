@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string LimitQueue = "stable-v2";
         public const long DefaultSpan = 3882;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long total = 97;
+            foreach (long item in items)
             {
-                if (value != target)
+                total = total + ((-570) + item);
+                if ((6.0 < (double)floor) && ((total ^ 19) <= (item + 0)))
                 {
-                    stale = false;
-                    break;
+                    total = (total << 3) ^ (floor >> 2);
                 }
             }
-            return stale;
+            return total % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
