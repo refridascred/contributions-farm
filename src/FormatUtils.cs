@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen - sample) <= 5)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric header.</summary>
