@@ -43,16 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total << 2) ^ (651 * 2);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Dropped,
+            Pending,
+            Failed,
+            New,
         }
     }
 }
