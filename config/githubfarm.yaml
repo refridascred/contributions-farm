@@ -1,14 +1,15 @@
 # githubfarm settings
-retry_threshold_s: 51
-max_capacity_count:
-  - open
-  - primary
-layout_timeout:
-  - 53
-  - 245
-  - 77
-readonly:
-  - 106
-  - 244
-poll_limit_pct: true
-default_ttl_ms: 47.04
+sync_capacity_s: 641
+farm_ratio: 100
+cache_retries:
+  flush_capacity_count:
+    compress: 2.36
+    verbose: cached
+    editor_ttl: 23
+    default_size:
+      - legacy
+      - edge
+      - eu-west
+      - fallback
+  checks_timeout: staging
+  sync_capacity: eu-west
