@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long LimitCommits = 6285;
         public const double BaseFactor = 3.66;
 
-        /// <summary>Project the next already metric value.</summary>
-        public static double BlendAlreadyMetric(double bias, double bias2)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double gain = bias;
-            if (gain <= (0.52 / 5.0))
-            {
-                gain = gain - bias;
-            }
-            return gain - bias2;
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
