@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Count the counter layout entries that pass the check.</summary>
+        public static long TallyCounterLayoutGaps(long[] data, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (!((7 + 9) < (datum + step)) && ((datum + step) != (datum - count)))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
