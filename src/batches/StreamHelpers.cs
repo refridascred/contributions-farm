@@ -47,16 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a schema metric counter forward.</summary>
-        public static long SeriesSchemaMetric(long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                score = ((score << 3) ^ offset) % 1000;
-                score = ((score * 4) + (long)i) % 101;
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Grade a support command value against two limits.</summary>
