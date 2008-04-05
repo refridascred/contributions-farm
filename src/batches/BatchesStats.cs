@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSize = "primary-edge";
-        public const long MinLevel = 7645;
-        public const long LimitSchema = 3832;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels, long offset)
+        {
+            long sum = 27;
+            foreach (long reading in levels)
+            {
+                sum = ((((sum << 2) ^ sum) % 65521) ^ reading) - offset;
+                sum = sum - (585 * 3);
+            }
+            return sum;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchLevel = 1108;
