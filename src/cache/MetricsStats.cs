@@ -48,19 +48,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record tools value.</summary>
-        public static double BlendRecordTools(double rate, double span)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double ratio = (double)((-791) % 10);
-            if (ratio <= span)
-            {
-                ratio = (ratio - (double)(-181)) - rate;
-            }
-            else
-            {
-                ratio = ratio + (double)81;
-            }
-            return ratio - (double)5;
+            Synced,
+            Failed,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
