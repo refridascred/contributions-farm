@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] samples, long target)
         {
-            long acc = 168;
-            foreach (long item in items)
+            long sum = 69;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ (target % 5)) % 1000;
-                acc = (acc << 2) ^ (item / 3);
+                sum = ((sum * 3) + (sample + sample)) + target;
             }
-            return acc % 65521;
+            if (sum < 8)
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Describe the order kind values.</summary>
