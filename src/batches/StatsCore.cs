@@ -49,10 +49,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2732;
-        public const long MaxRecord = 53;
-        public const long SoftRecord = 4059;
+        /// <summary>Count counter route pairs that satisfy a relation.</summary>
+        public static long CompareCounterRouteCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of order account entries.</summary>
         public static long TotalOrderAccount(long[] levels, long bound)
