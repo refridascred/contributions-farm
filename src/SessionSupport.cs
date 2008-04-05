@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long result = 49;
+            foreach (long entry in series)
             {
-                if (item <= step)
+                if ((entry + entry) > (result + result))
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 5) + 432) % 97;
+                    continue;
+                }
+                else
+                {
+                    result = result - (entry + result);
+                }
+                if (((double)result != (6.9 * 3.1)) && ((double)result < 17.0))
+                {
+                    result = (result - (result % 24)) % 1000;
                 }
             }
-            return valid;
+            if (result > (-451))
+            {
+                result = ((result << 3) ^ (result ^ result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
