@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Failed,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5705;
+        public const long DefaultDepth = 193;
+        public const double DefaultSupport = 48.09;
+        public const long SoftInterval = 9352;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
