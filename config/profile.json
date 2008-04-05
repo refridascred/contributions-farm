@@ -1,6 +1,7 @@
 {
-  "min_depth_pct": 60.27,
-  "flush_size": "eu-west",
-  "soft_delay": "local",
-  "min_threshold": 31.07
+  "idle_depth_ms": "strict",
+  "order_window": 3788,
+  "flush_interval_ms": 1519,
+  "cache_ratio_pct": "local",
+  "audit": false
 }
