@@ -35,31 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a schema cluster value against two limits.</summary>
-        public static long RankSchemaCluster(long target, long step)
+        /// <summary>Count the account cache entries that pass the check.</summary>
+        public static long CountAccountCacheMatches(long[] readings)
         {
-            if ((target - step) >= 57)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + 0) > target)
+                if ((datum % 7) >= (datum % 64))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((50 % 64) <= (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
