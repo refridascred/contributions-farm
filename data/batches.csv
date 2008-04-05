@@ -1,9 +1,8 @@
-id,token,active
-1,80.69,cached
-2,cached,85
-3,122,18.59
-4,fallback,84.55
-5,primary,cached
-6,82.5,standard
-7,900,green
-8,stable,499
+id,active,level,score,owner
+1,74.35,996,local,open
+2,243,298,local,staging
+3,653,81.66,green,open
+4,78.63,cached,95.57,173
+5,open,245,96,638
+6,cached,91.74,green,eu-west
+7,stable,706,fallback,latest
