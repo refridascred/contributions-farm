@@ -30,12 +30,19 @@ namespace Common.Utilities
             return weight + (double)(-4);
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Scale a tools githubfarm figure with a bias.</summary>
+        public static double BlendToolsGithubfarm(double gain, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
+            double scale = floor;
+            if (scale > 6.3)
+            {
+                scale = (scale - floor) + gain;
+            }
+            else
+            {
+                scale = scale + (scale * 8.6);
+            }
+            return scale + 3.9;
         }
 
         /// <summary>Iterate the counter buffer series from a seed.</summary>
