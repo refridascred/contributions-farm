@@ -1,14 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the counter handler retries a few times before giving up.
-The checks report groups every support by editor.
+Run the cache check before changing any githubfarm limits.
+Use schema settings to tune how often stats data is refreshed.
+The counter module keeps metrics values in sync with the counter cache.
 
-Keep already and session names short and lowercase.
-Defaults for commits live in the config folder and can be overridden per environment.
+Use report settings to tune how often order data is refreshed.
+When a farm fails, the contributi handler retries a few times before giving up.
+Use queue settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every editor change
-- Validate checks input early
+- Validate queue input early
+- Document new editor fields
+- Prefer farm defaults
