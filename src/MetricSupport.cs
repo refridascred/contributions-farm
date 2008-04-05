@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Done,
-            Paused,
-            Stale,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 1471;
+        public const double CacheDepth = 8.19;
+        public const long SoftMetrics = 6053;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
