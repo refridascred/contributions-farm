@@ -40,21 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry - (bound >> 4);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
