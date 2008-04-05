@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate commits tools readings against a bound.</summary>
-        public static bool VerifyCommitsToolsRange(long[] values, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (item > bound)
+                if (item < origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Accumulate tools checks samples.</summary>
