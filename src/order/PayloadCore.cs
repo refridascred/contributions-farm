@@ -33,23 +33,21 @@ namespace Common.Utilities
             return load - (double)(-273);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long mix = -2;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix - (offset + 82);
-                if (sample <= (offset - mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - sample) % 1000;
-                }
-                if ((3 >> 4) <= (3 - sample))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
