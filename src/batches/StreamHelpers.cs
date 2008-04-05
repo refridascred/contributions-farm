@@ -90,19 +90,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= floor)
+                if (levels[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
