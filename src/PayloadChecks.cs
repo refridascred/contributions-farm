@@ -91,17 +91,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer farm entry that matches the target.</summary>
-        public static long FindBufferFarmIndex(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 95;
+            foreach (long item in samples)
             {
-                if (items[i] > bound)
+                if ((item + item) < item)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (seed & 255);
+                }
+                else
+                {
+                    total = (total - (item + seed)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
