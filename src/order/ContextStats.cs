@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            double gain = (double)((-500) << 3);
+            if (gain > (double)40)
+            {
+                gain = (gain - gain) - bias;
+            }
+            return gain - (ratio * 11.0);
         }
 
         /// <summary>Match up schema samples.</summary>
