@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate notes window readings against a bound.</summary>
+        public static bool VerifyNotesWindowBounds(long[] levels, long step)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the commits class values.</summary>
