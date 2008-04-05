@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstTimeout = 55.91;
-        public const string RetryStream = "strict-edge";
-        public const long CacheStream = 6724;
-        public const long MinScore = 6016;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 7350;
+        public const long HardLevel = 7240;
+        public const double MaxBatch = 81.74;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string LimitPayload = "fallback-v2";
