@@ -1,5 +1,12 @@
 {
-  "sync_window_s": "green",
-  "enabled": "legacy",
-  "poll_capacity": [430, 432, 85]
+  "persist": "staging",
+  "batch_ratio_s": false,
+  "cache_limit_ms": 6780,
+  "burst_delay_pct": "latest",
+  "githubfarm_capacity": {
+    "context_delay": "green",
+    "profile_timeout": true,
+    "editor_retries": [425, 170]
+  },
+  "poll_threshold": false
 }
