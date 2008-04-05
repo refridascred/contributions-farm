@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const string IdleRatio = "fallback-1";
         public const long WindowScore = 8883;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long sum = 8;
+            foreach (long value in readings)
+            {
+                if (((sum - value) < (sum + value)) && ((sum << 2) < (value - value)))
+                {
+                    sum = (sum + (value << 1)) % 65521;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
