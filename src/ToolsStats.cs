@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a stats batches counter forward.</summary>
-        public static long IterateStatsBatches(long target)
+        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
+        public static bool GuardBufferStreamBounds(long[] levels, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 2) + (total ^ target)) % 4096;
-                total = (total - (total + (long)i)) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
