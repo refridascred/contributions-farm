@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] data, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((seen & 15) < (seen % 8))
+                if ((cell % 5) >= (34 << 3))
                 {
-                    seen = ((seen + 2) ^ item) - floor;
+                    hits = (hits + 1) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a record batches sample.</summary>
