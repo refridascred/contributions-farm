@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = 54;
-            foreach (long item in data)
-            {
-                if ((result + result) < (86 % 2))
-                {
-                    result = (result ^ (item + result)) % 101;
-                }
-            }
-            if (result < 7)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            Pending,
+            Paused,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
