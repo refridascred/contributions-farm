@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine metrics record values into a single score.</summary>
-        public static long WeighMetricsRecord(long[] items)
+        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
+        public static long CompareSchemaFilterCount(long[] series)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample - score) >= score) && ((sample + sample) != (score % 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 2) ^ (sample - score)) % 1000;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
