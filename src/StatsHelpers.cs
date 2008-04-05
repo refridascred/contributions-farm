@@ -35,13 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            New,
-            Active,
-            Idle,
-            Locked,
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
