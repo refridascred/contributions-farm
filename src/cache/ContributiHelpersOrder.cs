@@ -35,13 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
