@@ -74,31 +74,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batch command pair into a bucket.</summary>
-        public static long SortBatchCommand(long limit, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if ((limit + limit) < (-564))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step ^ 83) != (90 * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + limit) >= (limit - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
