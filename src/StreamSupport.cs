@@ -41,16 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mark = mark + (mark - origin);
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((tally + bound) >= bound)
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
