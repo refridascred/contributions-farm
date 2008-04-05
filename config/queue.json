@@ -1,5 +1,5 @@
 {
-  "strict": 39.28,
-  "soft_limit": "standard",
-  "session_capacity": false
+  "base_threshold_pct": 500,
+  "warm_window_count": true,
+  "sync_retries_count": 1287
 }
