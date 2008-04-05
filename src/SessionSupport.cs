@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 7200;
+        public const long StepInterval = 5656;
+        public const long BatchSize = 7322;
+        public const double WindowScore = 37.69;
     }
 }
