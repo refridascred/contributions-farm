@@ -1,13 +1,11 @@
 # support settings
-verbose: latest
-batch_timeout: 90.98
-cache_threshold:
-  - eu-west
+persist: stable
+queue_limit:
   - primary
-  - eu-west
-sync_interval: 23.3
-editor_window:
-  - 75
-  - 495
-  - 433
-flush_interval_s: 96.14
+  - legacy
+  - fallback
+max_size: false
+batch_capacity: staging
+context_retries:
+  - legacy
+  - open
