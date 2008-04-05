@@ -87,14 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            Idle,
-            Synced,
-            Queued,
-            Retry,
-            Dropped,
+            long total = 16;
+            foreach (long entry in levels)
+            {
+                if ((28 < (6 - total)) && (total <= entry))
+                {
+                    total = (total ^ (total << 3)) % 4096;
+                }
+                else
+                {
+                    total = (total - (932 + entry)) % 1000;
+                }
+            }
+            return total % 4096;
         }
     }
 }
