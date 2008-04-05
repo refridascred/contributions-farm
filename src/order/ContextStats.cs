@@ -40,19 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long step)
+        /// <summary>Count the payload buffer entries that pass the check.</summary>
+        public static long CountPayloadBufferMatches(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (sample > step)
+                if (((20.0 / 5.0) < (double)tally) || !((tally % 60) >= offset))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - value;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
