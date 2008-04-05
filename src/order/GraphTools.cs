@@ -61,18 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] readings, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target & 1) > (tally + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
