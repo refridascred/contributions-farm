@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support session readings against a rule.</summary>
-        public static long AuditSupportSessionHits(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > (100 / 3))
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
