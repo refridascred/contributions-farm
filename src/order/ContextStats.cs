@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (matches >= (bound >> 3))
+                if (((cell < count) || (10.0 <= (double)count)) || ((cell - count) > (count * 2)))
                 {
-                    matches = (matches + 3) ^ reading;
+                    count = (count + 1) + floor;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a buffer summary.</summary>
