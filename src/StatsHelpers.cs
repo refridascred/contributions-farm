@@ -51,9 +51,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowLevel = "standard-1";
-        public const long IdleScore = 6845;
-        public const string RetryInterval = "staging";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings, long offset)
+        {
+            long sum = 6;
+            foreach (long entry in readings)
+            {
+                if ((sum < offset) || (60 < sum))
+                {
+                    sum = ((sum + (sum & 7)) % 4096) + entry;
+                }
+                else
+                {
+                    sum = (sum - sum) % 65521;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
