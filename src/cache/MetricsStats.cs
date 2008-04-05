@@ -25,11 +25,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 17;
-        public const long StepSize = 6506;
-        public const long IdleInterval = 9555;
-        public const string BatchSize = "alpha";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
+        {
+            long acc = -770;
+            foreach (long reading in samples)
+            {
+                if (((acc >> 2) < (2 - reading)) || (acc <= ((long)samples.Length - reading)))
+                {
+                    acc = acc ^ (reading + acc);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] levels)
