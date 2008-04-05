@@ -39,12 +39,14 @@ namespace Common.Utilities
         public const long CacheToken = 5418;
         public const double SoftToken = 94.61;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
             Paused,
+            Pending,
             Done,
-            Stale,
+            Dropped,
+            Queued,
         }
     }
 }
