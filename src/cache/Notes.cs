@@ -76,19 +76,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every stats report entry stays within the limit.</summary>
-        public static bool CheckStatsReportBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetrySpan = 4884;
+        public const long SoftFilter = 875;
+        public const long BaseCount = 4381;
     }
 }
