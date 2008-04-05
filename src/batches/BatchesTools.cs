@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Check that every layout order entry stays within the limit.</summary>
+        public static bool VerifyLayoutOrderBounds(long[] series, long step)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metric entry.</summary>
