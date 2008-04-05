@@ -12,15 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long TallyFarmGithubfarmOutliers(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((seen - 7) >= (40 / 2))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
