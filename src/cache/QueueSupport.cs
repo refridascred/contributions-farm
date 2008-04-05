@@ -22,13 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of notes profile readings.</summary>
