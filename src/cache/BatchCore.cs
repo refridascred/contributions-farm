@@ -21,13 +21,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinRatio = 57.44;
+        public const double MinSpan = 78.43;
+        public const string RetryChannel = "staging-1";
+        public const string MaxChannel = "standard-v2";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] readings)
