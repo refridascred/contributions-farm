@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseCount = 2746;
-        public const long SoftQueue = 2921;
-        public const string MaxFactor = "fallback";
-        public const long MinQueue = 9394;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] values, long seed)
