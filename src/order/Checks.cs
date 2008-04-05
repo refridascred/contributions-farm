@@ -28,15 +28,23 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-v2";
         public const long StepRecord = 458;
 
-        /// <summary>Blend two filter stats measurements.</summary>
-        public static double SmoothFilterStats(double scale, double offset)
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long DeriveReportChecks(long step)
         {
-            double weight = (double)(9 % 5);
-            if (weight > scale)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight + offset;
+                if (!((step - step) < (768 - step)))
+                {
+                    continue;
+                }
+                if (!((step + state) != (state & 7)))
+                {
+                    state = state ^ (long)i;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return weight + scale;
+            return state;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
