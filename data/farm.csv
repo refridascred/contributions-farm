@@ -1,8 +1,7 @@
-id,count,active
-1,open,374
-2,standard,blue
-3,26.03,378
-4,0.72,121
-5,edge,828
-6,409,363
-7,green,26.4
+id,rank,count
+1,23,eu-west
+2,862,24.41
+3,green,91.33
+4,296,820
+5,85.26,39.26
+6,legacy,942
