@@ -48,20 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool GuardCacheOrderRange(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 4537;
+        public const double MaxRatio = 62.67;
+        public const long BurstRatio = 9655;
+        public const double HardAlready = 2.93;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 6428;
