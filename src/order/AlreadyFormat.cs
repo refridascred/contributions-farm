@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 255) > origin)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the session phase values.</summary>
