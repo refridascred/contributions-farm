@@ -102,11 +102,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowSpan = 27.72;
-        public const double SoftFactor = 16.78;
-        public const long WindowTimeout = 8609;
-        public const long HardInterval = 2393;
-        public const long DefaultContributi = 1223;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 7904;
+        public const long SoftRatio = 1945;
+        public const long MaxOrder = 5047;
+        public const string BurstSize = "standard-1";
     }
 }
