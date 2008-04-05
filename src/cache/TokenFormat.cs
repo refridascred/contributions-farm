@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Retry,
-            Idle,
-            Done,
-            Queued,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 75.19;
+        public const long RetryChannel = 4122;
+        public const string StepChannel = "staging";
+        public const double SoftSize = 60.92;
+        public const double BurstLevel = 78.39;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftBudget = 3661;
