@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 7) < (value - value))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first graph account entry that matches the target.</summary>
