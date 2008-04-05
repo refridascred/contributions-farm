@@ -55,23 +55,10 @@ namespace Common.Utilities
             return drift + 1.4;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((492 + target) > (hits >> 5))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 2625;
+        public const long BaseCount = 3367;
+        public const long IdleCount = 2268;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long step)
