@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route command entries that pass the check.</summary>
-        public static long TallyRouteCommandMatches(long[] data, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count < (4 % 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 3) ^ entry) - origin;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
