@@ -10,22 +10,20 @@ namespace Common.Utilities
         public const long HardFilter = 930;
         public const long StepSize = 4040;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long limit)
+        /// <summary>Roll a context commits counter forward.</summary>
+        public static long RollContextCommits(long origin)
         {
-            long result = 50;
-            foreach (long item in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((0 + result) != (limit + item)))
+                if ((origin ^ anchor) != (origin + origin))
                 {
-                    result = result + result;
+                    anchor = ((anchor * 3) + ((long)i ^ origin)) % 97;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (result < 160)
-            {
-                result = result ^ limit;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
