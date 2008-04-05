@@ -51,13 +51,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Roll a context report counter forward.</summary>
+        public static long DeriveContextReport(long floor)
         {
-            long mark = 220;
-            foreach (long value in items)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (((mark * 4) + (mark % 100)) % 255) + value;
+                if (((0 >> 5) <= mark) || ((20.0 * 4.0) >= (double)mark))
+                {
+                    mark = mark - mark;
+                    break;
+                }
+                else
+                {
+                    mark = mark ^ (floor + floor);
+                    mark = (mark * 4) + floor;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
             return mark;
         }
