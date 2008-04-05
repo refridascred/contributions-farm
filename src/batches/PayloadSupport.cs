@@ -15,22 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] series, long bound)
         {
-            long score = 40;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((49 * 3) > cell)
+                if (series[i] < bound)
                 {
-                    score = (score ^ (score & 3)) % 255;
-                }
-                if (((double)score == (double)cell) || ((cell - cell) < cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
