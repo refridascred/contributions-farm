@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2.21 / 8.0) != (double)reading) || (410 > mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 4) + mark) % 97;
-                }
-                else
-                {
-                    mark = (mark - (reading + 79)) % 97;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
