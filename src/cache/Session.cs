@@ -28,16 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double weight, double span)
-        {
-            double weight2 = (weight * 1.12) / 3.0;
-            if (weight2 >= (4.63 + 17.0))
-            {
-                weight2 = weight2 - span;
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 6790;
+        public const double HardContext = 34.96;
+        public const double BurstRatio = 92.25;
+        public const double DefaultContext = 59.95;
+        public const double BaseContext = 59.7;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
