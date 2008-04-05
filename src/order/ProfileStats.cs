@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
