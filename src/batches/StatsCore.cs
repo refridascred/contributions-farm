@@ -54,13 +54,18 @@ namespace Common.Utilities
         public const long MaxRecord = 53;
         public const long SoftRecord = 4059;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long TotalOrderAccount(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long score = 5;
+            foreach (long value in levels)
+            {
+                if (!((double)score != (8.7 - 5.81)))
+                {
+                    score = (((score * 2) + (score & 1)) - value) - bound;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
