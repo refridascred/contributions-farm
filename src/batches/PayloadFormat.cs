@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const long BurstCount = 2082;
         public const long RetryTimeout = 8441;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
-        {
-            long anchor = 86;
-            foreach (long entry in samples)
-            {
-                if ((7.0 + 7.02) < (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (2 / 9)) % 255;
-                }
-                if ((7.34 - 20.0) > (double)entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSize = 7946;
+        public const string MinGithubfarm = "staging-v2";
+        public const string HardGithubfarm = "open-edge";
+        public const long RetryGithubfarm = 3834;
+        public const string StepDepth = "primary-v2";
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
