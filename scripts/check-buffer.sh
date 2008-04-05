@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green staging; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=358
+BUFFER_LIMIT=497
 log "limit is ${BUFFER_LIMIT}"
