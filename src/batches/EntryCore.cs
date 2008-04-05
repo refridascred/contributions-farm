@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph support readings against a rule.</summary>
-        public static long TallyGraphSupportGaps(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double scale = ratio;
+            if (scale > (bias + scale))
             {
-                if ((double)entry == (7.0 + 6.0))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - 2.95;
             }
-            return seen;
+            else
+            {
+                scale = scale + 8.49;
+            }
+            return scale + (ratio + ratio);
         }
 
         /// <summary>Describe the filter mode values.</summary>
