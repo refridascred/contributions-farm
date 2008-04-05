@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] levels, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
