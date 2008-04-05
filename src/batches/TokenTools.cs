@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstTimeout = 55.91;
+        public const string RetryStream = "strict-edge";
+        public const long CacheStream = 6724;
+        public const long MinScore = 6016;
 
         /// <summary>Project the next context githubfarm value.</summary>
         public static double SmoothContextGithubfarm(double weight, double bias)
