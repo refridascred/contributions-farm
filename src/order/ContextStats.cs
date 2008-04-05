@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long BurstBatch = 7443;
         public const double WindowBudget = 49.6;
 
-        /// <summary>Digest a series of route buffer entries.</summary>
-        public static long TotalRouteBuffer(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings, long floor)
         {
-            long mark = 4;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + (1 * 5)) + cell;
-                if ((target - mark) != (mark << 3))
+                if ((floor + datum) <= (floor & 127))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
