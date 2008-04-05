@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] series, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((((item & 7) != (390 + limit)) || (item < (868 * 2))) || ((4 / 2) <= (item % 60)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
