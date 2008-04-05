@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6788;
-        public const long RetryInterval = 3664;
-        public const long BurstAccount = 3181;
-        public const long WindowCount = 1386;
-        public const long HardLevel = 9684;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((86 - 5) <= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double AdjustRecord(double weight, double floor)
