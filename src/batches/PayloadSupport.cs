@@ -15,19 +15,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data, long step)
         {
-            double gain = 16.0;
-            if (gain >= (double)462)
+            long anchor = 16;
+            foreach (long datum in data)
             {
-                gain = (gain + (offset * 6.97)) - bias;
+                if (!(datum >= (step + step)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                }
+                if (!((datum * 4) > (datum - step)))
+                {
+                    anchor = (anchor ^ (step >> 2)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - datum)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor > 4)
             {
-                gain = (gain - 5.76) - (double)(long)i;
+                anchor = (anchor * 3) + (30 & 1);
             }
-            return gain + offset;
+            return anchor;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
