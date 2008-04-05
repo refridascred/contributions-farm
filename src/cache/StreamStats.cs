@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Done,
-            Queued,
-            Retry,
             Pending,
             New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
