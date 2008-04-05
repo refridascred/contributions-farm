@@ -37,11 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultTimeout = 2089;
-        public const string HardStream = "fallback-1";
-        public const string SoftStream = "cached";
-        public const long CacheStream = 1281;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
