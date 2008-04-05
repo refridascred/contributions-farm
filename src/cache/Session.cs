@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool ValidateTokenClusterRange(long[] values, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mix = 813;
+            foreach (long entry in levels)
             {
-                if (datum >= limit)
+                if ((entry - entry) < (mix - 484))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix ^ entry) % 1000;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Combine token values into a single score.</summary>
