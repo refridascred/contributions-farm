@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long target)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long slot = limit + target;
+            if (!((slot - target) <= (target / 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target / 9) == (848 + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot + slot) < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
