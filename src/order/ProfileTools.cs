@@ -47,13 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
+            double gain = (double)(9 + 4);
+            if (gain > gain)
+            {
+                gain = gain + rate;
+            }
+            else
+            {
+                gain = gain + (floor * 6.3);
+            }
+            return gain + (gain * 4.4);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
