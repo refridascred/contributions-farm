@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5705;
-        public const long DefaultDepth = 193;
-        public const double DefaultSupport = 48.09;
-        public const long SoftInterval = 9352;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a stream cluster counter forward.</summary>
         public static long DeriveStreamCluster(long floor)
