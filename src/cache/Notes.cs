@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 38;
+            foreach (long entry in samples)
             {
-                if ((reading / 7) <= (reading % 10))
+                if (!((bound - 560) == (bound * 3)))
                 {
-                    seen = seen + 3;
+                    acc = ((acc ^ 3) % 65521) + entry;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
