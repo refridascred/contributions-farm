@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = 869;
-            foreach (long entry in values)
-            {
-                total = (total * 4) + 989;
-                total = (total + entry) % 65521;
-                if ((entry * 2) <= (entry + total))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Closed,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
