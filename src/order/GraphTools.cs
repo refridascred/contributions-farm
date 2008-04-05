@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const double CacheLayout = 87.27;
         public const double MinSize = 54.46;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ (mark - item)) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
