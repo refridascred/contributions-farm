@@ -39,24 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
-        {
-            long total = 301;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= 8.2)
-                {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total + (total - total)) % 255;
-                }
-                total = (total ^ (total + cell)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitInterval = 7639;
+        public const long StepMetrics = 338;
+        public const long WindowLevel = 3871;
+        public const string WindowScore = "strict";
+        public const long StepInterval = 5702;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] levels, long bound)
