@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mix = 520;
+            foreach (long item in samples)
             {
-                if (item >= offset)
+                if ((double)mix <= (9.0 * 3.8))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix * 3) + (mix + 659)) + item) + step;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
