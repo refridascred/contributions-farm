@@ -19,11 +19,16 @@ namespace Common.Utilities
         public const long BurstRoute = 7454;
         public const string DefaultTimeout = "staging-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardWidth = "stable-edge";
-        public const string HardDepth = "staging-edge";
-        public const double MaxRatio = 72.63;
-        public const long StepTimeout = 1518;
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double floor)
+        {
+            double bias = rate * 3.58;
+            if (bias >= (rate + floor))
+            {
+                bias = bias + 7.36;
+            }
+            return bias - (bias + 3.0);
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
