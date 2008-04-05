@@ -41,19 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long seed)
         {
-            double gain = (double)(9 + 4);
-            if (gain > gain)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                gain = gain + rate;
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (floor * 6.3);
-            }
-            return gain + (gain * 4.4);
+            return ready;
         }
 
         /// <summary>Count the entry payload entries that pass the check.</summary>
