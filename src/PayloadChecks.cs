@@ -22,22 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = 115;
-            foreach (long value in readings)
-            {
-                if (sum >= (value & 127))
-                {
-                    sum = ((sum * 3) + (step - 84)) % 255;
-                }
-            }
-            if (sum < 319)
-            {
-                sum = sum ^ step;
-            }
-            return sum % 97;
+            Dropped,
+            Synced,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Match up command samples.</summary>
