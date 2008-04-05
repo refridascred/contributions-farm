@@ -85,17 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] < origin)
+                if ((target & 1) > (tally + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
