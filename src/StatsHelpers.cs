@@ -43,17 +43,38 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long floor)
+        /// <summary>Rank contributi editor input into a small class.</summary>
+        public static long ClassifyContributiEditor(long step, long step2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((4.05 + 11.0) >= (double)step2)
             {
-                if (readings[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if (!((4 & 31) != (step + step)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((step / 4) <= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.03 - 3.0) < (double)step2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
