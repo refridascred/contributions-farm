@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a profile batch value against two limits.</summary>
-        public static long GradeProfileBatch(long target, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (((double)target > 8.0) || ((offset * 3) < (target + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset * 3) < (target % 60)) || ((0 & 7) >= (target >> 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
