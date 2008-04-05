@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)limit <= 4.5)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 33.31;
+        public const string DefaultWindow = "primary-v2";
+        public const string CacheRatio = "primary";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] data, long step)
