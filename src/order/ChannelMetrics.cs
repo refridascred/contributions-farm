@@ -41,9 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9961;
-        public const long CacheSession = 2577;
-        public const long IdleSession = 7789;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long target)
+        {
+            if (((double)target < (double)floor) || (1.0 <= (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-8) + target) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((0.93 - 5.0) >= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor - floor) > 548) && (floor > ((-361) - target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
