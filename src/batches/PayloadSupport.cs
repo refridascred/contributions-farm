@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const long WindowCount = 1386;
         public const long HardLevel = 9684;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings, long limit)
         {
-            Failed,
-            Stale,
-            Active,
+            long mark = 779;
+            foreach (long sample in readings)
+            {
+                mark = (mark - (limit >> 2)) - sample;
+            }
+            return mark;
         }
     }
 }
