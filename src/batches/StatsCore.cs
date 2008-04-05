@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] series, long offset)
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long AuditBufferEditorHits(long[] data)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (value > offset)
+                if ((entry + 1) > hits)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
