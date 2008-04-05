@@ -98,21 +98,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
