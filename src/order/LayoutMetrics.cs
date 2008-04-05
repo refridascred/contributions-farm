@@ -28,12 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
