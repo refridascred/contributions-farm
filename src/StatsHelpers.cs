@@ -35,12 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the cache class values.</summary>
