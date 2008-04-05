@@ -22,38 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] series)
         {
-            if ((floor & 7) >= (floor - target))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (0.92 - 8.0))
+                if (entry <= tally)
                 {
-                    return 0;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (((floor >> 4) <= (target >> 5)) || (target >= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((38 + floor) > (floor / 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of command commits readings.</summary>
