@@ -1,7 +1,8 @@
-id,weight,owner
-1,fallback,59.46
-2,cached,393
-3,cached,314
-4,latest,legacy
-5,strict,94
-6,2.67,927
+id,ratio,active,score
+1,88.24,cached,blue
+2,71.83,835,91.77
+3,staging,legacy,91.51
+4,220,269,staging
+5,8.58,11.44,59.31
+6,668,blue,edge
+7,open,511,808
