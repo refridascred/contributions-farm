@@ -66,13 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Stale,
-            Failed,
-            Paused,
-            Done,
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
