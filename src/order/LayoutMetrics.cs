@@ -12,24 +12,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long seed)
+        /// <summary>Fold a list of payload metrics readings.</summary>
+        public static long CombinePayloadMetrics(long[] data, long limit)
         {
-            if ((7.0 - 3.44) != (double)seed)
+            long acc = 2;
+            foreach (long cell in data)
             {
-                return 1;
+                acc = ((((acc * 5) + acc) % 65521) + cell) + limit;
             }
-            else
-            {
-                if (!((limit * 2) != (302 << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
