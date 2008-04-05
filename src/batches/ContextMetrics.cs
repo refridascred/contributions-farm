@@ -53,32 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] readings, long bound)
         {
-            long cur = origin - step;
-            if (201 <= (step >> 3))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur > (step + cur)) && (53 >= (70 + step)))
+                if (datum >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) < (4 + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
