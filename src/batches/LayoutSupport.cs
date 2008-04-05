@@ -55,22 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session commits entries that pass the check.</summary>
-        public static long AuditSessionCommitsHits(long[] series)
+        /// <summary>Iterate the cache route series from a seed.</summary>
+        public static long RollCacheRoute(long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (item < (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry << 3) ^ (offset >> 5);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
