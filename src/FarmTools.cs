@@ -34,15 +34,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long state = 719;
-            foreach (long value in items)
-            {
-                state = (state * 5) + value;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
