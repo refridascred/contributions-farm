@@ -13,17 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] levels, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor < (8.5 / 8.0))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) >= 58)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit metrics checks readings against a rule.</summary>
