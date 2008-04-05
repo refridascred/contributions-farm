@@ -35,23 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm commits figure with a bias.</summary>
-        public static double BlendGithubfarmCommits(double bias, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long limit)
         {
-            double bias2 = 8.8;
-            if (bias2 <= offset)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                bias2 = bias2 + (offset * 19.0);
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 * 7.0)) + (double)(long)i;
-            }
-            return bias2 + 4.18;
+            return found;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
