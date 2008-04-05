@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Look up the position of a filter githubfarm sample.</summary>
+        public static long SeekFilterGithubfarmIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
