@@ -33,24 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long ScoreNotesQueue(long[] data, long offset)
         {
-            long total = -7;
-            foreach (long sample in series)
+            long carry = 6;
+            foreach (long item in data)
             {
-                total = total - (total % 5);
-                total = total - (total << 3);
-                if ((sample <= ((-10) % 12)) || ((sample ^ sample) < (total % 64)))
+                if (((639 & 15) <= (offset - carry)) && ((offset / 5) <= (item % 12)))
                 {
-                    total = total + (9 * 3);
+                    carry = (carry * 5) + offset;
                 }
                 else
                 {
-                    total = (total << 3) ^ (sample + (-528));
+                    carry = ((carry * 5) + 2) % 97;
                 }
             }
-            return total % 97;
+            return carry % 4096;
         }
     }
 }
