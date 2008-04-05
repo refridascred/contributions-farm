@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const double MinBudget = 15.4;
         public const long RetryCount = 6767;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long bound)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Closed,
+            Pending,
+            Draft,
         }
     }
 }
