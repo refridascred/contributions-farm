@@ -1,5 +1,5 @@
 {
-  "warm_interval_count": "staging",
-  "default_threshold_ms": false,
-  "entry_window": "stable"
+  "min_depth_pct": 58.1,
+  "min_delay_pct": "open",
+  "default_interval": [33, 196, 404]
 }
