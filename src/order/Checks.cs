@@ -43,18 +43,15 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell + 2) >= (67 << 1))
-                {
-                    sum = (sum - (cell << 3)) % 1000;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Describe the layout level values.</summary>
