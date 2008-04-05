@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long offset)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
