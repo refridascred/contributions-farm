@@ -28,12 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + matches) >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route format readings.</summary>
