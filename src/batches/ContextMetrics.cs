@@ -44,18 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count > (226 + count)) && ((3.79 - 8.38) <= (double)entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
