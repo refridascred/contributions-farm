@@ -48,17 +48,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 3.66 / 2.0;
+            if (rate < floor)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)85;
             }
-            return -1;
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - floor) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
