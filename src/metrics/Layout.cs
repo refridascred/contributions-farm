@@ -41,11 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Draft,
+            New,
+            Paused,
         }
     }
 }
