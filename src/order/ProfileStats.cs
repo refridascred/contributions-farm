@@ -23,11 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double scale = weight;
-            return (scale - weight) + offset;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
