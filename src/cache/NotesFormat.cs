@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseRatio = 9968;
+        public const long CacheAlready = 1951;
+        public const long SoftAlready = 2792;
+        public const long BaseAlready = 8339;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] series, long limit)
