@@ -1,5 +1,20 @@
 # support settings
-hard_window_s: eu-west
-base_depth: staging
-idle_retries_ms: blue
-persist: 500
+idle_interval:
+  token_window: blue
+  audit: 88
+  flush_ttl:
+    - 194
+    - 179
+  flush_interval_s: strict
+hard_threshold: stable
+counter_window:
+  - 450
+  - 251
+  - 171
+  - 485
+session_delay: primary
+compress:
+  warm_capacity_s: strict
+  cache_timeout_s: 98
+  verbose: edge
+strict: true
