@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate farm schema samples.</summary>
-        public static long WeighFarmSchema(long[] levels, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] samples, long step)
         {
-            long anchor = 83;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((entry & 127) == (anchor ^ anchor))
+                if (!(cell <= (count - cell)))
                 {
-                    anchor = anchor ^ (seed - seed);
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
-                }
-                if ((anchor * 5) > entry)
-                {
-                    anchor = (anchor + anchor) % 101;
+                    count = (count + 1) - step;
                 }
                 else
                 {
-                    anchor = anchor - (entry % 10);
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
