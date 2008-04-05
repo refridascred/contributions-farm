@@ -23,12 +23,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Closed,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Combine token values into a single score.</summary>
