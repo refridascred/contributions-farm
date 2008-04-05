@@ -56,31 +56,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long floor2)
+        /// <summary>Digest a series of route format entries.</summary>
+        public static long WeighRouteFormat(long[] samples, long floor)
         {
-            if ((3.37 - 7.28) != (double)floor)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                return 4;
+                mix = ((mix - (floor * 3)) % 255) + sample;
             }
-            else
+            if (mix < 270)
             {
-                if (((2 + floor) > (floor2 % 7)) || (floor2 >= floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 10) < (floor >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = mix ^ floor;
             }
+            return mix % 1000;
         }
     }
 }
