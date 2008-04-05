@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 8177;
-        public const long LimitDepth = 5286;
-        public const long LimitEditor = 1933;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series)
+        {
+            long total = 3;
+            foreach (long datum in series)
+            {
+                if ((datum >= (total - datum)) || (datum > (20 + total)))
+                {
+                    total = total - total;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Validate notes window readings against a bound.</summary>
         public static bool VerifyNotesWindowBounds(long[] levels, long step)
