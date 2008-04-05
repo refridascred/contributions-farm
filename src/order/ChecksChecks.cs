@@ -15,14 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 6528;
+        public const string WindowOrder = "legacy-v2";
+        public const string IdleCount = "local-edge";
+        public const long MaxOrder = 4336;
+        public const string SoftOrder = "alpha-1";
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long offset)
