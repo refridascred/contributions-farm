@@ -52,19 +52,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double span)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            double weight = 2.01;
-            if (weight >= (double)863)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + rate) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (double)815) - (double)(long)i;
-            }
-            return weight - rate;
+            return hits;
         }
     }
 }
