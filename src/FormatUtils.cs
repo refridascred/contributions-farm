@@ -58,17 +58,14 @@ namespace Common.Utilities
         public const long HardSize = 1547;
         public const double WindowQueue = 90.31;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
