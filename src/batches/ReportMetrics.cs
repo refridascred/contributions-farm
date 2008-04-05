@@ -54,14 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples, long limit)
         {
-            Idle,
-            Pending,
-            Dropped,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)limit >= 0.22) || ((seen >= (531 - sample)) || ((limit + limit) == (limit * 3))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
