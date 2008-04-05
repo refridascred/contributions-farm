@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values, long seed)
         {
-            Active,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((4.24 * 11.0) != (double)value) && ((hits + value) == (value + seed))) && !((double)hits > (9.37 / 7.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
