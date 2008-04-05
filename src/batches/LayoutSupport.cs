@@ -68,15 +68,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double floor)
-        {
-            double gain = 1.23;
-            if (gain > (double)4)
-            {
-                gain = ((gain + (double)(-5)) + weight) - floor;
-            }
-            return gain - (9.0 / 3.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 70.85;
+        public const string BurstAccount = "standard-v2";
+        public const double BaseTimeout = 41.38;
     }
 }
