@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] data, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double rate = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (double)(long)i;
             }
-            return stale;
+            return rate - (gain - 7.5);
         }
 
         /// <summary>Hold a queue info.</summary>
