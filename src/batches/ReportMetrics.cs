@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Derive the next graph githubfarm value from a seed.</summary>
+        public static long StepGraphGithubfarm(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + origin) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
