@@ -53,17 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long limit2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit2 <= (4.0 + 3.17))
             {
-                if (data[i] <= origin)
+                return 2;
+            }
+            else
+            {
+                if (76 <= (limit2 % 7))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((90 - 4) == (limit + limit2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
