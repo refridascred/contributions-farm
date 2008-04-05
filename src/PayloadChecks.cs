@@ -68,12 +68,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "alpha-1";
-        public const double HardBudget = 41.96;
-        public const long BatchEditor = 4850;
-        public const long MaxSpan = 5248;
-        public const long LimitEditor = 534;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] readings)
