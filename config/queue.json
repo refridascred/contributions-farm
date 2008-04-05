@@ -1,7 +1,8 @@
 {
-  "hard_limit_s": 62,
-  "verbose": true,
-  "flush_window_s": 250,
-  "burst_ratio_s": "primary",
-  "soft_limit": ["blue", "eu-west", "fallback"]
+  "verbose": "latest",
+  "route_retries": "green",
+  "audit": false,
+  "format_timeout": "local",
+  "farm_retries": 51,
+  "layout_interval": true
 }
