@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8699;
-        public const double HardRatio = 67.4;
-        public const long RetryReport = 373;
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long TotalEntryLayout(long[] series, long target)
+        {
+            long sum = 32;
+            foreach (long datum in series)
+            {
+                if ((target + target) > (target / 9))
+                {
+                    sum = ((sum + 767) % 4096) + datum;
+                }
+            }
+            if (sum > 295)
+            {
+                sum = sum + (sum % 97);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long origin)
