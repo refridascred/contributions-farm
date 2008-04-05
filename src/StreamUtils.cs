@@ -11,38 +11,14 @@ namespace Common.Utilities
         public const long DefaultProfile = 3436;
         public const double BatchProfile = 35.66;
 
-        /// <summary>Rank filter queue input into a small class.</summary>
-        public static long SortFilterQueue(long target, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if (((seed % 2) == (seed + 0)) && ((seed - 537) != (seed - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((899 - 55) > (seed + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target > (1 + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target * 3) >= seed) && ((30 + target) <= (target << 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
