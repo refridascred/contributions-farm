@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((317 / 2) > limit)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank counter input into a small class.</summary>
