@@ -1,17 +1,6 @@
 # githubfarm settings
-stats_window: 45.68
-flush_interval: stable
-enabled: 12
-min_size: true
-notes_ratio:
-  - blue
-  - latest
-payload_timeout:
-  editor_timeout: true
-  strict: 1024
-  schema_window:
-    report_window: false
-    cache_depth_s: blue
-    dry_run: true
-  compress: 913
-  max_ratio: standard
+channel_interval: 100
+min_size_pct:
+  - standard
+  - standard
+poll_delay: strict
