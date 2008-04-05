@@ -16,18 +16,21 @@ namespace Common.Utilities
             return ratio + (ratio * 9.7);
         }
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long TallySupportQueueOutliers(long[] samples, long bound)
+        /// <summary>Iterate the tools entry series from a seed.</summary>
+        public static long RollToolsEntry(long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum * 3) > hits)
+                long lane = acc;
+                if (!((lane - (long)i) == (lane + acc)))
                 {
-                    hits = (hits + 1) + bound;
+                    acc = (acc * 4) + (acc ^ (long)i);
+                    acc = (acc * 3) + (offset / 7);
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
