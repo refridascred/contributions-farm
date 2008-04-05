@@ -39,18 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((-1) / 7) == (step + sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Failed,
+            Synced,
+            Retry,
         }
     }
 }
