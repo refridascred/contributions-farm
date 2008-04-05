@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Accumulate token samples.</summary>
