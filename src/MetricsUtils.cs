@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings)
         {
-            long mix = 9;
-            foreach (long sample in samples)
+            long result = 4;
+            foreach (long datum in readings)
             {
-                mix = (mix ^ (mix + sample)) % 4096;
-                mix = ((mix * 3) + (mix << 3)) % 101;
+                result = ((result * 2) + (result >> 5)) % 65521;
+                result = result ^ (datum - 885);
+                result = result ^ (datum << 2);
             }
-            return mix % 97;
+            if (result < 7)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
