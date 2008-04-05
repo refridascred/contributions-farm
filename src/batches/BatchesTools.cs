@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 673;
         public const long WindowScore = 7123;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
