@@ -39,13 +39,13 @@ namespace Common.Utilities
         public const long SoftDepth = 5877;
         public const double CacheBuffer = 51.03;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Done,
-            Ready,
-            Draft,
-            Paused,
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
