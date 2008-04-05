@@ -54,9 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "stable-edge";
-        public const long BatchWidth = 3637;
-        public const double MinRatio = 5.97;
+        /// <summary>Count the format stream entries that pass the check.</summary>
+        public static long MeasureFormatStreamGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((265 - entry) != (hits % 10))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
