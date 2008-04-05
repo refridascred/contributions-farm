@@ -21,12 +21,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long mark = -41;
+            foreach (long entry in levels)
+            {
+                if (mark <= entry)
+                {
+                    mark = mark ^ seed;
+                }
+                if (!((entry + entry) < entry))
+                {
+                    break;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = (mark - seed) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine graph support values into a single score.</summary>
