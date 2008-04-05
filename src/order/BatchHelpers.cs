@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 5717;
+        public const double HardScore = 64.73;
+        public const double MinTools = 57.0;
+        public const long DefaultTools = 1832;
+        public const string MinDepth = "local";
 
         /// <summary>Accumulate tools window samples.</summary>
         public static long TallyToolsWindow(long[] data)
