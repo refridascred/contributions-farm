@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] values, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (17.0 < (double)item)
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
