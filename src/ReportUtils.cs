@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long step, long bound)
+        /// <summary>Audit stream batch readings against a rule.</summary>
+        public static long TallyStreamBatchHits(long[] readings, long seed)
         {
-            if ((double)step == (5.4 + 6.8))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step == (7.27 - 6.9)))
+                if ((((seed * 5) >= (datum % 16)) && ((double)seed != (double)599)) && ((3 >> 4) >= seed))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
