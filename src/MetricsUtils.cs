@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
