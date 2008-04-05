@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] data)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((675 + value) < (seen ^ value)) && ((double)(-64) != (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
