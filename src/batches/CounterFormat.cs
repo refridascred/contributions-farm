@@ -67,21 +67,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix ^ mix) % 1000;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix * 5) + limit) % 65521) ^ (long)i2;
-                    mix = ((mix * 5) + limit) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCount = 49.29;
+        public const long DefaultCommand = 4458;
+        public const long MinCommand = 9753;
+        public const long CacheCommand = 9653;
+        public const long MaxCount = 465;
     }
 }
