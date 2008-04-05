@@ -65,19 +65,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)(long)i != (double)mark))
-                {
-                    mark = mark ^ origin;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
