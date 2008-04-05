@@ -41,14 +41,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Paused,
-            Pending,
-            Done,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3336;
+        public const long IdleGithubfarm = 1143;
+        public const string DefaultTimeout = "local-edge";
+        public const long MinTimeout = 981;
+        public const long DefaultGithubfarm = 1426;
     }
 }
