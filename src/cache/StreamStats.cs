@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const long SoftFarm = 3461;
         public const long RetryInterval = 7864;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchFactor = 96.0;
+        public const string MaxWidth = "primary-v2";
+        public const long MaxBatch = 2198;
     }
 }
