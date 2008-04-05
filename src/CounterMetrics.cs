@@ -37,11 +37,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardSpan = 18.77;
-        public const long DefaultBuffer = 9376;
-        public const double MinBuffer = 10.45;
-        public const string HardBuffer = "local";
+        /// <summary>Grade a record commits value against two limits.</summary>
+        public static long RankRecordCommits(long limit, long origin)
+        {
+            if ((double)origin != (19.0 - 8.44))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (limit % 64))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] series, long target)
