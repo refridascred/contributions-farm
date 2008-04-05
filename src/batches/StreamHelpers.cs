@@ -61,13 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
