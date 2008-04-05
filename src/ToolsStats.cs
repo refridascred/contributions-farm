@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long limit, long limit2)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((double)20 != (double)limit2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(limit <= (limit + 899)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit2 == (8.1 + 3.22))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - limit2) <= (limit2 ^ limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
