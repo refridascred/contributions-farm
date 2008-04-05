@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 7211;
+        public const long MaxLayout = 5201;
+        public const double CacheLayout = 74.29;
+        public const long DefaultLayout = 6758;
+        public const long MaxBudget = 7069;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double bias, double floor)
