@@ -49,23 +49,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] data, long origin)
         {
-            long mix = 1;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                mix = (mix + (177 + mix)) % 65521;
-                if (((entry >> 1) >= mix) || ((mix - entry) > mix))
+                if (entry <= origin)
                 {
-                    mix = (mix ^ (entry >> 3)) % 101;
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix << 2);
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
     }
 }
