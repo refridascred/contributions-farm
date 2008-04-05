@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 4748;
-        public const double StepTools = 26.2;
-        public const long BurstTools = 384;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
         public static long SeekClusterChecksIndex(long[] values, long floor)
