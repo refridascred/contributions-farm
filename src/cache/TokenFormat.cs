@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long limit2)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((limit2 / 9) != (47 & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 / 5) >= (limit * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Idle,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
