@@ -1,6 +1,6 @@
 {
-  "compress": "local",
-  "default_depth_ms": true,
-  "enabled": 61.68,
-  "warm_depth": [405, 39, 227, 48]
+  "warm_delay_s": "local",
+  "tools_interval": 62.56,
+  "poll_size_ms": 60,
+  "dry_run": "strict"
 }
