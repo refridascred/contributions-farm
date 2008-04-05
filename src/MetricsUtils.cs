@@ -46,22 +46,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long score = 822;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.0 - 9.4) > (0.1 * 4.8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 3) ^ (item & 31)) % 255;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 135)
-            {
-                score = score - 1;
-            }
-            return score % 4096;
+            return seen;
         }
     }
 }
