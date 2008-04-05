@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long seed)
         {
-            New,
-            Active,
-            Done,
+            if ((14.0 + 19.0) > (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - 612) >= (seed ^ seed)) || (seed <= (3 + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 64) <= (seed + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes stream sample.</summary>
