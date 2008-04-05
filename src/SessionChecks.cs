@@ -27,11 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((count << 3) >= (count / 5)) && ((sample + count) == ((long)readings.Length + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
