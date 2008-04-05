@@ -34,9 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepBudget = 6190;
-        public const long SoftCounter = 8208;
-        public const double HardCounter = 73.92;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long limit)
+        {
+            long score = 26;
+            foreach (long value in values)
+            {
+                score = ((score << 3) ^ limit) % 255;
+                if ((limit + value) <= (limit >> 2))
+                {
+                    break;
+                }
+            }
+            if (score < 95)
+            {
+                score = ((score * 2) + (score - score)) % 97;
+            }
+            return score % 65521;
+        }
     }
 }
