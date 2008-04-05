@@ -30,17 +30,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = floor + step;
+            if (!((-1) <= (step & 63)))
             {
-                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (step < (gap - gap))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
