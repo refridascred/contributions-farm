@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches >= (matches ^ reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a queue options.</summary>
