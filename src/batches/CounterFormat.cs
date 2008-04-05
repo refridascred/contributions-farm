@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((8.7 / 6.0) >= (double)sample)
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a cache entry.</summary>
