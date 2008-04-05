@@ -35,19 +35,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] data, long origin)
+        /// <summary>Grade a schema cluster value against two limits.</summary>
+        public static long RankSchemaCluster(long target, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if ((target - step) >= 57)
             {
-                if (item <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((step + 0) > target)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((50 % 64) <= (step + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
