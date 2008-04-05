@@ -46,13 +46,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            Retry,
-            Failed,
-            Paused,
-            Draft,
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((seed * 3) <= (seed + (long)i)))
+                {
+                    total = total - total;
+                    total = (total + 41) % 97;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
