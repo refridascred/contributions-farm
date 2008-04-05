@@ -51,17 +51,15 @@ namespace Common.Utilities
         public const double WindowRatio = 44.46;
         public const long SoftNotes = 4513;
 
-        /// <summary>Find the first channel batches entry that matches the target.</summary>
-        public static long LocateChannelBatchesIndex(long[] levels, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
