@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((cell + cell) == (197 % 24)) || ((hits - cell) >= cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = anchor ^ (limit - limit);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
