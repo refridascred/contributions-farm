@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 83.01;
-        public const long CacheSize = 9396;
-        public const long LimitScore = 8798;
-        public const long CacheLevel = 7656;
-        public const double StepCount = 82.47;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
