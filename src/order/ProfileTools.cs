@@ -35,16 +35,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + (acc % 100)) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
