@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 2756;
-        public const long HardScore = 9732;
-        public const long LimitLevel = 2862;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
