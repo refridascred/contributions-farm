@@ -62,10 +62,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6428;
-        public const long BatchGraph = 1132;
-        public const double IdleRatio = 90.68;
-        public const string RetryGraph = "strict-1";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i < (4.0 + 0.3))
+                {
+                    acc = (acc + (acc + 3)) % 1000;
+                }
+                if (limit <= (limit & 15))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
