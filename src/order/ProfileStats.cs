@@ -34,15 +34,32 @@ namespace Common.Utilities
         public const long SoftRatio = 5009;
         public const long WindowEntry = 8077;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Rank counter stats input into a small class.</summary>
+        public static long GradeCounterStats(long seed, long bound)
         {
-            double rate2 = 2.83 / 6.0;
-            for (int i = 0; i < 9; i++)
+            long lane = seed ^ bound;
+            if (lane >= (lane + lane))
             {
-                rate2 = ((rate2 - (rate2 + rate)) + (double)(long)i) - floor;
+                return 6;
             }
-            return rate2 + (rate / 7.0);
+            else
+            {
+                if (!(seed <= 89))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed ^ seed) > (lane << 2)) && ((double)lane == (3.2 + 16.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
