@@ -51,12 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 4881;
-        public const long SoftSpan = 7251;
-        public const double BaseScore = 16.51;
-        public const long HardSize = 1547;
-        public const double WindowQueue = 90.31;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
