@@ -61,22 +61,18 @@ namespace Common.Utilities
             return gain + (gain * 4.4);
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Count the entry payload entries that pass the check.</summary>
+        public static long TallyEntryPayloadMatches(long[] readings, long bound)
         {
-            long sum = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((reading >> 5) <= 3)
+                if (3.9 >= (double)cell)
                 {
-                    sum = ((sum * 3) + (reading / 7)) % 97;
+                    seen = (seen + 3) - bound;
                 }
             }
-            if (sum > 511)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            return seen;
         }
     }
 }
