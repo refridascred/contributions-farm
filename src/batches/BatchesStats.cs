@@ -27,15 +27,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Classify a entry stats pair into a bucket.</summary>
+        public static long BucketEntryStats(long bound, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long offset = bound + target;
+            if (((bound << 2) > (78 / 8)) || ((bound & 127) > (bound * 5)))
             {
-                total = ((total * 4) + (long)i) % 4093;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (offset < (offset >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
