@@ -49,22 +49,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((sample >> 3) < (sample & 7))
+                if (sample > step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
