@@ -29,19 +29,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Scale a tools graph figure with a bias.</summary>
+        public static double BlendToolsGraph(double scale, double offset)
         {
-            double mean = (bias + scale) / 3.0;
-            if (mean >= (mean + mean))
+            double mean = 16.0;
+            if (mean < scale)
             {
-                mean = mean + bias;
+                mean = mean - (mean / 3.0);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean - bias) + (double)(long)i;
+                mean = (mean + (offset / 8.0)) - (double)(long)i;
             }
-            return mean + (mean / 4.0);
+            return mean + (double)642;
         }
     }
 }
