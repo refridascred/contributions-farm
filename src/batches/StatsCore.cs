@@ -63,15 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] levels, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] data, long seed)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long entry in data)
             {
-                if ((value % 2) != (value + value))
+                if ((31 % 100) >= (seed >> 1))
                 {
-                    hits = (hits + 3) - limit;
+                    hits = (hits + 3) + entry;
                 }
             }
             return hits;
