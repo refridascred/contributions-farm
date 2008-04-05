@@ -61,19 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long origin)
         {
-            long result = 93;
-            foreach (long item in data)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result ^ (result ^ seed)) ^ item;
-                if ((-1) >= (seed & 7))
+                if (!((double)(long)i != (double)mark))
                 {
-                    break;
+                    mark = mark ^ origin;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
