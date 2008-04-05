@@ -1,22 +1,7 @@
 # entry settings
-support_delay: 20.93
-token_timeout: 250
-retry_depth: true
-poll_threshold_pct:
-  base_depth: 48
-  strict: 26.85
-  batch_limit_pct:
-    contributi_capacity: 100
-    max_ttl: 100
-    retry_window: true
-  readonly: edge
-  verbose: 97.1
-  checks_ttl: 14
-audit:
-  - 171
-  - 137
-  - 484
-  - 97
-sync_interval_count:
-  - 102
-  - 112
+base_window_pct: open
+default_ratio: local
+soft_ratio_s: blue
+hard_depth_ms: latest
+window_timeout: 74
+compress: 12
