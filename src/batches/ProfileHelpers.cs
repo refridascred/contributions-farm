@@ -41,22 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account cache entries that pass the check.</summary>
-        public static long CountAccountCacheMatches(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum % 7) >= (datum % 64))
+                if (samples[i] <= offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
