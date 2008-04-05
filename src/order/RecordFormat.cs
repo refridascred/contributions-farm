@@ -36,17 +36,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = 478;
-            foreach (long sample in levels)
-            {
-                state = (state ^ (sample / 5)) % 1000;
-                state = state + 44;
-                state = (state ^ (sample << 1)) % 65521;
-            }
-            return state;
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
