@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-RECORD_LIMIT=479
-log "limit is ${RECORD_LIMIT}"
-
-for item in local green; do
+for item in local green latest staging; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=226
+log "limit is ${RECORD_LIMIT}"
