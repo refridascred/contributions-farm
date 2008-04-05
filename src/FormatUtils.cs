@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches - matches) >= sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
