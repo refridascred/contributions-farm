@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long DefaultProfile = 6615;
         public const string IdleProfile = "primary-v2";
 
-        /// <summary>Validate layout farm readings against a bound.</summary>
-        public static bool ValidateLayoutFarmRange(long[] values, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Compare every pair of already batch readings.</summary>
