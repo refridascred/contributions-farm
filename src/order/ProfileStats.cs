@@ -47,18 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item & 31) < ((long)series.Length >> 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the counter state values.</summary>
