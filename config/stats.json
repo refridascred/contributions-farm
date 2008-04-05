@@ -1,6 +1,16 @@
 {
-  "soft_timeout_count": "legacy",
-  "min_timeout_count": "strict",
-  "default_delay_count": "local",
-  "window_interval": "staging"
+  "window_depth": {
+    "command_capacity": 100,
+    "audit": true,
+    "verbose": {
+      "compress": 34.01,
+      "sync_depth": false,
+      "enabled": 60,
+      "record_retries": false
+    },
+    "strict": 86.8,
+    "buffer_limit": 36.5
+  },
+  "default_interval": "open",
+  "compress": 90.89
 }
