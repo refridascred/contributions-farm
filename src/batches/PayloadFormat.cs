@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 8352;
-        public const string RetrySize = "open-1";
-        public const long DefaultToken = 2731;
-        public const long BurstCount = 2082;
-        public const long RetryTimeout = 8441;
+        /// <summary>Look up the position of a contributi counter sample.</summary>
+        public static long FindContributiCounterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long floor, long origin)
