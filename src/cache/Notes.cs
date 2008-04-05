@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metrics token readings against a rule.</summary>
-        public static long CountMetricsTokenGaps(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value & 7) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
