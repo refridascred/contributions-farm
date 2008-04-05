@@ -27,22 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics already samples.</summary>
-        public static long DigestMetricsAlready(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long total = 8;
-            foreach (long cell in levels)
+            double scale = (double)((-48) ^ 75);
+            if (scale < gain)
             {
-                if ((total * 3) < (total ^ 325))
-                {
-                    total = ((total * 2) + (total + (long)levels.Length)) - cell;
-                }
-                else
-                {
-                    total = total + total;
-                }
+                scale = scale + span;
             }
-            return total;
+            else
+            {
+                scale = scale - (scale + gain);
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
