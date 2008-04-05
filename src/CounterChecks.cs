@@ -42,19 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples, long step)
         {
-            double gain2 = 7.0 + (double)95;
-            if (gain2 <= (floor * 16.0))
+            long sum = 900;
+            foreach (long sample in samples)
             {
-                gain2 = (gain2 - (12.0 / 9.0)) - gain;
+                if (((sample & 31) < (long)samples.Length) && ((sum % 16) == (sample + sample)))
+                {
+                    sum = sum - (sum - sample);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (step % 64)) % 1000;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 - gain2;
+            return sum % 4096;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
