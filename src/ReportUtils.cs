@@ -46,14 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            Ready,
-            Retry,
-            Pending,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length & 1) >= (hits + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
