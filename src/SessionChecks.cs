@@ -41,22 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long score = 86;
-            foreach (long cell in samples)
-            {
-                if (7.0 > (double)step)
-                {
-                    score = (score + ((-798) << 3)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (cell - score);
-                }
-            }
-            return score;
+            New,
+            Draft,
+            Dropped,
+            Locked,
+            Synced,
         }
     }
 }
