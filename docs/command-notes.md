@@ -1,14 +1,11 @@
 # Command notes
 
-When a support fails, the contributi handler retries a few times before giving up.
-Defaults for command live in the config folder and can be overridden per environment.
-
-Keep format and filter names short and lowercase.
-Use stats settings to tune how often context data is refreshed.
+A graph that stays idle for too long is moved to the format list.
+Keep window and cluster names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Validate farm input early
-- Document new queue fields
-- Log every format change
+- Log every report change
+- Keep route values small
+- Validate batch input early
+- Review payload limits each release
