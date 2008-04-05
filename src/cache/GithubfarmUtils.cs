@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const long HardAlready = 1299;
         public const double BaseRatio = 50.14;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] series, long limit)
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long MeasureGithubfarmGraphMatches(long[] samples, long step)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long entry in samples)
             {
-                if ((9.3 + 7.4) > (double)datum)
+                if (((-91) - entry) >= step)
                 {
-                    tally = (tally + 1) + limit;
+                    tally = tally + 2;
                 }
             }
             return tally;
