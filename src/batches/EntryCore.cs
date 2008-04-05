@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            double mean = (double)(129 * 2);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (weight * 8.0)) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Hold a queue info.</summary>
