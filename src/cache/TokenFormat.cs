@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples, long step)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long carry = -4;
+            foreach (long reading in samples)
+            {
+                carry = carry - (carry * 4);
+                carry = (carry ^ carry) % 101;
+                if ((reading + step) <= reading)
+                {
+                    carry = carry ^ (691 << 3);
+                }
+            }
+            if (carry > 860)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of buffer command entries.</summary>
