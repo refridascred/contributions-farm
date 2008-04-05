@@ -1,6 +1,19 @@
 {
-  "flush_capacity_pct": ["eu-west", "cached", "legacy", "latest"],
-  "sync_depth_ms": 79.03,
-  "farm_delay": false,
-  "batches_depth": false
+  "retry_delay_ms": true,
+  "idle_threshold": ["blue", "eu-west", "edge"],
+  "enabled": "blue",
+  "min_depth": {
+    "batches_delay": 250,
+    "stream_delay": 61.38,
+    "retry_interval": "eu-west",
+    "already_delay": {
+      "sync_interval_pct": false,
+      "min_delay_pct": 96.48,
+      "notes_ttl": 37.6,
+      "base_ratio": false,
+      "sync_limit_s": false,
+      "burst_retries_ms": [448, 457, 499, 243]
+    }
+  },
+  "base_threshold_count": "fallback"
 }
