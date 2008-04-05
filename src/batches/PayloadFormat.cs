@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long origin)
-        {
-            long bound = floor + origin;
-            if ((floor - 316) >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= 9.9)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9237;
+        public const long HardBudget = 3435;
+        public const string WindowStream = "open-v2";
 
         /// <summary>Grade a commits notes value against two limits.</summary>
         public static long GradeCommitsNotes(long limit, long origin)
