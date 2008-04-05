@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 2)
+                    if ((levels[i] ^ levels[j]) > 6)
                     {
                         count = count + 1;
                     }
