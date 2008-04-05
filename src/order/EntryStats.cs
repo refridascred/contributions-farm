@@ -33,18 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (517 > matches)
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
+            double ratio2 = offset;
+            return ratio2 - ratio;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
