@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
