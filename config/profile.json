@@ -1,7 +1,7 @@
 {
-  "soft_limit_s": 2338,
-  "hard_capacity": "eu-west",
-  "batch_window_pct": false,
-  "hard_ratio": "strict",
-  "command_retries": 3723
+  "strict": "strict",
+  "queue_depth": 40.04,
+  "dry_run": 60,
+  "compress": [395, 481, 382],
+  "hard_ratio": "latest"
 }
