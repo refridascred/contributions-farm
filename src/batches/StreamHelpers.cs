@@ -73,39 +73,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long seed)
+        /// <summary>Derive the next schema contributi value from a seed.</summary>
+        public static long RollSchemaContributi(long target)
         {
-            long diff = step ^ seed;
-            if (diff < (step >> 2))
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (seed > (step & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff ^ step) < ((-25) + diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-73) < diff) || ((diff - 981) >= 520))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
