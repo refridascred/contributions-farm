@@ -1,20 +1,15 @@
 # support settings
-warm_limit: fallback
-filter_limit: stable
-cache_ttl_count:
-  batches_ratio: 30
-  default_retries_s:
-    - 487
-    - 364
-  contributi_retries: fallback
-  retry_ttl:
-    - blue
-    - latest
-    - stable
-  warm_ratio: 42.69
-counter_timeout:
-  report_ratio: 30
-  persist: open
-  default_ratio: fallback
-cache_timeout_s: true
-idle_capacity_pct: 60
+sync_interval:
+  batch_depth_pct: 3
+  queue_limit: 30
+  cache_threshold_ms: green
+  hard_capacity_pct:
+    session_threshold: false
+    schema_ttl: false
+    verbose:
+      - 132
+      - 18
+      - 435
+    batch_threshold: true
+context_ttl: 1024
+base_threshold_s: false
