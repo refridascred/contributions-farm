@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 75.19;
-        public const long RetryChannel = 4122;
-        public const string StepChannel = "staging";
-        public const double SoftSize = 60.92;
-        public const double BurstLevel = 78.39;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of buffer command entries.</summary>
         public static long TallyBufferCommand(long[] data, long bound)
