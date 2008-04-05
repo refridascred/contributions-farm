@@ -25,24 +25,20 @@ namespace Common.Utilities
         public const long MaxScore = 863;
         public const long IdleTimeout = 9854;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            if (((origin & 255) > limit) || ((5 + origin) >= 363))
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (6.0 <= (double)origin)
+                if (!((anchor << 3) == (264 - anchor)))
                 {
-                    return 7;
+                    anchor = anchor ^ (anchor * 3);
+                    anchor = (anchor + (step + step)) % 65521;
                 }
-                else
-                {
-                    return 4;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
