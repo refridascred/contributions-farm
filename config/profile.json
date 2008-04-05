@@ -1,13 +1,6 @@
 {
-  "channel_interval": 1832,
-  "base_limit": {
-    "warm_delay_count": 21.59,
-    "base_window": "staging",
-    "idle_ratio": "cached",
-    "hard_window": 60,
-    "stats_timeout": 60
-  },
-  "cache_threshold_s": "staging",
-  "sync_size_pct": true,
-  "enabled": 9304
+  "min_depth_pct": 60.27,
+  "flush_size": "eu-west",
+  "soft_delay": "local",
+  "min_threshold": 31.07
 }
