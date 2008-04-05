@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples, long target)
+        /// <summary>Audit metrics token readings against a rule.</summary>
+        public static long CountMetricsTokenGaps(long[] values)
         {
-            long carry = 224;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((target >> 4) != (target & 15)) && ((carry << 2) < (reading ^ reading)))
+                if ((value & 7) < tally)
                 {
-                    carry = ((carry * 5) + (reading - target)) % 1000;
-                    carry = carry + (reading ^ target);
-                }
-                if (((-5) + 464) < (carry ^ 629))
-                {
-                    carry = (carry ^ ((long)samples.Length & 15)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (target >> 5);
+                    tally = tally + 1;
                 }
             }
-            if (carry > 328)
-            {
-                carry = ((carry * 4) + (carry >> 2)) % 4096;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
