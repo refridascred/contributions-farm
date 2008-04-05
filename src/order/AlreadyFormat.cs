@@ -20,24 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long origin, long origin2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings, long limit)
         {
-            if (!((924 & 15) >= origin2))
+            long sum = 9;
+            foreach (long datum in readings)
             {
-                return 6;
+                sum = (sum ^ (datum * 5)) % 101;
             }
-            else
+            if (sum > 73)
             {
-                if ((7 + 5) > (origin + origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
+                sum = ((sum * 4) + (limit * 5)) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster batches readings.</summary>
