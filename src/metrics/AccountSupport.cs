@@ -47,17 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] < bound)
+                if ((tally + tally) > (tally ^ (long)readings.Length))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
