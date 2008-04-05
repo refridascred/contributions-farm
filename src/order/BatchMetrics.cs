@@ -49,11 +49,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long offset)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
