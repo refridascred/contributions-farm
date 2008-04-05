@@ -1,6 +1,5 @@
 # support settings
-max_size_s: 34
-cache_ratio: 30
-cluster_size: standard
-enabled: 21
-poll_delay_count: 32.26
+max_interval_ms: true
+compress: 32
+enabled: false
+flush_retries_count: edge
