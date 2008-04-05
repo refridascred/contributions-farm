@@ -1,15 +1,17 @@
 # githubfarm settings
-sync_capacity_s: 641
-farm_ratio: 100
-cache_retries:
-  flush_capacity_count:
-    compress: 2.36
-    verbose: cached
-    editor_ttl: 23
-    default_size:
-      - legacy
-      - edge
-      - eu-west
-      - fallback
-  checks_timeout: staging
-  sync_capacity: eu-west
+stats_window: 45.68
+flush_interval: stable
+enabled: 12
+min_size: true
+notes_ratio:
+  - blue
+  - latest
+payload_timeout:
+  editor_timeout: true
+  strict: 1024
+  schema_window:
+    report_window: false
+    cache_depth_s: blue
+    dry_run: true
+  compress: 913
+  max_ratio: standard
