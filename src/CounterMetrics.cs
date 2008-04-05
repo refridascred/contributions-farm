@@ -33,24 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a record commits value against two limits.</summary>
-        public static long RankRecordCommits(long limit, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((double)origin != (19.0 - 8.44))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit % 64))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
