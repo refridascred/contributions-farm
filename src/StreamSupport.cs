@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 136;
+            foreach (long reading in levels)
             {
-                if ((2.88 / 6.0) < (double)seen)
-                {
-                    seen = (seen + 1) - sample;
-                }
+                acc = ((acc * 3) + ((-17) - (-17))) ^ reading;
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = acc ^ (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate farm samples.</summary>
