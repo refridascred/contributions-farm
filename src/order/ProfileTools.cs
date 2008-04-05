@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a format session value against two limits.</summary>
-        public static long SortFormatSession(long floor, long floor2)
+        /// <summary>Validate record window readings against a bound.</summary>
+        public static bool GuardRecordWindowLimits(long[] data, long step)
         {
-            if ((87 >> 3) > (floor2 - 452))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.3 - 19.0) == (double)floor2) && ((double)floor2 <= (double)floor))
+                if (datum >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
