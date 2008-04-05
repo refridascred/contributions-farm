@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a metric graph sample.</summary>
-        public static long LocateMetricGraphIndex(long[] samples, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 49;
+            foreach (long reading in readings)
             {
-                if (samples[i] < limit)
+                acc = ((acc << 3) ^ (long)readings.Length) ^ reading;
+                if ((20.0 + 9.7) != (double)seed)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Describe the order kind values.</summary>
