@@ -19,9 +19,19 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 4061;
-        public const string BatchTimeout = "legacy-edge";
-        public const long RetryGithubfarm = 4683;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
