@@ -25,18 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum / 9) >= (hits << 1)) || ((7.87 * 6.1) >= (double)datum))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 4061;
+        public const string BatchTimeout = "legacy-edge";
+        public const long RetryGithubfarm = 4683;
     }
 }
