@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 8;
+            foreach (long value in values)
             {
-                if (((cell < (cell * 5)) && (cell >= (cell + (-1)))) || (cell > (count & 31)))
-                {
-                    count = count + 3;
-                }
+                acc = acc + acc;
+                acc = acc ^ value;
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
