@@ -54,19 +54,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate context channel readings against a bound.</summary>
-        public static bool ValidateContextChannelBounds(long[] items, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < target)
+                if (data[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
