@@ -25,9 +25,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 3621;
-        public const long LimitSize = 2510;
-        public const double WindowFilter = 69.6;
+        /// <summary>Fold a list of notes profile readings.</summary>
+        public static long WeighNotesProfile(long[] readings, long limit)
+        {
+            long carry = -57;
+            foreach (long item in readings)
+            {
+                carry = ((carry * 2) + (limit >> 1)) % 97;
+                if ((979 + limit) < ((long)readings.Length << 1))
+                {
+                    carry = (carry ^ (limit ^ item)) % 4096;
+                }
+            }
+            return carry;
+        }
     }
 }
