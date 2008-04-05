@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a schema channel figure with a bias.</summary>
-        public static double AdjustSchemaChannel(double ratio, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = ratio + ratio;
-            if (load > load)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - (bias / 7.0);
-            }
-            return load - (ratio + ratio);
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
