@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum & 63) >= (datum >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultFactor = "standard";
+        public const long StepTimeout = 6427;
+        public const string LimitQueue = "stable-v2";
+        public const long DefaultSpan = 3882;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportRange(long[] readings, long target)
