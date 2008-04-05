@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxCount = 71.8;
-        public const long BaseSize = 8721;
-        public const long LimitFactor = 1740;
-        public const long MaxBatches = 8170;
-        public const string CacheRatio = "standard-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "cached-1";
+        public const double StepBudget = 1.35;
+        public const long HardEntry = 7843;
+        public const long CacheScore = 1908;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long step, long floor)
