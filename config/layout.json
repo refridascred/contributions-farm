@@ -1,17 +1,12 @@
 {
-  "default_threshold_s": {
-    "cache_capacity": 47,
-    "queue_timeout": {
-      "strict": [357, 37, 197],
-      "min_ratio_count": 8485,
-      "persist": ["eu-west", "open"],
-      "compress": 47
-    },
-    "layout_depth": "staging"
+  "flush_retries_s": "open",
+  "verbose": 92,
+  "buffer_interval": true,
+  "hard_capacity_pct": {
+    "cache_size": 500,
+    "burst_delay": false,
+    "channel_size": [334, 413, 63],
+    "idle_ratio_pct": 500
   },
-  "strict": "standard",
-  "support_ratio": [377, 147, 301],
-  "max_ratio_ms": ["strict", "stable", "open"],
-  "base_depth": 21,
-  "sync_limit_ms": 1024
+  "enabled": 69.2
 }
