@@ -21,18 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
+        public static long CompareQueueMetricsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((20.0 + 4.4) != (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + cell;
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next report checks value from a seed.</summary>
