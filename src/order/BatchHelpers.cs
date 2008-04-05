@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema support entry that matches the target.</summary>
-        public static long SeekSchemaSupportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 395;
+        public const long SoftSpan = 2149;
+        public const long HardInterval = 4805;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] samples)
