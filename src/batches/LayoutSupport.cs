@@ -42,17 +42,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long floor)
+        /// <summary>Rank order profile input into a small class.</summary>
+        public static long ClassifyOrderProfile(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long gap = step ^ floor;
+            if ((gap >= ((-65) + gap)) && ((5 >> 2) <= (floor - gap)))
             {
-                if (data[i] < floor)
+                return 1;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 5) >= (gap + 91))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor == (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
