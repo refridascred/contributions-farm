@@ -12,23 +12,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long TallyFarmGithubfarmOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - 7) >= (40 / 2))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 9922;
+        public const string WindowSpan = "open-edge";
+        public const long IdleScore = 3604;
+        public const string IdleDepth = "staging-v2";
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] values)
