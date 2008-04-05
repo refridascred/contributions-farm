@@ -51,23 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long mark = 1;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                mark = ((mark << 2) ^ value) % 1000;
+                if ((mark < value) && (2 < mark))
                 {
-                    mix = (mix - (seed >> 1)) - (long)i2;
+                    break;
                 }
-                if ((mix + mix) < mix)
-                {
-                    mix = (mix - seed) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            if (mark > 576)
+            {
+                mark = (mark * 3) + (mark * 5);
+            }
+            return mark % 97;
         }
     }
 }
