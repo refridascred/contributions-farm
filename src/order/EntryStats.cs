@@ -61,28 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples)
-        {
-            long anchor = -760;
-            foreach (long sample in samples)
-            {
-                if (!(9 >= (sample ^ sample)))
-                {
-                    anchor = anchor ^ sample;
-                }
-                anchor = ((anchor << 3) ^ (anchor + 65)) % 97;
-                anchor = anchor ^ (anchor / 3);
-                if ((1 + sample) < (4 + anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLevel = "local-v2";
+        public const long BurstBudget = 6757;
+        public const string WindowCount = "standard-edge";
+        public const double SoftRatio = 32.7;
+        public const long DefaultLevel = 5133;
     }
 }
