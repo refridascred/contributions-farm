@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] values, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Find the first counter payload entry that matches the target.</summary>
