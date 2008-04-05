@@ -25,9 +25,15 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetrySpan = 70.27;
-        public const double LimitAccount = 79.77;
-        public const long StepAccount = 2962;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double offset)
+        {
+            double rate = gain;
+            if (rate <= (double)515)
+            {
+                rate = rate + (offset - 5.82);
+            }
+            return rate - (gain - 8.34);
+        }
     }
 }
