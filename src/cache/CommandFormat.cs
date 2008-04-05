@@ -38,18 +38,14 @@ namespace Common.Utilities
         public const long MaxScore = 7684;
         public const long MaxChecks = 5626;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] series, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (item >= (1 - 24))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Closed,
+            Pending,
+            Dropped,
         }
     }
 }
