@@ -1,4 +1,5 @@
 # entry settings
-graph_limit: local
-hard_interval_count: true
-notes_ratio: 16.19
+stats_threshold: latest
+hard_interval_count: legacy
+flush_interval_pct: edge
+cache_delay: local
