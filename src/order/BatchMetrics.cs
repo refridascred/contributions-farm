@@ -30,19 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] values, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Dropped,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the metrics class values.</summary>
