@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 87.69;
-        public const double RetryTimeout = 19.36;
-        public const long MaxBudget = 5911;
-        public const double SoftLevel = 58.24;
-        public const double LimitSpan = 48.41;
+        /// <summary>Check that every queue entry entry stays within the limit.</summary>
+        public static bool ValidateQueueEntryRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
