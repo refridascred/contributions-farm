@@ -20,15 +20,10 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Draft,
-            Dropped,
-            Paused,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5877;
+        public const double BurstOrder = 93.27;
+        public const string HardOrder = "local-edge";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] samples, long seed)
