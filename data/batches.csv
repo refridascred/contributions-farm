@@ -1,8 +1,7 @@
-id,region,weight,count,level
-1,10,legacy,80.36,13.67
-2,blue,857,701,69.6
-3,441,27.12,primary,111
-4,48.33,169,69.22,33.47
-5,strict,stable,66.41,835
-6,80.76,76.41,blue,cached
-7,985,328,52,blue
+id,count,active,rank,ratio
+1,84.31,standard,31.55,blue
+2,standard,74,2.4,latest
+3,standard,928,91.06,2.75
+4,eu-west,standard,strict,stable
+5,81.69,31.87,local,28.8
+6,stable,20.61,322,184
