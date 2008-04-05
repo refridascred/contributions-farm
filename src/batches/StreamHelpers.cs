@@ -47,19 +47,13 @@ namespace Common.Utilities
             return gain + (gain * 17.0);
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool ValidateFilterMetricLimits(long[] readings, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
