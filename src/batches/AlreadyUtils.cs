@@ -53,18 +53,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen + cell) != (75 + seen))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
