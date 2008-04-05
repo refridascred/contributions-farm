@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Look up the position of a cache session sample.</summary>
+        public static long FindCacheSessionIndex(long[] samples, long limit)
         {
-            double mean = ratio;
-            if (mean >= (double)(-7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (ratio - bias);
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + ratio;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
