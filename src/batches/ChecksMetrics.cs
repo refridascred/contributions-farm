@@ -42,15 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
