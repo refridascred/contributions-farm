@@ -36,14 +36,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many commits queue samples are out of range.</summary>
+        public static long TallyCommitsQueueMatches(long[] readings)
         {
-            Synced,
-            Stale,
-            Active,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((10.0 - 8.7) <= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache class values.</summary>
