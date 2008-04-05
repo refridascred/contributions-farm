@@ -14,10 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 3638;
-        public const long BurstRoute = 7454;
-        public const string DefaultTimeout = "staging-edge";
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long WeighRouteSchema(long[] samples)
+        {
+            long score = 78;
+            foreach (long item in samples)
+            {
+                if (((item - score) >= (item >> 2)) && ((double)score <= (13.0 * 7.6)))
+                {
+                    score = (score - 547) % 4096;
+                }
+                else
+                {
+                    score = (score * 2) + 882;
+                }
+                score = (score * 4) + score;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double AdjustAccount(double rate, double floor)
