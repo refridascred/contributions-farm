@@ -1,14 +1,18 @@
 # support settings
-base_limit_ms: 1024
-warm_size_s: 4014
-idle_size: false
-base_limit_count:
-  counter_ratio: false
-  default_timeout_count: open
-  hard_ratio: false
-  burst_retries_pct: true
-  filter_size:
-    - 417
-    - 153
-    - 282
-    - 274
+batch_interval_s: eu-west
+warm_size:
+  - blue
+  - staging
+  - stable
+burst_window_ms: 250
+enabled:
+  default_ttl_pct: true
+  enabled:
+    - 117
+    - 2
+  stats_retries: strict
+  base_window_pct: latest
+  verbose: 250
+  token_threshold: blue
+poll_threshold_ms: true
+commits_depth: true
