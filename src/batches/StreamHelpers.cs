@@ -48,13 +48,12 @@ namespace Common.Utilities
             return gain + (gain * 17.0);
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a support command value against two limits.</summary>
