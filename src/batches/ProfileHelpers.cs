@@ -70,25 +70,10 @@ namespace Common.Utilities
             return weight + (offset / 8.0);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long floor)
-        {
-            if (((8.25 + 7.9) <= (double)origin) || ((floor >> 3) >= (origin - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + floor) < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitFactor = 9116;
+        public const long LimitRatio = 2478;
+        public const long LimitBuffer = 9961;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double rate, double offset)
