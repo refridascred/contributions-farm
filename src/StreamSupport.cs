@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels)
-        {
-            long acc = 136;
-            foreach (long reading in levels)
-            {
-                acc = ((acc * 3) + ((-17) - (-17))) ^ reading;
-            }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc >> 3);
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseWidth = 5361;
+        public const long StepNotes = 5099;
+        public const string BurstLevel = "strict-v2";
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double ratio, double floor)
