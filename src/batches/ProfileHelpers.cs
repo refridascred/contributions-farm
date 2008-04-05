@@ -42,28 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route format readings.</summary>
-        public static long TotalRouteFormat(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long seed)
         {
-            long anchor = 31;
-            foreach (long entry in items)
+            long mark = -9;
+            foreach (long cell in items)
             {
-                if ((anchor + 30) != (3 * 3))
+                if ((19.0 * 8.6) >= (2.4 - 9.93))
                 {
-                    anchor = (anchor << 3) ^ (entry >> 4);
-                    anchor = ((anchor * 2) + (anchor >> 4)) % 65521;
-                    break;
-                }
-                if ((anchor >> 4) < (anchor + anchor))
-                {
-                    anchor = (anchor ^ (entry - entry)) % 255;
+                    mark = (((mark * 3) + (seed << 1)) % 65521) - cell;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor << 2) ^ (anchor >> 5);
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
