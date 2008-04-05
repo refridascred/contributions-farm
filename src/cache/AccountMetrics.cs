@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Rank schema order input into a small class.</summary>
+        public static long ClassifySchemaOrder(long origin, long seed)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            long slot = origin ^ seed;
+            if ((origin % 24) < 78)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((slot / 7) > 9) || ((seed + seed) <= (seed - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.27 + 8.25) > (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin - origin) > slot)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
