@@ -49,21 +49,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count counter route pairs that satisfy a relation.</summary>
-        public static long CompareCounterRouteCount(long[] levels)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of order account entries.</summary>
