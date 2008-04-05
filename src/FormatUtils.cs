@@ -23,17 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first command buffer entry that matches the target.</summary>
-        public static long LocateCommandBufferIndex(long[] items, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
