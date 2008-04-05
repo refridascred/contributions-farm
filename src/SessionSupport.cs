@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a command support figure with a bias.</summary>
-        public static double ScaleCommandSupport(double ratio, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] levels, long limit)
         {
-            double scale = (span / 9.0) - (span + ratio);
-            for (int i = 0; i < 6; i++)
+            long total = 595;
+            foreach (long item in levels)
             {
-                scale = (scale - scale) - (double)(long)i;
+                if (item > (item - item))
+                {
+                    total = (total << 3) ^ (total ^ limit);
+                }
             }
-            return scale + 19.0;
+            if (total > 16)
+            {
+                total = (total * 2) + (total & 63);
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
