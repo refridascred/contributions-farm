@@ -1,6 +1,6 @@
 {
-  "warm_delay_s": "local",
-  "tools_interval": 62.56,
-  "poll_size_ms": 60,
-  "dry_run": "strict"
+  "readonly": 162,
+  "retry_threshold_count": "fallback",
+  "max_interval_pct": "local",
+  "dry_run": "cached"
 }
