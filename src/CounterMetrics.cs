@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1652;
-        public const long LimitToken = 1922;
-        public const long IdleToken = 3004;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
