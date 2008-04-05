@@ -47,23 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double bias)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double drift = bias;
-            if (drift <= (drift - 5.1))
-            {
-                drift = (drift + 7.97) + scale;
-            }
-            else
-            {
-                drift = drift + (double)42;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (bias / 4.0)) + (double)(long)i;
-            }
-            return drift - (double)421;
+            Pending,
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
