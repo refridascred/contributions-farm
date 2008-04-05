@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double span)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double scale = span;
-            if (scale >= (span - scale))
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - (bias + 6.0);
-            }
-            return scale - bias;
+            Retry,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Project the next session value.</summary>
