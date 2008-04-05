@@ -32,17 +32,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a context record sample.</summary>
-        public static long LocateContextRecordIndex(long[] items, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
