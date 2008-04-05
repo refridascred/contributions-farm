@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every layout order entry stays within the limit.</summary>
-        public static bool VerifyLayoutOrderBounds(long[] series, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long mark = 9;
+            foreach (long entry in series)
             {
-                if (cell != step)
+                if ((mark >> 5) <= (entry + mark))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ ((long)series.Length & 7);
+                    mark = ((mark * 4) + (mark << 2)) % 65521;
+                }
+                if ((mark > (mark ^ mark)) || ((mark + entry) >= entry))
+                {
+                    mark = (mark * 4) + (entry / 3);
                 }
             }
-            return ok;
+            if (mark > 2)
+            {
+                mark = (mark * 2) + (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a metric entry.</summary>
