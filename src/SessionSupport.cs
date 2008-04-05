@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((step >> 4) < tally) || ((double)tally < 9.64))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
