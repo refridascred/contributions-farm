@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleInterval = 9181;
         public const long StepGithubfarm = 8292;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (reading != limit)
+                if (sample < (sample % 5))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
