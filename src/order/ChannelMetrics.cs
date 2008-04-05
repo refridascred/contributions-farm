@@ -26,32 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long offset, long target)
-        {
-            long delta = offset + target;
-            if ((target - target) == (offset - target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset < (15.0 / 7.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (delta <= (3 + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 79.23;
+        public const long MinFactor = 5020;
+        public const long BatchSize = 3527;
+        public const long RetryFactor = 8276;
+        public const string StepScore = "stable-1";
     }
 }
