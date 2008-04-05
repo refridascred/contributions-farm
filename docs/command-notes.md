@@ -1,10 +1,15 @@
 # Command notes
 
-When a counter fails, the record handler retries a few times before giving up.
-Each checks is validated before it reaches the notes queue.
+Defaults for graph live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the metrics queue.
+Use editor settings to tune how often schema data is refreshed.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+The context module keeps notes values in sync with the graph cache.
 
 ## Guidelines
 
-- Document new profile fields
-- Prefer channel defaults
-- Keep batches values small
+- Document new entry fields
+- Prefer entry defaults
+- Validate metrics input early
+- Review cache limits each release
