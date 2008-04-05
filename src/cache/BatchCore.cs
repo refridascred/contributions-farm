@@ -14,11 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "open-1";
-        public const long StepContext = 2536;
-        public const long WindowWidth = 2711;
-        public const double HardContext = 95.59;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardDepth = 4898;
+        public const long DefaultCounter = 7098;
+        public const long WindowScore = 385;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long limit)
