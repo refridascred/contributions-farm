@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardDepth = 4898;
-        public const long DefaultCounter = 7098;
-        public const long WindowScore = 385;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long BucketChannel(long offset, long target)
