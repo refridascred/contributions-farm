@@ -1,26 +1,8 @@
 {
-  "default_ratio": "green",
-  "batch_ttl": 8.68,
-  "compress": {
-    "editor_limit": false,
-    "stream_interval": 2444,
-    "cache_threshold": 49.13,
-    "hard_size": "cached"
-  },
-  "idle_retries_ms": {
-    "max_ratio": "latest",
-    "base_depth": "fallback",
-    "max_retries_s": 5
-  },
-  "max_ttl_ms": {
-    "default_ttl": 45,
-    "retry_window_s": "edge",
-    "persist": 182,
-    "min_window_count": "staging",
-    "idle_timeout_ms": {
-      "base_delay_ms": false,
-      "batch_depth": 12,
-      "hard_retries": false
-    }
-  }
+  "strict": "edge",
+  "sync_threshold": false,
+  "retry_delay_s": true,
+  "poll_capacity_s": "green",
+  "base_size_count": 75,
+  "persist": 29.93
 }
