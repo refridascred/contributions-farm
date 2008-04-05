@@ -1,17 +1,7 @@
 # entry settings
-account_delay: 60
-hard_limit:
-  hard_delay:
-    sync_limit: stable
-    verbose: local
-    command_threshold: green
-    min_capacity_count: 60
-  sync_ttl_count: 250
-  cache_window_ms: strict
-  strict:
-    - 263
-    - 327
-  persist: green
-cache_ratio_ms: green
-poll_limit_ms: cached
-sync_threshold_pct: standard
+profile_retries: 60
+flush_retries: 86.2
+flush_interval_s: 58.14
+batch_ttl: 4081
+hard_timeout_count: blue
+base_retries: standard
