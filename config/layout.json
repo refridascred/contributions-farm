@@ -1,16 +1,8 @@
 {
-  "metrics_depth": 3.26,
-  "order_ratio": {
-    "burst_timeout": ["staging", "stable", "legacy", "primary"],
-    "hard_ratio_ms": {
-      "hard_interval": 61,
-      "base_ttl": 15.0,
-      "cache_ratio": 79,
-      "hard_ratio_pct": 59.63
-    },
-    "max_threshold_ms": "green",
-    "batch_retries": "latest",
-    "idle_depth_count": 54
-  },
-  "notes_ratio": ["strict", "staging", "standard"]
+  "readonly": true,
+  "queue_window": 75.03,
+  "sync_ttl_s": 92,
+  "dry_run": "open",
+  "retry_depth_s": 500,
+  "batch_delay_s": 56.51
 }
