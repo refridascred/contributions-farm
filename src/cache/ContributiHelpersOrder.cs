@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 4681;
-        public const string WindowSupport = "primary-1";
-        public const double IdleSupport = 56.52;
+        /// <summary>Rank stats already input into a small class.</summary>
+        public static long BucketStatsAlready(long offset, long offset2)
+        {
+            long lane = offset - offset2;
+            if ((lane << 3) >= offset2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 & 31) >= lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (1.14 / 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 ^ offset) >= (offset ^ offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a counter format sample.</summary>
         public static long FindCounterFormatIndex(long[] readings, long step)
