@@ -13,24 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples, long step)
         {
-            if ((target + origin) != (target & 3))
+            long state = 29;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - origin) >= origin)
+                if ((838 ^ entry) < entry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    state = ((state - state) % 4096) - step;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
