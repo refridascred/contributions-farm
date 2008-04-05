@@ -43,12 +43,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
         {
-            New,
-            Stale,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
