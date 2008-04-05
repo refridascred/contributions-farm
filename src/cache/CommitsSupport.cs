@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseRatio = 4479;
+        public const string LimitRatio = "stable-1";
+        public const long BaseSpan = 7221;
+        public const long BatchPayload = 2614;
 
         /// <summary>Fold a list of report cache readings.</summary>
         public static long DigestReportCache(long[] levels)
