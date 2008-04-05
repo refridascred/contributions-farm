@@ -1,30 +1,13 @@
 # support settings
-warm_timeout:
-  - 158
-  - 450
-  - 24
-profile_ttl:
-  hard_timeout_count: green
-  audit: 3768
-  idle_threshold: true
-  strict:
-    - 309
-    - 240
-    - 59
-default_depth:
-  contributi_delay: standard
-  enabled: 4443
-  warm_ratio_ms:
-    already_threshold: 35
-    retry_capacity: true
-    base_retries_s: 42
-  compress:
-    graph_ratio:
-      - 203
-      - 457
-    min_interval_ms:
-      - fallback
-      - latest
-      - latest
-      - open
-    enabled: 80
+verbose: latest
+batch_timeout: 90.98
+cache_threshold:
+  - eu-west
+  - primary
+  - eu-west
+sync_interval: 23.3
+editor_window:
+  - 75
+  - 495
+  - 433
+flush_interval_s: 96.14
