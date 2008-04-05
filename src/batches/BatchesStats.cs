@@ -30,19 +30,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] levels)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (value < offset)
+                if ((double)value < (16.0 + 6.69))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
