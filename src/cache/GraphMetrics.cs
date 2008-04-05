@@ -55,12 +55,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 10.02;
+        public const double DefaultContext = 89.48;
+        public const long WindowWidth = 8468;
+        public const long MaxSize = 5264;
+        public const double SoftInterval = 5.28;
     }
 }
