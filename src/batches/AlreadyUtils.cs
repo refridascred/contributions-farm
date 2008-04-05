@@ -55,17 +55,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                if (sample >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
