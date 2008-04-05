@@ -35,38 +35,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            if (((seed - floor) < seed) || (floor < seed))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 7) <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - floor) >= (seed + seed))
+                    if ((samples[i] ^ samples[j]) > 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((3.0 - 8.16) < (double)floor) || ((15 + seed) == (floor / 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
