@@ -40,13 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            Failed,
-            Done,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (matches > (entry * 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
