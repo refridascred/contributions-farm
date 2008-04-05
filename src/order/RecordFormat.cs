@@ -65,18 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum > (datum ^ hits)) && (((datum & 1) < (hits & 1)) || ((datum << 3) > hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 1826;
+        public const long MaxLayout = 1498;
+        public const string BatchSize = "fallback";
+        public const string BurstDepth = "standard-edge";
+        public const long StepLayout = 9398;
     }
 }
