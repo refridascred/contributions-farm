@@ -54,13 +54,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a route batch reading.</summary>
