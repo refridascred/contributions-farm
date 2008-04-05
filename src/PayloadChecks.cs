@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Count cache payload pairs that satisfy a relation.</summary>
+        public static long MatchCachePayloadCount(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (acc + offset)) % 1000;
-                if (((long)i + offset) >= acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 4) + ((long)i - acc)) % 4096;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc + (long)i) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
