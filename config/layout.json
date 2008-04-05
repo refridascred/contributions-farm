@@ -1,9 +1,27 @@
 {
-  "max_capacity_s": {
-    "hard_ttl_pct": 5873,
-    "account_threshold": ["fallback", "cached", "legacy", "staging"],
-    "payload_window": 100
+  "sync_retries_s": 30,
+  "persist": {
+    "record_depth": 100,
+    "idle_interval_count": false,
+    "strict": true
   },
-  "cache_ratio": true,
-  "farm_interval": "open"
+  "max_limit": {
+    "default_window": {
+      "notes_size": 39,
+      "cache_depth": 10,
+      "verbose": "latest"
+    },
+    "command_size": ["open", "open"],
+    "enabled": 100,
+    "sync_threshold_count": true,
+    "strict": {
+      "layout_interval": ["legacy", "legacy"],
+      "dry_run": false,
+      "base_limit_count": true,
+      "cache_depth": 60
+    },
+    "cache_threshold": 88.14
+  },
+  "batch_ttl_pct": 60,
+  "warm_depth_ms": ["green", "open", "strict"]
 }
