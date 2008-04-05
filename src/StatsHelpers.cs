@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the tools counter entries that pass the check.</summary>
-        public static long CountToolsCounterOutliers(long[] samples)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches + matches) >= (reading + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
