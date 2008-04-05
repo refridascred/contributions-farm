@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const double DefaultTools = 85.51;
         public const string BurstTools = "primary-1";
 
-        /// <summary>Look up the position of a graph account sample.</summary>
-        public static long SeekGraphAccountIndex(long[] readings, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound - step;
+            if (!(gap > (step * 3)))
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((((-5) % 60) > (75 ^ bound)) && ((gap - gap) != (gap + bound)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
