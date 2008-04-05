@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values)
-        {
-            long acc = 8;
-            foreach (long value in values)
-            {
-                acc = acc + acc;
-                acc = acc ^ value;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 87.69;
+        public const double RetryTimeout = 19.36;
+        public const long MaxBudget = 5911;
+        public const double SoftLevel = 58.24;
+        public const double LimitSpan = 48.41;
     }
 }
