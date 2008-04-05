@@ -77,17 +77,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] items, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((step + step) < (origin << 2)) && (((-653) + 784) > origin))
             {
-                if (items[i] > floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)step == (double)origin)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
