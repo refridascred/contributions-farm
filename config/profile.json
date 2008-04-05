@@ -1,10 +1,7 @@
 {
-  "enabled": "staging",
-  "soft_delay": {
-    "soft_ttl_ms": "edge",
-    "retry_interval_s": 60,
-    "base_limit": [334, 403, 407],
-    "strict": 37.55
-  },
-  "min_ttl_count": "edge"
+  "commits_interval": 44.37,
+  "retry_interval_pct": 6142,
+  "dry_run": [224, 211, 306],
+  "payload_size": "blue",
+  "burst_retries_pct": 7906
 }
