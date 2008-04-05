@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a cluster entry reading by value.</summary>
-        public static long LookupClusterEntryIndex(long[] levels, long origin)
+        /// <summary>Derive the next commits token value from a seed.</summary>
+        public static long IterateCommitsToken(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (seed >> 3);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine route values into a single score.</summary>
