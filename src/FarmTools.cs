@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double span)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double bias = scale + (span - 5.5);
-            if (bias < span)
-            {
-                bias = bias - scale;
-            }
-            return bias + (double)(-885);
+            Failed,
+            Locked,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Find the first graph account entry that matches the target.</summary>
