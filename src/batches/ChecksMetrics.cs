@@ -33,11 +33,20 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultRatio = 1705;
-        public const double HardMetrics = 54.32;
-        public const double BatchMetrics = 27.92;
-        public const string StepCount = "primary-v2";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] values, long seed)
