@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell <= seed)
+                if (676 < ((long)i / 9))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + mark) % 255;
                 }
+                if (!(((long)i ^ offset) >= ((long)i + 9)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a checks options.</summary>
