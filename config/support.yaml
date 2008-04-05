@@ -1,11 +1,12 @@
 # support settings
-strict:
-  - 379
-  - 24
-  - 54
-base_timeout_ms:
-  - 167
-  - 13
-  - 388
-  - 137
-default_delay_count: 7486
+compress: 78.68
+min_ttl_pct: true
+default_limit_ms:
+  base_threshold:
+    - 471
+    - 300
+    - 44
+    - 285
+  strict: 7052
+  batch_timeout: 100
+  idle_limit_ms: eu-west
