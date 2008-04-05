@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 3628;
-        public const long HardWidth = 9920;
-        public const long HardMetric = 5963;
-        public const long BurstSpan = 6232;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepAlready = 4731;
