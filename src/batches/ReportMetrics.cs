@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstSpan = "primary";
-        public const long DefaultWindow = 4029;
-        public const string MinWindow = "standard-1";
-        public const long LimitWindow = 8801;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((((8.46 + 6.2) <= (double)reading) && ((reading - reading) < tally)) && ((tally ^ reading) <= (50 << 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] levels)
