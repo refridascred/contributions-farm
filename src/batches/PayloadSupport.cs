@@ -33,18 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes payload entries that pass the check.</summary>
-        public static long MeasureNotesPayloadOutliers(long[] samples, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4 ^ reading) == (hits % 100)) && ((double)265 != (double)hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - target;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
