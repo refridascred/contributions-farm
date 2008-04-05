@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const string SoftRecord = "primary";
         public const long RetryTimeout = 3539;
 
-        /// <summary>Match up route buffer samples.</summary>
-        public static long CompareRouteBufferCount(long[] data)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
