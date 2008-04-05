@@ -1,8 +1,11 @@
 {
-  "verbose": "latest",
-  "route_retries": "green",
-  "audit": false,
-  "format_timeout": "local",
-  "farm_retries": 51,
-  "layout_interval": true
+  "default_threshold_pct": {
+    "compress": false,
+    "strict": true,
+    "poll_size_count": true
+  },
+  "layout_depth": true,
+  "soft_limit": "cached",
+  "channel_retries": 6756,
+  "strict": "green"
 }
