@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double ratio, double bias)
         {
-            Queued,
-            Closed,
-            Idle,
+            double load = (double)39;
+            if (load >= (load / 5.0))
+            {
+                load = (load + ratio) - bias;
+            }
+            else
+            {
+                load = load + (double)187;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Match up stream samples.</summary>
