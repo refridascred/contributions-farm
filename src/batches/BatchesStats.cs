@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool ValidateCommitsNotesLimits(long[] series, long target)
         {
-            long sum = 651;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                sum = ((sum << 2) ^ (sum + 4)) - item;
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < (-71))
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
