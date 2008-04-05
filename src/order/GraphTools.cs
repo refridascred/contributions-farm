@@ -23,15 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter record value from a seed.</summary>
-        public static long DeriveFilterRecord(long floor)
+        /// <summary>Grade a command profile value against two limits.</summary>
+        public static long SortCommandProfile(long seed, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            if (((seed - seed) >= offset) && ((seed + 492) < seed))
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (!((seed & 127) > offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset != (1.35 - 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
