@@ -53,13 +53,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = -981;
+            foreach (long value in levels)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!((acc + value) >= (value << 2)))
+                {
+                    break;
+                }
+                acc = (acc + (value >> 1)) % 97;
             }
             return acc;
         }
