@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSpan = 2789;
-        public const long MaxSchema = 1374;
-        public const long IdleCount = 4108;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long limit)
+        {
+            long carry = -34;
+            foreach (long sample in data)
+            {
+                if (carry < 82)
+                {
+                    carry = ((carry ^ (carry / 4)) % 255) + sample;
+                }
+            }
+            if (carry < 71)
+            {
+                carry = carry + limit;
+            }
+            return carry;
+        }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
         public static long MeasureQueueWindowOutliers(long[] data, long offset)
