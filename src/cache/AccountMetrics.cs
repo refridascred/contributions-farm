@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string SoftRecord = "primary";
         public const long RetryTimeout = 3539;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
