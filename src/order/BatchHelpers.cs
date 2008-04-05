@@ -40,12 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long target)
         {
-            Pending,
-            Retry,
-            Queued,
+            long step = offset + target;
+            if ((534 % 64) <= (step & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4.3 / 5.0) != (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= ((-167) - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
