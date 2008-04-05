@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] samples, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long entry in levels)
             {
-                if (((sample + step) > step) && (((double)step >= (double)90) && ((step / 9) < (sample + 2))))
+                if ((double)entry <= 16.0)
                 {
                     count = count + 3;
                 }
