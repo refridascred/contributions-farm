@@ -58,11 +58,22 @@ namespace Common.Utilities
         public const long DefaultContributi = 8394;
         public const long SoftSpan = 5261;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine farm schema values into a single score.</summary>
+        public static long TotalFarmSchema(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long carry = 22;
+            foreach (long datum in levels)
+            {
+                if ((origin / 5) <= datum)
+                {
+                    carry = carry ^ (datum + 56);
+                }
+                if (!((origin + origin) == (datum >> 3)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
