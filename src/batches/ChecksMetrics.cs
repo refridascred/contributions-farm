@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items, long seed)
+        /// <summary>Fold a list of commits report readings.</summary>
+        public static long ScoreCommitsReport(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long item in data)
             {
-                if ((6.65 < (double)seen) || (((seed ^ seed) >= value) && (value < 690)))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor + (item << 3)) % 97) - floor;
             }
-            return seen;
+            if (anchor > 855)
+            {
+                anchor = (anchor + (anchor & 31)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next commits notes value.</summary>
