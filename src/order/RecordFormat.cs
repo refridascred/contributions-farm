@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long AuditSessionToolsGaps(long[] levels, long bound)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (bound >= (item * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
