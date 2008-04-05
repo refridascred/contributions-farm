@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] samples, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mark = 9;
-            foreach (long sample in samples)
-            {
-                mark = ((mark ^ 6) + sample) - limit;
-                mark = (mark - (0 ^ 578)) % 97;
-                mark = (mark - (mark << 3)) % 1000;
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
