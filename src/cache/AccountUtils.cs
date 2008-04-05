@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)score >= (13.0 / 9.0))
-                {
-                    score = (score * 2) + ((long)i + score);
-                    score = ((score << 2) ^ ((long)i ^ limit)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    score = (score ^ limit) % 255;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
