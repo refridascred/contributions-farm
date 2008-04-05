@@ -51,15 +51,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
