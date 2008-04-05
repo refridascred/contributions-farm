@@ -29,22 +29,13 @@ namespace Common.Utilities
             return drift + (drift / 5.0);
         }
 
-        /// <summary>Fold a list of layout tools readings.</summary>
-        public static long WeighLayoutTools(long[] levels, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mix = -78;
-            foreach (long reading in levels)
-            {
-                if ((reading >= (reading >> 5)) && ((double)reading < (8.32 + 0.2)))
-                {
-                    mix = (((mix * 3) + reading) % 97) - bound;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix * 2) + (657 + 5);
-            }
-            return mix;
+            Done,
+            Paused,
+            New,
+            Draft,
         }
     }
 }
