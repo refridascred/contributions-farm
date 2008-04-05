@@ -54,22 +54,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values, long bound)
+        /// <summary>Find the first format checks entry that matches the target.</summary>
+        public static long SeekFormatChecksIndex(long[] items, long limit)
         {
-            long mark = 5;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.43 - 9.2) >= (double)sample)
+                if (items[i] > limit)
                 {
-                    mark = (mark << 3) ^ (long)values.Length;
+                    return (long)i;
                 }
             }
-            if (mark < 511)
-            {
-                mark = mark - (bound - mark);
-            }
-            return mark;
+            return -1;
         }
     }
 }
