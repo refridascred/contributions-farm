@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 7072;
-        public const long BatchWidth = 5099;
-        public const long IdleLayout = 7817;
-        public const long RetryLayout = 2358;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of buffer command entries.</summary>
         public static long TallyBufferCommand(long[] data, long bound)
