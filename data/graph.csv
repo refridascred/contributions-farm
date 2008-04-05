@@ -1,6 +1,7 @@
-id,token,count,state
-1,stable,standard,254
-2,921,stable,64.45
-3,51.03,76.0,54.23
-4,460,open,572
-5,471,primary,695
+id,score,weight
+1,27.32,standard
+2,39.91,cached
+3,staging,eu-west
+4,green,28.37
+5,43.08,78.3
+6,546,598
