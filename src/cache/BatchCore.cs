@@ -70,18 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format stream entries that pass the check.</summary>
-        public static long MeasureFormatStreamGaps(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = 0;
+            foreach (long sample in readings)
             {
-                if ((265 - entry) != (hits % 10))
+                if (15.0 >= (double)sum)
                 {
-                    hits = hits + 3;
+                    sum = ((sum - (sum * 3)) % 65521) + sample;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
