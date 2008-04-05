@@ -63,12 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            long acc = -4;
+            foreach (long reading in items)
+            {
+                if ((acc << 3) > (reading + (long)items.Length))
+                {
+                    acc = (acc * 5) + acc;
+                }
+            }
+            if (acc > 520)
+            {
+                acc = (acc + (acc >> 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
