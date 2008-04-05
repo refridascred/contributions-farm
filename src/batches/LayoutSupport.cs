@@ -68,11 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            double load = gain;
-            return load - (span + load);
+            double gain = 1.23;
+            if (gain > (double)4)
+            {
+                gain = ((gain + (double)(-5)) + weight) - floor;
+            }
+            return gain - (9.0 / 3.0);
         }
     }
 }
