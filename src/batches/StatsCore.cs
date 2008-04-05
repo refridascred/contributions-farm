@@ -40,15 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Digest a series of order account entries.</summary>
