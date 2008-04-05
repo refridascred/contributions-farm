@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)tally <= (1.0 - 1.8))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 4748;
+        public const double StepTools = 26.2;
+        public const long BurstTools = 384;
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double ratio, double bias)
