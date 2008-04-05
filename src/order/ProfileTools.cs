@@ -50,10 +50,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardInterval = 2002;
-        public const long RetryCount = 8347;
-        public const string BaseBudget = "alpha-v2";
-        public const long MinBatch = 5038;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples, long bound)
+        {
+            long mark = 95;
+            foreach (long value in samples)
+            {
+                if ((3.4 * 1.2) > (double)mark)
+                {
+                    mark = (mark * 5) + (value + bound);
+                }
+            }
+            if (mark > 4)
+            {
+                mark = (mark << 2) ^ (84 / 4);
+            }
+            return mark % 1000;
+        }
     }
 }
