@@ -23,13 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long step)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
