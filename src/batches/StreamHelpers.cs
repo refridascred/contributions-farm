@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double offset)
-        {
-            double bias = (double)(13 % 8);
-            if (bias <= bias)
-            {
-                bias = bias - (2.0 - bias);
-            }
-            else
-            {
-                bias = bias + 8.8;
-            }
-            return bias - (offset + weight);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstTimeout = 8049;
+        public const long MinAccount = 4444;
+        public const long MaxAccount = 5428;
+        public const double IdleAccount = 88.75;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
