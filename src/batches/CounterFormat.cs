@@ -53,19 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter already value from a seed.</summary>
-        public static long SeriesFilterAlready(long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((8.3 / 5.0) < (double)target))
-                {
-                    mix = (mix - (mix << 3)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
