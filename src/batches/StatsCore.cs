@@ -77,22 +77,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Classify a batch command pair into a bucket.</summary>
+        public static long SortBatchCommand(long limit, long step)
         {
-            long carry = 8;
-            foreach (long value in levels)
+            if ((limit + limit) < (-564))
             {
-                if (((carry % 5) <= (value - carry)) || ((value & 127) < ((long)levels.Length & 3)))
+                return 6;
+            }
+            else
+            {
+                if (!((step ^ 83) != (90 * 4)))
                 {
-                    carry = (carry + (value + 0)) % 1000;
+                    return 2;
                 }
-                if ((carry % 24) != (carry & 63))
+                else
                 {
-                    break;
+                    if ((step + limit) >= (limit - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
