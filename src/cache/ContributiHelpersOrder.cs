@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Grade a queue farm value against two limits.</summary>
+        public static long BucketQueueFarm(long seed, long origin)
         {
-            Queued,
-            New,
-            Pending,
+            if (!((560 * 3) > (origin - seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.0 * 5.05) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
