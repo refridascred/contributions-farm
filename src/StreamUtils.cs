@@ -80,13 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine editor commits values into a single score.</summary>
+        public static long FoldEditorCommits(long[] levels, long step)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long score = 87;
+            foreach (long value in levels)
+            {
+                score = ((score * 2) + (5 - step)) + value;
+            }
+            return score % 97;
         }
     }
 }
