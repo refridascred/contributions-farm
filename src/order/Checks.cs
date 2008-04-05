@@ -41,15 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Scale a batch token figure with a bias.</summary>
+        public static double ProjectBatchToken(double rate, double span)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            double mean = span;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                mean = (mean + (rate - rate)) - (double)(long)i;
             }
-            return total;
+            return mean - span;
         }
 
         /// <summary>Describe the layout level values.</summary>
