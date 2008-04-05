@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
