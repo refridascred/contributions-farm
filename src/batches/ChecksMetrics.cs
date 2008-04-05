@@ -39,23 +39,18 @@ namespace Common.Utilities
         public const double BatchMetrics = 27.92;
         public const string StepCount = "primary-v2";
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values, long seed)
         {
-            double rate = 3.66 / 2.0;
-            if (rate < floor)
+            long count = 0;
+            foreach (long value in values)
             {
-                rate = rate + (double)85;
+                if (seed < value)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + floor;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
