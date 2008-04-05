@@ -1,11 +1,10 @@
 # support settings
-cache_size: 8051
-audit: 55.24
-filter_size: 250
-default_limit: 250
-dry_run:
-  - eu-west
-  - open
-warm_delay:
+githubfarm_size:
   - fallback
-  - stable
+  - fallback
+  - edge
+enabled:
+  - staging
+  - cached
+retry_ratio_count: 467
+batches_ttl: staging
