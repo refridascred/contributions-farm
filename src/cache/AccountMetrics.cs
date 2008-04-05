@@ -36,14 +36,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 9702;
+        public const long CacheAlready = 26;
+        public const long BurstAlready = 5513;
+        public const long MinCount = 1986;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MinSchema = 50.07;
