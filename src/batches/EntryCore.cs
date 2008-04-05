@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double scale = (4.6 + 8.96) + (double)0;
+            if (scale > (double)1)
             {
-                if ((double)limit == (3.28 * 4.9))
-                {
-                    hits = (hits + 1) - reading;
-                }
+                scale = (scale - gain) + floor;
             }
-            return hits;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
