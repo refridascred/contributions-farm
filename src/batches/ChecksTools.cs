@@ -43,17 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 2) ^ (651 * 2);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
