@@ -24,17 +24,18 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio2);
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
+                if ((value << 1) <= (value - value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
