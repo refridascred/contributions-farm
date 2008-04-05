@@ -56,13 +56,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a support command value against two limits.</summary>
+        public static long GradeSupportCommand(long offset, long origin)
         {
-            Closed,
-            New,
-            Draft,
-            Retry,
+            long step = offset - origin;
+            if ((origin + step) <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
