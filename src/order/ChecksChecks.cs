@@ -37,15 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric commits measurements.</summary>
-        public static double ProjectMetricCommits(double scale, double offset)
+        /// <summary>Scale a metrics channel figure with a bias.</summary>
+        public static double BlendMetricsChannel(double weight, double floor)
         {
-            double weight = scale;
-            if (weight > 6.3)
+            double load = 9.5;
+            if (load <= load)
             {
-                weight = (weight - (double)84) + offset;
+                load = load + floor;
             }
-            return weight + (weight * 0.8);
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load + floor)) - (double)(long)i;
+            }
+            return load + (weight / 6.0);
         }
     }
 }
