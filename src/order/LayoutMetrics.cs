@@ -20,23 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = 4;
+            foreach (long entry in samples)
             {
-                if (676 < ((long)i / 9))
+                for (int i = 0; i < 4; i++)
                 {
-                    mark = (mark + mark) % 255;
+                    anchor = (anchor ^ (544 + anchor)) - (long)i;
                 }
-                if (!(((long)i ^ offset) >= ((long)i + 9)))
+                if ((double)entry >= (13.0 + 1.57))
                 {
-                    mark = (mark << 3) ^ mark;
+                    anchor = (anchor << 3) ^ (8 % 64);
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            if (anchor < 840)
+            {
+                anchor = anchor - (136 & 1);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
