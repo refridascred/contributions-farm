@@ -37,14 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long offset)
         {
-            Active,
-            Dropped,
-            Synced,
-            Ready,
-            Draft,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
