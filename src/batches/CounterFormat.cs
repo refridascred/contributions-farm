@@ -58,10 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSpan = 4921;
-        public const long BatchTimeout = 5153;
-        public const string CacheDepth = "open-edge";
-        public const long BaseSession = 5107;
+        /// <summary>Validate stats farm readings against a bound.</summary>
+        public static bool ValidateStatsFarmBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
