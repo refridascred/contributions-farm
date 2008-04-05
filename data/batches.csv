@@ -1,7 +1,6 @@
-id,active,level
-1,cached,653
-2,98.16,54.64
-3,41.44,522
-4,36.86,52
-5,legacy,24.28
-6,open,edge
+id,count,state,weight
+1,69.34,edge,74.54
+2,49.48,84,legacy
+3,89.89,21,418
+4,28.07,412,standard
+5,73.14,88.5,378
