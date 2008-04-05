@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Scale a schema channel figure with a bias.</summary>
+        public static double AdjustSchemaChannel(double ratio, double bias)
         {
-            if (floor >= (target % 24))
+            double load = ratio + ratio;
+            if (load > load)
             {
-                return 4;
+                load = load - load;
             }
             else
             {
-                if (2.0 <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = load - (bias / 7.0);
             }
+            return load - (ratio + ratio);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
