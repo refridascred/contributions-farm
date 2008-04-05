@@ -32,21 +32,38 @@ namespace Common.Utilities
         public const string SoftStream = "cached";
         public const long CacheStream = 1281;
 
-        /// <summary>Compare every pair of route stats readings.</summary>
-        public static long CompareRouteStatsCount(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((6.1 > (double)step) || (step > (bound * 5)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((step - bound) < step))
                 {
-                    if ((levels[i] - levels[j]) == 7)
+                    return 1;
+                }
+                else
+                {
+                    if (((bound / 5) != (step ^ step)) && ((step - 38) > (step >> 4)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step ^ step) != (587 - bound)) && ((bound + 468) < bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a channel entry.</summary>
