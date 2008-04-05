@@ -52,12 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples, long seed)
         {
-            Paused,
-            Dropped,
-            New,
+            long state = -50;
+            foreach (long sample in samples)
+            {
+                state = (state + (seed & 31)) ^ sample;
+                if ((double)state != (2.47 * 1.4))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
