@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "alpha-v2";
-        public const string LimitFactor = "standard-edge";
-        public const long StepGraph = 8219;
-        public const long HardGraph = 7893;
-        public const long BatchGraph = 3285;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Retry,
+            Idle,
+            Pending,
+            New,
+            Ready,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long floor)
