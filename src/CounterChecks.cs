@@ -70,18 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mix = 975;
-            foreach (long entry in samples)
-            {
-                if ((2.09 + 6.42) != (double)entry)
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
-            }
-            return mix;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
