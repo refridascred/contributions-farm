@@ -39,11 +39,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Validate context channel readings against a bound.</summary>
