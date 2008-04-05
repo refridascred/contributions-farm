@@ -52,15 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Measure how many payload editor samples are out of range.</summary>
+        public static long TallyPayloadEditorMatches(long[] readings)
         {
-            double rate = (offset / 3.0) + gain;
-            if (rate <= rate)
+            long count = 0;
+            foreach (long value in readings)
             {
-                rate = rate - (gain + rate);
+                if (((double)count <= 2.0) || (value <= (value / 3)))
+                {
+                    count = count + 1;
+                }
             }
-            return rate - (offset / 7.0);
+            return count;
         }
     }
 }
