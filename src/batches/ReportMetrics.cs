@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] levels, long target)
+        /// <summary>Compare every pair of counter notes readings.</summary>
+        public static long OverlapCounterNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen > (target + (-179)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
