@@ -14,17 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long LookupCounterPayloadIndex(long[] items, long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
