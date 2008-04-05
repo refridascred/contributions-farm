@@ -51,12 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Closed,
-            Paused,
-            Stale,
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
