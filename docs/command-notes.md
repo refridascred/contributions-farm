@@ -1,14 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any format limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The order report groups every buffer by profile.
+The entry report groups every contributi by payload.
 
-Each editor is validated before it reaches the order queue.
-Each filter is validated before it reaches the counter queue.
+Use schema settings to tune how often filter data is refreshed.
+The contributi module keeps editor values in sync with the layout cache.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate entry input early
-- Keep schema values small
-- Prefer contributi defaults
+- Keep profile values small
+- Prefer support defaults
+- Log every metrics change
+- Document new farm fields
