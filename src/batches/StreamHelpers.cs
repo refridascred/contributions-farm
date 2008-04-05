@@ -61,21 +61,27 @@ namespace Common.Utilities
             return gain + (gain * 17.0);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 98;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((354 / 3) > reading)
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - mark) % 101;
+                    mark = ((mark << 3) ^ ((-781) + seed)) % 4096;
+                }
+                if (reading >= (reading + reading))
+                {
+                    mark = (mark + seed) % 4096;
                 }
             }
-            return seen;
+            if (mark > 13)
+            {
+                mark = (mark << 3) ^ (seed & 31);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
