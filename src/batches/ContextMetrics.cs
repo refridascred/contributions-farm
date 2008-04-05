@@ -45,10 +45,18 @@ namespace Common.Utilities
             return drift + 1.4;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 2625;
-        public const long BaseCount = 3367;
-        public const long IdleCount = 2268;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long step)
