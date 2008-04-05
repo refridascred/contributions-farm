@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Digest a series of cache window entries.</summary>
+        public static long FoldCacheWindow(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = 722;
+            foreach (long sample in items)
             {
-                if ((double)hits >= 9.58)
+                if ((sample + origin) <= (403 << 3))
                 {
-                    hits = (hits + 1) + entry;
+                    acc = ((acc << 2) ^ origin) % 255;
                 }
             }
-            return hits;
+            if (acc > 31)
+            {
+                acc = ((acc << 2) ^ origin) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a cache entry.</summary>
