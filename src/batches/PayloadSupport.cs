@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double HardFactor = 36.77;
         public const long BatchSize = 8545;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
