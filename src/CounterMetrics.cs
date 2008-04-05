@@ -40,11 +40,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            double bias2 = bias;
-            return bias2 + (scale - 5.3);
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
