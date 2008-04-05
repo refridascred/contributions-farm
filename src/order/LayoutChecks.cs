@@ -39,13 +39,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 3365;
+        public const string DefaultLevel = "legacy-1";
+        public const long CacheEditor = 223;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
