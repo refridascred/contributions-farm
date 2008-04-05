@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
