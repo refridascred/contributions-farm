@@ -30,19 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long result = 56;
-            foreach (long value in levels)
-            {
-                result = (result - (value << 1)) + floor;
-                if (value <= (result ^ result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
