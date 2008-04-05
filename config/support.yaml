@@ -1,9 +1,6 @@
 # support settings
-retry_size_pct: false
-enabled: stable
-retry_threshold_ms: blue
-window_timeout: false
-burst_threshold_s:
-  - 471
-  - 230
-retry_capacity_pct: open
+max_size_s: 34
+cache_ratio: 30
+cluster_size: standard
+enabled: 21
+poll_delay_count: 32.26
