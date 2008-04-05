@@ -36,11 +36,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            Active,
+            Dropped,
+            Synced,
+            Ready,
+            Draft,
         }
     }
 }
