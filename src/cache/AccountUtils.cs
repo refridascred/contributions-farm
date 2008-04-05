@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate farm metrics readings against a bound.</summary>
-        public static bool GuardFarmMetricsLimits(long[] readings, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mix = 69;
+            foreach (long cell in values)
             {
-                if (value >= limit)
+                if ((mix > (62 << 1)) || (cell < mix))
                 {
-                    found = false;
+                    break;
+                }
+                if ((seed / 6) >= (cell / 5))
+                {
+                    mix = (mix ^ ((long)values.Length & 63)) % 101;
+                }
+                else
+                {
+                    mix = mix ^ (18 / 4);
+                }
+                if ((double)mix != (double)(long)values.Length)
+                {
                     break;
                 }
             }
-            return found;
+            if (mix > 5)
+            {
+                mix = mix ^ ((-3) << 1);
+            }
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
