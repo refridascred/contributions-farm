@@ -33,11 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = -7;
+            foreach (long sample in series)
+            {
+                total = total - (total % 5);
+                total = total - (total << 3);
+                if ((sample <= ((-10) % 12)) || ((sample ^ sample) < (total % 64)))
+                {
+                    total = total + (9 * 3);
+                }
+                else
+                {
+                    total = (total << 3) ^ (sample + (-528));
+                }
+            }
+            return total % 97;
         }
     }
 }
