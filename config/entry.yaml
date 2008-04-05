@@ -1,30 +1,24 @@
 # entry settings
-stream_delay: latest
-min_ratio_ms:
-  sync_ratio_count: 67.46
-  cache_depth_ms: 60
-  soft_capacity_count:
-    max_limit_count: 250
-    checks_ttl: false
-    min_interval_pct: green
-    stream_depth: 60
-    base_size_s: false
-  verbose:
-    - strict
-    - eu-west
-    - primary
-    - strict
-  base_delay_pct: green
-channel_ttl:
-  metric_retries:
-    batch_size_pct: true
-    idle_size_count: 62.99
-    strict: primary
-  strict: staging
-  cache_retries: open
-  min_ratio:
+max_capacity: strict
+burst_ttl_pct:
+  min_threshold_s: staging
+  flush_ratio_ms:
+    queue_interval:
+      - open
+      - local
+    tools_size:
+      - staging
+      - cached
+    soft_depth_ms: legacy
+    report_capacity: 15.79
+    burst_delay_count: primary
+    support_timeout: 89
+  retry_threshold_count: 250
+  schema_timeout: 1606
+  hard_limit_count:
     - legacy
-    - open
-    - staging
-    - primary
-audit: 54.4
+    - green
+  flush_size: green
+record_size: 70
+buffer_timeout: 250
+soft_ttl: false
