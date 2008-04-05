@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] data, long target)
         {
-            long total = 97;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + ((-570) + item);
-                if ((6.0 < (double)floor) && ((total ^ 19) <= (item + 0)))
+                if ((data[i] < target) && ((data[i] % 3) == 0))
                 {
-                    total = (total << 3) ^ (floor >> 2);
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
