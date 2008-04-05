@@ -13,14 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            Draft,
-            Dropped,
-            Queued,
-            Failed,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
