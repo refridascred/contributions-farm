@@ -33,13 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data, long step)
         {
-            Pending,
-            Draft,
-            Retry,
-            Done,
+            long total = 95;
+            foreach (long cell in data)
+            {
+                total = (((total ^ (total >> 1)) % 255) - cell) - step;
+            }
+            return total % 65521;
         }
     }
 }
