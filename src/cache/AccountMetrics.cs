@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank schema order input into a small class.</summary>
-        public static long ClassifySchemaOrder(long origin, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            long slot = origin ^ seed;
-            if ((origin % 24) < 78)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((slot / 7) > 9) || ((seed + seed) <= (seed - origin)))
+                if (((-3) - hits) != (cell & 7))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((8.27 + 8.25) > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin - origin) > slot)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
