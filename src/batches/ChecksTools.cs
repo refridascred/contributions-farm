@@ -18,11 +18,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleFactor = "fallback-1";
-        public const long MaxWidth = 3083;
-        public const double LimitCache = 66.38;
-        public const long BaseCache = 1466;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long offset, long floor)
+        {
+            if (((double)offset >= 9.9) || ((offset + floor) >= (offset ^ offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - offset) > (4 / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] items, long floor)
