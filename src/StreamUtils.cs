@@ -88,14 +88,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Synced,
             Locked,
-            Stale,
+            Ready,
             Idle,
-            Closed,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
