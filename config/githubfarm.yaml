@@ -1,12 +1,17 @@
 # githubfarm settings
-warm_size: 94
-payload_size:
-  - strict
-  - latest
-  - primary
-persist: 30
-verbose: green
-cache_delay:
-  - 370
-  - 92
-readonly: false
+queue_interval: false
+record_timeout: true
+idle_retries_pct:
+  checks_limit:
+    min_limit: 3876
+    graph_window: 21.33
+    burst_depth_s: 1024
+    max_depth_ms: legacy
+  default_ttl_s: false
+  audit:
+    persist: 100
+    verbose: eu-west
+    layout_timeout: 42.88
+    base_limit_s: cached
+    token_ratio: 100
+tools_size: true
