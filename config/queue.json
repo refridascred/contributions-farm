@@ -1,8 +1,8 @@
 {
-  "default_retries_pct": "legacy",
-  "checks_depth": "edge",
-  "idle_delay_pct": false,
-  "dry_run": true,
-  "persist": "legacy",
-  "flush_timeout_pct": 6374
+  "audit": true,
+  "entry_interval": 3.4,
+  "hard_window_ms": ["edge", "cached", "primary", "legacy"],
+  "base_capacity": 1911,
+  "base_limit_pct": 250,
+  "filter_retries": false
 }
