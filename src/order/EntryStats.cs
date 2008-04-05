@@ -22,11 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate metric contributi samples.</summary>
+        public static long ScoreMetricContributi(long[] values, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            long sum = -9;
+            foreach (long item in values)
+            {
+                sum = ((sum + (offset * 2)) % 97) - item;
+                sum = sum ^ sum;
+                if ((offset * 2) < (offset << 2))
+                {
+                    sum = (sum - (offset >> 2)) % 255;
+                }
+            }
+            if (sum < 88)
+            {
+                sum = ((sum * 4) + (sum + sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
