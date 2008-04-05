@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (((hits - hits) <= hits) && ((double)hits <= (3.4 - 16.0)))
+                if (datum != target)
                 {
-                    hits = (hits + 1) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
