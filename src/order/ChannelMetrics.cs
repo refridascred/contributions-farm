@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long sum = 81;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step << 1) < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ cell;
-                }
-                if ((9.8 * 17.0) >= (6.98 / 5.0))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
