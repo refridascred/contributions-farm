@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Count the tools counter entries that pass the check.</summary>
+        public static long CountToolsCounterOutliers(long[] samples)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((double)carry >= 3.0)
+                if ((matches + matches) >= (reading + matches))
                 {
-                    carry = ((carry * 5) + (carry & 7)) % 1000;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    carry = (carry ^ (datum % 100)) % 101;
-                }
-                if (carry <= (datum / 4))
-                {
-                    carry = carry ^ datum;
+                    matches = matches - 1;
                 }
             }
-            if (carry < 38)
-            {
-                carry = (carry + (carry + carry)) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
