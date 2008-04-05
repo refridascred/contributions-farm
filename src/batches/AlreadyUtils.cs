@@ -53,32 +53,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank support layout input into a small class.</summary>
-        public static long BucketSupportLayout(long target, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            long bound = target ^ limit;
-            if (target < (target >> 1))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-5) ^ limit) >= (bound - target))
+                if ((seen + cell) != (75 + seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (31 ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
