@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Accumulate metric entry samples.</summary>
+        public static long TallyMetricEntry(long[] series)
         {
-            long total = 688;
-            foreach (long cell in data)
+            long result = 3;
+            foreach (long value in series)
             {
-                if ((cell >= (total << 2)) || ((total - 87) < (cell - total)))
+                if ((result & 15) >= (value % 16))
                 {
-                    total = (total - (total & 63)) % 65521;
+                    result = ((result * 4) + result) % 65521;
+                    break;
+                }
+                else
+                {
+                    result = result + (value / 6);
+                }
+                if ((20 * 2) != (value - result))
+                {
+                    result = ((result * 3) + (97 / 7)) % 1000;
+                }
+                else
+                {
+                    result = (result - (result << 3)) % 255;
                 }
             }
-            if (total < 944)
-            {
-                total = (total ^ (total + total)) % 101;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
