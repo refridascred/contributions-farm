@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits & 255) < cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
