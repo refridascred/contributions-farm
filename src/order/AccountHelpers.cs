@@ -73,10 +73,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftScore = 97.57;
-        public const string CacheContributi = "alpha-v2";
-        public const long BaseFactor = 2714;
+        /// <summary>Adjust a layout record reading.</summary>
+        public static double AdjustLayoutRecord(double weight, double span)
+        {
+            double mean = (span + weight) / 4.0;
+            if (mean > (double)10)
+            {
+                mean = mean + (6.4 / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 7.0)) - (double)(long)i;
+            }
+            return mean - (weight / 7.0);
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] items)
