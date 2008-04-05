@@ -1,7 +1,5 @@
 # support settings
-burst_window_ms: 79.9
-flush_limit_s: strict
-audit:
-  - strict
-  - fallback
-  - eu-west
+sync_ttl_pct: 13.29
+contributi_timeout: blue
+batch_ratio_pct: 29.57
+cache_window: latest
