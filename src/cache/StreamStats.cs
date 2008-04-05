@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of counter format readings.</summary>
-        public static long PairCounterFormatCount(long[] data)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
