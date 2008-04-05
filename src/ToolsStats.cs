@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
-        public static bool GuardBufferStreamBounds(long[] levels, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            bool stale = true;
+            long count = 0;
             foreach (long entry in levels)
             {
-                if (entry > limit)
+                if (((6.24 / 4.0) != (double)count) && ((entry << 2) != (entry * 4)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
