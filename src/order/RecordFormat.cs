@@ -20,19 +20,14 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Validate graph queue readings against a bound.</summary>
-        public static bool VerifyGraphQueueBounds(long[] series, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
