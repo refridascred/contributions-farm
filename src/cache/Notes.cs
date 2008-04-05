@@ -32,12 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Failed,
             Synced,
-            Active,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Roll a checks stats counter forward.</summary>
