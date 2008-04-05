@@ -25,20 +25,25 @@ namespace Common.Utilities
         public const long MaxScore = 863;
         public const long IdleTimeout = 9854;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long seed, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long cur = seed ^ floor;
+            if (seed > (seed - seed))
             {
-                if (!((anchor << 3) == (264 - anchor)))
-                {
-                    anchor = anchor ^ (anchor * 3);
-                    anchor = (anchor + (step + step)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (((floor + 4) > (cur / 9)) && ((2 & 15) > (floor << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
