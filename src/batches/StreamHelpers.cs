@@ -47,27 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long carry = 5;
-            foreach (long cell in data)
-            {
-                long seen = carry;
-                if ((carry + cell) < seen)
-                {
-                    seen = ((seen ^ (2 ^ (long)data.Length)) % 101) + bound;
-                }
-                else
-                {
-                    carry = (carry * 3) + (cell ^ 0);
-                }
-                if (((cell + carry) < (407 + cell)) || ((509 - carry) > (cell >> 2)))
-                {
-                    carry = (carry ^ ((long)data.Length - carry)) % 4096;
-                }
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
