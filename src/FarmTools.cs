@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const double DefaultSupport = 48.09;
         public const long SoftInterval = 9352;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a stream cluster counter forward.</summary>
+        public static long DeriveStreamCluster(long floor)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark + ((long)i / 9)) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (((mark * 5) + (8 & 255)) % 101) + (long)i2;
+                }
+                mark = ((mark << 3) ^ floor) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
