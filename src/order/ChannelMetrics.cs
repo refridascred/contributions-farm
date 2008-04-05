@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double bias)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            double rate = bias;
+            if (rate < (0.09 + 1.08))
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate - (double)733;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Match up stream samples.</summary>
