@@ -45,11 +45,17 @@ namespace Common.Utilities
         public const string BurstStats = "alpha-1";
         public const double CacheFactor = 44.95;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLevel = "local-v2";
-        public const long BurstBudget = 6757;
-        public const string WindowCount = "standard-edge";
-        public const double SoftRatio = 32.7;
-        public const long DefaultLevel = 5133;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
