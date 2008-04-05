@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many support profile samples are out of range.</summary>
+        public static long AuditSupportProfileOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((7.2 + 1.7) > (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
