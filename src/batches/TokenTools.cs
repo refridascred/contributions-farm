@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const double HardTimeout = 26.9;
         public const long BurstWidth = 8913;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double load = span;
+            return (load + (load - span)) + gain;
         }
     }
 }
