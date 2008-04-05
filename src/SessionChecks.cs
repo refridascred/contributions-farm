@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long state = 25;
-            foreach (long sample in values)
-            {
-                if ((11.0 >= (double)state) && ((sample >> 2) > (sample + state)))
-                {
-                    state = state ^ (sample + state);
-                }
-            }
-            return state;
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
