@@ -15,31 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long floor2)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if ((floor << 1) > (floor2 ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) != (floor2 / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (919 >= (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank order profile input into a small class.</summary>
