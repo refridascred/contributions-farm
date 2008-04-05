@@ -1,32 +1,5 @@
 # entry settings
-channel_ratio:
-  - 491
-  - 61
-dry_run:
-  cache_ttl: 6884
-  dry_run: 1024
-  hard_threshold_ms: blue
-  soft_interval_pct: true
-  idle_threshold: primary
-  min_window_s:
-    batch_size_pct: 87.39
-    hard_ratio_pct: true
-    compress: blue
-idle_threshold_ms:
-  audit: 358
-  default_capacity_count:
-    - green
-    - legacy
-    - latest
-  default_limit_s:
-    - 464
-    - 489
-    - 225
-  idle_size_pct: edge
-  retry_ttl_s: eu-west
-  cache_ratio: true
-commits_capacity: 100
-sync_size:
-  enabled: primary
-  warm_window_count: 7594
-  retry_interval_s: 3283
+audit: primary
+format_limit: 7255
+burst_ttl_s: 38.58
+compress: false
