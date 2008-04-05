@@ -13,39 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long target2)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long offset)
         {
-            long slot = target - target2;
-            if (slot <= (target & 7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target2 - target) > target))
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + target) < (target2 + slot))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)slot <= 11.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
