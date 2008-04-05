@@ -55,16 +55,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache route series from a seed.</summary>
-        public static long RollCacheRoute(long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            if ((double)step == (4.79 + 3.25))
             {
-                carry = (carry << 3) ^ (offset >> 5);
-                carry = ((carry * 3) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((origin - origin) < (origin % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 3) < (step + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (1.0 * 19.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
