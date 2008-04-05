@@ -45,10 +45,16 @@ namespace Common.Utilities
         public const long MinQueue = 5041;
         public const double RetrySpan = 98.34;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1107;
-        public const long BaseLevel = 7549;
-        public const long BaseScore = 1116;
+        /// <summary>Derive the next cluster tools value from a seed.</summary>
+        public static long RollClusterTools(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long target, long floor)
