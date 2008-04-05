@@ -27,11 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two stream metric measurements.</summary>
-        public static double ScaleStreamMetric(double bias, double span)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double bias2 = (span * 2.44) / 2.0;
-            return (bias2 - (double)812) + bias;
+            Retry,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a cluster summary.</summary>
