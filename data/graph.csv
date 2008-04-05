@@ -1,9 +1,6 @@
-id,count,score
-1,947,194
-2,878,standard
-3,62.72,legacy
-4,90.53,67.06
-5,79.24,69.86
-6,62.31,cached
-7,364,694
-8,81,7
+id,active,token,ratio,level
+1,367,87,edge,fallback
+2,edge,6.39,56.61,fallback
+3,edge,edge,547,139
+4,865,open,273,79.38
+5,strict,187,59.46,892
