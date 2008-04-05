@@ -59,17 +59,18 @@ namespace Common.Utilities
         public const long MaxBudget = 6400;
         public const long IdleInterval = 507;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (readings[i] >= bound)
+                if ((hits >= (item * 5)) && ((hits + hits) != (20 ^ 63)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
