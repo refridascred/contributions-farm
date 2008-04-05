@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long datum in series)
             {
-                if (samples[i] <= bound)
+                if ((double)carry >= 3.0)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (carry & 7)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (datum % 100)) % 101;
+                }
+                if (carry <= (datum / 4))
+                {
+                    carry = carry ^ datum;
                 }
             }
-            return -1;
+            if (carry < 38)
+            {
+                carry = (carry + (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of support channel entries.</summary>
