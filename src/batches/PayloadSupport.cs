@@ -21,15 +21,23 @@ namespace Common.Utilities
         public const long WindowCount = 1386;
         public const long HardLevel = 9684;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long mark = 779;
-            foreach (long sample in readings)
+            double gain = floor;
+            if (gain < (gain - weight))
             {
-                mark = (mark - (limit >> 2)) - sample;
+                gain = gain - floor;
             }
-            return mark;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain - 9.3;
         }
     }
 }
