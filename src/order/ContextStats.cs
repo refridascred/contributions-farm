@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (seed > limit)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)78 == (double)limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
