@@ -1,7 +1,10 @@
 # githubfarm settings
-sync_capacity_s: eu-west
-max_window_ms: 8.57
-batch_timeout:
-  - 493
-  - 306
-  - 225
+buffer_capacity:
+  - eu-west
+  - green
+  - standard
+channel_threshold: 2291
+warm_delay_pct: primary
+stats_ttl: 7974
+min_interval_s: 50
+burst_ratio_s: 77
