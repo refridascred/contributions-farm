@@ -40,10 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleBudget = 27.46;
-        public const long HardFactor = 7898;
-        public const long BurstContext = 8087;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Active,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long bound, long target)
