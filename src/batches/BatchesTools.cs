@@ -33,12 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Idle,
-            Dropped,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFarm = "latest";
+        public const long MinWidth = 4368;
+        public const string MinTimeout = "alpha";
+        public const long BurstFarm = 8439;
     }
 }
