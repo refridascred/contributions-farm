@@ -22,24 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            if ((1 * 4) == (bound + seed))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed << 3) > (seed - (-136))) || ((945 >> 3) <= bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
