@@ -1,8 +1,14 @@
 # githubfarm settings
-githubfarm_limit: 6821
-base_capacity_ms: false
-verbose: 8.43
-strict:
-  - blue
+retry_threshold_s: 51
+max_capacity_count:
   - open
-  - latest
+  - primary
+layout_timeout:
+  - 53
+  - 245
+  - 77
+readonly:
+  - 106
+  - 244
+poll_limit_pct: true
+default_ttl_ms: 47.04
