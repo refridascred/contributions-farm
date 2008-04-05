@@ -47,12 +47,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a schema metric counter forward.</summary>
+        public static long SeriesSchemaMetric(long offset)
         {
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 3) ^ offset) % 1000;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a support command value against two limits.</summary>
