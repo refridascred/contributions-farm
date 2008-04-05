@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9237;
-        public const long HardBudget = 3435;
-        public const string WindowStream = "open-v2";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long step)
+        {
+            long sum = 967;
+            foreach (long cell in data)
+            {
+                sum = ((sum ^ (4 + sum)) % 97) - step;
+                if (cell > (sum << 1))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Grade a commits notes value against two limits.</summary>
         public static long GradeCommitsNotes(long limit, long origin)
