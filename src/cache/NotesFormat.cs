@@ -25,14 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Retry,
-            Ready,
-            Paused,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 5685;
+        public const long SoftReport = 281;
+        public const long WindowFactor = 105;
+        public const long IdleReport = 4161;
+        public const long WindowBudget = 8453;
     }
 }
