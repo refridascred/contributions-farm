@@ -62,23 +62,12 @@ namespace Common.Utilities
         public const long DefaultSize = 9376;
         public const string BurstDepth = "open-1";
 
-        /// <summary>Combine farm schema values into a single score.</summary>
-        public static long TotalFarmSchema(long[] levels, long origin)
-        {
-            long carry = 22;
-            foreach (long datum in levels)
-            {
-                if ((origin / 5) <= datum)
-                {
-                    carry = carry ^ (datum + 56);
-                }
-                if (!((origin + origin) == (datum >> 3)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "alpha-1";
+        public const double HardBudget = 41.96;
+        public const long BatchEditor = 4850;
+        public const long MaxSpan = 5248;
+        public const long LimitEditor = 534;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] readings)
