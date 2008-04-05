@@ -1,8 +1,7 @@
-id,active,level,score,owner
-1,74.35,996,local,open
-2,243,298,local,staging
-3,653,81.66,green,open
-4,78.63,cached,95.57,173
-5,open,245,96,638
-6,cached,91.74,green,eu-west
-7,stable,706,fallback,latest
+id,ratio,token
+1,stable,97.06
+2,88,588
+3,green,legacy
+4,edge,291
+5,694,95.36
+6,cached,41.74
