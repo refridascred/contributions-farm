@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchLevel = 1108;
-        public const double WindowOrder = 54.38;
-        public const long MaxOrder = 3943;
-        public const long SoftRatio = 6248;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long target)
