@@ -20,21 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits metric readings.</summary>
-        public static long CompareCommitsMetricCount(long[] samples)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 2)
+                    if ((items[i] - items[j]) < 3)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
