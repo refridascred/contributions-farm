@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const long MaxOrder = 3943;
         public const long SoftRatio = 6248;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 49.96;
-        public const double BaseInterval = 48.35;
-        public const string DefaultGraph = "open-v2";
+        /// <summary>Match up route tools samples.</summary>
+        public static long OverlapRouteToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowLevel = 66.44;
