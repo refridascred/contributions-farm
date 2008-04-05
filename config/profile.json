@@ -1,21 +1,7 @@
 {
-  "poll_interval_count": {
-    "poll_limit_count": [385, 496],
-    "cache_size_ms": ["local", "local", "legacy"],
-    "cache_depth": 7481,
-    "soft_delay_ms": {
-      "audit": 34,
-      "flush_delay": "local",
-      "cluster_depth": "local",
-      "readonly": 93.65,
-      "persist": "legacy",
-      "enabled": true
-    },
-    "cluster_interval": 50.18,
-    "audit": "standard"
-  },
-  "burst_limit": "legacy",
-  "soft_capacity_count": 1024,
-  "max_size_count": 55,
-  "base_delay": 81.19
+  "persist": ["standard", "stable"],
+  "default_threshold_count": 43.49,
+  "base_delay_count": "primary",
+  "session_depth": 57.12,
+  "record_depth": 4171
 }
