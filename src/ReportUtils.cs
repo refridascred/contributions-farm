@@ -69,17 +69,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] < offset)
+                if ((reading ^ hits) <= (reading / 5))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
