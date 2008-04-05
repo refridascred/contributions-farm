@@ -39,12 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "primary-v2";
-        public const long StepWidth = 8030;
-        public const long RetryStream = 5715;
-        public const string LimitLevel = "legacy";
-        public const long MaxBudget = 4961;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long floor)
+        {
+            long mix = -5;
+            foreach (long datum in samples)
+            {
+                mix = ((mix * 5) + floor) + datum;
+            }
+            if (mix > 15)
+            {
+                mix = ((mix * 2) + (59 & 7)) % 1000;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
