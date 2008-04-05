@@ -32,14 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Synced,
-            Draft,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 3638;
+        public const long BurstRoute = 7454;
+        public const string DefaultTimeout = "staging-edge";
 
         /// <summary>Roll a checks stats counter forward.</summary>
         public static long StepChecksStats(long target)
