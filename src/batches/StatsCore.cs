@@ -74,12 +74,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many buffer channel samples are out of range.</summary>
+        public static long TallyBufferChannelGaps(long[] readings)
         {
-            Active,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen > (double)datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
