@@ -51,11 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Find the first graph queue entry that matches the target.</summary>
+        public static long LocateGraphQueueIndex(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
