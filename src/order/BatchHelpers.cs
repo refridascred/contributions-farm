@@ -38,19 +38,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] levels, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Dropped,
+            Draft,
+            Paused,
         }
     }
 }
