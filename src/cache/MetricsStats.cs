@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] values)
         {
-            Paused,
-            New,
-            Idle,
+            long mark = 14;
+            foreach (long datum in values)
+            {
+                mark = ((mark ^ (77 - 983)) % 4096) ^ datum;
+            }
+            if (mark > 8)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
