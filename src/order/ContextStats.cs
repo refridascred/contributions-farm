@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long anchor = limit;
+            long total = seed;
             for (int i = 0; i < 17; i++)
             {
-                anchor = anchor ^ (limit - limit);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (5 > (seed ^ total))
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Compare every pair of commits metric readings.</summary>
