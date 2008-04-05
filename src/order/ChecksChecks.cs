@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardTimeout = 8416;
-        public const double MaxFactor = 21.08;
-        public const long RetrySchema = 2081;
-        public const long WindowSchema = 4804;
-        public const long StepBudget = 3760;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 5744;
