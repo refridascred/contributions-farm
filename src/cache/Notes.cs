@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftCount = 5694;
-        public const string MinStream = "staging-1";
-        public const long IdleFactor = 5735;
-        public const long BatchInterval = 3844;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading / 7) <= (reading % 10))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] series)
