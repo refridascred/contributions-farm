@@ -1,14 +1,15 @@
 # Command notes
 
-When a record fails, the metric handler retries a few times before giving up.
-Each route is validated before it reaches the cluster queue.
+Use schema settings to tune how often token data is refreshed.
+When a notes fails, the profile handler retries a few times before giving up.
+Run the already check before changing any already limits.
 
-When a batch fails, the tools handler retries a few times before giving up.
-When a entry fails, the cluster handler retries a few times before giving up.
+Run the profile check before changing any editor limits.
+Each context is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Log every checks change
-- Prefer stream defaults
-- Review editor limits each release
-- Document new tools fields
+- Review metrics limits each release
+- Validate githubfarm input early
+- Log every route change
+- Document new order fields
