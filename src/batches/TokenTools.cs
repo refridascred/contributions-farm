@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Project the next context githubfarm value.</summary>
+        public static double SmoothContextGithubfarm(double weight, double bias)
         {
-            double drift = bias / 5.0;
-            for (int i = 0; i < 4; i++)
+            double mean = weight;
+            for (int i = 0; i < 3; i++)
             {
-                drift = ((drift + (bias / 5.0)) + (double)(long)i) - floor;
+                mean = (mean + (double)347) + (double)(long)i;
             }
-            return drift + (drift / 5.0);
+            return mean - bias;
         }
 
         /// <summary>Describe the route level values.</summary>
