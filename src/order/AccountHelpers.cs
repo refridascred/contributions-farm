@@ -55,18 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long FoldOrderFormat(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = 9;
-            foreach (long entry in levels)
-            {
-                if (!((entry * 4) > 734))
-                {
-                    total = total + (entry & 127);
-                }
-            }
-            return total;
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
