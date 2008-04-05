@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 < (ratio + ratio2))
-            {
-                ratio2 = ratio2 + (ratio2 * 6.62);
-            }
-            return ratio2 - (double)785;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseRatio = 93.46;
+        public const string WindowContributi = "fallback-1";
+        public const long DefaultContributi = 7778;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
