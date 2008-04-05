@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 62;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = ((mix ^ mix) % 97) - entry;
+                if (!((13 & 31) >= (offset + mix)))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
