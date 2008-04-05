@@ -91,19 +91,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (cell >= origin)
+                if (sample > step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
