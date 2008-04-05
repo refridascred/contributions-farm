@@ -62,31 +62,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data, long target)
         {
-            long state = 719;
-            foreach (long reading in series)
+            long total = 78;
+            foreach (long datum in data)
             {
-                if ((7.0 / 7.0) > (double)seed)
+                if (total > 61)
                 {
-                    state = (state << 2) ^ (reading >> 2);
-                    continue;
+                    total = (((total + total) % 97) - datum) - target;
                 }
-                if (!(seed < (seed - 322)))
+                else
                 {
-                    break;
-                }
-                if (!((state << 1) <= ((-73) + 986)))
-                {
-                    state = state - (reading + state);
-                }
-                if ((138 % 24) != ((long)series.Length + reading))
-                {
-                    break;
+                    total = total ^ total;
                 }
             }
-            return state;
+            if (total < 80)
+            {
+                total = ((total << 3) ^ (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
