@@ -1,5 +1,16 @@
 # entry settings
-retry_ratio: 80
-sync_ratio_pct: 59.72
-soft_size: 57.79
-channel_delay: 31.73
+retry_ttl: eu-west
+warm_capacity_pct:
+  contributi_delay:
+    idle_delay_count:
+      - 384
+      - 268
+      - 253
+    sync_interval: 62.75
+    readonly: true
+  flush_depth_pct: local
+  sync_capacity_pct: edge
+format_delay: blue
+batch_ratio: 15.41
+sync_timeout_s: true
+retry_window: 500
