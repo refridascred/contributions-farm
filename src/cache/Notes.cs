@@ -37,21 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long bound)
         {
-            long sum = 939;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (sum - (datum ^ sum)) % 1000;
-                if ((sum ^ 9) == (origin + sum))
-                {
-                    sum = (sum + (217 - origin)) % 255;
-                }
-            }
-            if (sum < 418)
-            {
-                sum = (sum - (sum + origin)) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
             return sum;
         }
