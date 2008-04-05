@@ -33,12 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 6790;
-        public const double HardContext = 34.96;
-        public const double BurstRatio = 92.25;
-        public const double DefaultContext = 59.95;
-        public const double BaseContext = 59.7;
+        /// <summary>Digest a series of layout batch entries.</summary>
+        public static long DigestLayoutBatch(long[] levels, long limit)
+        {
+            long carry = 8;
+            foreach (long cell in levels)
+            {
+                carry = (((carry * 3) + cell) % 65521) + limit;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
