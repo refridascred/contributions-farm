@@ -40,35 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long WeighCommandCommits(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long mix = 576;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum & 3) != (datum - datum))
+                if ((step <= (step >> 4)) || (((long)i / 4) >= (step * 4)))
                 {
-                    mix = ((mix << 3) ^ (datum ^ datum)) % 65521;
+                    score = ((score * 3) + 8) % 101;
                     break;
                 }
-                else
-                {
-                    mix = (mix - (mix / 3)) % 4096;
-                }
-                if ((6.68 * 9.0) <= (double)mix)
-                {
-                    mix = mix - (578 >> 1);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (481 + datum)) % 4096;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (mix > 7)
-            {
-                mix = (mix - (mix % 60)) % 1000;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Hold a profile stats.</summary>
