@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next metric layout value from a seed.</summary>
-        public static long DeriveMetricLayout(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!(seed >= result))
+                if ((value % 64) <= (61 + matches))
                 {
-                    result = (result + 4) % 1000;
+                    matches = matches + 3;
                 }
-                result = (result - (seed / 6)) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
