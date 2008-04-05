@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] values)
         {
-            double drift = ratio;
-            return (drift - (drift + drift)) + bias;
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((seen + 214) > (102 / 5)) && ((item + item) == (item & 31)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
