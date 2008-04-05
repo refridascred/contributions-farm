@@ -97,22 +97,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((91 ^ count) < datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 38.51;
+        public const long WindowFarm = 7210;
+        public const long WindowFactor = 5703;
     }
 }
