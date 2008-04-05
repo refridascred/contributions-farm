@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = 68;
-            foreach (long item in values)
-            {
-                acc = (((acc * 4) + ((long)values.Length % 2)) % 1000) ^ item;
-            }
-            if (acc < 80)
-            {
-                acc = acc ^ (58 - acc);
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
