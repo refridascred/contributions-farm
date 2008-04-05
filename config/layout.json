@@ -1,11 +1,12 @@
 {
-  "cache_size_s": 71.74,
-  "readonly": {
-    "sync_size": "open",
-    "base_limit": "legacy",
-    "hard_ratio_s": 5,
-    "compress": ["edge", "primary", "primary", "stable"]
-  },
-  "format_limit": 76.56,
-  "warm_timeout": 250
+  "base_size": true,
+  "burst_ttl_s": "local",
+  "soft_retries": {
+    "strict": 8.23,
+    "burst_limit": 14.62,
+    "enabled": 91,
+    "default_retries_count": 60,
+    "verbose": 79,
+    "base_ttl_s": 1024
+  }
 }
