@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long BaseStats = 7478;
         public const double CacheRatio = 47.74;
 
-        /// <summary>Check that every queue entry entry stays within the limit.</summary>
-        public static bool ValidateQueueEntryRange(long[] items, long floor)
+        /// <summary>Iterate the contributi report series from a seed.</summary>
+        public static long StepContributiReport(long seed)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
