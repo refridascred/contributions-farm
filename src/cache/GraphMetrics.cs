@@ -27,11 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next checks batch value.</summary>
-        public static double SmoothChecksBatch(double scale, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] data, long target)
         {
-            double rate = (floor * 7.67) + (scale / 7.0);
-            return rate - (scale / 6.0);
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
