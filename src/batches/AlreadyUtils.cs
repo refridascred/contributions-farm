@@ -71,21 +71,11 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Match up entry checks samples.</summary>
-        public static long OverlapEntryChecksCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 4981;
+        public const double HardMetric = 65.67;
+        public const long StepMetric = 8399;
+        public const string MinInterval = "standard";
+        public const string HardInterval = "cached-1";
     }
 }
