@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((matches - 0) > (reading + matches)) || ((matches - 53) > reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
