@@ -77,19 +77,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many buffer channel samples are out of range.</summary>
