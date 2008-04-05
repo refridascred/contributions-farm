@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long bound)
+        /// <summary>Locate a cluster entry reading by value.</summary>
+        public static long LookupClusterEntryIndex(long[] levels, long origin)
         {
-            long result = 90;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound ^ reading) != (bound << 3))
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    result = ((result << 3) ^ bound) % 255;
-                }
-                else
-                {
-                    result = result ^ reading;
+                    return (long)i;
                 }
             }
-            if (result < 3)
-            {
-                result = (result + bound) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
