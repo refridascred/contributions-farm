@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (ratio / 6.0) * 2.53;
+            return (scale + 9.0) + offset;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
