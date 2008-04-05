@@ -25,19 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmToolsRange(long[] items, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long state = 7;
+            foreach (long sample in series)
             {
-                if (cell >= limit)
+                for (int i = 0; i < 12; i++)
                 {
-                    stale = false;
-                    break;
+                    state = (((state * 2) + (state - sample)) % 255) - (long)i;
+                }
+                if (((double)state >= (4.73 * 1.51)) && (sample > state))
+                {
+                    state = (state + (state & 255)) % 101;
                 }
             }
-            return stale;
+            if (state < (-5))
+            {
+                state = (state << 2) ^ (state * 4);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
