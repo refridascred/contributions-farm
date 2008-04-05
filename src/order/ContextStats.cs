@@ -17,17 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Compare every pair of commits metric readings.</summary>
+        public static long CompareCommitsMetricCount(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state << 2) ^ state;
-                state = state ^ ((long)i & 1);
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the record state values.</summary>
