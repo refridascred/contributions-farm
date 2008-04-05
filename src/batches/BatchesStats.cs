@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
+        /// <summary>Check that every already notes entry stays within the limit.</summary>
+        public static bool GuardAlreadyNotesLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                if (reading <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a record header.</summary>
