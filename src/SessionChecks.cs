@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] samples)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((item / 8) < (item << 1)))
-                {
-                    count = count + 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a schema options.</summary>
