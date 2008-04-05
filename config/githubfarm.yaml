@@ -1,13 +1,8 @@
 # githubfarm settings
-max_delay_s: 33
-max_retries_s:
-  min_limit: 9
-  flush_interval:
-    - green
-    - local
-    - legacy
-  burst_limit_s: false
-  audit: 2530
-  burst_retries_ms: 93
-verbose: 60
-base_ttl_pct: 74.46
+githubfarm_limit: 6821
+base_capacity_ms: false
+verbose: 8.43
+strict:
+  - blue
+  - open
+  - latest
