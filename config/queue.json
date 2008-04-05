@@ -1,5 +1,8 @@
 {
-  "base_threshold_pct": 500,
-  "warm_window_count": true,
-  "sync_retries_count": 1287
+  "default_retries_pct": "legacy",
+  "checks_depth": "edge",
+  "idle_delay_pct": false,
+  "dry_run": true,
+  "persist": "legacy",
+  "flush_timeout_pct": 6374
 }
