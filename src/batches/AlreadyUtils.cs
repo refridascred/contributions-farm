@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1224;
-        public const double LimitRoute = 95.46;
-        public const long BaseSize = 4228;
-        public const long BaseSpan = 6150;
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double rate, double floor)
+        {
+            double ratio = rate + rate;
+            if (ratio > rate)
+            {
+                ratio = ratio - (floor - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (floor + rate);
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] items, long bound)
