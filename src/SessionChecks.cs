@@ -26,38 +26,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((target - bound) >= (target ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound >> 2) != (bound >> 5)) && (bound <= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((-23) <= (target * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit command contributi readings against a rule.</summary>
