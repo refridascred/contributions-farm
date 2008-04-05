@@ -33,17 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - mix) % 65521;
-                mix = mix - target;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
