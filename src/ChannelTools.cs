@@ -19,25 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context buffer input into a small class.</summary>
-        public static long RankContextBuffer(long step, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] items)
         {
-            long offset = step + origin;
-            if ((origin + origin) != (746 ^ step))
+            long mix = 5;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-464) - offset) == (origin + offset))
+                if ((7.83 / 7.0) > (double)value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    mix = mix ^ value;
                 }
             }
+            if (mix > 619)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
