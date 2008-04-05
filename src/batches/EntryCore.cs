@@ -20,23 +20,12 @@ namespace Common.Utilities
         public const long BurstDepth = 7325;
         public const long SoftBudget = 4299;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 2;
-            foreach (long value in readings)
-            {
-                anchor = (anchor ^ value) % 255;
-                if ((anchor ^ anchor) >= anchor)
-                {
-                    anchor = ((anchor * 2) + 3) % 65521;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor + ((-62) + anchor);
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
