@@ -69,21 +69,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up stats route samples.</summary>
-        public static long PairStatsRouteCount(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry >= (mark + entry)) || ((mark >> 3) == (430 + mark)))
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (9 % 3)) % 1000;
+                    mark = mark ^ 15;
                 }
+                mark = mark + mark;
             }
-            return matches;
+            if (mark > 9)
+            {
+                mark = ((mark * 4) + ((long)levels.Length + 0)) % 255;
+            }
+            return mark;
         }
     }
 }
