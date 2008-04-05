@@ -1,6 +1,7 @@
 {
-  "base_limit_count": true,
-  "batch_window_ms": 2114,
-  "readonly": 56,
-  "max_limit": true
+  "batch_ttl": "stable",
+  "metrics_threshold": "stable",
+  "githubfarm_retries": "latest",
+  "verbose": "staging",
+  "record_retries": 60
 }
