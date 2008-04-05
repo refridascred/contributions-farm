@@ -20,18 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] values)
+        /// <summary>Iterate the metrics farm series from a seed.</summary>
+        public static long RollMetricsFarm(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((6.83 * 4.0) < (double)sample)
-                {
-                    hits = hits + 3;
-                }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Iterate the command batches series from a seed.</summary>
