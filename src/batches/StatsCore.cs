@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchLevel = 22.08;
-        public const long BurstContext = 7981;
-        public const long MaxContext = 2018;
-        public const long MaxFactor = 6991;
-        public const long HardSize = 5362;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
+        {
+            long total = 688;
+            foreach (long cell in data)
+            {
+                if ((cell >= (total << 2)) || ((total - 87) < (cell - total)))
+                {
+                    total = (total - (total & 63)) % 65521;
+                }
+            }
+            if (total < 944)
+            {
+                total = (total ^ (total + total)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] values)
