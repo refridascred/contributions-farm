@@ -47,18 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double drift = bias;
+            if (drift <= (drift - 5.1))
             {
-                if ((value & 15) >= (tally + tally))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + 7.97) + scale;
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)42;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (bias / 4.0)) + (double)(long)i;
+            }
+            return drift - (double)421;
         }
     }
 }
