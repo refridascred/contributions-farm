@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a schema layout sample.</summary>
-        public static long FindSchemaLayoutIndex(long[] levels, long limit)
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long TallyStreamClusterOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
+                if ((4 - hits) <= (1 << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
