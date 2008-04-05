@@ -45,13 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Synced,
-            Closed,
-            Draft,
-            Pending,
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
