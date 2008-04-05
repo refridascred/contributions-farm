@@ -59,19 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((404 % 8) < tally)
-                {
-                    tally = ((tally + 1) ^ sample) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSize = 1384;
+        public const string StepChecks = "alpha";
+        public const long IdleSpan = 4776;
+        public const long BaseChecks = 7571;
+        public const long DefaultChecks = 8188;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] samples, long offset)
