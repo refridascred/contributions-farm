@@ -28,23 +28,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((84 + anchor) >= (target ^ (long)i))
-                {
-                    anchor = ((anchor * 5) + (target - target)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (target + anchor)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
