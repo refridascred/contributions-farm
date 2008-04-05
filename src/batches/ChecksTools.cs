@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double offset)
-        {
-            double bias = rate;
-            if (bias >= rate)
-            {
-                bias = (bias + rate) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8327;
+        public const long SoftCommits = 8929;
+        public const long CacheScore = 7167;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] items, long floor)
