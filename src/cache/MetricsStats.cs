@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = ratio;
+            return (drift - (drift + drift)) + bias;
         }
 
         /// <summary>Hold a farm stats.</summary>
