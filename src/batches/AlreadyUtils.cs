@@ -11,39 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 4228;
         public const long BaseSpan = 6150;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long floor, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items, long bound)
         {
-            long gap = floor + offset;
-            if ((gap ^ gap) <= (gap ^ 70))
+            long mix = 73;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (6 >= (offset >> 2))
+                if ((double)sample <= (3.0 + 7.15))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((gap + 2) < (983 / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset & 7) >= (gap % 10)) && ((364 / 8) <= floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mix = (mix - (long)items.Length) - bound;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Hold a counter record.</summary>
