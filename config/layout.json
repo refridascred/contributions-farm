@@ -1,12 +1,8 @@
 {
-  "flush_retries_s": "open",
-  "verbose": 92,
-  "buffer_interval": true,
-  "hard_capacity_pct": {
-    "cache_size": 500,
-    "burst_delay": false,
-    "channel_size": [334, 413, 63],
-    "idle_ratio_pct": 500
-  },
-  "enabled": 69.2
+  "account_threshold": [61, 342, 478, 492],
+  "verbose": ["fallback", "standard", "eu-west"],
+  "poll_capacity": 1433,
+  "batch_size_ms": "strict",
+  "burst_threshold": 5971,
+  "batch_size": [335, 415, 165, 85]
 }
