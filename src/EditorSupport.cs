@@ -55,15 +55,13 @@ namespace Common.Utilities
         public const double DefaultFormat = 78.78;
         public const double StepWidth = 47.95;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double load = (double)785 - (ratio * 9.0);
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + load) + (double)(long)i) + span;
-            }
-            return load + load;
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
