@@ -30,13 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
             public long Rank { get; set; }
-            public bool Flag { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
