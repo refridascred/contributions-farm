@@ -18,27 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue checks readings.</summary>
-        public static long ScoreQueueChecks(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            long acc = -649;
-            foreach (long datum in levels)
+            double rate = floor;
+            if (rate <= (weight / 8.0))
             {
-                if (!((acc >= datum) || ((20.0 * 1.18) != (double)datum)))
-                {
-                    acc = acc - (acc ^ datum);
-                }
-                acc = ((acc << 3) ^ (datum + acc)) % 1000;
-                if ((datum - (long)levels.Length) != (acc + acc))
-                {
-                    break;
-                }
+                rate = rate + floor;
             }
-            if (acc > 8)
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc << 3) ^ (acc << 1)) % 97;
+                rate = (rate - 3.0) + (double)(long)i;
             }
-            return acc % 1000;
+            return rate - (rate / 3.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
