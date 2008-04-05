@@ -35,14 +35,15 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-v2";
         public const long StepRecord = 458;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the graph buffer series from a seed.</summary>
+        public static long RollGraphBuffer(long origin)
         {
-            Idle,
-            Retry,
-            Pending,
-            Ready,
-            Paused,
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout level values.</summary>
