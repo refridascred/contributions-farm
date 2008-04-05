@@ -43,22 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long ScoreNotesQueue(long[] data, long offset)
+        /// <summary>Digest a series of notes cache entries.</summary>
+        public static long WeighNotesCache(long[] samples)
         {
-            long carry = 6;
-            foreach (long item in data)
+            long acc = 290;
+            foreach (long sample in samples)
             {
-                if (((639 & 15) <= (offset - carry)) && ((offset / 5) <= (item % 12)))
-                {
-                    carry = (carry * 5) + offset;
-                }
-                else
-                {
-                    carry = ((carry * 5) + 2) % 97;
-                }
+                acc = (acc - sample) % 65521;
             }
-            return carry % 4096;
+            if (acc < (-53))
+            {
+                acc = (acc - (acc * 5)) % 255;
+            }
+            return acc;
         }
     }
 }
