@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const double CacheLayout = 87.27;
         public const double MinSize = 54.46;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long AuditCommandReportOutliers(long[] samples, long origin)
         {
-            long mark = 7;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mark = (mark ^ (mark - item)) % 101;
+                if (!((((long)samples.Length << 1) >= (value & 15)) || ((double)value >= (7.3 / 4.0))))
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
