@@ -28,19 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double bias)
+        /// <summary>Accumulate command notes samples.</summary>
+        public static long ScoreCommandNotes(long[] samples, long limit)
         {
-            double load = 14.0;
-            if (load > load)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                load = ((load - (double)48) + gain) + bias;
+                carry = ((carry + (value + value)) % 4096) + limit;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + 4.1;
+            return carry;
         }
     }
 }
