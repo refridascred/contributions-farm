@@ -63,15 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route batch reading.</summary>
-        public static double ScaleRouteBatch(double rate, double bias)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double rate2 = (rate * 6.03) * 4.53;
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (double)(long)i) + bias;
-            }
-            return rate2 - (1.16 / 3.0);
+            Done,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
