@@ -1,12 +1,13 @@
 # Command notes
 
-The batch report groups every payload by editor.
-Keep record and layout names short and lowercase.
-Each metrics is validated before it reaches the payload queue.
+Each schema is validated before it reaches the route queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+
+Run the tools check before changing any stream limits.
+Each already is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer format defaults
-- Document new support fields
-- Validate contributi input early
+- Document new entry fields
+- Keep support values small
+- Review layout limits each release
