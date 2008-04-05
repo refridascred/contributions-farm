@@ -50,22 +50,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (3.0 / 8.0))
-                {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Idle,
+            Active,
         }
     }
 }
