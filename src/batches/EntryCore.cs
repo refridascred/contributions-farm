@@ -20,19 +20,23 @@ namespace Common.Utilities
         public const long BurstDepth = 7325;
         public const long SoftBudget = 4299;
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            double load = bias;
-            if (load <= (double)31)
+            long anchor = 2;
+            foreach (long value in readings)
             {
-                load = (load - (double)7) - ratio;
+                anchor = (anchor ^ value) % 255;
+                if ((anchor ^ anchor) >= anchor)
+                {
+                    anchor = ((anchor * 2) + 3) % 65521;
+                }
             }
-            else
+            if (anchor < 9)
             {
-                load = load - load;
+                anchor = anchor + ((-62) + anchor);
             }
-            return load + (double)(-709);
+            return anchor;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
