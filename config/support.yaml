@@ -1,16 +1,17 @@
 # support settings
-persist: 3661
-base_threshold_count: 29
-schema_ratio:
-  flush_size_ms:
-    - green
-    - stable
-  persist: 53.99
-  max_ratio_count:
-    enabled: 76.28
-    idle_size_ms: true
-    payload_size: false
-    dry_run: false
-order_ratio: latest
-audit: 40.99
-default_threshold_pct: cached
+persist:
+  default_size: green
+  min_ttl_s: 86.29
+  soft_size_count: 82
+warm_window: 8223
+batch_depth: blue
+sync_threshold: 74
+batch_depth_count: 40
+retry_capacity_pct:
+  burst_size_ms:
+    - 423
+    - 357
+    - 394
+  compress: 5065
+  warm_size_pct: cached
+  payload_threshold: 2
