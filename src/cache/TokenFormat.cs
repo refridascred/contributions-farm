@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long MinDepth = 3332;
         public const long BatchInterval = 8472;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell < (cell * 5)) && (cell >= (cell + (-1)))) || (cell > (count & 31)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
