@@ -66,18 +66,17 @@ namespace Common.Utilities
         public const long MaxBudget = 6400;
         public const long IdleInterval = 507;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits >= (item * 5)) && ((hits + hits) != (20 ^ 63)))
+                if (series[i] < offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
