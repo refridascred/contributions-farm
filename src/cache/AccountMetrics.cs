@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "legacy-edge";
-        public const string SoftRecord = "primary";
-        public const long RetryTimeout = 3539;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] values, long offset)
