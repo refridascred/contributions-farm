@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mix = 5;
-            foreach (long value in items)
-            {
-                if ((7.83 / 7.0) > (double)value)
-                {
-                    mix = mix ^ value;
-                }
-            }
-            if (mix > 619)
-            {
-                mix = ((mix * 5) + (mix - mix)) % 4096;
-            }
-            return mix;
+            Synced,
+            Closed,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
