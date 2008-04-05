@@ -35,21 +35,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix ^ (limit - (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
