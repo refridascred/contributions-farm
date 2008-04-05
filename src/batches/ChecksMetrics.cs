@@ -12,15 +12,18 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items, long seed)
         {
-            double bias = (double)(69 * 4);
-            if (bias <= (rate / 8.0))
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias = bias - (floor / 8.0);
+                if ((6.65 < (double)seen) || (((seed ^ seed) >= value) && (value < 690)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias - (floor / 3.0);
+            return seen;
         }
 
         /// <summary>Iterate the format session series from a seed.</summary>
