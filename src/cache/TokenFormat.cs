@@ -12,11 +12,28 @@ namespace Common.Utilities
         public const double SoftSize = 60.92;
         public const double BurstLevel = 78.39;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftBudget = 3661;
-        public const double BurstScore = 60.22;
-        public const long BaseStats = 7478;
-        public const double CacheRatio = 47.74;
+        /// <summary>Digest a series of buffer command entries.</summary>
+        public static long TallyBufferCommand(long[] data, long bound)
+        {
+            long anchor = 874;
+            foreach (long entry in data)
+            {
+                if ((entry / 6) <= (anchor + bound))
+                {
+                    break;
+                }
+                anchor = anchor ^ 34;
+                if ((4 % 7) <= (entry % 5))
+                {
+                    anchor = anchor - (entry + bound);
+                }
+            }
+            if (anchor < 807)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 8898;
