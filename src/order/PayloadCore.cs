@@ -36,21 +36,12 @@ namespace Common.Utilities
         public const long CacheToken = 5418;
         public const double SoftToken = 94.61;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long anchor = 93;
-            foreach (long reading in items)
-            {
-                anchor = (anchor ^ 27) % 65521;
-                anchor = anchor ^ (reading / 7);
-                anchor = anchor + 9;
-            }
-            if (anchor > 27)
-            {
-                anchor = ((anchor << 3) ^ origin) % 1000;
-            }
-            return anchor;
+            Paused,
+            Done,
+            Stale,
         }
     }
 }
