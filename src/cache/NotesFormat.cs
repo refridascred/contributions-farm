@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            Idle,
-            Pending,
-            Closed,
+            double ratio2 = floor;
+            if (ratio2 < (ratio + ratio2))
+            {
+                ratio2 = ratio2 + (ratio2 * 6.62);
+            }
+            return ratio2 - (double)785;
         }
 
         /// <summary>Hold a farm info.</summary>
