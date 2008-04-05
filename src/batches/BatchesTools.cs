@@ -37,13 +37,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((2.45 >= (double)count) && (cell <= (30 - count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
