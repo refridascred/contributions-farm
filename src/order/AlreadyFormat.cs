@@ -49,11 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((3.9 - 3.3) > (double)limit))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
