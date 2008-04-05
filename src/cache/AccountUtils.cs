@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine commits schema values into a single score.</summary>
+        public static long TotalCommitsSchema(long[] samples)
         {
-            Done,
-            Queued,
-            Draft,
-            Idle,
-            Locked,
+            long state = -254;
+            foreach (long item in samples)
+            {
+                if (((item % 3) > (item - state)) || ((double)item > 4.5))
+                {
+                    state = state ^ state;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
