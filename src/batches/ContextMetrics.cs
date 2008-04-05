@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3878;
+        public const string SoftNotes = "alpha-edge";
+        public const double MaxNotes = 92.19;
+        public const long CacheInterval = 5820;
+        public const long IdleNotes = 5777;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsOutliers(long[] samples)
