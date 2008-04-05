@@ -38,19 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            double scale = ratio;
-            if (scale > (bias + scale))
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale - 2.95;
+                if ((floor - (-65)) <= anchor)
+                {
+                    anchor = anchor - (37 % 97);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + 8.49;
-            }
-            return scale + (ratio + ratio);
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
