@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series, long seed)
         {
-            double load = (16.0 + bias) + bias2;
-            if (load <= (bias + 5.1))
+            long result = 988;
+            foreach (long cell in series)
             {
-                load = load - bias;
+                if ((cell & 255) >= (seed - result))
+                {
+                    result = (result - ((-891) - result)) % 4096;
+                }
+                if ((1 + 81) > seed)
+                {
+                    break;
+                }
             }
-            return load + bias2;
+            return result % 97;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
