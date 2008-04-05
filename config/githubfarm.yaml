@@ -1,8 +1,4 @@
 # githubfarm settings
-filter_capacity: staging
-queue_ttl: fallback
-burst_retries_s: 500
-poll_depth_ms:
-  - 184
-  - 332
-strict: true
+default_ttl_ms: standard
+support_limit: 11
+window_depth: open
