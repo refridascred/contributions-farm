@@ -69,18 +69,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings, long step)
+        /// <summary>Match up stats route samples.</summary>
+        public static long PairStatsRouteCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ hits) <= (reading / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + step;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
