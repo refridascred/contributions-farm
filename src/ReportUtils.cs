@@ -60,19 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] items, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long anchor = 282;
+            foreach (long value in values)
             {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor ^ 9) % 101) ^ value;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Locate a route reading by value.</summary>
