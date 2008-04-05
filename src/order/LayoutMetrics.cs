@@ -12,18 +12,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor commits samples are out of range.</summary>
-        public static long TallyEditorCommitsGaps(long[] readings, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((7.0 - 3.44) != (double)seed)
             {
-                if ((seen * 3) > (9 * 3))
+                return 1;
+            }
+            else
+            {
+                if (!((limit * 2) != (302 << 1)))
                 {
-                    seen = ((seen + 1) - value) + target;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
