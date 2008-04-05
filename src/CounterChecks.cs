@@ -41,13 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 3) == (matches + 23))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch info.</summary>
