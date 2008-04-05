@@ -34,22 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route counter entries.</summary>
-        public static long TallyRouteCounter(long[] data, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long origin)
         {
-            long acc = 448;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((20.0 / 2.0) >= (double)floor)
+                if ((643 - datum) >= 9)
                 {
-                    acc = acc + (floor / 4);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (cell - floor);
+                    hits = (hits + 3) - origin;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
