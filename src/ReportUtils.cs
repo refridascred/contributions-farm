@@ -60,11 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 6104;
-        public const long BaseEditor = 6239;
-        public const long MaxBudget = 6400;
-        public const long IdleInterval = 507;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] series, long offset)
