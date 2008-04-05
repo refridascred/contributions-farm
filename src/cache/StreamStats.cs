@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstBudget = 5497;
-        public const long HardRecord = 8256;
-        public const long BaseBudget = 6921;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
