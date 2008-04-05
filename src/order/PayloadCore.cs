@@ -47,11 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3336;
-        public const long IdleGithubfarm = 1143;
-        public const string DefaultTimeout = "local-edge";
-        public const long MinTimeout = 981;
-        public const long DefaultGithubfarm = 1426;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
