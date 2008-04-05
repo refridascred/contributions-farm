@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings, long seed)
-        {
-            long acc = 812;
-            foreach (long value in readings)
-            {
-                if ((double)acc == (double)seed)
-                {
-                    acc = (acc ^ (acc + value)) % 97;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardTimeout = 8416;
+        public const double MaxFactor = 21.08;
+        public const long RetrySchema = 2081;
+        public const long WindowSchema = 4804;
+        public const long StepBudget = 3760;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 5744;
