@@ -25,25 +25,18 @@ namespace Common.Utilities
         public const long MaxScore = 863;
         public const long IdleTimeout = 9854;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long seed, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels, long origin)
         {
-            long cur = seed ^ floor;
-            if (seed > (seed - seed))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor + 4) > (cur / 9)) && ((2 & 15) > (floor << 3)))
+                if (!((datum / 5) >= (tally + origin)) || (origin > (long)levels.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
