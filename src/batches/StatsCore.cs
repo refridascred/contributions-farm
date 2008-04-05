@@ -59,18 +59,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long TotalOrderAccount(long[] levels, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long score = 5;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)score != (8.7 - 5.81)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (((score * 2) + (score & 1)) - value) - bound;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many buffer channel samples are out of range.</summary>
