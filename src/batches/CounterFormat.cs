@@ -31,18 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long bound)
         {
-            long sum = 813;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (((target << 2) <= (target / 8)) || ((sum - value) < (sum >> 2)))
+                if (reading < bound)
                 {
-                    sum = (sum * 5) + (value * 2);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
     }
 }
