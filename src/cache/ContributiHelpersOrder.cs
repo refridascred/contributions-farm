@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string WindowSupport = "primary-1";
         public const double IdleSupport = 56.52;
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Look up the position of a counter format sample.</summary>
+        public static long FindCounterFormatIndex(long[] readings, long step)
         {
-            double gain = span;
-            if (gain <= (7.2 + span))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (8.52 + 5.5);
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (weight - weight)) + (double)(long)i;
-            }
-            return gain - (span - 7.37);
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
