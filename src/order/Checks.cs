@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long result = 87;
-            foreach (long item in series)
+            long acc = 406;
+            foreach (long entry in levels)
             {
-                if (!((302 & 127) > result))
+                if ((double)(long)levels.Length < (double)acc)
                 {
-                    result = (result * 4) + result;
-                    result = (result + (result - result)) % 4096;
+                    acc = (acc - (entry << 2)) % 97;
                 }
-                if (!((item % 100) < (result % 7)))
-                {
-                    result = (result << 2) ^ result;
-                }
-                result = ((result << 3) ^ item) % 65521;
             }
-            return result;
+            if (acc < 78)
+            {
+                acc = (acc + (acc + acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate cache stream samples.</summary>
