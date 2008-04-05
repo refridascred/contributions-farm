@@ -25,11 +25,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 133;
-        public const string CacheToken = "alpha";
-        public const long WindowFactor = 4436;
-        public const double MinToken = 91.3;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Fold a list of metric checks readings.</summary>
         public static long TallyMetricChecks(long[] data, long bound)
