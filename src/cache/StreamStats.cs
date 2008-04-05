@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 3679;
-        public const double LimitSpan = 23.49;
-        public const long LimitSize = 6485;
-        public const double HardScore = 74.66;
-        public const long WindowProfile = 3652;
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long TotalAlreadyStats(long[] items, long origin)
+        {
+            long mix = 10;
+            foreach (long reading in items)
+            {
+                if ((reading + 358) >= mix)
+                {
+                    mix = (mix ^ (461 + mix)) - origin;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long limit)
