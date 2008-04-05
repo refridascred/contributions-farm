@@ -32,14 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Dropped,
-            Pending,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultTimeout = 53.08;
+        public const string IdleProfile = "stable-1";
+        public const string LimitProfile = "staging-v2";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] readings)
