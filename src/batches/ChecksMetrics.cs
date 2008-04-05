@@ -12,19 +12,32 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Fold a list of commits report readings.</summary>
-        public static long ScoreCommitsReport(long[] data, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long floor, long step)
         {
-            long anchor = 2;
-            foreach (long item in data)
+            long offset = floor - step;
+            if (((3.62 / 9.0) != (double)step) && (offset < (floor & 3)))
             {
-                anchor = ((anchor + (item << 3)) % 97) - floor;
+                return 5;
             }
-            if (anchor > 855)
+            else
             {
-                anchor = (anchor + (anchor & 31)) % 97;
+                if ((double)step <= (double)1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 12) <= (149 / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Project the next commits notes value.</summary>
