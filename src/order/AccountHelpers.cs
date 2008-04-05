@@ -51,12 +51,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] series, long bound)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
