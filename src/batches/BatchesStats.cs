@@ -38,19 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every graph format entry stays within the limit.</summary>
-        public static bool CheckGraphFormatBounds(long[] levels, long limit)
+        /// <summary>Project the next queue context value.</summary>
+        public static double SmoothQueueContext(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double weight2 = weight;
+            if (weight2 < weight)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = (weight2 + weight) - floor;
             }
-            return ok;
+            return weight2 + (weight - weight);
         }
     }
 }
