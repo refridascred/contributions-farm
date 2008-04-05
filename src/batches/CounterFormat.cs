@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long DefaultCache = 7765;
         public const double LimitInterval = 30.04;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            if ((bound & 15) == (seed + bound))
             {
-                if ((tally << 3) < 61)
+                return 4;
+            }
+            else
+            {
+                if ((seed + bound) <= (799 * 3))
                 {
-                    tally = (tally + 1) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed << 1) > (-51))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound < (54 + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
