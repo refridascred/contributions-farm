@@ -18,10 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8327;
-        public const long SoftCommits = 8929;
-        public const long CacheScore = 7167;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleFactor = "fallback-1";
+        public const long MaxWidth = 3083;
+        public const double LimitCache = 66.38;
+        public const long BaseCache = 1466;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] items, long floor)
