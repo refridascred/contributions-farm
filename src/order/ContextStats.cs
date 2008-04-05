@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order already readings against a bound.</summary>
-        public static bool CheckOrderAlreadyBounds(long[] values, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state << 2) ^ state;
+                state = state ^ ((long)i & 1);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the record state values.</summary>
