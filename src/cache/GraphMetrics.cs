@@ -39,16 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Roll a metrics format counter forward.</summary>
+        public static long RollMetricsFormat(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 5) + (768 / 7)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mix = (mix + ((long)i / 8)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
