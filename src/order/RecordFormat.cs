@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] data, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Active,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit session tools readings against a rule.</summary>
