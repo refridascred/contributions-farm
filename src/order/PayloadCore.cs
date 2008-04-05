@@ -15,11 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] levels, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((count + limit) >= (-77)) || ((6.1 + 4.3) > (double)item))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
