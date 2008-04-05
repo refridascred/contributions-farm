@@ -45,10 +45,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5183;
-        public const string IdleScore = "alpha-v2";
-        public const double RetryBatches = 47.22;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Synced,
+            Stale,
+            Active,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
