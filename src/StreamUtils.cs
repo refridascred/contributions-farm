@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long target)
         {
-            if ((step ^ offset) > (6 / 9))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((1.81 - 2.11) <= (double)offset))
+                if (!((count % 16) > count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = ((count + 1) + datum) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
