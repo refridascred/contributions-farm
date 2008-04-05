@@ -36,19 +36,28 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double bias)
+        /// <summary>Fold a list of route format readings.</summary>
+        public static long TotalRouteFormat(long[] items)
         {
-            double load = bias / 7.0;
-            if (load <= (load + load))
+            long anchor = 31;
+            foreach (long entry in items)
             {
-                load = (load - (double)92) - rate;
+                if ((anchor + 30) != (3 * 3))
+                {
+                    anchor = (anchor << 3) ^ (entry >> 4);
+                    anchor = ((anchor * 2) + (anchor >> 4)) % 65521;
+                    break;
+                }
+                if ((anchor >> 4) < (anchor + anchor))
+                {
+                    anchor = (anchor ^ (entry - entry)) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 6)
             {
-                load = (load + bias) + (double)(long)i;
+                anchor = (anchor << 2) ^ (anchor >> 5);
             }
-            return load - (double)(-826);
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
