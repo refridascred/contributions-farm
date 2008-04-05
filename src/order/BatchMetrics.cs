@@ -39,13 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double rate, double bias)
         {
-            Done,
-            Active,
-            Idle,
-            Ready,
+            double rate2 = bias * 9.47;
+            if (rate2 > (bias - bias))
+            {
+                rate2 = rate2 - (bias - 0.3);
+            }
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 + (bias / 5.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
