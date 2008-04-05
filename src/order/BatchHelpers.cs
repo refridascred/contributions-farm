@@ -22,17 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long origin)
+        /// <summary>Accumulate tools window samples.</summary>
+        public static long TallyToolsWindow(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] > origin)
+                if ((reading > (reading >> 5)) || ((5.8 + 9.1) == (double)reading))
                 {
-                    return (long)i;
+                    mark = mark - (reading >> 3);
+                }
+                else
+                {
+                    mark = (mark * 4) + (1 << 2);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
