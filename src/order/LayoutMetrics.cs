@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 9922;
-        public const string WindowSpan = "open-edge";
-        public const long IdleScore = 3604;
-        public const string IdleDepth = "staging-v2";
+        /// <summary>Measure how many editor commits samples are out of range.</summary>
+        public static long TallyEditorCommitsGaps(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen * 3) > (9 * 3))
+                {
+                    seen = ((seen + 1) - value) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] values)
