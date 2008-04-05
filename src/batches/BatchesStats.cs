@@ -32,11 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Total { get; set; }
             public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a counter snapshot.</summary>
