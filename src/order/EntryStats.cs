@@ -34,11 +34,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long step)
         {
-            double ratio2 = offset;
-            return ratio2 - ratio;
+            long offset = seed - step;
+            if ((offset + offset) != (step % 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset < (4 ^ seed)) && ((offset / 2) > (offset & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed <= (seed & 1)) || ((double)offset > (9.23 * 2.08)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
