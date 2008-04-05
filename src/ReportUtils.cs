@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream batch readings against a rule.</summary>
-        public static long TallyStreamBatchHits(long[] readings, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = 17;
+            foreach (long cell in readings)
             {
-                if ((((seed * 5) >= (datum % 16)) && ((double)seed != (double)599)) && ((3 >> 4) >= seed))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 2;
+                    anchor = (((anchor << 2) ^ (step - cell)) % 97) + (long)i;
                 }
+                anchor = ((anchor * 5) + (step + cell)) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a entry info.</summary>
