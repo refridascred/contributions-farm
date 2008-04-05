@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-1";
         public const double LimitFarm = 91.89;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix ^ mix) != (step >> 4))
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
                 {
-                    mix = mix ^ (long)i;
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
