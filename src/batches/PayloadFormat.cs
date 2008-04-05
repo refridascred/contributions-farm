@@ -48,15 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long mix = 6;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                mix = (((mix * 4) + ((long)items.Length / 5)) - item) - offset;
             }
-            return mark;
+            return mix % 65521;
         }
     }
 }
