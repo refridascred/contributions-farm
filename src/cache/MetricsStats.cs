@@ -25,18 +25,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Match up report order samples.</summary>
+        public static long CompareReportOrderCount(long[] items)
         {
-            long acc = -770;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((acc >> 2) < (2 - reading)) || (acc <= ((long)samples.Length - reading)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ (reading + acc);
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
