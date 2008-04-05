@@ -42,13 +42,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!(38 <= (6 + tally)))
+                {
+                    tally = ((tally + 2) ^ sample) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
