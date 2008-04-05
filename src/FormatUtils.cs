@@ -46,11 +46,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + offset) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
