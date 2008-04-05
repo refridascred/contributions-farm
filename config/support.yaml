@@ -1,5 +1,14 @@
 # support settings
-min_capacity_pct: 43.04
-burst_size_ms: edge
-default_interval_ms: latest
-profile_limit: 19.19
+layout_ratio:
+  - 358
+  - 405
+retry_capacity_s: 516
+checks_window:
+  batches_ratio: 500
+  session_threshold: blue
+  warm_ttl_pct: 5.58
+  strict: false
+stream_size:
+  - 223
+  - 214
+  - 159
