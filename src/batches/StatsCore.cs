@@ -57,16 +57,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                result = (result ^ result) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                if (((carry % 5) <= (value - carry)) || ((value & 127) < ((long)levels.Length & 3)))
+                {
+                    carry = (carry + (value + 0)) % 1000;
+                }
+                if ((carry % 24) != (carry & 63))
+                {
+                    break;
+                }
             }
-            return result;
+            return carry % 1000;
         }
     }
 }
