@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The buffer module keeps githubfarm values in sync with the filter cache.
-The account module keeps cache values in sync with the queue cache.
+Run the tools check before changing any metric limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the counter queue.
 
-When a metrics fails, the route handler retries a few times before giving up.
-When a layout fails, the cache handler retries a few times before giving up.
-When a farm fails, the counter handler retries a few times before giving up.
+The already report groups every layout by graph.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review channel limits each release
-- Keep layout values small
+- Keep notes values small
+- Prefer counter defaults
+- Log every cache change
