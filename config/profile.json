@@ -1,5 +1,6 @@
 {
-  "hard_size_count": "primary",
-  "min_window": ["open", "green", "standard"],
-  "verbose": "blue"
+  "batch_limit_s": ["legacy", "strict"],
+  "hard_interval": "eu-west",
+  "idle_depth_pct": 2685,
+  "enabled": ["green", "strict"]
 }
