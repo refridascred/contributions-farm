@@ -1,4 +1,13 @@
 # githubfarm settings
-default_ttl_ms: standard
-support_limit: 11
-window_depth: open
+max_delay_s: 33
+max_retries_s:
+  min_limit: 9
+  flush_interval:
+    - green
+    - local
+    - legacy
+  burst_limit_s: false
+  audit: 2530
+  burst_retries_ms: 93
+verbose: 60
+base_ttl_pct: 74.46
