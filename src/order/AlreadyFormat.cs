@@ -49,18 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long limit)
+        /// <summary>Roll a batch checks counter forward.</summary>
+        public static long SeriesBatchChecks(long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((3.9 - 3.3) > (double)limit))
+                if (offset <= (score + score))
                 {
-                    tally = (tally + 1) ^ value;
+                    score = (score ^ score) % 255;
+                    score = score ^ (score ^ score);
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
