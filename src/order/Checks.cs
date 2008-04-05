@@ -25,12 +25,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            Dropped,
-            Ready,
-            Failed,
+            double ratio = offset / 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + scale;
+            }
+            return ratio + (offset / 8.0);
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
