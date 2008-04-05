@@ -46,18 +46,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long offset)
+        /// <summary>Validate context channel readings against a bound.</summary>
+        public static bool ValidateContextChannelBounds(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!(datum < (625 + offset)))
+                if (reading < target)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
