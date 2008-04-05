@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit support session readings against a rule.</summary>
+        public static long AuditSupportSessionHits(long[] items)
         {
-            Synced,
-            Closed,
-            Ready,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (cell > (100 / 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
