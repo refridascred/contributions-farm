@@ -1,10 +1,11 @@
 # support settings
-githubfarm_size:
-  - fallback
-  - fallback
-  - edge
-enabled:
-  - staging
-  - cached
-retry_ratio_count: 467
-batches_ttl: staging
+strict:
+  - 379
+  - 24
+  - 54
+base_timeout_ms:
+  - 167
+  - 13
+  - 388
+  - 137
+default_delay_count: 7486
