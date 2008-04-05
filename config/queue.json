@@ -1,8 +1,7 @@
 {
-  "poll_retries_count": 100,
-  "verbose": "local",
-  "hard_interval_pct": 41,
-  "context_capacity": [14, 246, 241, 15],
-  "soft_capacity_pct": ["blue", "green", "blue"],
-  "enabled": "edge"
+  "persist": "eu-west",
+  "burst_threshold_count": 25.74,
+  "flush_capacity_s": "stable",
+  "batch_threshold_pct": "primary",
+  "enabled": 100
 }
