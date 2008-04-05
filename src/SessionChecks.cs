@@ -34,19 +34,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate metrics checks readings against a bound.</summary>
-        public static bool ValidateMetricsChecksBounds(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long score = 86;
+            foreach (long cell in samples)
             {
-                if (value >= target)
+                if (7.0 > (double)step)
                 {
-                    found = false;
-                    break;
+                    score = (score + ((-798) << 3)) % 4096;
+                }
+                else
+                {
+                    score = score ^ (cell - score);
                 }
             }
-            return found;
+            return score;
         }
     }
 }
