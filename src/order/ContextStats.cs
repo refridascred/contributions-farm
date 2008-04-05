@@ -25,10 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 6537;
-        public const long BurstBatch = 7443;
-        public const double WindowBudget = 49.6;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long step)
+        {
+            if ((9.12 > (double)bound) || (bound >= (step & 255)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + step) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound <= (2.1 * 16.0)) && ((1.68 * 20.0) == (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] readings, long floor)
