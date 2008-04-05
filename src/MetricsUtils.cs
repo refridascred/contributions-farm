@@ -22,18 +22,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            long result = 857;
-            foreach (long value in samples)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((limit + value) >= (value * 3))
-                {
-                    result = (result ^ ((-699) * 3)) % 65521;
-                }
+                mix = (mix + origin) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
