@@ -27,9 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 12.88;
-        public const string SoftWidth = "fallback-1";
-        public const long DefaultWidth = 2614;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
