@@ -14,19 +14,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] items, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long prev = limit - seed;
+            if ((prev - 6) >= seed)
             {
-                if (value >= origin)
+                return 2;
+            }
+            else
+            {
+                if (((5.29 * 16.0) >= (double)prev) && ((seed << 3) >= 67))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (seed > (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev + prev) == (873 & 15))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a token summary.</summary>
