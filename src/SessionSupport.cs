@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double bias)
         {
-            double rate = gain;
-            if (rate <= (double)515)
+            double load = 14.0;
+            if (load > load)
             {
-                rate = rate + (offset - 5.82);
+                load = ((load - (double)48) + gain) + bias;
             }
-            return rate - (gain - 8.34);
+            else
+            {
+                load = load + load;
+            }
+            return load + 4.1;
         }
     }
 }
