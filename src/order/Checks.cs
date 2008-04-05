@@ -41,15 +41,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a batch token figure with a bias.</summary>
-        public static double ProjectBatchToken(double rate, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double mean = span;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (rate - rate)) - (double)(long)i;
-            }
-            return mean - span;
+            Idle,
+            Retry,
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the layout level values.</summary>
