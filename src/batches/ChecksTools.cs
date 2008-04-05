@@ -43,19 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry < origin)
+                if ((cell + 5) != (cell + cell))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
