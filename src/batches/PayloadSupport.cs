@@ -33,18 +33,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count - count) == (sample + sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
