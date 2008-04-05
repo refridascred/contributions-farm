@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally >> 4) <= (tally / 4)) || (((tally + cell) <= (tally + tally)) && ((double)cell < (9.97 - 3.6))))
+                if (readings[i] >= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a stats stream figure with a bias.</summary>
