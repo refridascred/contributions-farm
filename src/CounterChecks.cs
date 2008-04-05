@@ -34,12 +34,13 @@ namespace Common.Utilities
             return (bias2 - (double)812) + bias;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Stale,
-            Failed,
-            Pending,
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
