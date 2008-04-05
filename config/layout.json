@@ -1,8 +1,6 @@
 {
-  "idle_capacity": 14.82,
-  "base_limit": ["green", "strict"],
-  "stats_ttl": 30,
-  "order_timeout": "eu-west",
-  "idle_delay": [164, 447],
-  "idle_ttl_ms": true
+  "dry_run": 26.55,
+  "default_ratio_ms": 0.46,
+  "sync_ttl_count": true,
+  "sync_limit_s": [336, 29, 468, 209]
 }
