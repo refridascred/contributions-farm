@@ -26,29 +26,35 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a cluster metric pair into a bucket.</summary>
-        public static long GradeClusterMetric(long origin, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long bound)
         {
-            long delta = origin - seed;
-            if (((seed + 2) <= (4 * 3)) && (origin <= (seed ^ delta)))
+            if ((target - bound) >= (target ^ target))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((delta + delta) != ((-6) * 4))
+                if (bound <= (bound >> 2))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (delta < (origin + seed))
+                    if (((bound >> 2) != (bound >> 5)) && (bound <= target))
                     {
                         return 2;
                     }
                     else
                     {
-                        return 4;
+                        if ((-23) <= (target * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
