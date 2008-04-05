@@ -15,22 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] levels, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double load = ratio;
+            if (load > floor)
             {
-                if (((count + limit) >= (-77)) || ((6.1 + 4.3) > (double)item))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (3.0 / 5.0);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)(-273);
         }
 
         /// <summary>Define token limits and defaults.</summary>
