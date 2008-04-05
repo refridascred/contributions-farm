@@ -76,22 +76,22 @@ namespace Common.Utilities
             return gain + (gain * 4.4);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 0;
+            foreach (long reading in samples)
             {
-                if (((cell < (0 >> 5)) && ((cell % 8) < (cell + 39))) && ((tally % 16) > (cell - tally)))
+                if ((reading >> 5) <= 3)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum * 3) + (reading / 7)) % 97;
                 }
             }
-            return tally;
+            if (sum > 511)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
