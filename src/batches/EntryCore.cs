@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double bias)
-        {
-            double weight = (bias * 5.36) / 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - (weight / 6.0)) + (double)(long)i) - scale;
-            }
-            return weight + (double)(-4);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 7.03;
+        public const string BatchCommand = "local";
+        public const string DefaultFactor = "local-v2";
+        public const long StepLevel = 2614;
+        public const long RetryBudget = 6740;
 
         /// <summary>Scale a tools githubfarm figure with a bias.</summary>
         public static double BlendToolsGithubfarm(double gain, double floor)
