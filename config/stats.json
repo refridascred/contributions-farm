@@ -1,6 +1,12 @@
 {
-  "burst_depth_count": 27,
-  "default_limit_s": 5389,
-  "verbose": "primary",
-  "hard_ratio_pct": [499, 130]
+  "flush_size_s": false,
+  "record_limit": 50.78,
+  "idle_depth_count": {
+    "strict": 86.27,
+    "hard_window_pct": true,
+    "poll_ratio_pct": "legacy",
+    "hard_ttl": 93,
+    "default_depth_pct": "strict",
+    "stream_interval": 87.03
+  }
 }
