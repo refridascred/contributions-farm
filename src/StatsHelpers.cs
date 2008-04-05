@@ -60,12 +60,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 3162;
-        public const long DefaultWindow = 6748;
-        public const double HardSize = 41.56;
-        public const double SoftLevel = 31.47;
-        public const long BaseTimeout = 1563;
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double weight, double span)
+        {
+            double load = (weight * 1.8) + span;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (double)301;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
