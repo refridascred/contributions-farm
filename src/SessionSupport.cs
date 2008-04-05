@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
-        {
-            long result = 49;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) > (result + result))
-                {
-                    result = ((result * 5) + 432) % 97;
-                    continue;
-                }
-                else
-                {
-                    result = result - (entry + result);
-                }
-                if (((double)result != (6.9 * 3.1)) && ((double)result < 17.0))
-                {
-                    result = (result - (result % 24)) % 1000;
-                }
-            }
-            if (result > (-451))
-            {
-                result = ((result << 3) ^ (result ^ result)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 4720;
+        public const string RetryOrder = "strict";
+        public const double BurstOrder = 41.36;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long seed, long origin)
