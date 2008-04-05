@@ -1,10 +1,15 @@
 # support settings
-hard_threshold_pct: 99
-graph_size: true
-max_limit_count: 6346
-batch_interval:
-  - 366
-  - 28
-  - 229
-  - 344
-compress: blue
+hard_delay_ms:
+  - eu-west
+  - standard
+  - eu-west
+  - primary
+format_threshold: 24
+dry_run: 1024
+retry_retries_s: strict
+hard_limit: false
+hard_ratio:
+  - 383
+  - 34
+  - 51
+  - 205
