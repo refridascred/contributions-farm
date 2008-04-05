@@ -41,38 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if (((double)target < (double)floor) || (1.0 <= (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-8) + target) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((0.93 - 5.0) >= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor - floor) > 548) && (floor > ((-361) - target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
