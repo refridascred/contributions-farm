@@ -1,4 +1,4 @@
 # githubfarm settings
-contributi_depth: 60
-default_size_pct: 54
-buffer_retries: true
+cache_ttl_count: 44
+hard_threshold_pct: 70
+verbose: 84.24
