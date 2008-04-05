@@ -50,19 +50,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (anchor >> 1)) % 101) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 6863;
+        public const long IdleNotes = 5011;
+        public const long RetryNotes = 5650;
     }
 }
