@@ -31,23 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            double mean = span;
-            if (mean <= (mean / 6.0))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = (mean + (9.5 + mean)) - scale;
+                if ((matches + 8) != (entry + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - span;
+            return matches;
         }
 
         /// <summary>Describe the notes mode values.</summary>
