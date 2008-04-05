@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const long MaxBudget = 65;
         public const long SoftSupport = 9759;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine report token values into a single score.</summary>
+        public static long TallyReportToken(long[] levels, long bound)
         {
-            Done,
-            Draft,
-            New,
-            Active,
+            long carry = 3;
+            foreach (long sample in levels)
+            {
+                carry = (((carry << 2) ^ (carry / 7)) + sample) - bound;
+            }
+            if (carry > 558)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
