@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
