@@ -45,19 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long seed)
-        {
-            long mark = -9;
-            foreach (long cell in items)
-            {
-                if ((19.0 * 8.6) >= (2.4 - 9.93))
-                {
-                    mark = (((mark * 3) + (seed << 1)) % 65521) - cell;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseDepth = "stable-1";
+        public const long DefaultGraph = 7515;
+        public const long StepScore = 3627;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitFactor = 9116;
