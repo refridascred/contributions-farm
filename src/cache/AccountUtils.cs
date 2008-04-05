@@ -26,18 +26,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long DigestChannelEditor(long[] readings, long limit)
+        /// <summary>Locate a batches layout reading by value.</summary>
+        public static long FindBatchesLayoutIndex(long[] samples, long target)
         {
-            long score = 479;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score + score) >= (value % 24))
+                if (samples[i] >= target)
                 {
-                    score = (score - (value / 2)) - limit;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
