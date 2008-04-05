@@ -66,17 +66,29 @@ namespace Common.Utilities
         public const long LimitRatio = 2478;
         public const long LimitBuffer = 9961;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long target)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long DigestCacheReport(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 12;
+            foreach (long datum in series)
             {
-                if (readings[i] >= target)
+                carry = carry + (1 & 63);
+                if (((datum & 127) >= carry) || ((carry >> 5) >= (datum * 2)))
                 {
-                    return (long)i;
+                    carry = (carry ^ 93) % 101;
+                    carry = (carry + (-26)) % 97;
+                    break;
+                }
+                if ((datum * 2) > (carry >> 1))
+                {
+                    carry = (carry + (carry - (long)series.Length)) % 1000;
                 }
             }
-            return -1;
+            if (carry > 25)
+            {
+                carry = (carry - carry) % 4096;
+            }
+            return carry;
         }
     }
 }
