@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            double ratio = (double)(58 + 6);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - (span / 6.0)) - (double)(long)i) + scale;
+            }
+            return ratio + (ratio * 9.7);
         }
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
