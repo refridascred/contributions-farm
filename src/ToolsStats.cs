@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 689;
-        public const string BatchDepth = "alpha";
-        public const long MaxGithubfarm = 9685;
-        public const long RetryGithubfarm = 5001;
+        /// <summary>Roll a stats batches counter forward.</summary>
+        public static long IterateStatsBatches(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 2) + (total ^ target)) % 4096;
+                total = (total - (total + (long)i)) % 255;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorOutliers(long[] levels)
