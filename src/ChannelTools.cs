@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            long acc = 49;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc << 3) ^ (long)readings.Length) ^ reading;
-                if ((20.0 + 9.7) != (double)seed)
+                if ((tally % 8) >= (tally - tally))
                 {
-                    break;
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Describe the order kind values.</summary>
