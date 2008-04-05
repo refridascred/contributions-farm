@@ -1,8 +1,15 @@
 {
-  "cache_threshold_pct": false,
-  "max_interval_pct": 83.68,
-  "sync_capacity_count": false,
-  "min_window": ["stable", "standard", "cached", "green"],
-  "soft_threshold_s": 32,
-  "stream_window": 70.11
+  "soft_threshold_ms": "legacy",
+  "burst_window_pct": "staging",
+  "metrics_limit": {
+    "burst_delay": false,
+    "sync_window": "green",
+    "max_delay_s": true,
+    "dry_run": 14,
+    "contributi_depth": "blue",
+    "stream_delay": "fallback"
+  },
+  "flush_threshold_ms": true,
+  "burst_ttl_s": 250,
+  "poll_capacity_pct": false
 }
