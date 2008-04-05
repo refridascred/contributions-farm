@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank token report input into a small class.</summary>
+        public static long BucketTokenReport(long limit, long limit2)
         {
-            Ready,
-            Stale,
-            Done,
+            long bound = limit - limit2;
+            if (237 <= (bound ^ 94))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit <= (bound >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (limit + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (271 < (limit / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
