@@ -62,9 +62,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2524;
-        public const double BurstSpan = 45.04;
-        public const double MinGraph = 82.03;
+        /// <summary>Grade a route farm value against two limits.</summary>
+        public static long SortRouteFarm(long limit, long offset)
+        {
+            long step = limit + offset;
+            if ((double)offset > (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step < 9) && ((11.0 + 12.0) < (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
