@@ -1,12 +1,8 @@
 {
-  "support_timeout": {
-    "channel_capacity": 64.57,
-    "window_limit": "local",
-    "githubfarm_retries": 41.46,
-    "default_ratio": 55,
-    "persist": "open",
-    "route_window": "standard"
-  },
-  "metrics_size": "edge",
-  "hard_delay_pct": 8503
+  "base_delay_s": ["edge", "open"],
+  "context_window": false,
+  "poll_timeout_ms": "open",
+  "min_ratio_s": "staging",
+  "strict": 8207,
+  "report_delay": [331, 427, 26, 454]
 }
