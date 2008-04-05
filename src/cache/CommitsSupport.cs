@@ -23,23 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window contributi value.</summary>
-        public static double ScaleWindowContributi(double weight, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings)
         {
-            double weight2 = floor;
-            if (weight2 < (weight / 4.0))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                weight2 = weight2 - weight;
+                if ((seen % 100) >= cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (6.9 - weight2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (weight2 * 4.58)) - (double)(long)i;
-            }
-            return weight2 - (3.05 - weight2);
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
