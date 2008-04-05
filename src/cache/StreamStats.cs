@@ -43,26 +43,19 @@ namespace Common.Utilities
         public const double HardScore = 74.66;
         public const long WindowProfile = 3652;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long carry = 90;
-            foreach (long reading in series)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((carry + reading) < reading)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    carry = (carry + (34 ^ 187)) % 4096;
+                    anchor = (((anchor << 3) ^ (anchor >> 1)) % 101) - (long)i2;
                 }
-                if ((carry ^ carry) < (carry + reading))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (carry < 639)
-            {
-                carry = (carry << 2) ^ (carry / 8);
-            }
-            return carry % 65521;
+            return anchor;
         }
     }
 }
