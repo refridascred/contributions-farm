@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            long anchor = 4;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                anchor = anchor + (anchor << 1);
-                anchor = ((anchor * 5) + (value - (long)readings.Length)) % 65521;
+                if ((hits & 255) < cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
