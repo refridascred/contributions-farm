@@ -1,7 +1,8 @@
 {
-  "idle_depth_ms": "strict",
-  "order_window": 3788,
-  "flush_interval_ms": 1519,
-  "cache_ratio_pct": "local",
-  "audit": false
+  "batch_delay_pct": 90.62,
+  "batches_retries": 5491,
+  "flush_ratio": 92,
+  "report_interval": "legacy",
+  "max_threshold_count": "staging",
+  "strict": 2689
 }
