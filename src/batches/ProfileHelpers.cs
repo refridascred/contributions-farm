@@ -41,22 +41,19 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Measure how many metrics stats samples are out of range.</summary>
-        public static long AuditMetricsStatsGaps(long[] series, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((0 & 63) <= seen)
+                if (item <= origin)
                 {
-                    seen = ((seen + 1) + reading) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
