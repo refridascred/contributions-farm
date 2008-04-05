@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit checks queue readings against a rule.</summary>
-        public static long CountChecksQueueOutliers(long[] samples, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long lane = floor - floor2;
+            if ((553 + lane) >= (lane + floor))
             {
-                if (floor < 791)
+                return 1;
+            }
+            else
+            {
+                if (((floor - lane) >= (floor2 >> 4)) || ((double)floor2 >= (double)floor))
                 {
-                    matches = (matches + 3) + sample;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
