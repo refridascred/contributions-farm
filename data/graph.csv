@@ -1,10 +1,7 @@
-id,owner,token,count
-1,872,stable,legacy
-2,78,635,legacy
-3,cached,158,96.15
-4,green,94.58,93.29
-5,9.54,cached,760
-6,18.0,48.23,33.88
-7,standard,eu-west,771
-8,53.22,44.51,84.91
-9,63.45,943,171
+id,ratio,level
+1,444,387
+2,37.85,903
+3,60.99,964
+4,44.26,45.35
+5,893,latest
+6,eu-west,391
