@@ -73,12 +73,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long cur = origin - step;
+            if (201 <= (step >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur > (step + cur)) && (53 >= (70 + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) < (4 + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
