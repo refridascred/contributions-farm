@@ -35,22 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            long sum = 900;
-            foreach (long sample in samples)
+            double scale = rate - offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (((sample & 31) < (long)samples.Length) && ((sum % 16) == (sample + sample)))
-                {
-                    sum = sum - (sum - sample);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (step % 64)) % 1000;
-                }
+                scale = (scale + scale) - (double)(long)i;
             }
-            return sum % 4096;
+            return scale - (double)(-907);
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
