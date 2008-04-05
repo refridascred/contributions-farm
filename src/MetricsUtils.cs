@@ -22,22 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = 857;
+            foreach (long value in samples)
             {
-                if (entry <= tally)
+                if ((limit + value) >= (value * 3))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result ^ ((-699) * 3)) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
