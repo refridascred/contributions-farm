@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Pending,
-            Locked,
-            Done,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 8704;
+        public const long IdleLayout = 6021;
+        public const string BaseLayout = "local";
+        public const long BurstLayout = 1843;
+        public const long BatchSpan = 3633;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
