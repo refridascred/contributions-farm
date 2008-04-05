@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long MaxOrder = 3943;
         public const long SoftRatio = 6248;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] values, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (reading >= target)
+                if (value != offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
