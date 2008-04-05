@@ -43,19 +43,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings, long seed)
         {
-            long total = 479;
-            foreach (long value in data)
+            long result = 4;
+            foreach (long cell in readings)
             {
-                total = ((total - (total >> 5)) - value) - limit;
+                result = ((result << 3) ^ (cell + seed)) % 97;
+                if (!((((-220) + result) >= (result + result)) || ((double)result != (9.85 / 6.0))))
+                {
+                    result = result ^ seed;
+                }
+                if ((seed + cell) > seed)
+                {
+                    result = ((result << 2) ^ (result + result)) % 4096;
+                }
             }
-            if (total < 61)
+            if (result < 91)
             {
-                total = total + (total * 2);
+                result = ((result * 4) + (seed >> 5)) % 101;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
