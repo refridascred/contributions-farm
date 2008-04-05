@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
