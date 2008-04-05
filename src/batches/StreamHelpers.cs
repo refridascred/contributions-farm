@@ -60,33 +60,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support command value against two limits.</summary>
-        public static long GradeSupportCommand(long offset, long origin)
-        {
-            long step = offset - origin;
-            if ((origin + step) <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSpan = 5427;
+        public const string BatchWindow = "legacy-1";
+        public const long WindowScore = 1151;
 
         /// <summary>Locate a order contributi reading by value.</summary>
         public static long FindOrderContributiIndex(long[] levels, long offset)
