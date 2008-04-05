@@ -39,16 +39,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = 402;
+            foreach (long sample in values)
             {
-                state = ((state * 3) + offset) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                if (!((double)sum < 1.7))
+                {
+                    sum = (sum + floor) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sample + sum)) % 97;
+                }
             }
-            return state;
+            return sum % 4096;
         }
 
         /// <summary>Describe the record status values.</summary>
