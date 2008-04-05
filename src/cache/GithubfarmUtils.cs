@@ -33,38 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long origin, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            if ((target >> 3) > (origin + 6))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (1.2 + 7.3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin & 127) <= (target ^ origin)))
+                    if ((series[i] + series[j]) != 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((20.0 * 3.0) < (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
