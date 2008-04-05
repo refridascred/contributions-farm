@@ -26,13 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            Retry,
-            Draft,
-            Synced,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next session value.</summary>
