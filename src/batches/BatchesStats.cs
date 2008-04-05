@@ -23,20 +23,10 @@ namespace Common.Utilities
         public const long MaxOrder = 3943;
         public const long SoftRatio = 6248;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
-        {
-            long total = -875;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total << 3) ^ ((long)i - sample);
-                }
-                total = (total * 3) + (long)readings.Length;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 49.96;
+        public const double BaseInterval = 48.35;
+        public const string DefaultGraph = "open-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowLevel = 66.44;
