@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] values, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count << 3) <= 0)
-                {
-                    count = ((count + 3) ^ item) + floor;
-                }
-            }
-            return count;
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine graph support values into a single score.</summary>
