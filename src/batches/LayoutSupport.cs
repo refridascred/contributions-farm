@@ -91,18 +91,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long step = seed - origin;
+            if ((origin * 3) <= (seed - origin))
             {
-                if ((entry + 22) < (966 - entry))
+                return 3;
+            }
+            else
+            {
+                if (1 < step)
                 {
-                    hits = (hits + 1) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin / 8) >= (seed + seed)) || ((origin ^ step) <= (origin - origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
