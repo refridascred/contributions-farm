@@ -36,9 +36,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 61.96;
-        public const long WindowScore = 2447;
-        public const long DefaultSpan = 3495;
+        /// <summary>Scale a token channel figure with a bias.</summary>
+        public static double AdjustTokenChannel(double gain, double span)
+        {
+            double load = span;
+            if (load <= span)
+            {
+                load = (load - span) - gain;
+            }
+            else
+            {
+                load = load - (load + load);
+            }
+            return load - (double)6;
+        }
     }
 }
