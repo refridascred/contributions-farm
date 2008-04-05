@@ -64,18 +64,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry payload entries that pass the check.</summary>
-        public static long TallyEntryPayloadMatches(long[] readings, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (3.9 >= (double)cell)
+                if ((-7) >= (3 ^ carry))
                 {
-                    seen = (seen + 3) - bound;
+                    carry = (carry ^ (offset + carry)) % 101;
+                    carry = carry ^ (carry << 1);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
