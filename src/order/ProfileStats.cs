@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double offset)
         {
-            Ready,
-            Done,
-            Retry,
+            double bias = scale;
+            if (bias > bias)
+            {
+                bias = bias - offset;
+            }
+            else
+            {
+                bias = bias + (bias * 20.0);
+            }
+            return bias + (bias + 18.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
