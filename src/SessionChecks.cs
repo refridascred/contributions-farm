@@ -33,22 +33,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit command contributi readings against a rule.</summary>
-        public static long AuditCommandContributiHits(long[] readings, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (3.49 > (double)seen)
+                if ((matches * 2) == (matches + origin))
                 {
-                    seen = ((seen + 1) - entry) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
