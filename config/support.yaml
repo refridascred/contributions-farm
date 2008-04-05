@@ -1,30 +1,9 @@
 # support settings
-soft_ttl: 65.2
-default_timeout_pct:
-  retry_ttl_pct: legacy
-  layout_capacity:
-    support_size: 60
-    readonly: 500
-    audit:
-      - stable
-      - latest
-      - primary
-      - stable
-    retry_retries_ms:
-      - green
-      - standard
-      - legacy
-      - cached
-    enabled:
-      - legacy
-      - open
-  warm_depth_count:
-    - open
-    - blue
-    - green
-  strict: 8310
-  burst_ratio_count:
-    - 194
-    - 363
-persist: legacy
-readonly: 79.33
+channel_capacity: stable
+burst_delay_count: 7062
+record_threshold: 60
+flush_window_pct:
+  checks_size: false
+  poll_depth_pct: blue
+  strict: blue
+  session_retries: true
