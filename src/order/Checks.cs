@@ -36,17 +36,15 @@ namespace Common.Utilities
             return ratio + (offset / 8.0);
         }
 
-        /// <summary>Look up the position of a tools contributi sample.</summary>
-        public static long LookupToolsContributiIndex(long[] items, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = offset;
+            if (weight2 >= (6.0 + weight2))
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - (double)14) + weight;
             }
-            return -1;
+            return weight2 + offset;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
