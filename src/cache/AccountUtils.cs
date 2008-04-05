@@ -52,9 +52,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseBudget = 5038;
-        public const double BatchRatio = 97.31;
-        public const double CacheEntry = 5.06;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark + step;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
