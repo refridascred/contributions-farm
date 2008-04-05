@@ -27,23 +27,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a entry stats pair into a bucket.</summary>
-        public static long BucketEntryStats(long bound, long target)
+        /// <summary>Grade a batches graph value against two limits.</summary>
+        public static long BucketBatchesGraph(long origin, long step)
         {
-            long offset = bound + target;
-            if (((bound << 2) > (78 / 8)) || ((bound & 127) > (bound * 5)))
+            long step2 = origin - step;
+            if ((step % 16) != (step2 - step))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (offset < (offset >> 3))
+                if ((double)step2 >= (2.4 - 2.26))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    return 6;
                 }
             }
         }
