@@ -1,12 +1,11 @@
 # Command notes
 
-When a profile fails, the order handler retries a few times before giving up.
-Run the farm check before changing any command limits.
-Run the cluster check before changing any report limits.
+Keep checks and support names short and lowercase.
+Use route settings to tune how often order data is refreshed.
+The channel report groups every schema by stats.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every support change
-- Review checks limits each release
-- Keep payload values small
+- Prefer already defaults
+- Review context limits each release
+- Keep token values small
