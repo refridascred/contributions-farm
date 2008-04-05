@@ -34,25 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long step, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long cur = step ^ target;
-            if (!(target <= (target + 8)))
+            double mean = (double)((-100) + 2);
+            if (mean < mean)
             {
-                return 0;
+                mean = (mean - (double)820) - bias;
             }
             else
             {
-                if (((target & 255) >= (target % 5)) || (cur >= (target % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean + (double)1;
             }
+            return mean + (12.0 - gain);
         }
     }
 }
