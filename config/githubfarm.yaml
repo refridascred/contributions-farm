@@ -1,4 +1,10 @@
 # githubfarm settings
-cache_threshold: 63
-compress: 12.64
-max_interval_pct: staging
+hard_capacity_ms: 27.85
+githubfarm_depth: primary
+base_timeout_ms:
+  compress: true
+  support_depth: 92.32
+  warm_retries_pct: 76.15
+  flush_capacity_s: latest
+  verbose: 22.79
+poll_interval_ms: 9120
