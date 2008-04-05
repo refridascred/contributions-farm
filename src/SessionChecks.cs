@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSpan = 1338;
-        public const double LimitLayout = 5.64;
-        public const string WindowInterval = "alpha";
-        public const long MaxScore = 4953;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long seed, long limit)
+        {
+            if (seed <= (seed >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit - limit) > (limit % 10)) || ((limit & 7) <= limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
         public static long AuditRouteFarmHits(long[] items)
