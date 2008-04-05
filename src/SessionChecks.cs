@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long sum = 888;
+            foreach (long sample in values)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                sum = (sum - (sample << 1)) % 101;
+                if ((sample & 31) <= (22 << 3))
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum < 0)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
