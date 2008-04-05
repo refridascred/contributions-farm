@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const double WindowRatio = 44.46;
         public const long SoftNotes = 4513;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
+        /// <summary>Find the first channel batches entry that matches the target.</summary>
+        public static long LocateChannelBatchesIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= bound)
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
