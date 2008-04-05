@@ -39,13 +39,13 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the filter state values.</summary>
