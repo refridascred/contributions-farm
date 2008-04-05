@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const double WindowSize = 53.18;
         public const double StepBudget = 65.58;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Pending,
+            Active,
         }
     }
 }
