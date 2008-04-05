@@ -40,22 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long anchor = 29;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)anchor > 12.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor ^ (limit ^ 89)) % 101) + reading;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 54)
-            {
-                anchor = anchor ^ 287;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
