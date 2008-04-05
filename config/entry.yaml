@@ -1,19 +1,4 @@
 # entry settings
-editor_threshold: 8455
-poll_limit:
-  audit: standard
-  min_interval:
-    soft_ttl: strict
-    stats_limit: 53
-    sync_depth_s: false
-  max_interval_s: 60.82
-  base_limit_count: standard
-  notes_window: latest
-  command_interval: 1024
-flush_delay_s: 8232
-compress: legacy
-record_window:
-  payload_capacity: 250
-  batch_ttl_s: false
-  default_size_count: 6.82
-base_threshold_count: 56
+graph_limit: local
+hard_interval_count: true
+notes_ratio: 16.19
