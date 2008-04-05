@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 5979;
-        public const long IdleCommand = 7782;
-        public const long StepInterval = 994;
-        public const long WindowCommand = 2289;
-        public const double SoftCommand = 73.08;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Dropped,
+            Idle,
+            Draft,
+            Retry,
+            New,
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double rate, double offset)
