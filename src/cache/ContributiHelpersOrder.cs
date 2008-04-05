@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings, long offset)
         {
-            Pending,
-            Failed,
-            Stale,
-            Closed,
-            Ready,
+            long total = 3;
+            foreach (long item in readings)
+            {
+                total = ((total << 3) ^ ((long)readings.Length % 97)) + item;
+            }
+            if (total > 8)
+            {
+                total = (total * 3) + (offset + total);
+            }
+            return total;
         }
     }
 }
