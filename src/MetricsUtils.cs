@@ -22,31 +22,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metrics schema samples.</summary>
-        public static long CombineMetricsSchema(long[] items, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long target)
         {
-            long score = -8;
-            foreach (long item in items)
+            if ((floor & 7) >= (floor - target))
             {
-                if ((target + 991) < score)
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (0.92 - 8.0))
                 {
-                    score = ((score << 3) ^ (item / 2)) % 1000;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    score = ((score << 3) ^ ((long)items.Length & 1)) % 1000;
-                }
-                if (((4.0 / 8.0) > (double)item) || ((item >> 1) >= (item / 9)))
-                {
-                    break;
-                }
-                if (((1.0 - 4.4) < (double)score) || (score > (2 + score)))
-                {
-                    score = (score - (score - score)) % 65521;
+                    if (((floor >> 4) <= (target >> 5)) || (target >= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((38 + floor) > (floor / 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
