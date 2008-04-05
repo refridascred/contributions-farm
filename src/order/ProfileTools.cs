@@ -50,22 +50,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
         {
-            long mark = 95;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.4 * 1.2) > (double)mark)
+                if ((values[i] > origin) && ((values[i] % 2) != 0))
                 {
-                    mark = (mark * 5) + (value + bound);
+                    return (long)i;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark << 2) ^ (84 / 4);
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
