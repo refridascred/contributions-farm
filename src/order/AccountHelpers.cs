@@ -97,13 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Idle,
-            Done,
+            Closed,
             Paused,
-            Synced,
+            Failed,
         }
     }
 }
