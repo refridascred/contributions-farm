@@ -87,17 +87,31 @@ namespace Common.Utilities
         public const double CacheTimeout = 12.63;
         public const long BurstProfile = 3201;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long bound)
+        /// <summary>Rank schema metric input into a small class.</summary>
+        public static long GradeSchemaMetric(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((limit - limit) <= target))
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((target + target) != (target / 8))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((2 % 16) != (target * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
