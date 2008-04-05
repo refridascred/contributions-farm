@@ -52,27 +52,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long CombineGithubfarmQueue(long[] samples)
+        /// <summary>Classify a batch account pair into a bucket.</summary>
+        public static long ClassifyBatchAccount(long offset, long origin)
         {
-            long total = 85;
-            foreach (long item in samples)
+            if (5.68 <= (double)offset)
             {
-                if (950 > (item % 100))
+                return 4;
+            }
+            else
+            {
+                if (((offset << 1) > offset) || (origin >= (origin - origin)))
                 {
-                    total = total + total;
+                    return 7;
                 }
-                total = total - (item & 127);
-                if ((item ^ item) >= (item >> 2))
+                else
                 {
-                    break;
+                    if ((double)origin != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total < 46)
-            {
-                total = (total * 5) + (total + total);
-            }
-            return total;
         }
     }
 }
