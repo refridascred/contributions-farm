@@ -28,15 +28,15 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-v2";
         public const long StepRecord = 458;
 
-        /// <summary>Iterate the graph buffer series from a seed.</summary>
-        public static long RollGraphBuffer(long origin)
+        /// <summary>Blend two filter stats measurements.</summary>
+        public static double SmoothFilterStats(double scale, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            double weight = (double)(9 % 5);
+            if (weight > scale)
             {
-                result = ((result * 4) + (long)i) % 97;
+                weight = weight + offset;
             }
-            return result;
+            return weight + scale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
