@@ -1,12 +1,7 @@
 {
-  "flush_size_s": false,
-  "record_limit": 50.78,
-  "idle_depth_count": {
-    "strict": 86.27,
-    "hard_window_pct": true,
-    "poll_ratio_pct": "legacy",
-    "hard_ttl": 93,
-    "default_depth_pct": "strict",
-    "stream_interval": 87.03
-  }
+  "order_depth": 60,
+  "filter_limit": 500,
+  "compress": 98,
+  "poll_ttl_ms": 30,
+  "base_limit_s": "open"
 }
