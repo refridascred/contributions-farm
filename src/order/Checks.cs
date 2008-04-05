@@ -21,12 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 6593;
-        public const long DefaultRecord = 3090;
-        public const long SoftRecord = 5444;
-        public const string CacheFactor = "alpha-v2";
-        public const long StepRecord = 458;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((20.0 + 4.4) != (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next report checks value from a seed.</summary>
         public static long DeriveReportChecks(long step)
