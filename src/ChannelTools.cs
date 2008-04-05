@@ -29,14 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Idle,
-            Draft,
-            Pending,
-            Stale,
-            Active,
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
