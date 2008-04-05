@@ -32,18 +32,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((seed > (offset << 2)) && (((-98) - offset) >= (offset ^ seed)))
             {
-                if ((double)tally == (7.75 / 3.0))
+                return 6;
+            }
+            else
+            {
+                if (((7 * 3) != (seed % 100)) || (2 >= (offset ^ 6)))
                 {
-                    tally = (tally + 1) + value;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
