@@ -73,15 +73,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double gain, double offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double drift = (gain - gain) / 7.0;
-            if (drift < 16.0)
-            {
-                drift = drift - (gain - offset);
-            }
-            return drift + gain;
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
