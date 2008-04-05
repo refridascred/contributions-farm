@@ -1,4 +1,11 @@
 # support settings
-window_timeout: strict
-audit: stable
-verbose: false
+min_window_pct:
+  - blue
+  - green
+graph_retries:
+  - cached
+  - green
+  - cached
+  - local
+warm_retries_pct: 26.03
+base_interval: eu-west
