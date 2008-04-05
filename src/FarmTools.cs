@@ -20,16 +20,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - (bound >> 4);
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
