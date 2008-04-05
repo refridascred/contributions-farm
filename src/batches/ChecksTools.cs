@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
