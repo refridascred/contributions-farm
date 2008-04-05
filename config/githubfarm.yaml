@@ -1,6 +1,13 @@
 # githubfarm settings
-channel_interval: 100
-min_size_pct:
-  - standard
-  - standard
-poll_delay: strict
+filter_capacity: blue
+strict: true
+payload_size: true
+persist:
+  - 425
+  - 322
+  - 53
+checks_limit:
+  - strict
+  - edge
+  - cached
+  - strict
