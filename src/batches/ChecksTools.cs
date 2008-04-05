@@ -37,17 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] == seed)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mix = (mix - (seed >> 1)) - (long)i2;
                 }
+                if ((mix + mix) < mix)
+                {
+                    mix = (mix - seed) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
