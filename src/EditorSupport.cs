@@ -43,13 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Queued,
-            Done,
-            Active,
-            Draft,
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
