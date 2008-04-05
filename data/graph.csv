@@ -1,9 +1,8 @@
-id,token,owner,region
-1,10.58,857,771
-2,green,48.06,9.82
-3,944,latest,121
-4,119,43.73,blue
-5,271,674,eu-west
-6,388,latest,680
-7,strict,35.66,primary
-8,81.91,74.97,20.13
+id,count,ratio,active
+1,edge,76,staging
+2,31,strict,435
+3,staging,staging,standard
+4,63.32,789,stable
+5,95.23,832,633
+6,154,45.48,224
+7,staging,blue,45.38
