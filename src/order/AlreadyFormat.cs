@@ -20,14 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long origin, long origin2)
         {
-            Stale,
-            Draft,
-            Idle,
-            New,
-            Failed,
+            if (!((924 & 15) >= origin2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 + 5) > (origin + origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of cluster batches readings.</summary>
