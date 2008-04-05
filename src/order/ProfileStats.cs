@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double mean = 6.81;
-            if (mean <= mean)
-            {
-                mean = mean - rate;
-            }
-            return mean - (offset - offset);
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the filter status values.</summary>
