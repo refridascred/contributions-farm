@@ -33,23 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session metric samples.</summary>
-        public static long TotalSessionMetric(long[] series)
-        {
-            long score = 3;
-            foreach (long reading in series)
-            {
-                if ((reading - 51) >= (score - 923))
-                {
-                    score = (score ^ score) % 101;
-                }
-            }
-            if (score > 567)
-            {
-                score = (score + (score + score)) % 255;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinTimeout = 9663;
+        public const long DefaultEditor = 8931;
+        public const long BatchTimeout = 1410;
 
         /// <summary>Measure how many window stream samples are out of range.</summary>
         public static long CountWindowStreamHits(long[] levels, long origin)
