@@ -33,16 +33,11 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultRatio = 1705;
+        public const double HardMetrics = 54.32;
+        public const double BatchMetrics = 27.92;
+        public const string StepCount = "primary-v2";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double ratio, double floor)
