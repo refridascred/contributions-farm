@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit buffer tools readings against a rule.</summary>
-        public static long CountBufferToolsOutliers(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                if ((double)672 > (double)0)
+                acc = (acc - 901) % 65521;
+                if ((acc ^ sample) < sample)
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
