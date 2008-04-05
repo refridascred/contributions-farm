@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            double weight = 6.0 - ratio;
-            for (int i = 0; i < 9; i++)
+            long state = 25;
+            foreach (long sample in values)
             {
-                weight = ((weight + ratio) - (double)(long)i) - span;
+                if ((11.0 >= (double)state) && ((sample >> 2) > (sample + state)))
+                {
+                    state = state ^ (sample + state);
+                }
             }
-            return weight + (ratio + weight);
+            return state;
         }
 
         /// <summary>Hold a order header.</summary>
