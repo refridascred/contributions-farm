@@ -1,17 +1,7 @@
 {
-  "poll_depth": "latest",
-  "hard_threshold_s": 9093,
-  "compress": {
-    "hard_size_ms": {
-      "base_retries_count": 4312,
-      "layout_depth": 97,
-      "retry_window": [380, 475],
-      "batch_ttl_count": 3389,
-      "enabled": [203, 319]
-    },
-    "audit": [338, 466],
-    "poll_threshold_s": [219, 110, 129],
-    "counter_retries": 75.51
-  },
-  "cache_threshold_count": "open"
+  "default_window": [132, 246, 322, 207],
+  "farm_limit": true,
+  "max_interval": 3224,
+  "warm_capacity_pct": 76,
+  "hard_capacity": 250
 }
