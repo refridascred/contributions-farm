@@ -37,13 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Ready,
+            Queued,
             Done,
-            Paused,
-            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
