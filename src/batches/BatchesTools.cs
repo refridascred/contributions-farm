@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (origin >= count)
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
