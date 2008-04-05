@@ -49,27 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 4;
-            foreach (long cell in readings)
-            {
-                result = ((result << 3) ^ (cell + seed)) % 97;
-                if (!((((-220) + result) >= (result + result)) || ((double)result != (9.85 / 6.0))))
-                {
-                    result = result ^ seed;
-                }
-                if ((seed + cell) > seed)
-                {
-                    result = ((result << 2) ^ (result + result)) % 4096;
-                }
-            }
-            if (result < 91)
-            {
-                result = ((result * 4) + (seed >> 5)) % 101;
-            }
-            return result;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
