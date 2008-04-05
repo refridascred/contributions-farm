@@ -33,22 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics checks readings against a rule.</summary>
-        public static long TallyMetricsChecksMatches(long[] samples)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.53 + 17.0) == (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
