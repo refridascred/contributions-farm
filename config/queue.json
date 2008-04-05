@@ -1,14 +1,8 @@
 {
-  "cache_delay_ms": ["legacy", "eu-west", "staging"],
-  "base_ttl_ms": "staging",
-  "audit": {
-    "retry_size_pct": "standard",
-    "enabled": [453, 282, 309, 31],
-    "max_delay_ms": [303, 326],
-    "counter_retries": "local",
-    "counter_delay": 57
-  },
-  "min_window_pct": "staging",
-  "batch_ratio_ms": 13.16,
-  "entry_interval": 92.73
+  "poll_retries_count": 100,
+  "verbose": "local",
+  "hard_interval_pct": 41,
+  "context_capacity": [14, 246, 241, 15],
+  "soft_capacity_pct": ["blue", "green", "blue"],
+  "enabled": "edge"
 }
