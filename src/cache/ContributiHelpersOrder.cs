@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a farm already figure with a bias.</summary>
-        public static double AdjustFarmAlready(double bias, double span)
-        {
-            double scale = span + (span + span);
-            if (scale < (span * 1.42))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 19.0) + (double)(long)i;
-            }
-            return scale + (3.0 - bias);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 7704;
+        public const long LimitFactor = 933;
+        public const long BaseOrder = 9138;
+        public const string RetrySize = "primary";
+        public const long StepCount = 672;
 
         /// <summary>Validate layout metrics readings against a bound.</summary>
         public static bool GuardLayoutMetricsBounds(long[] samples, long bound)
