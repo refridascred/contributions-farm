@@ -1,18 +1,28 @@
 {
-  "soft_capacity_ms": 100,
-  "flush_capacity_ms": 30,
-  "enabled": "local",
-  "min_limit_s": "primary",
-  "retry_window_count": {
-    "sync_window_count": 46,
-    "strict": false,
-    "context_window": {
-      "route_interval": [275, 389, 470],
-      "account_window": 6406,
-      "poll_threshold": "primary"
+  "hard_interval": ["blue", "green", "legacy"],
+  "min_window_ms": "eu-west",
+  "dry_run": [398, 107],
+  "poll_ratio_count": {
+    "metric_size": 500,
+    "retry_size": {
+      "editor_retries": 68.09,
+      "dry_run": true,
+      "tools_interval": 64.96,
+      "batch_retries_ms": 250,
+      "warm_size_count": 58,
+      "default_window_ms": 71.49
     },
-    "soft_window": "latest",
-    "checks_delay": "legacy"
+    "poll_retries": false,
+    "buffer_ratio": {
+      "retry_ttl": "fallback",
+      "default_ttl": ["open", "green", "edge", "legacy"],
+      "min_interval_count": 81.62,
+      "cache_interval": 19.5,
+      "flush_depth_count": 60,
+      "filter_ratio": ["stable", "open"]
+    },
+    "retry_depth_s": "cached"
   },
-  "base_window_s": 19.55
+  "commits_ttl": "green",
+  "report_interval": [450, 497]
 }
