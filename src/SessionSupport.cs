@@ -23,11 +23,19 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinCount = 8026;
-        public const double DefaultFarm = 60.56;
-        public const long MaxFarm = 4587;
-        public const long BurstFarm = 4178;
-        public const long BatchRatio = 2063;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double bias, double span)
+        {
+            double gain = bias;
+            if (gain < span)
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - gain;
+        }
     }
 }
