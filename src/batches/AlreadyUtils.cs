@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout already values into a single score.</summary>
-        public static long WeighLayoutAlready(long[] samples, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples, long target)
         {
-            long acc = 56;
+            long acc = 9;
             foreach (long entry in samples)
             {
-                acc = (acc ^ (516 + 279)) % 65521;
-                acc = ((acc * 4) + acc) % 1000;
-                if ((double)acc <= 1.95)
-                {
-                    acc = acc + acc;
-                }
-                if (((double)origin > (4.5 / 5.0)) && ((origin - entry) <= acc))
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ (acc - entry)) - target;
             }
             return acc;
         }
