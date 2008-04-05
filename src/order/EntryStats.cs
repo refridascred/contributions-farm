@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSize = 5379;
-        public const long DefaultProfile = 6615;
-        public const string IdleProfile = "primary-v2";
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Locked,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long bound)
