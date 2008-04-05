@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a notes cluster value against two limits.</summary>
-        public static long GradeNotesCluster(long seed, long limit)
-        {
-            if ((limit >= (limit ^ 970)) && ((limit - (-26)) != (limit >> 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit > (limit * 5)) || ((seed - seed) == (seed % 64)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 5.3;
+        public const double LimitTimeout = 33.29;
+        public const long IdleInterval = 9181;
+        public const long StepGithubfarm = 8292;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutBounds(long[] values, long limit)
