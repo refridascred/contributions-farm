@@ -32,15 +32,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight2 = offset;
-            if (weight2 >= (6.0 + weight2))
-            {
-                weight2 = (weight2 - (double)14) + weight;
-            }
-            return weight2 + offset;
+            Done,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
