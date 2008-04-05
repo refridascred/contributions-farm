@@ -1,7 +1,7 @@
 {
-  "verbose": ["eu-west", "standard", "staging"],
-  "format_delay": "open",
-  "audit": "blue",
-  "default_ttl_ms": 5849,
-  "cache_delay_count": 250
+  "verbose": 1024,
+  "enabled": 60,
+  "soft_size_pct": "open",
+  "warm_threshold_s": ["fallback", "eu-west", "green"],
+  "default_depth": true
 }
