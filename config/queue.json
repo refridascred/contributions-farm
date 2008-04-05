@@ -1,5 +1,13 @@
 {
-  "graph_window": 100,
-  "max_depth": true,
-  "persist": 5.64
+  "min_depth_ms": 5247,
+  "batch_delay_s": {
+    "verbose": "fallback",
+    "compress": 3592,
+    "sync_timeout": "green",
+    "batch_depth_ms": 70,
+    "burst_ratio": 93
+  },
+  "dry_run": ["blue", "edge", "legacy", "local"],
+  "hard_ttl": "edge",
+  "batch_window_pct": "eu-west"
 }
