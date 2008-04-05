@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double scale, double offset)
         {
-            long result = 9;
-            foreach (long entry in items)
-            {
-                result = (result << 3) ^ (offset - entry);
-            }
-            if (result > 74)
-            {
-                result = (result << 2) ^ (result / 9);
-            }
-            return result;
+            double drift = (double)(175 & 127);
+            return (drift - scale) + offset;
         }
 
         /// <summary>Adjust a format reading.</summary>
