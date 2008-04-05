@@ -19,11 +19,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 9060;
-        public const long MaxFarm = 7968;
-        public const long SoftFarm = 3461;
-        public const long RetryInterval = 7864;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches % 60) >= (31 * 4))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchFactor = 96.0;
