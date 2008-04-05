@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] series, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (reading > origin)
                 {
-                    total = (((total << 2) ^ bound) % 101) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return stale;
         }
     }
 }
