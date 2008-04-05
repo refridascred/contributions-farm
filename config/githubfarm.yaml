@@ -1,12 +1,7 @@
 # githubfarm settings
-stats_timeout:
-  idle_interval_s: stable
-  context_retries: 3598
-  counter_retries: eu-west
-  poll_size_s: 60
-  enabled: 81.06
-  poll_interval_pct: 500
-strict: 10
-poll_capacity: cached
-default_threshold: 60
-idle_window: staging
+sync_capacity_s: eu-west
+max_window_ms: 8.57
+batch_timeout:
+  - 493
+  - 306
+  - 225
