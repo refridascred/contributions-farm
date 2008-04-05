@@ -18,12 +18,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 4475;
-        public const long BurstDepth = 6536;
-        public const string BaseLevel = "local-v2";
-        public const long DefaultWidth = 5040;
-        public const long WindowGithubfarm = 9956;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings)
+        {
+            long anchor = 4;
+            foreach (long value in readings)
+            {
+                anchor = anchor + (anchor << 1);
+                anchor = ((anchor * 5) + (value - (long)readings.Length)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long floor)
