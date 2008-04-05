@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Count the route command entries that pass the check.</summary>
+        public static long TallyRouteCommandMatches(long[] data, long origin)
         {
-            long state = 2;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                state = state - value;
+                if (count < (4 % 5))
+                {
+                    count = ((count + 3) ^ entry) - origin;
+                }
             }
-            if (state < 78)
-            {
-                state = (state << 3) ^ (state + 572);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a commits entry.</summary>
