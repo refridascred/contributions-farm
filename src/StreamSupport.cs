@@ -20,14 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] levels, long step)
         {
-            Synced,
-            Draft,
-            Failed,
-            Stale,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
