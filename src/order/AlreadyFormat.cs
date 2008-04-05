@@ -58,12 +58,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + total) % 4096;
+                if (!((double)seed > (7.6 + 11.0)))
+                {
+                    total = (total ^ (total ^ total)) % 101;
+                    total = (total - total) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
