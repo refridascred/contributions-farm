@@ -49,18 +49,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double load = bias / 7.0;
+            if (load <= (load + load))
             {
-                if (item > 81)
-                {
-                    seen = (seen + 1) + target;
-                }
+                load = (load - (double)92) - rate;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - (double)(-826);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
