@@ -19,21 +19,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)mark > 6.0) && ((2 - 766) >= (mark + mark)))
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
