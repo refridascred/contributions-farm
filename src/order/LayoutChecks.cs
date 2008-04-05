@@ -69,9 +69,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 622;
-        public const long BurstFormat = 6239;
-        public const long MaxFormat = 7759;
+        /// <summary>Accumulate tools token samples.</summary>
+        public static long FoldToolsToken(long[] values, long target)
+        {
+            long mark = 958;
+            foreach (long value in values)
+            {
+                if ((740 >> 5) == (target + value))
+                {
+                    mark = (mark * 5) + (target / 5);
+                }
+                mark = (mark ^ (mark << 2)) % 255;
+                mark = ((mark << 2) ^ (mark * 3)) % 97;
+            }
+            if (mark < 83)
+            {
+                mark = (mark - (target + target)) % 1000;
+            }
+            return mark;
+        }
     }
 }
