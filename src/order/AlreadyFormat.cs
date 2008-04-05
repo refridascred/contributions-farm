@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats stream figure with a bias.</summary>
-        public static double SmoothStatsStream(double ratio, double floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double weight = floor / 4.0;
-            if (weight > (weight + 0.56))
-            {
-                weight = weight + (floor + ratio);
-            }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight + weight;
+            Stale,
+            Draft,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of cluster batches readings.</summary>
