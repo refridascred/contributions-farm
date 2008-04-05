@@ -50,10 +50,20 @@ namespace Common.Utilities
         public const long DefaultGraph = 7515;
         public const long StepScore = 3627;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 9116;
-        public const long LimitRatio = 2478;
-        public const long LimitBuffer = 9961;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of cache report readings.</summary>
         public static long DigestCacheReport(long[] series)
