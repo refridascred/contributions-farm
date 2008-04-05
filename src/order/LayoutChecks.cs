@@ -59,24 +59,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate tools token samples.</summary>
-        public static long FoldToolsToken(long[] values, long target)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 958;
-            foreach (long value in values)
-            {
-                if ((740 >> 5) == (target + value))
-                {
-                    mark = (mark * 5) + (target / 5);
-                }
-                mark = (mark ^ (mark << 2)) % 255;
-                mark = ((mark << 2) ^ (mark * 3)) % 97;
-            }
-            if (mark < 83)
-            {
-                mark = (mark - (target + target)) % 1000;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
