@@ -68,15 +68,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] values, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in items)
             {
-                if (!(38 <= (6 + tally)))
+                if (reading < (7 + reading))
                 {
-                    tally = ((tally + 2) ^ sample) + seed;
+                    tally = (tally + 2) + offset;
                 }
             }
             return tally;
