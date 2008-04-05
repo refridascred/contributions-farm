@@ -1,5 +1,5 @@
 {
-  "payload_limit": 12.51,
-  "strict": [348, 485, 140],
-  "format_threshold": true
+  "default_size_s": 80.58,
+  "channel_capacity": 100,
+  "report_threshold": ["blue", "staging"]
 }
