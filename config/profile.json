@@ -1,8 +1,10 @@
 {
-  "poll_interval_s": "blue",
-  "batch_window_ms": ["staging", "staging"],
-  "account_limit": 2193,
-  "readonly": 2.72,
-  "cache_limit": ["cached", "primary", "open", "staging"],
-  "strict": true
+  "enabled": "staging",
+  "soft_delay": {
+    "soft_ttl_ms": "edge",
+    "retry_interval_s": 60,
+    "base_limit": [334, 403, 407],
+    "strict": 37.55
+  },
+  "min_ttl_count": "edge"
 }
