@@ -53,13 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long offset)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            if ((5 % 8) > (seed & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if (4.0 < (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
