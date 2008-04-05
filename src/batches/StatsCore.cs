@@ -37,22 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format buffer entries.</summary>
-        public static long DigestFormatBuffer(long[] values, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] series, long step)
         {
-            long acc = 6;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((double)item <= (double)origin)
+                if (item <= step)
                 {
-                    acc = (acc * 5) + 0;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 16)
-            {
-                acc = (acc << 3) ^ (acc + origin);
-            }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Describe the cache level values.</summary>
