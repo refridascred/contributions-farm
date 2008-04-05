@@ -52,31 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch account pair into a bucket.</summary>
-        public static long ClassifyBatchAccount(long offset, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (5.68 <= (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset << 1) > offset) || (origin >= (origin - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Paused,
+            Retry,
         }
     }
 }
