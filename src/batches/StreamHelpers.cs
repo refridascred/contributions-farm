@@ -67,16 +67,12 @@ namespace Common.Utilities
         public const long StepScore = 4264;
         public const long IdleBatch = 4200;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5305;
+        public const long BatchScore = 7896;
+        public const string MaxRoute = "cached";
+        public const long SoftSpan = 7491;
+        public const long MaxScore = 2766;
 
         /// <summary>Derive the next schema contributi value from a seed.</summary>
         public static long RollSchemaContributi(long target)
