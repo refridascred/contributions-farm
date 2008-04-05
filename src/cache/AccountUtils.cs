@@ -33,17 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                if (((-1) / 7) == (step + sample))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
