@@ -30,18 +30,17 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value <= (matches - value)) && ((value >> 3) > (matches & 255)))
+                if ((series[i] >= origin) && ((series[i] % 2) != 0))
                 {
-                    matches = (matches + 1) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
