@@ -14,20 +14,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((6 + sum) == ((long)i + sum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum - (sum & 31);
-                    sum = sum ^ limit;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the token kind values.</summary>
