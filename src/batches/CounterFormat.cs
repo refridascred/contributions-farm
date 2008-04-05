@@ -53,11 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCount = 49.29;
-        public const long DefaultCommand = 4458;
-        public const long MinCommand = 9753;
-        public const long CacheCommand = 9653;
-        public const long MaxCount = 465;
+        /// <summary>Derive the next stats editor value from a seed.</summary>
+        public static long DeriveStatsEditor(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry - (carry >> 4)) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
