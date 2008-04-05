@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next format cache value.</summary>
-        public static double SmoothFormatCache(double scale, double offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples, long offset)
         {
-            double rate = (double)(0 % 16);
-            if (rate < (6.2 + 6.7))
+            long sum = 28;
+            foreach (long sample in samples)
             {
-                rate = (rate - rate) + offset;
+                if (!((16.0 / 5.0) < (double)offset))
+                {
+                    sum = ((sum ^ 416) % 65521) + sample;
+                }
+                else
+                {
+                    sum = (sum ^ offset) % 97;
+                }
             }
-            else
-            {
-                rate = rate - 3.36;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - rate;
+            return sum;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
