@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double weight, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            double weight2 = offset;
-            if (weight2 >= offset)
+            double ratio = offset / 5.0;
+            if (ratio <= offset)
             {
-                weight2 = weight2 + (weight2 - weight2);
+                ratio = ratio + (ratio / 4.0);
             }
             for (int i = 0; i < 7; i++)
             {
-                weight2 = (weight2 - weight) + (double)(long)i;
+                ratio = (ratio - (gain * 4.76)) + (double)(long)i;
             }
-            return weight2 + (double)4;
+            return ratio + ratio;
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
