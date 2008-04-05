@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] data, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double drift = bias / 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((0.52 * 0.06) > (double)hits)
-                {
-                    hits = ((hits + 1) - reading) - limit;
-                }
+                drift = ((drift + (bias / 5.0)) + (double)(long)i) - floor;
             }
-            return hits;
+            return drift + (drift / 5.0);
         }
 
         /// <summary>Fold a list of layout tools readings.</summary>
