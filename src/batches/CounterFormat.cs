@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Paused,
-            Queued,
-            Retry,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 5494;
+        public const string LimitAlready = "fallback-edge";
+        public const string BaseCount = "latest-edge";
+        public const long MinFactor = 4726;
+        public const long CacheAlready = 5523;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long seed, long bound)
