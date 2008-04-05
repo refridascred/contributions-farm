@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            if (((target & 15) == (origin / 8)) || ((origin << 1) > (origin + origin)))
             {
-                result = (result << 2) ^ (result / 6);
-                result = ((result * 5) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)27 == (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 3) == (origin - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache stream samples.</summary>
