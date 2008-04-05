@@ -45,12 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Locked,
-            Dropped,
-            Closed,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
