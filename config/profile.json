@@ -1,6 +1,7 @@
 {
-  "metrics_timeout": "legacy",
-  "cache_delay_pct": 78.25,
-  "soft_timeout_s": "strict",
-  "tools_threshold": [370, 480, 65, 426]
+  "retry_size_pct": 48.42,
+  "batch_interval": 60,
+  "soft_ratio_count": [120, 212],
+  "route_limit": "primary",
+  "support_threshold": 3082
 }
