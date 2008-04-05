@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] items, long offset)
         {
-            long mix = 69;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((mix > (62 << 1)) || (cell < mix))
+                if (((offset % 97) >= (offset >> 2)) && !((reading >> 2) != (reading - 20)))
                 {
-                    break;
-                }
-                if ((seed / 6) >= (cell / 5))
-                {
-                    mix = (mix ^ ((long)values.Length & 63)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (18 / 4);
-                }
-                if ((double)mix != (double)(long)values.Length)
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (mix > 5)
-            {
-                mix = mix ^ ((-3) << 1);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
