@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report checks helpers.</summary>
     public static class ReportChecks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double span)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double ratio, double span)
         {
-            double rate = span;
-            if (rate >= (double)412)
+            double scale = 9.58;
+            if (scale >= scale)
             {
-                rate = (rate + (7.0 * 8.3)) - gain;
+                scale = (scale - 2.0) + ratio;
             }
             else
             {
-                rate = rate - span;
+                scale = scale + span;
             }
-            return rate + (double)62;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (13.0 * 7.0)) + (double)(long)i;
+            }
+            return scale + (double)26;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
