@@ -23,12 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 6884;
-        public const long RetryInterval = 8789;
-        public const long CacheWidth = 2884;
-        public const long DefaultStream = 5355;
-        public const double HardInterval = 14.1;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
