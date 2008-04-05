@@ -1,6 +1,7 @@
-id,active,ratio
-1,607,235
-2,strict,edge
-3,395,67.08
-4,42.58,67.41
-5,845,473
+id,count,active
+1,latest,strict
+2,green,fallback
+3,608,550
+4,cached,197
+5,359,90.73
+6,open,71.99
