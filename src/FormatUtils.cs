@@ -23,18 +23,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Find the first command buffer entry that matches the target.</summary>
+        public static long LocateCommandBufferIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches - matches) >= sample)
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
