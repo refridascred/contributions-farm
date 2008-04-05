@@ -1,14 +1,5 @@
 {
-  "contributi_delay": 8387,
-  "notes_timeout": "staging",
-  "burst_delay_s": {
-    "flush_timeout_s": "open",
-    "burst_limit_ms": [297, 391, 364, 434],
-    "batch_delay_s": "standard",
-    "window_threshold": {
-      "default_timeout_pct": [103, 211],
-      "retry_size_pct": false,
-      "retry_interval": ["latest", "strict", "fallback"]
-    }
-  }
+  "retry_interval_ms": "standard",
+  "poll_threshold_s": 2.44,
+  "context_size": "fallback"
 }
