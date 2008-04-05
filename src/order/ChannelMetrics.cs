@@ -19,13 +19,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long SeriesMetricQueue(long seed)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state ^ ((long)i ^ seed);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
