@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long AuditMetricsEditorMatches(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((datum + seen) != (696 + seen))
+                if (((count > (count * 5)) && ((double)entry >= (3.89 / 7.0))) || (((55 - count) != (entry * 3)) && (6.3 <= (double)entry)))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
