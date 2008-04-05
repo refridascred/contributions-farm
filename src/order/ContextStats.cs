@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Dropped,
-            Ready,
-            New,
-            Paused,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
