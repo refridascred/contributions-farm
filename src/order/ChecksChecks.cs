@@ -29,17 +29,13 @@ namespace Common.Utilities
         public const long MaxOrder = 4336;
         public const string SoftOrder = "alpha-1";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total << 2) ^ (long)i) % 1000;
-                total = ((total * 4) + (237 + (long)i)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
