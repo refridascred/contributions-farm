@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a entry filter pair into a bucket.</summary>
+        public static long RankEntryFilter(long limit, long step)
         {
-            Retry,
-            Idle,
-            Pending,
-            New,
-            Ready,
+            if ((step >= (step >> 5)) || ((limit % 60) > (limit >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit >= (8.72 + 12.0)) || (limit <= (step ^ step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 16) < (limit - 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (7.1 >= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
