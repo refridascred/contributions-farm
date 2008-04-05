@@ -27,18 +27,25 @@ namespace Common.Utilities
         public const long BurstDepth = 7325;
         public const long SoftBudget = 4299;
 
-        /// <summary>Audit graph farm readings against a rule.</summary>
-        public static long CountGraphFarmHits(long[] readings, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long next = target + bound;
+            if ((double)bound == (double)next)
             {
-                if ((double)datum == (2.94 + 19.0))
+                return 6;
+            }
+            else
+            {
+                if (!((6.76 + 4.0) != (double)target))
                 {
-                    hits = (hits + 2) + seed;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
