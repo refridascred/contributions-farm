@@ -39,10 +39,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 3365;
-        public const string DefaultLevel = "legacy-1";
-        public const long CacheEditor = 223;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series, long seed)
+        {
+            long acc = 508;
+            foreach (long entry in series)
+            {
+                if ((8.16 / 7.0) <= (double)acc)
+                {
+                    acc = (acc << 3) ^ (entry - seed);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
