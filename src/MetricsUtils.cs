@@ -22,16 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + origin) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
