@@ -34,13 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Draft,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinTimeout = 4183;
+        public const long LimitCache = 227;
+        public const long BatchSize = 9697;
+        public const long StepCache = 7912;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double bias, double floor)
