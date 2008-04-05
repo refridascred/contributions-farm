@@ -42,18 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the payload buffer entries that pass the check.</summary>
-        public static long CountPayloadBufferMatches(long[] data, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((20.0 / 5.0) < (double)tally) || !((tally % 60) >= offset))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
