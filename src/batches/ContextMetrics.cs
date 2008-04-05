@@ -91,13 +91,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long floor)
         {
-            Synced,
-            Closed,
-            Stale,
-            Draft,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
