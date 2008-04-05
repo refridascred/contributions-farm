@@ -54,13 +54,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Dropped,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 3162;
+        public const long DefaultWindow = 6748;
+        public const double HardSize = 41.56;
+        public const double SoftLevel = 31.47;
+        public const long BaseTimeout = 1563;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
