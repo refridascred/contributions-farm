@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardRecord = 8256;
         public const long BaseBudget = 6921;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Dropped,
-            Draft,
-            Closed,
-            Retry,
+            Failed,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Digest a series of already stats entries.</summary>
