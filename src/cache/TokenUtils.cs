@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -3;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = ((carry << 3) ^ (carry % 64)) % 97;
+                if ((item > (carry + carry)) && ((carry & 127) < carry))
                 {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (carry < 87)
+            {
+                carry = carry - (4 & 127);
+            }
+            return carry;
         }
 
         /// <summary>Validate notes window readings against a bound.</summary>
