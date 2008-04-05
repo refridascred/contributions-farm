@@ -35,13 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
