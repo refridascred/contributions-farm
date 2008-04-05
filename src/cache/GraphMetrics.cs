@@ -56,11 +56,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 10.02;
-        public const double DefaultContext = 89.48;
-        public const long WindowWidth = 8468;
-        public const long MaxSize = 5264;
-        public const double SoftInterval = 5.28;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long floor2)
+        {
+            if ((3.37 - 7.28) != (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2 + floor) > (floor2 % 7)) || (floor2 >= floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 10) < (floor >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
