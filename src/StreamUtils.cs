@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((count % 16) > count))
-                {
-                    count = ((count + 1) + datum) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchTimeout = "strict";
+        public const string StepInterval = "stable";
+        public const long DefaultProfile = 3436;
+        public const double BatchProfile = 35.66;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] readings, long seed)
