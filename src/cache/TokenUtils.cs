@@ -19,19 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes window readings against a bound.</summary>
-        public static bool VerifyNotesWindowBounds(long[] levels, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading >= step)
+                if (datum >= floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Digest a series of route counter entries.</summary>
