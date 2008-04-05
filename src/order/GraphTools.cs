@@ -29,18 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command report samples are out of range.</summary>
-        public static long AuditCommandReportOutliers(long[] samples, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((((long)samples.Length << 1) >= (value & 15)) || ((double)value >= (7.3 / 4.0))))
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    hits = (hits + 2) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
