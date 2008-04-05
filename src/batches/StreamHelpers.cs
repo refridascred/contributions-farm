@@ -62,12 +62,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5305;
-        public const long BatchScore = 7896;
-        public const string MaxRoute = "cached";
-        public const long SoftSpan = 7491;
-        public const long MaxScore = 2766;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Closed,
+            New,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Derive the next schema contributi value from a seed.</summary>
         public static long RollSchemaContributi(long target)
