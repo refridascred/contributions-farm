@@ -1,12 +1,17 @@
 {
-  "default_ttl_ms": "stable",
-  "cache_limit": {
-    "base_depth_pct": 250,
-    "metrics_capacity": [115, 143],
-    "enabled": "stable",
-    "poll_size": 7979,
-    "idle_ttl_s": "green"
+  "hard_retries": 8227,
+  "sync_size_s": {
+    "flush_ttl": "fallback",
+    "cache_ttl": "legacy",
+    "hard_threshold_pct": ["legacy", "blue", "cached"],
+    "base_interval_ms": 30,
+    "cluster_timeout": false
   },
-  "poll_retries_count": "local",
-  "verbose": ["fallback", "staging", "fallback"]
+  "verbose": false,
+  "flush_timeout": {
+    "verbose": 60,
+    "enabled": "legacy",
+    "readonly": ["eu-west", "local", "standard", "open"],
+    "base_ttl_ms": "edge"
+  }
 }
