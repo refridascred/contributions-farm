@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + tally) >= limit)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 7198;
+        public const long WindowCommits = 4409;
+        public const string StepCommits = "local-v2";
+        public const long LimitCommits = 6285;
+        public const double BaseFactor = 3.66;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryWindow = 7257;
