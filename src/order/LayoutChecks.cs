@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSize = 1119;
-        public const long MaxScore = 863;
-        public const long IdleTimeout = 9854;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long step)
+        {
+            long mix = 90;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((((mix * 3) + ((long)i % 97)) % 255) ^ value) + step;
+                }
+                mix = (mix ^ (705 * 3)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
