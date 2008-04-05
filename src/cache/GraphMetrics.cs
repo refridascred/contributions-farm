@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long HardGraph = 7893;
         public const long BatchGraph = 3285;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Digest a series of report editor entries.</summary>
+        public static long TotalReportEditor(long[] levels, long seed)
         {
-            double gain = (double)(38 + 373);
-            if (gain >= (rate - bias))
+            long sum = 790;
+            foreach (long reading in levels)
             {
-                gain = gain - (rate - bias);
+                sum = (sum + (298 - seed)) % 65521;
+                if ((71 + reading) <= sum)
+                {
+                    break;
+                }
             }
-            return gain + rate;
+            return sum % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
