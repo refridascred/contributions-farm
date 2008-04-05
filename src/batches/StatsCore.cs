@@ -33,14 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] series, long offset)
         {
-            Retry,
-            Draft,
-            Active,
-            Queued,
-            Locked,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload summary.</summary>
