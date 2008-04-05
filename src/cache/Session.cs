@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
-        {
-            long mix = 813;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) < (mix - 484))
-                {
-                    mix = (mix ^ entry) % 1000;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 1367;
+        public const long SoftChannel = 3086;
+        public const string BaseScore = "alpha-v2";
+        public const long BurstSize = 1944;
+        public const long BaseCount = 8086;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] items, long limit)
