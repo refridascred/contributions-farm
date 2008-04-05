@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool GuardStatsLayoutRange(long[] series, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a route stats.</summary>
