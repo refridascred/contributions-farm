@@ -42,12 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double floor)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            double scale = (double)(0 / 8);
+            return ((scale + 8.43) + gain) + floor;
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
