@@ -45,39 +45,21 @@ namespace Common.Utilities
         public const long WindowSpan = 2367;
         public const long BatchTimeout = 6537;
 
-        /// <summary>Rank order profile input into a small class.</summary>
-        public static long ClassifyOrderProfile(long step, long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long gap = step ^ floor;
-            if ((gap >= ((-65) + gap)) && ((5 >> 2) <= (floor - gap)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 5) >= (gap + 91))
+                    if ((readings[i] + readings[j]) > 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor == (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
