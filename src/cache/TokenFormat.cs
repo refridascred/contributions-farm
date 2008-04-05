@@ -34,11 +34,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((floor + 406) == (72 - hits))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
