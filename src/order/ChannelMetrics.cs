@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "primary-edge";
-        public const string BatchBuffer = "cached-edge";
-        public const string MinWidth = "alpha-1";
-        public const long BatchLevel = 5920;
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long AuditStreamFilterMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((((long)levels.Length >= floor) && ((8.9 - 7.8) >= (double)count)) || ((339 >= (floor >> 1)) || (((-886) << 3) < reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] readings, long step)
