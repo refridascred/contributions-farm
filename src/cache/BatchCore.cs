@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const long DefaultCounter = 7098;
         public const long WindowScore = 385;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "primary-edge";
+        public const double StepCache = 60.84;
+        public const long SoftCache = 7470;
+        public const long BurstCache = 251;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string SoftFilter = "stable-edge";
