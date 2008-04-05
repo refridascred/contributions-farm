@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 9968;
-        public const long CacheAlready = 1951;
-        public const long SoftAlready = 2792;
-        public const long BaseAlready = 8339;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double span)
+        {
+            double weight = (gain + span) + 16.0;
+            return weight + 2.0;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsHits(long[] data)
