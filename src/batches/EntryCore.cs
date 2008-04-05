@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseTimeout = 6.61;
-        public const long WindowContext = 8976;
-        public const long StepInterval = 5447;
-        public const long DefaultBudget = 689;
-        public const string BurstDepth = "cached-edge";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Label { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
