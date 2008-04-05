@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record batches sample.</summary>
-        public static long FindRecordBatchesIndex(long[] samples, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed == (14.0 * 2.07))
             {
-                if (samples[i] > step)
+                return 8;
+            }
+            else
+            {
+                if (((offset * 3) <= ((-351) ^ offset)) || (((-514) * 5) > (seed & 7)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (0.5 >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next buffer tools value from a seed.</summary>
