@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank token report input into a small class.</summary>
-        public static long BucketTokenReport(long limit, long limit2)
-        {
-            long bound = limit - limit2;
-            if (237 <= (bound ^ 94))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (bound >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit <= (limit + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (271 < (limit / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "open";
+        public const long BatchSession = 9966;
+        public const long SoftCount = 1160;
+        public const long SoftSession = 2249;
+        public const double BaseSession = 14.37;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountGaps(long[] series)
