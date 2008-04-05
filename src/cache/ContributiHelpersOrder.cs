@@ -13,22 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] levels, long seed)
         {
-            long state = 679;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)state > 12.0) || ((datum << 3) <= state))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    state = ((state << 3) ^ (state - floor)) % 1000;
-                }
-                else
-                {
-                    state = (state + (datum + floor)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit metrics checks readings against a rule.</summary>
