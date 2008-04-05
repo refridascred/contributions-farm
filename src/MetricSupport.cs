@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stream schema entries that pass the check.</summary>
-        public static long TallyStreamSchemaMatches(long[] series)
+        /// <summary>Match up githubfarm metrics samples.</summary>
+        public static long OverlapGithubfarmMetricsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((12.0 - 13.0) <= (double)datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
