@@ -1,6 +1,22 @@
 {
-  "default_limit": 7462,
-  "enabled": "fallback",
-  "min_size": true,
-  "soft_limit_ms": 8.37
+  "persist": 77.16,
+  "idle_delay": 64.15,
+  "flush_ratio": "fallback",
+  "audit": {
+    "batch_ratio": 23,
+    "retry_timeout_count": 50,
+    "hard_interval": {
+      "sync_limit_pct": 1840,
+      "cache_ratio": 13.78,
+      "buffer_interval": false
+    },
+    "default_ratio": {
+      "batch_limit_count": 19.46,
+      "dry_run": ["eu-west", "eu-west", "strict"],
+      "sync_limit_s": true,
+      "stats_retries": 100,
+      "min_size_count": 33
+    },
+    "flush_delay_count": "staging"
+  }
 }
