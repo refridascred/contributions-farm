@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=21
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge legacy local cached; do
+for item in green eu-west; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
