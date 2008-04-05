@@ -33,39 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long next = offset + target;
-            if (next > (target << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset >> 2) <= (493 << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next - 6) <= (target % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next + target) >= target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
