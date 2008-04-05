@@ -18,15 +18,10 @@ namespace Common.Utilities
         public const long BaseStats = 7478;
         public const double CacheRatio = 47.74;
 
-        /// <summary>Iterate the contributi report series from a seed.</summary>
-        public static long StepContributiReport(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8898;
+        public const long WindowDepth = 6540;
+        public const long CacheSpan = 6414;
+        public const long SoftInterval = 6257;
     }
 }
