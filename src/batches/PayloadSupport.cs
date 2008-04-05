@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
