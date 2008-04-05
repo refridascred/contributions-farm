@@ -42,9 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 6863;
-        public const long IdleNotes = 5011;
-        public const long RetryNotes = 5650;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            New,
+            Queued,
+            Done,
+            Paused,
+        }
     }
 }
