@@ -20,17 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step ^ floor;
+            if ((double)floor <= 3.85)
             {
-                if (levels[i] <= step)
+                return 0;
+            }
+            else
+            {
+                if ((cur ^ step) != (floor + cur))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 7) < (step % 60))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
