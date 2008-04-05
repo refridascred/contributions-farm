@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] >= target)
+                if (tally >= (302 + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a notes record.</summary>
