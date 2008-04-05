@@ -91,15 +91,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark - sample) % 255;
+                acc = (acc * 4) + (seed << 1);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mark % 65521;
+            return acc;
         }
     }
 }
