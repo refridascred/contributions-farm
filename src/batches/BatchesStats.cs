@@ -38,11 +38,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowLevel = 66.44;
+        public const string MinSupport = "cached";
+        public const long IdleSupport = 6848;
     }
 }
