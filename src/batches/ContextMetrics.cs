@@ -30,18 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((datum + count) > count)
+                if ((double)hits < 5.0)
                 {
-                    count = count + 3;
+                    hits = ((hits + 2) + cell) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
