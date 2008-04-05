@@ -36,22 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values, long target)
+        /// <summary>Roll a checks stats counter forward.</summary>
+        public static long StepChecksStats(long target)
         {
-            long mark = 68;
-            foreach (long cell in values)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((353 * 3) != (mark + target))
+                sum = ((sum * 3) + 92) % 255;
+                long count = 496 % 64;
+                if ((target & 31) <= (count - (long)i))
                 {
-                    mark = (mark ^ cell) % 1000;
+                    count = ((count << 2) ^ (target << 1)) % 101;
                 }
-                else
-                {
-                    mark = (mark - (target / 2)) % 101;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Roll a context stream counter forward.</summary>
