@@ -1,7 +1,17 @@
 {
-  "dry_run": "cached",
-  "support_limit": 445,
-  "tools_ttl": "blue",
-  "base_size": 48.34,
-  "idle_size_pct": 72
+  "default_threshold_s": {
+    "cache_capacity": 47,
+    "queue_timeout": {
+      "strict": [357, 37, 197],
+      "min_ratio_count": 8485,
+      "persist": ["eu-west", "open"],
+      "compress": 47
+    },
+    "layout_depth": "staging"
+  },
+  "strict": "standard",
+  "support_ratio": [377, 147, 301],
+  "max_ratio_ms": ["strict", "stable", "open"],
+  "base_depth": 21,
+  "sync_limit_ms": 1024
 }
