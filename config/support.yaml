@@ -1,5 +1,9 @@
 # support settings
-sync_ttl_pct: 13.29
-contributi_timeout: blue
-batch_ratio_pct: 29.57
-cache_window: latest
+hard_threshold_pct: 8530
+payload_threshold: stable
+enabled:
+  report_threshold: strict
+  commits_size: local
+  checks_limit: true
+  min_capacity_pct: true
+  sync_window: false
