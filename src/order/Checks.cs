@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout stats entry stays within the limit.</summary>
-        public static bool ValidateLayoutStatsLimits(long[] data, long limit)
+        /// <summary>Accumulate cache stream samples.</summary>
+        public static long WeighCacheStream(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long sum = 20;
+            foreach (long reading in data)
             {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum + (bound * 2)) % 4096) ^ reading;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the account kind values.</summary>
