@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long LimitCommits = 6285;
         public const double BaseFactor = 3.66;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 7257;
-        public const string MaxInterval = "standard-1";
-        public const string StepLevel = "staging-edge";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Draft,
+            Pending,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] items, long origin)
