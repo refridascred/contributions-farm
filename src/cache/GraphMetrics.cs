@@ -27,11 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 1685;
-        public const long SoftBudget = 7278;
-        public const string IdleFactor = "primary-edge";
-        public const long BaseSpan = 6229;
+        /// <summary>Project the next checks batch value.</summary>
+        public static double SmoothChecksBatch(double scale, double floor)
+        {
+            double rate = (floor * 7.67) + (scale / 7.0);
+            return rate - (scale / 6.0);
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsRange(long[] series, long target)
