@@ -1,8 +1,6 @@
 {
-  "strict": false,
-  "poll_depth_ms": "green",
-  "idle_size": 81,
-  "layout_depth": "standard",
-  "compress": "legacy",
-  "burst_capacity_pct": true
+  "sync_ratio_s": "primary",
+  "min_depth": "staging",
+  "idle_capacity": "staging",
+  "burst_ttl_s": true
 }
