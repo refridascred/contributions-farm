@@ -1,5 +1,14 @@
 {
-  "soft_capacity_ms": 72.74,
-  "base_limit": 89.38,
-  "route_delay": false
+  "enabled": "strict",
+  "sync_timeout_ms": true,
+  "queue_interval": "primary",
+  "burst_ratio_pct": {
+    "persist": 1024,
+    "min_depth_pct": 1663,
+    "min_delay": 60,
+    "min_retries_ms": 64.43,
+    "checks_threshold": 3651
+  },
+  "batch_interval_count": 7749,
+  "batch_window_count": ["strict", "standard"]
 }
