@@ -1,5 +1,13 @@
 {
-  "dry_run": 1926,
-  "cache_ttl_pct": 20.64,
-  "warm_limit_s": 500
+  "warm_window_pct": [328, 471, 275, 123],
+  "compress": false,
+  "flush_ratio": 9768,
+  "command_capacity": false,
+  "poll_limit_ms": 9154,
+  "tools_capacity": {
+    "metric_limit": "green",
+    "readonly": false,
+    "poll_ratio_count": 30,
+    "max_depth_count": true
+  }
 }
