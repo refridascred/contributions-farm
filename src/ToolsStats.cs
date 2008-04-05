@@ -86,13 +86,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long floor)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Idle,
+            long lane = limit + floor;
+            if ((double)76 > (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit > 16)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
