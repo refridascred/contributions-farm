@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((limit + 21) < (cell + limit)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 689;
+        public const string BatchDepth = "alpha";
+        public const long MaxGithubfarm = 9685;
+        public const long RetryGithubfarm = 5001;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long floor)
