@@ -1,5 +1,6 @@
 {
-  "context_window": true,
-  "idle_capacity_pct": false,
-  "dry_run": [294, 374, 98, 125]
+  "filter_timeout": "fallback",
+  "batch_window_pct": false,
+  "cache_window": ["standard", "primary", "blue"],
+  "warm_capacity_s": false
 }
