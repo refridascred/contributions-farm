@@ -19,12 +19,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
