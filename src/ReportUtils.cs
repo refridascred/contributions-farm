@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] data, long limit)
+        /// <summary>Find the first order metrics entry that matches the target.</summary>
+        public static long FindOrderMetricsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > limit)
+                if (samples[i] >= origin)
                 {
                     return (long)i;
                 }
