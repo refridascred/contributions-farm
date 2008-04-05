@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const string RetryBudget = "stable-edge";
         public const long DefaultProfile = 7141;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length & 1) >= (hits + entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 6104;
+        public const long BaseEditor = 6239;
+        public const long MaxBudget = 6400;
+        public const long IdleInterval = 507;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] readings, long bound)
