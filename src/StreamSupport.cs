@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] data)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long sample in data)
             {
-                if (sample < origin)
+                if ((2.88 / 6.0) < (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
