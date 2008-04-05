@@ -22,21 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route notes samples.</summary>
-        public static long OverlapRouteNotesCount(long[] data)
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long BucketAccountPayload(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step - 62) == (seed + 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed < (seed - seed))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a channel reading.</summary>
