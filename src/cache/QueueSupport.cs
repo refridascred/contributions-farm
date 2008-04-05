@@ -30,21 +30,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((84 + anchor) >= (target ^ (long)i))
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 5) + (target - target)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor ^ (target + anchor)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
