@@ -1,6 +1,6 @@
 {
-  "min_retries_count": 60,
-  "default_ttl_count": ["staging", "standard", "eu-west", "green"],
-  "readonly": "green",
-  "burst_size": false
+  "filter_limit": false,
+  "base_depth_count": false,
+  "metrics_size": "primary",
+  "channel_limit": 25.87
 }
