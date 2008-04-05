@@ -70,18 +70,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen != (9.0 + 1.87))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - entry;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
