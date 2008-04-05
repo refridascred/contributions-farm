@@ -20,23 +20,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double ratio, double floor)
+        /// <summary>Look up the position of a graph account sample.</summary>
+        public static long SeekGraphAccountIndex(long[] readings, long offset)
         {
-            double load = (double)(104 / 6);
-            if (load <= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + 19.0) - ratio;
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)(-286);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (5.6 + 9.0)) - (double)(long)i;
-            }
-            return load - (floor / 9.0);
+            return -1;
         }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
