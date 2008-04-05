@@ -14,11 +14,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstLevel = 1043;
-        public const long MinTimeout = 920;
-        public const long IdleCommand = 6482;
-        public const long CacheCommand = 2101;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long origin2)
+        {
+            long diff = origin ^ origin2;
+            if (((origin2 ^ origin) < (diff % 100)) && ((diff & 3) > (origin2 & 255)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin2 < (783 + 79))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long bound)
