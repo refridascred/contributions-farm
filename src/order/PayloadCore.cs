@@ -14,26 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order context entries.</summary>
-        public static long TotalOrderContext(long[] items, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = -192;
-            foreach (long entry in items)
-            {
-                if ((state <= entry) || ((9.5 * 9.0) <= (double)entry))
-                {
-                    continue;
-                }
-                if ((state << 3) == (target % 5))
-                {
-                    state = (state + (entry + 3)) % 97;
-                }
-            }
-            if (state > 64)
-            {
-                state = state - state;
-            }
-            return state;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
