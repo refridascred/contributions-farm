@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (item > seed)
+                if (entry >= target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Hold a already options.</summary>
