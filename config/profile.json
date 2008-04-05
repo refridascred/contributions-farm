@@ -1,8 +1,6 @@
 {
-  "batch_delay_pct": 90.62,
-  "batches_retries": 5491,
-  "flush_ratio": 92,
-  "report_interval": "legacy",
-  "max_threshold_count": "staging",
-  "strict": 2689
+  "default_interval_count": ["cached", "standard"],
+  "base_window_count": "latest",
+  "max_threshold_count": 685,
+  "burst_delay_count": ["blue", "edge", "primary"]
 }
