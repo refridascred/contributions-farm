@@ -20,25 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long gap = bound - step;
-            if (!(gap > (step * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((((-5) % 60) > (75 ^ bound)) && ((gap - gap) != (gap + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Draft,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Accumulate payload samples.</summary>
