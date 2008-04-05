@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next channel buffer value.</summary>
-        public static double ScaleChannelBuffer(double rate, double bias)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            double rate2 = 8.0 - rate;
-            if (rate2 < (double)331)
+            long result = 3;
+            foreach (long item in samples)
             {
-                rate2 = rate2 - (13.0 * 6.23);
+                if (((item / 5) <= (88 % 8)) || (((-63) ^ result) > item))
+                {
+                    result = ((result * 4) + item) % 255;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - bias) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return result % 1000;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
