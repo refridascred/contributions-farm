@@ -39,19 +39,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long offset)
+        /// <summary>Digest a series of route counter entries.</summary>
+        public static long TallyRouteCounter(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long acc = 448;
+            foreach (long cell in data)
             {
-                if (datum > offset)
+                if ((20.0 / 2.0) >= (double)floor)
                 {
-                    ready = false;
-                    break;
+                    acc = acc + (floor / 4);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (cell - floor);
                 }
             }
-            return ready;
+            return acc;
         }
     }
 }
