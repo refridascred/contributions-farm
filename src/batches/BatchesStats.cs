@@ -52,12 +52,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Active,
-            Ready,
-            Closed,
+            Dropped,
+            Stale,
+            Done,
+            Queued,
+            New,
         }
     }
 }
