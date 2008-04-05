@@ -1,7 +1,13 @@
 {
-  "retry_size_pct": 48.42,
-  "batch_interval": 60,
-  "soft_ratio_count": [120, 212],
-  "route_limit": "primary",
-  "support_threshold": 3082
+  "channel_interval": 1832,
+  "base_limit": {
+    "warm_delay_count": 21.59,
+    "base_window": "staging",
+    "idle_ratio": "cached",
+    "hard_window": 60,
+    "stats_timeout": 60
+  },
+  "cache_threshold_s": "staging",
+  "sync_size_pct": true,
+  "enabled": 9304
 }
