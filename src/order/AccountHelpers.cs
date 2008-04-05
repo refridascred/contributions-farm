@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of buffer schema entries.</summary>
-        public static long CombineBufferSchema(long[] series)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long mix = 734;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix ^ ((long)series.Length & 31)) % 1000) - entry;
-                mix = mix + (mix >> 3);
-                mix = ((mix * 3) + (906 + 57)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
