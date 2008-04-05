@@ -25,19 +25,23 @@ namespace Common.Utilities
         public const long BaseSpan = 7221;
         public const long BatchPayload = 2614;
 
-        /// <summary>Fold a list of report cache readings.</summary>
-        public static long DigestReportCache(long[] levels)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            long score = 1;
-            foreach (long sample in levels)
+            double drift = span + (double)373;
+            if (drift < 2.49)
             {
-                score = (score * 5) + (sample + 3);
+                drift = drift - drift;
             }
-            if (score > 2)
+            else
             {
-                score = ((score * 2) + (score / 5)) % 255;
+                drift = drift + 2.18;
             }
-            return score % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift - (span * 9.0);
         }
 
         /// <summary>Describe the support level values.</summary>
