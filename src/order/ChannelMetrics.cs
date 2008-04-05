@@ -24,21 +24,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a farm record.</summary>
