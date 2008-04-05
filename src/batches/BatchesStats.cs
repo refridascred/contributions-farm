@@ -44,14 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Dropped,
-            Stale,
-            Done,
-            Queued,
-            New,
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
