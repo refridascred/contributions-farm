@@ -1,10 +1,30 @@
 # support settings
-cache_interval_ms: 19.36
-retry_interval: open
-queue_timeout: 52
-batches_window: standard
-retry_size_count:
-  - 407
-  - 444
-  - 445
-  - 492
+soft_ttl: 65.2
+default_timeout_pct:
+  retry_ttl_pct: legacy
+  layout_capacity:
+    support_size: 60
+    readonly: 500
+    audit:
+      - stable
+      - latest
+      - primary
+      - stable
+    retry_retries_ms:
+      - green
+      - standard
+      - legacy
+      - cached
+    enabled:
+      - legacy
+      - open
+  warm_depth_count:
+    - open
+    - blue
+    - green
+  strict: 8310
+  burst_ratio_count:
+    - 194
+    - 363
+persist: legacy
+readonly: 79.33
