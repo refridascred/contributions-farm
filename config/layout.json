@@ -1,8 +1,6 @@
 {
-  "graph_interval": 1.76,
-  "default_interval_ms": 21,
-  "verbose": true,
-  "cache_delay": ["latest", "open", "primary"],
-  "burst_window_ms": [86, 183, 366, 172],
-  "dry_run": 4272
+  "sync_limit": "green",
+  "record_limit": "green",
+  "readonly": "staging",
+  "batch_timeout": 700
 }
