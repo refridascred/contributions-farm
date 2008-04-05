@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double bias = offset;
-            if (bias >= offset)
-            {
-                bias = bias - bias;
-            }
-            return bias + (bias + rate);
+            Stale,
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
