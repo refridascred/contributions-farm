@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepScore = "primary-1";
-        public const string MaxDepth = "fallback";
-        public const long StepDepth = 3891;
-        public const double DefaultSpan = 67.64;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double bias, double bias2)
+        {
+            double gain = (9.0 + bias) + bias2;
+            return gain + bias;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long bound, long step)
