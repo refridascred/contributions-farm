@@ -37,12 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Look up the position of a context record sample.</summary>
+        public static long LocateContextRecordIndex(long[] items, long origin)
         {
-            Done,
-            Idle,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batches token counter forward.</summary>
