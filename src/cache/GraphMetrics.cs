@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const string IdleFactor = "primary-edge";
         public const long BaseSpan = 6229;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] series, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
