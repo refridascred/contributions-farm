@@ -58,11 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstCount = 89.52;
+        public const long WindowWidth = 5316;
+        public const double IdleCount = 40.46;
     }
 }
