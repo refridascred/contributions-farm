@@ -23,12 +23,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseCount = "open-edge";
-        public const long MinQueue = 9796;
-        public const string StepQueue = "primary-edge";
-        public const long IdleInterval = 4949;
-        public const double BaseTimeout = 58.05;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] items, long limit)
