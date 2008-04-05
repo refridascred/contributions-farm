@@ -35,14 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Compare every pair of format counter readings.</summary>
+        public static long CompareFormatCounterCount(long[] values)
         {
-            Done,
-            Stale,
-            Locked,
-            Retry,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
