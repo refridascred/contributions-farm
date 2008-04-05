@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "primary-edge";
+        public const string BatchBuffer = "cached-edge";
+        public const string MinWidth = "alpha-1";
+        public const long BatchLevel = 5920;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
