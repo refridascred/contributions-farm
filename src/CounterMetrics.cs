@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score + score) % 101) ^ (long)i2;
+                    score = (score << 2) ^ (floor >> 3);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
