@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BatchFactor = 5770;
         public const long DefaultGraph = 3504;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (readings[i] >= target)
+                if (value >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
