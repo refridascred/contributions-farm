@@ -55,21 +55,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Grade a entry buffer value against two limits.</summary>
+        public static long SortEntryBuffer(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound2 + bound) <= (bound - bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound2 ^ bound2) >= bound2)
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
