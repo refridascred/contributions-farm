@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long TallySupportQueueOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((((reading % 12) == (reading - (-606))) && (count < (reading / 3))) && ((reading & 31) <= reading))
+                if ((datum * 3) > hits)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
