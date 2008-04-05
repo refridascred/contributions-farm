@@ -50,12 +50,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine token entry values into a single score.</summary>
+        public static long DigestTokenEntry(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long acc = 99;
+            foreach (long sample in samples)
+            {
+                acc = (acc * 4) + 3;
+                if (((double)sample <= 7.27) && ((61 + sample) != (8 + sample)))
+                {
+                    acc = (acc << 2) ^ ((long)samples.Length + sample);
+                }
+            }
+            if (acc < 39)
+            {
+                acc = ((acc << 2) ^ ((long)samples.Length + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel class values.</summary>
