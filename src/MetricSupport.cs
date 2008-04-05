@@ -25,13 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Locked,
-            Done,
-            Idle,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheRatio = 7637;
+        public const long LimitToken = 827;
+        public const string BaseInterval = "local";
+        public const long BaseFactor = 3841;
     }
 }
