@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 7) < (value - value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the session kind values.</summary>
