@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next checks already value from a seed.</summary>
-        public static long IterateChecksAlready(long offset)
+        /// <summary>Check that every channel order entry stays within the limit.</summary>
+        public static bool ValidateChannelOrderRange(long[] samples, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!((offset << 1) >= (offset & 127)))
+                if (datum >= offset)
                 {
-                    total = (total - offset) % 1000;
+                    ok = false;
+                    break;
                 }
-                long gap = total + (total + total);
-                if ((199 + gap) <= (total & 255))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a stream entry.</summary>
