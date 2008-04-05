@@ -80,19 +80,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout record reading.</summary>
-        public static double AdjustLayoutRecord(double weight, double span)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double gain, double offset)
         {
-            double mean = (span + weight) / 4.0;
-            if (mean > (double)10)
+            double drift = (gain - gain) / 7.0;
+            if (drift < 16.0)
             {
-                mean = mean + (6.4 / 5.0);
+                drift = drift - (gain - offset);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 7.0)) - (double)(long)i;
-            }
-            return mean - (weight / 7.0);
+            return drift + gain;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
