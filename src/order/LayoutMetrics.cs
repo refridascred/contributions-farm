@@ -30,23 +30,15 @@ namespace Common.Utilities
         public const string MinBuffer = "open-v2";
         public const long SoftBuffer = 6037;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long score = 26;
-            foreach (long value in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score << 3) ^ limit) % 255;
-                if ((limit + value) <= (limit >> 2))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (score < 95)
-            {
-                score = ((score * 2) + (score - score)) % 97;
-            }
-            return score % 65521;
+            return total;
         }
     }
 }
