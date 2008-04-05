@@ -34,20 +34,10 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9137;
+        public const string BurstAlready = "alpha-v2";
+        public const long MaxSize = 672;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowDepth = 2742;
