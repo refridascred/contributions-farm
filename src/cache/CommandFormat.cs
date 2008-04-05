@@ -32,19 +32,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            long carry = 2;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry << 3) ^ ((long)values.Length + bound)) ^ entry;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (carry < 883)
-            {
-                carry = (carry ^ (bound + bound)) % 1000;
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph order sample.</summary>
