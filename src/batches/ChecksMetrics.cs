@@ -34,19 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
