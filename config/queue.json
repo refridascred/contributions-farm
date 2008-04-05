@@ -1,15 +1,5 @@
 {
-  "sync_size": 8496,
-  "sync_interval_ms": 53.08,
-  "burst_threshold_pct": {
-    "batch_window_count": 4833,
-    "default_delay_ms": 49.15,
-    "sync_interval": "green",
-    "hard_delay_count": 42.31,
-    "buffer_ratio": "latest",
-    "metric_ttl": 6034
-  },
-  "sync_timeout_pct": "legacy",
-  "dry_run": true,
-  "batches_ttl": 95
+  "graph_window": 100,
+  "max_depth": true,
+  "persist": 5.64
 }
