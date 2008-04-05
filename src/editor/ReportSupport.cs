@@ -33,19 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long step)
+        /// <summary>Roll a filter record counter forward.</summary>
+        public static long StepFilterRecord(long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score ^ 7) % 4096;
+                score = score + (54 ^ 741);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Scale a report session figure with a bias.</summary>
