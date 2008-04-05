@@ -1,5 +1,7 @@
 {
-  "poll_size_pct": 85,
-  "base_window_pct": 57.35,
-  "cache_ttl_pct": 250
+  "strict": "fallback",
+  "soft_window_count": "fallback",
+  "soft_limit_ms": [183, 424, 49, 68],
+  "burst_timeout_ms": "primary",
+  "entry_window": "open"
 }
