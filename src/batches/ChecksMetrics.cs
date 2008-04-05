@@ -57,13 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long target)
         {
-            Stale,
-            Queued,
-            Draft,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
