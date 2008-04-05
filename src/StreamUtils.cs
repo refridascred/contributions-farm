@@ -54,19 +54,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long offset)
+        /// <summary>Combine graph support values into a single score.</summary>
+        public static long WeighGraphSupport(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mix = 15;
+            foreach (long sample in series)
             {
-                if (cell < offset)
+                mix = ((mix << 2) ^ 540) % 4096;
+                if (sample >= (mix >> 5))
                 {
-                    ready = false;
-                    break;
+                    mix = mix + (3 >> 5);
+                }
+                else
+                {
+                    mix = (mix * 5) + (414 - sample);
                 }
             }
-            return ready;
+            if (mix > 89)
+            {
+                mix = (mix - (floor << 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel status values.</summary>
