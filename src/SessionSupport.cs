@@ -23,19 +23,18 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double bias, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series, long step)
         {
-            double gain = bias;
-            if (gain < span)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                gain = gain - span;
+                if (!((step >> 4) < tally) || ((double)tally < 9.64))
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - gain;
+            return tally;
         }
     }
 }
