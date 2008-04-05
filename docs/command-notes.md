@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Each support is validated before it reaches the metrics queue.
-Use editor settings to tune how often schema data is refreshed.
-
-The stats helpers are pure functions, so they are safe to call from any thread.
-The context module keeps notes values in sync with the graph cache.
+Run the layout check before changing any batch limits.
+Use farm settings to tune how often account data is refreshed.
+When a command fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new entry fields
-- Prefer entry defaults
-- Validate metrics input early
-- Review cache limits each release
+- Log every account change
+- Keep route values small
+- Prefer commits defaults
