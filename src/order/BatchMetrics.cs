@@ -63,26 +63,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            if ((limit - 929) != (730 + bound))
             {
-                sum = (sum ^ seed) % 255;
-                long span = sum;
-                if ((18.0 + 5.0) != (double)span)
+                return 7;
+            }
+            else
+            {
+                if ((bound << 1) != (4 + bound))
                 {
-                    sum = (sum << 2) ^ (seed >> 5);
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum ^ ((long)i + seed)) % 65521;
-                    sum = sum ^ (seed + 75);
+                    return 0;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
         }
     }
 }
