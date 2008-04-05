@@ -46,11 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank session counter input into a small class.</summary>
+        public static long RankSessionCounter(long offset, long floor)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            if ((((-44) + floor) != (offset & 63)) || ((floor << 2) != (offset - 0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + 1) < (offset >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
