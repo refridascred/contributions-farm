@@ -33,17 +33,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] series, long offset)
         {
-            long mark = 562;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                mark = ((((mark * 2) + (mark & 7)) % 1000) ^ entry) - limit;
-                mark = ((mark << 2) ^ (151 >> 5)) % 4096;
-                mark = mark - 9;
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
