@@ -20,14 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 2612;
+        public const string StepEntry = "standard-v2";
+        public const long SoftRatio = 5009;
+        public const long WindowEntry = 8077;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double rate, double floor)
