@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double MinTimeout = 55.96;
         public const long BatchChecks = 5635;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double mean = span + 2.52;
-            if (mean > (span * 5.3))
-            {
-                mean = mean - ratio;
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - (2.54 - ratio);
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Rank session counter input into a small class.</summary>
