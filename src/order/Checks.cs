@@ -61,11 +61,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Draft,
         }
     }
 }
