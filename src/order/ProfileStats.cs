@@ -47,14 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate metrics already samples.</summary>
+        public static long DigestMetricsAlready(long[] levels)
         {
-            Queued,
-            Retry,
-            Stale,
-            Active,
-            Locked,
+            long total = 8;
+            foreach (long cell in levels)
+            {
+                if ((total * 3) < (total ^ 325))
+                {
+                    total = ((total * 2) + (total + (long)levels.Length)) - cell;
+                }
+                else
+                {
+                    total = total + total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the counter state values.</summary>
