@@ -1,5 +1,8 @@
 # githubfarm settings
-cache_limit: 1.36
-hard_depth: 1024
-flush_window_s: 37
-entry_timeout: true
+max_ttl_s: 32
+flush_size: 72.46
+poll_retries_count: true
+hard_ttl_s:
+  - standard
+  - local
+burst_timeout: green
