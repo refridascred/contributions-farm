@@ -23,15 +23,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate cache stream samples.</summary>
-        public static long WeighCacheStream(long[] data, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long sum = 20;
-            foreach (long reading in data)
-            {
-                sum = ((sum + (bound * 2)) % 4096) ^ reading;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
