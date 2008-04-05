@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a editor reading.</summary>
