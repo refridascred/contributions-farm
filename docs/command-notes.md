@@ -1,15 +1,14 @@
 # Command notes
 
-Keep channel and report names short and lowercase.
-Each route is validated before it reaches the counter queue.
-Use stats settings to tune how often route data is refreshed.
+Run the contributi check before changing any format limits.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-A metrics that stays idle for too long is moved to the checks list.
-Use channel settings to tune how often entry data is refreshed.
+Each editor is validated before it reaches the order queue.
+Each filter is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep already values small
-- Log every githubfarm change
-- Prefer account defaults
-- Review cache limits each release
+- Review profile limits each release
+- Validate entry input early
+- Keep schema values small
+- Prefer contributi defaults
