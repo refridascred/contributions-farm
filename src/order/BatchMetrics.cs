@@ -23,22 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstLevel = 1043;
+        public const long MinTimeout = 920;
+        public const long IdleCommand = 6482;
+        public const long CacheCommand = 2101;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] readings)
