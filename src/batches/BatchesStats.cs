@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long bound)
         {
-            long sum = 27;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in data)
             {
-                sum = ((((sum << 2) ^ sum) % 65521) ^ reading) - offset;
-                sum = sum - (585 * 3);
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
