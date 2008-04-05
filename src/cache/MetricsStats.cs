@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            long mark = 14;
-            foreach (long datum in values)
+            double bias2 = bias;
+            if (bias2 >= (double)9)
             {
-                mark = ((mark ^ (77 - 983)) % 4096) ^ datum;
+                bias2 = (bias2 - (double)44) - ratio;
             }
-            if (mark > 8)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return bias2 - (bias2 - 3.07);
         }
 
         /// <summary>Hold a farm stats.</summary>
