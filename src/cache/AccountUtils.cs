@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (tally >= (302 + tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a notes record.</summary>
