@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 8;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 3) ^ datum) + floor;
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
