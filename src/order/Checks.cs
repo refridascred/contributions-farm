@@ -34,11 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinTimeout = 4183;
-        public const long LimitCache = 227;
-        public const long BatchSize = 9697;
-        public const long StepCache = 7912;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "fallback-edge";
+        public const double BaseCluster = 11.13;
+        public const long BaseInterval = 4669;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
