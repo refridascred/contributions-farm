@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Combine queue filter values into a single score.</summary>
-        public static long TotalQueueFilter(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long carry = 6;
-            foreach (long datum in levels)
-            {
-                if ((carry + datum) > carry)
-                {
-                    carry = (carry << 3) ^ (carry % 10);
-                }
-            }
-            return carry % 1000;
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
