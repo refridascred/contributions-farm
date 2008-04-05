@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 49;
-        public const long BatchSize = 4437;
-        public const double BurstSize = 97.46;
-        public const double DefaultTools = 85.51;
-        public const string BurstTools = "primary-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepScore = "primary-1";
+        public const string MaxDepth = "fallback";
+        public const long StepDepth = 3891;
+        public const double DefaultSpan = 67.64;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long bound, long step)
