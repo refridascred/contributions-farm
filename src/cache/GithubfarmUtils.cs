@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long HardMetric = 5963;
         public const long BurstSpan = 6232;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool VerifyAccountRouteRange(long[] values, long target)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
