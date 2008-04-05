@@ -57,19 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry stats readings against a bound.</summary>
-        public static bool CheckEntryStatsLimits(long[] readings, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
