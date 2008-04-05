@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((-204) << 3) != (tally - reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 9423;
+        public const long IdleSpan = 7948;
+        public const long MinQueue = 5041;
+        public const double RetrySpan = 98.34;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 9121;
