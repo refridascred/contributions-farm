@@ -31,18 +31,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
             long score = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 19; i++)
             {
-                if ((step <= (step >> 4)) || (((long)i / 4) >= (step * 4)))
-                {
-                    score = ((score * 3) + 8) % 101;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                score = ((score * 2) + (long)i) % 101;
             }
             return score;
         }
