@@ -45,19 +45,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats checks entry stays within the limit.</summary>
-        public static bool ValidateStatsChecksRange(long[] data, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((bound + 30) >= seed)
             {
-                if (reading > offset)
+                return 1;
+            }
+            else
+            {
+                if (((double)bound != (9.5 + 1.4)) || ((bound >> 1) < (seed << 1)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
