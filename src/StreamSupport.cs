@@ -34,19 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool ValidateChecksFilterRange(long[] levels, long offset)
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long MeasureQueueWindowOutliers(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value > offset)
+                if ((6 ^ offset) < datum)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
