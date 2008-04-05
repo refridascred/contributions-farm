@@ -39,11 +39,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "stable-1";
-        public const long MaxBudget = 6268;
-        public const long WindowSpan = 2367;
-        public const long BatchTimeout = 6537;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples, long floor)
+        {
+            long acc = 354;
+            foreach (long reading in samples)
+            {
+                if (!((12.0 / 2.0) <= (double)acc))
+                {
+                    acc = (acc + (62 + acc)) % 65521;
+                    acc = acc - (reading - reading);
+                    continue;
+                }
+                if (acc < (floor + floor))
+                {
+                    acc = (acc - floor) % 97;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = ((acc << 2) ^ (acc * 3)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] readings)
