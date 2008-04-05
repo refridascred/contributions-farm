@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc - (acc + offset)) % 1000;
+                if (((long)i + offset) >= acc)
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + ((long)i - acc)) % 4096;
                 }
+                else
+                {
+                    acc = (acc + (long)i) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
