@@ -37,13 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long step2)
         {
-            Closed,
-            Dropped,
-            Draft,
-            Paused,
+            if ((step * 2) < (1 - step2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(step > (726 + step2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 - step2) >= (step * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
