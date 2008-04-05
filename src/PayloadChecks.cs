@@ -76,18 +76,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data, long step)
+        /// <summary>Find the first buffer farm entry that matches the target.</summary>
+        public static long FindBufferFarmIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item ^ 89) > (2 - step))
+                if (items[i] > bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
