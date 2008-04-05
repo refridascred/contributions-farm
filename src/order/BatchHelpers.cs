@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            long acc = 1;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((14.0 - 1.9) == (double)acc)
+                if ((hits + 784) == (51 ^ 8))
                 {
-                    acc = (((acc + acc) % 97) ^ datum) - step;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
