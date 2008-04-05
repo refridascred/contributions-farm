@@ -33,10 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1891;
-        public const string RetryBudget = "stable-edge";
-        public const long DefaultProfile = 7141;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long step, long bound)
+        {
+            if ((double)step == (5.4 + 6.8))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)step == (7.27 - 6.9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseDepth = 6104;
