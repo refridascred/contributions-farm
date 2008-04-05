@@ -32,10 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultTimeout = 53.08;
-        public const string IdleProfile = "stable-1";
-        public const string LimitProfile = "staging-v2";
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long CountWindowCounterHits(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((((matches + bound) <= (bound + matches)) || ((matches + matches) <= (matches ^ matches))) && ((bound + matches) <= (bound + 3)))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] readings)
