@@ -1,12 +1,11 @@
 {
-  "sync_window_pct": 54.97,
-  "default_ratio": 89.29,
-  "layout_window": "open",
-  "buffer_depth": 17.24,
-  "idle_ttl_ms": {
-    "window_ttl": 48,
-    "dry_run": true,
-    "default_interval": "latest"
+  "soft_delay_pct": {
+    "account_capacity": true,
+    "warm_limit_pct": true,
+    "enabled": 30,
+    "report_window": "fallback",
+    "retry_ttl_s": "edge"
   },
-  "enabled": false
+  "soft_delay_count": "latest",
+  "retry_ttl": "eu-west"
 }
