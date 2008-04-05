@@ -47,13 +47,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            double weight = (floor / 8.0) * 6.33;
+            if (weight >= (floor / 7.0))
+            {
+                weight = (weight + floor) + bias;
+            }
+            else
+            {
+                weight = weight - 16.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight / 8.0)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Accumulate batch samples.</summary>
