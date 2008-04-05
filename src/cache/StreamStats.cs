@@ -15,32 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long target)
         {
-            long delta = step - target;
-            if ((delta & 63) < (step - step))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta >> 4) <= delta)
+                if (count >= (target - cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.3 <= (double)target) && ((step * 2) > (target << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
