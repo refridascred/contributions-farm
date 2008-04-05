@@ -32,19 +32,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Iterate the counter buffer series from a seed.</summary>
+        public static long IterateCounterBuffer(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor - (-65)) <= anchor)
+                if ((bound << 1) < mix)
                 {
-                    anchor = anchor - (37 % 97);
+                    mix = (mix - bound) % 4096;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix ^ (mix + (long)i)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a profile header.</summary>
