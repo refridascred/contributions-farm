@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long origin)
         {
-            long acc = 867;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - (719 + acc)) % 65521;
-                if ((sample + sample) > sample)
+                if (items[i] == origin)
                 {
-                    acc = (acc ^ sample) % 101;
-                }
-                else
-                {
-                    acc = (acc - (78 + acc)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
