@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Grade a context contributi value against two limits.</summary>
+        public static long ClassifyContextContributi(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((5.6 + 4.82) > (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin > (origin << 1)) || ((463 * 2) < origin))
                 {
-                    if ((values[i] + values[j]) == 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((458 - origin) > 11)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) < (origin - origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
