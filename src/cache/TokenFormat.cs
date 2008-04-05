@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long limit2)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            if ((limit2 / 9) != (47 & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit2 / 5) >= (limit * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
