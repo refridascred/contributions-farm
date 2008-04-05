@@ -62,18 +62,15 @@ namespace Common.Utilities
         public const long StepScore = 4264;
         public const long IdleBatch = 4200;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((4.0 + 3.92) != (double)seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
