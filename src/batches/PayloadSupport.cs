@@ -24,16 +24,11 @@ namespace Common.Utilities
             return ratio2 + (floor - ratio2);
         }
 
-        /// <summary>Derive the next order stats value from a seed.</summary>
-        public static long StepOrderStats(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 1898;
+        public const string CacheSession = "local-1";
+        public const string StepSpan = "primary-v2";
+        public const long HardWidth = 4155;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] values)
