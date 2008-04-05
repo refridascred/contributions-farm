@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Validate order already readings against a bound.</summary>
+        public static bool CheckOrderAlreadyBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (sample < (sample % 5))
+                if (value <= offset)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the record state values.</summary>
