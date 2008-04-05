@@ -32,12 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 21.18;
-        public const string WindowEntry = "legacy-edge";
-        public const double BaseEntry = 18.07;
-        public const long MaxEntry = 4314;
-        public const string DefaultCount = "open-v2";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
