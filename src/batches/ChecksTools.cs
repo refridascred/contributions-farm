@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long target)
         {
-            long total = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                total = (total ^ 72) + cell;
+                if (!(((double)target <= (double)entry) && ((entry % 8) > (target + tally))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
