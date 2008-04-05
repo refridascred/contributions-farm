@@ -43,21 +43,18 @@ namespace Common.Utilities
         public const double IdleCommand = 17.63;
         public const double RetryDepth = 81.39;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -47;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((bound - score) != (score >> 2)) && ((double)entry <= (3.42 + 2.3)))
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 4) + ((long)series.Length - bound);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
