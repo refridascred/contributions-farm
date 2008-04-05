@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 70;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result - seed) % 101) ^ reading;
+                result = (result ^ (58 / 4)) % 97;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of format entries.</summary>
