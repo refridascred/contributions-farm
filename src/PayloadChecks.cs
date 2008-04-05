@@ -86,18 +86,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                if (tally < (tally >> 2))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                mark = ((mark * 4) + (mark + cell)) % 65521;
+                mark = ((mark << 3) ^ (mark / 6)) % 4096;
             }
-            return tally;
+            return mark;
         }
     }
 }
