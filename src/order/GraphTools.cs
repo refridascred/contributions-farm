@@ -35,11 +35,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultCount = 2692;
-        public const long SoftSpan = 8796;
-        public const long SoftDepth = 5877;
-        public const double CacheBuffer = 51.03;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
