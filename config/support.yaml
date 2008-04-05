@@ -1,9 +1,24 @@
 # support settings
-channel_capacity: stable
-burst_delay_count: 7062
-record_threshold: 60
-flush_window_pct:
-  checks_size: false
-  poll_depth_pct: blue
-  strict: blue
-  session_retries: true
+min_ttl_count:
+  verbose: 60
+  dry_run: staging
+  warm_threshold_ms: 30
+  readonly: false
+  persist:
+    - 87
+    - 242
+    - 152
+graph_limit: 97.35
+base_window: local
+report_size:
+  - 313
+  - 395
+  - 296
+  - 323
+schema_capacity: true
+queue_limit:
+  retry_retries_pct: green
+  compress: 37
+  record_depth: open
+  min_depth: local
+  queue_timeout: 9059
