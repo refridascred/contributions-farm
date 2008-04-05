@@ -36,22 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long AuditRouteFarmHits(long[] items)
+        /// <summary>Classify a cluster metric pair into a bucket.</summary>
+        public static long GradeClusterMetric(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long delta = origin - seed;
+            if (((seed + 2) <= (4 * 3)) && (origin <= (seed ^ delta)))
             {
-                if (((double)79 >= (double)entry) && (entry <= (370 * 3)))
+                return 6;
+            }
+            else
+            {
+                if ((delta + delta) != ((-6) * 4))
                 {
-                    hits = hits + 2;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (delta < (origin + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
