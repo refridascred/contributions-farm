@@ -69,19 +69,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell != target)
+                anchor = anchor - (bound + anchor);
+                if (!((bound > anchor) || ((anchor + anchor) <= anchor)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - bound) % 101;
+                    anchor = (anchor + anchor) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
     }
 }
