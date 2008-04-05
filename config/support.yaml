@@ -1,6 +1,12 @@
 # support settings
-layout_ttl:
-  - strict
-  - standard
-editor_window: strict
-retry_threshold_ms: 89.6
+default_window_pct: true
+dry_run:
+  - eu-west
+  - staging
+  - edge
+hard_window_pct:
+  - 324
+  - 76
+stats_threshold: staging
+min_window: 5274
+min_interval_s: 97
