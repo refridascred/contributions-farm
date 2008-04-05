@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long IdleFactor = 5735;
         public const long BatchInterval = 3844;
 
-        /// <summary>Project the next metric payload value.</summary>
-        public static double SmoothMetricPayload(double gain, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] series)
         {
-            double rate = floor;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                rate = (rate + (gain / 9.0)) + (double)(long)i;
+                if (count <= (count + 534))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate + (gain / 7.0);
+            return count;
         }
 
         /// <summary>Digest a series of support editor entries.</summary>
