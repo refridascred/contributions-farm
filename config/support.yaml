@@ -1,14 +1,7 @@
 # support settings
-layout_ratio:
-  - 358
-  - 405
-retry_capacity_s: 516
-checks_window:
-  batches_ratio: 500
-  session_threshold: blue
-  warm_ttl_pct: 5.58
-  strict: false
-stream_size:
-  - 223
-  - 214
-  - 159
+burst_window_ms: 79.9
+flush_limit_s: strict
+audit:
+  - strict
+  - fallback
+  - eu-west
