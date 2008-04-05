@@ -14,18 +14,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((5.48 + 4.0) <= (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                carry = ((carry << 3) ^ (6 + (-2))) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the order session entries that pass the check.</summary>
