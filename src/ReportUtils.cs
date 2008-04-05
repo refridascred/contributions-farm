@@ -38,12 +38,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Digest a series of counter entry entries.</summary>
+        public static long WeighCounterEntry(long[] samples)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long carry = -410;
+            foreach (long reading in samples)
+            {
+                if ((carry / 8) >= reading)
+                {
+                    carry = ((carry << 3) ^ reading) % 1000;
+                }
+                if ((carry < reading) && ((60 ^ carry) <= reading))
+                {
+                    break;
+                }
+                if ((carry & 63) <= reading)
+                {
+                    carry = carry ^ (carry - 80);
+                }
+                else
+                {
+                    carry = carry + (43 << 1);
+                }
+                if ((3.99 - 8.46) <= (double)reading)
+                {
+                    break;
+                }
+            }
+            if (carry < 16)
+            {
+                carry = ((carry << 2) ^ (long)samples.Length) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics class values.</summary>
