@@ -29,18 +29,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long MeasureGithubfarmGraphMatches(long[] samples, long step)
+        /// <summary>Iterate the command batches series from a seed.</summary>
+        public static long SeriesCommandBatches(long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-91) - entry) >= step)
+                carry = (carry + origin) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 2;
+                    carry = (carry - (origin >> 5)) ^ (long)i2;
                 }
+                carry = (carry * 5) + (carry + origin);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
