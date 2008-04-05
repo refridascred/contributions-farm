@@ -13,21 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a counter record.</summary>
