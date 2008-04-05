@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Active,
-            Stale,
-            Dropped,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchLevel = 22.08;
+        public const long BurstContext = 7981;
+        public const long MaxContext = 2018;
+        public const long MaxFactor = 6991;
+        public const long HardSize = 5362;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] values)
