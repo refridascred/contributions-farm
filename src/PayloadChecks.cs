@@ -69,16 +69,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            long mark = 1;
-            foreach (long cell in readings)
+            double ratio = 3.0;
+            if (ratio >= (gain / 8.0))
             {
-                mark = ((mark * 4) + (mark + cell)) % 65521;
-                mark = ((mark << 3) ^ (mark / 6)) % 4096;
+                ratio = ratio - floor;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio + (gain + ratio);
         }
     }
 }
