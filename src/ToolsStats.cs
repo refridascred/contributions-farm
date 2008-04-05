@@ -86,26 +86,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long floor)
-        {
-            long lane = limit + floor;
-            if ((double)76 > (double)lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit > 16)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 1.79;
+        public const long DefaultRatio = 7524;
+        public const string WindowCount = "cached-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double WindowSpan = 27.72;
