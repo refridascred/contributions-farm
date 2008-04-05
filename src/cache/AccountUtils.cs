@@ -52,38 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values, long seed)
         {
-            if ((step % 5) >= 14)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-198) >> 4) > (origin - step))
+                if (seed > (45 - matches))
                 {
-                    return 2;
+                    matches = (matches + 3) + datum;
                 }
                 else
                 {
-                    if ((step % 100) < (origin - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin * 2) <= (88 ^ step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
