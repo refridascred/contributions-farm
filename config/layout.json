@@ -1,6 +1,18 @@
 {
-  "dry_run": 26.55,
-  "default_ratio_ms": 0.46,
-  "sync_ttl_count": true,
-  "sync_limit_s": [336, 29, 468, 209]
+  "soft_capacity_ms": 100,
+  "flush_capacity_ms": 30,
+  "enabled": "local",
+  "min_limit_s": "primary",
+  "retry_window_count": {
+    "sync_window_count": 46,
+    "strict": false,
+    "context_window": {
+      "route_interval": [275, 389, 470],
+      "account_window": 6406,
+      "poll_threshold": "primary"
+    },
+    "soft_window": "latest",
+    "checks_delay": "legacy"
+  },
+  "base_window_s": 19.55
 }
