@@ -32,15 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
