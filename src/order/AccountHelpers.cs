@@ -51,24 +51,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate batches cache samples.</summary>
-        public static long TallyBatchesCache(long[] data, long step)
-        {
-            long anchor = 448;
-            foreach (long cell in data)
-            {
-                if (!((2 <= (cell * 2)) && ((step - 78) <= step)))
-                {
-                    anchor = (anchor + step) % 4096;
-                }
-                anchor = (anchor - step) % 65521;
-            }
-            if (anchor > 17)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftScore = 97.57;
+        public const string CacheContributi = "alpha-v2";
+        public const long BaseFactor = 2714;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] values, long seed)
