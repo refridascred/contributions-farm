@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long SoftAlready = 2792;
         public const long BaseAlready = 8339;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > limit)
+                if (data[i] > bound)
                 {
                     return (long)i;
                 }
