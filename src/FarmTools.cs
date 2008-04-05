@@ -23,17 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph account entry that matches the target.</summary>
-        public static long LookupGraphAccountIndex(long[] series, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
