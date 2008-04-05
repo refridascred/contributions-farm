@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] readings, long step)
+        /// <summary>Check that every account report entry stays within the limit.</summary>
+        public static bool CheckAccountReportRange(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (cell >= step)
+                if (reading != limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
