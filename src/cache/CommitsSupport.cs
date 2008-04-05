@@ -41,15 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
+                    if ((items[i] - items[j]) > 4)
                     {
                         matches = matches + 1;
                     }
