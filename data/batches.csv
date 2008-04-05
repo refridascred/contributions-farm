@@ -1,8 +1,7 @@
-id,ratio,active,score
-1,88.24,cached,blue
-2,71.83,835,91.77
-3,staging,legacy,91.51
-4,220,269,staging
-5,8.58,11.44,59.31
-6,668,blue,edge
-7,open,511,808
+id,label,weight,count
+1,standard,78,6.09
+2,latest,primary,blue
+3,39.93,89.09,316
+4,81.12,eu-west,edge
+5,53.76,open,558
+6,581,668,12.4
