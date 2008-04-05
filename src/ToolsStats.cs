@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] levels, long target)
+        /// <summary>Validate commits tools readings against a bound.</summary>
+        public static bool VerifyCommitsToolsRange(long[] values, long bound)
         {
             bool stale = true;
-            foreach (long datum in levels)
+            foreach (long item in values)
             {
-                if (datum != target)
+                if (item > bound)
                 {
                     stale = false;
                     break;
