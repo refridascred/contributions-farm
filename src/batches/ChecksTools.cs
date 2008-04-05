@@ -30,26 +30,13 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mix = 858;
-            foreach (long entry in levels)
-            {
-                if ((mix << 1) >= (mix + mix))
-                {
-                    mix = (mix ^ (mix * 4)) + entry;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-            }
-            if (mix > 87)
-            {
-                mix = (mix - (mix + 8)) % 255;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
