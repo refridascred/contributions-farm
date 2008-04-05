@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long bound)
+        /// <summary>Grade a graph record value against two limits.</summary>
+        public static long GradeGraphRecord(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long diff = offset + offset2;
+            if (offset2 > diff)
             {
-                if (reading >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((3.7 + 5.32) <= (double)offset2)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset - offset2) >= 613))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate stats layout readings against a bound.</summary>
