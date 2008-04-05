@@ -33,12 +33,39 @@ namespace Common.Utilities
             return load - (double)(-273);
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            long next = target - limit;
+            if (!((743 * 3) < (limit & 127)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit <= 9.85) || ((2.0 / 2.0) < (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit > (limit + next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((next ^ target) < (limit << 2)) && ((4 % 60) == (3 ^ next)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
