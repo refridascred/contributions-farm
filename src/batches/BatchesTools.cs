@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((matches - 0) > (reading + matches)) || ((matches - 53) > reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8699;
+        public const double HardRatio = 67.4;
+        public const long RetryReport = 373;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long origin)
