@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batch metrics entries that pass the check.</summary>
-        public static long CountBatchMetricsGaps(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((2.7 - 3.5) > (double)reading) && (seen >= (seen % 10)))
+                if ((origin << 2) <= origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
