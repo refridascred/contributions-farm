@@ -63,15 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route metrics counter forward.</summary>
-        public static long DeriveRouteMetrics(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((datum > (datum ^ hits)) && (((datum & 1) < (hits & 1)) || ((datum << 3) > hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
