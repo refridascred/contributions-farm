@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchDepth = "stable-v2";
-        public const double LimitSpan = 46.1;
-        public const double MinTimeout = 55.96;
-        public const long BatchChecks = 5635;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum * 4) == (seen & 7))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
