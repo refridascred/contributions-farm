@@ -41,23 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((3 + bound) > (result + 73))
+                if (entry < origin)
                 {
-                    result = result - (result * 5);
+                    stale = false;
+                    break;
                 }
-                if ((8.04 * 3.0) == (double)bound)
-                {
-                    result = (result * 3) + ((long)i << 2);
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
     }
 }
