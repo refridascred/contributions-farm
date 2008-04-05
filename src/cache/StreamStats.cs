@@ -51,15 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double span)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double scale = span;
-            if (scale <= (double)74)
-            {
-                scale = scale + span;
-            }
-            return scale - (weight - span);
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
