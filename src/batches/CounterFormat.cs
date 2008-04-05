@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Fold a list of record readings.</summary>
