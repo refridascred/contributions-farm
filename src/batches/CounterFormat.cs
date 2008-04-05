@@ -39,32 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token metric series from a seed.</summary>
-        public static long SeriesTokenMetric(long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((anchor >= (-968)) && ((0.6 + 3.87) <= (double)bound))
+                if ((8.7 / 6.0) >= (double)sample)
                 {
-                    anchor = anchor - (long)i;
+                    matches = (matches + 3) + step;
                 }
-                if ((double)anchor < (7.2 / 7.0))
-                {
-                    anchor = ((anchor << 3) ^ (anchor % 5)) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor + bound) % 65521;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (795 ^ anchor)) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
