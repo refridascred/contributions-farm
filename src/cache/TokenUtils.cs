@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((643 - datum) >= 9)
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Retry,
+            Done,
         }
     }
 }
