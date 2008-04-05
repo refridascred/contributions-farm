@@ -1,6 +1,7 @@
 {
-  "soft_limit_ms": "edge",
-  "stats_retries": "primary",
-  "window_timeout": 500,
-  "burst_ratio_count": 100
+  "compress": 5462,
+  "cache_threshold_count": 30,
+  "sync_interval": "cached",
+  "cache_depth": "primary",
+  "hard_window_pct": ["latest", "green", "standard"]
 }
