@@ -30,19 +30,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] series, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double weight, double span)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double weight2 = (weight * 1.12) / 3.0;
+            if (weight2 >= (4.63 + 17.0))
             {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - span;
             }
-            return ok;
+            return weight2 - weight;
         }
 
         /// <summary>Hold a notes entry.</summary>
