@@ -16,13 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long limit)
         {
-            Paused,
-            Synced,
-            Draft,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many command report samples are out of range.</summary>
