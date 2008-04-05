@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstTimeout = 8049;
-        public const long MinAccount = 4444;
-        public const long MaxAccount = 5428;
-        public const double IdleAccount = 88.75;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((((item & 7) != (390 + limit)) || (item < (868 * 2))) || ((4 / 2) <= (item % 60)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
