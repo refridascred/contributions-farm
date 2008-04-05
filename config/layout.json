@@ -1,12 +1,8 @@
 {
-  "metric_threshold": "latest",
-  "persist": {
-    "batch_capacity": false,
-    "batches_retries": 8734,
-    "tools_delay": [349, 1, 346, 24]
-  },
-  "stats_ttl": [32, 98],
-  "warm_size_count": 23.9,
-  "cache_retries": ["blue", "standard"],
-  "max_ratio_pct": ["legacy", "green", "strict", "standard"]
+  "idle_capacity": 14.82,
+  "base_limit": ["green", "strict"],
+  "stats_ttl": 30,
+  "order_timeout": "eu-west",
+  "idle_delay": [164, 447],
+  "idle_ttl_ms": true
 }
