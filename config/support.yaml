@@ -1,13 +1,19 @@
 # support settings
-warm_size_count:
-  - 16
-  - 106
-  - 54
-retry_interval_pct: open
-strict:
-  - 30
-  - 289
-  - 159
-  - 231
-hard_retries_s: local
-default_depth_ms: strict
+compress:
+  flush_depth_pct: 100
+  enabled: stable
+  warm_depth: 41
+  poll_interval_count:
+    default_size: 1651
+    dry_run: 66.92
+    metrics_ttl:
+      - fallback
+      - strict
+    hard_ratio_ms: 250
+    batch_limit: 26.32
+    channel_limit: 2834
+  audit: true
+audit:
+  - 282
+  - 261
+burst_timeout: false
