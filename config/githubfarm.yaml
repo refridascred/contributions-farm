@@ -1,9 +1,12 @@
 # githubfarm settings
-notes_window: true
-account_interval:
-  - 330
-  - 284
-  - 283
-  - 462
-editor_retries: fallback
-tools_limit: strict
+stats_timeout:
+  idle_interval_s: stable
+  context_retries: 3598
+  counter_retries: eu-west
+  poll_size_s: 60
+  enabled: 81.06
+  poll_interval_pct: 500
+strict: 10
+poll_capacity: cached
+default_threshold: 60
+idle_window: staging
