@@ -16,12 +16,12 @@ namespace Common.Utilities
             return rate - (gain - 7.5);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit graph farm readings against a rule.</summary>
