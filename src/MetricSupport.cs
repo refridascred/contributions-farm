@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Rank contributi batches input into a small class.</summary>
+        public static long BucketContributiBatches(long bound, long target)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long lane = bound - target;
+            if ((lane / 9) == (bound + lane))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)lane <= (double)86) || (lane >= (target + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
