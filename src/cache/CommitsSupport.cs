@@ -25,24 +25,12 @@ namespace Common.Utilities
         public const long BaseSpan = 7221;
         public const long BatchPayload = 2614;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double span)
-        {
-            double drift = span + (double)373;
-            if (drift < 2.49)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + 2.18;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - (span * 9.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "cached-v2";
+        public const long CacheDepth = 1995;
+        public const double LimitCluster = 22.95;
+        public const double StepSpan = 84.86;
+        public const long DefaultDepth = 3050;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
