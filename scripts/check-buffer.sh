@@ -12,6 +12,5 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in staging blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=221
+log "limit is ${BUFFER_LIMIT}"
