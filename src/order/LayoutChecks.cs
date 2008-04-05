@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            long mix = 90;
-            foreach (long value in items)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((((mix * 3) + ((long)i % 97)) % 255) ^ value) + step;
-                }
-                mix = (mix ^ (705 * 3)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
