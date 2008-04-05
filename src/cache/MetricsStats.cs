@@ -37,11 +37,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 4215;
-        public const long MinLevel = 2826;
-        public const double IdleCommand = 17.63;
-        public const double RetryDepth = 81.39;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count - item) < (item ^ item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] series, long bound)
