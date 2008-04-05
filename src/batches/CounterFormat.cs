@@ -12,38 +12,32 @@ namespace Common.Utilities
         public const long MinFactor = 4726;
         public const long CacheAlready = 5523;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long seed, long bound)
+        /// <summary>Iterate the token metric series from a seed.</summary>
+        public static long SeriesTokenMetric(long bound)
         {
-            if ((bound & 15) == (seed + bound))
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + bound) <= (799 * 3))
+                if ((anchor >= (-968)) && ((0.6 + 3.87) <= (double)bound))
                 {
-                    return 5;
+                    anchor = anchor - (long)i;
+                }
+                if ((double)anchor < (7.2 / 7.0))
+                {
+                    anchor = ((anchor << 3) ^ (anchor % 5)) % 4096;
+                    break;
                 }
                 else
                 {
-                    if ((seed << 1) > (-51))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound < (54 + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = (anchor + bound) % 65521;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (795 ^ anchor)) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Hold a report record.</summary>
