@@ -33,11 +33,27 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of cluster batches readings.</summary>
+        public static long TotalClusterBatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long mix = 610;
+            foreach (long cell in values)
+            {
+                if ((cell & 127) <= (mix + mix))
+                {
+                    mix = mix - (mix + cell);
+                    mix = mix - (long)values.Length;
+                }
+                if ((mix + mix) < (cell * 4))
+                {
+                    mix = ((mix * 5) + cell) % 101;
+                }
+            }
+            if (mix < 469)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
