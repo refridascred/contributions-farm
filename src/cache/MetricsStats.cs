@@ -50,18 +50,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (76 < entry)
+                if (levels[i] > bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
