@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long AuditStreamFilterMatches(long[] levels, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((((long)levels.Length >= floor) && ((8.9 - 7.8) >= (double)count)) || ((339 >= (floor >> 1)) || (((-886) << 3) < reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
