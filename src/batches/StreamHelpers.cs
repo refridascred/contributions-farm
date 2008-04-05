@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item + (long)series.Length) < (94 % 24))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
