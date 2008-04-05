@@ -34,13 +34,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long limit)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = 29;
+            foreach (long reading in samples)
+            {
+                if ((double)anchor > 12.0)
+                {
+                    anchor = ((anchor ^ (limit ^ 89)) % 101) + reading;
+                }
+            }
+            if (anchor < 54)
+            {
+                anchor = anchor ^ 287;
+            }
+            return anchor;
         }
     }
 }
