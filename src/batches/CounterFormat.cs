@@ -23,17 +23,22 @@ namespace Common.Utilities
         public const long IdleEditor = 1606;
         public const double HardScore = 6.98;
 
-        /// <summary>Find the first checks order entry that matches the target.</summary>
-        public static long FindChecksOrderIndex(long[] series, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 30;
+            foreach (long item in values)
             {
-                if (series[i] >= limit)
+                if (!(item > carry))
                 {
-                    return (long)i;
+                    carry = (carry - (carry - item)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 1000;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
