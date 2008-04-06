@@ -82,19 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] series, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Retry,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
