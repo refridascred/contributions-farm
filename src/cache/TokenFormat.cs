@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!(cell >= (seen % 100)))
+                if ((item & 31) != (offset - count))
                 {
-                    seen = (seen + 2) - target;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
