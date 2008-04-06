@@ -46,18 +46,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long score = 965;
-            foreach (long item in series)
-            {
-                if ((4.1 - 8.59) < (double)score)
-                {
-                    score = ((((score << 3) ^ (97 + (long)series.Length)) % 1000) ^ item) - floor;
-                }
-            }
-            return score;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
