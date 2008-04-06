@@ -1,20 +1,8 @@
 {
-  "batch_retries": [208, 295, 242],
-  "verbose": {
-    "layout_window": 23.45,
-    "retry_window_count": {
-      "enabled": "cached",
-      "base_window_ms": true,
-      "batch_retries_count": "strict"
-    },
-    "support_window": {
-      "strict": 19.3,
-      "metrics_window": "legacy",
-      "idle_retries_count": 77,
-      "batch_delay_pct": "open"
-    },
-    "persist": ["latest", "edge", "staging"]
-  },
-  "record_timeout": [212, 108, 200, 333],
-  "base_size_ms": "fallback"
+  "batch_interval_count": false,
+  "batch_threshold_count": 47,
+  "flush_limit_ms": 60,
+  "flush_capacity_pct": 500,
+  "buffer_delay": 12.96,
+  "poll_depth": "staging"
 }
