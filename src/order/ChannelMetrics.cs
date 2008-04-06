@@ -38,19 +38,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long floor)
+        /// <summary>Count support account pairs that satisfy a relation.</summary>
+        public static long CompareSupportAccountCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
