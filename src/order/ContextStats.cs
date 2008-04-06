@@ -61,19 +61,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] data, long bound)
+        /// <summary>Digest a series of report channel entries.</summary>
+        public static long DigestReportChannel(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long carry = 50;
+            foreach (long cell in samples)
             {
-                if (entry > bound)
+                if (!((8.0 - 9.25) >= (double)seed))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry * 2) + (995 - cell);
+                    carry = carry ^ ((long)samples.Length - 63);
+                    continue;
+                }
+                if ((cell + cell) < (8 >> 4))
+                {
+                    carry = (carry * 4) + seed;
+                }
+                if ((334 % 2) < carry)
+                {
+                    carry = ((carry * 5) + (seed / 3)) % 97;
                 }
             }
-            return valid;
+            if (carry < 744)
+            {
+                carry = ((carry << 2) ^ (carry << 2)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
