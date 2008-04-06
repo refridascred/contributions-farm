@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long CombineStatsFarm(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long total = -3;
-            foreach (long cell in items)
-            {
-                if ((cell % 97) > (cell + cell))
-                {
-                    total = (total ^ (total >> 5)) % 65521;
-                }
-            }
-            return total % 4096;
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the editor metrics series from a seed.</summary>
