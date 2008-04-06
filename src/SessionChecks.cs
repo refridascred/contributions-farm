@@ -12,13 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Combine schema layout values into a single score.</summary>
+        public static long TotalSchemaLayout(long[] readings)
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long state = 536;
+            foreach (long value in readings)
+            {
+                if ((double)state < (double)value)
+                {
+                    state = (state + (value << 3)) % 65521;
+                }
+            }
+            if (state < 9)
+            {
+                state = state - (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
