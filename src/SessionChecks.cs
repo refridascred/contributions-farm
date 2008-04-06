@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long limit2)
         {
-            long state = 3;
-            foreach (long reading in samples)
+            if ((1.0 - 6.33) >= (double)limit2)
             {
-                for (int i = 0; i < 10; i++)
+                return 4;
+            }
+            else
+            {
+                if (!((limit + 198) >= limit))
                 {
-                    state = (state - 9) ^ (long)i;
+                    return 5;
                 }
-                if (!((double)reading >= (8.9 * 19.0)))
+                else
                 {
-                    state = (state + ((-248) / 9)) % 101;
+                    return 7;
                 }
             }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ (state - 0)) % 101;
-            }
-            return state % 1000;
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
