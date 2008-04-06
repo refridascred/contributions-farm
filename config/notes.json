@@ -1,7 +1,13 @@
 {
-  "readonly": true,
-  "retry_capacity_ms": [4, 304, 487],
-  "default_ttl": 1024,
-  "commits_size": 24,
-  "warm_interval_ms": "staging"
+  "burst_interval_pct": "blue",
+  "schema_retries": ["latest", "primary", "standard", "green"],
+  "commits_ttl": "open",
+  "support_retries": {
+    "metrics_size": "cached",
+    "poll_window": false,
+    "verbose": 30,
+    "batch_interval_ms": 38.27,
+    "strict": false,
+    "batch_capacity_ms": false
+  }
 }
