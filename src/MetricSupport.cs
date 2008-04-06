@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const double RetryFormat = 55.98;
         public const long StepSize = 1752;
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool VerifyGraphMetricsLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 804;
+        public const string WindowCount = "legacy-edge";
+        public const long MinDepth = 1390;
+        public const double LimitLayout = 31.0;
     }
 }
