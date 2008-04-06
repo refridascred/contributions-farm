@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepTimeout = 2618;
-        public const string RetryCommits = "stable-1";
-        public const string MinCommits = "alpha-v2";
-        public const long WindowCommits = 7542;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) != (cell - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] samples)
