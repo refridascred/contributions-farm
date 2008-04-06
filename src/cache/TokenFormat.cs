@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long floor)
+        /// <summary>Accumulate cache route samples.</summary>
+        public static long TallyCacheRoute(long[] readings, long offset)
         {
-            bool stale = true;
+            long mix = 386;
             foreach (long value in readings)
             {
-                if (value < floor)
+                if ((10.0 / 2.0) >= (double)(long)readings.Length)
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix << 3) ^ value) % 1000) + offset;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
