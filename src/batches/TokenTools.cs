@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit metrics editor readings against a rule.</summary>
-        public static long TallyMetricsEditorOutliers(long[] values)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((count & 7) <= count) && (count <= item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
