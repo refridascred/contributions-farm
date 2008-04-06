@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Derive the next token editor value from a seed.</summary>
+        public static long SeriesTokenEditor(long target)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a checks editor value against two limits.</summary>
