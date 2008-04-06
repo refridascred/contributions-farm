@@ -1,15 +1,11 @@
 # Command notes
 
-Keep channel and commits names short and lowercase.
-Keep batch and stream names short and lowercase.
-
-The support module keeps stream values in sync with the context cache.
-Run the farm check before changing any stats limits.
-A account that stays idle for too long is moved to the buffer list.
+A batches that stays idle for too long is moved to the githubfarm list.
+When a counter fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every graph change
-- Validate cluster input early
-- Prefer format defaults
+- Prefer context defaults
+- Keep support values small
+- Document new format fields
+- Log every cache change
