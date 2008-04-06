@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Classify a payload notes pair into a bucket.</summary>
+        public static long BucketPayloadNotes(long target, long floor)
         {
-            double scale = (4.6 + 8.96) + (double)0;
-            if (scale > (double)1)
+            if (((floor % 8) >= (51 / 5)) && (floor >= (floor << 2)))
             {
-                scale = (scale - gain) + floor;
+                return 2;
             }
             else
             {
-                scale = scale - gain;
+                if ((double)target != (0.2 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - scale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
