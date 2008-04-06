@@ -25,19 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long origin)
+        /// <summary>Accumulate account githubfarm samples.</summary>
+        public static long TotalAccountGithubfarm(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long state = -578;
+            foreach (long sample in items)
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state + (state + state)) + sample;
             }
-            return stale;
+            if (state > 31)
+            {
+                state = ((state * 5) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a entry info.</summary>
