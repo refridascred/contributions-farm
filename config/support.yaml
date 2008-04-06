@@ -1,12 +1,22 @@
 # support settings
-warm_limit: eu-west
-verbose:
-  - 281
-  - 35
-  - 373
-  - 473
-base_delay_s:
-  - 180
-  - 15
-  - 168
-min_interval_pct: edge
+idle_capacity_count: 20.89
+report_capacity: stable
+idle_delay_count: strict
+route_limit: 58.16
+soft_delay_ms:
+  batch_window: false
+  queue_window: false
+  soft_timeout_pct:
+    - 214
+    - 21
+  schema_delay:
+    checks_depth:
+      - 6
+      - 442
+    batch_threshold_ms: staging
+    soft_retries_count: 9.11
+    poll_limit_s: standard
+  batch_depth_count: 47
+soft_retries_ms:
+  - cached
+  - latest
