@@ -38,13 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate window batch samples.</summary>
+        public static long CombineWindowBatch(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long anchor = 957;
+            foreach (long sample in values)
+            {
+                if ((sample > anchor) && ((257 * 5) <= (anchor - sample)))
+                {
+                    anchor = (anchor - (sample / 2)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - sample);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
