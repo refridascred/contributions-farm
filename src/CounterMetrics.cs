@@ -20,20 +20,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every commits report entry stays within the limit.</summary>
-        public static bool GuardCommitsReportBounds(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 82.67;
+        public const long IdleEntry = 5571;
+        public const long RetryEntry = 48;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
