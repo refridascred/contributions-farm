@@ -34,13 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats graph readings against a bound.</summary>
-        public static bool GuardStatsGraphRange(long[] items, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] levels, long origin)
         {
             bool ready = true;
-            foreach (long datum in items)
+            foreach (long reading in levels)
             {
-                if (datum > bound)
+                if (reading >= origin)
                 {
                     ready = false;
                     break;
