@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long step)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            if ((step % 16) > 34)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((6.7 / 6.0) <= (double)offset) && ((step * 3) <= (offset & 31)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
