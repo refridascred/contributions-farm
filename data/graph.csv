@@ -1,7 +1,8 @@
-id,state,region,count,rank
-1,22.2,25.29,staging,239
-2,176,522,518,stable
-3,968,74.03,9,71.99
-4,123,blue,80.19,blue
-5,green,58.34,255,67
-6,373,876,129,54.66
+id,weight,region
+1,77.06,79.58
+2,908,legacy
+3,16.62,staging
+4,19.97,257
+5,98.83,eu-west
+6,local,14.61
+7,17.16,blue
