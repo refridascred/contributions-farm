@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the graph support entries that pass the check.</summary>
-        public static long MeasureGraphSupportOutliers(long[] data)
+        /// <summary>Find the first account payload entry that matches the target.</summary>
+        public static long LocateAccountPayloadIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((seen & 31) != (63 >> 2)) && (10.0 >= (double)cell)))
+                if (samples[i] >= seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a order payload sample.</summary>
