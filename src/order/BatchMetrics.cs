@@ -80,12 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + floor) >= 5)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
