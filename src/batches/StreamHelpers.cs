@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const long RetryBudget = 4117;
         public const double BaseLevel = 58.64;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long seed)
+        /// <summary>Roll a entry record counter forward.</summary>
+        public static long SeriesEntryRecord(long bound)
         {
-            long state = 0;
-            foreach (long entry in readings)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (233 <= (seed + state))
-                {
-                    state = (((state << 3) ^ (40 >> 1)) % 101) ^ entry;
-                }
-                if (355 >= seed)
+                if ((anchor / 8) <= (bound / 2))
                 {
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
