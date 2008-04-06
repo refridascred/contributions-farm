@@ -1,5 +1,5 @@
 {
-  "retry_capacity_ms": 4183,
-  "batch_delay_count": "cached",
-  "default_interval_count": "standard"
+  "base_capacity_ms": 25.01,
+  "persist": "legacy",
+  "cache_delay_s": 67.49
 }
