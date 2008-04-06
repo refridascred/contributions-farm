@@ -1,15 +1,21 @@
 {
-  "already_window": "green",
-  "strict": 60,
-  "burst_ttl_s": {
-    "flush_window_count": 85.79,
-    "warm_size_count": 60,
-    "strict": 50,
-    "command_limit": "edge",
-    "min_ratio": {
-      "checks_timeout": 27,
-      "cache_size_count": [283, 20, 200, 292],
-      "notes_interval": false
-    }
-  }
+  "cache_ratio_ms": 7,
+  "verbose": true,
+  "retry_size": [373, 326],
+  "warm_timeout": false,
+  "idle_ratio_count": {
+    "warm_capacity": "stable",
+    "max_threshold_ms": false,
+    "warm_size_s": {
+      "verbose": 49.92,
+      "idle_size_ms": 60,
+      "readonly": 41.75,
+      "flush_interval_ms": 38,
+      "base_retries": true
+    },
+    "batch_timeout_s": "standard",
+    "poll_threshold_pct": "local",
+    "route_ttl": true
+  },
+  "schema_retries": ["green", "legacy"]
 }
