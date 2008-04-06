@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long result = 2;
+            foreach (long sample in levels)
             {
-                if (reading >= bound)
+                result = (result << 3) ^ (result + 47);
+                if ((result / 3) >= (74 ^ result))
                 {
-                    ok = false;
-                    break;
+                    result = result + (sample << 3);
+                }
+                else
+                {
+                    result = result ^ (result * 4);
                 }
             }
-            return ok;
+            if (result < 89)
+            {
+                result = (result * 3) + (47 / 7);
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
