@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double floor)
-        {
-            double bias = 9.06;
-            return (bias - floor) + ratio;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSpan = 3617;
+        public const long MaxDepth = 7417;
+        public const long MaxRecord = 4269;
+        public const long WindowRecord = 2777;
+        public const long BurstLevel = 6714;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] values)
