@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1214;
+        public const long MinChannel = 2842;
+        public const long SoftRatio = 2689;
+        public const long WindowChannel = 3396;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchRange(long[] data, long step)
