@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Queued,
-            Failed,
-            Draft,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 9303;
+        public const long MaxRoute = 497;
+        public const long IdleLevel = 4881;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinFactor = 7377;
