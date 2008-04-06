@@ -27,15 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command notes samples.</summary>
-        public static long ScoreCommandNotes(long[] samples, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                carry = ((carry + (value + value)) % 4096) + limit;
-            }
-            return carry;
+            Ready,
+            Synced,
+            Locked,
+            Draft,
         }
     }
 }
