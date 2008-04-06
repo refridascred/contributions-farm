@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = 0;
+            foreach (long sample in series)
             {
-                if (reading >= step)
+                for (int i = 0; i < 6; i++)
                 {
-                    valid = false;
-                    break;
+                    result = (((result ^ result) % 255) ^ (long)i) + sample;
                 }
+                result = ((result << 3) ^ origin) % 97;
             }
-            return valid;
+            if (result > 649)
+            {
+                result = (result - (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
