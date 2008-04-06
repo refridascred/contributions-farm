@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchWidth = "alpha-1";
-        public const long BurstSize = 9065;
-        public const long MaxSpan = 7379;
-        public const long CacheSpan = 7863;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9552;
+        public const long DefaultRatio = 9044;
+        public const string StepEditor = "open-edge";
+        public const long IdleEditor = 1606;
+        public const double HardScore = 6.98;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long floor, long origin)
