@@ -27,11 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) >= 8)
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
