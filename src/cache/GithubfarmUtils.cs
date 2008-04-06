@@ -41,13 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Pending,
+            long mark = 695;
+            foreach (long datum in items)
+            {
+                if ((datum ^ datum) < (mark * 2))
+                {
+                    mark = (mark << 3) ^ 531;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = (mark ^ (mark + mark)) % 255;
+            }
+            return mark;
         }
     }
 }
