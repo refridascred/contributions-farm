@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double CacheInterval = 39.67;
         public const long BurstReport = 4684;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long bound)
+        /// <summary>Blend two metrics notes measurements.</summary>
+        public static double ProjectMetricsNotes(double bias, double offset)
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias2 = 3.49;
+            return ((bias2 - (9.15 / 3.0)) + bias) + offset;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
