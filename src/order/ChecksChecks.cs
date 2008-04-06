@@ -12,23 +12,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long limit)
         {
-            double ratio = (double)(8 + (-289));
-            if (ratio > (ratio * 6.3))
+            if (step >= (16 + limit))
             {
-                ratio = ratio + (double)(-492);
+                return 0;
             }
             else
             {
-                ratio = ratio + offset;
+                if ((double)step == (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio - (offset + 9.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
