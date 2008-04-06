@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits counter values into a single score.</summary>
-        public static long CombineCommitsCounter(long[] values, long target)
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long TallyEditorMetricMatches(long[] data)
         {
-            long anchor = 3;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((target / 5) != (anchor % 16)))
+                if (value < tally)
                 {
-                    anchor = (((anchor << 2) ^ 644) % 1000) ^ reading;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
