@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long step)
         {
-            if (!(10 >= offset))
+            long cur = bound - step;
+            if ((cur + bound) >= (step + cur))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (step <= (offset + step))
+                if (!((cur + bound) <= (step + step)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (!((offset - offset) >= step))
+                    if (3 <= cur)
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        if ((step >= (cur - 300)) || (cur <= (cur << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
