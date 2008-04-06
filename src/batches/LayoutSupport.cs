@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 3255;
-        public const string SoftFactor = "stable-v2";
-        public const double RetryCounter = 89.73;
-        public const string MinSize = "staging-v2";
-        public const long IdleCounter = 9747;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] values, long limit)
