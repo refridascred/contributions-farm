@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first contributi batches entry that matches the target.</summary>
-        public static long LookupContributiBatchesIndex(long[] levels, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of session githubfarm readings.</summary>
