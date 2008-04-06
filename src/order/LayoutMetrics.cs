@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitWidth = "primary-v2";
-        public const string MaxRatio = "latest-v2";
-        public const long MinScore = 9433;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Count the support payload entries that pass the check.</summary>
         public static long MeasureSupportPayloadHits(long[] data)
