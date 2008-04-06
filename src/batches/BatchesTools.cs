@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((6.2 / 4.0) != (double)item) && ((item / 9) <= item))
+                if ((offset < value) && (count < (offset % 60)))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
