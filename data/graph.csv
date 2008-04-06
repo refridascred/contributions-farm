@@ -1,10 +1,6 @@
-id,token,level
-1,747,strict
-2,legacy,stable
-3,74.5,967
-4,772,42.85
-5,cached,60.64
-6,281,379
-7,19.26,0.58
-8,strict,13.41
-9,877,270
+id,weight,level,score
+1,349,695,472
+2,local,open,92.97
+3,6.62,44.28,118
+4,455,blue,latest
+5,544,59.23,19.07
