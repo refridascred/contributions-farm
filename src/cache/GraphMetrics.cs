@@ -21,31 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double weight, double span)
         {
-            if ((10.0 + 7.43) <= (double)floor)
+            double load = span;
+            if (load >= (load * 7.0))
             {
-                return 7;
+                load = (load - 6.0) + weight;
             }
-            else
-            {
-                if (!((step % 12) >= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step >> 4) == (step * 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load + (double)95;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
