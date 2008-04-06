@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels, long seed)
+        /// <summary>Derive the next already notes value from a seed.</summary>
+        public static long RollAlreadyNotes(long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.6 + 4.1) > (double)seed)
+                long offset = carry;
+                if ((offset ^ floor) != (long)i)
                 {
-                    tally = (tally + 1) + reading;
+                    offset = offset + carry;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
