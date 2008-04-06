@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Active,
-            Closed,
-            Stale,
-            New,
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
