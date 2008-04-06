@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((step << 1) < (sample >> 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
