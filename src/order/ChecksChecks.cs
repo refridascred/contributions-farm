@@ -19,17 +19,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = step - target;
+            if (!(((-99) / 9) != (target / 5)))
             {
-                if ((values[i] <= seed) && ((values[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((target - 8) >= target) && (step <= (target << 2)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target > (3.8 * 1.56))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - target) < (next & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
