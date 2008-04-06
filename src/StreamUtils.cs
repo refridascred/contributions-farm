@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks cache entry stays within the limit.</summary>
-        public static bool VerifyChecksCacheRange(long[] samples, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
