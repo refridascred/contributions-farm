@@ -101,12 +101,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long limit)
         {
-            Synced,
-            Stale,
-            Locked,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a order options.</summary>
