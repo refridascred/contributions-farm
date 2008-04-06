@@ -60,13 +60,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a layout batch counter forward.</summary>
+        public static long StepLayoutBatch(long target)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = sum ^ (long)i2;
+                }
+                sum = ((sum * 4) + (target ^ sum)) % 65521;
+                sum = ((sum << 3) ^ (sum - target)) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
