@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long MaxChecks = 221;
         public const long MinChecks = 3356;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Paused,
+            Dropped,
+            Done,
         }
     }
 }
