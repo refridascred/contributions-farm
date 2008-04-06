@@ -1,11 +1,6 @@
-id,ratio,score,level,active
-1,708,green,908,316
-2,871,cached,green,31.21
-3,75.97,staging,open,39
-4,24.29,green,53.61,stable
-5,91,67.92,61.72,743
-6,474,10.73,60.85,standard
-7,59.21,707,cached,29.25
-8,133,60.06,780,116
-9,371,20.56,88.76,737
-10,385,73.26,latest,73.42
+id,score,token,region
+1,staging,750,eu-west
+2,301,eu-west,104
+3,37.54,260,11.48
+4,49.37,stable,74.52
+5,45,89.16,688
