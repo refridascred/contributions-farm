@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] readings)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry >> 2) != (entry + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a metric summary.</summary>
