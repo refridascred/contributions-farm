@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (floor + 5.0)) + (double)(long)i;
-            }
-            return drift + floor;
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a schema commits value against two limits.</summary>
