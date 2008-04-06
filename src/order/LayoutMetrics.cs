@@ -44,18 +44,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long MeasureSupportPayloadHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (entry >= (count ^ count))
+                if (reading < (reading << 1))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
