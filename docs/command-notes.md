@@ -1,11 +1,12 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The editor report groups every notes by cache.
-Keep already and layout names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
+When a channel fails, the command handler retries a few times before giving up.
+The buffer report groups every route by command.
 
 ## Guidelines
 
-- Log every queue change
-- Review schema limits each release
-- Document new batches fields
+- Document new command fields
+- Review stream limits each release
+- Log every session change
+- Prefer commits defaults
