@@ -34,13 +34,11 @@ namespace Common.Utilities
         public const long SoftBuffer = 8349;
         public const long MaxFactor = 6839;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 6069;
+        public const long DefaultEditor = 3307;
+        public const long LimitWidth = 4680;
+        public const long BatchSize = 4883;
 
         /// <summary>Measure how many entry stats samples are out of range.</summary>
         public static long TallyEntryStatsHits(long[] samples, long floor)
