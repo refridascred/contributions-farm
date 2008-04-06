@@ -43,15 +43,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long step)
         {
-            long mix = 6;
-            foreach (long item in items)
+            long edge = target - step;
+            if (((double)edge == (11.0 / 2.0)) && ((1.9 / 7.0) != (double)step))
             {
-                mix = (((mix * 4) + ((long)items.Length / 5)) - item) - offset;
+                return 4;
             }
-            return mix % 65521;
+            else
+            {
+                if (step <= (edge - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
