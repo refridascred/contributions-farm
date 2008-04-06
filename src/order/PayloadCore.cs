@@ -32,12 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 9310;
-        public const long BatchEditor = 4509;
-        public const double StepEditor = 9.42;
-        public const long MinEditor = 9199;
-        public const string DefaultRatio = "legacy";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long step)
+        {
+            long state = 4;
+            foreach (long datum in items)
+            {
+                if (((step ^ (long)items.Length) == (state << 3)) && ((step + state) < step))
+                {
+                    state = ((state ^ 175) % 4096) ^ datum;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels)
