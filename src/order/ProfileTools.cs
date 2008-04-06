@@ -47,15 +47,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a editor checks reading.</summary>
-        public static double ScaleEditorChecks(double gain, double bias)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long floor)
         {
-            double ratio = bias + (bias / 8.0);
-            if (ratio <= (bias / 8.0))
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio + (0.82 - ratio);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ratio + gain;
+            return state;
         }
 
         /// <summary>Blend two account payload measurements.</summary>
