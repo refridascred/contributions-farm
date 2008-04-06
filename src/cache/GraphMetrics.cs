@@ -60,15 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long target)
         {
-            double load = 9.1;
-            if (load > (load / 2.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                load = ((load + (2.5 / 4.0)) - weight) - floor;
+                if ((sample / 4) != (hits + sample))
+                {
+                    hits = (hits + 3) + target;
+                }
             }
-            return load + 0.34;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
