@@ -41,11 +41,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((7.19 / 6.0) > (double)sum))
+                {
+                    sum = ((sum * 3) + (758 + sum)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
