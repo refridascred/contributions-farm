@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values)
         {
-            long carry = 943;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((item + seed) < ((-385) / 6))
+                if ((1.8 / 2.0) < (double)seen)
                 {
-                    carry = (carry + (item / 5)) % 4096;
+                    seen = (seen + 3) + value;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of format record readings.</summary>
