@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a editor info.</summary>
