@@ -64,19 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] data, long origin)
+        /// <summary>Grade a buffer session value against two limits.</summary>
+        public static long RankBufferSession(long target, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            if (0.4 < (double)offset)
             {
-                if (sample != origin)
+                return 8;
+            }
+            else
+            {
+                if (94 > (target * 3))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((818 % 16) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3 <= (target + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
