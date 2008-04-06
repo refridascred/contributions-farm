@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long AuditContributiCommitsGaps(long[] items, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if (!(10 >= offset))
             {
-                if ((3.65 - 1.87) > (double)count)
+                return 7;
+            }
+            else
+            {
+                if (step <= (offset + step))
                 {
-                    count = ((count + 3) ^ reading) - limit;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((offset - offset) >= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
