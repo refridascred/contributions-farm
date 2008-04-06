@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
         {
-            long mix = -28;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (cell <= (mix >> 2))
+                if (!(((tally * 3) < (tally + 98)) || ((double)value >= (double)(-948))))
                 {
-                    mix = mix ^ mix;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix >> 2)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (mix > 877)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
