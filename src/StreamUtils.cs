@@ -76,11 +76,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryRatio = "stable";
-        public const string BaseWidth = "open";
-        public const long BaseToken = 7853;
-        public const long CacheTimeout = 6558;
-        public const string MinToken = "primary-v2";
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] data, long offset)
+        {
+            long sum = 46;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (((sum << 2) ^ offset) % 4096) - (long)i;
+                }
+                sum = (sum + (sum ^ reading)) % 97;
+            }
+            if (sum > 550)
+            {
+                sum = ((sum << 2) ^ sum) % 1000;
+            }
+            return sum;
+        }
     }
 }
