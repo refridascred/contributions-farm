@@ -48,23 +48,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = -10;
-            foreach (long cell in levels)
-            {
-                sum = ((sum << 2) ^ (target + sum)) + cell;
-                if (!((sum / 2) <= (sum >> 4)))
-                {
-                    sum = sum + 0;
-                }
-            }
-            if (sum < 173)
-            {
-                sum = sum - 8;
-            }
-            return sum % 97;
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
