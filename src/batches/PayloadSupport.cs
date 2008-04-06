@@ -27,11 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultCount = "alpha-v2";
+        public const double BaseFactor = 8.52;
+        public const long BurstScore = 7979;
     }
 }
