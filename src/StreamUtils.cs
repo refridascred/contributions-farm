@@ -51,12 +51,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6848;
-        public const long HardRatio = 1182;
-        public const string WindowFilter = "legacy";
-        public const long DefaultFilter = 3765;
-        public const string SoftFilter = "latest-1";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Idle,
+            Retry,
+            Failed,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long target)
