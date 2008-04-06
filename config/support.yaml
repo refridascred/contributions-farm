@@ -1,12 +1,22 @@
 # support settings
-schema_retries: 63.08
-verbose: false
-tools_delay: latest
-flush_delay:
-  - stable
-  - edge
-  - staging
-poll_retries:
-  poll_threshold: 8826
-  counter_interval: 7596
-  already_size: 84.46
+burst_depth:
+  min_capacity_pct: edge
+  retry_limit_count: false
+  hard_capacity_pct: false
+  strict: legacy
+verbose:
+  - standard
+  - eu-west
+  - latest
+  - eu-west
+batch_timeout_s:
+  cache_timeout_pct: true
+  default_threshold_count:
+    verbose: 6945
+    account_limit: primary
+    checks_limit: true
+    min_delay: 60
+  warm_ratio_s: 5437
+  retry_delay_pct: standard
+  hard_capacity_s: 40.77
+persist: 7506
