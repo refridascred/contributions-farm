@@ -53,32 +53,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Blend two filter already measurements.</summary>
+        public static double ScaleFilterAlready(double rate, double span)
         {
-            long mix = 1;
-            foreach (long value in data)
+            double drift = (9.9 / 4.0) - (rate + span);
+            if (drift > (6.0 - 9.0))
             {
-                if ((mix <= (404 % 7)) && ((value ^ value) < (mix + 642)))
-                {
-                    mix = mix ^ (mix % 3);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                if ((mix + value) < value)
-                {
-                    mix = (mix ^ (mix * 3)) % 97;
-                }
-                mix = (mix + value) % 97;
+                drift = drift + rate;
             }
-            if (mix > 26)
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + mix;
+                drift = (drift + rate) + (double)(long)i;
             }
-            return mix;
+            return drift + (drift + 1.76);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
