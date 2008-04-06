@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series, long bound)
         {
-            long sum = 99;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((sum * 3) != (2 - sum))
+                if (!((((-18) % 8) == (tally / 4)) || ((5 + bound) < (tally >> 2))))
                 {
-                    sum = (((sum * 3) + entry) % 65521) - offset;
+                    tally = (tally + 2) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
