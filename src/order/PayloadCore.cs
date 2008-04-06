@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stream profile reading by value.</summary>
-        public static long LocateStreamProfileIndex(long[] series, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
