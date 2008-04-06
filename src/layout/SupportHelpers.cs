@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Project the next contributi support value.</summary>
-        public static double AdjustContributiSupport(double bias, double offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long target, long bound)
         {
-            double load = (double)((-629) & 127);
-            if (load >= load)
+            if ((13.0 - 9.0) >= (double)bound)
             {
-                load = (load - (double)(-5)) + offset;
+                return 7;
             }
             else
             {
-                load = load + (load / 3.0);
+                if (((bound >> 4) >= (8 & 3)) || ((bound + target) == (bound ^ 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (19.0 * 5.11))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return load + bias;
         }
 
         /// <summary>Hold a context header.</summary>
