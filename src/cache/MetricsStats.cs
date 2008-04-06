@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            Active,
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Roll a order counter forward.</summary>
