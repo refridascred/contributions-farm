@@ -49,11 +49,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "local";
+        public const long BaseProfile = 4739;
+        public const string WindowProfile = "cached-v2";
+        public const string BurstRatio = "primary-1";
     }
 }
