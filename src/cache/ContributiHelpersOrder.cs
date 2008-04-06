@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitCount = 6679;
-        public const long IdleInterval = 96;
-        public const double MaxToken = 63.11;
-        public const long HardToken = 3842;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double span)
