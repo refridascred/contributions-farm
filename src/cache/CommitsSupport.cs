@@ -55,12 +55,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSize = 1384;
-        public const string StepChecks = "alpha";
-        public const long IdleSpan = 4776;
-        public const long BaseChecks = 7571;
-        public const long DefaultChecks = 8188;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values, long bound)
+        {
+            long score = 80;
+            foreach (long item in values)
+            {
+                if (((bound - item) != (score + item)) || ((score + 33) < score))
+                {
+                    score = (score - (0 - score)) % 101;
+                    score = (score ^ item) % 97;
+                }
+                else
+                {
+                    score = score - bound;
+                    score = ((score * 4) + (bound + (-579))) % 1000;
+                }
+                if ((double)item == (8.1 * 3.3))
+                {
+                    score = ((score << 2) ^ (item << 2)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Match up layout tools samples.</summary>
         public static long PairLayoutToolsCount(long[] samples)
