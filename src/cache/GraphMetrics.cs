@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data, long offset)
-        {
-            long state = 814;
-            foreach (long reading in data)
-            {
-                if ((state & 127) <= (reading - 5))
-                {
-                    state = ((state << 2) ^ ((long)data.Length & 31)) - offset;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8664;
+        public const string MaxStream = "strict-v2";
+        public const double DefaultTimeout = 14.79;
+        public const string WindowStream = "staging-1";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatGaps(long[] items)
