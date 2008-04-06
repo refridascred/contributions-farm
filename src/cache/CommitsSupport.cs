@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long acc = 58;
+            foreach (long sample in readings)
             {
-                result = (result - (step ^ (long)i)) % 1000;
-                if (step >= (step % 64))
+                if (!((sample ^ acc) >= 6))
                 {
-                    result = ((result * 4) + (step >> 2)) % 1000;
+                    acc = (acc * 3) + (26 >> 1);
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                if (((double)sample < (8.28 + 7.2)) || ((79 + acc) != (360 - sample)))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
