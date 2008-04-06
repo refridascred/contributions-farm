@@ -60,18 +60,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] samples, long origin)
+        /// <summary>Compare every pair of already buffer readings.</summary>
+        public static long CompareAlreadyBufferCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)411 != (double)entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - origin;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
