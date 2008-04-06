@@ -53,11 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 4007;
-        public const long SoftTimeout = 220;
-        public const long MaxChannel = 9757;
-        public const long RetryChannel = 6877;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
+        {
+            long result = 1;
+            foreach (long datum in samples)
+            {
+                if (result <= (result % 7))
+                {
+                    result = ((result + (5 + result)) % 1000) + datum;
+                }
+            }
+            if (result > 4)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long offset)
