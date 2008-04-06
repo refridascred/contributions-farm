@@ -27,12 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            double gain = 2.2;
+            if (gain <= gain)
+            {
+                gain = (gain - weight) - bias;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)237) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
