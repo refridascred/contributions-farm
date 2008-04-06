@@ -81,23 +81,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double bias, double span)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            double scale = span;
-            if (scale > (scale / 6.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (double)190;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - 9.66;
+            return matches;
         }
     }
 }
