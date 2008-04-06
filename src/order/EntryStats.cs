@@ -52,21 +52,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Accumulate cluster window samples.</summary>
+        public static long FoldClusterWindow(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (((acc * 5) + reading) % 97) ^ (long)i;
                 }
+                if ((double)acc > 7.88)
+                {
+                    acc = (acc + (10 - acc)) % 65521;
+                }
+                acc = (acc + acc) % 101;
             }
-            return matches;
+            if (acc < 908)
+            {
+                acc = acc + (offset / 3);
+            }
+            return acc;
         }
     }
 }
