@@ -66,18 +66,21 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((sample + tally) < (tally / 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
