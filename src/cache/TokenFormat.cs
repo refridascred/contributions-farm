@@ -33,19 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long limit)
         {
-            bool ready = true;
+            long mark = 2;
             foreach (long sample in levels)
             {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 3) + sample) + limit;
+                mark = mark ^ sample;
             }
-            return ready;
+            return mark % 97;
         }
     }
 }
