@@ -32,10 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 900;
-        public const string SoftTimeout = "primary";
-        public const long MinCommand = 1501;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Draft,
+            Stale,
+            Synced,
+            Locked,
+            Active,
+        }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
         public static long LocateFarmContributiIndex(long[] data, long origin)
