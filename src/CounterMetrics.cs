@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "legacy-v2";
-        public const string MinSpan = "alpha-v2";
-        public const string BaseRatio = "staging";
-        public const string BurstChecks = "local-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleLevel = "cached";
+        public const double StepScore = 75.47;
+        public const long HardRatio = 5249;
+        public const long CacheScore = 3811;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsMatches(long[] samples, long target)
