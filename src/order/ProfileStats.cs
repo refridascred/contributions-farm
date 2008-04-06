@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
