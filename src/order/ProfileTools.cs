@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
