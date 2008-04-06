@@ -1,7 +1,5 @@
 {
-  "cache_retries_pct": false,
-  "base_timeout_pct": 15.53,
-  "retry_timeout": 30,
-  "cache_timeout": 34,
-  "default_timeout_s": 4354
+  "max_capacity_ms": true,
+  "commits_capacity": false,
+  "burst_retries": "cached"
 }
