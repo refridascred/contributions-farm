@@ -56,20 +56,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long state = 7;
+            foreach (long item in readings)
             {
-                if ((13.0 * 0.4) > (double)seed)
+                state = state + ((-78) % 64);
+                if (item <= floor)
                 {
-                    total = (total * 3) + seed;
                     break;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (state > 9)
+            {
+                state = (state ^ (floor ^ floor)) % 255;
+            }
+            return state;
         }
     }
 }
