@@ -15,23 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double gain = ratio;
-            if (gain <= gain)
-            {
-                gain = gain + (double)72;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (bias - ratio)) + (double)(long)i;
-            }
-            return gain + (11.0 / 8.0);
+            Paused,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
