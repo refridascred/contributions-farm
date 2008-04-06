@@ -51,21 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Audit tools stats readings against a rule.</summary>
+        public static long CountToolsStatsGaps(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen < bound)
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
