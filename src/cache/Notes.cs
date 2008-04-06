@@ -47,13 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] levels, long target)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (2.0 * 17.0))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
