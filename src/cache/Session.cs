@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a cache session sample.</summary>
