@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((long)series.Length - cell) <= tally)
+                if (sample < seed)
                 {
-                    tally = (tally + 3) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
