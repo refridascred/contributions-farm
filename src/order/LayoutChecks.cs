@@ -46,18 +46,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((8.26 * 8.27) < (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Project the next window value.</summary>
