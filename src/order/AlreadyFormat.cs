@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] data, long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((6.0 / 4.0) != (double)tally)
-                {
-                    tally = ((tally + 3) ^ item) + step;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
