@@ -1,14 +1,10 @@
 {
-  "support_window": ["strict", "stable"],
-  "default_timeout": 1024,
-  "sync_timeout_pct": 500,
-  "persist": 42.82,
-  "graph_retries": 3749,
-  "strict": {
-    "warm_threshold_s": 4.46,
-    "session_delay": 87,
-    "max_limit": false,
-    "min_depth_count": false,
-    "poll_ttl": "latest"
-  }
+  "poll_interval": {
+    "cache_threshold": 4809,
+    "hard_capacity": 6768,
+    "base_ttl_ms": "latest",
+    "verbose": "local"
+  },
+  "compress": "open",
+  "hard_capacity_pct": 250
 }
