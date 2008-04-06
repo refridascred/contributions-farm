@@ -32,18 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (tally >= (reading & 255))
                 {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - seed;
                 }
             }
             return tally;
