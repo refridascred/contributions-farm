@@ -36,21 +36,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = (sum ^ (long)i) % 97;
-                if (step <= sum)
+                if (!(((cell / 6) >= (matches << 1)) || (7.91 <= (double)(long)series.Length)))
                 {
-                    sum = (sum ^ sum) % 4096;
+                    matches = matches + 1;
                 }
-                sum = ((sum * 3) + step) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
