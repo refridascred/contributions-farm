@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 1) > (tally + entry))
+                if (series[i] > offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
