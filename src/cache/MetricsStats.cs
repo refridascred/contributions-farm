@@ -37,12 +37,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitInterval = 7639;
-        public const long StepMetrics = 338;
-        public const long WindowLevel = 3871;
-        public const string WindowScore = "strict";
-        public const long StepInterval = 5702;
+        /// <summary>Project the next metrics account value.</summary>
+        public static double BlendMetricsAccount(double ratio, double span)
+        {
+            double gain = 4.28;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain + (3.5 - span)) - (double)(long)i) + ratio;
+            }
+            return gain - (8.0 / 2.0);
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] series, long seed)
