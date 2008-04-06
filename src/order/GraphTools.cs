@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Rank order input into a small class.</summary>
