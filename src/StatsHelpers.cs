@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long floor)
         {
-            Done,
-            Idle,
-            Failed,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a route stats.</summary>
