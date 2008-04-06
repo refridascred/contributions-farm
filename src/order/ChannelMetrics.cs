@@ -28,9 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWidth = "open-edge";
-        public const long BurstRatio = 3509;
-        public const double HardWindow = 37.55;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
