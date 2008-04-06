@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] items)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((3.0 * 3.4) > (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
